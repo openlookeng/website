@@ -2,7 +2,7 @@
 
 ### Brief Introduction
 
-Website is OpenLooKeng community contents management system base on [Hugo](https://gohugo.io/) framework, [Universal Theme for Hugo](https://github.com/devcows/hugo-universal-theme) theme and [Hugo Book](https://github.com/alex-shpak/hugo-book) theme. Now we are under developing, and welcome to join us!
+Website is openLooKeng community contents management system base on [Hugo](https://gohugo.io/) framework, [Universal Theme for Hugo](https://github.com/devcows/hugo-universal-theme) theme and [Hugo Book](https://github.com/alex-shpak/hugo-book) theme. Now we are under developing, and welcome to join us!
 
 ### Contribution
 
