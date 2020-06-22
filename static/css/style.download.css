@@ -15,16 +15,17 @@
     margin-bottom: 40px;
 
 }
-.download-descript h3, .download-descript p {
+.download-descript h2, .download-descript p {
     display: flex;
     justify-content: center;
 }
-.download-descript h3 {
+.download-descript h2 {
     font-size: 34px;
     font-family: Helvetica-Bold;
 }
 .download-descript p {
-    font-size: 16px;
+    font-size: 14px;
+    padding: 0 7rem;
 }
 .download-button {
     display: flex;
@@ -34,6 +35,30 @@
     font-size: 24px;
     display: flex;
     justify-content: center;
+}
+@media (max-width: 994px){
+    .download-button {
+        display: flex;
+        /* justify-content: center; */
+        flex-direction: column;
+    }
+    .download-btn{
+        text-align: center;
+    }
+    .download-btn.btn1 {
+        margin-right: 0 !important;
+        margin-bottom: 4rem;
+    }
+    .download-btn button{
+        width: 80% !important;
+        display: inline-block;
+    }
+    .download-content {
+        margin: 50px auto !important;
+    }
+    .download-descript p {
+        padding: 0 3rem;
+    }
 }
 .download-button button {
     width: 300px;
@@ -48,4 +73,5 @@
 .download-btn.btn1 {
     margin-right: 108px;
 }
+
 
