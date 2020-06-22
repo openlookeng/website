@@ -1,70 +1,176 @@
-baseurl = "https://example.org"
+baseurl = "/"
 title = "Universal"
-theme = "hugo-universal-theme"
+theme = "universal"
+
 languageCode = "en-us"
 # Site language. Available translations in the theme's `/i18n` directory.
-defaultContentLanguage = "en"
-# Enable comments by entering your Disqus shortname
-disqusShortname = "devcows"
-# Enable Google Analytics by entering your tracking code
-googleAnalytics = ""
+defaultContentLanguage = "en-us"
+
+uglyURLs = true
+buildFuture = true
 
 # Define the number of posts per page
 paginate = 10
 
-[menu]
 
-# Main menu
+[languages]
+
+[languages.en-us]
+    languageCode = "en-us"
+    contentDir = "content/en-us"
+
+[languages.zh-cn]
+    languageCode = "zh-cn"
+    contentDir = "content/zh-cn"
+
 
 [[menu.main]]
-    identifier="home"
-    name = "Home"
-    url  = "/"
+    identifier="download"
+    name = "Download"
+    url  = "/download.html"
     weight = 1
 
 [[menu.main]]
-    identifier="blog"
+    identifier="documentation"
+    name = "Documentation"
+    url  = "/docs/example/collapsed.html"
+    weight = 2
+
+[[menu.main]]
+    identifier = "community"
+    name = "Community"
+    weight = 3
+    hasChildren = true
+
+[[menu.main]]
+    identifier = "contribution"
+    name = "Contribution"
+    url  = "/contribution.html"
+    weight = 1
+    parent = 'community'
+
+[[menu.main]]
+    identifier = "foundation"
+    name = "Foundation"
+    url  = "/foundation.html"
+    weight = 2
+    parent = 'community'
+
+[[menu.main]]
+    identifier = "mailinglists"
+    name = "Mailing Lists"
+    url  = "/maillist.html"
+    weight = 3
+    parent = 'community'
+
+[[menu.main]]
+    identifier = "blog"
     name = "Blog"
-    url  = "/blog/"
-    weight = 2
-
-[[menu.main]]
-    identifier = "faq"
-    name = "FAQ"
-    url  = "/faq/"
-    weight = 3
-
-[[menu.main]]
-    identifier = "contact"
-    name = "Contact"
-    url  = "/contact/"
+    url  = "/blog.html"
     weight = 4
+    parent = 'community'
 
-# Top bar social links menu
+[[menu.main]]
+    identifier = "recent"
+    name = "Recent"
+    weight = 4
+    hasChildren = true
 
-[[menu.topbar]]
+[[menu.main]]
+    identifier = "events"
+    name = "Events"
+    url  = "/event.html"
     weight = 1
-    name = "GitHub"
-    url = "https://github.com/devcows/hugo-universal-theme"
-    pre = "<i class='fab fa-2x fa-github'></i>"
+    parent = 'recent'
 
-[[menu.topbar]]
+[[menu.main]]
+    identifier = "news"
+    name = "News"
+    url  = "/news.html"
     weight = 2
-    name = "Facebook"
-    url = "http://facebook.com"
-    pre = "<i class='fab fa-2x fa-facebook'></i>"
+    parent = 'recent'
 
-[[menu.topbar]]
+[[menu.main]]
+    identifier = "lang"
+    name = "中文"
+    url  = "/zh-cn"
+    weight = 5
+
+
+# Chinese Menu
+[[languages.zh-cn.menu.main]]
+    identifier="download"
+    name = "下载"
+    url  = "/zh-cn/download.html"
+    weight = 1
+
+[[languages.zh-cn.menu.main]]
+    identifier="documentation"
+    name = "文档"
+    url  = "/zh-cn/docs/example/collapsed.html"
+    weight = 2
+
+[[languages.zh-cn.menu.main]]
+    identifier = "community"
+    name = "社区"
     weight = 3
-    name = "Twitter"
-    url = "http://twitter.com"
-    pre = "<i class='fab fa-2x fa-twitter'></i>"
+    hasChildren = true
 
-[[menu.topbar]]
+[[languages.zh-cn.menu.main]]
+    identifier = "contribution"
+    name = "贡献指南"
+    url  = "/zh-cn/contribution.html"
+    weight = 1
+    parent = 'community'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "fundation"
+    name = "组织架构"
+    url  = "/zh-cn/foundation.html"
+    weight = 2
+    parent = 'community'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "mailinglists"
+    name = "邮件列表"
+    url  = "/zh-cn/maillist.html"
+    weight = 3
+    parent = 'community'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "blog"
+    name = "博客"
+    url  = "/zh-cn/blog.html"
     weight = 4
-    name = "Email"
-    url = "mailto:your@email.com"
-    pre = "<i class='fas fa-2x fa-envelope'></i>"
+    parent = 'community'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "recent"
+    name = "动态"
+    weight = 4
+    hasChildren = true
+
+[[languages.zh-cn.menu.main]]
+    identifier = "events"
+    name = "活动"
+    url  = "/zh-cn/events.html"
+    weight = 1
+    parent = 'recent'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "news"
+    name = "新闻"
+    url  = "/zh-cn/news.html"
+    weight = 2
+    parent = 'recent'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "lang"
+    name = "EN"
+    url  = "/en-us"
+    weight = 5
+
+
 
 [params]
     viewMorePostLink = "/blog/"
@@ -73,64 +179,23 @@ paginate = 10
     mainSections = ["blog"]
     defaultDescription = "Site template made by devcows using hugo"
 
-    # Social media
-    facebook_site = "" # the Facebook handle of your site ('https://www.facebook.com/HANDLE')
-    twitter_site = "GoHugoIO" # the Twitter handle of your site (without the '@')
-    default_sharing_image = "img/sharing-default.png"
-
-    # Google Maps API key (if not set will default to not passing a key.)
-    googleMapsApiKey = "AIzaSyCFhtWLJcE30xOAjcbSFi-0fnoVmQZPb1Y"
 
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "default"
 
-    # Since this template is static, the contact form uses www.formspree.io as a
-    # proxy. The form makes a POST request to their servers to send the actual
-    # email. Visitors can send up to a 1000 emails each month for free.
-    #
-    # What you need to do for the setup?
-    #
-    # - set your email address under 'email' below
-    # - upload the generated site to your server
-    # - send a dummy email yourself to confirm your account
-    # - click the confirm link in the email from www.formspree.io
-    # - you're done. Happy mailing!
-    #
-    # Enable the contact form by entering your Formspree.io email
-    email = "your@email.com"
-    contact_form_ajax = false
-
     about_us = "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>"
-    copyright = "Copyright (c) 2015 - 2016, YourCompany; all rights reserved."
 
+    provide = "The openLooKeng project is provided under the "
+    license = "license"
     # Format dates with Go's time formatting
     date_format = "January 2, 2006"
 
     logo = "img/logo.png"
     logo_small = "img/logo-small.png"
-    address = """<p class="text-uppercase"><strong>Universal Ltd.</strong>
-        <br>13/25 New Avenue
-        <br>Newtown upon River
-        <br>45Y 73J
-        <br>England
-        <br>
-        <strong>Great Britain</strong>
-      </p>
-      """
-    latitude = "-12.043333"
-    longitude = "-77.028333"
 
 [Permalinks]
     blog = "/blog/:year/:month/:day/:filename/"
 
-# Enable or disable top bar with social icons
-[params.topbar]
-    enable = true
-    text = """<p class="hidden-sm hidden-xs">Contact us on +420 777 555 333 or hello@universal.com.</p>
-      <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fas fa-phone"></i></a>
-      <a href="#" data-animate-hover="pulse"><i class="fas fa-envelope"></i></a>
-      </p>
-      """
 
 # Enable and disable widgets for the right sidebar
 [params.widgets]
@@ -138,43 +203,39 @@ paginate = 10
     tags = true
     search = true
 
-[params.carousel]
-    enable = true
-    # All carousel items are defined in their own files. You can find example items
-    # at 'exampleSite/data/carousel'.
-    # For more informtion take a look at the README.
 
-[params.features]
-    enable = true
-    # All features are defined in their own files. You can find example items
-    # at 'exampleSite/data/features'.
-    # For more informtion take a look at the README.
-
-[params.testimonials]
-    enable = true
-    # All testimonials are defined in their own files. You can find example items
-    # at 'exampleSite/data/testimonials'.
-    # For more informtion take a look at the README.
-    title = "Testimonials"
-    subtitle = "We have worked with many clients and we always like to hear they come out from the cooperation happy and satisfied. Have a look what our clients said about us."
-
-[params.see_more]
-    enable = true
-    icon = "far fa-file-alt"
-    title = "Do you want to see more?"
-    subtitle = "We have prepared for you more than 40 different HTML pages, including 5 variations of homepage."
-    link_url = "#"
-    link_text = "Check other homepages"
-
-[params.clients]
-    enable = true
-    # All clients are defined in their own files. You can find example items
-    # at 'exampleSite/data/clients'.
-    # For more informtion take a look at the README.
-    title = "Our Clients"
-    subtitle = ""
 
 [params.recent_posts]
     enable = true
     title = "From our blog"
     subtitle = "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+
+#blog_single评论模块新增
+# Valine.
+  # You can get your appid and appkey from https://leancloud.cn
+  # more info please open https://valine.js.org
+  [params.valine]
+    enable = true
+    appId = 'KcTcd38EvA1I33vSIV6qWNea-gzGzoHsz'
+    appKey = 'oJBVUOcItn0essSFvY6tS77O'
+    notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
+    verify = false # Verification code
+    avatar = 'mm'
+    placeholder = 'Please leave a message...'
+    visitor = true
+[params.blog]
+    enable = true
+
+[params.news]
+    enable = true
+    
+[params.copyright]
+    enable = true
+    text = "<a href=\"/trademark.html\">Trademark</a>&nbsp;&nbsp;<a href=\"/legal.html\">Legal</a>&nbsp;&nbsp;<a href=\"/privacy-policy.html\">Privacy</a><br>Copyright © openLooKeng 2020. All rights reserved."
+
+[languages.zh.params.copyright]
+    enable = true
+    text = "<a href=\"/zh/trademark.html\">商标</a>&nbsp;&nbsp;<a href=\"/zh/legal.html\">法律声明</a>&nbsp;&nbsp;<a href=\"/zh/privacy-policy.html\">隐私政策</a><br>版权所有 © openEuler 2020 保留一切权利 "
+
+[markup.goldmark.renderer]
+unsafe= true

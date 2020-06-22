@@ -1,0 +1,67 @@
+
+[HOME_BANNER_SLOGAN]
+other = "The Simpler Big Data Engine You’re Looking For"
+
+[HOME_BANNER_DES]
+other = "Straightforward Experience, High Performance, Enterprise-level Reliability"
+
+[HOME_WHY_OPENLOOKENG]
+other = "Why OpenLooKeng?"
+
+[HOME_WHY_OLK_TITLE01]
+other = "SQL on anything"
+
+[HOME_WHY_OLK_TITLE01_DESCR01]
+other = "Can access data from multiple storage systems across DC and cloud within a single query."
+
+[HOME_WHY_OLK_TITLE01_DESCR02]
+other = "Seamlessly connected to BI tools and other applications."
+
+[HOME_WHY_OLK_TITLE02]
+other = "Free and Easy Extension"
+
+[HOME_WHY_OLK_TITLE02_DESCR01]
+other = "Can access data from multiple storage systems across DC and cloud within a single query."
+
+[HOME_WHY_OLK_TITLE02_DESCR02]
+other = "Seamlessly connected to BI tools and other applications."
+
+[HOME_WHY_OLK_TITLE03]
+other = "In-place Analysis"
+
+[HOME_WHY_OLK_TITLE03_DESCR01]
+other = "Can access data from multiple storage systems across DC and cloud within a single query." 
+
+[HOME_WHY_OLK_TITLE03_DESCR02]
+other = "Seamlessly connected to BI tools and other applications."
+
+
+[HOME_GETSTART]
+other = "Get Started"
+
+[HOME_GETSTARTLINK]
+other = "#"
+
+[HOME_VIDEO01]
+other = "../../video/file_example_MP4_1280_10MG.mp4"
+
+[HOME_SUMMIT]
+other = "OpenLooKeng Summit 2020 is Coming Soon!"
+
+[MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
+other = "Subscribe"
+
+[MAIN_BLOG_TITLE]
+other = "Blog"
+
+[MAIN_LIST_MORE]
+other = "View More ..."
+
+[MAIN_NEWS_TITLE]
+other = "News"
+
+[MAIN_RELATED_LINKS]
+other = "Related Links"
+
+[MAIN_POSTBLOG_SOURCE]
+other = "Post Your Blog"
