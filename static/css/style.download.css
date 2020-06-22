@@ -1,0 +1,51 @@
+.download-content {
+    margin: 100px auto;
+}
+.container-top h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 44px;
+}
+.container-top img {
+    display: flex;
+    margin: 0 auto;
+    margin: 26px auto 103px;
+}
+.download-descript {
+    margin-bottom: 40px;
+
+}
+.download-descript h3, .download-descript p {
+    display: flex;
+    justify-content: center;
+}
+.download-descript h3 {
+    font-size: 34px;
+    font-family: Helvetica-Bold;
+}
+.download-descript p {
+    font-size: 16px;
+}
+.download-button {
+    display: flex;
+    justify-content: center;
+}
+.download-button h4 {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
+.download-button button {
+    width: 300px;
+    height: 40px;
+    background-color: #5a9b83;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+}
+.download-btn.btn1 {
+    margin-right: 108px;
+}
+

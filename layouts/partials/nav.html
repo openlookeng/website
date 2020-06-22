@@ -1,4 +1,6 @@
-<div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+<!-- *** NAVBAR BEGIN ***-->
+
+<div class="isPC navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
@@ -25,9 +27,12 @@
                   {{ $topLevel := replace .URL "/" "" }}
                   <li class="dropdown{{ if eq $current.RelPermalink .URL | or (eq $current.Type $topLevel) | or (and (eq (default (trim .URL "/") .Identifier) "blog") (in (slice "taxonomy" "taxonomyTerm") $current.Kind)) }} active{{ end }}">
                     {{ if .HasChildren }}
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ .Name }} <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ .Name }}
+<!--                          <span class="caret"></span>-->
+                      </a>
                     <ul class="dropdown-menu">
-                      {{ range .Children }}
+                        <div class="dropdown-arrow"></div>
+                        {{ range .Children }}
                         <li><a href="{{ .URL }}">{{ .Name }}</a></li>
                       {{ end }}
                     </ul>
@@ -36,6 +41,16 @@
                     {{ end  }}
                   </li>
                   {{ end }}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle data-toggle='dropdown' role='button' ">
+                        <img style="width: 18px;" src="/img/icons/GitHub-Mark.png" alt=""></span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle data-toggle='dropdown' role='button' ">
+                        <img style="width: 18px;" src="/img/icons/Gitee.png" alt=""></span>
+                    </a>
+                </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->

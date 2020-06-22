@@ -1,0 +1,94 @@
+/* your styles go here */
+
+.box-image-text .image {
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.box-simple {
+  min-height: 230px;
+}
+.container #cla-table {
+  width: 70%;
+  min-width: 320px;
+  max-width: 800px;
+  text-align: center;
+}
+
+.container #cla-type-table tr,
+.container #individual-table tr,
+.container #legalentity-table tr,
+.container #cla-table tr {
+  height: 35px;
+}
+
+.container #individual-table tr td:first-child,
+.container #legalentity-table tr td:first-child {
+  width: 30%;
+}
+
+.container #individual-table tr input[type=text],
+.container #legalentity-table tr input[type=text] {
+  width: 80%;
+}
+
+.container #cla-type-table input[type=radio] {
+  margin-right: 10px;
+}
+
+.container .clanote {
+  line-height: 35px;
+}
+
+.container #sign-cla-button,
+.container #reset-cla-button {
+  width:80px;
+  margin: 0 20px;
+}
+
+.container #tip-cla-label {
+  margin-top: 10px;
+  color: #5A9B83;
+}
+.open-lookeng-cla-table {
+  background-color: transparent;
+  width: 600px;
+  text-align: center;
+}
+.open-lookeng-cla-table td,
+.open-lookeng-cla-table th {
+  text-align: left;
+  padding: 8px 12px;
+  vertical-align: top;
+}
+.open-lookeng-cla-table thead th {
+  color: #363636;
+}
+#cla-type-table{
+  border-bottom: 1px solid #BFBFBF;
+}
+.cla-sign-btn{
+  background: #5A9B83;
+  color: #ffffff;
+  border-color: #5A9B83;
+  border-radius: 3px;
+}
+.cla-sign-btn:hover,.cla-sign-btn:focus{
+  background: #5A9B83;
+  color: #ffffff;
+  border-color: #5A9B83;
+}
+.cla-reset-btn{
+  background: #ffffff;
+  color: #5A9B83;
+  border-color: #5A9B83;
+  border-radius: 3px;
+}
+.cla-reset-btn:hover,.cla-reset-btn:focus{
+  background: #ffffff;
+  color: #5A9B83;
+  border-color: #5A9B83;
+}
+.cla-bt-color{
+  border-bottom: 5px solid #5A9B83;
+}
