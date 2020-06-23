@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<body>
+    <div id="all">
+        <header>
+            {{ partial "nav.html" . }}
+        </header>
+        <div id="content">
+            <div class="container">
+                <h2 class="news-single-title">{{ .Title }}</h2>
+                <div class="relative-info">
+                    <span class="author">{{ .Params.author }}</span>
+                    <div class="line"></div>
+                    <span class="date">{{ .Date.Format .Site.Params.date_format }}</span>
+                </div>
+                {{ .Content }}
+            </div>
+    
+    
+        </div>
+        {{ partial "footer.html" . }}
+    </div>
+    {{ partial "scripts.html" . }}
+</body>
+</html>
