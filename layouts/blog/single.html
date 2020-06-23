@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+  {{ partial "head.html" . }}
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          {{ partial "nav.html" . }}
+
+        </header>
+
+        <div class="container blog-single-title">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ .Title }}</h1>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <!-- *** LEFT COLUMN *** -->
+
+                    <div class="col-md-9" id="blog-post">
+
+                        {{ if or .Params.author .Params.date }}
+                          <p class="text-left blog-12px">
+                            {{ if .Params.author }}{{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>{{ end }}
+                            {{ if and .Params.author .Params.date }} | {{ end }}
+                            {{ if .Params.date }}{{ .Date.Format .Site.Params.date_format }} | {{ end }}
+                            {{ range $index, $item := .Params.tags }}
+                              <span class="tag"><a href="#">{{ $item }}</a></span>
+                            {{ end }}
+                          </p>
+                        {{ end }}
+
+                        <div id="post-content">
+                          {{ .Content }}
+                        </div>
+                        <!-- 免责声明 -->
+                        <div class="box" style="margin-top:15px;">
+                          <div style="font-size:12px;color:gray">
+                              <strong>【免责声明】</strong>本文仅代表作者本人观点，与本网站无关。本网站对文中陈述、观点判断保持中立，不对所包含内容的准确性、可靠性或完整性提供任何明示或暗示的保证。本文仅供读者参考，由此产生的所有法律责任均由读者本人承担。
+                          </div>
+                          <div style="font-size:12px;color:gray;margin-top:8px;"><strong>[Disclaimer]</strong> This article only
+                              represents the author's opinions, and is irrelevant to this website. This website is neutral in
+                              terms of the
+                              statements and opinions in this article, and does not provide any express or implied warranty of
+                              accuracy,
+                              reliability, or completeness of the contents contained therein. This article is for readers'
+                              reference only,
+                              and all legal responsibilities arising therefrom are borne by the reader himself.
+                          </div>
+                        </div>
+                        <!-- comment -->
+                        <div>
+                          {{ partial "comments.html" . }}
+                        </div>
+
+                    </div>
+                    <!-- /#blog-post -->
+
+                    <!-- *** LEFT COLUMN END *** -->
+
+                    <!-- *** RIGHT COLUMN *** -->
+
+                    <div class="col-md-3 side_fixed">
+
+                        <!-- *** MENUS AND WIDGETS *** -->
+
+                        {{ partial "side_author.html" . }}
+
+                        <!-- *** MENUS AND FILTERS END *** -->
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** RIGHT COLUMN END *** -->
+
+                </div>
+                <!-- /.row -->
+
+                
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
+  </body>
+</html>
