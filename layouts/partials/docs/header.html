@@ -1,0 +1,15 @@
+<div class="align-center justify-between" style="text-align: center;">
+  <label for="menu-control" style="vertical-align: text-top; margin-right: 20px">
+    <img src="{{ "img/book-menu/Contents.svg" | relURL }}" class="book-icon" alt="Menu" />
+    <span class="book-icon"></span>
+  </label>
+
+  <strong style="vertical-align: middle;" class="book-header-title">{{ partial "docs/title" . }}</strong>
+
+  <!-- <label for="toc-control">
+    {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+    <img src="{{ "svg/toc.svg" | relURL }}" class="book-icon" alt="Table of Contents" />
+    {{ end }}
+    <span class="book-icon"></span>
+  </label> -->
+</div>
