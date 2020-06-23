@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    {{ partial "head.html" . }}
+    <body>
+        <div id="all">
+            <header>
+            {{ partial "nav.html" . }}
+            </header>
+            <div id="content">
+                <div class="container">
+                    <div class="row" style="margin-bottom:20px">
+                        <h2 class="blog-post">{{ .Params.title }}</h2>
+                        {{ range where $.Page.Site.Pages "Type" "trademark" }}
+                        {{ if .Params }}
+                        {{ if .Params.viewurl}}
+                            <div class="col-md-4 col-xs-12" style="text-align: center;margin-top:20px;">
+                                <div style="width:358px;height:260px;border: 1px solid #D4D4D4;border-radius:5px;padding-top: 60px;">
+                                    <div style="height:116px;"><img src="{{ .Params.viewurl }}"></div>
+                                    <div style="margin-top:20px;">
+                                        <a href="{{.Params.pngdownloadurl}}" target="_blank" download style="width:50px;height:20px;display: inline-block;color: #337fc4;font-size:12px;margin: 10px;border-radius: 2px;text-decoration: none; cursor: pointer;border:1px solid #337fc4;">PNG</a>
+                                        <a href="{{.Params.svgdownloadurl}}" target="_blank" download style="width:50px;height:20px;display: inline-block;color: #337fc4;font-size:12px;margin: 10px;border-radius: 2px;text-decoration: none; cursor: pointer;border:1px solid #337fc4;">SVG</a>
+                                        <a href="{{.Params.pdfdownloadurl}}" target="_blank" download style="width:50px;height:20px;display: inline-block;color: #337fc4;font-size:12px;margin: 10px;border-radius: 2px;text-decoration: none; cursor: pointer;border:1px solid #337fc4;">PDF</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                        
+                        <div class="col-lg-12"style="font-size:24px;color:#333333;margin-top:30px;margin-bottom:20px;">{{.Params.notice}}</div>
+                        <div class="col-lg-12" style="margin-bottom:20px;">{{.Params.description}}</div>
+                        <!-- /.col-md-9 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /#content -->
+            {{ partial "footer.html" . }}
+        </div>
+        <!-- /#all -->
+        {{ partial "scripts.html" . }}
+    </body>
+</html>
