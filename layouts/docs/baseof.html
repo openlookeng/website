@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir={{ .Site.Language.LanguageDirection }}>
+{{ partial "head.html" . }}
+
+<head>
+	{{ partial "docs/html-head" . }}
+	{{ partial "docs/inject/head" . }}
+</head>
+
+<body dir={{ .Site.Language.LanguageDirection }}>
+	<div id="all">
+		<header>
+			{{ partial "nav.html" . }}
+		</header>
+		<div class="download-content">
+			<div class="download-container">
+				<div class="container-top">
+					<h1 class="download-title docs-pic-title">Meet Us in the Upcoming Events</h1>
+					<img class="docs-pic" src="/img/banners/Banner.png" alt="">
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<div class="container">
+				<input type="checkbox" class="hidden" id="menu-control" />
+				<main class="container flex">
+					<aside class="book-menu">
+						{{ template "menu" . }}
+						<!-- Left menu Content -->
+					</aside>
+
+					<div class="book-page">
+						<header class="book-header">
+							{{ template "header" . }}
+							<!-- Mobile layout header -->
+						</header>
+
+						{{ partial "docs/inject/content-before" . }}
+						{{ template "main" . }}
+						<!-- Page Content -->
+						{{ partial "docs/inject/content-after" . }}
+
+						<footer class="book-footer">
+							{{ template "footer" . }}
+							<!-- Footer under page content -->
+							{{ partial "docs/inject/footer" . }}
+						</footer>
+
+						<label for="menu-control" class="hidden book-menu-overlay"></label>
+					</div>
+
+					{{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+					<aside class="book-toc">
+						{{ template "toc" . }}
+						<!-- Table of Contents -->
+					</aside>
+					{{ end }}
+				</main>
+
+				{{ partial "docs/inject/body" . }}
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /#content -->
+		{{ partial "footer.html" . }}
+	</div>
+	<!-- /#all -->
+	{{ partial "scripts.html" . }}
+</body>
+
+</html>
+
+
+
+
+
+{{ define "menu" }}
+{{ partial "docs/menu" . }}
+{{ end }}
+
+{{ define "header" }}
+{{ partial "docs/header" . }}
+
+{{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+<input type="checkbox" class="hidden" id="toc-control" />
+<aside class="hidden clearfix">
+	{{ template "toc" . }}
+</aside>
+{{ end }}
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "docs/footer" . }}
+{{ end }}
+
+
+
+{{ define "main" }}
+<article class="markdown">
+	{{- .Content -}}
+</article>
+{{ end }}
+
+{{ define "toc" }}
+{{ partial "docs/toc" . }}
+{{ end }}
