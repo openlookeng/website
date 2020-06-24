@@ -1,1 +1,8 @@
-+++ listname = "Contact" emailaddress = "contact@openlookeng.io" description = "" websitelink = "https://mailweb.openlookeng.io/postorius/lists/contact.openlookeng.io/" archivelink = "https://mailweb.openlookeng.io/hyperkitty/list/contact@openlookeng.io" weight = 11 +++
++++
+listname = "Contact" 
+emailaddress = "contact@openlookeng.io" 
+description = "" 
+websitelink = "https://mailweb.openlookeng.io/postorius/lists/contact.openlookeng.io/" 
+archivelink = "https://mailweb.openlookeng.io/hyperkitty/list/contact@openlookeng.io" 
+weight = 11
++++
