@@ -1,7 +1,7 @@
-.foundation-content>h1 {
+.foundation-content > h1 {
     text-align: center;
     margin-top: 100px;
-    color: #000000;
+    color: #000;
     font-size: 44px;
     font-family: HuaweiSans;
     line-height: 44px;
@@ -69,7 +69,7 @@ ul {
 }
 
 .foundation-content .foundation-tabs-content .foundation-tabs li {
-    color: #000000;
+    color: #000;
     padding-left: 36px;
     height: 26px;
     line-height: 26px;
@@ -83,7 +83,7 @@ ul {
     flex: 8;
 }
 
-.foundation-content .foundation-tab-pane>h4 {
+.foundation-content .foundation-tab-pane > h4 {
     position: relative;
     display: none;
     height: 50px;
@@ -126,7 +126,7 @@ ul {
 
 
 .foundation-content .foundation-tab-pane .pt-list .pt-item {
-    box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, .15);
+    box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, .15);
     border-radius: 8px;
     padding: 36px;
     margin: 28px 0;
@@ -257,7 +257,7 @@ ul {
     }
 
 
-    .foundation-content .foundation-tabs-content .foundation-tab-pane>h4 {
+    .foundation-content .foundation-tabs-content .foundation-tab-pane > h4 {
         display: block;
     }
 
@@ -272,16 +272,16 @@ ul {
         margin-bottom: 21px;
     }
 
-    .foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc>h4 {
+    .foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc > h4 {
         text-align: center;
         font-size: 16px;
     }
 
-    .foundation-content .foundation-tab-pane .inner>h1 {
+    .foundation-content .foundation-tab-pane .inner > h1 {
         display: none;
     }
 
-    .foundation-content .foundation-tab-pane .inner>h3 {
+    .foundation-content .foundation-tab-pane .inner > h3 {
         font-size: 14px;
     }
 
