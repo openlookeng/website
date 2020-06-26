@@ -1,3 +1,7 @@
+/*
+*@file  foundation页面脚本
+*/
+
 $(function () {
 
     var $tabsContent = $('.foundation-tabs-content .foundation-tab-pane');
@@ -10,7 +14,7 @@ $(function () {
     $tabsTitle.find('li').on('click', function () {
         $(this).addClass('foundation-item-active').siblings().removeClass('foundation-item-active');
         $tabsContent.hide().eq($(this).index()).show();
-    })
+    });
 
     $tabsContent.eq(0).find('.foundation-tab-pane-title span').addClass('inner-arrow-down');
 
@@ -31,6 +35,6 @@ $(function () {
                 .siblings()
                 .hide();
         }
-    })
+    });
 
-})
+});
