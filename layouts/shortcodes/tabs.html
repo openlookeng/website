@@ -1,9 +1,0 @@
-{{ if .Inner }}{{ end }}
-{{ $id := .Get 0 }}
-{{ $group := printf "tabs-%s" $id }}
-
-<div class='foundation-tabs-content'>
-    <ul class="foundation-tabs">
-    </ul>
-    <div class="foundation-tab-inner">{{ .Inner }}</div>
-</div>

@@ -1,6 +1,6 @@
 +++
-title = "PMC (Project Management Committee"
-weight = 8
+title = "Committers"
+weight = 9
 
 [[item]]
 
@@ -20,9 +20,9 @@ weight = 8
     content = "Ken lead and drive Analytics Platform Lab, oversee and guide members in all components areas to ensure benchmark. ken has 20 years of cutting edge industry experience as Architect with IBM Watson Health, Thomson Reuters Open Platform etc. In his current role, he provides leadership and guidance to R&D members in Toronto, Shenzhen, Chengdu, Bangalore and Dublin."
 +++
 
-# PMC (prohect Management Committee)  
+
+# Committers 
 
 ### Mission
 
 dasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasda
-

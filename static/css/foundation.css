@@ -96,8 +96,9 @@ ul{
     width: 120px;
     flex-shrink: 0;
     border: none;
-    background: url(../img/foundation/profile.png) no-repeat;
-    background-size: cover;
+    /* background: url(../img/foundation/profile.png) no-repeat;
+    background-size: cover; */
+    border-radius: 50%;
     margin-right: 40px;
 }
 .foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc h4{
@@ -264,6 +265,10 @@ ul{
 
     .foundation-content .foundation-tab-pane .inner > h3{
         font-size: 14px;
+    }
+
+    .foundation-content .foundation-tab-pane .foundation-tab-pane-title{
+        font-size: 16px;
     }
 
     .foundation-content .foundation-tab-pane .pt-list .pt-item .card-title{

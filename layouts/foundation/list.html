@@ -31,7 +31,21 @@
 						{{ if .Content }}
 						<div class="foundation-tab-pane">
 							<h4 class="foundation-tab-pane-title">{{ .Params.title }}<span class="inner-arrow-right"></span></span></h4>
-							<div class="inner">{{ .Content }}</div>
+							<div class="inner">
+								{{ .Content }}
+								<ul class="pmc-list">
+									{{ range .Params.item }}
+										<li class="pmc-item">
+											<img src="{{ .avatar }}" class="avatar">
+											<div class="desc">
+												<h4 class="desc-title">{{ .title }}</h4>
+												<p class="desc-range">{{ .range }}</p>
+												<p class="des-content">{{ .content }}</p>
+											</div>
+										</li>
+									{{ end }}
+								</ul>
+							</div>
 						</div>
 						{{ end }}
 					{{ end }}
