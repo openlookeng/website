@@ -3,21 +3,40 @@ title = "User Group"
 weight = 10
 
 [[item]]
+    title = "Micheal Li"
+    avatar = "img/foundation/MichaelLi.png"
+    range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
+    content = "Micheal leads and guides engineers and researchers on multiple R&D projects. Nearly 2 years at Huawei Canada with Data Engine team, lead design, architecture, and delivery of key benchmarks. With 20 years of core experience with IBM and Platform Computing."
 
-    title = "Ken Zhang"
-    avatar = "img/foundation/profile.png"
-    range = "R&D Analytics Platform lab Director for various Research teams across the Globe"
-    content = "Ken lead and drive Analytics Platform Lab, oversee and guide members in all components areas to ensure benchmark. ken has 20 years of cutting edge industry experience as Architect with IBM Watson Health, Thomson Reuters Open Platform etc. In his current role, he provides leadership and guidance to R&D members in Toronto, Shenzhen, Chengdu, Bangalore and Dublin."
 [[item]]
-    title = "Ken Zhang"
-    avatar = "img/foundation/profile.png"
-    range = "R&D Analytics Platform lab Director for various Research teams across the Globe"
-    content = "Ken lead and drive Analytics Platform Lab, oversee and guide members in all components areas to ensure benchmark. ken has 20 years of cutting edge industry experience as Architect with IBM Watson Health, Thomson Reuters Open Platform etc. In his current role, he provides leadership and guidance to R&D members in Toronto, Shenzhen, Chengdu, Bangalore and Dublin."
+    title = "Raghunandan"
+    avatar = "img/foundation/Raghunandan.png"
+    range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
+    content = "Raghunandan leads the BigData platform system Engineering Group at BRC, which focuses on adding performance, usability, maintability features to the available Opensources big data components. Under his technical leadership, team has built competitive features like Ultra Large mono clusters (20K nodes) and Zero downtime solution for Intra City BigData HA cluster deployments."
+
 [[item]]
-    title = "Ken Zhang"
-    avatar = "img/foundation/profile.png"
-    range = "R&D Analytics Platform lab Director for various Research teams across the Globe"
-    content = "Ken lead and drive Analytics Platform Lab, oversee and guide members in all components areas to ensure benchmark. ken has 20 years of cutting edge industry experience as Architect with IBM Watson Health, Thomson Reuters Open Platform etc. In his current role, he provides leadership and guidance to R&D members in Toronto, Shenzhen, Chengdu, Bangalore and Dublin."
+    title = "Denghong Liao"
+    avatar = "img/foundation/DenghongLiao.png"
+    range = "Huawei Engineer"
+    content = "Denghong has participated in the openLooKeng project’s needs analysis, code development and project POC verification, etc., is committed to the optimization of cross-source and cross-domain high-performance query scenarios in the filed of big data, and has an in-depth understanding of openLooKeng’s solutions and industry applications."
+
+[[item]]
+    title = "Dezhi Xu"
+    avatar = "img/foundation/DezhiXu.png"
+    range = "Huawei R&D Engineer"
+    content = "Dezhi has been engaged in the demand anlysis, development and tesing of products and overall solutions in the filed of Huawei storage and big data for more than 10 years."
+
+[[item]]
+    title = "Yan Huang"
+    avatar = "img/foundation/YanHuang.png"
+    range = "Huawei Big Data Technology Expert"
+    content = "Yan has been focused on areas including big data metadata management, data lineage, and data virtualization technology. He is currently responsible for clarification of customer needs and solution design of the openLooKeng project, and leading the team in charge of partner development and customer support in openLooKeng project."
+
+
+
+
+
+
 +++
 
 
@@ -25,4 +44,4 @@ weight = 10
 
 ### Mission
 
-dasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasdadasdasdasdasdasdadasdasdasdasdadasda
+The User Group helps end users on how to use openLooKeng, and collects improvemeng suggestions to the PMC. The User Group provides mail list and Slack for downstream users to communicate and provide general questions and discussion on using openLooKeng.
