@@ -9,3 +9,146 @@
     min-height: 230px;
 }
 
+/* your styles go here */
+
+.box-image-text .image {
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.box-simple {
+    min-height: 230px;
+}
+
+@media (max-width: 994px) {
+    .home-banner {
+        padding: 50px 0 0 0;
+        height: unset;
+    }
+
+    .home-banner .banner-p1 {
+        font-size: 24px;
+        height: unset;
+        line-height: unset;
+        color: #000;
+    }
+
+    .home-banner .banner-p2 {
+        height: unset;
+        font-size: 14px;
+        color: rgba(0, 0, 0, .7);
+    }
+
+    .home-banner .get-start {
+        width: 50%;
+    }
+
+    .home-banner .home-img {
+        width: 100%;
+    }
+
+    .home-banner .home-img img {
+        width: 100%;
+        height: unset;
+    }
+
+    .home-why {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-why .why-title,
+    .home-why .summit-title,
+    .home-links h2 {
+        font-size: 14px !important;
+    }
+
+    .home-why > div {
+        width: 100% !important;
+        height: unset !important;
+    }
+
+    .home-adapter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100% !important;
+        height: unset !important;
+    }
+
+    .home-adapter  > video,
+    .home-adapter  > div {
+        display: block !important;
+    }
+
+    video {
+        width: 90% !important;
+        height: unset !important;
+        margin: 0 0 !important;
+    }
+
+    video + div,
+    .mid-content {
+        width: 80% !important;
+        height: unset !important;
+        margin: 0 0 !important;
+        overflow: unset !important;
+    }
+
+    video + div .title,
+    video + div .descr .descr-item,
+    .mid-content .title,
+    .mid-content p {
+        text-align: center !important;
+    }
+
+    video + div .title,
+    .mid-content .title {
+        font-size: 16px !important;
+        margin-top: 19px !important;
+    }
+
+    video + div .descr .descr-item,
+    .mid-content p {
+        font-size: 14px !important;
+        color: rgba(0, 0, 0, .7) !important;
+    }
+
+    .item02 {
+        flex-direction: column-reverse;
+    }
+
+    .descr {
+        margin-top: 11px !important;
+    }
+
+    .summit img {
+        width: 100% !important;
+        height: unset !important;
+    }
+
+    .home-links-imgs {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+        justify-content: center;
+    }
+
+    .bar .container .col-md-6 > a p {
+        text-align: center;
+    }
+}
+
+
+@media screen and (min-width: 319px) and (max-width: 767px) {
+    .isPc {
+        display: none;
+    }
+
+    .isH5 {
+        display: block;
+    }
+}

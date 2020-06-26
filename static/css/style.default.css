@@ -497,19 +497,7 @@ ul.list-style-none {
     display: block !important;
 }
 
-.dropdown-arrow {
-    width: 15px;
-    height: 15px;
-    background-color:  fff;
-    position: absolute;
-    left: 48px;
-    top: -8px;
-    z-index: 1001;
-    box-sizing: border-box;
-    transform: rotate(45deg);
-    border-top: 1px solid rgba(0, 0, 0, .15);
-    border-left: 1px solid rgba(0, 0, 0, .15);
-}
+
 
 @media (max-width: 994px) {
     .navbar ul.dropdown-menu li a:hover {
@@ -4051,18 +4039,18 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 @media (min-width: 995px) {
-    .navbar-nav > li:nth-last-child(5) {
+    .navbar-nav > li:nth-last-child(3) {
         margin-top: 18px;
         padding-left: 30px;
         height: 31px;
         border-left: 1px solid #555;
     }
 
-    .navbar-nav > li:nth-last-child(6) {
+    .navbar-nav > li:nth-last-child(4) {
         padding-right: 30px;
     }
 
-    .navbar-nav > li:nth-last-child(5) > a {
+    .navbar-nav > li:nth-last-child(3) > a {
         border-top-width: 0;
         padding-top: 3px;
     }
@@ -4791,17 +4779,19 @@ a.list-group-item.active > .badge,
 }
 
 .home-banner .banner-p1 {
-    width: 947px;
+
     height: 62px;
     line-height: 62px;
-    font-size: 28px;
+    font-size: 44px;
+    text-align: center;
 }
 
 .home-banner .banner-p2 {
-    width: 786px;
+
     height: 34px;
     font-size: 24px;
     line-height: 34px;
+
 }
 
 .home-banner .get-start {
@@ -4825,15 +4815,11 @@ a.list-group-item.active > .badge,
     display: block;
 }
 
-.home-banner .home-img {
-    width: 840px;
-    /* height:292px; */
-    margin: auto;
-}
 
 .home-banner .home-img img {
-    width: 840px;
-    height: 292px;
+    width: 100%;
+    height: auto;
+    text-align: center;
 }
 
 /* -----------------------------------home-why-OpenLooKeng模块------------------------- */
