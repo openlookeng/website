@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="css/foundation.css">
+
+<body>
+
+    <div id="all">
+
+        <header>
+
+            {{ partial "nav.html" . }}
+
+        </header>
+        <div class="foundation-content">
+            <div class="foundation-top">
+                <h1>{{ .Params.foundation_title}}</h1>
+                <img src="img/banners/Banner.png" alt="" class="foundation-banner">
+            </div>
+            <div class="foundation-tabs-content">
+                <ul class="foundation-tabs">
+                    {{ range where $.Page.Site.Pages "Type" "foundation" }}
+                    {{ if .Content }}
+                    <li>{{ .Params.title }}</li>
+                    {{ end }}
+                    {{ end }}
+                </ul>
+                <div class="foundation-tab-inner">
+                    {{ range where $.Page.Site.Pages "Type" "foundation" }}
+                    {{ if .Content }}
+                    <div class="foundation-tab-pane">
+                        <h4 class="foundation-tab-pane-title">{{ .Params.title }}<span
+                                class="inner-arrow-right"></span></span></h4>
+                        <div class="inner">
+                            {{ .Content }}
+                            <ul class="pmc-list">
+                                {{ range .Params.item }}
+                                <li class="pmc-item">
+                                    <img src="{{ .avatar }}" class="avatar">
+                                    <div class="desc">
+                                        <h4 class="desc-title">{{ .title }}</h4>
+                                        <p class="desc-range">{{ .range }}</p>
+                                        <p class="des-content">{{ .content }}</p>
+                                    </div>
+                                </li>
+                                {{ end }}
+                            </ul>
+                        </div>
+                    </div>
+                    {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+
+        </div>
+
+        {{ partial "footer.html" . }}
+
+    </div>
+
+    {{ partial "scripts.html" . }}
+    <script src="js/foundation.js"></script>
+</body>
+
+</html>

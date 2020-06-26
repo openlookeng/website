@@ -1,0 +1,311 @@
+.foundation-content > h1 {
+    text-align: center;
+    margin-top: 100px;
+    color: #000;
+    font-size: 44px;
+    font-family: HuaweiSans;
+    line-height: 44px;
+}
+
+p {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.inner-arrow-right {
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/foundation/Right.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+    vertical-align: middle;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.inner-arrow-down {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/foundation/Down.png) no-repeat !important;
+    background-size: contain;
+    background-position: center center;
+    vertical-align: middle;
+}
+
+.foundation-content .foundation-top {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.foundation-item-active {
+    border-left: 4px solid #5A9B83;
+    color: #5A9B83 !important;
+    padding-left: 32px !important;
+}
+
+.foundation-content .foundation-tabs-content {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.foundation-content .foundation-tabs-content .foundation-tabs {
+    list-style: none;
+    flex: 3;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.foundation-content .foundation-tabs-content .foundation-tabs li {
+    color: #000;
+    padding-left: 36px;
+    height: 26px;
+    line-height: 26px;
+    margin-bottom: 20px;
+    font-size: HuaweiSans;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.foundation-content .foundation-tabs-content .foundation-tab-inner {
+    flex: 8;
+}
+
+.foundation-content .foundation-tab-pane > h4 {
+    position: relative;
+    display: none;
+    height: 50px;
+    line-height: 50px;
+}
+
+.foundation-content .foundation-tab-pane .pmc-list .pmc-item {
+    padding: 20px;
+    border-top: 1px solid rgba(0, 0, 0, .24);
+    display: flex;
+}
+
+.foundation-content .foundation-tab-pane .pmc-list .pmc-item:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, .24);
+}
+
+.foundation-content .foundation-tab-pane .pmc-list .pmc-item .avatar {
+    height: 120px;
+    width: 120px;
+    flex-shrink: 0;
+    border: none;
+    /* background: url(../img/foundation/profile.png) no-repeat;
+    background-size: cover; */
+    border-radius: 50%;
+    margin-right: 40px;
+}
+
+.foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc h4 {
+    font-size: 16px;
+    font-family: HuaweiSans;
+}
+
+.foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .7);
+}
+
+
+
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item {
+    box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, .15);
+    border-radius: 8px;
+    padding: 36px;
+    margin: 28px 0;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-title {
+    font-size: 24px;
+    font-family: HuaweiSans;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .cart-desc {
+    color: rgba(0, 0, 0, .7);
+    font-size: 14px;
+    font-family: HuaweiSansLight;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-content {
+    display: flex;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-content .content-left {
+    flex: 1;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-content .content-left li {
+    line-height: 23px;
+    margin: 10px 0;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-content .content-left span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 15px;
+    background: url(../img/foundation/mail.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+    vertical-align: middle;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-content .content-right {
+    flex: 1;
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-content .content-right span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../img/foundation/mail.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+    vertical-align: middle;
+    margin-right: 15px;
+
+}
+
+.foundation-content .foundation-tab-pane .pt-list .pt-item .card-content .content-right .committers-name {
+    padding-left: 33px;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+.foundation-content .foundation-tab-pane .ug-list .ug-item {
+    border-top: 1px solid rgba(0, 0, 0, .24);
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+.foundation-content .foundation-tab-pane .ug-list .ug-item:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, .24);
+}
+
+.foundation-content .foundation-tab-pane .ug-list .ug-item .avatar {
+    height: 120px;
+    width: 120px;
+    flex-shrink: 0;
+    background: url(../img/foundation/profile.png) no-repeat;
+    background-size: cover;
+    margin-right: 40px;
+}
+
+.foundation-content .foundation-tab-pane .ug-list .ug-item .desc li {
+    font-size: 16px;
+    color: rgba(0, 0, 0, .7);
+    margin: 10px 0;
+}
+
+.foundation-content .foundation-tab-pane .ug-list .ug-item .desc .name {
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.foundation-content .foundation-tab-pane .ug-list .ug-item .desc span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../img/foundation/mail.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+    vertical-align: middle;
+    margin-right: 9px;
+}
+
+
+
+
+@media (max-width: 994px) {
+    .foundation-content .foundation-top h1 {
+        font-size: 24px;
+    }
+
+    .foundation-content .foundation-top img {
+        width: 100%;
+    }
+
+    .foundation-content .foundation-tabs-content .foundation-tabs {
+        display: none;
+    }
+
+    .foundation-content .foundation-tabs-content .foundation-tab-pane {
+        border-top: 1px solid rgba(0, 0, 0, .25);
+    }
+
+
+    .foundation-content .foundation-tabs-content .foundation-tab-pane > h4 {
+        display: block;
+    }
+
+    .foundation-content .foundation-tab-pane .pmc-list .pmc-item {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .foundation-content .foundation-tab-pane .pmc-list .pmc-item .avatar {
+        margin-right: 0;
+        margin-bottom: 21px;
+    }
+
+    .foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc > h4 {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .foundation-content .foundation-tab-pane .inner > h1 {
+        display: none;
+    }
+
+    .foundation-content .foundation-tab-pane .inner > h3 {
+        font-size: 14px;
+    }
+
+    .foundation-content .foundation-tab-pane .foundation-tab-pane-title {
+        font-size: 16px;
+    }
+
+    .foundation-content .foundation-tab-pane .pt-list .pt-item .card-title {
+        font-size: 16px;
+    }
+
+    .foundation-content .foundation-tab-pane .pt-list .pt-item .card-content {
+        flex-direction: column;
+    }
+
+    .foundation-content .foundation-tab-pane .ug-list .ug-item {
+        flex-direction: column;
+    }
+
+    .foundation-content .foundation-tab-pane .ug-list .ug-item .desc .name {
+        text-align: center;
+    }
+
+    .foundation-content .foundation-tab-pane .ug-list .ug-item .avatar {
+        margin-right: 0;
+    }
+}
