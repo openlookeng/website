@@ -1,39 +1,37 @@
 
 [HOME_BANNER_SLOGAN]
-other = "The Simpler Big Data Engine You’re Looking For"
+other = "openLookeng, A Data Virtualization Engine Approaching to Big Data Base"
 
 [HOME_BANNER_DES]
-other = "Straightforward Experience, High Performance, Enterprise-level Reliability"
+other = "Simple Experience, Flexible Extensibility, High Reliability"
 
-[HOME_WHY_OPENLOOKENG]
-other = "Why OpenLooKeng?"
+[HOME_WHY]
+other = "Why openLooKeng?"
 
-[HOME_WHY_OLK_TITLE01]
-other = "SQL on anything"
+[HOME_SIMPLE]
+other = "Simple Experience"
 
-[HOME_WHY_OLK_TITLE01_DESCR01]
-other = "Can access data from multiple storage systems across DC and cloud within a single query."
+[HOME_SIMPLE_DES1]
+other = "SQL to access all kinds of data sources."
 
-[HOME_WHY_OLK_TITLE01_DESCR02]
-other = "Seamlessly connected to BI tools and other applications."
+[HOME_SIMPLE_DES2]
+other = "Query data across data centers ang hybrid clouds."
 
-[HOME_WHY_OLK_TITLE02]
-other = "Free and Easy Extension"
 
-[HOME_WHY_OLK_TITLE02_DESCR01]
-other = "Can access data from multiple storage systems across DC and cloud within a single query."
+[HOME_FLEXIBLE]
+other = "Flexible to Extend"
 
-[HOME_WHY_OLK_TITLE02_DESCR02]
-other = "Seamlessly connected to BI tools and other applications."
+[HOME_FLEXIBLE_DES1]
+other = "Just add connectors for new data resources."
 
-[HOME_WHY_OLK_TITLE03]
-other = "In-place Analysis"
+[HOME_FLEXIBLE_DES2]
+other = "Move processing to data. Query data where it is."
 
-[HOME_WHY_OLK_TITLE03_DESCR01]
-other = "Can access data from multiple storage systems across DC and cloud within a single query." 
+[HOME_AVAIABLE]
+other = "High Availability"
 
-[HOME_WHY_OLK_TITLE03_DESCR02]
-other = "Seamlessly connected to BI tools and other applications."
+[HOME_AVAIABLE_DES1]
+other = "Active/Active design leads zero outage."
 
 
 [HOME_GETSTART]
@@ -65,3 +63,10 @@ other = "Related Links"
 
 [MAIN_POSTBLOG_SOURCE]
 other = "Post Your Blog"
+
+[SEARCH]
+other = "search"
+
+[MAIN_POSTBLOG_FILTER]
+other = "Tags Filter"
+

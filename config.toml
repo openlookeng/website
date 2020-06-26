@@ -178,6 +178,7 @@ paginate = 10
     defaultKeywords = ["devows", "hugo", "go"]
     mainSections = ["blog"]
     defaultDescription = "Site template made by devcows using hugo"
+    email = "contact@openlookeng.io"
 
 
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
@@ -228,6 +229,10 @@ paginate = 10
 
 [params.news]
     enable = true
+
+[params.emails]
+    enable = true
+
     
 [params.copyright]
     enable = true

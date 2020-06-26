@@ -2,7 +2,7 @@
 {{ if .Site.Params.news.enable }}
 
 <div class="col-md-6">
-    <h2>
+    <h2 class="text-center title">
         {{ i18n "MAIN_NEWS_TITLE" }}
     </h2>
 
@@ -20,11 +20,10 @@
                   {{ if .Params.data }}{{ .Date.Format .Site.Params.date_format }}{{ end }}
                 </p>
             {{ end }}
-            <p>{{ .Params.description }}</p>
         </li>
         {{ end }}
     </ul>
-    <a href='{{"/news/" | relLangURL}}' target="_blank">
+    <a href="{{"/news/" | relLangURL}}" target="_blank">
         <p> {{ i18n "MAIN_LIST_MORE" }} </p>
     </a>
 </div>
