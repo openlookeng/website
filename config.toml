@@ -50,45 +50,66 @@ paginate = 10
     parent = 'community'
 
 [[menu.main]]
-    identifier = "foundation"
-    name = "Foundation"
-    url  = "/foundation.html"
+    identifier = "who-we-are"
+    name = "Who we are"
+    url  = "/who-we-are.html"
     weight = 2
     parent = 'community'
 
 [[menu.main]]
-    identifier = "mailinglists"
-    name = "Mailing Lists"
-    url  = "/maillist.html"
+    identifier = "communication"
+    name = "Communication"
+    url  = "/communication.html"
     weight = 3
     parent = 'community'
 
 [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    url  = "/blog.html"
-    weight = 4
-    parent = 'community'
-
-[[menu.main]]
-    identifier = "recent"
-    name = "Recent"
+    identifier = "newsroom"
+    name = "Newsroom"
     weight = 4
     hasChildren = true
+
+
+[[menu.main]]
+    identifier = "sourcecode"
+    name = "Source Code"
+    weight = 4
+    hasChildren = true
+
+[[menu.main]]
+    identifier = "gitee"
+    name = "Gitee"
+    url  = "/#"
+    weight = 1
+    parent = 'sourcecode'
+
+[[menu.main]]
+    identifier = "github"
+    name = "Github"
+    url  = "/#"
+    weight = 2
+    parent = 'sourcecode'
 
 [[menu.main]]
     identifier = "events"
     name = "Events"
     url  = "/event.html"
     weight = 1
-    parent = 'recent'
+    parent = 'newsroom'
 
 [[menu.main]]
     identifier = "news"
     name = "News"
     url  = "/news.html"
     weight = 2
-    parent = 'recent'
+    parent = 'newsroom'
+
+    [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url  = "/blog.html"
+    weight = 3
+    parent = 'newsroom'
 
 [[menu.main]]
     identifier = "lang"
@@ -124,45 +145,66 @@ paginate = 10
     parent = 'community'
 
 [[languages.zh-cn.menu.main]]
-    identifier = "fundation"
+    identifier = "who_we_are"
     name = "组织架构"
-    url  = "/zh-cn/foundation.html"
+    url  = "/who_we_are.html"
     weight = 2
     parent = 'community'
 
 [[languages.zh-cn.menu.main]]
-    identifier = "mailinglists"
-    name = "邮件列表"
-    url  = "/zh-cn/maillist.html"
+    identifier = "communication"
+    name = "信息"
+    url  = "/communication.html"
     weight = 3
     parent = 'community'
 
 [[languages.zh-cn.menu.main]]
-    identifier = "blog"
-    name = "博客"
-    url  = "/zh-cn/blog.html"
+    identifier = "newsroom"
+    name = "活动"
     weight = 4
-    parent = 'community'
+    hasChildren = true
+
 
 [[languages.zh-cn.menu.main]]
-    identifier = "recent"
-    name = "动态"
+    identifier = "sourcecode"
+    name = "源码"
     weight = 4
     hasChildren = true
 
 [[languages.zh-cn.menu.main]]
+    identifier = "gitee"
+    name = "Gitee"
+    url  = "/#"
+    weight = 1
+    parent = 'sourcecode'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "github"
+    name = "Github"
+    url  = "/#"
+    weight = 2
+    parent = 'sourcecode'
+
+[[languages.zh-cn.menu.main]]
     identifier = "events"
     name = "活动"
-    url  = "/zh-cn/events.html"
+    url  = "/event.html"
     weight = 1
-    parent = 'recent'
+    parent = 'newsroom'
 
 [[languages.zh-cn.menu.main]]
     identifier = "news"
     name = "新闻"
-    url  = "/zh-cn/news.html"
+    url  = "/news.html"
     weight = 2
-    parent = 'recent'
+    parent = 'newsroom'
+
+    [[languages.zh-cn.menu.main]]
+    identifier = "blog"
+    name = "博客"
+    url  = "/blog.html"
+    weight = 3
+    parent = 'newsroom'
 
 [[languages.zh-cn.menu.main]]
     identifier = "lang"
@@ -224,6 +266,7 @@ paginate = 10
     avatar = 'mm'
     placeholder = 'Please leave a message...'
     visitor = true
+
 [params.blog]
     enable = true
 
