@@ -1,6 +1,6 @@
-/*
-*@file  foundation页面脚本
-*/
+/**
+ * @file  foundation页面脚本
+ * */
 
 $(function () {
 
