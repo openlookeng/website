@@ -18,7 +18,7 @@
                 <h1>{{ .Params.foundation_title}}</h1>
                 <img src="img/banners/Banner.png" alt="" class="foundation-banner">
             </div>
-            <div class='foundation-tabs-content'>
+            <div class="foundation-tabs-content">
                 <ul class="foundation-tabs">
                     {{ range where $.Page.Site.Pages "Type" "foundation" }}
                     {{ if .Content }}
