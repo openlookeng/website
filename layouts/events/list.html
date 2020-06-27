@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+    {{ partial "head.html" . }}
+
+    <body>
+
+        <div id="all">
+
+        <header>
+
+            {{ partial "nav.html" . }}
+
+        </header>
+
+        <div id="content">
+            <div class="container">
+                <div class="row">
+
+                    {{ $paginator := .Paginate (where .Data.Pages "Type" "events") }}
+                    <section class="post">
+                        <div class="row">
+                            <div class="col-md-12 maillist">
+                                <div class="maillist-title">
+                                    <h2>{{ .Params.top_title }}</h2>
+                                    <img class="maillist-pic" src="../img/banners/eventsbanner.png" alt="">
+                                </div>
+
+                                <!--事件列表模块-->
+                                <div class="event-list">
+                                    <h3>{{ .Params.event_head }}</h3>
+                                    <div class="event-content">
+                                        <div class="event-leftline"></div>
+                                        {{ range $paginator.Pages }}
+                                        <div class="event-box">
+                                            <div class="event-circle">
+                                                <div class="inner-circle"></div>
+                                            </div>
+                                            <h6>{{ .Params.title }}</h6>
+                                            <span>{{ .Params.time }}</span>
+                                            <p>{{ .Params.location}}</p>
+                                            <img src="{{ .Params.img }}" alt="">
+                                        </div>
+                                        {{ end }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- *** COLUMN END *** -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
+    </body>
+</html>

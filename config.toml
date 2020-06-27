@@ -93,7 +93,7 @@ paginate = 10
 [[menu.main]]
     identifier = "events"
     name = "Events"
-    url  = "/event.html"
+    url  = "/events.html"
     weight = 1
     parent = 'newsroom'
 
