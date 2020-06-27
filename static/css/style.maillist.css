@@ -159,7 +159,7 @@
     font-family: HuaweiSansLight;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 995px) {
     .isPC {
         display: block;
     }
@@ -236,10 +236,10 @@
     }
 }
 @media screen and (max-width: 768px) {
-    .isPC {
+    .isPC.maillist {
         display: none;
     }
-    .isH5 {
+    .isH5.maillist {
         display: block;
     }
     .maillist .maillist-title h2 {
