@@ -9,7 +9,7 @@
     });
 
     $($(window).scroll(function () {
-        if ($('.container').innerWidth() == 1170 || $('.container').innerWidth() == 970) {
+        if ($('.container').innerWidth() === 1170 || $('.container').innerWidth() === 970) {
             try {
                 if ($('.book-toc').offset().top - $(window).scrollTop() < 120) {
                     $('.book-toc nav').css({
@@ -24,18 +24,18 @@
                     });
                 }
             } catch (error) {
-
+                console.log(error);
             }
 
         }
 
-        if ($(window).innerWidth() > 992) {
-
-
-        } else {
+        if ($(window).innerWidth() <= 992) {
             try {
                 var cloneBookMenuHeader = $('.book-page .book-header').clone(true);
-                if ($('.container.flex').offset().top - $(window).scrollTop() < 62 && !$('.download-content').eq(0).siblings().hasClass('book-header')) {
+                var offsetTop = $('.container.flex').offset().top;
+                var scrollTop = $(window).scrollTop();
+                var hasClass = $('.download-content').eq(0).siblings().hasClass('book-header');
+                if (offsetTop - scrollTop < 62 && !hasClass) {
 
                     cloneBookMenuHeader.css({
                         'position': 'fixed',
@@ -48,7 +48,7 @@
                     });
                     $('.download-content').eq(0).after(cloneBookMenuHeader);
                     $('.book-page .book-header').eq(0).hide();
-                } else if ($('.container.flex').offset().top - $(window).scrollTop() >= 62 && $('.download-content').eq(0).siblings().hasClass('book-header')) {
+                } else if (offsetTop - scrollTop >= 62 && hasClass) {
                     $('.book-page .book-header').eq(0).show();
                     $('.download-content+.book-header').remove();
                 }
@@ -56,6 +56,7 @@
             } catch (error) {
                 console.log(error);
             }
+
         }
 
     }));
@@ -106,24 +107,24 @@
     var $menuList = $('.book-menu nav>ul li a');
     $menuList.each(function (index) {
         if ($(this).hasClass('active')) {
-            if (index == 0) {
+            if (index === 0) {
                 $('.doc-back').remove();
             } else {
                 $('.doc-back').attr('href', $menuList.eq(index - 1).attr('href'));
                 $('#docPreviousPage').text('<' + $menuList.eq(index - 1).text());
             }
-            if (index == ($menuList.length - 1)) {
+            if (index === ($menuList.length - 1)) {
                 $('.doc-next').remove();
             } else {
                 $('.doc-next').attr('href', $menuList.eq(index + 1).attr('href'));
                 $('#docNextPage').text($menuList.eq(index + 1).text() + '>');
             }
         }
-    })
+    });
 
 
     $('.book-header .book-header-title').click(function () {
         $('.book-header .book-icon').eq(0).trigger('click');
-    })
+    });
 
 })();

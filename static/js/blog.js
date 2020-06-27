@@ -20,7 +20,7 @@ $(function () {
                 }).show();
 
             } catch (error) {
-
+                console.log(error);
             }
 
         } else {

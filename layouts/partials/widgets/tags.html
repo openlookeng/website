@@ -18,8 +18,8 @@
             {{ range $name, $items := .Site.Taxonomies.tags }}
             <li{{ if eq $current.RelPermalink ($name | urlize | lower | printf "/tags/%s/") }} class="active" {{ end }}>
                 <a href="{{ "tags/" | relURL }}{{ $name | urlize | lower }}.html"> {{ $name }}</a>
-                </li>
-                {{ end }}
+            </li>
+            {{ end }}
         </ul>
     </div>
 
