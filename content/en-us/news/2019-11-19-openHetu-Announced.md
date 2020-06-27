@@ -3,7 +3,7 @@ title = "Huawei Announces the Open Sourcing of Its Data Virtualization Engine He
 date = "2019-11-19"
 tags = ["Huawei", "openHetu", "Open Source", "HetuEngine"]
 categories = ["Announcement"]
-banner = "/en-us/news/2019-11-19-openHetu-Announced-02.jpg"
+banner = "/news/2019-11-19-openHetu-Announced-02.jpg"
 author = "Huawei"
 description = "[Shenzhen, China, November 19, 2019] Today, at the 2019 Global Intelligent Data Infrastructure Forum hosted by Huawei in Shenzhen, Huawei announced the launch of its data infrastructure strategy, as well as the decision to open source its data virtualization engine called HetuEngine. "
 
@@ -19,7 +19,7 @@ In the intelligent era, computing power has become a crucial productive force, w
 
 "New technologies including 5G, AI, and cloud are transforming the way we live and work, but are generating huge volumes of data, bringing enormous pressure on the existing data infrastructure and making it increasingly difficult to efficiently locate, fetch, and utilize data.” Hou Jinlong, President of Huawei Cloud & AI Products and Services, said in his keynote speech titled "A Converged, Intelligent, Open Data Infrastructure for the Intelligent World". He emphasized, "Aiming for a vibrant Kunpeng computing industry, Huawei launches its data infrastructure strategy and offers converged, intelligent, and open data infrastructure to streamline and optimize end-to-end data collection, storage, computing, and management. It is committed to delivering the industry’s best cost and value per bit through the entire data lifecycle, and allows partners to use big data with the simplicity of an ordinary database."
 
-![Hou Jinlong, President of Huawei Cloud & AI Products and Services, gives a keynote speech](<img src="/en-us/news/2019-11-19-openHetu-Announced-01.jpg" style="width:100%;">)
+![Hou Jinlong, President of Huawei Cloud & AI Products and Services, gives a keynote speech](<img src="/news/2019-11-19-openHetu-Announced-01.jpg" style="width:100%;">)
 
 #### Building a Converged, Intelligent, Open Data Infrastructure
 
@@ -35,7 +35,7 @@ With the best-of-breed computing power delivered by the "Kunpeng + Ascend" dual-
 
 At this forum, Huawei also announced the open-sourcing of HetuEngine, its proprietary data virtualization engine designed to help customers and partners better connect data and applications. The open-source HetuEngine is called openHetu, and its launch time is scheduled for June 2020. With an open-source kernel, developers will be able to customize this engine, including data source extensions and SQL execution policies, to allow fast interoperability and development.
 
-![Hou Jinlong, President of Huawei Cloud & AI Products and Services, announces open sourcing of HetuEngine](<img src="/en-us/news/2019-11-19-openHetu-Announced-02.jpg" style="width:100%;">)
+![Hou Jinlong, President of Huawei Cloud & AI Products and Services, announces open sourcing of HetuEngine](<img src="/news/2019-11-19-openHetu-Announced-02.jpg" style="width:100%;">)
 
 Guided by the "Platform + Ecosystem" strategy and the principle of "open hardware, open-source software, and partner enablement", Huawei is committed to developing an open, rich Kunpeng ecosystem together with its customers and partners for the intelligent world.
 

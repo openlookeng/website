@@ -3,7 +3,7 @@ title = "Huawei will open source data virtualization engine hetuengine next year
 date = "2020-04-06"
 tags = ["data“, ”data source“, ”HUAWEI“, “Isomerism”, “Open Source"]
 categories = ["Announcement"]
-banner = "/en-us/news/2020-04-06-huawei-will-open-source-data-virtualization-engine-hetuengine-next-year-to-further-improve-big-data-development-ecology-01.jpg"
+banner = "/news/2020-04-06-huawei-will-open-source-data-virtualization-engine-hetuengine-next-year-to-further-improve-big-data-development-ecology-01.jpg"
 author = ""
 description = "Hou Jinlong, President of Huawei cloud & AI products and services, announced at the 2019 global data infrastructure forum held last week that his data virtualization engine hetuengine will be open-source to help more users reduce the difficulty of data management and simplify the process of data use."
 
@@ -13,7 +13,7 @@ Hou Jinlong, President of Huawei cloud & AI products and services, announced at 
 
 Hetuengine can reduce the complexity of data infrastructure, support the use of unified SQL statements for operation, reuse existing ecology, tools, skills, and improve development efficiency by 2 to 10 times.
 
-<img src="/en-us/news/2020-04-06-huawei-will-open-source-data-virtualization-engine-hetuengine-next-year-to-further-improve-big-data-development-ecology-01.jpg" style="width:100%;">
+<img src="/news/2020-04-06-huawei-will-open-source-data-virtualization-engine-hetuengine-next-year-to-further-improve-big-data-development-ecology-01.jpg" style="width:100%;">
 
 The open source version of HetuEngine, named openHetu, is scheduled to go live in June next year. After Huawei opens the openhetu kernel code, community developers can carry out personalized and customized secondary development based on openhetu, including data source extension, SQL execution strategy adjustment, etc., which can realize rapid application docking and further improve development efficiency.
 

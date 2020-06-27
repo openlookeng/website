@@ -3,7 +3,7 @@ title = "华为宣布开源河图引擎openHetu，将于2020年6月上线"
 date = "2020-02-12"
 tags = ["Huawei", "openHetu", "Open Source"]
 categories = ["Announcement"]
-banner = "/en-us/news/2019-11-19-openHetu-Announced-02.jpg"
+banner = "/news/2020-02-12-openHetu-Announced-June-01.jpg"
 author = "FI小花花"
 description = "面向鲲鹏计算产业，华为宣布全面启动数据基础设施战略，并开源数据虚拟化引擎HetuEngine(河图引擎)，希望让伙伴像使用“数据库”一样使用“大数据”，让数据治理、使用更简单。 这是继基于“鲲鹏+昇腾”双引擎全面启航计算战略后，华为从数据角度对计算战略的再度阐述。"
 
@@ -29,7 +29,7 @@ description = "面向鲲鹏计算产业，华为宣布全面启动数据基础�
 
 为了更好地发展数据产业，华为宣布开源河图引擎，开源版本的河图引擎叫openHetu，将于2020年6月上线。华为将开源内核，开发者可以基于开源代码进行定制，包括数据源扩展、SQL执行策略等，实现应用快速对接，提升开发效率。
 
-<img src="/zh-cn/news/2020-02-12-openHetu-Announced-June-01.jpg" style="width:100%;">
+<img src="/news/2020-02-12-openHetu-Announced-June-01.jpg" style="width:100%;">
 
 新闻来源: <https://bbs.huaweicloud.com/blogs/147134>
 
