@@ -28,7 +28,7 @@
 .pull-right a {
     color: #fff;
     font-family: Helvetica;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 24px;
     /*text-decoration: underline;*/
 }
@@ -4300,6 +4300,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #FFF;
 }
 
 a:hover,
@@ -4839,6 +4840,7 @@ a.list-group-item.active > .badge,
 .home-why .why-title {
     font-size: 34px;
     line-height: 48px;
+    display: block;
 }
 
 .home-why .item {
@@ -5403,6 +5405,7 @@ p.home-blog .tag a {
     color: rgba(255, 255, 255, 1);
     line-height: 12px !important;
 }
+
 
 /* home-news */
 .home-news {
