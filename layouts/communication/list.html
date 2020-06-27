@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+    {{ partial "head.html" . }}
+
+    <body>
+
+        <div id="all">
+
+        <header>
+
+          {{ partial "nav.html" . }}
+
+        </header>
+
+        <div id="content">
+            <div class="container">
+                <div class="row">
+
+                    {{ $paginator := .Paginate (where .Data.Pages "Type" "communication") }}
+                    <section class="post">
+                        <div class="row">
+                            <div class="col-md-12 maillist">
+                                <div class="maillist-title">
+                                    <h2>{{ .Params.top_title }}</h2>
+                                    <img class="maillist-pic" src="../img/banners/Banner.png" alt="">
+                                </div>
+                                <div class="maillist-comm">
+                                    <h3>{{ .Params.comm_title }}</h3>
+                                    <p>{{ .Params.comm_des_one }}</p>
+                                    <p>{{ .Params.comm_des_two }}</p>
+                                </div>
+                                <div class="maillist-info">
+                                    <h3>{{ .Params.middle_title }}</h3>
+                                    <p>{{ .Params.top_description }}</p>
+
+                                    <!--table 模块-->
+                                    <div class="isPC">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>List Name</th>
+                                                <th>Email Address</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{ range $paginator.Pages }}
+                                            <tr>
+                                                <td>{{ .Params.listname }}</td>
+                                                <td>{{ .Params.emailaddress }}</td>
+                                                <td>{{ .Params.description }}</td>
+                                            </tr>
+                                            {{ end }}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="isH5">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>List</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{ range $paginator.Pages }}
+                                            <tr>
+                                                <td>{{ .Params.listname }}</td>
+                                                <td>{{ .Params.description }}</td>
+                                            </tr>
+                                            {{ end }}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                               <!-- PC 向导模块-->
+                                <div class="isPC maillist-guidance mail">
+                                    <p>{{ .Params.guidance }}</p>
+                                    <div class="maillist-icon"></div>
+                                    <div class="maillist-divider-mail"></div>
+                                    <div class="step-left">
+                                        <div class="step-left-box">
+                                            <p>{{ .Params.step_one }}</p>
+                                        </div>
+                                        <div class="step-left-num">
+                                            <span>1</span>
+                                        </div>
+                                        <div class="step-left-line"></div>
+                                    </div>
+                                    <div class="step-right">
+                                        <div class="step-right-line"></div>
+                                        <div class="step-right-num">
+                                            <span>2</span>
+                                        </div>
+                                        <div class="step-right-box">
+                                            <p>{{ .Params.step_two }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="step-left">
+                                        <div class="step-left-box">
+                                            <p>{{ .Params.step_three }}</p>
+                                        </div>
+                                        <div class="step-left-num">
+                                            <span>3</span>
+                                        </div>
+                                        <div class="step-left-line"></div>
+                                    </div>
+                                    <div class="step-right last">
+                                        <div class="step-right-num">
+                                            <span>4</span>
+                                        </div>
+                                        <div class="step-right-box">
+                                            <p>{{ .Params.step_four }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               <!-- mobile 向导模块-->
+                                <div class="isH5 maillist-H5">
+                                    <p class="guida">{{ .Params.guidance }}</p>
+                                    <div class="maillist-H5-step">
+                                        <div class="step-num">
+                                            <span>1</span>
+                                        </div>
+                                        <div class="maillist-H5-description">
+                                            <p>{{ .Params.step_one }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="maillist-H5-step">
+                                        <div class="step-num">
+                                            <span>2</span>
+                                        </div>
+                                        <div class="maillist-H5-description">
+                                            {{ .Params.step_two }}
+                                        </div>
+                                    </div>
+                                    <div class="maillist-H5-step">
+                                        <div class="step-num">
+                                            <span>3</span>
+                                        </div>
+                                        <div class="maillist-H5-description">
+                                            {{ .Params.step_three }}
+                                        </div>
+                                    </div>
+                                    <div class="maillist-H5-step">
+                                        <div class="step-num">
+                                            <span>4</span>
+                                        </div>
+                                        <div class="maillist-H5-description">
+                                            {{ .Params.step_four }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="maillist-slack">
+                                    <h3>{{ .Params.bottom_title }}</h3>
+                                    <p>{{ .Params.bottom_description }}</p>
+                                    <ul>
+                                        <li><a href="{{ .Params.general_url }}">{{ .Params.general_tag }}</a> - {{ .Params.general_detail }}</li>
+                                        <li><a href="{{ .Params.trouble_url }}">{{ .Params.trouble_tag }}</a> - {{ .Params.trouble_detail }}</li>
+                                        <li><a href="{{ .Params.dev_url }}">{{ .Params.dev_tag }}</a> - {{ .Params.dev_detail }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- *** COLUMN END *** -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+        </div>
+        <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
+    </body>
+</html>
