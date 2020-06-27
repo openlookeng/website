@@ -33,7 +33,7 @@ paginate = 10
 [[menu.main]]
     identifier="documentation"
     name = "Documentation"
-    url  = "/docs/example/collapsed.html"
+    url  = "/docs.html"
     weight = 2
 
 [[menu.main]]

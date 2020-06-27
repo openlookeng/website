@@ -20,14 +20,14 @@
             </div>
             <div class="foundation-tabs-content">
                 <ul class="foundation-tabs">
-                    {{ range where $.Page.Site.Pages "Type" "foundation" }}
+                    {{ range where $.Page.Site.Pages "Type" "who-we-are" }}
                     {{ if .Content }}
                     <li>{{ .Params.title }}</li>
                     {{ end }}
                     {{ end }}
                 </ul>
                 <div class="foundation-tab-inner">
-                    {{ range where $.Page.Site.Pages "Type" "foundation" }}
+                    {{ range where $.Page.Site.Pages "Type" "who-we-are" }}
                     {{ if .Content }}
                     <div class="foundation-tab-pane">
                         <h4 class="foundation-tab-pane-title">{{ .Params.title }}<span
