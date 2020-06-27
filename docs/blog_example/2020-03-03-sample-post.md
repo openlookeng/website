@@ -25,7 +25,7 @@ Below is just about everything you'll need to style in the blog.
 
 This blog is about bla bla. **This is strong**. 
 
-![this is a sample picture](/content/_example/2020-03-03-sample-post-01.png)
+![this is a sample picture](/blog/_example/2020-03-03-sample-post-01.png)
 
 ### Quotation
 
@@ -77,5 +77,5 @@ struct async_entry {
 ## Attachment
 
 Download the file here download:
-[get the PNG](![The architecture](<img src="/en-us/blog/guidance/2020-03-03-sample-post-01.png" style="width:100%;">)
+[get the PNG](![The architecture](<img src="/blog/guidance/2020-03-03-sample-post-01.png" style="width:100%;">)
 ) directly.
