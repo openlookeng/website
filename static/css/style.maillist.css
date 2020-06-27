@@ -101,7 +101,7 @@
 }
 .maillist .maillist-guidance .step-left .step-left-num,
 .maillist .maillist-guidance .step-right .step-right-num {
-    background-image: url(../../../../versionOfficial/openlookengwebsite/static/img/icons/circle.png);
+    background-image: url(/img/icons/circle.png);
     width: 90px;
     height: 90px;
     text-align: center;
@@ -313,7 +313,7 @@
         padding: 25px 20px;
         margin: 0 auto;
     }
-    .isH5 .maillistH5-step .maillist-H5-description p {
+    .isH5 .maillist-H5-step .maillist-H5-description p {
         margin: 0;
         padding: 10px 0 0;
         text-align: left;

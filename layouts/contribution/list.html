@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+    {{ partial "head.html" . }}
+
+    <body>
+
+        <div id="all">
+
+        <header>
+
+        {{ partial "nav.html" . }}
+
+        </header>
+
+        <div id="content">
+        <div class="container">
+            <div class="row">
+
+                {{ $paginator := .Paginate (where .Data.Pages "Type" "maillist") }}
+                <section class="post">
+                    <div class="row">
+                        <div class="col-md-12 maillist">
+                            <div class="isPC">
+                                <div class="maillist-title">
+                                    <h2>{{ .Params.top_title }}</h2>
+                                    <img class="maillist-pic" src="../img/banners/contributionbanner.png" alt="">
+                                </div>
+                            </div>
+                            <div class="isH5">
+                                <div class="maillist-title">
+                                    <h2>{{ .Params.mobile_title }}</h2>
+                                    <img class="maillist-pic" src="../img/banners/contributionbanner.png" alt="">
+                                </div>
+                            </div>
+                            <div class="maillist-info">
+                                <h3>{{ .Params.middle_title }}</h3>
+
+                            <!-- PC 向导模块-->
+                            <div class="isPC maillist-guidance">
+                                <div class="maillist-icon"></div>
+                                <div class="maillist-divider"></div>
+                                <div class="step-left">
+                                    <div class="step-left-box">
+                                        <span>{{ .Params.step_one_title }}</span>
+                                        <p>{{ .Params.step_one }}</p>
+                                    </div>
+                                    <div class="step-left-num">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="step-left-line"></div>
+                                </div>
+                                <div class="step-right">
+                                    <div class="step-right-line"></div>
+                                    <div class="step-right-num">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="step-right-box">
+                                        <span>{{ .Params.step_two_title }}</span>
+                                        <p>{{ .Params.step_two }}</p>
+                                    </div>
+                                </div>
+                                <div class="step-left">
+                                <div class="step-left-box">
+                                    <span>{{ .Params.step_three_title }}</span>
+                                    <p>{{ .Params.step_three }}</p>
+                                </div>
+                                <div class="step-left-num">
+                                    <span>3</span>
+                                </div>
+                                <div class="step-left-line"></div>
+                            </div>
+                                <div class="step-right">
+                                    <div class="step-right-line"></div>
+                                    <div class="step-right-num">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="step-right-box">
+                                        <span>{{ .Params.step_four_title }}</span>
+                                        <p>{{ .Params.step_four }}</p>
+                                    </div>
+                                </div>
+                                <div class="step-left">
+                                    <div class="step-left-box">
+                                        <span>{{ .Params.step_five_title }}</span>
+                                        <p>{{ .Params.step_five }}</p>
+                                    </div>
+                                    <div class="step-left-num">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="step-left-line"></div>
+                                </div>
+                                <div class="step-right">
+                                    <div class="step-right-num">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="step-right-box">
+                                        <span>{{ .Params.step_six_title }}</span>
+                                        <p>{{ .Params.step_six }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- mobile 向导模块-->
+                            <div class="isH5 maillist-H5">
+                                <p class="guida">{{ .Params.guidance }}</p>
+                                <div class="maillist-H5-step">
+                                    <div class="step-num">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="maillist-H5-description">
+                                        <span>{{ .Params.step_one_title }}</span>
+                                        <p>{{ .Params.step_one }}</p>
+                                    </div>
+                                </div>
+                                <div class="maillist-H5-step">
+                                    <div class="step-num">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="maillist-H5-description">
+                                        <span>{{ .Params.step_two_title }}</span>
+                                        <p>{{ .Params.step_two }}</p>
+                                    </div>
+                                </div>
+                                <div class="maillist-H5-step">
+                                    <div class="step-num">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="maillist-H5-description">
+                                        <span>{{ .Params.step_three_title }}</span>
+                                        <p>{{ .Params.step_three }}</p>
+                                    </div>
+                                </div>
+                                <div class="maillist-H5-step">
+                                    <div class="step-num">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="maillist-H5-description">
+                                        <span>{{ .Params.step_four_title }}</span>
+                                        <p>{{ .Params.step_four }}</p>
+                                    </div>
+                                </div>
+                                <div class="maillist-H5-step">
+                                    <div class="step-num">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="maillist-H5-description">
+                                        <span>{{ .Params.step_five_title }}</span>
+                                        <p>{{ .Params.step_five }}</p>
+                                    </div>
+                                </div>
+                                <div class="maillist-H5-step">
+                                    <div class="step-num">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="maillist-H5-description">
+                                        <span>{{ .Params.step_six_title }}</span>
+                                        <p>{{ .Params.step_six }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+
+                <!-- *** COLUMN END *** -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+        </div>
+        <!-- /#all -->
+
+        {{ partial "scripts.html" . }}
+    
+    </body>
+</html>
