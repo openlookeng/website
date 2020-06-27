@@ -139,21 +139,21 @@ paginate = 10
 
 [[languages.zh-cn.menu.main]]
     identifier = "contribution"
-    name = "贡献指南"
+    name = "贡献"
     url  = "/zh-cn/contribution.html"
     weight = 1
     parent = 'community'
 
 [[languages.zh-cn.menu.main]]
     identifier = "who_we_are"
-    name = "组织架构"
+    name = "团队"
     url  = "/who_we_are.html"
     weight = 2
     parent = 'community'
 
 [[languages.zh-cn.menu.main]]
     identifier = "communication"
-    name = "信息"
+    name = "交流"
     url  = "/communication.html"
     weight = 3
     parent = 'community'
@@ -228,8 +228,8 @@ paginate = 10
 
     about_us = "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>"
 
-    provide = "The openLooKeng project is provided under the "
-    license = "license"
+    provide = " "
+    license = " "
     # Format dates with Go's time formatting
     date_format = "January 2, 2006"
 
@@ -279,11 +279,11 @@ paginate = 10
     
 [params.copyright]
     enable = true
-    text = "<a href=\"/trademark.html\">Trademark</a>&nbsp;&nbsp;<a href=\"/legal.html\">Legal</a>&nbsp;&nbsp;<a href=\"/privacy-policy.html\">Privacy</a><br>Copyright © openLooKeng 2020. All rights reserved."
+    text = "<a href=\"/trademark.html\">Trademark</a>&nbsp;&nbsp;<a href=\"/legalnotice.html\">Legal</a>&nbsp;&nbsp;<a href=\"/privacypolicy.html\">Privacy</a><br>Licensed under the Apache-2.0.<br>Copyright © openLooKeng 2020. All rights reserved."
 
 [languages.zh.params.copyright]
     enable = true
-    text = "<a href=\"/zh/trademark.html\">商标</a>&nbsp;&nbsp;<a href=\"/zh/legal.html\">法律声明</a>&nbsp;&nbsp;<a href=\"/zh/privacy-policy.html\">隐私政策</a><br>版权所有 © openEuler 2020 保留一切权利 "
+    text = "<a href=\"/zh-cn/trademark.html\">商标</a>&nbsp;&nbsp;<a href=\"/zh-cn/legalnotice.html\">法律声明</a>&nbsp;&nbsp;<a href=\"/zh-cn/privacypolicy.html\">隐私政策</a><br>版权所有 © openEuler 2020 保留一切权利 "
 
 [markup.goldmark.renderer]
 unsafe= true
