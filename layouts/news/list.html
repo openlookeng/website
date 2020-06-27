@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-    {{ partial "head.html" . }}
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ "css/news.css" | relURL}}">
 <div id="all">
     <header>
         {{ partial "nav.html" . }}
@@ -20,10 +21,10 @@
                                 <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                                 <h5 class="author-category">
                                     {{ if isset .Params "author" }}
-                                        <span>{{ .Params.author }}</span>
-                                        <span class="line"></span>
-                                        <span class="news-date">{{ .Date.Format .Site.Params.date_format }}</span>
-                                        
+                                    <span>{{ .Params.author }}</span>
+                                    <span class="line"></span>
+                                    <span class="news-date">{{ .Date.Format .Site.Params.date_format }}</span>
+
                                     {{ end }}
                                 </h5>
                                 <p>{{ .Params.description }}</p>
@@ -40,4 +41,5 @@
     {{ partial "footer.html" . }}
 </div>
 {{ partial "scripts.html" . }}
+
 </html>
