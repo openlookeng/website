@@ -1,0 +1,331 @@
+.maillist .maillist-info p {
+    font-size: 14px;
+    font-family: HuaweiSansLight;
+    font-weight: 400;
+    margin: 40px 0 20px 0;
+}
+.maillist .maillist-info table {
+    width: 80%;
+    margin: 0 auto;
+}
+.table > thead > tr > th {
+    vertical-align: middle;
+    border-bottom: none;
+    font-size: 16px;
+    font-weight: normal;
+}
+.table > thead > tr > th:first-child {
+    padding-left: 60px;
+}
+.maillist .maillist-info table td {
+    border: none;
+    height: 55px;
+    line-height: 55px;
+}
+.maillist .maillist-info table tr td:first-child {
+    padding-left: 60px;
+}
+.maillist .maillist-info table tr td:nth-child(2) {
+    color: #5a9b83;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+.maillist .maillist-guidance p {
+    font-size: 14px;
+    font-family: HuaweiSansLight;
+    font-weight: 400;
+    margin: 57px 0 61px 0;
+}
+.maillist .maillist-guidance.mail {
+    position: relative;
+    padding-top: 0;
+}
+.maillist .maillist-guidance {
+    position: relative;
+    padding-top: 80px;
+}
+.maillist .maillist-guidance .maillist-icon {
+    width: 0;
+    height: 0;
+    border-width: 15px;
+    border-style: solid;
+    border-color: #509378 transparent transparent transparent;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.maillist .maillist-guidance .maillist-divider {
+    width: 105px;
+    height: 1200px;
+    border-left: 2px dashed #509378;
+    border-bottom: 2px dashed #509378;
+    border-radius: 0 15px;
+    position: absolute;
+    left: 50%;
+    top: 91px;
+    display: inline-block;
+}
+.maillist .maillist-guidance .maillist-divider-mail {
+    width: 105px;
+    height: 510px;
+    border-left: 2px dashed #509378;
+    border-bottom: 2px dashed #509378;
+    border-radius: 0 15px;
+    position: absolute;
+    left: 50%;
+    top: 91px;
+    display: inline-block;
+}
+.maillist .maillist-guidance .step-left .step-left-box,
+.maillist .maillist-guidance .step-right .step-right-box {
+    width: 380px;
+    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
+    border-radius: 8px;
+    padding: 43px 20px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+.maillist .maillist-guidance span {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 26px;
+}
+.maillist .maillist-guidance .step-left .step-left-box p,
+.maillist .maillist-guidance .step-right .step-right-box p {
+    margin: 10px 0 0;
+    line-height: 26px;
+    font-weight: normal;
+}
+.maillist .maillist-guidance .step-left .step-left-num,
+.maillist .maillist-guidance .step-right .step-right-num {
+    background-image: url(../../../../versionOfficial/openlookengwebsite/static/img/icons/circle.png);
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    display: inline-block;
+}
+
+.maillist .maillist-guidance .step-left .step-left-num span,
+.maillist .maillist-guidance .step-right .step-right-num span {
+    display: inline-block;
+    margin: 23px auto;
+    color: #fff;
+    font-size: 24px;
+}
+.maillist .maillist-guidance .step-left .step-left-line,
+.maillist .maillist-guidance .step-right .step-right-line {
+    width: 107px;
+    border-bottom: 2px dashed #509378;
+    display: inline-block;
+    vertical-align: middle;
+}
+.maillist .maillist-guidance .step-left {
+    position: relative;
+    left: 20px;
+}
+.maillist .maillist-guidance .step-right {
+    position: relative;
+    right: 20px;
+    text-align: right;
+}
+.maillist .maillist-guidance .step-right.last:last-child {
+    margin-bottom: 150px;
+    bottom: 0;
+}
+.maillist .maillist-guidance .step-right:last-child {
+    bottom: 150px;
+}
+.maillist .maillist-guidance .step-left .step-left-line {
+    position: relative;
+    left: -20px;
+}
+.maillist .maillist-guidance .step-right .step-right-line {
+    position: relative;
+    left: 20px;
+}
+.maillist .maillist-slack h3 {
+    font-size: 24px;
+    font-family: HuaweiSans;
+    line-height: 34px;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+.maillist .maillist-slack a {
+    color: #5a9b83;
+    font-family: HuaweiSansLight;
+}
+
+@media screen and (min-width: 1200px) {
+    .isPC {
+        display: block;
+    }
+    .isH5 {
+        display: none;
+    }
+    .maillist .maillist-title h2 {
+        text-align: center;
+        font-size: 44px;
+        font-family: HuaweiSans;
+        margin: 100px 0 21px 0;
+        font-weight: normal;
+    }
+    .maillist .maillist-comm h3 {
+        text-align: center;
+        font-size: 34px;
+        font-family: HuaweiSans;
+        font-weight: normal;
+        margin: 100px 0 40px;
+    }
+    .maillist .maillist-info h3 {
+        text-align: center;
+        font-size: 24px;
+        font-family: HuaweiSans;
+        font-weight: normal;
+        margin: 60px 0 40px;
+    }
+    .maillist .maillist-title img {
+        max-width: 1108px;
+        vertical-align: middle;
+        margin: 0 auto;
+    }
+    .maillist .maillist-comm p,
+    .maillist .maillist-info p{
+        font-size: 14px;
+        font-family: HuaweiSansLight;
+        font-weight: 400;
+    }
+    .maillist .maillist-info table {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .table > thead > tr > th {
+        vertical-align: middle;
+        border-bottom: none;
+        font-size: 16px;
+        font-weight: normal;
+    }
+    .maillist .maillist-info table td {
+        border: none;
+        height: 55px;
+        line-height: 55px;
+    }
+    .maillist .maillist-info table tr td:nth-child(2) {
+        color: #5a9b83;
+    }
+    .table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, .05);
+    }
+    .maillist .maillist-info table tr td:first-child {
+        padding-left: 60px;
+    }
+    .table > thead > tr > th:first-child {
+        padding-left: 60px;
+    }
+    .maillist .maillist-slack {
+        margin-bottom: 100px;
+    }
+    .maillist .maillist-slack p {
+        font-size: 14px;
+        font-weight: normal;
+        font-family: HuaweiSansLight;
+        padding: 0 25px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .isPC {
+        display: none;
+    }
+    .isH5 {
+        display: block;
+    }
+    .maillist .maillist-title h2 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: normal;
+        font-family: HuaweiSans;
+        margin-top: 40px;
+    }
+    .maillist .maillist-comm h3 {
+        text-align: center;
+        font-size: 24px;
+        font-family: HuaweiSans;
+        font-weight: normal;
+        margin: 40px 0 40px;
+    }
+    .maillist .maillist-info h3 {
+        text-align: center;
+        font-size: 24px;
+        font-family: HuaweiSans;
+        font-weight: normal;
+        margin: 60px 0 40px 0;
+    }
+    .maillist .maillist-title img {
+        max-width: 100%;
+    }
+    .maillist .maillist-info span {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .maillist .maillist-comm p,
+    .maillist .maillist-info p {
+        text-align: center;
+        padding: 0 30px;
+    }
+    .maillist .maillist-info table {
+        width: 90%;
+        margin: 40px auto 40px;
+        box-sizing: border-box;
+    }
+    .table > thead > tr > th:first-child,
+    .maillist .maillist-info table tr td:first-child
+    {
+        padding-left: 15px;
+    }
+    .isH5 > p {
+        font-size: 14px;
+        text-align: left;
+        margin: 0 30px;
+    }
+    .isH5 .maillist-H5-step {
+        margin: 30px 0 44px 0;
+    }
+    .isH5 .maillist-H5-step .step-num {
+        background-image: url(/img/icons/circle.png);
+        width: 90px;
+        height: 90px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .isH5 .maillist-H5-step .step-num span {
+        display: inline-block;
+        margin: 23px auto;
+        color: #fff;
+        font-size: 24px;
+    }
+    .isH5 .maillist-H5-step .maillist-H5-description {
+        width: 380px;
+        box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
+        border-radius: 8px;
+        padding: 25px 20px;
+        margin: 0 auto;
+    }
+    .isH5 .maillistH5-step .maillist-H5-description p {
+        margin: 0;
+        padding: 10px 0 0;
+        text-align: left;
+        line-height: 26px;
+    }
+    .maillist .maillist-slack {
+        margin-bottom: 80px;
+    }
+    .maillist .maillist-slack p {
+        font-size: 14px;
+        font-weight: normal;
+        font-family: HuaweiSansLight;
+        padding: 0 30px;
+    }
+}
