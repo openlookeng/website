@@ -17,23 +17,35 @@
                 <div class="container-top">
                     <h1 class="download-title docs-pic-title title-adapter-max">{{ .Params.top_title_max }}</h1>
                     <h3 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h3>
-                    <img class="docs-pic" src="../img/banners/Banner.png" alt="">
+                    <img class="docs-pic" src="../img/download/banner.png" alt="">
                 </div>
                 <div class="download-descript">
                     <h2 class="title-adapter-max">{{ .Params.second_title }}</h2>
                     <p>
-                        {{ .Params.description_1 }}
-                        {{ .Params.description_2 }}
+                        {{ .Params.second_title_description }}
+                    </p>
+                </div>
+                <div class="download-server">
+                    <h3>{{ .Params.download_server_title }}</h3>
+                    <p>
+                        {{ .Params.server_title_description }}
                     </p>
                 </div>
                 <div class="download-button">
+                    {{ range .Params.server_btn }}
                     <div class="download-btn btn1">
-                        <h4>{{ .Params.third_title }}</h4>
-                        <button>{{ .Params.button_1 }}</button>
+                        <button type="button">{{ .file_name }}</button>
                     </div>
-                    <div class="download-btn btn2">
-                        <h4>{{ .Params.third_title }}</h4>
-                        <button>{{ .Params.button_2 }}</button>
+                    {{ end }}
+                </div>
+                <div class="download-button second-btn">
+                    {{ range .Params.driver_item }}
+                    <div class="download-btn btn1">
+                        <h4>{{ .title }}</h4>
+                        <p>{{ .desc }}</p>
+                        <button type="button">{{ .file_name }}</button>
+                    </div>
+                    {{ end }}
                     </div>
                 </div>
             </div>
