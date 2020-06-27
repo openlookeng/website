@@ -8,7 +8,7 @@
 
     <ul>
         {{ $posts := where .Site.RegularPages "Type" "news" }}
-        {{ range first 4 $posts }}
+        {{ range first 2 $posts }}
         <li>
             <a href="{{ .URL }}">
                 <p>{{ .Title }}</p>
@@ -21,6 +21,7 @@
                 </p>
             {{ end }}
         </li>
+        <p>{{ .Params.description }}</p>
         {{ end }}
     </ul>
     <a href="{{"/news/" | relLangURL}}" target="_blank">
