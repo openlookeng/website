@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 
-  {{ partial "head.html" . }}
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ "css/blog.css" | relURL}}">
 
-  <body>
+<body>
 
     <div id="all">
 
         <header>
 
-          {{ partial "nav.html" . }}
+            {{ partial "nav.html" . }}
 
         </header>
-
+        <div class="tag-filter">
+            <div class="tag-filter-header">
+                <div class="header-left">
+                    <img src="img/blogs/ic_filter.png" alt="">
+                    <span>{{ i18n "MAIN_POSTBLOG_FILTER"}}</span>
+                </div>
+                <div class="header-right">
+                    <img src="img/blogs/Style.png" alt="">
+                    <span>{{ i18n "MAIN_POSTBLOG_SOURCE"}}</span>
+                </div>
+            </div>
+            <div class="tag-filter-content hide">
+                <p>{{ i18n "tagsTitle" }}</p>
+                <ul class="tag-cloud">
+                    {{ $current := . }}
+                    {{ range $name, $items := .Site.Taxonomies.tags }}
+                    <li{{ if eq $current.RelPermalink ($name | urlize | lower | printf "/tags/%s/") }} class="active"
+                        {{ end }}>
+                        <a href="{{ "tags/" | relURL }}{{ $name | urlize | lower }}.html"> {{ $name }}</a>
+                        </li>
+                        {{ end }}
+                </ul>
+            </div>
+        </div>
         <div id="content">
             <div class="container">
                 <div class="row">
@@ -27,38 +51,40 @@
                         <section class="post">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                                    <h2><a class="fz16" href="{{ .Permalink }}">{{ .Title }}</a></h2>
                                     <div class="clearfix">
-                                        <p class="author">
+                                        <p class="author fz12">
                                             {{ if isset .Params "author" }}
                                             <span>{{ .Params.author }}</span>
                                             {{ end }}
                                         </p>
                                         {{ if isset .Params "date" }}
-                                        <p class="date-comments">
-                                            <span class="character">|</span>
+                                        <p class="date-comments fz12">
+                                            <span class="character fz12">|</span>
                                             <span> {{ .Date.Format .Site.Params.date_format }}</span>
-                                            <span class="character">|</span>
+                                            <span class="character fz12">|</span>
                                         </p>
                                         {{ end }}
                                         <p class="tags">
                                             {{ if isset .Params "tags" }}
                                             {{ if gt (len .Params.tags) 0 }}
-                                                {{ range .Params.tags }}
-                                                <a href='{{ "tags/" | relURL }}{{ . | urlize | lower }}'>{{ . }}</a>
-                                                {{ end }}
-                                          {{ end }}
-                                          {{ end }}
+                                            {{ range .Params.tags }}
+                                            <a class="fz12"
+                                                href='{{ "tags/" | relURL }}{{ . | urlize | lower }}'>{{ . }}</a>
+                                            {{ end }}
+                                            {{ end }}
+                                            {{ end }}
                                         </p>
                                     </div>
-                                    <p class="intro">{{ .Summary }}</p>
-                                    <p class="read-more"><a href="{{ .Permalink }}" class="btn btn-template-main">{{ i18n "main_list_more" }}</a>
+                                    <p class="intro fz14">{{ .Summary }}</p>
+                                    <p class="read-more"><a href="{{ .Permalink }}"
+                                            class="btn btn-template-main">{{ i18n "main_list_more" }}</a>
                                     </p>
                                 </div>
                             </div>
                         </section>
                         {{ end }}
-                        
+
                     </div>
                     <!-- /.col-md-9 -->
 
@@ -92,6 +118,8 @@
     <!-- /#all -->
 
     {{ partial "scripts.html" . }}
+    <script src="{{ "js/blog.js" | relURL }}"></script>
 
-  </body>
+</body>
+
 </html>

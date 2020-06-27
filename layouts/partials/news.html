@@ -1,8 +1,8 @@
 {{ if isset .Site.Params "news"}}
 {{ if .Site.Params.news.enable }}
 
-<div class="col-md-6">
-    <h2 class="text-center title">
+<div class="col-md-6 mt62">
+    <h2 class="text-center title fz24">
         {{ i18n "MAIN_NEWS_TITLE" }}
     </h2>
 
@@ -10,22 +10,22 @@
         {{ $posts := where .Site.RegularPages "Type" "news" }}
         {{ range first 2 $posts }}
         <li>
-            <a href="{{ .URL }}">
+            <a href="{{ .URL }}" class="fz16">
                 <p>{{ .Title }}</p>
             </a>
             {{ if or .Params.author .Params.date }}
-                <p class="text-left home-news">
-                  {{ if .Params.author }}{{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>{{ end }}
-                  {{ if and .Params.author .Params.data }} | {{ end }}
-                  {{ if .Params.data }}{{ .Date.Format .Site.Params.date_format }}{{ end }}
-                </p>
+            <p class="text-left home-news">
+                {{ if .Params.author }}{{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>{{ end }}
+                {{ if and .Params.author .Params.data }} | {{ end }}
+                {{ if .Params.data }}{{ .Date.Format .Site.Params.date_format }}{{ end }}
+            </p>
             {{ end }}
         </li>
         <p>{{ .Params.description }}</p>
         {{ end }}
     </ul>
     <a href="{{"/news/" | relLangURL}}" target="_blank">
-        <p> {{ i18n "MAIN_LIST_MORE" }} </p>
+        <p class="text-center"> {{ i18n "MAIN_LIST_MORE" }} </p>
     </a>
 </div>
 
