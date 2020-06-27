@@ -5,11 +5,11 @@
         <div id="all">
             <header>
             {{ partial "nav.html" . }}
+            {{ partial "breadcrumbs.html" . }}
             </header>
             <div id="content">
                 <div class="container">
                     <div class="row" style="margin-bottom:20px">
-                        <h2 class="blog-post">{{ .Params.title }}</h2>
                         {{ range where $.Page.Site.Pages "Type" "trademark" }}
                         {{ if .Params }}
                         {{ if .Params.viewurl}}
