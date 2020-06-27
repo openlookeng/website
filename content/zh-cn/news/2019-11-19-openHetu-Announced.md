@@ -41,4 +41,4 @@ description = "[中国，深圳，2019年11月19日] 今日，华为在深圳举
 
 2019年11月18日至19日，华为以“引领数据基础设施，携手迈入智能时代”为主题，在深圳召开2019全球数据基础设施论坛，展望智能时代发展趋势与机会、推进产业政策发展、展示最新数据基础设施产品与解决方案。欲了解更多大会信息，请点击： <https://e.huawei.com/topic/gidif2019/cn/index.html?source=corp_comm>。
 
-Source: <https://www.huawei.com/cn/news/2019/11/huawei-data-infrastructure-strategy-open-source-hetuengine>
+新闻来源: <https://www.huawei.com/cn/news/2019/11/huawei-data-infrastructure-strategy-open-source-hetuengine>
