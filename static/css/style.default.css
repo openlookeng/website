@@ -1077,6 +1077,12 @@ fieldset[disabled] .btn-template-primary.active {
     margin: 0;
 }
 
+@media (max-width: 994px) {
+    .panel.sidebar-menu {
+        display: none;
+    }
+}
+
 .panel.sidebar-menu h3 img {
     margin-right: 15px;
     width: 20px;
