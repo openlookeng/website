@@ -113,12 +113,11 @@ function initClaPage() {
 
     var v = null;
     var type = null;
-    
-    $('#client').val('d00e9b289d8cf8f98e2fc68a9c240304f6413007d82d30701cd1da7e937db75c');
+    $('#client').val('3142d7718f705a151ca667be61f1c08fc7ab889d1ab2efee0285727b50869964');
 
     var cla = readCookie('cla-info');
-    if (!cla || cla == '') {
-        // oauthLogin();
+    if (!cla || cla === '') {
+        oauthLogin();
     }
 
     if ($('#cla-type-table').length) {
