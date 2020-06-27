@@ -279,7 +279,7 @@ paginate = 10
     
 [params.copyright]
     enable = true
-    text = "<a href=\"/trademark.html\">Trademark</a>&nbsp;&nbsp;<a href=\"/legalnotice.html\">Legal</a>&nbsp;&nbsp;<a href=\"/privacypolicy.html\">Privacy</a><br>Licensed under the Apache-2.0.<br>Copyright © openLooKeng 2020. All rights reserved."
+    text = "<a href=\"/trademark.html\">Trademark</a>&nbsp;&nbsp;<a href=\"/legalnotice.html\">Legal</a>&nbsp;&nbsp;<a href=\"/privacypolicy.html\">Privacy</a><br>Licensed under the<a>Apache License Version 2.0</a><br>Copyright © openLooKeng 2020. All rights reserved."
 
 [languages.zh.params.copyright]
     enable = true
