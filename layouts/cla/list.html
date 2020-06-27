@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ "css/cla.css" | relURL}}">
+
+
+<body>
+
+    <div id="all">
+
+        <header>
+
+            {{ partial "nav.html" . }}
+
+        </header>
+        <div class="container">
+            {{ .Content}}   
+        </div>
+        
+
+        {{ partial "footer.html" . }}
+
+    </div>
+
+    {{ partial "scripts.html" . }}
+    
+    <script src="{{ "js/jso-utils/jso.js" | relURL }}"></script>
+    <script src="{{ "js/cla.js" | relURL }}"></script>
+</body>
+</html>
