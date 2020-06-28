@@ -1,0 +1,31 @@
+#content a {
+    color: #5A9B83 !important;
+    border: 1px solid #5A9B83 !important;
+
+}
+
+#heading-breadcrumbs h1 {
+    text-transform: unset;
+}
+
+#heading-breadcrumbs {
+    padding: 100px 0;
+}
+
+.trademark-item {
+    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    width: 30% !important;
+    margin-left: 30px;
+}
+
+.trademark-title {
+    font-size: 16px;
+    font-family: HuaweiSans;
+}
+
+.trademark-content {
+    font-size: 16px;
+    font-family: HuaweiSansLight;
+    color: rgba(0, 0, 0, .7);
+}

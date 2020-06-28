@@ -56,6 +56,5 @@ weight = 9
 
 # Committers 
 
-### Mission
 
 The responsibility of Committers is to review and approve the commits made by developers. Requirements: · Have worked in openLooKeng for At least 3 months as developers · Participated in at least 6 PR reviews as the main reviewer · Review or merge at least 30 PRs into the project · Being Familiar with the project

@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     font-size: 44px;
+    font-family: HuaweiSans;
 }
 
 .container-top img {
@@ -22,12 +23,14 @@
 
 .download-descript h2 {
     font-size: 34px;
-    font-family: Helvetica-Bold;
+    font-family: HuaweiSans;
 }
 
 .download-descript p {
+    color: rgba(0, 0, 0, .7);
     font-size: 14px;
     padding: 0 7rem;
+    font-family: HuaweiSansLight;
 }
 
 .download-button {
@@ -80,6 +83,8 @@
     border: none;
     outline: none;
     margin-top: 15px;
+    font-size: 16px;
+    font-family: HuaweiSans;
 }
 
 .download-server {
@@ -88,10 +93,13 @@
 
 .download-server h3 {
     text-align: center;
+    font-family: HuaweiSans;
 }
 
 .download-server p {
     text-align: center;
+    color: rgba(0, 0, 0, .7);
+    font-family: HuaweiSansLight;
 }
 
 .second-btn {
@@ -99,8 +107,11 @@
 }
 
 .second-btn .download-btn p {
-    width: 385px;
+    width: 300px;
     text-align: center;
+    font-size: 14px;
+    font-family: HuaweiSans;
+    height: 100px;
 }
 
 .second-btn .download-btn {
@@ -111,4 +122,9 @@
 
 .second-btn .download-btn h4 {
     margin-bottom: 20px;
+    font-family: HuaweiSans;
+}
+
+.docs-pic {
+    width: 100%;
 }

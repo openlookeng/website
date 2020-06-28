@@ -12,50 +12,54 @@
 
         </header>
 
-        <div class="download-content">
-            <div class="download-container">
-                <div class="container-top">
-                    <h1 class="download-title docs-pic-title title-adapter-max">{{ .Params.top_title_max }}</h1>
-                    <h3 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h3>
-                    <img class="docs-pic" src="../img/download/banner.png" alt="">
-                </div>
-                <div class="download-descript">
-                    <h2 class="title-adapter-max">{{ .Params.second_title }}</h2>
-                    <p>
-                        {{ .Params.second_title_description }}
-                    </p>
-                </div>
-                <div class="download-server">
-                    <h3>{{ .Params.download_server_title }}</h3>
-                    <p>
-                        {{ .Params.server_title_description }}
-                    </p>
-                </div>
-                <div class="download-button">
-                    {{ range .Params.server_btn }}
-                    <div class="download-btn btn1">
-                        <button type="button">{{ .file_name }}</button>
+        <div class="container">
+            <div class="download-content">
+                <div class="download-container">
+                    <div class="container-top">
+                        <h1 class="download-title docs-pic-title title-adapter-max">{{ .Params.top_title_max }}</h1>
+                        <h3 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h3>
+                        <img class="docs-pic" src="../img/download/banner.png" alt="">
                     </div>
-                    {{ end }}
-                </div>
-                <div class="download-button second-btn">
-                    {{ range .Params.driver_item }}
-                    <div class="download-btn btn1">
-                        <h4>{{ .title }}</h4>
-                        <p>{{ .desc }}</p>
-                        <button type="button">{{ .file_name }}</button>
+                    <div class="download-descript">
+                        <h2 class="title-adapter-max">{{ .Params.second_title }}</h2>
+                        <p>
+                            {{ .Params.second_title_description }}
+                        </p>
                     </div>
-                    {{ end }}
+                    <div class="download-server">
+                        <h3>{{ .Params.download_server_title }}</h3>
+                        <p>
+                            {{ .Params.server_title_description }}
+                        </p>
+                    </div>
+                    <div class="download-button">
+                        {{ range .Params.server_btn }}
+                        <div class="download-btn btn1">
+                            <button type="button">{{ .file_name }}</button>
+                        </div>
+                        {{ end }}
+                    </div>
+                    <div class="download-button second-btn">
+                        {{ range .Params.driver_item }}
+                        <div class="download-btn btn1">
+                            <h4>{{ .title }}</h4>
+                            <p>{{ .desc }}</p>
+                            <button type="button">{{ .file_name }}</button>
+                        </div>
+                        {{ end }}
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        {{ partial "footer.html" . }}
+
+    {{ partial "footer.html" . }}
 
     </div>
 
     {{ partial "scripts.html" . }}
 
 </body>
+
 </html>

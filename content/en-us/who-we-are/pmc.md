@@ -48,7 +48,6 @@ weight = 8
 
 # PMC (Project Management Committee)  
 
-### Mission
 
 The openLooKeng project is managed by PMC (Project Management Committee), a committee with responsibility and governance for the openLooKeng project. The PMC is the vehicle through which decision making power and responsibility for oversight devolves to developers.
 

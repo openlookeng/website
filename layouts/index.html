@@ -14,14 +14,24 @@
             {{ partial "nav.html" . }}
 
         </header>
+        <div class="container">
+            {{ partial "home_banner.html" . }}
 
-        {{ partial "home_banner.html" . }}
+            {{ partial "home_why_openLookeng.html" }}
+        </div>
+        <section>
+            <div class="home-why unset">
+                <div class="summit">
+                    <h2 class="summit-title">{{ i18n "HOME_SUMMIT" }}</h2>
+                    <img src="../img/banners/meetup-banner.png" alt="">
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            {{ partial "blog_news.html" . }}
 
-        {{ partial "home_why_openLookeng.html" }}
-
-        {{ partial "blog_news.html" . }}
-
-        {{ partial "partner.html" }}
+            {{ partial "partner.html" }}
+        </div>
 
         {{ partial "footer.html" . }}
 
