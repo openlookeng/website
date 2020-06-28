@@ -23,7 +23,7 @@
                             <div class="col-md-12 maillist">
                                 <div class="maillist-title">
                                     <h2>{{ .Params.top_title }}</h2>
-                                    <img class="maillist-pic" src="../img/banners/eventsbanner.png" alt="">
+                                    <img class="maillist-pic" src="../img/banners/eventsBanner.png" alt="">
                                 </div>
 
                                 <!--事件列表模块-->
@@ -36,7 +36,7 @@
                                             <div class="event-circle">
                                                 <div class="inner-circle"></div>
                                             </div>
-                                            <h6>{{ .Params.title }}</h6>
+                                            <h6><a href="{{ .Params.link }}">{{ .Params.title }}</a></h6>
                                             <span>{{ .Params.time }}</span>
                                             <p>{{ .Params.location}}</p>
                                             <img src="{{ .Params.img }}" alt="">
