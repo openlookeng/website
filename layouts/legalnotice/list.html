@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ "css/legalnotice.css" | relURL}}">
+
+<body>
+    <div id="all">
+        {{ partial "nav.html" . }}
+        <div id="content">
+            <div class="container">
+                <h2 class="legal-title">{{ .Params.title }}</h2>
+                {{ .Content }}
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+        {{ partial "footer.html" . }}
+    </div>
+    <!-- /#all -->
+    {{ partial "scripts.html" . }}
+</body>
+
+</html>

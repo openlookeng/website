@@ -8,19 +8,24 @@ download_server_title = "openLooKeng Server"
 server_title_description = "openLooKeng released deployment packages, support both ARM/x86 platform. Visit Deploying openLookeng for deployment instructions"
 [[server_btn]]
     file_name = "hetu-server-316.tar.gz"
+    url = "https://download.openlookeng.io/openlookeng-beta/hetu-server-316.tar.gz"
 [[server_btn]]
     file_name = "hetu-server-rpm-316.x86_64.rpm"
+    url = "https://download.openlookeng.io/openlookeng-beta/hetu-server-rpm-316.x86_64.rpm"
 
 [[driver_item]]
     title = "Command Line Interface"
     desc = "openLooKeng CLI provides a simple way to execute SQL statements in interactive mode. Visit Command Line interface for installation instractions."
     file_name = "hetu-cli-316-executable.jar"
+    url = "https://download.openlookeng.io/openlookeng-beta/hetu-cli-316-executable.jar"
 [[driver_item]]
     title = "JDBC Driver"
     desc = "JDBC Driver enables users to connect with live openLooKeng server, directly from any Java applications that support JDBC connectivity.  Visit JDBC Driver for installation instructions"
     file_name = "hetu-jdbc-316.jar"
+    url = "https://download.openlookeng.io/openlookeng-beta/hetu-jdbc-316.jar"
 [[driver_item]]
     title = "ODBC Driver"
     desc = "ODBC Driver lets you communicate with openLooKeng server via standard ODBC protocol. Visit ODBC Driver for installation instructions"
     file_name = "hetu-odbc-win64-316.jar"
+    url = "https://download.openlookeng.io/openlookeng-beta/hetu-odbc-win64-316.msi"
 +++

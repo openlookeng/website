@@ -35,13 +35,17 @@
 
 .download-button {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .download-button h4 {
     font-size: 24px;
     display: flex;
     justify-content: center;
+}
+
+.container-top h1 {
+    font-weight: unset !important;
 }
 
 @media (max-width: 994px) {
@@ -111,13 +115,13 @@
     text-align: center;
     font-size: 14px;
     font-family: HuaweiSans;
-    height: 100px;
 }
 
 .second-btn .download-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .second-btn .download-btn h4 {

@@ -35,7 +35,7 @@
                     <div class="download-button">
                         {{ range .Params.server_btn }}
                         <div class="download-btn btn1">
-                            <button type="button">{{ .file_name }}</button>
+                            <button url="{{ .url }}" type="button">{{ .file_name }}</button>
                         </div>
                         {{ end }}
                     </div>
@@ -44,7 +44,7 @@
                         <div class="download-btn btn1">
                             <h4>{{ .title }}</h4>
                             <p>{{ .desc }}</p>
-                            <button type="button">{{ .file_name }}</button>
+                            <button url="{{ .url }}" type="button">{{ .file_name }}</button>
                         </div>
                         {{ end }}
                     </div>
@@ -59,7 +59,7 @@
     </div>
 
     {{ partial "scripts.html" . }}
-
+    <script src="{{ "js/download.js" | relURL }}"></script>
 </body>
 
 </html>

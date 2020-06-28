@@ -69,6 +69,14 @@ other = "search"
 [MAIN_POSTBLOG_FILTER]
 other = "Tags Filter"
 
+[OPEN_EULER_WEBSITE_URL]
+other = "https://openeuler.org/en/"
+
+[OPEN_GAUSS_WEBSITE_URL]
+other = "https://opengauss.org/en/"
+
+[OPEN_KUNPENG_WEBSITE_URL]
+other = "https://www.huaweicloud.com/kunpeng/"
 
 [DOCS_TITLE]
 other = "Learn More with OpenLooKeng Document"
