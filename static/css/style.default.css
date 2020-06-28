@@ -474,20 +474,22 @@ ul.list-style-none {
     list-style-type: none;
     /*border-bottom: solid 1px #eee;*/
     /*text-transform: uppercase;*/
-    letter-spacing: .08em;
-    padding: 4px 0;
+    /*letter-spacing: .08em;*/
+    /*padding: 4px 0;*/
+    font-size: 16px;
 }
 
 .navbar ul.dropdown-menu li a {
     position: relative;
-    /* color: #999; */
-    font-size: 12px;
+    font-size: 16px;
     display: block;
     -webkit-transition: all .2s ease-out;
     -moz-transition: all .2s ease-out;
     transition: all .2s ease-out;
     transition-property: unset;
     left: 0;
+    font-family: HuaweiSans;
+    line-height: 16px;
 }
 
 .navbar ul.dropdown-menu li a:hover {
@@ -4070,13 +4072,14 @@ fieldset[disabled] .btn-template-primary.active {
 @media (min-width: 995px) {
     .navbar-nav > li:nth-last-child(3) {
         margin-top: 21px;
-        padding-left: 30px;
+        padding-left: 20px;
+        margin-left: 20px;
         height: 31px;
         border-left: 1px solid #555;
     }
 
     .navbar-nav > li:nth-last-child(4) {
-        padding-right: 30px;
+        /*padding-right: 30px;*/
     }
 
     .navbar-nav > li:nth-last-child(3) > a {
@@ -4405,11 +4408,11 @@ hr {
 }
 
 .dropdown-menu > li > a {
-    padding: 5px 0;
+    padding: 10px 0;
     line-height: 1.42857143;
     color: #333;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
 }
 
 /* labels */
@@ -4787,9 +4790,10 @@ a.list-group-item.active > .badge,
  right: 0;*/
     left: 50%;
     transform: translateX(-50%);
-    top: 55px;
-    min-width: 120px;
-    padding: 25px 20px;
+    top: 60px;
+    min-width: 160px;
+    padding: 18px 20px;
+    border-radius: 4px;
 }
 
 .yamm .yamm-content {
@@ -5297,6 +5301,18 @@ p.blog-12px .tag a {
 
 .news-detail a {
     color: #5a9b83;
+}
+
+.news-detail p {
+    font-family: HuaweiSansLight;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, .7);
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.news-detail img {
+    margin: 10px 0 20px;
 }
 
 .relative-info {
