@@ -1,6 +1,7 @@
 +++
 title = "PMC"
 weight = 8
+small_title = "PMC Members"
 
 [[item]]
     title = "Ken Zhang"

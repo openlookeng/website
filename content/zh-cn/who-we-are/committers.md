@@ -1,6 +1,7 @@
 +++
 title = "Committers"
 weight = 9
+small_title = "Committers"
 
 [[item]]
 

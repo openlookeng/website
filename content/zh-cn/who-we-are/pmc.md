@@ -1,6 +1,7 @@
 +++
 title = "PMC (Project Management Committee"
 weight = 8
+small_title = "PMC Members"
 
 [[item]]
 

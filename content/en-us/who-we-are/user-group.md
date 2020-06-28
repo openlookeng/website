@@ -1,6 +1,7 @@
 +++
 title = "User Group"
 weight = 10
+small_title = "User Group Members"
 
 [[item]]
     title = "Micheal Li"
