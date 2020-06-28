@@ -7,14 +7,10 @@
 .event-list .event-content .event-leftline {
     border-left: 2px solid #000;
     opacity: .09;
-    height: 1100px;
+    height: 1160px;
     position: absolute;
-    left: 230px;
+    left: 240px;
     top: 700px;
-}
-.event-list .event-content .event-box {
-    position: relative;
-    left: 260px;
 }
 .event-list .event-content .event-box .event-circle {
     width: 24px;
@@ -24,7 +20,7 @@
     border-radius: 50%;
     padding: 6px;
     position: absolute;
-    left: -56px;
+    left: -46px;
     top: 8px;
 }
 .event-list .event-content .event-box .inner-circle {
@@ -49,7 +45,7 @@
     display: inline-block;
     text-align: center;
     position: absolute;
-    left: -160px;
+    left: -150px;
     top: 5px;
 }
 @media screen and (min-width: 995px){
@@ -63,13 +59,21 @@
     }
     .event-list .event-content {
         margin-bottom: 100px;
-        padding: 60px 0;
     }
-    .event-list .event-content .event-box h6 {
+    .event-list .event-content .event-box h6 a {
         font-size: 24px;
         font-family: HuaweiSans;
         line-height: 34px;
         font-weight: normal;
+        color: #000;
+    }
+    .event-list .event-content .event-box h6 a:hover {
+        text-decoration: none;
+    }
+    .event-list .event-content .event-box {
+        position: relative;
+        left: 260px;
+        margin-top: 120px;
     }
 }
 @media screen and (max-width: 768px) {
@@ -91,11 +95,15 @@
     .event-list .event-content .event-box img {
         max-width: 200px;
     }
-    .event-list .event-content .event-box h6 {
+    .event-list .event-content .event-box h6 a {
         font-size: 16px;
         font-family: HuaweiSans;
         line-height: 26px;
         font-weight: normal;
+        color: #000;
+    }
+    .event-list .event-content .event-box h6 a:hover {
+        text-decoration: none;
     }
     .event-list .event-content .event-leftline {
         border-left: 2px solid #000;
