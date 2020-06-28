@@ -3,7 +3,7 @@
 other = "openLookeng, Making Big Data Simple"
 
 [HOME_BANNER_DES]
-other = "Simple Experience, Flexible Extensibility, High Reliability"
+other = "A Data Virtualization Engine Approaching to Big Data Base"
 
 [HOME_WHY]
 other = "Why openLooKeng?"
@@ -32,7 +32,6 @@ other = "High Availability"
 
 [HOME_AVAIABLE_DES1]
 other = "Active/Active design leads zero outage."
-
 
 [HOME_GETSTART]
 other = "Get Started"
@@ -69,4 +68,8 @@ other = "search"
 
 [MAIN_POSTBLOG_FILTER]
 other = "Tags Filter"
+
+
+[DOCS_TITLE]
+other = "Learn More with OpenLooKeng Document"
 

@@ -1,8 +1,8 @@
 [HOME_BANNER_SLOGAN]
-other = "openLookeng, 面向大数据库的数据虚拟化引擎"
+other = "openLooKeng，让大数据更简单"
 
 [HOME_BANNER_DES]
-other = "极简体验，易扩展，高可靠"
+other = "面向大数据库的数据虚拟化引擎"
 
 [HOME_SIMPLE]
 other = "极简数据分析体验"
@@ -28,6 +28,8 @@ other = "高可靠"
 [HOME_AVAIABLE_DES1]
 other = "全 Active/Active 架构，业务不中断 "
 
+[HOME_SUMMIT]
+other = "openLooKeng峰会2020即将于7月25日举办"
 
 [MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
 other = "订阅"
@@ -46,3 +48,6 @@ other = "相关链接"
 
 [MAIN_POSTBLOG_SOURCE]
 other = "写博客"
+
+[DOCS_TITLE]
+other = "一起来了解openLookeng吧"
