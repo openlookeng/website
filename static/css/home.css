@@ -68,7 +68,7 @@ h3.title {
 
 .home-why .summit {
     padding-top: unset;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 .home-why .summit .summit-title {
@@ -98,13 +98,13 @@ h3.title {
     font-family: HuaweiSans;
 }
 
-.bar .container .col-md-6 ul li a p {
+.one-row {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.bar .container .col-md-6 ul li p:last-child {
+.two-row {
     overflow: hidden;
     text-overflow: ellipsis;
     display: box;
@@ -135,6 +135,22 @@ h3.title {
     font-family: HuaweiSansLight;
 }
 
+.special-item .video {
+    margin-right: unset !important;
+    margin-left: 113px;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+.video:hover {
+    cursor: pointer;
+}
+
 @media (max-width: 994px) {
     .home-banner .home-img a {
         display: none;
@@ -151,5 +167,170 @@ h3.title {
 
     .home-links-imgs {
         margin-bottom: unset;
+    }
+}
+
+.videos-wrapper .title {
+    text-align: center;
+    font-size: 34px;
+    font-family: HuaweiSans;
+    margin: 0 0 32px 0;
+}
+
+.videos-wrapper .video-right-item {
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.videos-wrapper .video-right-item .item-left,
+.videos-wrapper .video-right-item .item-right {
+    flex: 1;
+    width: 40%;
+}
+
+.videos-wrapper .video-right-item .item-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.videos-wrapper .video-right-item .item-left .left-title {
+    color: #000;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: HuaweiSans;
+}
+
+.videos-wrapper .video-right-item .item-left p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-family: HuaweiSansLight;
+    color: rgba(0, 0, 0, .7);
+}
+
+.videos-wrapper .video-right-item .item-right .video {
+    width: 100% !important;
+    margin: 70px 0;
+}
+
+.videos-wrapper .video-left-item {
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.videos-wrapper .video-left-item .item-left,
+.videos-wrapper .video-left-item .item-right {
+    flex: 1;
+    width: 40%;
+}
+
+.videos-wrapper .video-left-item .item-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.videos-wrapper .video-left-item .item-right .right-title {
+    color: #000;
+    text-align: right;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: HuaweiSans;
+}
+
+.videos-wrapper .video-left-item .item-right p {
+    text-align: right;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-family: HuaweiSansLight;
+    color: rgba(0, 0, 0, .7);
+}
+
+.videos-wrapper .video-left-item .item-left .video {
+    width: 100% !important;
+    margin: 70px 0;
+}
+
+.home-links-imgs img {
+    width: 240px;
+    height: 80px;
+}
+
+@media (max-width: 994px) {
+    .home-banner {
+        padding: 40px 0 0 0;
+    }
+    .home-banner .banner-p1 {
+        margin: 0 0 10px 0;
+    }
+    .home-banner .banner-p2 {
+        margin-bottom: 30px;
+    }
+    .home-banner {
+        margin-bottom: 40px;
+    }
+    .videos-wrapper .title {
+        margin-bottom: 22px;
+        font-size: 24px;
+    }
+    .videos-wrapper .video-left-item {
+        flex-direction: column;
+    }
+    .videos-wrapper .video-right-item {
+        flex-direction: column-reverse;
+    }
+    .videos-wrapper .video-right-item .item-left,
+    .videos-wrapper .video-right-item .item-right,
+    .videos-wrapper .video-left-item .item-left,
+    .videos-wrapper .video-left-item .item-right {
+        width: 100%;
+    }
+    .videos-wrapper .video-right-item .item-left .left-title {
+        margin: 19px 0 11px 0;
+        text-align: center;
+        font-size: 16px;
+    }
+    .videos-wrapper .video-right-item .item-left p {
+        text-align: center;
+        margin-bottom: 11px;
+        font-size: 14px;
+    }
+    .videos-wrapper .video-left-item .item-right .right-title {
+        margin: 19px 0 11px 0;
+        text-align: center;
+        font-size: 16px;
+    }
+    .videos-wrapper .video-left-item .item-right p {
+        text-align: center;
+        margin-bottom: 11px;
+        font-size: 14px;
+    }
+    .videos-wrapper .video-left-item .item-left {
+        margin-top: 49px;
+    }
+    .videos-wrapper .video-right-item .item-right {
+        margin-top: 49px;
+    }
+    .home-why .summit {
+        margin-top: 49px;
+    }
+    .home-why .summit img {
+        margin-top: 20px;
+    }
+    .mt100 {
+        margin-top: 60px !important;
+    }
+    .bar .container .col-md-6 > a p {
+        font-size: 14px;
+        margin-top: 21px;
+    }
+    .bar .container .col-md-6:nth-child(2) > h2 {
+        margin-top: 60px;
+    }
+    .home-links-imgs img {
+        width: 180px;
+        height: 60px;
     }
 }

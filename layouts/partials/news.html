@@ -11,7 +11,7 @@
         {{ range first 2 $posts }}
         <li>
             <a href="{{ .URL }}" class="fz16">
-                <p>{{ .Title }}</p>
+                <p class="one-row">{{ .Title }}</p>
             </a>
             {{ if or .Params.author .Params.date }}
             <p class="text-left home-news">
@@ -20,7 +20,7 @@
                 {{ if .Params.data }}{{ .Date.Format .Site.Params.date_format }}{{ end }}
             </p>
             {{ end }}
-            <p>{{ .Params.description }}</p>
+            <p class="two-row">{{ .Params.description }}</p>
         </li>
         {{ end }}
     </ul>

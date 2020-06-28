@@ -20,7 +20,7 @@ other = "灵活、易扩展"
 other = "可以通过增加Connector来增加数据源"
 
 [HOME_FLEXIBLE_DES2]
-other = "采集变链接、数据零搬迁"
+other = "采集变连接、数据零搬迁"
 
 [HOME_AVAIABLE]
 other = "高可靠"
@@ -29,7 +29,7 @@ other = "高可靠"
 other = "全 Active/Active 架构，业务不中断 "
 
 [HOME_SUMMIT]
-other = "openLooKeng峰会2020即将于7月25日举办"
+other = "openLooKeng首次Meetup即将开启"
 
 [MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
 other = "订阅"
