@@ -33,7 +33,7 @@ paginate = 10
 [[menu.main]]
     identifier="documentation"
     name = "Documentation"
-    url  = "/docs.html"
+    url  = "/docs/docs.html"
     weight = 2
 
 [[menu.main]]
@@ -128,7 +128,7 @@ paginate = 10
 [[languages.zh-cn.menu.main]]
     identifier="documentation"
     name = "文档"
-    url  = "/zh-cn/docs.html"
+    url  = "/zh-cn/docs/docs.html"
     weight = 2
 
 [[languages.zh-cn.menu.main]]
