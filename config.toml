@@ -1,5 +1,5 @@
 baseurl = "/"
-title = "Universal"
+title = "openLookeng"
 theme = "universal"
 
 languageCode = "en-us"
