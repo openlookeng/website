@@ -39,9 +39,14 @@
 
 .pull-left .logo {
     width: 150px;
-    height: 60px;
-    background-color: #fff;
+    /*height: 60px;*/
     border-radius: 4px;
+}
+
+.pull-left .logo img {
+    width: 150px;
+    border-radius: 4px;
+    margin-top: 15px;
 }
 
 .pull-left .logo-bottom {
@@ -416,7 +421,8 @@ ul.list-style-none {
 }
 
 .navbar ul.nav > li > a:hover {
-    /*border-bottom: solid 4px #5a9b83;*/
+    color: #5a9b83;
+    border-bottom: solid 4px #5a9b83;
 }
 
 .navbar ul.nav > li.active > a,
@@ -1219,17 +1225,17 @@ fieldset[disabled] .btn-template-primary.active {
 
 .panel.sidebar-menu ul.tag-cloud li a {
     display: inline-block;
+    height: 20px;
+    overflow: hidden;
     padding: 3px;
     border-radius: 4px;
     color: #000;
-    /* background-color: #5a9b83; */
     margin: 5px 5px 5px 0;
     text-transform: uppercase;
     letter-spacing: .08em;
-    /*font-weight: 700;*/
     font-size: 12px;
     text-decoration: none;
-    border: 1px solid rgba(64, 157, 129, 1);
+    border: .5px solid rgba(0, 0, 0, .1);
 }
 
 .panel.sidebar-menu ul.tag-cloud li.active a {
@@ -2863,11 +2869,10 @@ fieldset[disabled] .btn-template-primary.active {
     padding: 0 10px;
     color: #000;
     border-radius: 4px;
-    opacity: .39;
     font-weight: 300;
     text-transform: uppercase;
     padding-top: 1px;
-    border: 1px solid #000;
+    border: .5px solid rgba(0, 0, 0, .39);
 }
 
 #blog-listing-medium .post .tags a:hover {
@@ -2887,8 +2892,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 #blog-listing-medium .post .date-comments .character {
     font-size: 16px;
-    /* color: #000; */
-    margin: 0 15px;
+    margin: 0 10px;
     font-weight: 300;
 }
 
@@ -3432,7 +3436,19 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 #copyright p {
-    margin: 0;
+    margin-top: 10px;
+}
+
+#copyright p img {
+    width: 20px;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#copyright p a {
+    color: #fff;
+    opacity: .7;
 }
 
 #copyright p span.block {
@@ -4380,7 +4396,7 @@ hr {
     line-height: 1.42857143;
     color: #333333;
     white-space: nowrap;
-    text-align: center;
+    text-align: left;
 }
 
 /* labels */
@@ -4759,7 +4775,8 @@ a.list-group-item.active > .badge,
     left: 50%;
     transform: translateX(-50%);
     top: 55px;
-    min-width: 115px;
+    min-width: 120px;
+    padding: 7px 7px;
 }
 
 .yamm .yamm-content {
