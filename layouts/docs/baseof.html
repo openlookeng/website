@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" dir={{ .Site.Language.LanguageDirection }}>
+<html lang="{{ .Site.LanguageCode }}" >
 {{ partial "head.html" . }}
 
 <head>
@@ -7,7 +7,7 @@
 	{{ partial "docs/inject/head" . }}
 </head>
 
-<body dir={{ .Site.Language.LanguageDirection }}>
+<body >
 	<div id="all">
 		<header>
 			{{ partial "nav.html" . }}
