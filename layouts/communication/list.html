@@ -35,7 +35,7 @@
                                     <p>{{ .Params.top_description }}</p>
 
                                     <!--table 模块-->
-                                    <div class="isPC">
+                                    <div class="isPC maillist">
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
@@ -55,7 +55,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="isH5">
+                                    <div class="isH5 maillist">
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
@@ -158,9 +158,9 @@
                                     <h3>{{ .Params.bottom_title }}</h3>
                                     <p>{{ .Params.bottom_description }}</p>
                                     <ul>
-                                        <li><a href="{{ .Params.general_url }}">{{ .Params.general_tag }}</a> - {{ .Params.general_detail }}</li>
-                                        <li><a href="{{ .Params.trouble_url }}">{{ .Params.trouble_tag }}</a> - {{ .Params.trouble_detail }}</li>
-                                        <li><a href="{{ .Params.dev_url }}">{{ .Params.dev_tag }}</a> - {{ .Params.dev_detail }}</li>
+                                        <li> · <a href="{{ .Params.general_url }}">{{ .Params.general_tag }}</a> - {{ .Params.general_detail }}</li>
+                                        <li> · <a href="{{ .Params.trouble_url }}">{{ .Params.trouble_tag }}</a> - {{ .Params.trouble_detail }}</li>
+                                        <li> · <a href="{{ .Params.dev_url }}">{{ .Params.dev_tag }}</a> - {{ .Params.dev_detail }}</li>
                                     </ul>
                                 </div>
                             </div>
