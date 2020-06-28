@@ -57,5 +57,15 @@ other = "https://opengauss.org/zh/"
 
 [OPEN_KUNPENG_WEBSITE_URL]
 other = "https://www.huaweicloud.com/kunpeng/"
+
 [DOCS_TITLE]
 other = "一起来了解openLookeng吧"
+
+[SIDEBAR_TAG]
+other = "标签"
+
+[HOME_GETSTART]
+other = "新手入门"
+
+[BLOG_LINK]
+other = "/zh-cn/blogguidance.html"

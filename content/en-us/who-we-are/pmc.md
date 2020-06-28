@@ -57,26 +57,18 @@ The openLooKeng project is managed by PMC (Project Management Committee), a comm
  
   Th PMC has the following responsibilities:
 
-
     · Report project status biweekly or when requested to the community 
-
 
     · Collaborate remotely, having a face-to-face every 6 monthes. Have regularly online meeting in between. 
 
-
     · Guide and decide project technology roadmap, interface definition, architecture design, build release, etc. Establishing the rule of community gradually. 
-
 
     · Coordinate cross-projects cooperation and make decisions on cross-project technical issues in the community 
 
-
     · Formulate project incubation and development processes to support the healthy development of community technology ecology 
-
 
     · Adjust existing projects in the community according to the community development blueprint, delete or archive projects that do not meet the project goal.
     
-
-
      Mail List: pmc@openlookeng.io 
 
      

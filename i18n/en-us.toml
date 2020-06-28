@@ -81,3 +81,9 @@ other = "https://www.huaweicloud.com/kunpeng/"
 [DOCS_TITLE]
 other = "Learn More with OpenLooKeng Document"
 
+[SIDEBAR_TAG]
+other = "Tags"
+
+[BLOG_LINK]
+other = "/blogguidance.html"
+

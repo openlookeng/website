@@ -9,10 +9,12 @@ small_title = "User Group Members"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
     content = "Micheal领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
 
+
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
-    range = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
+    range = "Chief Architect at Bangalore Research Centre, Committer of Apache CarbonData project"
+    content = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
 
 [[item]]
     title = "廖登宏"
@@ -44,6 +46,8 @@ small_title = "User Group Members"
 
 用户组可帮助最终用户了解如何使用openLooKeng，并向PMC收集改进建议。用户组提供邮件列表和Slack，供下游用户进行交流，并提供有关使用openLooKeng的一般问题和讨论。
 
+
 邮件列表：users@openlookeng.io
+
 Slack：
 

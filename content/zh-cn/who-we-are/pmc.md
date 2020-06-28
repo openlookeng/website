@@ -1,27 +1,31 @@
 +++
 title = "PMC"
 weight = 8
-small_title = "PMC 成员"
+small_title = "PMC 委员"
 
 [[item]]
     title = "Ken Zhang"
     avatar = "img/foundation/KenZhang.png"
-    range = "Ken领导和推动分析平台实验室，监督和指导所有组件领域的成员，以确保基准。Ken在IBM Watson Health、Thomson Reuters Open Platform等公司担任架构师，拥有20年的尖端行业经验。他目前在多伦多、深圳、成都、班加罗尔和都柏林的研发成员提供领导和指导。"
+    range = "R&D Analytics Platform Lab Director for various Research teams across the Globe"
+    content = "Ken领导和推动分析平台实验室，监督和指导所有组件领域的成员，以确保基准。Ken在IBM Watson Health、Thomson Reuters Open Platform等公司担任架构师，拥有20年的尖端行业经验。他目前在多伦多、深圳、成都、班加罗尔和都柏林的研发成员提供领导和指导。"
 
 [[item]]
     title = "Micheal Li"
     avatar = "img/foundation/MichaelLi.png"
-    range = "Micheal领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
+    range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
+    content = "Micheal领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
 
 [[item]]
     title = "Karmveer Singh"
     avatar = "img/foundation/KarmveerSingh.png"
-    range = "Karmveer在位于Seattle、Vancouver、Toronto的AWS、Amazon拥有10年的前沿经验。在华为之前最著名的项目是AWS S3 Select的内存管理，用于处理AWS S3中删除请求的磁盘IO优化，亚马逊网站上促销数据的分布式预计算框架。"
+    range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
+    content = "Karmveer在位于Seattle、Vancouver、Toronto的AWS、Amazon拥有10年的前沿经验。在华为之前最著名的项目是AWS S3 Select的内存管理，用于处理AWS S3中删除请求的磁盘IO优化，亚马逊网站上促销数据的分布式预计算框架。"
 
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
-    range = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
+    range = "Chief Architect at Bangalore Research Centre, Committer of Apache CarbonData project"
+    content = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
 
 [[item]]
     title = "张巍"
@@ -47,14 +51,23 @@ small_title = "PMC 成员"
 
 项目管理委员会（PMC）是负责openLooKeng项目的委员会。尽管项目的committers有能力更新代码，但只有PMC作为一个机构才有权对项目软件的正式版本进行决策。PMC还负责对该项目的新committer和PMC成员进行投票，并遵循本文档中概述的其他政策。PMC采用懒惰的共识方法做出决策：有赞成票而没有反对票即视为通过。
 
+
 PMC的职责如下：
+
 · 每两周或需要时向社区报告项目状态
+
 · 远程协作，每6个月进行一次面对面的交流。中间要定期召开在线会议。
+
 · 指导和确定项目技术路线图，接口定义，体系结构设计，版本发布等。逐步建立社区规则。
-· 协调跨项目合作，并就社区中的跨项目技术问题做出决策
-· 制定项目孵化和开发流程，以支持社区技术生态的健康发展
-· 根据社区发展蓝图调整社区中现有的项目，删除或归档不符合项目目标的项目
+
+· 协调跨项目合作，并就社区中的跨项目技术问题做出决策。
+
+· 制定项目孵化和开发流程，以支持社区技术生态的健康发展。
+
+· 根据社区发展蓝图调整社区中现有的项目，删除或归档不符合项目目标的项目。
 
 Mail List: pmc@openlookeng.io
+
 Slack:
+
 双周会议: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.
