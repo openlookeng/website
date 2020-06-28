@@ -1,3 +1,8 @@
+.container .foundation-content{
+    margin: 100px 0;
+
+}
+
 .foundation-content > h1 {
     text-align: center;
     margin-top: 100px;
@@ -7,9 +12,16 @@
     line-height: 44px;
 }
 
+h1 {
+    margin-top: unset;
+}
+
 p {
     word-wrap: break-word;
     word-break: break-all;
+    font-size: 14px;
+    font-family: HuaweiSansLight;
+    color: rgba(0, 0, 0, .7);
 }
 
 ul {
@@ -47,6 +59,15 @@ ul {
     margin-bottom: 100px;
 }
 
+.foundation-content .foundation-top img {
+    width: 100%;
+}
+
+.foundation-content .foundation-top h1 {
+    font-size: 44px;
+    font-family: HuaweiSans;
+}
+
 .foundation-item-active {
     border-left: 4px solid #5A9B83;
     color: #5A9B83 !important;
@@ -54,7 +75,7 @@ ul {
 }
 
 .foundation-content .foundation-tabs-content {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
 }
@@ -74,7 +95,7 @@ ul {
     height: 26px;
     line-height: 26px;
     margin-bottom: 20px;
-    font-size: HuaweiSans;
+    font-family: HuaweiSans;
     font-size: 16px;
     cursor: pointer;
 }
@@ -114,12 +135,17 @@ ul {
 .foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc h4 {
     font-size: 16px;
     font-family: HuaweiSans;
+    color: rgba(0, 0, 0, 1);
 }
 
 .foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc p {
     margin-top: 8px;
     font-size: 14px;
     color: rgba(0, 0, 0, .7);
+}
+
+.foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc p:nth-child(2) {
+    margin-bottom: 15px;
 }
 
 
@@ -234,6 +260,12 @@ ul {
     background-position: center center;
     vertical-align: middle;
     margin-right: 9px;
+}
+
+.inner > h1 {
+    margin-bottom: 40px;
+    font-size: 34px;
+    font-family: HuaweiSans;
 }
 
 

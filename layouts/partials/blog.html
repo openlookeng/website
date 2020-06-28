@@ -2,7 +2,7 @@
 {{ if .Site.Params.blog.enable }}
 
 <div class="col-md-6 mt62">
-    <h2 class="text-center title fz24">
+    <h2 class="title fz24 home-info-adapter">
         {{ i18n "MAIN_BLOG_TITLE" }}
     </h2>
 
@@ -25,7 +25,7 @@
         {{ end }}
     </ul>
     <a href="{{"/blog/" | relLangURL}}" target="_blank">
-        <p class="text-center"> {{ i18n "MAIN_LIST_MORE" }} </p>
+        <p> {{ i18n "MAIN_LIST_MORE" }} </p>
     </a>
 </div>
 

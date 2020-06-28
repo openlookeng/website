@@ -42,6 +42,5 @@ weight = 10
 
 # User Group 
 
-### Mission
 
 The User Group helps end users on how to use openLooKeng, and collects improvemeng suggestions to the PMC. The User Group provides mail list and Slack for downstream users to communicate and provide general questions and discussion on using openLooKeng.

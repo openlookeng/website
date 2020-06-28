@@ -10,8 +10,6 @@ server_title_description = "openLooKeng released deployment packages, support bo
     file_name = "hetu-server-316.tar.gz"
 [[server_btn]]
     file_name = "hetu-server-rpm-316.x86_64.rpm"
-[[server_btn]]
-    file_name = "hetu-server-rpm-316.arrch64_64.rpm"
 
 [[driver_item]]
     title = "Command Line Interface"

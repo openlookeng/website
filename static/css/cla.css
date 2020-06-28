@@ -101,3 +101,24 @@
     vertical-align: bottom;
     margin-right: 10px !important;
 }
+
+#signing-cla {
+    margin: 100px 0 60px;
+}
+
+p {
+    color: rgba(0, 0, 0, .7);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+label {
+    color: rgba(0, 0, 0, .7);
+    font-size: 14px;
+    font-family: HuaweiSansLight;
+}
+td {
+    color: rgba(0, 0, 0, .7);
+    font-size: 14px;
+    font-family: HuaweiSansLight;
+}
