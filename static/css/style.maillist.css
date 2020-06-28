@@ -43,7 +43,7 @@
 }
 .maillist .maillist-guidance {
     position: relative;
-    padding-top: 80px;
+    /*padding-top: 80px;*/
 }
 .maillist .maillist-guidance .maillist-icon {
     width: 0;
@@ -52,24 +52,25 @@
     border-style: solid;
     border-color: #509378 transparent transparent transparent;
     position: absolute;
-    top: 90px;
+    top: -1%;
     left: 50%;
     transform: translateX(-50%);
 }
 .maillist .maillist-guidance .maillist-divider {
     width: 105px;
-    height: 1010px;
+    height: 1037px;
     border-left: 2px dashed #509378;
     border-bottom: 2px dashed #509378;
     border-radius: 0 15px;
     position: absolute;
     left: 50%;
-    top: 91px;
+    transform: translateX(-1%);
+    /*top: 91px;*/
     display: inline-block;
 }
 .maillist .maillist-guidance .maillist-divider-mail {
     width: 105px;
-    height: 420px;
+    height: 457px;
     border-left: 2px dashed #509378;
     border-bottom: 2px dashed #509378;
     border-radius: 0 15px;
@@ -88,10 +89,16 @@
     vertical-align: middle;
     text-align: left;
 }
+.maillist .step-left .step-left-box p a,
+.maillist .step-right .step-right-box p a {
+    color: #5a9b83;
+}
 .maillist .maillist-guidance span {
     font-size: 16px;
+    font-family: HuaweiSans;
     font-weight: bold;
     line-height: 26px;
+    opacity: .7;
 }
 .maillist .maillist-guidance .step-left .step-left-box p,
 .maillist .maillist-guidance .step-right .step-right-box p {
@@ -161,10 +168,10 @@
 }
 
 @media screen and (min-width: 995px) {
-    .isPC {
+    .isPC.maillist {
         display: block;
     }
-    .isH5 {
+    .isH5.maillist {
         display: none;
     }
     .maillist .maillist-title h2 {
@@ -186,7 +193,7 @@
         font-size: 24px;
         font-family: HuaweiSans;
         font-weight: normal;
-        margin: 60px 0 40px;
+        margin: 100px 0 73px;
     }
     .maillist .maillist-title img {
         max-width: 1108px;
@@ -233,7 +240,10 @@
         font-size: 14px;
         font-weight: normal;
         font-family: HuaweiSansLight;
-        padding: 0 25px;
+        /*padding: 0 25px;*/
+    }
+    .maillist .maillist-slack ul {
+        list-style-type: none;
     }
 }
 @media screen and (max-width: 768px) {
