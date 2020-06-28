@@ -1,7 +1,6 @@
 +++
 title = "Huawei Announces the Open Sourcing of Its Data Virtualization Engine HetuEngine"
 date = "2019-11-19"
-tags = ["Huawei", "openHetu", "Open Source", "HetuEngine"]
 categories = ["Announcement"]
 banner = "/news/2019-11-19-openHetu-Announced-02.jpg"
 author = "Huawei"

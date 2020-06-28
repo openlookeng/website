@@ -128,7 +128,7 @@ paginate = 10
 [[languages.zh-cn.menu.main]]
     identifier="documentation"
     name = "文档"
-    url  = "/zh-cn/docs/example/collapsed.html"
+    url  = "/zh-cn/docs.html"
     weight = 2
 
 [[languages.zh-cn.menu.main]]
@@ -145,16 +145,16 @@ paginate = 10
     parent = 'community'
 
 [[languages.zh-cn.menu.main]]
-    identifier = "who_we_are"
+    identifier = "who-we-are"
     name = "团队"
-    url  = "/who_we_are.html"
+    url  = "/zh-cn/who-we-are.html"
     weight = 2
     parent = 'community'
 
 [[languages.zh-cn.menu.main]]
     identifier = "communication"
     name = "交流"
-    url  = "/communication.html"
+    url  = "/zh-cn/communication.html"
     weight = 3
     parent = 'community'
 
@@ -188,21 +188,21 @@ paginate = 10
 [[languages.zh-cn.menu.main]]
     identifier = "events"
     name = "活动"
-    url  = "/event.html"
+    url  = "/zh-cn/event.html"
     weight = 1
     parent = 'newsroom'
 
 [[languages.zh-cn.menu.main]]
     identifier = "news"
     name = "新闻"
-    url  = "/news.html"
+    url  = "/zh-cn/news.html"
     weight = 2
     parent = 'newsroom'
 
     [[languages.zh-cn.menu.main]]
     identifier = "blog"
     name = "博客"
-    url  = "/blog.html"
+    url  = "/zh-cn/blog.html"
     weight = 3
     parent = 'newsroom'
 

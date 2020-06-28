@@ -1,7 +1,6 @@
 +++
 title = "Huawei will open source data virtualization engine hetuengine next year to further improve big data development ecology"
 date = "2020-04-06"
-tags = ["data“, ”data source“, ”HUAWEI“, “Isomerism”, “Open Source"]
 categories = ["Announcement"]
 banner = "/news/2020-04-06-huawei-will-open-source-data-virtualization-engine-hetuengine-next-year-to-further-improve-big-data-development-ecology-01.jpg"
 author = ""
