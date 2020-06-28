@@ -1,5 +1,6 @@
 +++
-title = "foundation"
-foundation_title = "Meet our Team"
+title = "who-we-are"
+foundation_title = "认识团队"
 +++
+
 

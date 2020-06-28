@@ -17,7 +17,7 @@
             <div class="foundation-content">
                 <div class="foundation-top">
                     <h1>{{ .Params.foundation_title}}</h1>
-                    <img src="img/foundation/banner.png" alt="" class="foundation-banner">
+                    <img src="{{ "img/foundation/banner.png" | relURL}}"  alt="" class="foundation-banner">
                 </div>
                 <div class="foundation-tabs-content">
                     <ul class="foundation-tabs">
@@ -39,7 +39,7 @@
                                 <ul class="pmc-list">
                                     {{ range .Params.item }}
                                     <li class="pmc-item">
-                                        <img src="{{ .avatar }}" class="avatar">
+                                        <img src="{{ .avatar | relURL }}" class="avatar">
                                         <div class="desc">
                                             <h4 class="desc-title">{{ .title }}</h4>
                                             <p class="desc-range">{{ .range }}</p>
