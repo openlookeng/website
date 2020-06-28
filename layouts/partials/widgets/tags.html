@@ -3,13 +3,13 @@
 {{ if not (eq (len .Site.Taxonomies.tags) 0) }}
 <div class="panel sidebar-menu">
     <h3 class="post-blog">
-        <a href="#">
-            <img src="img/blogs/Style.png" alt="edit">
+        <a href={{ i18n "BLOG_LINK"}} >
+            <img src="{{ "img/blogs/Style.png" | relURL}}" alt="edit">
             {{ i18n "MAIN_POSTBLOG_SOURCE"}}
         </a>
     </h3>
     <div class="panel-heading">
-        <h3 class="panel-title">{{ i18n "tagsTitle" }}</h3>
+        <h3 class="panel-title">{{ i18n "SIDEBAR_TAG" }}</h3>
     </div>
 
     <div class="panel-body">

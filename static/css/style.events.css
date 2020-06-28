@@ -36,6 +36,7 @@
     font-size: 14px;
     font-family: HuaweiSansLight;
     line-height: 26px;
+    color: rgba(0, 0, 0, .7);
 }
 .event-list .event-content .event-box span {
     width: 68px;
@@ -47,6 +48,7 @@
     position: absolute;
     left: -150px;
     top: 5px;
+    color: rgba(0, 0, 0, .7);
 }
 @media screen and (min-width: 995px){
     .event-list h3 {

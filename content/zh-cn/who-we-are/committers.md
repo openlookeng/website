@@ -6,7 +6,8 @@ small_title = "Committers"
 [[item]]
     title = "Ken Zhang"
     avatar = "img/foundation/KenZhang.png"
-    range = "Ken领导和推动分析平台实验室，监督和指导所有组件领域的成员，以确保基准。Ken在IBM Watson Health、Thomson Reuters Open Platform等公司担任架构师，拥有20年的尖端行业经验。他目前在多伦多、深圳、成都、班加罗尔和都柏林的研发成员提供领导和指导，"
+    range = "R&D Analytics Platform Lab Director for various Research teams across the Globe"
+    content = "Ken领导和推动分析平台实验室，监督和指导所有组件领域的成员，以确保基准。Ken在IBM Watson Health、Thomson Reuters Open Platform等公司担任架构师，拥有20年的尖端行业经验。他目前在多伦多、深圳、成都、班加罗尔和都柏林的研发成员提供领导和指导。"
 
 [[item]]
     title = "Micheal Li"
@@ -17,12 +18,14 @@ small_title = "Committers"
 [[item]]
     title = "Karmveer Singh"
     avatar = "img/foundation/KarmveerSingh.png"
-    range = "Karmveer在位于Seattle、Vancouver、Toronto的AWS、Amazon拥有10年的前沿经验。在华为之前最著名的项目是AWS S3 Select的内存管理，用于处理AWS S3中删除请求的磁盘IO优化，亚马逊网站上促销数据的分布式预计算框架。"
-    
+    range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
+    content = "Karmveer在位于Seattle、Vancouver、Toronto的AWS、Amazon拥有10年的前沿经验。在华为之前最著名的项目是AWS S3 Select的内存管理，用于处理AWS S3中删除请求的磁盘IO优化，亚马逊网站上促销数据的分布式预计算框架。"
+
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
-    range = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
+    range = "Chief Architect at Bangalore Research Centre, Committer of Apache CarbonData project"
+    content = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
 
 [[item]]
     title = "Haochen Ding"
@@ -56,9 +59,5 @@ small_title = "Committers"
 
 Committer的责任是评审和批准开发人员所做的提交。
 
-要求
-· 在openLooKeng中担任开发人员至少3个月
-· 至少参加过6次PR评论，成为主要评论者
-· 审查或合并至少30个PR
-· 熟悉项目
+
 

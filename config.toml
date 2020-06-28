@@ -179,8 +179,8 @@ paginate = 10
     parent = 'sourcecode'
 
 [[languages.zh-cn.menu.main]]
-    identifier = "github"
-    name = "Github"
+    identifier = "gitHub"
+    name = "GitHub"
     url = "https://github.com/openlookeng"
     weight = 2
     parent = 'sourcecode'
@@ -188,16 +188,17 @@ paginate = 10
 [[languages.zh-cn.menu.main]]
     identifier = "events"
     name = "活动"
-    url  = "/zh-cn/event.html"
-    weight = 1
+    url  = "/zh-cn/events.html"
+    weight = 2
     parent = 'newsroom'
 
 [[languages.zh-cn.menu.main]]
     identifier = "news"
     name = "新闻"
     url  = "/zh-cn/news.html"
-    weight = 2
+    weight = 1
     parent = 'newsroom'
+
 
     [[languages.zh-cn.menu.main]]
     identifier = "blog"
@@ -279,11 +280,11 @@ paginate = 10
 
 [params.copyright]
     enable = true
-    text = "<a href=\"/trademark.html\">Trademark</a><a href=\"/privacypolicy.html\">Privacy</a><a href=\"/legalnotice.html\">Legal</a><br>Licensed under the<a href=\"http://www.apache.org/licenses/LICENSE-2.0\">Apache License Version 2.0</a><br>Copyright ©2020 openLooKeng. All rights reserved.&nbsp;&nbsp;"
+    text = "<a href=\"/privacypolicy.html\">Privacy</a><a href=\"/legalnotice.html\">Legal</a><br>Licensed under the<a href=\"http://www.apache.org/licenses/LICENSE-2.0\">Apache License Version 2.0</a><br>Copyright ©2020 openLooKeng. All rights reserved.&nbsp;&nbsp;"
 
 [languages.zh.params.copyright]
     enable = true
-    text = "<a href=\"/zh-cn/trademark.html\">商标</a>&nbsp;&nbsp;<a href=\"/zh-cn/legalnotice.html\">法律声明</a>&nbsp;&nbsp;<a href=\"/zh-cn/privacypolicy.html\">隐私政策</a><br>版权所有 ©2020 openLooKeng 保留一切权利 "
+    text = "<a href=\"/zh-cn/legalnotice.html\">法律声明</a>&nbsp;&nbsp;<a href=\"/zh-cn/privacypolicy.html\">隐私政策</a><br>版权所有 ©2020 openLooKeng 保留一切权利 "
 
 [markup.goldmark.renderer]
 unsafe= true
