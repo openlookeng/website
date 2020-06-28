@@ -1,5 +1,13 @@
-Heuristic Indexer
-============
++++
+bookCollapseSection = "true"
+weight = 6
+bookToc = false
+title = "Heuristic Indexer"
++++
+
+
+# Heuristic Indexer
+
 
 - [Heuristic Indexer](indexer/overview.md)
 

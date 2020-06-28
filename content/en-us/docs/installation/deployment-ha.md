@@ -1,15 +1,18 @@
-Deploying openLooKeng with High Availability(HA)
-============================
++++
+
+weight = 8
+title = "Deploying openLooKeng with High Availability(HA)"
++++
+
+# Deploying openLooKeng with High Availability(HA)
 
 The openLooKeng HA solves single point failure of coordinators. Users can submit queries to any coordinator to balance the workloads.
 
-Installing HA
--------------
+## Installing HA
 openLooKeng with HA is required to be installed with minimum of 2 coordinators in the cluster.
 Please follow [openLooKeng Manual Setup](deployment.md) or [openLooKeng Auto Setup](deployment-auto.md) for basic installation.
 
-Configuring HA
---------------
+## Configuring HA
 
 - Create an ``etc\state-store.properties`` file inside both coordinators and workers installation directories.
 

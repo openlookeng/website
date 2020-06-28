@@ -1,5 +1,11 @@
-Types
-=====
++++
+
+weight = 4
+
+title = "Types"
++++
+
+# Types
 
 The `Type` interface in openLooKeng is used to implement a type in the SQL language. openLooKeng ships with a number of built-in types, like `VarcharType` and `BigintType`. The `ParametricType` interface is used to provide type
 parameters for types, to allow types like `VARCHAR(10)` or `DECIMAL(22, 5)`. A `Plugin` can provide new `Type` objects by returning them from `getTypes()` and new `ParametricType` objects by returning them from `getParametricTypes()`.

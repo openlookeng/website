@@ -1,5 +1,11 @@
-Web Interface
-=============
++++
+
+weight = 1
+title = "Web Interface"
++++
+
+# Web Interface
+
 
 openLooKeng provides a web interface for monitoring and managing queries. The web interface is accessible on the openLooKeng coordinator via HTTP, using the HTTP port number specified in the coordinator  `config_properties`.
 

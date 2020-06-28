@@ -1,10 +1,14 @@
-SQL Migration Tool
-==================
++++
+
+weight = 2
+titile = "SQL Migration Tool"
++++
+
+# SQL Migration Tool
 
 SQL Migration tool helps user to transform SQL Syntax to openLooKeng compatible SQL syntax. Currently, only Hive SQL syntax is supported.
 
-Check list of  Hive Statements:
-------------------------------
+## Check list of  Hive Statements:
 
 Below Hive statements are fully supported:
 
@@ -95,8 +99,7 @@ Below Hive statements are not supported, because of feature differences:
 
 
 
-Usage of SQL Migration Tool
----------------------------
+## Usage of SQL Migration Tool
 
 **Interactive mode**
 
@@ -201,7 +204,6 @@ Currently, the config file only supports one property `convertDecimalLiteralsAsD
 
 
 
-Limitations
------------
+## Limitations
 
 Converting the UDFs and functions in SQL statements are not supported.

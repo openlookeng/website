@@ -1,15 +1,19 @@
-SPI Overview
-============
++++
+
+weight = 1
+
+title = "SPI Overview"
++++
+
+# SPI Overview
 
 When you implement a new openLooKeng plugin, you implement interfaces and override methods defined by the SPI. Plugins can provide additional [connectors](connectors.md), [types](./types), [functions](functions.md) and [system-access-control](system-access-control.md). In particular, connectors are the source of all data for queries in openLooKeng: they back each catalog available to openLooKeng.
 
-Code
-----
+## Code
 
 The SPI source can be found in the `presto-spi` directory in the root of the openLooKeng source tree.
 
-Plugin Metadata
----------------
+## Plugin Metadata
 
 Each plugin identifies an entry point: an implementation of the `Plugin`interface. This class name is provided to openLooKeng via the standard Java `ServiceLoader` interface: the classpath contains a resource file named `io.prestosql.spi.Plugin` in the `META-INF/services` directory. The content of this file is a single line listing the name of the plugin class:
 
@@ -23,13 +27,11 @@ For a built-in plugin that is included in the openLooKeng source code, this reso
 <packaging>hetu-plugin</packaging>
 ```
 
-Plugin
-------
+## Plugin
 
 The `Plugin` interface is a good starting place for developers looking to understand the openLooKeng SPI. It contains access methods to retrieve various classes that a Plugin can provide. For example, the `getConnectorFactories()` method is a top-level function that openLooKeng calls to retrieve a `ConnectorFactory` when openLooKeng is ready to create an instance of a connector to back a catalog. There are similar methods for `Type`, `ParametricType`, `Function`, `SystemAccessControl`, and `EventListenerFactory` objects.
 
-Building Plugins via Maven
---------------------------
+## Building Plugins via Maven
 
 Plugins depend on the SPI from openLooKeng:
 
@@ -49,8 +51,7 @@ All other dependencies are based on what the plugin needs for its own implementa
 
 For an example `pom.xml` file, see the example HTTP connector in the `presto-example-http` directory in the root of the openLooKeng source tree.
 
-Deploying a Custom Plugin
--------------------------
+## Deploying a Custom Plugin
 
 In order to add a custom plugin to a openLooKeng installation, create a directory for that plugin in the openLooKeng plugin directory and add all the necessary jars for the plugin to that directory. For example, for a plugin called `my-functions`, you would create a directory `my-functions` in the openLooKeng plugin directory and add the relevant jars to that directory.
 

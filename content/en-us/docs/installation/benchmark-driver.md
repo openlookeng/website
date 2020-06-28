@@ -1,12 +1,16 @@
-Benchmark Driver
-================
++++
+
+weight = 6
+title = "Benchmark Driver"
++++
+
+# Benchmark Driver
 
 The benchmark driver can be used to measure the performance of queries in a openLooKeng cluster. We use it to continuously measure the performance of trunk.
 
 Download :[presto-benchmark-driver-316-executable.jar](https://repo1.maven.org/maven2/io/hetu/core/presto-benchmark-driver/316/presto-benchmark-driver-316-executable.jar), rename it to `presto-benchmark-driver`, then make it executable with `chmod +x`.
 
-Suites
-------
+## Suites
 
 Create a `suite.json` file:
 
@@ -30,13 +34,11 @@ Create a `suite.json` file:
 This example contains two suites `file_formats` and `legacy_orc`. The `file_formats` suite will run queries with names matching the regular expression `single_.*` or `tpch_.*` in all schemas matching the regular
 expression `tpch_sf.*_.*_.*?`. The `legacy_orc` suite adds a session property to disable the optimized ORC reader and only runs in the`tpch_sf.*_orc_.*?` schema.
 
-Queries
--------
+## Queries
 
 The SQL files are contained in a directory named `sql` and must have the `.sql` file extension. The name of the query is the name of the file without the extension.
 
-Output
-------
+## Output
 
 The benchmark driver will measure the wall time, total CPU time used by all openLooKeng processes and the CPU time used by the query. For each timing, the driver reports median, mean and standard deviation of the query runs. The difference between process and query CPU times is the query overhead, which is normally from garbage collections. The following is the output from the `file_formats` suite above:
 
@@ -73,7 +75,6 @@ FROM lineitem
 
 This will cause the driver to output these values for each run of this query.
 
-CLI Arguments
--------------
+## CLI Arguments
 
 The `presto-benchmark-driver` program contains many CLI arguments to control which suites and queries to run, the number of warm-up runs and the number of measurement runs. All of the command line arguments can be seen with the `--help` option.

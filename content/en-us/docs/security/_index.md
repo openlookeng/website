@@ -1,5 +1,13 @@
-Security
-========
++++
+bookCollapseSection = "true"
+weight = 3
+bookToc = false
+title = "Security"
++++
+
+
+# Security
+
 
 - [server](security/server.md)
 - [cli](security/cli.md)

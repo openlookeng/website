@@ -1,5 +1,10 @@
-Web Connector for Tableau
-=========================
++++
+
+weight = 7
+title = "Web Connector for Tableau"
++++
+
+# Web Connector for Tableau
 
 The openLooKeng web connector for Tableau lets users run queries from Tableau against openLooKeng. It implements the functions in the [Tableau web connector API](https://community.tableau.com/community/developers/web-data-connectors).
 

@@ -1,13 +1,18 @@
-Deploying openLooKeng Automatically
-============================
++++
+
+weight = 2
+title = "Deploying openLooKeng Automatically"
++++
+
+# Deploying openLooKeng Automatically
+
 
 
 In addition to the manual deployment of openLooKeng Sever, you can follow below guide to complete deployment faster and easier. The script is friendly to most of linux OS. However, to Ubuntu, you need to manually install the following dependencies:
 
 > sshpass1.06 or above
 
-Deploying openLooKeng on a Single Node
--------------------------------
+## Deploying openLooKeng on a Single Node
 
 Execute below command can help you download the necessary packages and deploy openLooKeng server in one-click:
 
@@ -37,8 +42,7 @@ Execute below command to start openLooKeng Command Line client:
 
 
 
-Deploying openLooKeng to Cluster online
---------------------------------
+## Deploying openLooKeng to Cluster online
 
 Execute below command to install openLooKeng cluster:
 
@@ -113,8 +117,7 @@ or:
 
 
 
-Upgrade openLooKeng Service
---------------------
+## Upgrade openLooKeng Service
 
 Execute below command to Upgrade openLooKeng Service:
 
@@ -136,8 +139,7 @@ or:
 bash <(wget -qO- http://openlookeng.io/install.sh) --list
 ```
 
-Deploying Configuration to openLooKeng Cluster
----------------------------------------
+## Deploying Configuration to openLooKeng Cluster
 
 Modify configuration file (/home/openlkadmin/.openlkadmin/cluster\_config\_info) and then
 execute below command to deploy the configurations to openLooKeng cluster:
@@ -166,8 +168,7 @@ http-server.http.port=8090
 exchange.client-threads=8
 ```
 
-Uninstall openLooKeng Service
-----------------------
+## Uninstall openLooKeng Service
 
 It is very easy and straight forward to uninstall openLooKeng Service, simply run below command:
 
@@ -181,8 +182,7 @@ This will uninstall openLooKeng Service by removing directory `/opt/openlookeng`
 sh /opt/openlookeng/bin/uninstall.sh --all
 ```
 
-Deploying openLooKeng to Cluster offline
----------------------------------
+## Deploying openLooKeng to Cluster offline
 
 If you can't access the download URL from the machine where you want to install openLooKeng, you can download offline tarball and unpack to /opt directory.
 Execute below command to deploy single node cluster:
@@ -207,8 +207,7 @@ execute the below command to get help on all available options:
 sh /opt/openlookeng/bin/install_offline.sh --help
 ```
 
-Adding Node to Cluster 
-----------------------
+## Adding Node to Cluster 
 
 If you want to add node to make the cluster bigger,execute the below command:
 
@@ -233,8 +232,7 @@ sh /opt/openlookeng/bin/add_cluster_node.sh --file <add_nodes_file_path>
 
 If there are multiple nodes,separated by commas(,).
 
-Removing Node to Cluster 
-----------------------
+## Removing Node to Cluster 
 
 If you want to remove node to make the cluster smaller,execute the below command:
 
@@ -259,7 +257,6 @@ sh /opt/openlookeng/bin/remove_cluster_node.sh --file <remove_nodes_file_path>
 
 If there are multiple nodes, separate them with commas(,).
 
-See Also
---------
+## See Also
 
 [deployment](deployment.md)

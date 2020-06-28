@@ -1,5 +1,10 @@
-JDBC Driver
-===========
++++
+
+weight = 4
+title = "JDBC Driver"
++++
+
+# JDBC Driver
 
 openLooKeng can be accessed from Java using the JDBC driver. Add the jar to the classpath of your Java application.
 
@@ -16,13 +21,11 @@ The driver is also available from Maven Central:
 
 
 
-Driver Name
------------
+## Driver Name
 
 The driver class name is `io.hetu.core.jdbc.OpenLooKengDriver`. Most users will not need this information as drivers are loaded automatically.
 
-Connection
-----------
+## Connection
 
 The following JDBC URL formats are supported:
 
@@ -45,8 +48,7 @@ String url = "jdbc:lk://example.net:8080/hive/sales";
 Connection connection = DriverManager.getConnection(url, "test", null);
 ```
 
-Connection Parameters
----------------------
+## Connection Parameters
 
 The driver supports various parameters that may be set as URL parameters or as properties passed to `DriverManager`. Both of the following examples are equivalent:
 
@@ -66,8 +68,7 @@ Connection connection = DriverManager.getConnection(url);
 
 These methods may be mixed; some parameters may be specified in the URL while others are specified using properties. However, the same parameter may not be specified using both methods.
 
-Parameter Reference
--------------------
+## Parameter Reference
 
 | Name                              | Description                                                  |
 | :-------------------------------- | :----------------------------------------------------------- |

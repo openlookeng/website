@@ -1,5 +1,11 @@
-Distributed sort
-================
++++
+
+weight = 7
+title = "Distributed sort"
++++
+
+# Distributed sort
+
 
 Distributed sort allows to sort data which exceeds `query.max-memory-per-node`. Distributed sort is enabled via `distributed_sort` session property or `distributed-sort` configuration property set in `etc/config.properties` of the coordinator. Distributed sort is enabled by default.
 

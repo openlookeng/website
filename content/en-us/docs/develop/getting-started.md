@@ -1,3 +1,10 @@
++++
+
+weight = 1
+
+title = "Getting Started"
++++
+
 # Getting Started
 
 ## Requirements

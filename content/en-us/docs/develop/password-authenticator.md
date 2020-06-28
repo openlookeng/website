@@ -1,10 +1,15 @@
-Password Authenticator
-======================
++++
+
+weight = 7
+
+title = "Password Authenticator"
++++
+
+# Password Authenticator
 
 openLooKeng supports authentication with a username and password via a custom password authenticator that validates the credentials and creates a principal.
 
-Implementation
---------------
+## Implementation
 
 `PasswordAuthenticatorFactory` is responsible for creating a `PasswordAuthenticator` instance. It also defines the name of this authenticator which is used by the administrator in a openLooKeng configuration.
 
@@ -12,8 +17,7 @@ Implementation
 
 The implementation of `PasswordAuthenticatorFactory` must be wrapped as a plugin and installed on the openLooKeng cluster.
 
-Configuration
--------------
+## Configuration
 
 After a plugin that implements `PasswordAuthenticatorFactory` has been installed on the coordinator, it is configured using an `etc/password-authenticator.properties` file. All of the properties other than `access-control.name` are specific to the `PasswordAuthenticatorFactory` implementation.
 

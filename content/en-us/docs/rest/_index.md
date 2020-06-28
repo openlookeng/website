@@ -1,5 +1,13 @@
-openLooKeng REST API
-=============
++++
+bookCollapseSection = "true"
+weight = 13
+bookToc = false
+title = "openLooKeng REST API"
++++
+
+
+# openLooKeng REST API
+
 
 This chapter defines the openLooKeng REST API. openLooKeng uses REST for all
 communication within a openLooKeng installation. JSON-based REST services
@@ -14,8 +22,8 @@ offered by openLooKeng as well as example requests and responses.
 [statement](rest/statement.md)
 [task](rest/task.md)
 
-REST API Overview
------------------
+## REST API Overview
+
 
 In openLooKeng, everything is exposed as a REST API in openLooKeng and HTTP is the
 method by which all component communicate with each other.

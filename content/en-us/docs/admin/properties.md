@@ -1,11 +1,15 @@
-Properties Reference
-====================
++++
+
+weight = 3
+title = "Properties Reference"
++++
+
+# Properties Reference
 
 This section describes the most important config properties that may be used to tune openLooKeng or alter its behavior when required.
 
 
-General Properties
-------------------
+## General Properties
 
 ### `join-distribution-type`
 
@@ -22,8 +26,7 @@ General Properties
 >
 > This property enables redistribution of data before writing. This can eliminate the performance impact of data skew when writing by hashing it across nodes in the cluster. It can be disabled when it is known that the output data set is not skewed in order to avoid the overhead of hashing and redistributing all the data across the network. This can also be specified on a per-query basis using the `redistribute_writes` session property.
 
-Memory Management Properties
-----------------------------
+## Memory Management Properties
 
 ### `query.max-memory-per-node`
 
@@ -60,8 +63,7 @@ Memory Management Properties
 >
 > This is the amount of memory set aside as headroom/buffer in the JVM heap for allocations that are not tracked by openLooKeng.
 
-Spilling Properties
--------------------
+## Spilling Properties
 
 ### `experimental.spill-enabled`
 
@@ -165,8 +167,7 @@ Spilling Properties
 >
 > Enables using a randomly generated secret key (per spill file) to encrypt and decrypt data spilled to disk
 
-Exchange Properties
--------------------
+## Exchange Properties
 
 Exchanges transfer data between openLooKeng nodes for different stages of a query. Adjusting these properties may help to resolve inter-node communication issues or improve network utilization.
 
@@ -212,8 +213,7 @@ Exchanges transfer data between openLooKeng nodes for different stages of a quer
 >
 > Output buffer size for task data that is waiting to be pulled by upstream tasks. If the task output is hash partitioned, then the buffer will be shared across all of the partitioned consumers. Increasing this value may improve network throughput for data transferred between stages if the network has high latency or if there are many nodes in the cluster.
 
-Task Properties
----------------
+## Task Properties
 
 ### `task.concurrency`
 
@@ -277,8 +277,7 @@ Task Properties
 >
 > The number of concurrent writer threads per worker per query. Increasing this value may increase write speed, especially when a query is not I/O bound and can take advantage of additional CPU for parallel writes (some connectors can be bottlenecked on CPU when writing due to compression or other factors). Setting this too high may cause the cluster to become overloaded due to excessive resource utilization. This can also be specified on a per-query basis using the `task_writer_count` session property.
 
-Node Scheduler Properties
--------------------------
+## Node Scheduler Properties
 
 ### `node-scheduler.max-splits-per-node`
 
@@ -329,8 +328,7 @@ Node Scheduler Properties
 >
 > This property enables SplitCacheAwareNodeSelector. Split cache aware node selector keeps track of all splits and the nodes on which splits were previously scheduled. Split cache map is used in subsequent query execution to schedule the tasks on the same nodes. However, split cache map would be  effective only after cache table query is executed.
 
-Optimizer Properties
---------------------
+## Optimizer Properties
 
 ### `optimizer.dictionary-aggregation`
 
@@ -409,8 +407,7 @@ Optimizer Properties
 > 
 > The number of possible join orders scales factorially with the number of relations, so increasing this value can cause serious performance issues.
 
-Regular Expression Function Properties
---------------------------------------
+## Regular Expression Function Properties
 
 The following properties allow tuning the [regexp](../functions/regexp).
 
@@ -438,8 +435,7 @@ The following properties allow tuning the [regexp](../functions/regexp).
 >
 > The number of times that RE2J will retry the DFA algorithm when it reaches a states limit before using the slower, but less memory intensive NFA algorithm for all future inputs for that search. If hitting the limit for a given input row is likely to be an outlier, you want to be able to process subsequent rows using the faster DFA algorithm. If you are likely to hit the limit on matches for subsequent rows as well, you want to use the correct algorithm from the beginning so as not to waste time and resources. The more rows you are processing, the larger this value should be.
 
-Heuristic Index Properties
---------------------------
+## Heuristic Index Properties
 
 Heuristic index is external index module that which can be applied to filter to out rows at the connector level. Bitmap, Bloom, MinMaxIndex are list of indexes provided by openLooKeng. As of now, heuristic index is used only in hive connector and specifically ORC format.
 

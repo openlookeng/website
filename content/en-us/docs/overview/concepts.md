@@ -1,8 +1,12 @@
-openLooKeng Concepts
-=============
++++
 
-Server Types
-------------
+weight = 2
+title = "openLooKeng Concepts"
++++
+
+# openLooKeng Concepts
+
+## Server Types
 
 There are two types of openLooKeng servers: coordinators and workers. The following section explains the difference between the two.
 
@@ -24,8 +28,7 @@ When a openLooKeng worker process starts up, it advertises itself to the discove
 
 Workers communicate with other workers and openLooKeng coordinators using a REST API.
 
-Data Sources
-------------
+## Data Sources
 
 Throughout this documentation, you\'ll read terms such as connector, catalog, schema, and table. These fundamental concepts cover openLooKeng\'s model of a particular data source and are described in the following section.
 
@@ -58,8 +61,7 @@ A table is a set of unordered rows which are organized into named columns with t
 
 
 
-Query Execution Model
----------------------
+## Query Execution Model
 
 openLooKeng executes SQL statements and turns these statements into queries that are executed across a distributed cluster of coordinator and workers.
 

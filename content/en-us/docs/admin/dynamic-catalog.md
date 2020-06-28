@@ -1,3 +1,9 @@
++++
+
+weight = 8
+title = "Dynamic Catalog"
++++
+
 # Dynamic Catalog
 
 This section introduces the dynamic catalog feature of openLooKeng. Normally openLooKeng admins add data source to the engine by putting a catalog profile (e.g. `hive.properties`) in the connector directory (`etc/catalog`). Whenever there is a requirement to add, update or delete a catalog, all the coordinators and workers need to be restarted.

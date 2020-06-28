@@ -1,5 +1,13 @@
-Functions and Operators
-=======================
++++
+bookCollapseSection = "true"
+weight = 8
+bookToc = false
+title = "Functions and Operators"
++++
+
+
+# Functions and Operators
+
 
 - [logical](functions/logical.md)
 - [comparison](functions/comparison.md)

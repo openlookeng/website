@@ -1,8 +1,13 @@
-Functions
-=========
++++
 
-Plugin Implementation
----------------------
+weight = 5
+
+title = "Functions"
++++
+
+# Functions
+
+## Plugin Implementation
 
 The function framework is used to implement SQL functions. openLooKeng includes a number of built-in functions. In order to implement new functions, you can write a plugin that returns one more more functions from
 `getFunctions()`:
@@ -29,8 +34,7 @@ Note that the `ImmutableSet` class is a utility class from Guava. The `getFuncti
 
 For a full example in the codebase, see either the `presto-ml` module for machine learning functions or the `presto-teradata-functions` module for Teradata-compatible functions, both in the root of the openLooKeng source.
 
-Scalar Function Implementation
-------------------------------
+## Scalar Function Implementation
 
 The function framework uses annotations to indicate relevant information about functions, including name, description, return type and parameter types. Below is a sample function which implements `is_null`:
 
@@ -59,8 +63,7 @@ essentially a wrapper around `byte[]`, rather than `String` for its native conta
     The `@SqlNullable` annotation indicates that the argument may be `NULL`. Without this annotation the framework assumes that all functions return `NULL` if any of their arguments are `NULL`. When
     working with a `Type` that has a primitive native container type, such as `BigintType`, use the object wrapper for the native container type when using `@SqlNullable`. The method must be annotated with `@SqlNullable` if it can return `NULL` when the arguments are non-null.
 
-Parametric Scalar Functions
----------------------------
+## Parametric Scalar Functions
 
 Scalar functions that have type parameters have some additional complexity. To make our previous example work with any type we need the following:
 
@@ -125,8 +128,7 @@ public final class IsEqualOrNullFunction
 }
 ```
 
-Another Scalar Function Example
--------------------------------
+## Another Scalar Function Example
 
 The `lowercaser` function takes a single `VARCHAR` argument and returns a `VARCHAR`, which is the argument converted to lower case:
 
@@ -147,8 +149,7 @@ public class ExampleStringFunction
 Note that for most common string functions, including converting a string to lower case, the Slice library also provides implementations that work directly on the underlying `byte[]`, which have much better
 performance. This function has no `@SqlNullable` annotations, meaning that if the argument is `NULL`, the result will automatically be `NULL` (the function will not be called).
 
-Aggregation Function Implementation
------------------------------------
+## Aggregation Function Implementation
 
 Aggregation functions use a similar framework to scalar functions, but are a bit more complex.
 

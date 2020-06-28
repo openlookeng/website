@@ -1,5 +1,11 @@
-Event Listener
-==============
++++
+
+weight = 8
+
+title = "Event Listener"
++++
+
+# Event Listener
 
 openLooKeng supports custom event listeners that are invoked for the following
 events:
@@ -10,16 +16,14 @@ events:
 
 This functionality enables development of custom logging, debugging and performance analysis plugins. In a openLooKeng cluster, only a single event listener plugin can be active at a time .
 
-Implementation
---------------
+## Implementation
 
 `EventListenerFactory` is responsible for creating an `EventListener` instance. It also defines an `EventListener` name which is used by the administrator in a openLooKeng configuration. Implementations of
 `EventListener` implement methods for the event types they are interested in handling.
 
 The implementation of `EventListener` and `EventListenerFactory` must be wrapped as a plugin and installed on the openLooKeng cluster.
 
-Configuration
--------------
+## Configuration
 
 After a plugin that implements `EventListener` and `EventListenerFactory` has been installed on the coordinator, it is configured using an `etc/event-listener.properties` file. All of the
 properties other than `event-listener.name` are specific to the `EventListener` implementation.

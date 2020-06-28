@@ -1,17 +1,20 @@
-Deploying openLooKeng Manually
-=======================
++++
+
+weight = 1
+title = "Deploying openLooKeng Manually"
++++
+
+# Deploying openLooKeng Manually
 
 This is a Manual deployment method, you can also use automatic deployment via script. (see [deployment-auto](./deployment-auto))
 
-Installing openLooKeng
----------------
+## Installing openLooKeng
 
 Download the openLooKeng server tarball, and unpack it. The tarball will contain a single top-level directory, which we will call the *installation* directory.
 
 openLooKeng needs a *data* directory for storing logs, etc. We recommend creating a data directory outside of the installation directory, which allows it to be easily preserved when upgrading openLooKeng.
 
-Configuring openLooKeng
-----------------
+## Configuring openLooKeng
 
 Create an `etc` directory inside the installation directory. This will hold the following configuration:
 
@@ -142,8 +145,7 @@ connector.name=jmx
 
 See [connector](../connector.md) for more information about configuring connectors.
 
-Running openLooKeng
-------------
+## Running openLooKeng
 
 The installation directory contains the launcher script in `bin/launcher`. openLooKeng can be started as a daemon by running the following:
 
@@ -165,7 +167,6 @@ After launching, you can find the log files in `var/log`:
 -   `server.log`: This is the main log file used by openLooKeng. It will typically contain the relevant information if the server fails during initialization. It is automatically rotated and compressed.
 -   `http-request.log`: This is the HTTP request log which contains every HTTP request received by the server. It is automatically rotated and compressed.
 
-See Also
---------
+## See Also
 
 [deployment-auto](./deployment.md)

@@ -1,10 +1,15 @@
-Connectors
-==========
++++
+
+weight = 2
+
+title = "Connectors"
++++
+
+# Connectors
 
 Connectors are the source of all data for queries in openLooKeng. Even if your data source doesn\'t have underlying tables backing it, as long as you adapt your data source to the API expected by openLooKeng, you can write queries against this data.
 
-ConnectorFactory
-----------------
+## ConnectorFactory
 
 Instances of your connector are created by a `ConnectorFactory` instance which is created when openLooKeng calls `getConnectorFactory()` on the plugin.
 The connector factory is a simple interface responsible for creating an instance of a `Connector` object that returns instances of the following services:

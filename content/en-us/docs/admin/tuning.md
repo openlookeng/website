@@ -1,15 +1,19 @@
-Tuning openLooKeng
-===========
++++
+
+weight = 2
+title = "Tuning openLooKeng"
++++
+
+# Tuning openLooKeng
 
 The default openLooKeng settings should work well for most workloads. The following information may help you if your cluster is facing a specific performance problem.
 
-Config Properties
------------------
+## Config Properties
 
 See [properties](./properties).
 
-JVM Settings
-------------
+## JVM Settings
+
 
 The following can be helpful for diagnosing GC issues:
 

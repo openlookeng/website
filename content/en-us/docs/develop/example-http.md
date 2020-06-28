@@ -1,15 +1,19 @@
-Example HTTP Connector
-======================
++++
+
+weight = 3
+
+title = "Example HTTP Connector"
++++
+
+# Example HTTP Connector
 
 The Example HTTP connector has a simple goal: it reads comma-separated data over HTTP. For example, if you have a large amount of data in a CSV format, you can point the example HTTP connector at this data and write a SQL query to process it.
 
-Code
-----
+## Code
 
 The Example HTTP connector can be found in the `presto-example-http` directory in the root of the openLooKeng source tree.
 
-Plugin Implementation
----------------------
+## Plugin Implementation
 
 The plugin implementation in the Example HTTP connector looks very similar to other plugin implementations. Most of the implementation is devoted to handling optional configuration and the only function of interest is the following:
 
@@ -26,8 +30,7 @@ Note that the `ImmutableList` class is a utility class from Guava.
 As with all connectors, this plugin overrides the `getConnectorFactories()` method and returns an
 `ExampleConnectorFactory`.
 
-ConnectorFactory Implementation
--------------------------------
+## ConnectorFactory Implementation
 
 In openLooKeng, the primary object that handles the connection between openLooKeng and a particular type of data source is the `Connector` object, which are created using `ConnectorFactory`.
 

@@ -1,5 +1,11 @@
-Session Property Managers
-=========================
++++
+
+weight = 6
+title = "Session Property Managers"
++++
+
+
+# Session Property Managers
 
 Administrators can add session properties to control the behavior for subsets of their workload. These properties are defaults and can be overridden by users (if authorized to do so). Session properties can be
 used to control resource usage, enable or disable features, and change query characteristics. Session property managers are pluggable.
@@ -15,8 +21,7 @@ Change the value of `session-property-manager.config-file` to point to a JSON co
 
 This configuration file consists of a list of match rules, each of which specify a list of conditions that the query must meet, and a list of session properties that should be applied by default. All matching rules contribute to constructing a list of session properties. Rules are applied in the order they are specified. Rules specified later in the file override values for properties that have been previously encountered.
 
-Match Rules
------------
+## Match Rules
 
 -   `user` (optional): regex to match against user name.
 -   `source` (optional): regex to match against source string.
@@ -31,8 +36,8 @@ Match Rules
 -   `group` (optional): regex to match against the fully qualified name of the resource group the query is routed to.
 -   `sessionProperties`: map with string keys and values. Each entry is a system or catalog property name and corresponding value. Values must be specified as strings, no matter the actual data type.
 
-Example
--------
+## Example
+
 
 Consider the following set of requirements:
 

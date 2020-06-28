@@ -1,5 +1,11 @@
-System Access Control
-=====================
++++
+
+weight = 6
+
+title = "System Access Control"
++++
+
+# System Access Control
 
 openLooKeng separates the concept of the principal who authenticates to the coordinator from the username that is responsible for running queries.
 
@@ -7,8 +13,7 @@ When running the openLooKeng CLI, for example, the openLooKeng username can be s
 
 By default, the openLooKeng coordinator allows any principal to run queries as any openLooKeng user. In a secure environment, this is probably not desirable behavior and likely requires customization.
 
-Implementation
---------------
+## Implementation
 
 `SystemAccessControlFactory` is responsible for creating a `SystemAccessControl` instance. It also defines a `SystemAccessControl` name which is used by the administrator in a openLooKeng configuration.
 
@@ -20,8 +25,7 @@ Implementation
 
 The implementation of `SystemAccessControl` and `SystemAccessControlFactory` must be wrapped as a plugin and installed on the openLooKeng cluster.
 
-Configuration
--------------
+## Configuration
 
 After a plugin that implements `SystemAccessControl` and `SystemAccessControlFactory` has been installed on the coordinator, it is configured using an `etc/access-control.properties` file. All of the
 properties other than `access-control.name` are specific to the `SystemAccessControl` implementation.

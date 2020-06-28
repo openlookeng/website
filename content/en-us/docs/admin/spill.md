@@ -1,9 +1,13 @@
-Spill to Disk
-=============
++++
+
+weight = 4
+title = "Spill to Disk"
++++
+
+# Spill to Disk
 
 
-Overview
---------
+## Overview
 
 In the case of memory intensive operations, openLooKeng allows offloading intermediate operation results to disk. The goal of this mechanism is to enable execution of queries that require amounts of memory exceeding per query or per node limits.
 
@@ -11,8 +15,7 @@ The mechanism is similar to OS level page swapping. However, it is implemented o
 
 Properties related to spilling are described in `tuning-spilling`.
 
-Memory Management and Spill
----------------------------
+## Memory Management and Spill
 
 By default, openLooKeng kills queries if the memory requested by the query execution exceeds session properties `query_max_memory` or `query_max_memory_per_node`. This mechanism ensures fairness in allocation of memory to queries and prevents deadlock caused by memory allocation. It is efficient when there is a lot of small queries in the cluster, but leads to killing large queries that don\'t stay within the limits.
 
@@ -22,13 +25,12 @@ In practice, when the cluster is idle, and all memory is available, a memory int
 
 Please note that enabling spill-to-disk does not guarantee execution of all memory intensive queries. It is still possible that the query runner will fail to divide intermediate data into chunks small enough that every chunk fits into memory, leading to `Out of memory` errors while loading the data from disk.
 
-Revocable memory and reserved pool
-----------------------------------
+## Revocable memory and reserved pool
 
 Both reserved memory pool and revocable memory are designed to cope with low memory conditions. When user memory pool is exhausted then a single query will be promoted to a reserved pool. In such case only that query is allowed to progress thus reducing cluster concurrency. Revocable memory will try to prevent that by triggering spill. Reserved pool is of `query_max_memory_per_node` size. This means that when `query_max_memory_per_node` is large then user memory pool might be much smaller than `query_max_memory_per_node`. This will cause excessive spilling for queries that consume large amounts of memory per node. Such queries could finish much quicker when spill is disabled because they execute in reserved pool. In such situations we recommend to disable reserved memory pool via `experimental.reserved-pool-enabled` config property.
 
-Spill Disk Space
-----------------
+## Spill Disk Space
+
 
 Spilling intermediate results to disk and retrieving them back is expensive in terms of IO operations. Thus, queries that use spill likely become throttled by disk. To increase query performance it is recommended to provide multiple paths on separate local devices for spill (property `spiller-spill-path` in `tuning-spilling`).
 
@@ -37,20 +39,20 @@ saturation of the configured spill paths.
 
 openLooKeng treats spill paths as independent disks (see [JBOD](https://en.wikipedia.org/wiki/Non-RAID_drive_architectures#JBOD)), so there is no need to use RAID for spill.
 
-Spill Compression
------------------
+## Spill Compression
+
 
 When spill compression is enabled (`spill-compression-enabled` property in `tuning-spilling`), spilled pages will be compressed before being written to dis. Enabling this feature can reduce disk IO at the cost of extra CPU load to compress and decompress
 spilled pages.
 
-Spill Encryption
-----------------
+## Spill Encryption
+
 
 When spill encryption is enabled (`spill-encryption-enabled` property in `tuning-spilling`), spill contents will be encrypted with a randomly generated (per spill file) secret key.
 Enabling this will increase CPU load and reduce throughput of spilling to disk, but can protect spilled data from being recovered from spill files. Consider reducing the value of `experimental.memory-revoking-threshold` when spill encryption is enabled to account for the increase in latency of spilling.
 
-Supported Operations
---------------------
+## Supported Operations
+
 
 Not all operations support spilling to disk, and each handles spilling differently. Currently, the mechanism is implemented for the following operations.
 

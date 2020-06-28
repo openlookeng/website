@@ -1,3 +1,10 @@
++++
+
+weight = 9
+title = "Cluster Node Management"
++++
+
+
 # Cluster Node Management
 
 There can potentially be multiple nodes (coordinators and workers) in a openLooKeng cluster. Sometimes admin operations need to be performed on these nodes, for scaling or maintenance purposes.

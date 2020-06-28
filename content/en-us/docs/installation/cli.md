@@ -1,5 +1,10 @@
-Command Line Interface
-======================
++++
+
+weight = 3
+title = "Command Line Interface"
++++
+
+# Command Line Interface
 
 The openLooKeng CLI provides a terminal-based interactive shell for running queries. The CLI is a [self-executing](http://skife.org/java/unix/2011/06/20/really_executable_jars.html) JAR file, which means it acts like a normal UNIX executable.
 

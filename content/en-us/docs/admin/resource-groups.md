@@ -1,5 +1,11 @@
-Resource Groups
-===============
++++
+
+weight = 5
+title = "Resource Groups"
++++
+
+# Resource Groups
+
 
 Resource groups place limits on resource usage, and can enforce queueing policies on queries that run within them or divide their resources among sub-groups. A query belongs to a single resource group, and consumes resources from that group (and its ancestors). Except for the limit on queued queries, when a resource group runs out of a resource it does not cause running queries to fail; instead new queries become queued. A resource group may have sub-groups or may accept queries, but may not do both.
 
@@ -12,8 +18,8 @@ resource-groups.config-file=etc/resource-groups.json
 
 Change the value of `resource-groups.config-file` to point to a JSON config file, which can be an absolute path, or a path relative to the openLooKeng data directory.
 
-Resource Group Properties
--------------------------
+## Resource Group Properties
+
 
 -   `name` (required): name of the group. May be a template (see below).
 -   `maxQueued` (required): maximum number of queued queries. Once this limit is reached new queries will be rejected.
@@ -30,8 +36,7 @@ Resource Group Properties
 -   `jmxExport` (optional): If true, group statistics are exported to JMX for monitoring. Defaults to `false`.
 -   `subGroups` (optional): list of sub-groups.
 
-Selector Rules
---------------
+## Selector Rules
 
 -   `user` (optional): regex to match against user name.
 -   `source` (optional): regex to match against source string.
@@ -49,13 +54,12 @@ Selector Rules
 
 Selectors are processed sequentially and the first one that matches will be used.
 
-Global Properties
------------------
+## Global Properties
+
 
 -   `cpuQuotaPeriod` (optional): the period in which cpu quotas are enforced.
 
-Providing Selector Properties
------------------------------
+## Providing Selector Properties
 
 The source name can be set as follows:
 
@@ -67,8 +71,8 @@ Client tags can be set as follows:
 - CLI: use the `--client-tags` option.
 - JDBC: set the `ClientTags` client info property on the `Connection` instance.
 
-Example
--------
+## Example
+
 
 -   In the example configuration below, there are several resource groups, some of which are templates. Templates allow administrators to construct resource group trees dynamically. For example, in the `pipeline_${USER}` group, `${USER}` will be expanded to the name of the user that submitted the query. `${SOURCE}` is also supported, which will be expanded to the source that submitted the query. You may also use custom named variables in the `source` and `user` regular expressions.
     
