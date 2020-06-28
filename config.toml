@@ -94,14 +94,14 @@ paginate = 10
     identifier = "events"
     name = "Events"
     url  = "/events.html"
-    weight = 1
+    weight = 2
     parent = 'newsroom'
 
 [[menu.main]]
     identifier = "news"
     name = "News"
     url  = "/news.html"
-    weight = 2
+    weight = 1
     parent = 'newsroom'
 
     [[menu.main]]

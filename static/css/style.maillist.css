@@ -58,7 +58,7 @@
 }
 .maillist .maillist-guidance .maillist-divider {
     width: 105px;
-    height: 1200px;
+    height: 1010px;
     border-left: 2px dashed #509378;
     border-bottom: 2px dashed #509378;
     border-radius: 0 15px;
@@ -69,7 +69,7 @@
 }
 .maillist .maillist-guidance .maillist-divider-mail {
     width: 105px;
-    height: 510px;
+    height: 420px;
     border-left: 2px dashed #509378;
     border-bottom: 2px dashed #509378;
     border-radius: 0 15px;
@@ -111,7 +111,7 @@
 .maillist .maillist-guidance .step-left .step-left-num span,
 .maillist .maillist-guidance .step-right .step-right-num span {
     display: inline-block;
-    margin: 23px auto;
+    margin: 25px auto;
     color: #fff;
     font-size: 24px;
 }
@@ -130,6 +130,7 @@
     position: relative;
     right: 20px;
     text-align: right;
+    margin: -30px 0;
 }
 .maillist .maillist-guidance .step-right.last:last-child {
     margin-bottom: 150px;
