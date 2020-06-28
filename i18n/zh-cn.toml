@@ -48,3 +48,12 @@ other = "相关链接"
 
 [MAIN_POSTBLOG_SOURCE]
 other = "写博客"
+
+[OPEN_EULER_WEBSITE_URL]
+other = "https://openeuler.org/zh/"
+
+[OPEN_GAUSS_WEBSITE_URL]
+other = "https://opengauss.org/zh/"
+
+[OPEN_KUNPENG_WEBSITE_URL]
+other = "https://www.huaweicloud.com/kunpeng/"

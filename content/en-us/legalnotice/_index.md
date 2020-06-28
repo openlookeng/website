@@ -1,6 +1,7 @@
 +++
-title = "LEGAL NOTICE"
+title = "Legal Notice"
 +++
+
 This legal notice contains legal policies for the openLooKeng community. These policies govern this site and Project releases hosted by openLooKeng community.
 
 ### Terms and Conditions for Accessing the openLooKeng community Website 
