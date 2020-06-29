@@ -1,45 +1,45 @@
-十进制函数和运算符
+Decimal Functions and Operators
 ===============================
 
-十进制字面值
+Decimal Literals
 ----------------
 
->使用`DECIMAL 'xxxxxxx.yyyyyyy'`语法定义DECIMAL类型的字面量。
->
->字面量DECIMAL类型的精度将等于字面量位数（包括尾随和前导零），刻度数将等于小数部分位数（包括尾随零）。
+> Use `DECIMAL 'xxxxxxx.yyyyyyy'` syntax to define literal of DECIMAL type.
+> 
+>The precision of DECIMAL type for literal will be equal to number of digits in literal (including trailing and leading zeros). The scale will be equal to number of digits in fractional part (including trailing zeros).
 
-|示例文字|数据类型|
+| Example literal                   | Data type         |
 | :-------------------------------- | :---------------- |
-| DECIMAL '0'' | DECIMAL(1)' |
-| DECIMAL '12345'' | DECIMAL(5)' |
-| `DECIMAL' 0000012345.1234500000' | `DECIMAL(20, 10)'声明声明如下：
+| `DECIMAL '0'`                     | `DECIMAL(1)`      |
+| `DECIMAL '12345'`                 | `DECIMAL(5)`      |
+| `DECIMAL '0000012345.1234500000'` | `DECIMAL(20, 10)` |
 
-二进制算术小数运算符
+Binary Arithmetic Decimal Operators
 -----------------------------------
 
->支持标准数学运算符。下表解释了结果的精度和规模计算规则。假设`x`是`DECIMAL(xp, xs)`类型，`y`是`DECIMAL(yp, ys)`类型。
+> Standard mathematical operators are supported. The table below explains precision and scale calculation rules for result. Assuming `x` is of type `DECIMAL(xp, xs)` and `y` is of type `DECIMAL(yp, ys)`.
 
-|操作|结果类型精度|结果类型刻度|
+| Operation           | Result type precision                                        | Result type scale |
 | ------------------- | ------------------------------------------------------------ | ----------------- |
-| `x + y`和`x - y` | `min(38, 1 + min(xs, ys)+ min(xp - xs, yp - ys)))冯曦| `max(xs, ys) |
-| `x * y` | `min(38, xp + yp)` | `xs + ys` |
-| `x / y` | `min(38, xp + ys + max(0, ys-xs)))（冯曦） | `max(xs, ys)命令的执行结果
-| `x % y` | `min(xp - xs, yp - ys) + max(xs, bs)冯曦| `max(xs, ys)` |
+| `x + y` and `x - y` | `min(38,    1 +      min(xs, ys) +      min(xp - xs, yp - ys)   ) ` | `max(xs, ys)`     |
+| `x * y`             | `min(38, xp + yp)`                                           | `xs + ys`         |
+| `x / y`             | `min(38,    xp + ys       + max(0, ys-xs)   ) `              | `max(xs, ys)`     |
+| `x % y`             | `min(xp - xs, yp - ys) + max(xs, bs) `                       | `max(xs, ys)`     |
 
  
 
->如果运算的数学结果不能用结果数据类型的精度和小数位数精确表示，则抛出一个异常条件-`值超出范围`。
->
->当对具有不同小数位数和精度的十进制类型进行操作时，值首先被强制为普通超级类型。对于接近最大可表示精度（38）的类型，这可能导致Value为
->当一个操作数不适合普通超级类型时，出现范围错误。例如，常见的超级类型的decimal(38,0)和decimal(38,1)是decimal(38,1)，但是某些值适合
-其中，decimal(38, 0)中的>不能表示为decimal(38, 1)。
+> If the mathematical result of the operation is not exactly representable with the precision and scale of the result data type, then an exception condition is raised - `Value is out of range`.
+> 
+> When operating on decimal types with different scale and precision, the values are first coerced to a common super type. For types near the largest representable precision (38), this can result in Value is
+>out of range errors when one of the operands doesn\'t fit in the common super type. For example, the common super type of decimal(38, 0) and decimal(38, 1) is decimal(38, 1), but certain values that fit
+> in decimal(38, 0) cannot be represented as a decimal(38, 1).
 
-比较运算符
+Comparison Operators
 --------------------
 
->所有标准比较运算符和`BETWEEN`运算符都工作于`DECIMAL`类型。
+> All standard comparison operators and `BETWEEN` operator work for `DECIMAL` type.
 
-一元十进制运算符
+Unary Decimal Operators
 -----------------------
 
-> `-`运算符执行取反操作。结果类型与参数类型相同。
+> The `-` operator performs negation. The type of result is same as type of argument.

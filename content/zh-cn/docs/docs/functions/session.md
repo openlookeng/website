@@ -1,14 +1,14 @@
-会话信息
+Session Information
 ===================
 
-提供查询执行环境信息的函数。
+Functions providing information about the query execution environment.
 
-**当前\_user** -\> varchar <用户名> <用户名>
+**current\_user** -\> varchar
 
-返回运行查询的当前用户。
+Returns the current user running the query.
 
-**说明**
+**Note**
 
-这是SQL标准的一部分，没有使用括号。
+This is part of the SQL standard and does not use parenthesis.
    
    

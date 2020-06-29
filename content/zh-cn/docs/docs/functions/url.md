@@ -1,62 +1,62 @@
-URL功能
+URL Functions
 =============
 
-抽取功能
+Extraction Functions
 --------------------
 
-URL提取函数从HTTP URL（或任何符合[2396](https://tools.ietf.org/html/rfc2396.html）的合法URI)中提取组件，支持的语法如下：
+The URL extraction functions extract components from HTTP URLs (or any valid URIs conforming to [2396](https://tools.ietf.org/html/rfc2396.html). The following syntax is supported:
 
-"```{.none}"
-【协议：】【//主机【：端口】】【路径】[?query]【#碎片】
+``` 
+[protocol:][//host[:port]][path][?query][#fragment]
 ```
 
-抽取的组件不包含`:`或`?`等URI语法分隔符。
+The extracted components do not contain URI syntax separators such as `:` or `?`.
 
 **url\_extract\_fragment(url)** -\> varchar
 
-从`url`返回片段标识符。
+Returns the fragment identifier from `url`.
 
 **url\_extract\_host(url)** -\> varchar
 
-从`url`返回host。
+Returns the host from `url`.
 
-**url\_extract\_parameter(url，名称** -\> varchar <路径> <参数名> <参数名> <参数名>
+**url\_extract\_parameter(url, name** -\> varchar
 
-从`url`中返回第一个名为`name`的查询字符串参数的值。参数提取按照[1866#section-8.2.1] (https://tools.ietf.org/html/rfc1866.html#section-8.2.1)的典型方式处理。
+Returns the value of the first query string parameter named `name` from `url`. Parameter extraction is handled in the typical manner as specified by [1866#section-8.2.1](https://tools.ietf.org/html/rfc1866.html#section-8.2.1).
 
 
 **url\_extract\_path(url)** -\> varchar
 
-从`url`返回路径。
+Returns the path from `url`.
 
-**url\_extract\_port(url)** -\> <大图标> <大图标> <小图标> <小图标> <大图标> <小图标>
+**url\_extract\_port(url)** -\> bigint
 
-从`url`返回端口号。
+Returns the port number from `url`.
 
 
 **url\_extract\_protocol(url)** -\> varchar
 
-从`url`返回协议。
+Returns the protocol from `url`.
 
 
 **url\_extract\_query(url)** -\> varchar
 
-从`url`返回查询字符串。
+Returns the query string from `url`.
 
 
-编码功能
+Encoding Functions
 ------------------
 
-**url\_encode（值）** -\> varchar <字符串> <字符串>
+**url\_encode(value)** -\> varchar
 
-对`value`进行编码，使其安全地包含在URL查询参数名和值中：
+Escapes `value` by encoding it so that it can be safely included in URL query parameter names and values:
 
--字母数字字符不编码。
--字符`.`,`-`,`*`,`_`不编码。
-- ASCII空格字符编码为`+`。
--其他字符统一转换为UTF-8编码为字符串`%XX`,`XX`为UTF-8字节的大写十六进制值。
+-   Alphanumeric characters are not encoded.
+-   The characters `.`, `-`, `*` and `_` are not encoded.
+-   The ASCII space character is encoded as `+`.
+-   All other characters are converted to UTF-8 and the bytes are encoded as the string `%XX` where `XX` is the uppercase hexadecimal value of the UTF-8 byte.
 
 **url\_decode(value)** -\> varchar
 
-对URL编码后的`value`进行转义。该函数是`url_encode`的逆函数。
+Unescapes the URL encoded `value`. This function is the inverse of `url_encode`.
 

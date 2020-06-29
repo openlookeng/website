@@ -2,9 +2,11 @@
 bookCollapseSection = "true"
 weight = 8
 bookToc = false
-title = "启发式索引器"
+title = "Heuristic Indexer"
 +++
 
 
-# 启发式索引器
+# Heuristic Indexer
 
+
+  

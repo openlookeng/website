@@ -1,152 +1,152 @@
-内置系统访问控制
+Built-in System Access Control
 ==============================
 
-系统访问控制插件在任何连接器级别授权之前，在全局级别强制授权。您可以使用Presto中内置的插件，也可以按照【系统访问控制】（../develop/system-access-control）中的指导提供自己的插件。Presto提供了三个内置插件：
+A system access control plugin enforces authorization at a global level, before any connector level authorization. You can either use one of the built-in plugins in openLooKeng or provide your own by following the guidelines in [system-access-control](../en/develop/system-access-control). openLooKeng offers three built-in plugins:
 
-|插件名称|说明|
+| Plugin Name                 | Description                                                  |
 | :-------------------------- | :----------------------------------------------------------- |
-| `allow-all`（缺省值） |允许所有操作。|
-| `read-only` |允许读数据或元数据的操作，但不允许写数据或元数据的操作。有关详细信息，请参阅“只读系统访问控制”。|
-| `file` |授权检查使用配置属性`security.config-file`指定的配置文件执行。有关详细信息，请参阅“基于文件的系统访问控制”。|
+| `allow-all` (default value) | All operations are permitted.                                |
+| `read-only`                 | Operations that read data or metadata are permitted, but none of the operations that write data or metadata are allowed. See "Read Only System Access Control" for details. |
+| `file`                      | Authorization checks are enforced using a config file specified by the configuration property `security.config-file`. See ""File Based System Access Control" for details. |
 
-允许所有系统访问控制
+Allow All System Access Control
 -------------------------------
 
-插件允许所有操作。插件默认开启。
+All operations are permitted under this plugin. This plugin is enabled by default.
 
-只读系统访问控制
+Read Only System Access Control
 -------------------------------
 
-在此插件下，您可以执行任何读取数据或元数据的操作，例如`SELECT`或`SHOW`。还允许设置系统级或目录级会话属性。但是，任何
-禁止写入数据或元数据的操作，如`CREATE`、`INSERT`、`DELETE`。要使用该插件，请添加`etc/access-control.properties`文件，内容如下：
+Under this plugin, you are allowed to execute any operation that reads data or metadata, such as `SELECT` or `SHOW`. Setting system level or catalog level session properties is also permitted. However, any
+operation that writes data or metadata, such as `CREATE`, `INSERT` or `DELETE`, is prohibited. To use this plugin, add an `etc/access-control.properties` file with the following contents:
 
-"```{.none}"
-access-control.name=只读访问控制
+``` properties
+access-control.name=read-only
 ```
 
-基于文件的系统访问控制
+File Based System Access Control
 --------------------------------
 
-此插件允许您在文件中指定访问控制规则。要使用该插件，请添加一个`etc/access-control.properties`文件，其中包含两个必需的属性：`access-control.name`，必须等于`file`;`security.config-file`，必须等于config文件的位置。例如，`etc`目录下有名为`rules.json`的配置文件，则添加`etc/access-control.properties`文件，内容如下：
+This plugin allows you to specify access control rules in a file. To use this plugin, add an `etc/access-control.properties` file containing two required properties: `access-control.name`, which must be equal to `file`, and `security.config-file`, which must be equal to the location of the config file. For example, if a config file named `rules.json` resides in `etc`, add an `etc/access-control.properties` with the following contents:
 
-"```{.none}"
-access-control.name=访问控制文件名
-security.config-file=配置文件规则文件
+``` properties
+access-control.name=file
+security.config-file=etc/rules.json
 ```
 
-config文件以json格式指定。
+The config file is specified in JSON format.
 
-+它包含定义哪个目录可以由哪个用户访问的规则（见下面的目录规则）。
--明确哪些主体可以标识为哪些用户的主要规则（见下文的主要规则）。
+-   It contains the rules defining which catalog can be accessed by which user (see Catalog Rules below).
+-   The principal rules specifying what principals can identify as what users (see Principal Rules below).
 
-此插件目前仅支持目录访问控制规则和主体规则。如果您想以任何其他方式限制对系统级别的访问，您必须实现一个自定义的SystemAccessControl插件(请参见
-【系统-访问控制】（../develop/系统-访问控制`）。
+This plugin currently only supports catalog access control rules and principal rules. If you want to limit access on a system level in any other way, you must implement a custom SystemAccessControl plugin (see
+[system-access-control](../en/develop/system-access-control`).
 
-###刷新
+### Refresh
 
-默认情况下，当对`security.config-file`进行更改时，必须重新启动Presto以加载更改。有一个可选的属性来刷新属性，而不需要Presto重新启动。刷新周期在`etc/access-control.properties`中指定：
+By default, when a change is made to the `security.config-file`, openLooKeng must be restarted to load the changes. There is an optional property to refresh the properties without requiring a openLooKeng restart. The refresh period is specified in the `etc/access-control.properties`:
 
-"```{.none}"
-security.refresh-period=1秒后刷新一次
+``` properties
+security.refresh-period=1s
 ```
 
-###目录规则
+### Catalog Rules
 
-这些规则控制特定用户可以访问的目录。根据从上到下读取的第一个匹配规则，授予用户访问目录的权限。如果没有匹配到任何规则，则拒绝访问。每条规则
-由以下字段组成：
+These rules govern the catalogs particular users can access. The user is granted access to a catalog based on the first matching rule read from top to bottom. If no rule matches, access is denied. Each rule is
+composed of the following fields:
 
-- `user`（可选）：与用户名匹配的正则表达式。默认为`.*`。
-- `catalog`（可选）:regex，与目录名匹配。默认为`.*`。
-- `allow`（必需）:boolean，表示用户是否有访问目录的权限
-
-
-**说明**
-
-*默认情况下，所有用户都可以访问`system`目录。您可以通过添加规则来覆盖此行为。*
+-   `user` (optional): regex to match against user name. Defaults to `.*`.
+-   `catalog` (optional): regex to match against catalog name. Defaults to `.*`.
+-   `allow` (required): boolean indicating whether a user has access to the catalog
 
 
-例如，如果希望仅允许`admin`用户访问`mysql`和`system`目录，允许所有用户访问`hive`目录，拒绝其他用户访问，则可以使用以下规则：
+**Note**
 
-"``` {.json}"
+*By default, all users have access to the `system` catalog. You can override this behavior by adding a rule.*
+
+
+For example, if you want to allow only the user `admin` to access the `mysql` and the `system` catalog, allow all users to access the `hive` catalog, and deny all other access, you can use the following rules:
+
+``` json
 {
-"目录": [
-{
-"user": "管理员"，
-"catalog": "（mysql|系统数据库）"，
-"allow": "true"：允许通过
-}，
-{
-"catalog": "头像"，
-"allow": "true"：允许通过
-}，
-{
-"catalog":"系统"，
-"allow"：假的
-}
-]
-}
-```
-
-###基本原则
-
-这些规则用于强制主体和指定的用户名之间的特定匹配。主体作为用户被授权
-基于从上到下读取的第一匹配规则。如果没有指定规则，则不进行检查。如果没有匹配到任何规则，则拒绝用户授权。每条规则由以下字段组成：
-
-- `principal`（必需）：要匹配的正则表达式和针对principal的组。
-- `user`（可选）：与用户名匹配的正则表达式。如果匹配成功，则根据`allow`的值进行授权或拒绝授权。
-- `principal_to_user`（可选）：针对principal进行替换的字符串。如果替换的结果与用户名相同，它将基于
-允许值。
-- `allow`（必须）:boolean，表示是否允许被授权人作为用户。
-
-
-**说明**
-
-*你至少要在一条主要规则中指定一个标准。如果在主体规则中同时指定了两个条件，当满足其中一个条件时，主体规则将返回期望的结论。*
-
-LDAP认证和Kerberos认证的principal名称全匹配：
-
-"``` {.json}"
-{
-"目录": [
-{
-"allow": "true"：允许通过
-}
-]，
-"校长": [
-{
-"principal": "(.*)"，
-"主子账号":"$1"，
-"allow": "true"：允许通过
-}，
-{
-"principal": "([^/]+)(/.*)?@.*"，
-"主子账号":"$1"，
-"allow": "true"：允许通过
-}
-]
+  "catalogs": [
+    {
+      "user": "admin",
+      "catalog": "(mysql|system)",
+      "allow": true
+    },
+    {
+      "catalog": "hive",
+      "allow": true
+    },
+    {
+      "catalog": "system",
+      "allow": false
+    }
+  ]
 }
 ```
 
-如果您希望允许用户使用与其Kerberos主体名称相同的提取名称，并且允许`alice`和`bob`使用名为`group@example.net`的组主体，那么可以使用以下规则。
+### Principal Rules
 
-"``` {.json}"
+These rules serve to enforce a specific matching between a principal and a specified user name. The principal is granted authorization as a user
+based on the first matching rule read from top to bottom. If no rules are specified, no checks will be performed. If no rule matches, user authorization is denied. Each rule is composed of the following fields:
+
+-   `principal` (required): regex to match and group against principal.
+-   `user` (optional): regex to match against user name. If matched, it will grant or deny the authorization based on the value of `allow`.
+-   `principal_to_user` (optional): replacement string to substitute against principal. If the result of the substitution is same as the user name, it will grant or deny the authorization based on the
+    value of `allow`.
+-   `allow` (required): boolean indicating whether a principal can be authorized as a user.
+
+
+**Note**
+
+*You would at least specify one criterion in a principal rule. If you specify both criteria in a principal rule, it will return the desired conclusion when either of criteria is satisfied.*
+
+The following implements an exact matching of the full principal name for LDAP and Kerberos authentication:
+
+``` json
 {
-"目录": [
-{
-"allow": "true"：允许通过
+  "catalogs": [
+    {
+      "allow": true
+    }
+  ],
+  "principals": [
+    {
+      "principal": "(.*)",
+      "principal_to_user": "$1",
+      "allow": true
+    },
+    {
+      "principal": "([^/]+)(/.*)?@.*",
+      "principal_to_user": "$1",
+      "allow": true
+    }
+  ]
 }
-]，
-"校长": [
+```
+
+If you want to allow users to use the  extactly same name as their Kerberos principal name, and allow `alice` and `bob` to use a group principal named as `group@example.net`, you can use the following rules.
+
+``` json
 {
-"principal": "([^/]+)/?.*@example.net"，
-"主子账号":"$1"，
-"allow": "true"：允许通过
-}，
-{
-"principal": "所属组@示例.net"，
-"user": "alice|bob"，
-"allow": "true"：允许通过
-}
-]
+  "catalogs": [
+    {
+      "allow": true
+    }
+  ],
+  "principals": [
+    {
+      "principal": "([^/]+)/?.*@example.net",
+      "principal_to_user": "$1",
+      "allow": true
+    },
+    {
+      "principal": "group@example.net",
+      "user": "alice|bob",
+      "allow": true
+    }
+  ]
 }
 ```

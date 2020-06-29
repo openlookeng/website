@@ -1,47 +1,47 @@
-插入
+INSERT
 ======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-INSERT INTO table_name【（第[,...】列）查询信息】
+``` sql
+INSERT INTO table_name [ ( column [, ... ] ) ] query
 ```
 
-问题描述
+Description
 -----------
 
-向表中插入新行。
+Insert new rows into a table.
 
-如果指定了列名列表，则它们必须与查询生成的列列表完全匹配。表中未在列列表中出现的每个列将用`null`值填充。否则，如果未指定列列表，则查询生成的列必须与要插入的表中的列完全匹配。
+If the list of column names is specified, they must exactly match the list of columns produced by the query. Each column in the table not present in the column list will be filled with a `null` value. Otherwise, if the list of columns is not specified, the columns produced by the query must exactly match the columns in the table being inserted into.
 
-示例
+Examples
 --------
 
-从表`new_orders`中加载额外的行到`orders`表中：
+Load additional rows into the `orders` table from the `new_orders` table:
 
-插入订单
-从new_orders中选择；
+    INSERT INTO orders
+    SELECT * FROM new_orders;
 
-在`citys'表中插入一行：
+Insert a single row into the `cities` table:
 
-插入城市价值（1，'旧金山'）；
+    INSERT INTO cities VALUES (1, 'San Francisco');
 
-向`city`表中插入多行：
+Insert multiple rows into the `cities` table:
 
-插入城市价值（2，'圣何塞'）,（3，'奥克兰'）；
+    INSERT INTO cities VALUES (2, 'San Jose'), (3, 'Oakland');
 
-向具有指定列列表的`nation`表中插入单行：
+Insert a single row into the `nation` table with the specified column list:
 
-插入国家（国家代码、姓名、地区代码、备注）
-VALUES（26, 'POLAND'， 3, '无可奉告'）；
+    INSERT INTO nation (nationkey, name, regionkey, comment)
+    VALUES (26, 'POLAND', 3, 'no comment');
 
-插入一行，不指定`comment`列。那栏将是空的：
+Insert a row without specifying the `comment` column. That column will be `null`:
 
-插入国家（国家代码、姓名、地区代码）
-VALUES（26，'波兰'，3）；
+    INSERT INTO nation (nationkey, name, regionkey)
+    VALUES (26, 'POLAND', 3);
 
-参见
+See Also
 --------
 
-【值】（./值），【插入-覆盖】（./插入-覆盖）
+[values](./values), [insert-overwrite](./insert-overwrite)

@@ -1,14 +1,14 @@
-节目《Schemas》
+SHOW SCHEMAS
 ============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-展示时间表【从目录】【像模式】
+``` sql
+SHOW SCHEMAS [ FROM catalog ] [ LIKE pattern ]
 ```
 
-问题描述
+Description
 -----------
 
-列出`catalog`中的模式或当前目录中的模式。可以使用`LIKE`子句来限制模式名称列表。
+List the schemas in `catalog` or in the current catalog. The `LIKE` clause can be used to restrict the list of schema names.

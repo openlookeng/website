@@ -1,23 +1,23 @@
-使用
+USE
 ===
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-USE目录.schema
-USE模式
+``` sql
+USE catalog.schema
+USE schema
 ```
 
-问题描述
+Description
 -----------
 
-更新会话以使用指定的目录和架构。如果未指定目录，架构将相对于当前目录进行解析。
+Update the session to use the specified catalog and schema. If a catalog is not specified, the schema is resolved relative to the current catalog.
 
-示例
+Examples
 --------
 
-``` {.sql}
-使用蜂巢。财务；
-使用信息_schema；
+``` sql
+USE hive.finance;
+USE information_schema;
 ```

@@ -1,37 +1,37 @@
-裁武会谈
+START TRANSACTION
 =================
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-开始事务【模式[,...】]
+``` sql
+START TRANSACTION [ mode [, ...] ]
 ```
 
-其中`mode`是
+where `mode` is one of
 
-"```{.none}"
-隔离级别{读未提交|读已提交|可修复读|串行化}
-读取{仅|写入}
+``` sql
+ISOLATION LEVEL { READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE }
+READ { ONLY | WRITE }
 ```
 
-问题描述
+Description
 -----------
 
-为当前会话启动一个新的事务。
+Start a new transaction for the current session.
 
-示例
+Examples
 --------
 
-``` {.sql}
-裁武会谈；
-开始事务隔离级别可重复读
-开始事务读写；
-开始事务隔离级别读已提交，只读；
-开始交易读取写，隔离水平序列化；
+``` sql
+START TRANSACTION;
+START TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+START TRANSACTION READ WRITE;
+START TRANSACTION ISOLATION LEVEL READ COMMITTED, READ ONLY;
+START TRANSACTION READ WRITE, ISOLATION LEVEL SERIALIZABLE;
 ```
 
-参见
+See Also
 --------
 
-[commit](./commit)，【回退】（./回退），提交
+[commit](./commit), [ rollback](./ rollback)

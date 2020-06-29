@@ -1,41 +1,41 @@
-ALTER表格
+ALTER TABLE
 ===========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-表名重命名为new_name
-ALTER表名ADD COLUMN列名data_type【注释】【WITH（property_name =表达式[,...】）】
-表名DROP COLUMN列名_name
-表名RENAME列名to new_column_name列名
+``` sql
+ALTER TABLE name RENAME TO new_name
+ALTER TABLE name ADD COLUMN column_name data_type [ COMMENT comment ] [ WITH ( property_name = expression [, ...] ) ]
+ALTER TABLE name DROP COLUMN column_name
+ALTER TABLE name RENAME COLUMN column_name TO new_column_name
 ```
 
-问题描述
+Description
 -----------
 
-更改现有表的定义。
+Change the definition of an existing table.
 
-示例
+Examples
 --------
 
-将表`users`重命名为`person`：
+Rename table `users` to `people`:
 
-改变表使用者对人的称呼；
+    ALTER TABLE users RENAME TO people;
 
-在表`users`中增加一列`zip`：
+Add column `zip` to the `users` table:
 
-表用户添加压缩文件；
+    ALTER TABLE users ADD COLUMN zip varchar;
 
-从`users`表中删除`zip`列：
+Drop column `zip` from the `users` table:
 
-表格用户落栏拉链；
+    ALTER TABLE users DROP COLUMN zip;
 
-将`users`表中的`id`列重命名为`user_id`：
+Rename column `id` to `user_id` in the `users` table:
 
-表用户重命名列id to user_id；
+    ALTER TABLE users RENAME COLUMN id TO user_id;
 
-参见
+See Also
 --------
 
-【创建表】(./create-table)
+[create-table](./create-table)

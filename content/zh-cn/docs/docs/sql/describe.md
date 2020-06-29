@@ -1,14 +1,14 @@
-描述
+DESCRIBE
 ========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-DESCRIBE表名
+``` sql
+DESCRIBE table_name
 ```
 
-问题描述
+Description
 -----------
 
-DESCRIBE为[SHOW COLUMNS](./show-columns.md)的别名，该别名在命令里显示。
+DESCRIBE is an alias for [SHOW COLUMNS](show-columns.md) 

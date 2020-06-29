@@ -1,44 +1,44 @@
-执行
+EXECUTE
 =======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-EXECUTEstatement_name【使用参数1【，参数2,...】]
+``` sql
+EXECUTE statement_name [ USING parameter1 [ , parameter2, ... ] ]
 ```
 
-问题描述
+Description
 -----------
 
-执行一个名字为`statement_name`的预备语句。参数值在`USING`子句中定义。
+Executes a prepared statement with the name `statement_name`. Parameter values are defined in the `USING` clause.
 
-示例
+Examples
 --------
 
-准备并执行一个不带参数的查询：
+Prepare and execute a query with no parameters:
 
-从my_select1开始准备
-从国家选择名称；
+    PREPARE my_select1 FROM
+    SELECT name FROM nation;
 
-``` {.sql}
-执行my_select1命令；
+``` sql
+EXECUTE my_select1;
 ```
 
-准备并执行一个带两个参数的查询：
+Prepare and execute a query with two parameters:
 
-从my_select2开始准备
-从国家选择名称WHERE regionkey =？和国密<?
+    PREPARE my_select2 FROM
+    SELECT name FROM nation WHERE regionkey = ? and nationkey < ?;
 
-``` {.sql}
-执行my_select2，使用1,3；
+``` sql
+EXECUTE my_select2 USING 1, 3;
 ```
 
-这相当于：
+This is equivalent to:
 
-从国家中选择名称WHERE regionkey = 1 and Nationalkey < 3；
+    SELECT name FROM nation WHERE regionkey = 1 AND nationkey < 3;
 
-参见
+See Also
 --------
 
-【准备】（./准备）
+[prepare](./prepare)

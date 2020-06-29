@@ -1,567 +1,567 @@
-Kafka连接器教程
+Kafka Connector Tutorial
 ========================
 
-简介
+Introduction
 ------------
 
-Kafka Connector for Presto允许使用Presto从Apache Kafka访问实时Topic数据。本教程演示如何设置主题以及如何创建支持Presto表的主题描述文件。
+The Kafka Connector for openLooKeng allows access to live topic data from Apache Kafka using openLooKeng. This tutorial shows how to set up topics and how to create the topic description files that back openLooKeng tables.
 
-施工安装
+Installation
 ------------
 
-本教程假定您熟悉Presto和本地Presto安装（见【部署】(../安装/部署）。本教程将重点介绍设置Apache Kafka并将其与Presto集成。
+This tutorial assumes familiarity with openLooKeng and a working local openLooKeng installation (see [deployment](../installation/deployment). It will focus on setting up Apache Kafka and integrating it with openLooKeng.
 
-###步骤1：安装Kafka
+### Step 1: Install Apache Kafka
 
-下载并解压[Apache Kafka](https://kafka.apache.org/)软件包，完成安装。
+Download and extract [Apache Kafka](https://kafka.apache.org/).
 
 
-**说明**
+**Note**
 
-*本教程使用Apache Kafka 0.8.1进行了测试。它应该可以与任何0.8.x版本的Apache Kafka一起使用
+*This tutorial was tested with Apache Kafka 0.8.1. It should work with* *any 0.8.x version of Apache Kafka.*
 
-启动zookeeper和kafka服务器：
+Start ZooKeeper and the Kafka server:
 
-"```{.none}"
-配置文件/zookeeper.properties
-【2013-04-22 15:01:37,495】信息从配置文件config/zookeeper.properties中读取配置信息（org.apache.zookeeper.server.quorum.QuorumPeerConfig文件）
+``` shell
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+[2013-04-22 15:01:37,495] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
 ...
 ```
 
-"```{.none}"
-kafka-server服务启动脚本
-【2013-04-22 15:01:47,028】信息验证属性列表(kafka.utils.VerableProperties)
-【2013-04-22 15:01:47,051】信息的属性socket.send.buffer.bytes被重写为1048576 (kafka.utils.VerableProperties) ，导致发送失败，发送失败。
+``` shell
+$ bin/kafka-server-start.sh config/server.properties
+[2013-04-22 15:01:47,028] INFO Verifying properties (kafka.utils.VerifiableProperties)
+[2013-04-22 15:01:47,051] INFO Property socket.send.buffer.bytes is overridden to 1048576 (kafka.utils.VerifiableProperties)
 ...
 ```
 
-此操作将在`2181`端口启动Zookeeper,`9092`端口启动Kafka。
+This will start Zookeeper on port `2181` and Kafka on port `9092`.
 
-###步骤2：加载数据
+### Step 2: Load data
 
-从Maven Central下载tpch-kafka加载器，下载路径如下：
+Download the tpch-kafka loader from Maven central:
 
-"```{.none}"
-相关命令：$ curl -o kafka-tpch https://repo1.maven.org/maven2/de/softwareforge/kafka_tpch_0811/1.0/kafka_tpch_0811-1.0.sh（在浏览器端执行，在浏览器端执行即可）
+``` shell
+$ curl -o kafka-tpch https://repo1.maven.org/maven2/de/softwareforge/kafka_tpch_0811/1.0/kafka_tpch_0811-1.0.sh
 $ chmod 755 kafka-tpch
 ```
 
-现在运行`kafka-tpch`程序，用tpch数据预加载许多主题：
+Now run the `kafka-tpch` program to preload a number of topics with tpch data:
 
-"```{.none}"
-$ ./kafka-tpch load --brokers localhost:9092 --前缀指定tpch服务名称，服务名称，服务名称。--tpch类型tiny
-2014-07-28T17:17:07.594-0700 INFO主io.airlift.log.支持向标准错误日志打印
-2014-07-28T17:17:07.623-0700 INFO main de.softwareforge.kafka.LoadCommand处理列表：【客户，订单，部件，部件，供应商，国家，地区】
-2014-07-28T17:17:07.981-0700 INFO池-1-线程-1 de.softwareforge.kafka.LoadCommand将表“客户”加载到主题“客户”中。
-2014-07-28T17:17:07.981-0700 INFO资源池-1-线程-2 de.softwareforge.kafka.LoadCommand将订单表'订单'加载为主题'tpch.orders'...
-2014-07-28T17:17:07.981-0700 INFO资源池-1-线程-3 de.softwareforge.kafka.LoadCommand将表'lineitem'加载到主题'tpch.lineitem'中，加载成功后，查看页面提示是否加载成功。
-2014-07-28T17:17:07.982-0700 INFO资源池-1-线程-4 de.softwareforge.kafka.LoadCommand将表'部件'加载到主题'tpch.part'中，等待用户确认。
-2014-07-28T17:17:07.982-0700 INFO池-1-线程-5 de.softwareforge.kafka.LoadCommand将表'partsupp'加载到主题'tpch.partsupp'中，加载成功后，可以开始加载，加载成功。
-2014-07-28T17:17:07.982-0700 INFO池-1-线程-6 de.softwareforge.kafka.LoadCommand将表“供应商”加载到主题“供应商”中...
-2014-07-28T17:17:07.982-0700 INFO资源池-1-线程-7 de.softwareforge.kafka.LoadCommand将表'nation'加载到主题'tpch.nation'中，等待用户确认，等待用户确认。
-2014-07-28T17:17:07.982-0700 INFO资源池-1-线程-8 de.softwareforge.kafka.LoadCommand将表'区域'加载到主题'tpch.region'中，等待其加载完成。
-2014-07-28T17:17:10.612-0700 ERROR pool-1-thread-8 kafka.producer.async.DefaultEventHandler按主题整理消息失败，分区：提取主题元数据失败，主题元数据：tpch.region
-2014-07-28T17:17:10.781-0700 INFO pool-1-thread-8 de.softwareforge.kafka.LoadCommand为表名为'region'的表生成了5行数据，请关注！
-2014-07-28T17:17:10.797-0700 ERROR pool-1-thread-3 kafka.producer.async.DefaultEventHandler按主题整理消息失败，分区原因是：提取主题元数据失败，主题：tpch.lineitem
-2014-07-28T17:17:10.932-0700 ERROR pool-1-thread-1 kafka.producer.async.DefaultEventHandler按主题整理消息失败，分区，原因：提取主题元数据失败，主题：tpch.customer
-2014-07-28T17:17:11.068-0700 ERROR pool-1-thread-2 kafka.producer.async.DefaultEventHandler按主题整理消息失败，分区，原因：提取主题元数据失败，主题：tpch.orders
-2014-07-28T17:17:11.200-0700 ERROR pool-1-thread-6 kafka.producer.async.DefaultEventHandler按主题整理消息失败，无法继续处理消息。分区原因：为主题提取主题元数据失败：tpch.supplier
-2014-07-28T17:17:11.319-0700 INFO pool-1-thread-6 de.softwareforge.kafka.LoadCommand为表'供应商'生成了100行数据，表示成功生成了100行数据。
-2014-07-28T17:17:11.333-0700 ERROR pool-1-thread-4 kafka.producer.async.DefaultEventHandler按主题整理消息失败，分区，原因：提取主题元数据失败，主题：tpch.part
-2014-07-28T17:17:11.466-0700 ERROR pool-1-thread-5 kafka.producer.async.DefaultEventHandler按主题整理消息失败，分区：提取主题元数据失败，主题元数据：tpch.partsupp
-2014-07-28T17:17:11.597-0700 ERROR pool-1-thread-7 kafka.producer.async.DefaultEventHandler按主题整理消息失败，分区，原因：提取主题元数据失败，主题：tpch.nation
-2014-07-28T17:17:11.706-0700 INFO pool-1-thread-7 de.softwareforge.kafka.LoadCommand为表'国家信息'生成了25行数据，请检查数据是否正确。
-2014-07-28T17:17:12.180-0700 INFO池-1-线程-1 de.softwareforge.kafka.LoadCommand生成的表'客户'的行数为1500行，超过1500行的部分将被忽略。
-2014-07-28T17:17:12.251-0700 INFO池-1-线程-4 de.softwareforge.kafka.LoadCommand为表'部件'生成的2000行信息，其中包含所有需要处理的信息。
-2014-07-28T17:17:12.905-0700 INFO池-1-线程-2 de.softwareforge.kafka.LoadCommand为表'orders'生成了15000行数据，请分析原因并处理。
-2014-07-28T17:17:12.919-0700 INFO pool-1-thread-5 de.softwareforge.kafka.LoadCommand为表'partsupp'生成了8000个行数据，表示成功生成软件分发任务。
-2014-07-28T17:17:13.877-0700 INFO池-1-线程-3 de.softwareforge.kafka.LoadCommand为表'lineitem'生成了60175行数据，需要更新到此表。
+``` shell
+$ ./kafka-tpch load --brokers localhost:9092 --prefix tpch. --tpch-type tiny
+2014-07-28T17:17:07.594-0700     INFO    main    io.airlift.log.Logging    Logging to stderr
+2014-07-28T17:17:07.623-0700     INFO    main    de.softwareforge.kafka.LoadCommand    Processing tables: [customer, orders, lineitem, part, partsupp, supplier, nation, region]
+2014-07-28T17:17:07.981-0700     INFO    pool-1-thread-1    de.softwareforge.kafka.LoadCommand    Loading table 'customer' into topic 'tpch.customer'...
+2014-07-28T17:17:07.981-0700     INFO    pool-1-thread-2    de.softwareforge.kafka.LoadCommand    Loading table 'orders' into topic 'tpch.orders'...
+2014-07-28T17:17:07.981-0700     INFO    pool-1-thread-3    de.softwareforge.kafka.LoadCommand    Loading table 'lineitem' into topic 'tpch.lineitem'...
+2014-07-28T17:17:07.982-0700     INFO    pool-1-thread-4    de.softwareforge.kafka.LoadCommand    Loading table 'part' into topic 'tpch.part'...
+2014-07-28T17:17:07.982-0700     INFO    pool-1-thread-5    de.softwareforge.kafka.LoadCommand    Loading table 'partsupp' into topic 'tpch.partsupp'...
+2014-07-28T17:17:07.982-0700     INFO    pool-1-thread-6    de.softwareforge.kafka.LoadCommand    Loading table 'supplier' into topic 'tpch.supplier'...
+2014-07-28T17:17:07.982-0700     INFO    pool-1-thread-7    de.softwareforge.kafka.LoadCommand    Loading table 'nation' into topic 'tpch.nation'...
+2014-07-28T17:17:07.982-0700     INFO    pool-1-thread-8    de.softwareforge.kafka.LoadCommand    Loading table 'region' into topic 'tpch.region'...
+2014-07-28T17:17:10.612-0700    ERROR    pool-1-thread-8    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.region
+2014-07-28T17:17:10.781-0700     INFO    pool-1-thread-8    de.softwareforge.kafka.LoadCommand    Generated 5 rows for table 'region'.
+2014-07-28T17:17:10.797-0700    ERROR    pool-1-thread-3    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.lineitem
+2014-07-28T17:17:10.932-0700    ERROR    pool-1-thread-1    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.customer
+2014-07-28T17:17:11.068-0700    ERROR    pool-1-thread-2    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.orders
+2014-07-28T17:17:11.200-0700    ERROR    pool-1-thread-6    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.supplier
+2014-07-28T17:17:11.319-0700     INFO    pool-1-thread-6    de.softwareforge.kafka.LoadCommand    Generated 100 rows for table 'supplier'.
+2014-07-28T17:17:11.333-0700    ERROR    pool-1-thread-4    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.part
+2014-07-28T17:17:11.466-0700    ERROR    pool-1-thread-5    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.partsupp
+2014-07-28T17:17:11.597-0700    ERROR    pool-1-thread-7    kafka.producer.async.DefaultEventHandler    Failed to collate messages by topic, partition due to: Failed to fetch topic metadata for topic: tpch.nation
+2014-07-28T17:17:11.706-0700     INFO    pool-1-thread-7    de.softwareforge.kafka.LoadCommand    Generated 25 rows for table 'nation'.
+2014-07-28T17:17:12.180-0700     INFO    pool-1-thread-1    de.softwareforge.kafka.LoadCommand    Generated 1500 rows for table 'customer'.
+2014-07-28T17:17:12.251-0700     INFO    pool-1-thread-4    de.softwareforge.kafka.LoadCommand    Generated 2000 rows for table 'part'.
+2014-07-28T17:17:12.905-0700     INFO    pool-1-thread-2    de.softwareforge.kafka.LoadCommand    Generated 15000 rows for table 'orders'.
+2014-07-28T17:17:12.919-0700     INFO    pool-1-thread-5    de.softwareforge.kafka.LoadCommand    Generated 8000 rows for table 'partsupp'.
+2014-07-28T17:17:13.877-0700     INFO    pool-1-thread-3    de.softwareforge.kafka.LoadCommand    Generated 60175 rows for table 'lineitem'.
 ```
 
-Kafka现在拥有许多预先装载了要查询的数据的主题。
+Kafka now has a number of topics that are preloaded with data to query.
 
-###第三步：让Presto知道Kafka的Topic
+### Step 3: Make the Kafka topics known to openLooKeng
 
-在Presto安装中，为Kafka连接器添加目录属性文件`etc/catalog/kafka.properties`。该文件列出了Kafka节点和Topic：
+In your openLooKeng installation, add a catalog properties file `etc/catalog/kafka.properties` for the Kafka connector. This file lists the Kafka nodes and topics:
 
-"```{.none}"
-连接器.name=kafka
-kafka.nodes=本地主机名：9092
-kafka.table-names=tpch.customer,tpch.orders,tpch.lineitem,tpch.part,tpch.suppp,tpch.供应商，tpch.nation,tpch.地区信息，根据客户名称查询订单信息，根据地区信息查询订单信息。
-kafka.hide-internal-columns=是否隐藏字段
+``` properties
+connector.name=kafka
+kafka.nodes=localhost:9092
+kafka.table-names=tpch.customer,tpch.orders,tpch.lineitem,tpch.part,tpch.partsupp,tpch.supplier,tpch.nation,tpch.region
+kafka.hide-internal-columns=false
 ```
 
-现在启动Presto：
+Now start openLooKeng:
 
-"```{.none}"
-$bin/launcher启动程序
+``` shell
+$ bin/launcher start
 ```
 
-由于kafka的表在配置中都有`tpch.`前缀，所以表在`tpch`模式中。连接器挂载在`kafka`目录下，因为属性文件命名为`kafka.properties`。
+Because the Kafka tables all have the `tpch.` prefix in the configuration, the tables are in the `tpch` schema. The connector is mounted into the `kafka` catalog because the properties file is named `kafka.properties`.
 
-进入[Presto CLI](../installation/cli)命令行窗口，命令如下：
+Start the [openLooKeng CLI](../installation/cli.md):
 
-"```{.none}"
-$ ./presto --目录kafka --模式tpch
+``` shell
+$ ./openlk-cli --catalog kafka --schema tpch
 ```
 
-列出表格，以验证事情是否有效：
+List the tables to verify that things are working:
 
-"```{.none}"
-普雷斯托：tpch>展示表；
-表格
+``` sql
+lk:tpch> SHOW TABLES;
+  Table
 ----------
-顾客
-细列项目
-民族
-订单
-零件
-零件
-地区
-供应商
-（8行）
+ customer
+ lineitem
+ nation
+ orders
+ part
+ partsupp
+ region
+ supplier
+(8 rows)
 ```
 
-### Step4：基础数据查询
+### Step 4: Basic data querying
 
-Kafka数据是非结构化的，没有元数据来描述消息的格式。无需进一步配置，Kafka连接器可以访问数据并以原始形式映射数据，但除了内置列之外，没有实际列：
+Kafka data is unstructured and it has no metadata to describe the format of the messages. Without further configuration, the Kafka connector can access the data and map it in raw form but there are no actual columns besides the built-in ones:
 
-"```{.none}"
-presto:tpch> DESCRIBE客户名称；
-列|类型|附加|注释
+``` sql
+lk:tpch> DESCRIBE customer;
+      Column       |  Type   | Extra |                   Comment
 -------------------+---------+-------+---------------------------------------------
-_partition_id | bigint |分区编号
-_partition_offset | bigint |消息在分区内的偏移量。
-_segment_start | bigint | |分片起始偏移值。
-_segment_end | bigint | |分片结束偏移量。
-_segment_count | bigint |每段运行消息数
-_key | varchar | |密钥文本信息
-_key_corrupt | boolean | |关键数据被破坏
-_key_length | bigint | |总的密钥字节数。
-_message | varchar | |消息正文
-_message_corrupt | boolean | |消息数据被破坏
-_message_length | bigint | |消息总字节数。
-（11行）
+ _partition_id     | bigint  |       | Partition Id
+ _partition_offset | bigint  |       | Offset for the message within the partition
+ _segment_start    | bigint  |       | Segment start offset
+ _segment_end      | bigint  |       | Segment end offset
+ _segment_count    | bigint  |       | Running message count per segment
+ _key              | varchar |       | Key text
+ _key_corrupt      | boolean |       | Key data is corrupt
+ _key_length       | bigint  |       | Total number of key bytes
+ _message          | varchar |       | Message text
+ _message_corrupt  | boolean |       | Message data is corrupt
+ _message_length   | bigint  |       | Total number of message bytes
+(11 rows)
 
-presto:tpch> SELECT count(*)来自于客户；
-_col0
+lk:tpch> SELECT count(*) FROM customer;
+ _col0
 -------
-1500
+  1500
 
-presto:tpch> SELECT _message from客户限制5；
-_消息
+lk:tpch> SELECT _message FROM customer LIMIT 5;
+                                                                                                                                                 _message
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-{"rowNumber":1,"customerKey":1,"name":"客户编号000000001","地址":"IVhzIApeRb ot,c,E","nationKey":15, "电话":"25-989-741-2988","帐户余额":"711.56","市场细分":"建设","评论":"对均匀、规则的血小板。正规，讽刺墓志铭nage"}
-{"rowNumber":3,"customerKey":3,"name":"客户#000000003","地址":"媒体网关9kdTD2WBHm","nationKey":1，电话："11-719-748-3364","accountBalance":7498.12,"市场细分":"自动移动","评论":"存款吃掉狡猾的讽刺，甚至指示。狐狸狡猾地发现。布里塞尔
-{"rowNumber":5,"customerKey":5,"name":"客户#000000005","address":"注册邮箱地址","nationKey":3, "phone":"13-750-942-6364","accountBalance":794.47,"marketSegment":"市场部","评论":"n个账户将不得不解除锁定。狐狸的哄骗能力"}
-{"rowNumber":7,"customerKey":7,"name":"客户#000000007","address":"营业网点号码","国家号码": 18,"phone":"28-190-982-9759","accountBalance":9561.95,"marketSegment":"自动机","评论":"反讽刺，表达经纬仪。特快的，速成的
-{"rowNumber":9,"customerKey":9,"name":"客户#000000009","address":"xKiAFTjUsCuxfeleNqefumTrjS","nationKey":8,（根据客户编号查询其下订单的订单信息） "phone":"18-338-906-3675","accountBalance":8324.07,"marketSegment":"家具","评论":"r经纬仪根据请求醒来薄借口：待定
-（5行）
+ {"rowNumber":1,"customerKey":1,"name":"Customer#000000001","address":"IVhzIApeRb ot,c,E","nationKey":15,"phone":"25-989-741-2988","accountBalance":711.56,"marketSegment":"BUILDING","comment":"to the even, regular platelets. regular, ironic epitaphs nag e"}
+ {"rowNumber":3,"customerKey":3,"name":"Customer#000000003","address":"MG9kdTD2WBHm","nationKey":1,"phone":"11-719-748-3364","accountBalance":7498.12,"marketSegment":"AUTOMOBILE","comment":" deposits eat slyly ironic, even instructions. express foxes detect slyly. blithel
+ {"rowNumber":5,"customerKey":5,"name":"Customer#000000005","address":"KvpyuHCplrB84WgAiGV6sYpZq7Tj","nationKey":3,"phone":"13-750-942-6364","accountBalance":794.47,"marketSegment":"HOUSEHOLD","comment":"n accounts will have to unwind. foxes cajole accor"}
+ {"rowNumber":7,"customerKey":7,"name":"Customer#000000007","address":"TcGe5gaZNgVePxU5kRrvXBfkasDTea","nationKey":18,"phone":"28-190-982-9759","accountBalance":9561.95,"marketSegment":"AUTOMOBILE","comment":"ainst the ironic, express theodolites. express, even pinto bean
+ {"rowNumber":9,"customerKey":9,"name":"Customer#000000009","address":"xKiAFTjUsCuxfeleNqefumTrjS","nationKey":8,"phone":"18-338-906-3675","accountBalance":8324.07,"marketSegment":"FURNITURE","comment":"r theodolites according to the requests wake thinly excuses: pending
+(5 rows)
 
-presto:tpch> SELECT sum（cast(json_extract_scalar(_message, '$.accountBalance'） AS双倍金额)来自客户限额10；
-_col0
+lk:tpch> SELECT sum(cast(json_extract_scalar(_message, '$.accountBalance') AS double)) FROM customer LIMIT 10;
+   _col0
 ------------
-6681865.59
-（1行）
+ 6681865.59
+(1 row)
 ```
 
-Kafka中的数据可以使用Presto查询，但还没有形成实际的表形状。原始数据可以通过`_message`和`_key`列获得，但不会解码成列。由于样本数据是JSON格式，因此可以使用Presto内置的[json](../functions/json)对数据进行切片。
+The data from Kafka can be queried using openLooKeng but it is not yet in actual table shape. The raw data is available through the `_message` and `_key` columns but it is not decoded into columns. As the sample data is in JSON format, the [json](../functions/json) built into openLooKeng can be used to slice the data.
 
-###步骤5：添加Topic描述文件
+### Step 5: Add a topic description file
 
-Kafka Connector支持Topic描述文件，将原始数据转换为表格式。这些文件位于Presto安装的`etc/kafka`文件夹中，必须以`.json`结尾。建议：
-文件名与表名匹配，但非必须。
+The Kafka connector supports topic description files to turn raw data into table format. These files are located in the `etc/kafka` folder in the openLooKeng installation and must end with `.json`. It is recommended that
+the file name matches the table name but this is not necessary.
 
-在`etc/kafka/tpch.customer.json`文件中添加如下文件，并重启Presto。
+Add the following file as `etc/kafka/tpch.customer.json` and restart openLooKeng:
 
-"``` {.json}"
+``` json
 {
-"tableName": "客户名称"，
-"schemaName": "tpch"，
-"topicName": "tpch.客户名称"，
-"key": {
-"dataFormat": "原始格式"，
-"字段": [
-{
-"name": "kafka_key"，
-"dataFormat": "长数据格式"，
-"type": "BIGINT"类型名称，
-"hidden": "假的"
-}
-]
-}
+    "tableName": "customer",
+    "schemaName": "tpch",
+    "topicName": "tpch.customer",
+    "key": {
+        "dataFormat": "raw",
+        "fields": [
+            {
+                "name": "kafka_key",
+                "dataFormat": "LONG",
+                "type": "BIGINT",
+                "hidden": "false"
+            }
+        ]
+    }
 }
 ```
 
-customer表现在多了一个列：`kafka_key`。
+The customer table now has an additional column: `kafka_key`.
 
-"```{.none}"
-presto:tpch> DESCRIBE客户名称；
-列|类型|附加|注释
+``` sql
+lk:tpch> DESCRIBE customer;
+      Column       |  Type   | Extra |                   Comment
 -------------------+---------+-------+---------------------------------------------
-kafka_key | bigint | <密钥> <密钥> <密钥> <密钥> <密钥> <密钥>
-_partition_id | bigint |分区编号
-_partition_offset | bigint |消息在分区内的偏移量。
-_segment_start | bigint | |分片起始偏移值。
-_segment_end | bigint | |分片结束偏移量。
-_segment_count | bigint |每段运行消息数
-_key | varchar | |密钥文本信息
-_key_corrupt | boolean | |关键数据被破坏
-_key_length | bigint | |总的密钥字节数。
-_message | varchar | |消息正文
-_message_corrupt | boolean | |消息数据被破坏
-_message_length | bigint | |消息总字节数。
-（12行）
+ kafka_key         | bigint  |       |
+ _partition_id     | bigint  |       | Partition Id
+ _partition_offset | bigint  |       | Offset for the message within the partition
+ _segment_start    | bigint  |       | Segment start offset
+ _segment_end      | bigint  |       | Segment end offset
+ _segment_count    | bigint  |       | Running message count per segment
+ _key              | varchar |       | Key text
+ _key_corrupt      | boolean |       | Key data is corrupt
+ _key_length       | bigint  |       | Total number of key bytes
+ _message          | varchar |       | Message text
+ _message_corrupt  | boolean |       | Message data is corrupt
+ _message_length   | bigint  |       | Total number of message bytes
+(12 rows)
 
-presto:tpch> kafka_key LIMIT 10从客户订单中选择kafka_key
-kafka_key
+lk:tpch> SELECT kafka_key FROM customer ORDER BY kafka_key LIMIT 10;
+ kafka_key
 -----------
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-（10行）
+         0
+         1
+         2
+         3
+         4
+         5
+         6
+         7
+         8
+         9
+(10 rows)
 ```
 
-topic定义文件将内部的Kafka key（8字节的裸长）映射到Presto `BIGINT`列上。
+The topic definition file maps the internal Kafka key (which is a raw long in eight bytes) onto a openLooKeng `BIGINT` column.
 
-###步骤6：将topic消息的所有值映射到列
+### Step 6: Map all the values from the topic message onto columns
 
-更新`etc/kafka/tpch.customer.json`文件，为消息添加字段，并重启Presto。由于消息中字段为JSON，所以使用`json`数据格式。这是对键和消息使用不同的数据格式的示例。
+Update the `etc/kafka/tpch.customer.json` file to add fields for the message and restart openLooKeng. As the fields in the message are JSON, it uses the `json` data format. This is an example where different data formats are used for the key and the message.
 
-"``` {.json}"
+``` json
 {
-"tableName": "客户名称"，
-"schemaName": "tpch"，
-"topicName": "tpch.客户名称"，
-"key": {
-"dataFormat": "原始格式"，
-"字段": [
-{
-"name": "kafka_key"，
-"dataFormat": "长数据格式"，
-"type": "BIGINT"类型名称，
-"hidden": "假的"
-}
-]
-}，
-"message": {
-"dataFormat": "json" , <网络地址格式名称>，
-"字段": [
-{
-"name": "行号"，
-"mapping": "行号"，
-"type": "BIGINT"
-}，
-{
-"name": "客户密钥"，
-"mapping": "客户键值"，
-"type": "BIGINT"
-}，
-{
-"name": "名称"，
-"mapping": "名称"，
-"type": "VARCHAR"
-}，
-{
-"name": "地址"，
-"mapping": "映射地址"，
-"type": "VARCHAR"
-}，
-{
-"name": "国家密钥"，
-"mapping": "国家关键字"，
-"type": "BIGINT"
-}，
-{
-"name": "电话"，
-"mapping": "话机号码"，
-"type": "VARCHAR"
-}，
-{
-"name": "账户余额"，
-"mapping": "账户余额"，
-"type": "双倍"
-}，
-{
-"name": "细分市场"，
-"mapping": "市场细分"，
-"type": "VARCHAR"
-}，
-{
-"name": "评论内容"，
-"mapping": "评论信息"，
-"type": "VARCHAR"
-}
-]
-}
+    "tableName": "customer",
+    "schemaName": "tpch",
+    "topicName": "tpch.customer",
+    "key": {
+        "dataFormat": "raw",
+        "fields": [
+            {
+                "name": "kafka_key",
+                "dataFormat": "LONG",
+                "type": "BIGINT",
+                "hidden": "false"
+            }
+        ]
+    },
+    "message": {
+        "dataFormat": "json",
+        "fields": [
+            {
+                "name": "row_number",
+                "mapping": "rowNumber",
+                "type": "BIGINT"
+            },
+            {
+                "name": "customer_key",
+                "mapping": "customerKey",
+                "type": "BIGINT"
+            },
+            {
+                "name": "name",
+                "mapping": "name",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "address",
+                "mapping": "address",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "nation_key",
+                "mapping": "nationKey",
+                "type": "BIGINT"
+            },
+            {
+                "name": "phone",
+                "mapping": "phone",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "account_balance",
+                "mapping": "accountBalance",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "market_segment",
+                "mapping": "marketSegment",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "comment",
+                "mapping": "comment",
+                "type": "VARCHAR"
+            }
+        ]
+    }
 }
 ```
 
-现在对消息的JSON中的所有字段都定义了列，并且来自前面的求和查询可以直接操作`account_balance`列：
+Now for all the fields in the JSON of the message, columns are defined and the sum query from earlier can operate on the `account_balance` column directly:
 
-"```{.none}"
-presto:tpch> DESCRIBE客户名称；
-列|类型|附加|注释
+``` sql
+lk:tpch> DESCRIBE customer;
+      Column       |  Type   | Extra |                   Comment
 -------------------+---------+-------+---------------------------------------------
-kafka_key | bigint | <密钥> <密钥> <密钥> <密钥> <密钥> <密钥>
-行号| bigint | |
-客户键值| bigint | |
-名称| varchar |
-地址| varchar |
-国密码| bigint | |
-phone |字符串| |
-account_balance|双倍余额||
-市场段|varchar|
-注释| varchar |
-_partition_id | bigint |分区编号
-_partition_offset | bigint |消息在分区内的偏移量。
-_segment_start | bigint | |分片起始偏移值。
-_segment_end | bigint | |分片结束偏移量。
-_segment_count | bigint |每段运行消息数
-_key | varchar | |密钥文本信息
-_key_corrupt | boolean | |关键数据被破坏
-_key_length | bigint | |总的密钥字节数。
-_message | varchar | |消息正文
-_message_corrupt | boolean | |消息数据被破坏
-_message_length | bigint | |消息总字节数。
-（21行）
+ kafka_key         | bigint  |       |
+ row_number        | bigint  |       |
+ customer_key      | bigint  |       |
+ name              | varchar |       |
+ address           | varchar |       |
+ nation_key        | bigint  |       |
+ phone             | varchar |       |
+ account_balance   | double  |       |
+ market_segment    | varchar |       |
+ comment           | varchar |       |
+ _partition_id     | bigint  |       | Partition Id
+ _partition_offset | bigint  |       | Offset for the message within the partition
+ _segment_start    | bigint  |       | Segment start offset
+ _segment_end      | bigint  |       | Segment end offset
+ _segment_count    | bigint  |       | Running message count per segment
+ _key              | varchar |       | Key text
+ _key_corrupt      | boolean |       | Key data is corrupt
+ _key_length       | bigint  |       | Total number of key bytes
+ _message          | varchar |       | Message text
+ _message_corrupt  | boolean |       | Message data is corrupt
+ _message_length   | bigint  |       | Total number of message bytes
+(21 rows)
 
-presto:tpch> SELECT *从客户限5；
-kafka_key |行号|客户_key |姓名|地址|国家_key |电话|余额|市场_segment |评论
+lk:tpch> SELECT * FROM customer LIMIT 5;
+ kafka_key | row_number | customer_key |        name        |                address                | nation_key |      phone      | account_balance | market_segment |                                                      comment
 -----------+------------+--------------+--------------------+---------------------------------------+------------+-----------------+-----------------+----------------+---------------------------------------------------------------------------------------------------------
-1 | 2 | 2 |客户#000000002 | XSTf4,NCwDVaWNe6tEgvwfmRchLXak | 13 | 23-768-687-3665 | 121.65 |自动机| l帐号信息查询接口。欢快的讽刺经纬仪大胆地整合
-3 | 4 | 4 |客户#000000004 | XxVSJsLAGtn | 4 | 14-128-190-5944 | 2866.83 |机机接口协议|请求消息。最后的，最后的，最后的
-5 | 6 | 6 |客户#000000006 | sKZz0CsnMD7mp4Xd0YrBvx,（表示客户名）表示客户名，表示客户名。雷库沃yVn|20|30-114-968-4951|7638.57|自动驾驶汽车。根据狡猾的大胆计划，甚至存款也会增加。决算哄骗要求。愤怒的
-7 | 8 | 8 |客户#000000008 |版本号为I0B10bB0AymmC，版本号为0PrRYBCP1yGJ8xcBPmWhl5 |版本号为17 |版本号为27-147-574-9335 |版本号为6819.74 |版本号为BUIL在狡猾的正规经纬仪中，兴高采烈的宫廷里。甚至经纬仪也小心翼翼地狡猾地讨价还价。
-9 | 10 | 10 | 10 |客户#000000010 | 6LrEaV6KR6PLVcgl2ArL Q3rqzLzcT1版本2 | 5 | 5 | 15-741-346-9870 |检查项编号：2753.54 |检查项编号：定期存款是讨价还价的。毛皮
-（5行）
+         1 |          2 |            2 | Customer#000000002 | XSTf4,NCwDVaWNe6tEgvwfmRchLXak        |         13 | 23-768-687-3665 |          121.65 | AUTOMOBILE     | l accounts. blithely ironic theodolites integrate boldly: caref
+         3 |          4 |            4 | Customer#000000004 | XxVSJsLAGtn                           |          4 | 14-128-190-5944 |         2866.83 | MACHINERY      |  requests. final, regular ideas sleep final accou
+         5 |          6 |            6 | Customer#000000006 | sKZz0CsnMD7mp4Xd0YrBvx,LREYKUWAh yVn  |         20 | 30-114-968-4951 |         7638.57 | AUTOMOBILE     | tions. even deposits boost according to the slyly bold packages. final accounts cajole requests. furious
+         7 |          8 |            8 | Customer#000000008 | I0B10bB0AymmC, 0PrRYBCP1yGJ8xcBPmWhl5 |         17 | 27-147-574-9335 |         6819.74 | BUILDING       | among the slyly regular theodolites kindle blithely courts. carefully even theodolites haggle slyly alon
+         9 |         10 |           10 | Customer#000000010 | 6LrEaV6KR6PLVcgl2ArL Q3rqzLzcT1 v2    |          5 | 15-741-346-9870 |         2753.54 | HOUSEHOLD      | es regular deposits haggle. fur
+(5 rows)
 
-presto:tpch>来自客户LIMIT 10的金额（帐户余额）；
-_col0
+lk:tpch> SELECT sum(account_balance) FROM customer LIMIT 10;
+   _col0
 ------------
-6681865.59
-（1行）
+ 6681865.59
+(1 row)
 ```
 
-现在，来自“客户”主题消息的所有字段都作为Presto表列可用。
+Now all the fields from the `customer` topic messages are available as openLooKeng table columns.
 
-###步骤7：使用实时数据
+### Step 7: Use live data
 
-Presto可以在实时数据到达时从Kafka中查询实时数据。为了模拟一个实时数据提要，本教程将实时tweet的提要设置到Kafka中。
+openLooKeng can query live data in Kafka as it arrives. To simulate a live feed of data, this tutorial sets up a feed of live tweets into Kafka.
 
-####设置Twitter直播动态
+#### Setup a live Twitter feed
 
--下载扭扭工具
+-   Download the twistr tool
 
-"```{.none}"
-$ curl -o twistr端口号<b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/c/> <b/c/> <b/c/c/d> <b/c/d> <b/c/c/> <b/c/> <b/c>参数值设置为需要的参数值。
-$ chmod 755转盘
+``` shell
+$ curl -o twistr https://repo1.maven.org/maven2/de/softwareforge/twistr_kafka_0811/1.2/twistr_kafka_0811-1.2.sh
+$ chmod 755 twistr
 ```
 
--在<https://dev.twitter.com/>上创建开发者账号，设置访问和消费者Token。
--创建一个`twistr.properties`文件，并将访问和消费者密钥和秘密放入其中：
+-   Create a developer account at <https://dev.twitter.com/> and set up an access and consumer token.
+-   Create a `twistr.properties` file and put the access and consumer key and secrets into it:
 
-"```{.none}"
-转盘.access-token-key=...转盘密钥。
-转盘.access-token-secret=...转盘接入令牌。
-转盘.consumer-key=...
-转盘.consumer-secret=...
-kafka.brokers=本地主机名称：9092
+``` properties
+twistr.access-token-key=...
+twistr.access-token-secret=...
+twistr.consumer-key=...
+twistr.consumer-secret=...
+twistr.kafka.brokers=localhost:9092
 ```
 
-####在Presto上创建tweets表
+#### Create a tweets table on openLooKeng
 
-在`etc/catalog/kafka.properties`文件中添加tweets表，如下所示。
+Add the tweets table to the `etc/catalog/kafka.properties` file:
 
-"```{.none}"
-连接器.name=kafka
-kafka.nodes=本地主机名：9092
-kafka.table-names=tpch.customer,tpch.orders,tpch.lineitem,tpch.part,tpch.suppp,tpch.supplier,tpch.地区，tpch.地区，tpch订单数量，tpch订单数量，tpch订单数量，tpch订单数量，tpch订单数量，tpch订单数量
-kafka.hide-internal-columns=是否隐藏字段
+``` properties
+connector.name=kafka
+kafka.nodes=localhost:9092
+kafka.table-names=tpch.customer,tpch.orders,tpch.lineitem,tpch.part,tpch.partsupp,tpch.supplier,tpch.nation,tpch.region,tweets
+kafka.hide-internal-columns=false
 ```
 
-添加Twitter动态的主题定义文件为`etc/kafka/tweets.json`：
+Add a topic definition file for the Twitter feed as `etc/kafka/tweets.json`:
 
-"``` {.json}"
+``` json
 {
-"tableName": "tweets"，
-"topicName": "twitter_feed"，
-"dataFormat": "json" , <网络地址格式名称>，
-"key": {
-"dataFormat": "原始格式"，
-"字段": [
-{
-"name": "kafka_key"，
-"dataFormat": "长数据格式"，
-"type": "BIGINT"类型名称，
-"hidden": "假的"
+    "tableName": "tweets",
+    "topicName": "twitter_feed",
+    "dataFormat": "json",
+    "key": {
+        "dataFormat": "raw",
+        "fields": [
+            {
+                "name": "kafka_key",
+                "dataFormat": "LONG",
+                "type": "BIGINT",
+                "hidden": "false"
+            }
+        ]
+    },
+    "message": {
+        "dataFormat":"json",
+        "fields": [
+            {
+                "name": "text",
+                "mapping": "text",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "user_name",
+                "mapping": "user/screen_name",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "lang",
+                "mapping": "lang",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "created_at",
+                "mapping": "created_at",
+                "type": "TIMESTAMP",
+                "dataFormat": "rfc2822"
+            },
+            {
+                "name": "favorite_count",
+                "mapping": "favorite_count",
+                "type": "BIGINT"
+            },
+            {
+                "name": "retweet_count",
+                "mapping": "retweet_count",
+                "type": "BIGINT"
+            },
+            {
+                "name": "favorited",
+                "mapping": "favorited",
+                    "type": "BOOLEAN"
+            },
+            {
+                "name": "id",
+                "mapping": "id_str",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "in_reply_to_screen_name",
+                "mapping": "in_reply_to_screen_name",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "place_name",
+                "mapping": "place/full_name",
+                "type": "VARCHAR"
+            }
+        ]
+    }
 }
-]
-}，
-"message": {
-"dataFormat":"json"，
-"字段": [
-{
-"name": "文本内容"，
-"mapping": "文本格式"，
-"type": "VARCHAR"
-}，
-{
-"name": "用户名"，
-"mapping": "用户名/屏幕名称"，
-"type": "VARCHAR"
-}，
-{
-"name": "语言"，
-"mapping": "语言类型"，
-"type": "VARCHAR"
-}，
-{
-"name": "创建时间"，
-"mapping": "创建时间"，
-"type" : "时间戳"，
-"dataFormat":"rfc2822"媒体数据格式
-}，
-{
-"name": "收藏数量"，
-"mapping": "收藏数量"，
-"type": "BIGINT"
-}，
-{
-"name" : "转发次数"，
-"mapping": "返回次数"，
-"type": "BIGINT"
-}，
-{
-"name": "已收藏"，
-"mapping": "已收藏"，
-"type": "布尔类型"
-}，
-{
-"name": "编号"，
-"mapping": "id_str"，
-"type": "VARCHAR"
-}，
-{
-"name": "在大屏名称中回复"，
-"mapping": "在大屏名称中回复"，
-"type": "VARCHAR"
-}，
-{
-"name": "地名"，
-"mapping": "位置/完整名称"，
-"type": "VARCHAR"
-}
-]
-}
-}
 ```
 
-由于此表没有显式的模式名，它将被放入`default`模式中。
+As this table does not have an explicit schema name, it will be placed into the `default` schema.
 
-####动态数据
+#### Feed live data
 
-启动捻线器工具：
+Start the twistr tool:
 
-"```{.none}"
-$ java -Dness.config.location=文件类型：$(pwd) -Dness.config=twistr <用户名> -jar <文件类型> <文件类型> <文件类型> <文件类型> <文件类型> <文件类型> <文件类型> <文件类型> <文件类型> <文件类型> <文件类型>./twistr
+``` shell
+$ java -Dness.config.location=file:$(pwd) -Dness.config=twistr -jar ./twistr
 ```
 
-`twistr`连接到Twitter API，并将\"sample tweet\"feed馈入名为`twitter_feed`的Kafka主题。
+`twistr` connects to the Twitter API and feeds the \"sample tweet\" feed into a Kafka topic called `twitter_feed`.
 
-现在对实时数据运行查询：
+Now run queries against live data:
 
-"```{.none}"
-$ ./presto-cli --catalog kafka --schema缺省目录名称
+``` shell
+$ ./openlk-cli --catalog kafka --schema default
 
-presto:default>从tweets中选择次数(*)
-_col0
+lk:default> SELECT count(*) FROM tweets;
+ _col0
 -------
-4467
-（1行）
+  4467
+(1 row)
 
-presto:default>从tweets中选择次数(*)
-_col0
+lk:default> SELECT count(*) FROM tweets;
+ _col0
 -------
-4517
-（1行）
+  4517
+(1 row)
 
-presto:default>从tweets中选择次数(*)
-_col0
+lk:default> SELECT count(*) FROM tweets;
+ _col0
 -------
-4572
-（1行）
+  4572
+(1 row)
 
-presto:default>选择kafka_key，用户名，语言，创建时间从tweets限制10；
-kafka_key|用户名|lang|创建时间
+lk:default> SELECT kafka_key, user_name, lang, created_at FROM tweets LIMIT 10;
+     kafka_key      |    user_name    | lang |       created_at
 --------------------+-----------------+------+-------------------------
-494227746231685121 |burncaniff |中文名：中文名：中文名：中文名：中文名：中文名：中文名：2014-07-29 14:07:31.000
-494227746214535169 | gu8tn | ja |时间日期时间日期时间14:07:31.000
-494227746219126785 |苯丙胺|苯丙胺|苯丙胺| 2014年7月29日14时07分31秒
-494227746201931777 |约斯尼斯| ht | 2014年7月29日14时07分31秒
-494227746219110401 | 510咖啡馆|英文名称| 2014年7月29日14时07分31秒
-494227746210332673 |仅限英文版本| Da_JuanAnd_Only | 2014-07-29 14:07:31.000
-494227746193956865 |微笑_kidrauhl6 | pt | 2014年7月29日14时07分31秒
-494227750426017793 | CashforeverCD |中文版本| 2014年7月29日14时07分32秒版本
-494227750396653569 |电影预演|录制| 2014-07-29 14:07:32.000
-494227750388256769 | jmolas | es | 2014年7月29日14时07分32秒（中文大意）
-（10行）
+ 494227746231685121 | burncaniff      | en   | 2014-07-29 14:07:31.000
+ 494227746214535169 | gu8tn           | ja   | 2014-07-29 14:07:31.000
+ 494227746219126785 | pequitamedicen  | es   | 2014-07-29 14:07:31.000
+ 494227746201931777 | josnyS          | ht   | 2014-07-29 14:07:31.000
+ 494227746219110401 | Cafe510         | en   | 2014-07-29 14:07:31.000
+ 494227746210332673 | Da_JuanAnd_Only | en   | 2014-07-29 14:07:31.000
+ 494227746193956865 | Smile_Kidrauhl6 | pt   | 2014-07-29 14:07:31.000
+ 494227750426017793 | CashforeverCD   | en   | 2014-07-29 14:07:32.000
+ 494227750396653569 | FilmArsivimiz   | tr   | 2014-07-29 14:07:32.000
+ 494227750388256769 | jmolas          | es   | 2014-07-29 14:07:32.000
+(10 rows)
 ```
 
-现在有一个活饲料到卡夫卡，可以查询使用Presto。
+There is now a live feed into Kafka which can be queried using openLooKeng.
 
-###尾声：时间戳
+### Epilogue: Time stamps
 
-在最后一步中设置的tweetsfeed包含一个RFC2822格式的时间戳，作为每个tweet中的`created_at`属性。
+The tweets feed that was set up in the last step contains a time stamp in RFC 2822 format as `created_at` attribute in each tweet.
 
-"```{.none}"
-presto:default> SELECT DISTINCT json_extract_scalar（_message, '$.created_at'） ) ，表示原始日期格式
-->来自tweets限制5；
-raw_日期
+``` sql
+lk:default> SELECT DISTINCT json_extract_scalar(_message, '$.created_at')) AS raw_date
+             -> FROM tweets LIMIT 5;
+            raw_date
 --------------------------------
-周二7月29日21:07:31+0000 2014
-周二7月29日21:07:32+0000 2014
-周二7月29日21:07:33+0000 2014
-周二7月29日21:07:34+0000 2014
-周二7月29日21:07:35+0000 2014
-（5行）
+ Tue Jul 29 21:07:31 +0000 2014
+ Tue Jul 29 21:07:32 +0000 2014
+ Tue Jul 29 21:07:33 +0000 2014
+ Tue Jul 29 21:07:34 +0000 2014
+ Tue Jul 29 21:07:35 +0000 2014
+(5 rows)
 ```
 
-tweets表的主题定义文件包含使用`rfc2822`转换器映射到时间戳的映射：
+The topic definition file for the tweets table contains a mapping onto a timestamp using the `rfc2822` converter:
 
-"```{.none}"
+``` json
 ...
 {
-"name": "创建时间"，
-"mapping": "创建时间"，
-"type" : "时间戳"，
-"dataFormat":"rfc2822"媒体数据格式
-}，
+    "name": "created_at",
+    "mapping": "created_at",
+    "type": "TIMESTAMP",
+    "dataFormat": "rfc2822"
+},
 ...
 ```
 
-这允许将原始数据映射到Presto时间戳列：
+This allows the raw data to be mapped onto a openLooKeng timestamp column:
 
-"```{.none}"
-presto:default> SELECT创建时间，原始日期从(
--> SELECT已创建日期，json_extract_scalar（_message, '$.created_at'） AS原始数据日期
-->发自tweets)
--> GROUP BY 1, 2限制5个群组；
-创建时间| raw_date
+``` sql
+lk:default> SELECT created_at, raw_date FROM (
+             ->   SELECT created_at, json_extract_scalar(_message, '$.created_at') AS raw_date
+             ->   FROM tweets)
+             -> GROUP BY 1, 2 LIMIT 5;
+       created_at        |            raw_date
 -------------------------+--------------------------------
-2014年7月29日14时07分20秒| 2014年7月29日21时07分20秒+0000
-2014年7月29日14时07分21秒| 2014年7月29日21时07分21秒+0000
-2014年7月29日14时07分22秒| 2014年7月29日21时07分22秒+0000分
-2014年7月29日14时07分23秒| 2014年7月29日21时07分23秒+0000
-2014年7月29日14时07分24秒| 2014年7月29日21时07分24秒+0000
-（5行）
+ 2014-07-29 14:07:20.000 | Tue Jul 29 21:07:20 +0000 2014
+ 2014-07-29 14:07:21.000 | Tue Jul 29 21:07:21 +0000 2014
+ 2014-07-29 14:07:22.000 | Tue Jul 29 21:07:22 +0000 2014
+ 2014-07-29 14:07:23.000 | Tue Jul 29 21:07:23 +0000 2014
+ 2014-07-29 14:07:24.000 | Tue Jul 29 21:07:24 +0000 2014
+(5 rows)
 ```
 
-Kafka连接器包含ISO8601、RFC2822文本格式以及自新纪元以来使用秒或毫秒的基于数字的时间戳的转换器。还有一个通用的、基于文本的格式化程序，它使用Joda-Time格式字符串来解析文本列。
+The Kafka connector contains converters for ISO 8601, RFC 2822 text formats and for number-based timestamps using seconds or miilliseconds since the epoch. There is also a generic, text-based formatter which uses Joda-Time format strings to parse text columns.

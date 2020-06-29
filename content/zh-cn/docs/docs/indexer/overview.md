@@ -1,29 +1,29 @@
-# Presto启发式索引器
+# openLooKeng Heuristic Indexer
 
-##简介
+## Introduction
 
-可以使用数据库表的一个或多个列创建索引，从而提供更快的随机查找。大多数大数据格式，如ORC、Parquet和CarbonData，都已经内置了索引。
+Indexes can be created using one or more columns of a database table, providing faster random lookups. Most Big Data formats such as ORC, Parquet and CarbonData already have indices embedded in them.
 
-HeuristicIndexer允许在现有数据上创建索引，但存储原始数据源外部的索引。这样做有几个好处：
+The Heuristic Indexer allows creating indexes on existing data but stores the index external to the original data source. This provides several benefits:
 
--索引对基础数据源不可知，并且可由任何查询引擎使用
-?无需重写现有数据文件即可对现有数据进行索引
--基础数据源不支持的新索引类型可以被创建
--索引数据不占用数据源存储空间
+  - The index is agnostic to the underlying data source and can be used by any query engine
+  - Existing data can be indexed without having to rewrite the existing data files
+  - New index types not supported by the underlying data source can be created
+  - Index data does not use the storage space of the data source
 
-##示例用例
+## Example Usecases
 
-### 1.过滤查询执行时的定时Split
+### 1. Filtering scheduled Splits during query execution
 
-当引擎需要调度TableScan操作时，它会调度worker上的Split。这些Split负责读取部分源数据。但是，如果应用了谓词，则并非所有Split都会返回数据。
+When the engine needs to schedule a TableScan operation, it schedules Splits on the workers. These Splits are responsible for reading a portion of the source data. However, not all Splits will return data if a predicate is applied.
 
-通过为谓词列保留外部索引，启发式索引器可以确定每个分裂是否包含正在搜索的值，并且只对可能包含该值的分裂安排读操作。
+By keeping an external index for the predicate column, the Heuristic Indexer can determine whether each split contains the values being searched for and only schedule the read operation for the splits which possibly contain the value.
 
-![]（索引器拆分文件.png）
+![](indexer_filter_splits.png)
 
-### 2.读取ORC文件时尽早过滤Block
+### 2. Filtering Block early when reading ORC files
 
-当需要从ORC文件中读取数据时，使用ORCRecordReader。此读取器以批处理（例如，。1024行），然后形成Pages。但是，如果有一个谓词存在，那么就不需要批处理中的所有条目，有些条目可能会在稍后被Filter运算符过滤掉。
+When data needs to be read from an ORC file, the ORCRecordReader is used. This reader reads data from Stripes as batches (e.g. 1024 rows), which then form Pages. However, if a predicate is present, not all entries in the batch are required, some may be filtered out later by the Filter operator.
 
-通过为谓词列保留外部位图索引，启发式索引器可以在甚至应用Filter运算符之前筛选出与谓词不匹配的行。
+By keeping an external bitmap index for the predicate column, the Heuristic Indexer can filter out rows which do not match the predicates before the Filter operator is even applied.
 

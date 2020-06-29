@@ -1,45 +1,45 @@
-反腐角色
+REVOKE ROLES
 ============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-n.雷沃克
-【管理选项】
-角色[,...]
-FROM （用户|普通用户|角色） [, ...]
-【由批准】（用户|普通用户|角色|当前角色|当前角色|当前角色） ]
+``` sql
+REVOKE
+[ ADMIN OPTION FOR ]
+role [, ...]
+FROM ( user | USER user | ROLE role) [, ...]
+[ GRANTED BY ( user | USER user | ROLE role | CURRENT_USER | CURRENT_ROLE ) ]
 ```
 
-问题描述
+Description
 -----------
 
-从当前目录中的指定主体中撤消指定的角色。
+Revokes the specified role(s) from the specified principal(s) in the current catalog.
 
-如果声明了`ADMIN OPTION FOR`子句，则收回`GRANT`权限，不收回角色。
+If the `ADMIN OPTION FOR` clause is specified, the `GRANT` permission is revoked instead of the role.
 
-要使角色的`REVOKE`语句成功，执行该语句的用户应该是角色admin，或者应该拥有给定角色的`GRANT`选项。
+For the `REVOKE` statement for roles to succeed, the user executing it either should be the role admin or should possess the `GRANT` option for the given role.
 
-可选的`GRANTED BY`子句导致角色被撤销，指定的主体作为撤销者。如果未指定`GRANTED BY`子句，则角色将被当前用户作为吊销者吊销。
+The optional `GRANTED BY` clause causes the role(s) to be revoked with the specified principal as a revoker. If the `GRANTED BY` clause is not specified, the roles are revoked by the current user as a revoker.
 
-示例
+Examples
 --------
 
-从用户`foo`中取消角色`bar`：
+Revoke role `bar` from user `foo` :
 
-从用户foo取消酒吧；
+    REVOKE bar FROM USER foo;
 
-取消角色`bar`和`foo`对用户`baz`和角色`qux`的管理选项：
+Revoke admin option for roles `bar` and `foo` from user `baz` and role `qux` :
 
-翻新管理选项的酒吧，福从用户巴兹，角色qux；
+    REVOKE ADMIN OPTION FOR bar, foo FROM USER baz, ROLE qux;
 
-限制
+Limitations
 -----------
 
-部分Connector不支持角色管理。有关更多详细信息，请参阅连接器文档。
+Some connectors do not support role management. See connector documentation for more details.
 
-参见
+See Also
 --------
 
-【创建角色】（./create-role），【删除角色】（./drop-role），【设置角色】（./set-role），【授权角色】(./grant-roles)
+[create-role](./create-role), [drop-role](./drop-role), [ set-role](./ set-role), [ grant-roles](./ grant-roles)

@@ -1,14 +1,14 @@
-展台
+SHOW TABLES
 ===========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-显示表格【从模式】【象模式】
+``` sql
+SHOW TABLES [ FROM schema ] [ LIKE pattern ]
 ```
 
-问题描述
+Description
 -----------
 
-列出`schema`或者当前schema下的表。可以使用`LIKE`子句限制表名列表。
+List the tables in `schema` or in the current schema. The `LIKE` clause can be used to restrict the list of table names.

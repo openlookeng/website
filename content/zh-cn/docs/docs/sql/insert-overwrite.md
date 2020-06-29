@@ -1,61 +1,61 @@
-插入覆盖
+INSERT OVERWRITE
 ================
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-INSERT OVERWRITE [TABLE]表名【（第【,...】】列）查询
+``` sql
+INSERT OVERWRITE [TABLE] table_name [ ( column [, ... ] ) ] query
 ```
 
-问题描述
+Description
 -----------
 
-插入覆盖主要做两件事：1)根据查询创建的数据集删除数据行。2)插入查询产生的新数据。
+Insert overwrite basically do two things: 1) drop the data rows according to the dataset created by the query. 2) insert the new data created by query.
 
-插入覆盖操作既适用于分区表，也适用于非分区表，但行为不同：
+Insert overwrite can work on both partition and non-partition table, but the behaviors are different:
 
--如果表是非分区表，则直接删除原有数据，再插入新数据。
--如果表是分区表，则只有数据集中存在的来自查询的匹配分区数据才会被删除，并替换为新数据。
+-   If the table is non-partition table, the existing data will be all deleted directly, and then insert the new data.
+-   If the table is partitioned table, only the matched partition data which existing in the dataset result from query will be dropped and replaced with the new data.
 
-如果指定了列名列表，则它们必须与查询生成的列列表完全匹配。表中未在列列表中出现的每个列将用`null`值填充。否则，如果未指定列列表，则查询生成的列必须与要插入的表中的列完全匹配。
+If the list of column names is specified, they must exactly match the list of columns produced by the query. Each column in the table not present in the column list will be filled with a `null` value. Otherwise, if the list of columns is not specified, the columns produced by the query must exactly match the columns in the table being inserted into.
 
-示例
+Examples
 --------
 
-假设`orders`不是分区表，有100行，那么在insertwrite语句下面执行：
+Assume `orders` is not a partitioned table, and have 100 rows, then execute below insert overwrite statement:
 
-插入覆盖值排序（1，'SUCCESS'，'10.25'， DATA '2020-01-01'）；
+    INSERT OVERWRITE orders VALUES (1, 'SUCCESS', '10.25', DATA '2020-01-01');
 
-那么`orders`表将只有1行，即`VALUE`子句中指定的数据。
+Then the `orders` table will only have 1 rows, that is the data specified in the `VALUE` clause.
 
-假设`users`有三列：（`id`,`name`,`state`），按`state`分区，现有数据如下行：
+Assume `users` has 3 columns: (`id`, `name`, `state`) and partitioned by `state`, and the existing data has follow rows:
 
 ---- ------ -------
-id名称状态
-1张John CD光盘
-2山姆光盘
-3露西深圳
+  id   name   state
+  1    John   CD
+  2    Sam    CD
+  3    Lucy   SZ
 ---- ------ -------
 
-然后执行下面的insertwrite语句：
+Then execute below insert overwrite statement:
 
-INSERT OVERWRITE orders VALUES （4, '纽曼'， '光盘'）；
+    INSERT OVERWRITE orders VALUES (4, 'Newman', 'CD');
 
-这将用分区值`state='CD'`覆盖数据，但不会影响数据`state='SZ'`。所以结果会是
+This will overwrite the data with partition value `state='CD'`, but wont impact the data `state='SZ'`. So the result will be
 
 ---- -------- -------
-id名称状态
-3露西深圳
-4纽曼光盘
+  id   name     state
+  3    Lucy     SZ
+  4    Newman   CD
 ---- -------- -------
 
-限制
+Limitations
 -----------
 
-目前只有Hive连接器支持插入覆盖。
+Right now only Hive Connector support insert overwrite.
 
-参见
+See Also
 --------
 
-【数值】（./数值），【插入】(./insert.md)
+[values](./values), [ insert](insert.md)

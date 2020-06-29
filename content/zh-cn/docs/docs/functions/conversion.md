@@ -1,153 +1,153 @@
-转换函数
+Conversion Functions
 ====================
 
-如果可能的话，Presto将隐式地将数值和字符值转换为正确的类型。对于任何其他类型，默认情况下， Presto不会隐式转换它。例如，一个需要
-varchar不会自动将bigint值转换为等效的varchar。
+openLooKeng will implicitly convert numeric and character values to the correct type if such a conversion is possible. For any other types, by default, openLooKeng will not convert it implicitly. For example, a query that expects a
+varchar will not automatically convert a bigint value to an equivalent varchar.
 
-必要时，可以显式地将值强制转换为特定类型。
+When necessary, values can be explicitly cast to a particular type.
 
-或者，您可以启用`隐式转换`功能，然后Presto将尝试在源类型和目标类型之间自动应用转换。
+Or, you can enable the `implicit conversion` functionality, then openLooKeng will try to auto apply conversion between source type and target type.
 
-转换函数
+Conversion Functions
 --------------------
 
-**cast（value AS类型）** -\>类型
+**cast(value AS type)** -\> type
 
-将值显式转换为类型。这可用于将varchar转换为数值类型，反之亦然。
+Explicitly cast a value as a type. This can be used to cast a varchar to a numeric value type and vice versa.
 
-try\_cast（值AS类型）** -\>类型
+**try\_cast(value AS type)** -\> type
 
-与`cast`{.interpreted-text role="func"}类似，如果转换失败，则返回null。
+Like `cast`, but returns null if the cast fails.
 
 
-格式化
+Formatting
 ----------
 
-**格式(format, args\...)** -\> varchar（可变长度字符串）
+**format(format, args\...)** -\> varchar
 
-使用指定的[format string](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax)和参数返回一个格式化的字符串：
+Returns a formatted string using the specified [format string](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax) and arguments:
 
-SELECT格式（'%s%%'， 123）; -- '123%'，只能使用其中一种格式。
-SELECT格式（'%.5f'， pi(）); -- '3.14159'， '不输入任何字符
-SELECT格式（'%03d'， 8）; -- '008'，只能输入数字或字母
-SELECT格式（'%,.2f'， 1234567.89）; -- '1,234,567.89'，表示查询的格式为1,234,567.89'，表示查询的格式为1,234,567.89。
-SELECT格式（'%-7s,%7s'，'你好'，'世界'）;--'你好，世界'
-SELECT格式（'%2$s %3$s %1$s'， 'a'， 'b'， 'c'）;--'b c a'， ''， 'c'， 'b'， 'c'， 's'， 'c'， 'c'， ''， '''''''， '， ''， ''， '， '， '， '， '，替换后的分隔符和名称和名称和名称和名称和名称和名称和名称和名称和名称和名称吗？'和吗吗吗吗？
-SELECT格式（'%1$tA, %1$tB %1$te, %1$tY'，日期'2006-07-04'）; -- '2006年7月4日星期二'，
+    SELECT format('%s%%', 123); -- '123%'
+    SELECT format('%.5f', pi()); -- '3.14159'
+    SELECT format('%03d', 8); -- '008'
+    SELECT format('%,.2f', 1234567.89); -- '1,234,567.89'
+    SELECT format('%-7s,%7s', 'hello', 'world'); --  'hello  ,  world'
+    SELECT format('%2$s %3$s %1$s', 'a', 'b', 'c'); -- 'b c a'
+    SELECT format('%1$tA, %1$tB %1$te, %1$tY', date '2006-07-04'); -- 'Tuesday, July 4, 2006'
 
 
-数据大小
+Data Size
 ---------
 
-`parse_presto_data_size`函数支持以下单位：
+The `parse_presto_data_size` function supports the following units:
 
-|单位|说明|取值|
+| Unit | Description | Value  |
 | :--- | :---------- | :----- |
-| `B` |字节| 1 |
-| `kB` |千字节| 1024 |
-| `MB` |兆字节| 1024^2 |
-| `GB` |千兆字节| 1024^3 |
-| `TB` |兆字节| 1024^4 |
-| `PB` |千兆字节| 1024^5 |
-| `EB` |字节级| 1024^6 |
-| `ZB` | Zettabytes | 1024^7 |
-| `YB` |千字节| 1024^8 |
+| `B`  | Bytes       | 1      |
+| `kB` | Kilobytes   | 1024   |
+| `MB` | Megabytes   | 1024^2 |
+| `GB` | Gigabytes   | 1024^3 |
+| `TB` | Terabytes   | 1024^4 |
+| `PB` | Petabytes   | 1024^5 |
+| `EB` | Exabytes    | 1024^6 |
+| `ZB` | Zettabytes  | 1024^7 |
+| `YB` | Yottabytes  | 1024^8 |
 
-解析到数据大小（字符串） -\>十进制(38)
+**parse\_presto\_data\_size(string)** -\> decimal(38)
 
-将格式为`value unit`的`string`解析为数字，`value`为`unit`值的小数部分：
+Parses `string` of format `value unit` into a number, where `value` is the fractional number of `unit` values:
 
-SELECT解析数据大小（'1B'）; -- 1
-SELECT解析数据大小（'1kB'）; -- 1024
-SELECT解析数据大小（'1MB'）; -- 1048576
-SELECT解析数据的大小（'2.3MB'）; -- 2411724
+    SELECT parse_presto_data_size('1B'); -- 1
+    SELECT parse_presto_data_size('1kB'); -- 1024
+    SELECT parse_presto_data_size('1MB'); -- 1048576
+    SELECT parse_presto_data_size('2.3MB'); -- 2411724
 
 
-隐式转换
+Implicit Conversion
 -------------------
 
-您可以启用针对设置会话属性的隐式转换：
+You can enable the implicit conversion vis setting session property:
 
-设置会话隐式转换开关
+    SET SESSION implicit_conversion=true
 
-默认情况下，属性值为false，则关闭隐式转换。
+By default, the property value is false, the implicit conversion is turned off.
 
-如果设置为true，当Presto发现类型不匹配，但可能彼此兼容时，Presto将自动通过应用`CAST`函数重写语句。
+If set it to true, whenever openLooKeng found the type is not match, but probably can be compatible with each other, openLooKeng will automatically rewrite the statement by applying the `CAST` function.
 
-这样，用户就不需要显式地添加`CAST`函数来转换它。
+In this way, user do not need to explicitly add `CAST` function to convert it.
 
-例如，要求varchar值的查询将自动将bigint值转换为等效的varchar值。
+For example, a query that expects a varchar will automatically convert a bigint value to an equivalent varchar.
 
-显然，并不是所有的数据类型都是相互兼容的，下表列出了所有基本数据类型的所有可行的转换。
+Obviously, not all data types are compatible with each other, below table lists all the feasible conversion for all basic datatype.
 
-|布尔|丁宁|小品|积分|大品|实品|双品|装饰|变体| CHAR | CHAR |变体| JSON |日期|时间|带时间时区|时间戳|带时区的时间戳|
+|           | BOOLEAN | TINYINT | SMALLINT | INTEGER | BIGINT | REAL | DOUBLE | DECIMAL | VARCHAR | CHAR | VARBINARY | JSON | DATE  | TIME  | TIME WITH TIME ZONE | TIMESTAMP | TIMESTAMP WITH TIME ZONE |
 | --------- | ------- | ------- | -------- | ------- | ------ | ---- | ------ | ------- | ------- | ---- | --------- | ---- | ----- | ----- | ------------------- | --------- | ------------------------ |
-|布尔|||Y(1)|Y|Y|Y|Y|Y|Y(2)|N|N|Y|N|N|N|N|N|N|N|N|N|
-|丁宁| Y (3) | |是|是|是|是|是| N | N |是| N | N | N | N |否
-|小写| Y | Y(4) | | Y | Y | Y | N | N | Y | N | N | N | N | N |关键字：中文大写：中文大写：中文大写：中文大写：
-|整型| Y | Y | Y | Y | Y | Y | Y | N | N | N | N | N | N | N |类型，其中Y为整型，N为非整型，N为整型，N为非整型。
-|大情报| Y | Y | Y | Y | Y | Y | Y | Y | Y | N | N | N | N | N | N | N |关键字：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型：图片类型
-|真实|是|是|是|是|是|是| Y (5) |是| N | Y | N | N | N | N | N | N |全部内容
-|双|Y|Y|Y|Y|Y|Y|Y|Y|N|N|Y|N|N|N|N|N|N|
-| DECIMAL|Y|Y|Y|Y|Y|Y|(6)|Y|N|Y|N|N|N|N|N|N|N|N|N|N|N|N|N|N|非非非非非非非非非。
-| VARCHAR | Y(7) | Y| Y| Y| Y| Y(8) | | Y(9) | Y| Y| Y(10) | Y(11) | Y(12) | Y(13) | Y(13) <源IP地址> <目的IP地址> <目的IP地址> <目的IP地址> <目的端口号>
-| CHAR | N | N | N | N | N | N | N | Y | N | N | N | N | N | N | N | N | N | N | N | N | N |字符串类型字符串类型字符串类型字符串
-|变量| N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N | N |变量型变量型变量型变量型变量型变量型变量型变量型变量
-| JSON | N | N | N | N | N | N | N | Y | N | N | N | N | N | N | N | N | N | N | N | N | N | ，其中N为数字字符串，N为数字字符串，N为数字字符串。
-|日期| N | N | N | N | N | N | N | Y | N | N | Y | N | N | N | Y(14) | Y (14) | N <日期> <时间> <日期> <日期> <时间> <时间> <时间> <日期> <时间> <时间> <日期> ，以此类推
-|时间| N | N | N | N | N | N | Y | N | N | N | N | N | N (15) | Y(16) | Y |时间，如果时间到达，则触发告警。
-|带时间| N | N | N | N | N | N | N | Y | N | N | N | Y | Y | N | N | Y | N | N | N | N时间，以此类推，以此类推
-|时区| | | | | | | | | | | |
-| TIMESTAMP | N | N | N | N | N | N | N | Y | N | N | N | Y | Y | Y |时间轴，表示时间轴的长短。
-| TIMESTAMP | N | N | N | N | N | N | N | Y | N | N | N | Y | Y | Y | <时间轴上的值> <时间轴上的值> | <时间轴上的值> | N | N | N | Y | N | N | N | N | N <时间轴上的值>
-|有时间| | | | |
-| ZONE（安全区域） | | |
+| BOOLEAN   |         | Y(1)    | Y        | Y       | Y      | Y    | Y      | Y       | Y(2)    | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| TINYINT   | Y(3)    |         | Y        | Y       | Y      | Y    | Y      | Y       | Y       | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| SMALLINT  | Y       | Y(4)    |          | Y       | Y      | Y    | Y      | Y       | Y       | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| INTEGER   | Y       | Y       | Y        |         | Y      | Y    | Y      | Y       | Y       | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| BIGINT    | Y       | Y       | Y        | Y       |        | Y    | Y      | Y       | Y       | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| REAL      | Y       | Y       | Y        | Y       | Y      |      | Y      | Y(5)    | Y       | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| DOUBLE    | Y       | Y       | Y        | Y       | Y      | Y    |        | Y       | Y       | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| DECIMAL   | Y       | Y       | Y        | Y       | Y      | Y    | Y      | (6)     | Y       | N    | N         | Y    | N     | N     | N                   | N         | N                        |
+| VARCHAR   | Y(7)    | Y       | Y        | Y       | Y      | Y    | Y      | Y(8)    |         | Y(9) | Y         | Y    | Y(10) | Y(11) | Y(12)               | Y(13)     | Y                        |
+| CHAR      | N       | N       | N        | N       | N      | N    | N      | N       | Y       |      | N         | N    | N     | N     | N                   | N         | N                        |
+| VARBINARY | N       | N       | N        | N       | N      | N    | N      | N       | N       | N    |           | N    | N     | N     | N                   | N         | N                        |
+| JSON      | N       | N       | N        | N       | N      | N    | N      | N       | Y       | N    | N         |      | N     | N     | N                   | N         | N                        |
+| DATE      | N       | N       | N        | N       | N      | N    | N      | N       | Y       | N    | N         | Y    |       | N     | N                   | Y(14)     | Y                        |
+| TIME      | N       | N       | N        | N       | N      | N    | N      | N       | Y       | N    | N         | N    | N     |       | Y(15)               | Y(16)     | Y                        |
+| TIME WITH | N       | N       | N        | N       | N      | N    | N      | N       | Y       | N    | N         | N    | N     | Y     |                     | Y         | Y                        |
+| TIME ZONE |         |         |          |         |        |      |        |         |         |      |           |      |       |       |                     |           |                          |
+| TIMESTAMP | N       | N       | N        | N       | N      | N    | N      | N       | Y       | N    | N         | N    | Y     | Y     | Y                   |           | Y                        |
+| TIMESTAMP | N       | N       | N        | N       | N      | N    | N      | N       | Y       | N    | N         | N    | Y     | Y     | Y                   | Y         |                          |
+| WITH TIME |         |         |          |         |        |      |        |         |         |      |           |      |       |       |                     |           |                          |
+| ZONE      |         |         |          |         |        |      |        |         |         |      |           |      |       |       |                     |           |                          |
 
-**说明：**
+**Note:**
 
-- Y或Y(#)：支持隐式转换的标准。但也许有一些限制需要您注意。请参阅下列项目。
-- N：不支持隐式转换
+- Y or Y(#): standard for support implicit convert. But there might be some limitation need your attention. please refer to below item.
+- N: standard for not support implicit convert
 
-(1) :BOOLEAN-\>NUMBER转换结果只能为0或1
+(1): BOOLEAN-\>NUMBER the converted result can be only 0 or 1
 
-(2) :BOOLEAN-\>VARCHAR转换后的结果只能是TRUE或FALSE
+(2): BOOLEAN-\>VARCHAR the converted result can be only TRUE or FALSE
 
-(3) :NUMBER -\> BOOLEAN 0会被转换为false，其他会被转换为true
+(3): NUMBER -\> BOOLEAN 0 will be converted to false, others will be converted to true
 
-（4） ：大精度-\>当数据超出SMALL范围时，SAMLL转换会失败
+(4): BIG PRECISION -\> SAMLL conversion will fail when data is out of range of SMALL
 
-(5) :REAL/FLOAT -\>DECIMAL转换，当数据超出DECIMAAL范围时，转换会失败。超出范围时，刻度将被截断。
+(5): REAL/FLOAT -\>DECIMAL conversion will fail when data is out of range of DECIMAL. Scale will be cut off when out of range.
 
-(6):DECIMAL-\>DECIMAL转换时，如果数据超出DECIMAAL范围，转换会失败。超出范围时，刻度将被截断。
+(6): DECIMAL-\>DECIMAL conversion will fail when data is out of range of DECIMAL. Scale will be cut off when out of range.
 
-(7) :VARCHAR-\>BOOLEAN只能进行以下类型转换：\'0\'，\'1\'，\'TRUE\'，\'FALSE\'。其他人会失败
+(7): VARCHAR-\>BOOLEAN only \'0\',\'1\',\'TRUE\',\'FALSE\' can be converted. Others will be failed
 
-(8) :VARCHAR-\>DECIMAL转换时，如果转换值不是数字或者转换值超出DECIMAAL范围，转换失败。超出范围时，刻度将被截断。
+(8): VARCHAR-\>DECIMAL conversion will fail when its not an numeric or the converted value is out of range of DECIMAL. Scale will be cut off when out of range.
 
-(9):VARCHAR-\>CHAR，如果VARCHAR的长度大于CHAR，则会被截断。
+(9): VARCHAR-\>CHAR if length of VARCHAR is larger than CHAR, it will be cut off.
 
-(10):VARCHAR-\>DATE,VARCHAR的格式只能为：\'年-月-日\'，例如：2000-01-01
+(10): VARCHAR-\>DATE The VARCHAR can only be formatted like:\'YYYY-MM-DD\', e.g. 2000-01-01
 
-(11) : VARCHAR-\>时间VARCHAR只支持格式化为：\'HH:MM:SS.XXX\'
+(11): VARCHAR-\>TIME The VARCHAR can only be formatted like:\'HH:MM:SS.XXX\'
 
-(12):VARCHAR-\>时区VARCHAR的格式只能为：\'HH:MM:SS.XXX XXX\'，例如01:02:03.456美洲/洛斯\_安格斯
+(12): VARCHAR-\>TIME ZONE The VARCHAR can only be formatted like:\'HH:MM:SS.XXX XXX\', e.g. 01:02:03.456 America/Los\_Angeles
 
-(13) :VARCHAR-\>TIMESTAMP,VARCHAR只支持格式化为如下格式：YYYY-MM-DD HH:MM:SS.XXX
+(13): VARCHAR-\>TIMESTAMP The VARCHAR can only be formatted like:YYYY-MM-DD HH:MM:SS.XXX
 
-(14):DATE-\>TIMESTAMP会自动填充0作为时间，例如\'2010-01-01\' -● 2010-01-01 00:00:00.000
+(14): DATE-\>TIMESTAMP will auto padding the time with 0. e.g.\'2010-01-01\' -》 2010-01-01 00:00:00.000
 
-(15):TIME-\>TIME WITH TIME ZONE将自动填充默认时区
+(15): TIME-\>TIME WITH TIME ZONE will auto padding the default time zone
 
-(16):TIME-\>TIMESTAMP会自动加上默认日期：1970-01-01
+(16): TIME-\>TIMESTAMP will auto add the default date:1970-01-01
 
-杂项
+Miscellaneous
 -------------
 
 **typeof(expr)** -\> varchar
 
-返回提供的表达式类型的名称：
+Returns the name of the type of the provided expression:
 
-SELECT typeof(123); --整数类型
-SELECT typeof（'cat'）; -- varchar(3)
-SELECT类型(cos(2) + 1.5); --双精度型
+    SELECT typeof(123); -- integer
+    SELECT typeof('cat'); -- varchar(3)
+    SELECT typeof(cos(2) + 1.5); -- double
 

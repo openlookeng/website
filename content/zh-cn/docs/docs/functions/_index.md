@@ -2,9 +2,9 @@
 bookCollapseSection = "true"
 weight = 10
 bookToc = false
-title = "函数和运算符"
+title = "Functions and Operators"
 +++
 
 
-# 函数和运算符
+# Functions and Operators
 

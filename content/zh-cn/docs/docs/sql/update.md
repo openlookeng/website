@@ -1,36 +1,38 @@
-更新
+UPDATE
 ======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-UPDATE table_name SET column_name = expression【，column_name = expression, ...】【where条件字段】，根据表达式的值更新表信息。
+``` sql
+UPDATE table_name SET column_name = expression[, column_name = expression, ... ] [ WHERE condition ]
 ```
 
-问题描述
+Description
 -----------
 
-`UPDATE`将改变所有满足条件的行中指定列的值。SET子句中只需要提到要修改的列，没有显式修改的列保持原来的值。
+`UPDATE` changes the values of the specified columns in all rows that satisfy the condition. Only the columns to be modified need be mentioned in the SET clause; columns not explicitly modified retain their previous values.
 
-示例
+Examples
 --------
 
-更新表`users`，更改名称`Francisco`，其中`id`等于1：
+Update table `users`, change the name `Francisco` where the `id` equal to 1:
 
-UPDATE users设置名称= '弗朗西斯科' WHERE id=1；
+```sql
+UPDATE users SET name = 'Francisco' WHERE id=1;
+```
 
-限制
+Limitations
 -----------
 
--目前仅Hive Connector和事务ORC表支持`UPDATE`。
-- set表达式不支持子查询。
--支持直接列引用，但不支持带列引用的NOT表达式。
-- `UPDATE`不能应用于视图。
-- `UPDATE`不支持隐式数据类型转换，当value与目标列的数据类型不匹配时，请使用`CAST`。
--如果表是分区表和/或分桶表，则不能更新bucket\_column和分区列。即它们不能是SET表达式的目标。
+-   Right now only Hive Connector and transactional ORC table support `UPDATE`.
+-   The set expression does not support subquery.
+-   Direct column reference is supported, but NOT expression with column reference.
+-   `UPDATE` cannot be applied to view.
+-   `UPDATE` dose not support implicitly data type conversion, please use `CAST` when value does not match target column's data type.
+-   If the table is partitioned and/or bucketed, bucket\_column and partition column cannot be updated. i.e They cannot be target of SET expression.
 
-参见
+See Also
 --------
 
-【插入】（./插入），【插入-覆盖】（./插入-覆盖）
+[insert](./insert), [insert-overwrite](./insert-overwrite)

@@ -1,43 +1,43 @@
-TPCDS连接器
+TPCDS Connector
 ===============
 
-TPCDS连接器提供一组模式来支持TPC Benchmark TM DS(TPC-DS),TPC-DS是一个数据库基准，用于度量复杂决策支持数据库的性能。
+The TPCDS connector provides a set of schemas to support the TPC Benchmark™ DS (TPC-DS). TPC-DS is a database benchmark used to measure the performance of complex decision support databases.
 
-此连接器还可以用于测试Presto的功能和查询语法，而无需配置对外部数据源的访问。当查询TPCDS架构时，连接器使用确定性算法动态生成数据。
+This connector can also be used to test the capabilities and query syntax of openLooKeng without configuring access to an external data source. When you query a TPCDS schema, the connector generates the data on the fly using a deterministic algorithm.
 
-配置说明
+Configuration
 -------------
 
-配置TPCDS Connector需要新建一个目录属性文件`etc/catalog/tpcds.properties`，内容如下：
+To configure the TPCDS connector, create a catalog properties file `etc/catalog/tpcds.properties` with the following contents:
 
-"```{.none}"
-连接器名称=tpcds
+``` properties
+connector.name=tpcds
 ```
 
-TPCDS模式
+TPCDS Schemas
 -------------
 
-TPCDS连接器提供了几个模式：
+The TPCDS connector supplies several schemas:
 
-节目表；
+    SHOW SCHEMAS FROM tpcds;
 
-"```{.none}"
-模式
+``` 
+Schema
 --------------------
-信息模式
+information_schema
 sf1
-瑞士法郎10
-瑞士法郎100
-斯夫1000
-斯夫10000
-10万瑞士法郎
-瑞士法郎300
-斯夫3000
-三万法郎
-微小的
-（11行）
+sf10
+sf100
+sf1000
+sf10000
+sf100000
+sf300
+sf3000
+sf30000
+tiny
+(11 rows)
 ```
 
-忽略标准模式`information_schema`，它存在于每个目录中，并且不是由TPCDS连接器直接提供的。
+Ignore the standard schema `information_schema` which exists in every catalog and is not directly provided by the TPCDS connector. 
 
-每个TPCDS模式都提供相同的一组表。有些表在所有模式中都是相同的。特定模式中表的*缩放因子*由模式名决定。例如，模式`sf1`对应比例因子`1`，模式`sf300`对应比例因子`300`。比例因子中的每一个单位都对应于千兆字节的数据。例如，对于缩放因子`300`，总共将生成`300`千兆字节。`tiny`模式是`0.01`比例因子的别名，`0.01`是一个非常小的数据集，对测试很有用。
+Every TPCDS schema provides the same set of tables. Some tables are identical in all schemas. The *scale factor* of the tables in a particular schema is determined from the schema name. For example, the schema `sf1` corresponds to scale factor `1` and the schema `sf300` corresponds to scale factor `300`. Every unit in the scale factor corresponds to a gigabyte of data. For example, for scale factor `300`, a total of `300` gigabytes will be generated. The `tiny` schema is an alias for scale factor `0.01`, which is a very small data set useful for testing.

@@ -1,30 +1,30 @@
-设置角色
+SET ROLE
 ========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-SET ROLE（角色|全部|无）
+``` sql
+SET ROLE ( role | ALL | NONE )
 ```
 
-问题描述
+Description
 -----------
 
-`SET ROLE`设置当前目录中当前会话的启用角色。
+`SET ROLE` sets the enabled role for the current session in the current catalog.
 
-`SET ROLE role`使当前会话具有单个指定的角色。若要使`SET ROLE role`语句成功，执行该语句的用户应具有给定角色的权限。
+`SET ROLE role` enables a single specified role for the current session. For the `SET ROLE role` statement to succeed, the user executing it should have a grant for the given role.
 
-`SET ROLE ALL`使当前用户在当前会话中被授予的所有角色生效。
+`SET ROLE ALL` enables all roles that the current user has been granted for the current session.
 
-`SET ROLE NONE`将禁用当前会话中授予当前用户的所有角色。
+`SET ROLE NONE` disables all the roles granted to the current user for the current session.
 
-限制
+Limitations
 -----------
 
-部分Connector不支持角色管理。有关更多详细信息，请参阅连接器文档。
+Some connectors do not support role management. See connector documentation for more details.
 
-参见
+See Also
 --------
 
-【创建角色】（./create-role），【删除角色】（./drop-role），【授权角色】（./grant-roles），【回收角色】(./revoke-roles)
+[create-role](./create-role), [drop-role](./drop-role), [grant-roles](./grant-roles), [revoke-roles](./revoke-roles)

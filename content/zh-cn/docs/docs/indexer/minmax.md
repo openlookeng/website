@@ -1,17 +1,21 @@
-#最小最大索引
+# Minmax Index
 
-##用例
+## Use cases
 
-MinMax Index用于分裂过滤，仅被**coordinator**节点使用。
+MinMax Index is used for split filtering, and is used only by the **coordinator** nodes.
 
-+如果查询中作为谓词一部分的列上存在此索引，则引擎可以通过筛选类似于Bloom Index的预定拆分来提高性能。
+If this index exists on a column which is part of a predicate in the query, the engine may be able to improve performance by filtering scheduled splits similar to Bloom Index.
 
-例如，如果列上存在索引
+For example if an index exists on column
 
-年龄
+`age`
 
-查询为
+and the query is
 
-从表中选择年龄大于50的
+```sql
+select * from table where age > 50
+```
 
--提示：对索引列上的数据进行排序将提供最佳结果
+
+
+*Tip: sorting the data on the index column will provide the best results*

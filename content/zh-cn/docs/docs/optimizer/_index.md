@@ -2,10 +2,9 @@
 bookCollapseSection = "true"
 weight = 7
 bookToc = false
-title = "查询优化器"
+title = "Query Optimizer"
 +++
 
-# 查询优化器
-
+# Query Optimizer
 
 

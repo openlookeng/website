@@ -1,317 +1,317 @@
-任务资源
+Task Resource
 =============
 
-Task资源提供了一组REST端点，这些端点提供了Presto
-服务器能够就任务和任务输出进行交流。这个
-不是一个供最终用户使用的服务，但它支持
-在Presto安装上执行查询。
+The Task resource provides a set of REST endpoints that give openLooKeng
+servers the ability to communicate about tasks and task output. This
+isn\'t a service that will be used by end users, but it supports the
+execution of queries on a openLooKeng installation.
 
--获取/v1/任务
+- GET /v1/task
 
-返回Prestoserver已知的所有任务的信息。
+Returns information about all tasks known to a openLooKengServer.
 
-请注意，对`/v1/task`的调用的输出可能相当大。如果你
-对忙碌的Presto服务器执行这个命令，收到的响应将
-包括该服务器已知的每个任务的列表以及详细
-操作员和司机的统计信息。
+Note that the output of a call to `/v1/task` can be quite large. If you
+execute this against a busy openLooKeng server the response received will
+include a listing of every task known to that server along with detailed
+statistics about operators and drivers.
 
-下面的示例响应显示了一个具有
-被删节以符合本手册。一个忙碌的Presto真正的回应
-服务器将生成页和页的输出。这里有一个
-状态为'CANCELED'的任务的'taskId'。
+The following example response shows a trivial task response that has
+been truncated to fit this manual. A real response from a busy openLooKeng
+server would generate pages and pages of output. Here there is a
+`taskId` for a task which is in the `CANCELED` state.
 
-**响应样例**：
+**Example response**:
 
-'````{.http}'，
+``` http
 [ {
-"taskId" : "20131222_183944_00011_dk5x2.1.0"，
-"版本" : 9223372036854775807，
-"state" : "已取消状态"，
-"self" : "未知"，
-"lastHeartbeat" : "2013-12-22T13:54:46.566-05:00"，
-"outputBuffers" : {
-"state" : "已完成"，
-"masterSequenceId": 0（主排序序号），
-"pagesAdded" : "新增页面个数"，
-"缓冲区" : [ ]
-}，
-"noMoreSplits" : [ ]，
-"stats" : {
-"createTime" : "创建时间"，
-"elapsedTime" : "0.00ns"，
-"queuedTime" : "排队时间"，
-"总驱动数" :0，
-"queuedDrivers"队列驱动个数为0，
-"runningDrivers" : "当前正在运行的驱动个数"，
-"completedDrivers": "当前已完成的驱动个数"，
-"memoryReservation" : "0B内存预留"，
-"totalScheduledTime" ：
-"totalCpuTime" ：
-"totalBlockedTime" ：
-"rawInputDataSize" : "0B数据输入大小"，
-"rawInputPositions":0个位置，
-"processingInputDataSize" : "输入数据大小"，
-" processedInputPositions" : "处理输入位置个数"，
-"outputDataSize" : "输出数据大小"，
-"outputPositions": 0个输出位置
-"管道": [ ]
-}，
-"失败数": [ ]，
-"输出" : { }
+  "taskId" : "20131222_183944_00011_dk5x2.1.0",
+  "version" : 9223372036854775807,
+  "state" : "CANCELED",
+  "self" : "unknown",
+  "lastHeartbeat" : "2013-12-22T13:54:46.566-05:00",
+  "outputBuffers" : {
+    "state" : "FINISHED",
+    "masterSequenceId" : 0,
+    "pagesAdded" : 0,
+    "buffers" : [ ]
+  },
+  "noMoreSplits" : [ ],
+  "stats" : {
+    "createTime" : "2013-12-22T13:54:46.566-05:00",
+    "elapsedTime" : "0.00ns",
+    "queuedTime" : "92.00us",
+    "totalDrivers" : 0,
+    "queuedDrivers" : 0,
+    "runningDrivers" : 0,
+    "completedDrivers" : 0,
+    "memoryReservation" : "0B",
+    "totalScheduledTime" : "0.00ns",
+    "totalCpuTime" : "0.00ns",
+    "totalBlockedTime" : "0.00ns",
+    "rawInputDataSize" : "0B",
+    "rawInputPositions" : 0,
+    "processedInputDataSize" : "0B",
+    "processedInputPositions" : 0,
+    "outputDataSize" : "0B",
+    "outputPositions" : 0,
+    "pipelines" : [ ]
+  },
+  "failures" : [ ],
+  "outputs" : { }
 }]
 ```
 
 
-- POST /v1/task/{任务编号}
+- POST /v1/task/{taskId}
 
 
--删除/v1/任务/{taskId}操作
+- DELETE /v1/task/{taskId}
 
-从Presto服务器删除给定的任务。
+Deletes a given task from a openLooKeng server.
 
--
-获取/v1/任务/{taskId}信息
+- 
+  GET /v1/task/{taskId}
 
-通过`taskId`检索指定任务的信息。
+Retrieves information about a specific task by `taskId`.
 
-下面是一个任务的输出结果示例。它包含
-以下为高阶章节：
+The following example lists the output of a task. It contains the
+following high-level sections:
 
--输出缓冲区
-- "更多分裂"
-- "统计数据"
-- "失败"
-- "产出"
+-   `outputBuffers`
+-   `noMoreSplits`
+-   `stats`
+-   `failures`
+-   `outputs`
 
-这是相同的输出，也出现在响应中，从
-查询资源，其中列出了
-特定查询。此调用由Presto用于协调查询。
+This is the same output that is also present in the response from the
+Query resource which lists all of the stages and tasks involved in a
+particular query. This is call is used by openLooKeng to coordinate a queries.
 
-**响应样例**：
+**Example response**:
 
-'````{.http}'，
+``` http
 {
-"taskId" : "20140115_170528_00004_dk5x2.0.0"，
-"版本": 42，
-"state" : "已完成"，
-"self" : "http://10.193.207.128:8080/v1/task/20140115_170528_00004_dk5x2.0.0" ,（在浏览器地址栏中输入该地址，即可在浏览器中看到该地址）"，
-"lastHeartbeat" : "2014-01-15T12:12:12.518-05:00"，
+"taskId" : "20140115_170528_00004_dk5x2.0.0",
+"version" : 42,
+"state" : "FINISHED",
+"self" : "http://10.193.207.128:8080/v1/task/20140115_170528_00004_dk5x2.0.0",
+"lastHeartbeat" : "2014-01-15T12:12:12.518-05:00",
 "outputBuffers" : {
-"state" : "已完成"，
-"masterSequenceId": 0（主排序序号），
-"pagesAdded": "新增页面数量"，
-"缓冲区" : [ {
-"bufferId" : "输出"，
-"finished" ：正确完成。
-"bufferedPages" : "缓存的页面个数"，
-"pagesSent": "已发送页数":1页
+"state" : "FINISHED",
+"masterSequenceId" : 0,
+"pagesAdded" : 1,
+"buffers" : [ {
+  "bufferId" : "out",
+  "finished" : true,
+  "bufferedPages" : 0,
+  "pagesSent" : 1
 } ]
-}，
-"noMoreSplits" : ["8"]，
+},
+"noMoreSplits" : [ "8" ],
 "stats" : {
-"createTime" : "创建时间"，
-"startTime" : "启动时间"，
-"endTime" : "2014-01-15T12:12:12.518-05:00"，
-"elapsedTime" : "4.00s"，
-"queuedTime" : "6.39毫秒"，
-"总司机数" :1，
-"queuedDrivers"队列驱动个数为0，
-"runningDrivers" : "当前正在运行的驱动个数"，
-"已完成的司机" : 1，
-"memoryReservation": "内存预留"，
-"totalScheduledTime" : "调度时间"，
-"totalCpuTime" : "4.09毫秒时间"，
-"totalBlockedTime" : "总阻塞时间"，
-"rawInputDataSize" : "原始输入数据大小"，
-"rawInputPositions": 154个输入位置，
-"processingInputDataSize" : "10.90kB数据输入大小"，
-"processedInputPositions": 154个输入位置，
-"outputDataSize" : "输出数据大小"，
-"输出位置": 154，
-"管道": [ {
-"inputPipeline": "输入通道":true，
-"outputPipeline" ：输出管道。
-"总司机数" :1，
-"queuedDrivers"队列驱动个数为0，
-"runningDrivers" : "当前正在运行的驱动个数"，
-"已完成的司机" : 1，
-"memoryReservation" : "0B内存预留"，
-"queuedTime" : {
-"maxError": "最大错误数"，
-"count" : 1.0个，单位个，单位个。
-"总计":5857000.0，
-"p01" : 5857000，
-"p05" : 5857000，
-"p10": 5857000，单位：万分之一，单位：千分之一。
-"p25": 5857000，单位：万分之一，单位：千分之一。
-"p50": 5857000，单位：万分之一，单位：千分之一。
-"p75": 5857000，单位：万分之一，单位：千分之一。
-"p90" : 5857000，
-"p95": 5857000，单位：万亿千比特。
-"p99" : 5857000，
-"分钟" : 5857000，
-“最大”：5857000
-}，
-"已用时间" : {
-"maxError": "最大错误数"，
-"count" : 1.0个，单位个，单位个。
-"总计":4.1812E7，
-"p01": 41812000，端口号：
-"p05": 41812000，单位：个/秒。
-"p10":"41812000"，
-"p25":"41812000"，
-"第50页": 41812000页，
-"p75": 41812000，中文版本
-"p90":"41812000"，
-"p95":"41812000"，
-"p99": 41812000,（中文大意为"p99"，英文大意为"p99"）
-"分钟": 41812000，
-“最大”：41812000
-}，
-"totalScheduledTime" : "调度时间"，
-"totalCpuTime" : "4.09毫秒时间"，
-"totalBlockedTime" : "总阻塞时间"，
-"rawInputDataSize" : "原始输入数据大小"，
-"rawInputPositions": 154个输入位置，
-"processingInputDataSize" : "10.90kB数据输入大小"，
-"processedInputPositions": 154个输入位置，
-"outputDataSize" : "输出数据大小"，
-"输出位置": 154，
-"运营商汇总" : [ {
-"operatorId": 0（运营商编号）
-"operatorType" : "交换操作员"，
-"addInputCalls": "0" ，添加输入呼叫
-"addInputWall" : "0.00ns"，
-"addInputCpu" : "0.00ns"，
-"addInputUser" : "0.00ns"，
-"inputDataSize" : "输入数据大小"，
-"输入位置" : 154，
-"getOutputCalls" : "获取输出呼叫数"，
-"getOutputWall" ：
-"getOutputCpu" : "137.90us"，
-"getOutputUser" : "0.00ns"，
-"outputDataSize" : "输出数据大小"，
-"输出位置": 154，
-"blockedWall" : "29.50毫秒"，
-"finishCalls" : "0"结束本次通话
-"finishWall" ：
-"finishCpu" ：
-"finishUser" ：
-"memoryReservation" : "0B内存预留"，
-"info" : {
-"bufferedBytes": "0"字节，单位：字节
-"平均每次请求字节数": 11158。
-"bufferedPages" : "缓存的页面个数"，
-"pageBufferClientStatuses": [ {缓存客户端状态列表
-"uri" : "http://10.193.207.128:8080/v1/task/20140115_170528_00004_dk5x2.1.0/results/ab68e201-3878-4b21-b6b9-f6658（其中，该检查项的检查项的检查项名称与检查标准检查项名称一致） ddc408b"，
-"state" : "已关闭"，
-"lastUpdate" : "2014-01-15T12:12:08.562-05:00"，
-"pagesReceived": "页面接收数量"，
-"requestsScheduled" : 3个预约会议列表
-"requestsCompleted": "请求已完成",3个
-"httpRequestState" : "请求队列状态"
+"createTime" : "2014-01-15T12:12:08.520-05:00",
+"startTime" : "2014-01-15T12:12:08.526-05:00",
+"endTime" : "2014-01-15T12:12:12.518-05:00",
+"elapsedTime" : "4.00s",
+"queuedTime" : "6.39ms",
+"totalDrivers" : 1,
+"queuedDrivers" : 0,
+"runningDrivers" : 0,
+"completedDrivers" : 1,
+"memoryReservation" : "174.76kB",
+"totalScheduledTime" : "4.19ms",
+"totalCpuTime" : "4.09ms",
+"totalBlockedTime" : "29.50ms",
+"rawInputDataSize" : "10.90kB",
+"rawInputPositions" : 154,
+"processedInputDataSize" : "10.90kB",
+"processedInputPositions" : 154,
+"outputDataSize" : "10.90kB",
+"outputPositions" : 154,
+"pipelines" : [ {
+  "inputPipeline" : true,
+  "outputPipeline" : true,
+  "totalDrivers" : 1,
+  "queuedDrivers" : 0,
+  "runningDrivers" : 0,
+  "completedDrivers" : 1,
+  "memoryReservation" : "0B",
+  "queuedTime" : {
+    "maxError" : 0.0,
+    "count" : 1.0,
+    "total" : 5857000.0,
+    "p01" : 5857000,
+    "p05" : 5857000,
+    "p10" : 5857000,
+    "p25" : 5857000,
+    "p50" : 5857000,
+    "p75" : 5857000,
+    "p90" : 5857000,
+    "p95" : 5857000,
+    "p99" : 5857000,
+    "min" : 5857000,
+    "max" : 5857000
+  },
+  "elapsedTime" : {
+    "maxError" : 0.0,
+    "count" : 1.0,
+    "total" : 4.1812E7,
+    "p01" : 41812000,
+    "p05" : 41812000,
+    "p10" : 41812000,
+    "p25" : 41812000,
+    "p50" : 41812000,
+    "p75" : 41812000,
+    "p90" : 41812000,
+    "p95" : 41812000,
+    "p99" : 41812000,
+    "min" : 41812000,
+    "max" : 41812000
+  },
+  "totalScheduledTime" : "4.19ms",
+  "totalCpuTime" : "4.09ms",
+  "totalBlockedTime" : "29.50ms",
+  "rawInputDataSize" : "10.90kB",
+  "rawInputPositions" : 154,
+  "processedInputDataSize" : "10.90kB",
+  "processedInputPositions" : 154,
+  "outputDataSize" : "10.90kB",
+  "outputPositions" : 154,
+  "operatorSummaries" : [ {
+    "operatorId" : 0,
+    "operatorType" : "ExchangeOperator",
+    "addInputCalls" : 0,
+    "addInputWall" : "0.00ns",
+    "addInputCpu" : "0.00ns",
+    "addInputUser" : "0.00ns",
+    "inputDataSize" : "10.90kB",
+    "inputPositions" : 154,
+    "getOutputCalls" : 1,
+    "getOutputWall" : "146.00us",
+    "getOutputCpu" : "137.90us",
+    "getOutputUser" : "0.00ns",
+    "outputDataSize" : "10.90kB",
+    "outputPositions" : 154,
+    "blockedWall" : "29.50ms",
+    "finishCalls" : 0,
+    "finishWall" : "0.00ns",
+    "finishCpu" : "0.00ns",
+    "finishUser" : "0.00ns",
+    "memoryReservation" : "0B",
+    "info" : {
+  "bufferedBytes" : 0,
+  "averageBytesPerRequest" : 11158,
+  "bufferedPages" : 0,
+  "pageBufferClientStatuses" : [ {
+    "uri" : "http://10.193.207.128:8080/v1/task/20140115_170528_00004_dk5x2.1.0/results/ab68e201-3878-4b21-b6b9-f6658ddc408b",
+    "state" : "closed",
+    "lastUpdate" : "2014-01-15T12:12:08.562-05:00",
+    "pagesReceived" : 1,
+    "requestsScheduled" : 3,
+    "requestsCompleted" : 3,
+    "httpRequestState" : "queued"
+  } ]
+    }
+  }, {
+    "operatorId" : 1,
+    "operatorType" : "FilterAndProjectOperator",
+    "addInputCalls" : 1,
+    "addInputWall" : "919.00us",
+    "addInputCpu" : "919.38us",
+    "addInputUser" : "0.00ns",
+    "inputDataSize" : "10.90kB",
+    "inputPositions" : 154,
+    "getOutputCalls" : 2,
+    "getOutputWall" : "128.00us",
+    "getOutputCpu" : "128.64us",
+    "getOutputUser" : "0.00ns",
+    "outputDataSize" : "10.45kB",
+    "outputPositions" : 154,
+    "blockedWall" : "0.00ns",
+    "finishCalls" : 5,
+    "finishWall" : "258.00us",
+    "finishCpu" : "253.19us",
+    "finishUser" : "0.00ns",
+    "memoryReservation" : "0B"
+  }, {
+    "operatorId" : 2,
+    "operatorType" : "OrderByOperator",
+    "addInputCalls" : 1,
+    "addInputWall" : "438.00us",
+    "addInputCpu" : "439.18us",
+    "addInputUser" : "0.00ns",
+    "inputDataSize" : "10.45kB",
+    "inputPositions" : 154,
+    "getOutputCalls" : 4,
+    "getOutputWall" : "869.00us",
+    "getOutputCpu" : "831.85us",
+    "getOutputUser" : "0.00ns",
+    "outputDataSize" : "10.45kB",
+    "outputPositions" : 154,
+    "blockedWall" : "0.00ns",
+    "finishCalls" : 4,
+    "finishWall" : "808.00us",
+    "finishCpu" : "810.18us",
+    "finishUser" : "0.00ns",
+    "memoryReservation" : "174.76kB"
+  }, {
+    "operatorId" : 3,
+    "operatorType" : "FilterAndProjectOperator",
+    "addInputCalls" : 1,
+    "addInputWall" : "166.00us",
+    "addInputCpu" : "166.66us",
+    "addInputUser" : "0.00ns",
+    "inputDataSize" : "10.45kB",
+    "inputPositions" : 154,
+    "getOutputCalls" : 5,
+    "getOutputWall" : "305.00us",
+    "getOutputCpu" : "241.14us",
+    "getOutputUser" : "0.00ns",
+    "outputDataSize" : "10.90kB",
+    "outputPositions" : 154,
+    "blockedWall" : "0.00ns",
+    "finishCalls" : 2,
+    "finishWall" : "70.00us",
+    "finishCpu" : "71.02us",
+    "finishUser" : "0.00ns",
+    "memoryReservation" : "0B"
+  }, {
+    "operatorId" : 4,
+    "operatorType" : "TaskOutputOperator",
+    "addInputCalls" : 1,
+    "addInputWall" : "50.00us",
+    "addInputCpu" : "51.03us",
+    "addInputUser" : "0.00ns",
+    "inputDataSize" : "10.90kB",
+    "inputPositions" : 154,
+    "getOutputCalls" : 0,
+    "getOutputWall" : "0.00ns",
+    "getOutputCpu" : "0.00ns",
+    "getOutputUser" : "0.00ns",
+    "outputDataSize" : "10.90kB",
+    "outputPositions" : 154,
+    "blockedWall" : "0.00ns",
+    "finishCalls" : 1,
+    "finishWall" : "35.00us",
+    "finishCpu" : "35.39us",
+    "finishUser" : "0.00ns",
+    "memoryReservation" : "0B"
+  } ],
+  "drivers" : [ ]
 } ]
-}
-}, {
-"operatorId"取值为1
-"operatorType" : "过滤和工程类型"，
-"addInputCalls": "添加输入呼叫个数"，
-"addInputWall" ：
-"addInputCpu" : "919.38us"，
-"addInputUser" : "0.00ns"，
-"inputDataSize" : "输入数据大小"，
-"输入位置" : 154，
-"getOutputCalls": "2"个输出参数，
-"getOutputWall" : "获取输出窗口"，
-"getOutputCpu" : "128.64us"，
-"getOutputUser" : "0.00ns"，
-"outputDataSize" : "输出数据大小"，
-"输出位置": 154，
-"blockedWall" : "0.00ns"，
-"finishCalls" : 5个结束呼叫
-"finishWall" : "258.00us"，
-"finishCpu" : "253.19us" ，
-"finishUser" ：
-"memoryReservation" : "0B"
-}, {
-"operatorId"取值为2，
-"operatorType" : "运营商订购"，
-"addInputCalls": "添加输入呼叫个数"，
-"addInputWall" ：
-"addInputCpu" : "439.18us"，
-"addInputUser" : "0.00ns"，
-"inputDataSize" : "输入数据大小"，
-"输入位置" : 154，
-"getOutputCalls": 4个输出接口
-"getOutputWall" ：
-"getOutputCpu" : "831.85us"，
-"getOutputUser" : "0.00ns"，
-"outputDataSize" : "输出数据大小"，
-"输出位置": 154，
-"blockedWall" : "0.00ns"，
-"finishCalls" : 4个呼叫
-"finishWall" : "808.00us" ，
-"finishCpu" : "810.18us" ，
-"finishUser" ：
-"memoryReservation": "内存预留功能"
-}, {
-"operatorId"参数值：3，
-"operatorType" : "过滤和工程类型"，
-"addInputCalls": "添加输入呼叫个数"，
-"addInputWall" : "166.00us"，
-"addInputCpu" : "166.66us"，
-"addInputUser" : "0.00ns"，
-"inputDataSize" : "输入数据大小"，
-"输入位置" : 154，
-"getOutputCalls" : 5个输出接口
-"getOutputWall" : "305.00us"，
-"getOutputCpu" : "241.14us"，
-"getOutputUser" : "0.00ns"，
-"outputDataSize" : "输出数据大小"，
-"输出位置": 154，
-"blockedWall" : "0.00ns"，
-"finishCalls": "2"结束本次通话
-"finishWall" ：
-"finishCpu" : "71.02us" ，
-"finishUser" ：
-"memoryReservation" : "0B"
-}, {
-"operatorId"：填写4，表示操作员。
-"operatorType" : "任务输出操作员"，
-"addInputCalls": "添加输入呼叫个数"，
-"addInputWall" ：
-"addInputCpu" : "51.03us"，
-"addInputUser" : "0.00ns"，
-"inputDataSize" : "输入数据大小"，
-"输入位置" : 154，
-"getOutputCalls": "0"表示获取输出呼叫数，
-"getOutputWall" ：
-"getOutputCpu" : "0.00ns"，
-"getOutputUser" : "0.00ns"，
-"outputDataSize" : "输出数据大小"，
-"输出位置": 154，
-"blockedWall" : "0.00ns"，
-"finishCalls": "1"结束本次通话
-"finishWall" : "35.00us" ，
-"finishCpu" : "35.39us" ，
-"finishUser" ：
-"memoryReservation" : "0B"
-} ]，
-"驾驶员" : [ ]
-} ]
-}，
-"失败数": [ ]，
-"输出" : { }
+},
+"failures" : [ ],
+"outputs" : { }
 }
 ```
 
 
--获取任务/v1/任务/{taskId}/results/{输出ID}/{令牌}
+- GET /v1/task/{taskId}/results/{outputId}/{token}
 
-Presto通过此服务获取任务输出。
+This service is used by openLooKeng to retrieve task output.
 
 
--删除/v1/任务/{taskId}/results/{outputId}（根据任务ID删除结果数据）
+- DELETE /v1/task/{taskId}/results/{outputId}
 
-Presto删除任务输出。
+This service is used by openLooKeng to delete task output.
 

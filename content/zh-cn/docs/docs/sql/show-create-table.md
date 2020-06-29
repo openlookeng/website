@@ -1,42 +1,42 @@
-显示创建表
+SHOW CREATE TABLE
 =================
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-SHOW创建TABLE的表名
+``` sql
+SHOW CREATE TABLE table_name
 ```
 
-问题描述
+Description
 -----------
 
-显示创建指定表的SQL语句。
+Show the SQL statement that creates the specified table.
 
-示例
+Examples
 --------
 
-显示可以用来创建`orders`表的SQL：
+Show the SQL that can be run to create the `orders` table:
 
-创建表sf1.orders；
+    SHOW CREATE TABLE sf1.orders;
 
-"```{.none}"
-创建表
+``` sql
+Create Table
 -----------------------------------------
-创建表tpch.sf1.orders(
-订单键大
-订单状态varchar，
-总价翻倍，
-订单日期变量
+CREATE TABLE tpch.sf1.orders (
+orderkey bigint,
+orderstatus varchar,
+totalprice double,
+orderdate varchar
 )
-有(
-format = 'ORC'，
-partitioned_by = ARRAY【'订单日期'】
+WITH (
+format = 'ORC',
+partitioned_by = ARRAY['orderdate']
 )
-（1行）
+(1 row)
 ```
 
-参见
+See Also
 --------
 
-【创建表】(./create-table)
+[create-table](./create-table)

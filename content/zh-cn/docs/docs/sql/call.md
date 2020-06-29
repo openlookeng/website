@@ -1,35 +1,35 @@
-呼叫
+CALL
 ====
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-CALL过程_name（【名称=>】表达式【，...】）
+``` sql
+CALL procedure_name ( [ name => ] expression [, ...] )
 ```
 
-问题描述
+Description
 -----------
 
-调用过程。
+Call a procedure.
 
-过程可以由连接器提供，以执行数据操作或管理任务。例如，`/connector/system`{.interpreted-text role="doc"}定义了一个终止正在运行的查询的过程。
+Procedures can be provided by connectors to perform data manipulation or administrative tasks. For example, the `/connector/system` defines a procedure for killing a running query.
 
-有些连接器（如[PostgreSQL Connector](../connector/postgresql.md）)用于拥有自己存储过程的系统。这些存储过程与这里讨论的连接器定义过程是分开的，因此不能通过`CALL`直接调用。
+Some connectors, such as the [PostgreSQL Connector](../connector/postgresql.md), are for systems that have their own stored procedures. These stored procedures are separate from the connector-defined procedures discussed here and thus are not directly callable via `CALL`.
 
-有关可用过程的详细信息，请参阅连接器文档。
+See connector documentation for details on available procedures.
 
-示例
+Examples
 --------
 
-使用位置参数调用过程：
+Call a procedure using positional arguments:
 
-呼叫测试（123，'苹果'）；
+    CALL test(123, 'apple');
 
-使用命名参数调用过程：
+Call a procedure using named arguments:
 
-呼叫测试（名称=> '苹果'， id => 123）；
+    CALL test(name => 'apple', id => 123);
 
-使用完全限定名调用过程：
+Call a procedure using a fully qualified name:
 
-呼叫目录.schema.test()；
+    CALL catalog.schema.test();

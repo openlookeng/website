@@ -1,232 +1,231 @@
 
 
-# Carbondata连接器
+# Carbondata Connector
 
-【目标】
 
 <hr/>
-##概述
+## Overview
 
-Carbondata连接器支持查询存储在Carbondata仓库中的数据。Carbondata由三个部分组成：
+The Carbondata connector allows querying data stored in a Carbondata warehouse. Carbondata is a combination of three components:
 
-- Carbondata存储格式的数据文件，通常存储在HDFS中。
--关于数据文件如何映射到模式和表的元数据。该元数据存储在MySQL等数据库中，通过Hive Metastore Service (HMS)访问。
--一种称为HiveQL/SparkSQL的查询语言。这种查询语言在分布式计算框架（如MapReduce或Spark）上执行。
+- Data files in carbondata storage formats that are typically stored in the Hadoop Distributed File System (HDFS).
+- This metadata is only for table and column schema validation. carbondata metadata is stored along with the data files and is accessed via the Hive Metastore Service(HMS).
+- A query language called HiveQL/SparkSQL. This query language is executed on a distributed computing framework such as MapReduce or Spark.
 
-Presto只使用前两个组件：数据和元数据。它不使用HiveQL/SparkSQL或Hive的任何部分执行环境。
+openLooKeng only uses the first two components: the data and the metadata. It does not use HiveQL/SparkSQL or any part of Hive’s execution environment.
 
-**说明：** *Carbondata 2.0.1版本从Presto开始支持*
+**Note:** *Carbondata 2.0.1 is supported from openLooKeng*
 
-##配置
+## Configuration
 
-Carbondata连接器支持Apache Hadoop 2.x版本。
+The Carbondata connector supports Apache Hadoop 2.x and above.
 
-创建`etc/catalog/carbondata.properties`文件，内容如下，将carbondata`连接器挂载为`hive`目录，替换`example.net:9083`为您的Hive Metastore Thrift服务正确的主机和端口：
+Create `etc/catalog/carbondata.properties` with the following contents to mount the `carbondata` connector as the `carbondata` catalog, replacing `example.net:9083` with the correct host and port for your Hive Metastore Thrift service:
 
-```
-Connector.name=碳素数据
-hive.metastore.uri=thrift://示例.net:9083，其中：
-```
-
-### HDFS配置
-
-对于基本设置，Presto自动配置HDFS客户端，不需要任何配置文件。在某些情况下，例如使用联邦HDFS或NameNode高可用性时，需要指定额外的HDFS客户端选项，以便访问HDFS集群。为此，请添加`hive.config.resources`属性来引用您的HDFS配置文件：
-
-```
-hive.config.resources=/etc/hadoop/conf/core-site.xml文件，配置文件为/etc/hadoop/conf文件，配置文件为/etc/hadoop/conf文件，配置文件为yarn-site.xml文件，配置文件为/etc/hadoop/conf/yarn-site.xml文件，文件路径：/etc/hadoop/conf/mapred-site.xml文件
+```properties
+connector.name=carbondata
+hive.metastore.uri=thrift://example.net:9083
 ```
 
-如果设置需要，只指定附加的配置文件。还建议减少配置文件，使其具有所需的最小属性集，因为附加属性可能导致问题。
+### HDFS Configuration
 
-所有Presto节点必须存在配置文件。如果用户正在引用现有的Hadoop配置文件，请确保将它们复制到任何没有运行Hadoop的Presto节点。
+For basic setups, openLooKeng configures the HDFS client automatically and does not require any configuration files. In some cases, such as when using federated HDFS or NameNode high availability, it is necessary to specify additional HDFS client options in order to access HDFS cluster. To do so, add the `hive.config.resources` property to reference your HDFS config files:
 
-### HDFS用户名和权限
-
-在对Carbondata表执行`CREATE TABLE`或`CREATE TABLE AS`语句之前，Presto应该可以访问Hive和HDFS。Hive的仓库目录由`hive-site.xml`中的配置变量`hive.metastore.warehouse.dir`指定，默认值为`/user/hive/warehouse`。
-
-不使用Kerberos with HDFS时，Presto会使用Presto进程的操作系统用户来访问HDFS。例如，如果Presto作为`nobody`运行，它将作为`nobody`访问HDFS。可以通过在Presto [JVM Config](/html/installation/deployment.html#presto-jvm-config)中设置系统属性`HADOOP_USER_NAME`来覆盖此用户名，将`hdfs_user`替换为适当的用户名：
-
-```
--DHADOOP_USER_NAME=文件系统用户名
+``` properties
+hive.config.resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml,/etc/hadoop/conf/yarn-site.xml,/etc/hadoop/conf/mapred-site.xml
 ```
 
-`hive`用户通常起作用，因为Hive通常从`hive`用户启动，并且该用户可以访问Hive仓库。
+Only specify additional configuration files if necessary for setup. It is also recommended reducing the configuration files to have the minimum set of required properties, as additional properties may cause problems.
 
-每当修改Presto访问HDFS的用户时，需要删除HDFS上的`/tmp/presto-*`，因为新用户可能无法访问已有的临时目录。
+The configuration files must exist on all openLooKeng nodes. If user is referencing existing Hadoop config files, make sure to copy them to any openLooKeng nodes that are not running Hadoop.
 
-###访问Kerberos认证保护的Hadoop集群
+### HDFS Username and Permissions
 
-HDFS支持Kerberos认证，Hive元数据库支持Kerberos认证。但是，目前还不支持通过票据缓存进行Kerberos身份验证。
+Before running any `CREATE TABLE` or `CREATE TABLE AS` statements for Carbondata tables, openLooKeng should have access to Hive and HDFS. The Hive warehouse directory is specified by the configuration variable `hive.metastore.warehouse.dir` in `hive-site.xml`, and the default value is `/user/hive/warehouse`.
 
-适用于Carbondata连接器安全的属性在【Carbondata配置属性】（#carbondata-configuration-properties）表中列出。有关安全选项的更多详细讨论，请参阅【Hive安全配置】（html/connector/hive-security.html）部分。
+When not using Kerberos with HDFS, openLooKeng will access HDFS using the OS user of the openLooKeng process. For example, if openLooKeng is running as `nobody`, it will access HDFS as `nobody`. You can override this username by setting the `HADOOP_USER_NAME` system property in the openLooKeng [JVM Config](../installation/deployment.md#jvm-config), replacing `hdfs_user` with the appropriate username:
 
-## <a name="carbondata-configuration-properties">Carbondata配置数据的属性配置属性配置</a>
+``` properties
+-DHADOOP_USER_NAME=hdfs_user
+```
 
-|属性名称|说明|默认|
+The `hive` user generally works, since Hive is often started with the `hive` user and this user has access to the Hive warehouse.
+
+Whenever you change the user which openLooKeng is using to access HDFS, remove `/tmp/openlookeng-*,/tmp/presto-*,/tmp/hetu-*` on HDFS, as new user may not have access to the existing temporary directories.
+
+### Accessing Hadoop clusters protected with Kerberos authentication
+
+Kerberos authentication is supported for both HDFS and the Hive metastore. However, Kerberos authentication by ticket cache is not yet supported.
+
+The properties that apply to Carbondata connector security are listed in the [Carbondata Configuration Properties](#carbondata-configuration-properties) table. Please see the [Hive Security Configuration](hive-security.md) section for a more detailed discussion of the security options.
+
+## <a name="carbondata-configuration-properties">Carbondata Configuration Properties</a>
+
+| Property Name                             | Description                                                  | Default                                         |
 | ----------------------------------------- | :----------------------------------------------------------- | ----------------------------------------------- |
-| Carbondata.store-location |碳数据仓库的存储位置。如果不指定，则使用默认的hive仓库路径，即*/user/hive/warehouse/**carbon.store*** | `${hive.metastore.warehouse.dir} /carbon.store` |
-| `hive.metastore` |要使用的Hive元数据库的类型。Presto目前支持默认的Hive Thrift元数据库(`thrift`) | `thrift` |
-| `hive.config.resources` |以逗号分隔的HDFS配置文件列表。这些文件必须存在于运行Presto的机器上。例如：`/etc/hdfs-site.xml` | | ，其中
-| `hive.hdfs.authentication.type` | HDFS的认证类型，根据实际情况选择。可能的取值为`NONE`或`KERBEROS`。"无"
-| `hive.hdfs.impersonation.enabled` |开启HDFS端用户模拟功能。假的假的
-| `hive.hdfs.presto.principal` | Presto在连接HDFS时将使用的Kerberos主体。| |
-| `hive.hdfs.presto.keytab` | HDFS客户端keytab文件所在的位置。| |
-| `hive.collect-column-statistics-on-write` |开启写时自动统计列级数据的功能。详细内容请参见【表统计信息】（/html/connector/hive.html#table-statistics）。是真的
+| carbondata.store-location                 | Specifies the location of the storage for carbondata warehouse. If not specified, it uses default hive warehouse path, i.e */user/hive/warehouse/**carbon.store*** | `${hive.metastore.warehouse.dir} /carbon.store` |
+| `hive.metastore`                          | The type of Hive metastore to use. openLooKeng currently supports the default Hive Thrift metastore (`thrift`). | `thrift`                                        |
+| `hive.config.resources`                   | A comma-separated list of HDFS configuration files. These files must exist on the machines running openLooKeng. Example: `/etc/hdfs-site.xml` |                                                 |
+| `hive.hdfs.authentication.type`           | HDFS authentication type. Possible values are `NONE` or `KERBEROS`. | `NONE`                                          |
+| `hive.hdfs.impersonation.enabled`         | Enable HDFS end user impersonation.                          | `false`                                         |
+| `hive.hdfs.presto.principal`              | The Kerberos principal that openLooKeng will use when connecting to HDFS. |                                                 |
+| `hive.hdfs.presto.keytab`                 | HDFS client keytab location.                                 |                                                 |
+| `hive.collect-column-statistics-on-write` | Enables automatic column level statistics collection on write. See [Table Statistics](hive.md#table-statistics) for details. | `true`                                          |
 
-## <a name="hive-thrift-metastore-configuration-properties">Hive持久化元数据配置属性</a>
+## <a name="hive-thrift-metastore-configuration-properties">Hive Thrift Metastore Configuration Properties</a>
 
-|属性名称|描述|
+| Property Name                        | Description                                                  |
 | ------------------------------------ | ------------------------------------------------------------ |
-| `hive.metastore.uri` |使用Thrift协议连接Hive元数据库的URI(s)。如果提供了多个URI，则默认使用第一个URI，其余URI为回退元数据库。该属性不能为空。例如：`thrift://192.0.2.3:9083`或者`thrift://192.0.2.3:9083,thrift://192.0.2.4:9083` | ，表示从指定时间开始循环使用。
-| `hive.metastore.username` | Presto访问Hive元数据库使用的用户名。|
-| `hive.metastore.authentication.type` | Hive元数据库认证类型，包括：取值包括`NONE`和`KERBEROS`（默认为`NONE`） |
-| `hive.metastore.service.principal` | Hive元数据库服务的Kerberos主体名称。|
-| `hive.metastore.client.principal` | Presto在连接Hive元数据库服务时将使用的Kerberos主体。|
-| `hive.metastore.client.keytab` | Hive元数据库客户端keytab位置。|
+| `hive.metastore.uri`                 | The URI(s) of the Hive metastore to connect to using the Thrift protocol. If multiple URIs are provided, the first URI is used by default and the rest of the URIs are fallback metastores. This property is required. Example: `thrift://192.0.2.3:9083` or `thrift://192.0.2.3:9083,thrift://192.0.2.4:9083` |
+| `hive.metastore.username`            | The username openLooKeng will use to access the Hive metastore.     |
+| `hive.metastore.authentication.type` | Hive metastore authentication type. Possible values are `NONE` or `KERBEROS` (defaults to `NONE`). |
+| `hive.metastore.service.principal`   | The Kerberos principal of the Hive metastore service.        |
+| `hive.metastore.client.principal`    | The Kerberos principal that openLooKeng will use when connecting to the Hive metastore service. |
+| `hive.metastore.client.keytab`       | Hive metastore client keytab location.                       |
 
-##表统计
+## Table Statistics
 
-Carbondata连接器在写数据时，总是收集基本的统计数据（`numFiles`, `numRows`, `rawDataSize`, `totalSize`），默认还会收集列级的统计信息：
+When writing data, the Carbondata connector always collects basic statistics (`numFiles`, `numRows`, `rawDataSize`, `totalSize`) and by default will also collect column level statistics:
 
-|列类型| Null-Count |差异值个数|最小值/最大值|
+| Column Type      | Null-Count | Distinct values count | Min/Max |
 | ---------------- | ---------- | --------------------- | ------- |
-| 'SMALLINT '完成|是|是|是|是|
-完成了，是的，是的
-|完美无缺的完成| Y | Y | Y |
-|完成了|是|是|是|
-|实实在在的完成|是|是|是|
-做了|是|是|是|是
-|‘日期’‘完成’|‘是’|‘是’|‘是’
-|时光流逝| Y | Y | N |
-| 'VARCHAR' '完成|是|是| N |
-| `CHAR`完成|Y|Y|N|
-变数完成|Y|N|N|
-波伦亚人成功了是
+| `SMALLINT `done  | Y          | Y                     | Y       |
+| `INTEGER` done   | Y          | Y                     | Y       |
+| `BIGINT` done    | Y          | Y                     | Y       |
+| `DOUBLE` done    | Y          | Y                     | Y       |
+| `REAL `done      | Y          | Y                     | Y       |
+| `DECIMAL `done   | Y          | Y                     | Y       |
+| `DATE `done      | Y          | Y                     | Y       |
+| `TIMESTAMP `done | Y          | Y                     | N       |
+| `VARCHAR` done   | Y          | Y                     | N       |
+| `CHAR `done      | Y          | Y                     | N       |
+| `VARBINARY` done | Y          | N                     | N       |
+| `BOOLEAN` done   | Y          | Y                     | N       |
 
-##示例
+## Examples
 
-Carbondata连接器支持查询和操作Carbondata表和模式（数据库），大部分操作可以使用Presto，部分不常用操作需要使用Spark::Carbondata直接操作。
+The Carbondata connector supports querying and manipulating Carbondata tables and schemas (databases). Most operations can be performed using openLooKeng, while some uncommon operations will need to be performed using Spark::Carbondata directly.
 
-###创建表
+### Create Table
 
-创建新表`orders`：
+Create a new table `orders`:
 
-sql语句
-CREATE TABLE订单(
-orderkeybigint，
-订单状态varchar，
-总价翻倍，
-订单日期变量
-)；
+```sql
+CREATE TABLE orders (
+    orderkey	bigint,
+   	orderstatus varchar,
+	totalprice 	double,
+    orderdate	varchar
+);
 ```
 
  
 
-支持的属性
+Supported properties
 
-|属性|说明|默认|
+| Property | Description                                                  | Default  |
 | -------- | ------------------------------------------------------------ | -------- |
-| location |指定目录存放表数据。<br />如果不存在，将使用默认的文件系统位置。|可选|
+| location | Specified directory is used to store table data. <br />If absent, default file system location will be used. | Optional |
 
-在指定位置创建新表`orders`：
+Create a new table `orders` at specified location:
 
-sql语句
-CREATE TABLE订单带有存储位置(
-订单键大
-订单状态变量，
-价格双倍
-订单日期变量
-)
-WITH（location='/store/路径'）；
+```sql
+CREATE TABLE orders_with_store_location (
+    orderkey 	bigint,
+    orderstatus	varchar,
+    totalprice	double,
+    orderdate	varchar
+ )
+WITH ( location = '/store/path' );
 ```
 
-**说明**：
+**Note**:
 
-- *如果路径不是完全限定域名，将存储在默认文件系统中*
+- *If path is not fully qualified domain name, it will be stored in default file system.*
 
 
 
-###以select方式创建表
+### Create Table as Select
 
-基于SELECT语句的输出创建新表
+Creates a new table based on the output of a SELECT statement
 
-sql语句
-CREATE TABLE的已交付订单数
-AS SELECT *选自订单WHERE orderstatus = '已送达'；
+```sql
+CREATE TABLE delivered_orders  
+	AS SELECT * FROM orders WHERE orderstatus = 'Delivered';
 ```
 
-sql语句
-CREATE TABLE备份命令
-WITH（位置='/备份/存储/路径'）
-AS SELECT *从订单中选取带有存储位置的订单；
+```sql
+CREATE TABLE backup_orders 
+WITH ( location = '/backup/store/path' )
+ 	AS SELECT * FROM orders_with_store_location; 
 ```
 
-###插入
+### Insert
 
-向`orders`表中加载额外的行：
+Load additional rows into the `orders` table:
 
-sql语句
-插入订单
-VALUES（BIGINT '101'， '就绪'， 1000.25, '2020-06-08'）；
+```sql
+INSERT INTO orders
+VALUES (BIGINT '101', 'Ready', 1000.25, '2020-06-08');
 ```
 
-通过覆盖现有行将其他行加载到`orders`表中：
+Load additional rows into the `orders` table by overwriting the existing rows:
 
-sql语句
-插入覆盖订单
-VALUES（BIGINT '101'， '已送达'， 1040.25, '2020-06-26'）；
+```sql
+INSERT OVERWRITE orders 
+VALUES (BIGINT '101', 'Delivered', 1040.25, '2020-06-26');
 ```
 
-使用来自另一个表的值将其他行加载到`orders`表中；
+Load additional rows into the `orders` table with values from another table;
 
-sql语句
-插入订单
-SELECT * FROM交付订单；
+```sql
+INSERT INTO orders 
+SELECT * FROM delivered_orders;
 ```
 
-###更新
+### Update
 
-更新表``orders`的所有行：
+Update all rows of table ``orders``:
 
-sql语句
-更新订单SET orderstatus = '就绪'；
+```sql
+UPDATE orders SET orderstatus = 'Ready';
 ```
 
-更新`orders`为过滤条件：
+Update  ``orders`` with filter condition:
 
-sql语句
-UPDATE订单SET orderstatus = '已发送'
-总价大于1000且总价小于2000；
+```sql
+UPDATE orders SET orderstatus = 'Delivered'
+WHERE totalprice >1000 AND totalprice < 2000;
 ```
 
-###删除
+### Delete
 
-删除表``orders``：的所有行：
+Delete all rows in table ``orders``::
 
-sql语句
-从订单中删除；
+```sql
+DELETE FROM orders;
 ```
 
-删除带过滤条件的表``orders``：
+Delete table ``orders`` with filter condition::
 
-sql语句
-DELETE FROM订单WHERE orderstatus = '订单状态不可用'；
+```sql
+DELETE FROM orders WHERE orderstatus = 'Not Available';
 ```
 
-###丢弃表
+### Drop Table
 
-删除一个已存在的表。
+Drop an existing table.
 
-sql语句
-DROP TABLE订单；
+```sql
+DROP TABLE orders;
 ```
 
-## <a name="">Carbondata连接器使用限制</a>
+## <a name="">Carbondata Connector Limitations</a>
 
-Carbondata连接器暂不支持如下操作：
+The following operations are not supported currently with Carbondata connector:
 
--不支持建表属性`CREATE TABLE`、排序属性`sort_by`、桶属性`bucketed_by`、分区属性`partitioned_by`。
--不支持物化视图。
--不支持Arrays、Lists、Maps等复杂数据类型。
--不支持alter表使用。
--不支持对分区表的操作。
+- `sort_by`, `bucketed_by` and `partitioned_by` table properties are not supported while `CREATE TABLE`.
+- Materialized views are not supported.
+- Complex data types such as Arrays, Lists and Maps are not supported.
+- Alter table usage is not supported.
+- Operation on partitioned tables is not supported.

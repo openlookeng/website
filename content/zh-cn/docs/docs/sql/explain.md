@@ -1,153 +1,153 @@
-解释
+EXPLAIN
 =======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-EXPLAIN【（选项【,...】） 】语句
+``` sql
+EXPLAIN [ ( option [, ...] ) ] statement
 
-其中，option可以是以下之一：
+where option can be one of:
 
-FORMAT {文本格式|语法格式| JSON格式}
-类型{ LOGICAL |分发|有效| IO }
+    FORMAT { TEXT | GRAPHVIZ | JSON }
+    TYPE { LOGICAL | DISTRIBUTED | VALIDATE | IO }
 ```
 
-问题描述
+Description
 -----------
 
-显示语句的逻辑执行计划或分布式执行计划，或验证语句。使用`TYPE DISTRIBUTED`选项显示碎片化计划。每个计划片段由单个或多个计划片段执行
-Presto节点。片段分离表示Presto节点之间的数据交换。Fragment type指定了分片在Presto节点中的执行方式，以及数据在分片之间的分布方式：
+Show the logical or distributed execution plan of a statement, or validate the statement. Use `TYPE DISTRIBUTED` option to display fragmented plan. Each plan fragment is executed by a single or multiple
+openLooKeng nodes. Fragments separation represent the data exchange between openLooKeng nodes. Fragment type specifies how the fragment is executed by openLooKeng nodes and how the data is distributed between fragments:
 
-'SINGLE'，（单音）
+`SINGLE`
 
-：表示在单个节点上执行分片。
+Fragment is executed on a single node.
 
-哈希
+`HASH`
 
-：在固定数量的节点上执行分片，输入数据通过哈希函数进行分布。
+Fragment is executed on a fixed number of nodes with the input data distributed using a hash function.
 
-取整
+`ROUND_ROBIN`
 
-：在固定数量的节点上执行分片，输入数据以轮询的方式分布。
+Fragment is executed on a fixed number of nodes with the input data distributed in a round-robin fashion.
 
-布罗阿德卡斯特
+`BROADCAST`
 
-：在固定数量的节点上执行分片，将输入数据广播到所有节点。
+Fragment is executed on a fixed number of nodes with the input data broadcasted to all nodes.
 
-来源
+`SOURCE`
 
-：分片在访问输入拆分的节点上执行。
+Fragment is executed on nodes where input splits are accessed.
 
-示例
+Examples
 --------
 
-逻辑规划：
+Logical plan:
 
-"```{.none}"
-presto:tiny>解释选择区域键，count(*)从国家组按1；
-查询计划
+``` sql
+lk:tiny> EXPLAIN SELECT regionkey, count(*) FROM nation GROUP BY 1;
+                                                Query Plan
 ----------------------------------------------------------------------------------------------------------
--输出项[regionkey, _col1] =>【区域名称：bigint，数量：bigint】
-_col1 :=计数值
--远程交换[GATHER]=>域密钥：bigint，计数：bigint
--聚合（最终）[regionkey] =>【regionkey:bigint,count:bigint】，表示本次操作为最终操作。
-count := "计数" ("count_8") ，表示计数
--本地交换[HASH]【$hashvalue】("regionkey") =>区域密钥：bigint，计数_8:bigint, $hashvalue:bigint，表示指定区域密钥的哈希值。
--远端交换[REPARTITION]【$hashvalue_9】=>远端交换参数regionkey:bigint，计数值count_8:bigint, $hashvalue_9:bigint，表示指定远端交换参数
--项目[] =>【regionkey：大项，count_8：大项，$hashvalue_10：大项】
-$hashvalue_10 := "组合哈希值"（BIGINT '0'， COALESCE("$operator$hash_code("regionkey"）, 0)) ，表示使用混合哈希值进行散列
--聚合（分区）[regionkey] =>【regionkey：大分区，count_8：大分区】
-count_8 := "计数"(*)
-- TableScan[tpch:tpch:nation:sf0.1,originalConstraint=true]，如果该选项设置为true，则此检查项通过，否则检查项不通过。=>[regionkey:bigint]
-regionkey := tpch：区域密钥
+ - Output[regionkey, _col1] => [regionkey:bigint, count:bigint]
+         _col1 := count
+     - RemoteExchange[GATHER] => regionkey:bigint, count:bigint
+         - Aggregate(FINAL)[regionkey] => [regionkey:bigint, count:bigint]
+                count := "count"("count_8")
+             - LocalExchange[HASH][$hashvalue] ("regionkey") => regionkey:bigint, count_8:bigint, $hashvalue:bigint
+                 - RemoteExchange[REPARTITION][$hashvalue_9] => regionkey:bigint, count_8:bigint, $hashvalue_9:bigint
+                     - Project[] => [regionkey:bigint, count_8:bigint, $hashvalue_10:bigint]
+                             $hashvalue_10 := "combine_hash"(BIGINT '0', COALESCE("$operator$hash_code"("regionkey"), 0))
+                         - Aggregate(PARTIAL)[regionkey] => [regionkey:bigint, count_8:bigint]
+                                 count_8 := "count"(*)
+                             - TableScan[tpch:tpch:nation:sf0.1, originalConstraint = true] => [regionkey:bigint]
+                                     regionkey := tpch:regionkey
 ```
 
-分布式方案：
+Distributed plan:
 
-"```{.none}"
-解释（类型分布）选择地区键，计数（*）从国家组按1；
-查询计划
+``` sql
+lk:tiny> EXPLAIN (TYPE DISTRIBUTED) SELECT regionkey, count(*) FROM nation GROUP BY 1;
+                                          Query Plan
 ----------------------------------------------------------------------------------------------
-分片0【单个】
-输出布局：【regionkey,count】
-输出分区：SINGLE []
--输出项[regionkey, _col1] =>【区域名称：bigint，数量：bigint】
-_col1 :=计数值
-- RemoteSource[1] =>【区域关键字，计数关键字】
+ Fragment 0 [SINGLE]
+     Output layout: [regionkey, count]
+     Output partitioning: SINGLE []
+     - Output[regionkey, _col1] => [regionkey:bigint, count:bigint]
+             _col1 := count
+         - RemoteSource[1] => [regionkey:bigint, count:bigint]
 
-分片1 [HASH]
-输出布局：【regionkey,count】
-输出分区：SINGLE []
--聚合（最终）[regionkey] =>【regionkey:bigint,count:bigint】，表示本次操作为最终操作。
-count := "计数" ("count_8") ，表示计数
--本地交换[HASH]【$hashvalue】("regionkey") =>区域密钥：bigint，计数_8:bigint, $hashvalue:bigint，表示指定区域密钥的哈希值。
-- RemoteSource[2] =>【区域名称：大区，数量_8：大区，$hash值_9：大区】
+ Fragment 1 [HASH]
+     Output layout: [regionkey, count]
+     Output partitioning: SINGLE []
+     - Aggregate(FINAL)[regionkey] => [regionkey:bigint, count:bigint]
+             count := "count"("count_8")
+         - LocalExchange[HASH][$hashvalue] ("regionkey") => regionkey:bigint, count_8:bigint, $hashvalue:bigint
+             - RemoteSource[2] => [regionkey:bigint, count_8:bigint, $hashvalue_9:bigint]
 
-碎片2【来源】
-输出布局：【regionkey,count_8,$hashvalue_10】，其中：
-输出分区：哈希[regionkey][$hashvalue_10]
--项目[] =>【regionkey：大项，count_8：大项，$hashvalue_10：大项】
-$hashvalue_10 := "组合哈希值"（BIGINT '0'， COALESCE("$operator$hash_code("regionkey"）, 0)) ，表示使用混合哈希值进行散列
--聚合（分区）[regionkey] =>【regionkey：大分区，count_8：大分区】
-count_8 := "计数"(*)
-- TableScan[tpch:tpch:nation:sf0.1,originalConstraint=true]，如果该选项设置为true，则此检查项通过，否则检查项不通过。=>[regionkey:bigint]
-regionkey := tpch：区域密钥
+ Fragment 2 [SOURCE]
+     Output layout: [regionkey, count_8, $hashvalue_10]
+     Output partitioning: HASH [regionkey][$hashvalue_10]
+     - Project[] => [regionkey:bigint, count_8:bigint, $hashvalue_10:bigint]
+             $hashvalue_10 := "combine_hash"(BIGINT '0', COALESCE("$operator$hash_code"("regionkey"), 0))
+         - Aggregate(PARTIAL)[regionkey] => [regionkey:bigint, count_8:bigint]
+                 count_8 := "count"(*)
+             - TableScan[tpch:tpch:nation:sf0.1, originalConstraint = true] => [regionkey:bigint]
+                     regionkey := tpch:regionkey
 ```
 
-验证：
+Validate:
 
-"```{.none}"
-presto:tiny>解释（类型有效）选择区域键，计数（*）从国家组按1；
-是否有效
+``` sql
+lk:tiny> EXPLAIN (TYPE VALIDATE) SELECT regionkey, count(*) FROM nation GROUP BY 1;
+ Valid
 -------
-真实
+ true
 ```
 
-输入输出：
+IO:
 
-"```{.none}"
-presto:hive> EXPLAIN（类型IO，格式化JSON）插入到test_nation选择*来自国家WHERE regionkey = 2；
-查询计划
+``` sql
+lk:hive> EXPLAIN (TYPE IO, FORMAT JSON) INSERT INTO test_nation SELECT * FROM nation WHERE regionkey = 2;
+            Query Plan
 -----------------------------------
-{
-"inputTableColumnInfos": [ {表格列信息列表
-"表" : {
-"catalog" : "头像"，
-"schemaTable" : {
-"schema" : "tpch"，
-"table" : "民族"
-}
-}，
-"columns" : [ {
-"columnName" : "区域密钥"，
-"type" : "大"，
-"domain" : {
-"nullsAllowed" ：表示允许为空。
-"ranges": [ {范围值
-"low" : {
-"value" : "2"，
-"bound" : "精确"
-}，
-"高" : {
-"value" : "2"，
-"bound" : "精确"
-}
-} ]
-}
-} ]
-} ]，
-"outputTable" : {
-"catalog" : "头像"，
-"schemaTable" : {
-"schema" : "tpch"，
-"table" : "测试国家"
-}
-}
-}
+ {
+   "inputTableColumnInfos" : [ {
+     "table" : {
+       "catalog" : "hive",
+       "schemaTable" : {
+         "schema" : "tpch",
+         "table" : "nation"
+       }
+     },
+     "columns" : [ {
+       "columnName" : "regionkey",
+       "type" : "bigint",
+       "domain" : {
+         "nullsAllowed" : false,
+         "ranges" : [ {
+           "low" : {
+             "value" : "2",
+             "bound" : "EXACTLY"
+           },
+           "high" : {
+             "value" : "2",
+             "bound" : "EXACTLY"
+           }
+         } ]
+       }
+     } ]
+   } ],
+   "outputTable" : {
+     "catalog" : "hive",
+     "schemaTable" : {
+       "schema" : "tpch",
+       "table" : "test_nation"
+     }
+   }
+ }
 ```
 
-参见
+See Also
 --------
 
-【解释-分析】（./解释-分析）
+[explain-analyze](./explain-analyze)

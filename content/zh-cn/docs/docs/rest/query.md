@@ -1,74 +1,74 @@
-查询资源
+Query Resource
 ==============
 
-Query REST服务是其余服务中最复杂的。它
-包含节点的详细信息，以及其他详细信息。
-捕获在Presto上执行的查询的状态和历史
-安装。
+The Query REST service is the most complex of the rest services. It
+contains detailed information about nodes, and other details that
+capture the state and history of a query being executed on a openLooKeng
+installation.
 
-- GET /v1/查询
+- GET /v1/query
 
-此服务返回有关查询的信息和统计信息，这些查询是
-目前在Presto协调器上执行。
+This service returns information and statistics about queries that are
+currently being executed on a openLooKeng coordinator.
 
-当你将浏览器指向一个Presto坐标时，你会看到一个渲染的
-此服务输出的版本，将显示最近的
-在Presto安装上执行的查询。
+When you point a web browser at a openLooKeng coordinate you\'ll see a rendered
+version of the output from this service which will display recent
+queries that have executed on a openLooKeng installation.
    
 
--获取/v1/查询/{queryId}信息
+- GET /v1/query/{queryId}
 
-如果您希望收集有关查询的非常详细的统计数据，
-这就是你要调用的服务。加载的Web界面
-presto协调器，您将看到当前查询的列表。单击
-查询将揭示到此服务的链接。
+If you are looking to gather very detailed statistics about a query,
+this is the service you would call. If you load the web interface of a
+openLooKeng coordinator you will see a list of current queries. Clicking on a
+query will reveal a link to this service.
 
-**响应样例**：
+**Example response**:
 
->```{.http} ,（中文名）
+> ``` http
 > {
-> "queryId" : "20131229_211533_00017_dk5x2"，
-> "会话" : {
-> "user" : "tobrien"，
-> "source" : "presto-cli"，
-> "catalog" : "jmx"，
-> "schema" : "jmx"，
-> "远端用户地址" : "192.168.1.1""，
-> "userAgent" : "声明客户端/0.55-SNAPSHOT"，
-> "起始时间" : 1388351852026
-> }，
-> "state" : "最终状态"，
-> "自己" : "v1/query/20131229_211533_00017_dk5x2"，
-> "fieldNames" ：【"名称"】，
-> "query" : "从中选择名称\"java.lang:type=runtime\""，
+> "queryId" : "20131229_211533_00017_dk5x2",
+> "session" : {
+>       "user" : "tobrien",
+>       "source" : "openlk-cli",
+>       "catalog" : "jmx",
+>       "schema" : "jmx",
+>       "remoteUserAddress" : ""192.168.1.1"",
+>       "userAgent" : "StatementClient/0.55-SNAPSHOT",
+>       "startTime" : 1388351852026
+> },
+> "state" : "FINISHED",
+> "self" : "http://127.0.0.1:8080/v1/query/20131229_211533_00017_dk5x2",
+> "fieldNames" : [ "name" ],
+> "query" : "select name from \"java.lang:type=runtime\"",
 > "queryStats" : {
-> "创建时间" : "2013-12-29T16:17:32.027-05:00"，
-> "执行开始时间" : "2013-12-29T16:17:32.086-05:00"，
-> "lastHeartbeat" : "最近心跳时间"，
-> "endTime" : "结束日期"，
-> "已逝时间" : "125.00ms"，
-> "排队时间" : "1.31ms"，
-> "analysisTime" : "4.84毫秒"，
-> "分布式规划时间" : "353.00us"，
-> "总任务数" : 2，
-> "正在运行的任务" : 0，
-> "已完成任务数" : 2，
-> "总驱动数" : 2，
-> "队列驱动" :0，
-> "正在运行的驱动" :0，
-> "已完成的驱动程序" : 2，
-> "内存预留总量" : "0B"，
-> "总调度时间" : "5.84ms"，
-> "totalCpuTime" : "总CPU时间"，
-> "总阻塞时间" : "27.38ms"，
-> "rawInputDataSize" : "27B数据大小"，
-> "rawInputPositions"的取值范围为1，
-> "processedInputDataSize" : "当前处理的数据大小"，
-> "processedInputPositions"的取值范围为1，
-> "outputDataSize" : "32B"，
-> "输出位置" :1
-> }，
-> "outputStage" : <微服务名称> ...
+>       "createTime" : "2013-12-29T16:17:32.027-05:00",
+>       "executionStartTime" : "2013-12-29T16:17:32.086-05:00",
+>       "lastHeartbeat" : "2013-12-29T16:17:44.561-05:00",
+>       "endTime" : "2013-12-29T16:17:32.152-05:00",
+>       "elapsedTime" : "125.00ms",
+>       "queuedTime" : "1.31ms",
+>       "analysisTime" : "4.84ms",
+>       "distributedPlanningTime" : "353.00us",
+>       "totalTasks" : 2,
+>       "runningTasks" : 0,
+>       "completedTasks" : 2,
+>       "totalDrivers" : 2,
+>       "queuedDrivers" : 0,
+>       "runningDrivers" : 0,
+>       "completedDrivers" : 2,
+>       "totalMemoryReservation" : "0B",
+>       "totalScheduledTime" : "5.84ms",
+>       "totalCpuTime" : "710.49us",
+>       "totalBlockedTime" : "27.38ms",
+>       "rawInputDataSize" : "27B",
+>       "rawInputPositions" : 1,
+>       "processedInputDataSize" : "32B",
+>       "processedInputPositions" : 1,
+>       "outputDataSize" : "32B",
+>       "outputPositions" : 1
+> },
+> "outputStage" : ...
 > }
 > ```
    

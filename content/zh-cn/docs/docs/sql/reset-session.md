@@ -1,28 +1,28 @@
-复位会话
+RESET SESSION
 =============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-RESET会话名称
-RESET会话目录.name
+``` sql
+RESET SESSION name
+RESET SESSION catalog.name
 ```
 
-问题描述
+Description
 -----------
 
-重置会话属性值为默认值。
+Reset a session property value to the default value.
 
-示例
+Examples
 --------
 
-``` {.sql}
-RESET会话优化_哈希_生成；
-RESET SESSION配置开关；
+``` sql
+RESET SESSION optimize_hash_generation;
+RESET SESSION hive.optimized_reader_enabled;
 ```
 
-参见
+See Also
 --------
 
-【设置会话】（./set-session），【显示会话】(./show-session)
+[set-session](./set-session), [show-session](./show-session)

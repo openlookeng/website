@@ -1,27 +1,27 @@
-节目台
+SHOW STATS
 ==========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-节目台号
-节目台号（ SELECT * FROM表【where条件】）
+``` sql
+SHOW STATS FOR table
+SHOW STATS FOR ( SELECT * FROM table [ WHERE condition ] )
 ```
 
-问题描述
+Description
 -----------
 
-返回命名表或（有限）查询结果的近似统计信息。
+Returns approximated statistics for the named table or for the results of a (limited) query.
 
-将为每一列返回统计信息，以及汇总行。
+Statistics are returned for each column, along with a summary row.
 
-列描述
+  Column                    Description
 ------------------------- --------------------------------------------------------------
-`column_name`列名（汇总行使用`NULL`）
-`data_size`列中所有值的总大小，以字节为单位。
-`distinct_values_count`列中不同值的数目。
-`nulls_fractions`列中值为`NULL`的部分
-`row_count`行数（仅针对汇总行返回）
-`low_value`此列中找到的最小值（仅针对某些类型）
-`high_value`此列中找到的最高值（仅针对某些类型）
+  `column_name`             The name of the column (`NULL` for the summary row)
+  `data_size`               The total size in bytes of all of the values in the column
+  `distinct_values_count`   The number of distinct values in the column
+  `nulls_fractions`         The portion of the values in the column that are `NULL`
+  `row_count`               The number of rows (only returned for the summary row)
+  `low_value`               The lowest value found in this column (only for some types)
+  `high_value`              The highest value found in this column (only for some types)

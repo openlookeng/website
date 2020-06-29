@@ -1,14 +1,14 @@
-角色授权
+SHOW ROLE GRANTS
 ================
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-展示角色授权【来自目录】
+``` sql
+SHOW ROLE GRANTS [ FROM catalog ]
 ```
 
-问题描述
+Description
 -----------
 
-在`catalog`中以非递归方式列出已授予会话用户的`ROLE`，如果`catalog`未指定，则列出当前目录。
+List non-recursively the `ROLE`s that have been granted to the session user in `catalog`, or the current catalog if `catalog` is not specified.

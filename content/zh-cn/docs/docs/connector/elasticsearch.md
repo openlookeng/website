@@ -1,238 +1,236 @@
-Elasticsearch连接器
+Elasticsearch Connector
 =======================
 
-【目标】
-
-总体介绍
+Overview
 --------
 
-Elasticsearch Connector允许从Presto访问Elasticsearch数据。本文档主要介绍如何搭建Elasticsearch Connector来对Elasticsearch执行SQL查询。
+The Elasticsearch Connector allows access to Elasticsearch data from openLooKeng. This document describes how to setup the Elasticsearch Connector to run SQL queries against Elasticsearch.
 
-**说明**
-*强烈推荐使用Elasticsearch 6.0.0及以上版本*
+**Note**
+*It is highly recommended to use Elasticsearch 6.0.0 or later.*
 
 
-配置说明
+Configuration
 
-要配置Elasticsearch连接器，需要创建一个目录属性文件`etc/catalog/elasticsearch.properties`，并替换以下属性：
+To configure the Elasticsearch connector, create a catalog properties file `etc/catalog/elasticsearch.properties` with the following contents, replacing the properties as appropriate:
 
-"```{.none}"
-Connector.name=弹性搜索服务
-弹性搜索.default-schema-name=default模式名称
-弹性搜索.table-description-directory=etc/elasticsearch/ <弹性搜索服务名称> <弹性搜索服务名称>
-弹性搜索.scroll-size=1000
-弹性搜索.scroll-timeout=1m
-弹性搜索请求超时时长=2s
-弹性搜索.max-request-retries=5（最大请求数）
-弹性搜索.max-request-retry-time=10秒
+``` properties
+connector.name=elasticsearch
+elasticsearch.default-schema-name=default
+elasticsearch.table-description-directory=etc/elasticsearch/
+elasticsearch.scroll-size=1000
+elasticsearch.scroll-timeout=1m
+elasticsearch.request-timeout=2s
+elasticsearch.max-request-retries=5
+elasticsearch.max-request-retry-time=10s
 ```
 
-配置属性
+Configuration Properties
 ------------------------
 
-配置属性包括：
+The following configuration properties are available:
 
-|属性名称|描述|
+| Property Name                               | Description                                                  |
 | :------------------------------------------ | :----------------------------------------------------------- |
-| `elasticsearch.default-schema-name` |表的默认模式名。|
-| `elasticsearch.table-description-directory` |表描述文件所在的目录，即json文件所在的目录。|
-| `elasticsearch.scroll-size` |每次Elasticsearch滚动请求返回的最大命中次数。|
-| `elasticsearch.scroll-timeout` |滚动请求保持搜索上下文的超时时间。|
-| `elasticsearch.max-hits` | Elasticsearch单个请求最大取回命中次数。|
-| `elasticsearch.request-timeout` | Elasticsearch请求超时时间设置。|
-| `elasticsearch.max-request-retries` | Elasticsearch请求重试的最大次数。|
-| `elasticsearch.max-request-retry-time` |对失败的请求进行重试时，使用指数退避，从1秒开始，最大退避到本配置指定的值。|
+| `elasticsearch.default-schema-name`         | Default schema name for tables.                              |
+| `elasticsearch.table-description-directory` | Directory containing JSON table description files.           |
+| `elasticsearch.scroll-size`                 | Maximum number of hits to be returned with each Elasticsearch scroll request. |
+| `elasticsearch.scroll-timeout`              | Timeout for keeping the search context alive for scroll requests. |
+| `elasticsearch.max-hits`                    | Maximum number of hits a single Elasticsearch request can fetch. |
+| `elasticsearch.request-timeout`             | Timeout for Elasticsearch requests.                          |
+| `elasticsearch.max-request-retries`         | Maximum number of Elasticsearch request retries.             |
+| `elasticsearch.max-request-retry-time`      | Use exponential backoff starting at 1s up to the value specified by this configuration when retrying failed requests. |
 
 
 
 ### `elasticsearch.default-schema-name`
 
-定义将包含没有限定架构名称的所有表的架构。
+Defines the schema that will contain all tables defined without a qualifying schema name.
 
-此属性是可选的；默认值为`default`。
+This property is optional; the default is `default`.
 
-### `弹性搜索.table-description-directory`弹性搜索。
+### `elasticsearch.table-description-directory`
 
-指定Presto部署目录下的一个路径，该路径包含一个或多个带有表描述（必须以`.json`结尾）的JSON文件。
+Specifies a path under the openLooKeng deployment directory that contains one or more JSON files with table descriptions (must end with `.json`).
 
-此属性是可选的；默认值为`etc/elasticsearch`。
+This property is optional; the default is `etc/elasticsearch`.
 
-###弹性搜索.scroll-size
+### `elasticsearch.scroll-size`
 
-此属性定义每个Elasticsearch滚动请求中可以返回的最大点击数。
+This property defines the maximum number of hits that can be returned with each Elasticsearch scroll request.
 
-此属性是可选的；默认值为`1000`。
+This property is optional; the default is `1000`.
 
-###弹性搜索滚动超时
+### `elasticsearch.scroll-timeout`
 
-此属性定义了Elasticsearch将保持[搜索上下文的时间（毫秒）
-活动](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html#scroll-sea rch-context)用于滚动请求，该选项设置滚动请求的内容。
+This property defines the amount of time (ms) Elasticsearch will keep the [search context
+alive](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html#scroll-sea rch-context) for scroll requests
 
-此属性是可选的；默认值为`1s`。
+This property is optional; the default is `1s`.
 
 ### `elasticsearch.max-hits`
 
-此属性定义了Elasticsearch请求可以获取的[hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html)的最大数量。
+This property defines the maximum number of [hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html) an Elasticsearch request can fetch.
 
-此属性是可选的；默认值为`1000`。
+This property is optional; the default is `1000`.
 
-### `elasticsearch.request-timeout（弹性搜索请求超时）`,（弹性搜索请求超时）
+### `elasticsearch.request-timeout`
 
-此属性定义所有Elasticsearch请求的超时值。
+This property defines the timeout value for all Elasticsearch requests.
 
-此属性是可选的；默认值为`100ms`。
+This property is optional; the default is `100ms`.
 
 ### `elasticsearch.max-request-retries`
 
-定义Elasticsearch请求重试的最大次数。
+This property defines the maximum number of Elasticsearch request retries.
 
-此属性是可选的；默认值为`5`。
+This property is optional; the default is `5`.
 
-### `elasticsearch.max-request-retry-time（弹性搜索服务最大重试次数）
+### `elasticsearch.max-request-retry-time`
 
-当重试失败的请求的时候，使用指数退避，从1秒开始，最多退避到此配置指定的值。
+Use exponential backoff starting at 1s up to the value specified by this configuration when retrying failed requests.
 
-此属性是可选的；默认值为`10s`。
+This property is optional; the default is `10s`.
 
-搜索卫士认证
+Search Guard Authentication
 ---------------------------
 
-Elasticsearch连接器提供了额外的安全选项来支持配置为使用SearchGuard的Elasticsearch集群。
+The Elasticsearch connector provides additional security options to support Elasticsearch clusters that have been configured to use Search Guard.
 
-证书格式可通过Elasticsearch目录属性文件中的`searchguard.ssl.certificate_format` config属性进行配置。该配置允许的值是：
+You can configure the certificate format by setting the `searchguard.ssl.certificate_format` config property in the Elasticsearch catalog properties file. The allowed values for this configuration are:
 
-|属性值|说明|
+| Property Value   | Description                                  |
 | :--------------- | :------------------------------------------- |
-| `NONE`（默认） |不使用Search Guard认证。|
-| `PEM` |使用X.509 PEM证书和PKCS #8密钥。|
-| `JKS` |使用Keystore和Truststore文件存储。|
+| `NONE` (default) | Do not use Search Guard Authentication.      |
+| `PEM`            | Use X.509 PEM certificates and PKCS #8 keys. |
+| `JKS`            | Use Keystore and Truststore files.           |
 
  
 
-如果使用X.509PEM证书和PKCS#8密钥，必须设置以下属性：
+If you use X.509 PEM certificates and PKCS #8 keys, the following properties must be set:
 
  
 
-|属性名称|描述|
+| Property Name                            | Description                                                 |
 | :--------------------------------------- | :---------------------------------------------------------- |
-| `searchguard.ssl.pemcert-filepath` | X.509节点证书链所在的路径。|
-| `searchguard.ssl.pemkey-filepath` |证书密钥文件路径。|
-| `searchguard.ssl.pemkey-password` |密钥对应的密码信息。如果密钥没有密码，则忽略此设置。|
-| `searchguard.ssl.pemtrustedcas-filepath` |根证书所在路径（PEM格式） |
+| `searchguard.ssl.pemcert-filepath`       | Path to the X.509 node certificate chain.                   |
+| `searchguard.ssl.pemkey-filepath`        | Path to the certificates key file.                          |
+| `searchguard.ssl.pemkey-password`        | Key password. Omit this setting if the key has no password. |
+| `searchguard.ssl.pemtrustedcas-filepath` | Path to the root CA(s) (PEM format).                        |
 
  
 
-如果使用Keystore和Truststore文件，需要设置如下属性：
+If you use Keystore and Truststore files, the following properties must be set:
 
  
 
-|属性名称|描述|
+| Property Name                         | Description                  |
 | :------------------------------------ | :--------------------------- |
-| `searchguard.ssl.keystore-filepath` |证书库文件路径。|
-| `searchguard.ssl.keystore-password` |证书库的密码，请根据实际情况填写。|
-| `searchguard.ssl.truststore-filepath` |信任库文件的路径，用户可根据自己的需要自行设置。|
-| `searchguard.ssl.truststore-password` |信任库的密码，请根据实际情况填写。|
+| `searchguard.ssl.keystore-filepath`   | Path to the keystore file.   |
+| `searchguard.ssl.keystore-password`   | Keystore password.           |
+| `searchguard.ssl.truststore-filepath` | Path to the truststore file. |
+| `searchguard.ssl.truststore-password` | Truststore password.         |
 
-### `searchguard.ssl.pemcert-filepath（证书所在的文件路径）`
+### `searchguard.ssl.pemcert-filepath`
 
-X.509节点证书链的路径。该文件必须可由运行Presto的操作系统用户读取。
+The path to the X.509 node certificate chain. This file must be readable by the operating system user running openLooKeng.
 
-此属性是可选的；默认值为`etc/elasticsearch/esnode.pem`。
+This property is optional; the default is `etc/elasticsearch/esnode.pem`.
 
-### `searchguard.ssl.pemkey-filepath文件所在的路径名`
+### `searchguard.ssl.pemkey-filepath`
 
-证书密钥文件的路径。该文件必须可由运行Presto的操作系统用户读取。
+The path to the certificates key file. This file must be readable by the operating system user running openLooKeng.
 
-此属性是可选的；默认值为`etc/elasticsearch/esnode-key.pem`。
+This property is optional; the default is `etc/elasticsearch/esnode-key.pem`.
 
-### `searchguard.ssl.pemkey-密码安全证书
+### `searchguard.ssl.pemkey-password`
 
-`searchguard.ssl.pemkey-filepath`指定的密钥文件的密钥密码。
+The key password for the key file specified by `searchguard.ssl.pemkey-filepath`.
 
-此属性是可选的；默认为空字符串。
+This property is optional; the default is empty string.
 
-### `searchguard.ssl.pemtrustedcas-filepath安全证书库文件路径`
+### `searchguard.ssl.pemtrustedcas-filepath`
 
-根CA（PEM格式）所在路径，该文件必须是运行Presto的操作系统用户可读的。
+The path to the root CA(s) (PEM format). This file must be readable by the operating system user running openLooKeng.
 
-此属性是可选的；默认值为`etc/elasticsearch/root-ca.pem`。
+This property is optional; the default is `etc/elasticsearch/root-ca.pem`.
 
-### `searchguard.ssl.keystore文件所在的路径`
+### `searchguard.ssl.keystore-filepath`
 
-keystore文件的路径。该文件必须可由运行Presto的操作系统用户读取。
+The path to the keystore file. This file must be readable by the operating system user running openLooKeng.
 
-此属性是可选的；默认值为`etc/elasticsearch/keystore.jks`。
+This property is optional; the default is `etc/elasticsearch/keystore.jks`.
 
-### `searchguard.ssl.keystore-密码名称`
+### `searchguard.ssl.keystore-password`
 
-`searchguard.ssl.keystore-filepath`指定的密钥库文件的密钥库密码。
+The keystore password for the keystore file specified by `searchguard.ssl.keystore-filepath`
 
-此属性是可选的；默认为空字符串。
+This property is optional; the default is empty string.
 
-### `searchguard.ssl.truststore-filepath（证书的存放目录）`
+### `searchguard.ssl.truststore-filepath`
 
-信任库文件的路径。该文件必须可由运行Presto的操作系统用户读取。
+The path to the truststore file. This file must be readable by the operating system user running openLooKeng.
 
-此属性是可选的；默认值为`etc/elasticsearch/truststore.jks`。
+This property is optional; the default is `etc/elasticsearch/truststore.jks`.
 
-### `searchguard.ssl.truststore-密码安全证书
+### `searchguard.ssl.truststore-password`
 
-`searchguard.ssl.truststore-password`指定的信任库文件的信任库密码。
+The truststore password for the truststore file specified by `searchguard.ssl.truststore-password`
 
-此属性是可选的；默认为空字符串。
+This property is optional; the default is empty string.
 
-表定义文件
+Table Definition Files
 ----------------------
 
-Elasticsearch将数据存储在多个节点中，并构建索引以进行快速检索。对于Presto，必须将这些数据映射到列中，以便允许对数据进行查询。
+Elasticsearch stores the data across multiple nodes and builds indices for fast retrieval. For openLooKeng, this data must be mapped into columns to allow queries against the data.
 
-表定义文件以JSON格式描述一个表。
+A table definition file describes a table in JSON format.
 
-"```{.none}"
+``` json
 {
-"tableName": ...，
-"schemaName": ...，
-"主机地址": ...，
-"端口": ...，
-"clusterName": "集群名称"，
-"index": ...，
-"indexExactMatch": ...，
-"类型": ...
-"columns":[
-{
-"name": ...，
-"type": ...，
-"jsonPath": "...路径名称"，
-"jsonType": ...，
-"顺序位置": ...
-}
-]
+    "tableName": ...,
+    "schemaName": ...,
+    "hostAddress": ...,
+    "port": ...,
+    "clusterName": ...,
+    "index": ...,
+    "indexExactMatch": ...,
+    "type": ...
+    "columns": [
+        {
+            "name": ...,
+            "type": ...,
+            "jsonPath": ...,
+            "jsonType": ...,
+            "ordinalPosition": ...
+        }
+    ]
 }
 ```
 
-|字段|必填|类型|说明|
+| Field             | Required | Type    | Description                                                  |
 | :---------------- | :------- | :------ | :----------------------------------------------------------- |
-| `tableName` | required | string |表的名称，用来标识一个表。|
-| `schemaName` |可选| string |包含表的模式。如果省略，则使用默认架构名称。|
-| `host` | required | string | Elasticsearch搜索节点的主机名。|
-| `port` | required |整数| Elasticsearch搜索节点的端口号。|
-| `clusterName` | required | string | Elasticsearch集群名称，用户自定义。|
-| `index` | required | string |当前正在支持该表的Elasticsearch索引。|
-| `indexExactMatch` |可选| boolean |如果设置为true，则使用通过`index`属性指定的索引。否则，使用`index`属性指定的前缀开始的所有索引。|
-| `type` | required | string | Elasticsearch【映射类型】（https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html#mapping-type），该选项决定了文档的索引方式，从而确定文档的索引方式。|
-| `columns` |可选| list |列元数据信息列表。|
+| `tableName`       | required | string  | Name of the table.                                           |
+| `schemaName`      | optional | string  | Schema that contains the table. If omitted, the default schema name is used. |
+| `host`            | required | string  | Elasticsearch search node host name.                         |
+| `port`            | required | integer | Elasticsearch search node port number.                       |
+| `clusterName`     | required | string  | Elasticsearch cluster name.                                  |
+| `index`           | required | string  | Elasticsearch index that is backing this table.              |
+| `indexExactMatch` | optional | boolean | If set to true, the index specified with the `index` property is used. Otherwise, all indices starting with the prefix specified by the `index` property are used. |
+| `type`            | required | string  | Elasticsearch [mapping type](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html#mapping-type), which determines how the document are indexed. |
+| `columns`         | optional | list    | List of column metadata information.                         |
 
-Elasticsearch列元数据
+Elasticsearch Column Metadata
 -----------------------------
 
-可选的，列元数据可以与以下字段在同一个表描述JSON文件中描述：
+Optionally, column metadata can be described in the same table description JSON file with these fields:
 
  
 
-|字段|必填|类型|说明|
+| Field             | Required | Type    | Description                                                  |
 | :---------------- | :------- | :------ | :----------------------------------------------------------- |
-| `name` |可选| string | Elasticsearch字段的列名。|
-| `type` |可选| string | Elasticsearch的列类型【字段】(https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html) |弹性搜索的列类型，可选项包括：
-| `jsonPath` |可选| string | Elasticsearch字段的json路径信息。|
-| `jsonType` |可选| string | Elasticsearch字段的json类型，可选。|
-| `ordinalPosition` |可选|整数|列的顺序。|
+| `name`            | optional | string  | Column name of Elasticsearch field.                          |
+| `type`            | optional | string  | Column type of Elasticsearch [field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). |
+| `jsonPath`        | optional | string  | Json path of Elasticsearch field.                            |
+| `jsonType`        | optional | string  | Json type of Elasticsearch field.                            |
+| `ordinalPosition` | optional | integer | Ordinal position of the column.                              |

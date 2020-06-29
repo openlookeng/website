@@ -1,19 +1,19 @@
-显示创建视图
+SHOW CREATE VIEW
 ================
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-视图名称
+``` sql
+SHOW CREATE VIEW view_name
 ```
 
-问题描述
+Description
 -----------
 
-显示创建指定视图的SQL语句。
+Show the SQL statement that creates the specified view.
 
-参见
+See Also
 --------
 
-【创建视图】(./create-view)
+[create-view](./create-view)

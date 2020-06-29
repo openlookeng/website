@@ -1,38 +1,38 @@
-降速计划
+DROP SCHEMA
 ===========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-DROP {SCHEMA|DATABASE}【IF EXISTS】架构名称【{级联|限制}】
+``` sql
+DROP {SCHEMA|DATABASE} [ IF EXISTS ] schema_name [{CASCADE | RESTRICT}]
 ```
 
-问题描述
+Description
 -----------
 
-删除一个已存在的模式。模式必须为空。
+Drop an existing schema. The schema must be empty.
 
-如果模式不存在，可选的`IF EXISTS`子句将导致错误被抑制。
+The optional `IF EXISTS` clause causes the error to be suppressed if the schema does not exist.
 
-示例
+Examples
 --------
 
-删除模式`web`：
+Drop the schema `web`:
 
-DROP SCHEMA网站
-删除数据库web
+    DROP SCHEMA web
+    DROP DATABASE web
 
-删除模式`sales`，如果存在：
+Drop the schema `sales` if it exists:
 
-如果退出销售
+    DROP TABLE IF EXISTS sales
 
-限制
+Limitations
 -----------
 
-从功能上来说，`CASCADE`和`RESTRICT`目前还不支持。
+Functionally, `CASCADE` and `RESTRICT` is not supported yet.
 
-参见
+See Also
 --------
 
-[alter-schema](./alter-schema),[create-schema](./create-schema) <创建模式名称> <源模式名称> <源模式名称> <源模式名称> <源模式名称>
+[alter-schema](./alter-schema), [create-schema](./create-schema)

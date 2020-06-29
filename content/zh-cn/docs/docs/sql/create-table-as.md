@@ -1,63 +1,63 @@
-创建表AS
+CREATE TABLE AS
 ===============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-CREATE TABLE【如果不存在】table_name【（列名，...）】
-【评论表_评论】
-【WITH(property_name =表达式【,...】】，以此类推】
-AS查询
-【没有数据】
+``` sql
+CREATE TABLE [ IF NOT EXISTS ] table_name [ ( column_alias, ... ) ]
+[ COMMENT table_comment ]
+[ WITH ( property_name = expression [, ...] ) ]
+AS query
+[ WITH [ NO ] DATA ]
 ```
 
-问题描述
+Description
 -----------
 
-创建包含[SELECT](./select.md)查询结果的新表。使用[CREATE TABLE](./create-table.md)方法创建空表。
+Create a new table containing the result of a [SELECT](select.md) query. Use [CREATE TABLE](create-table.md) to create an empty table.
 
-如果表已经存在，则可选的`IFNOTEXISTS`子句将导致错误被抑制。
+The optional `IF NOT EXISTS` clause causes the error to be suppressed if the table already exists.
 
-可选子句`WITH`用于设置新创建的表的属性。列出所有可用的表属性：
+The optional `WITH` clause can be used to set properties on the newly created table. To list all available table properties, run the following query:
 
-SELECT *从系统元数据中选取
+    SELECT * FROM system.metadata.table_properties
 
-示例
+Examples
 --------
 
-使用查询结果和给定的列名创建新表`orders_column_aliased`：
+Create a new table `orders_column_aliased` with the results of a query and the given column names:
 
-CREATE TABLE订单行别名（订单日期，总价）
-弹性伸缩
-SELECT订单日期，总价
-从订单
+    CREATE TABLE orders_column_aliased (order_date, total_price)
+    AS
+    SELECT orderdate, totalprice
+    FROM orders
 
-新建表`orders_by_date`，对`orders`进行汇总：
+Create a new table `orders_by_date` that summarizes `orders`:
 
-CREATE TABLE订单_按日期排序
-comment '按日期汇总订单'，
-WITH（format = 'ORC'）语法检查
-弹性伸缩
-SELECT订单日期，sum(totalprice) AS价格
-从订单
-GROUP BY订单日期
+    CREATE TABLE orders_by_date
+    COMMENT 'Summary of orders by date'
+    WITH (format = 'ORC')
+    AS
+    SELECT orderdate, sum(totalprice) AS price
+    FROM orders
+    GROUP BY orderdate
 
-如果表`orders_by_date`不存在，则创建表`orders_by_date`：
+Create the table `orders_by_date` if it does not already exist:
 
-创建表如果不存在订单_按日期AS
-SELECT订单日期，sum(totalprice) AS价格
-从订单
-GROUP BY订单日期
+    CREATE TABLE IF NOT EXISTS orders_by_date AS
+    SELECT orderdate, sum(totalprice) AS price
+    FROM orders
+    GROUP BY orderdate
 
-创建一个空表`empty_nation`,schema与`nation`相同，无数据：
+Create a new `empty_nation` table with the same schema as `nation` and no data:
 
-CREATE TABLE空国家属性
-选择*
-来自国家
-无数据
+    CREATE TABLE empty_nation AS
+    SELECT *
+    FROM nation
+    WITH NO DATA
 
-参见
+See Also
 --------
 
-【创建表】（./create-table），【选择】（./选择）
+[create-table](./create-table), [ select](./ select)

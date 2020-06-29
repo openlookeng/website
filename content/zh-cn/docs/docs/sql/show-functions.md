@@ -1,14 +1,14 @@
-节目功能
+SHOW FUNCTIONS
 ==============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-节目功能
+``` sql
+SHOW FUNCTIONS
 ```
 
-问题描述
+Description
 -----------
 
-列出在查询中可以使用的所有函数。
+List all the functions available for use in queries.

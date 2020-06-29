@@ -1,247 +1,247 @@
-数据类型
+Data Types
 ==========
 
-Presto拥有一组内置数据类型，如下所述。插件可以提供额外的类型。
+openLooKeng has a set of built-in data types, described below. Additional types can be provided by plugins.
 
 
-**说明**
+**Note**
 
-*连接器不需要支持所有类型。见连接器* *文件关于支持类型的详细信息。*
+*Connectors are not required to support all types. See connector* *documentation for details on supported types.*
 
-布尔型
+Boolean
 -------
 
-#BOOLEAN（布尔人）#
+### `BOOLEAN`
 
->捕获布尔值`true`和`false`。
+> This type captures boolean values `true` and `false`.
 
-整数
+Integer
 -------
 
-# #丁丁#
+### `TINYINT`
 
-> 8位有符号二位补码整数，最小值为`-2^7`，最大值为`2^7-1`。
+> A 8-bit signed two\'s complement integer with a minimum value of `-2^7` and a maximum value of `2^7 - 1`.
 
-###游戏规则
+### `SMALLINT`
 
-> 16位有符号2补码整数，最小值为`-2^15`，最大值为`2^15-1`。
+> A 16-bit signed two\'s complement integer with a minimum value of `-2^15` and a maximum value of `2^15 - 1`.
 
-# "集成者"
+### `INTEGER`
 
-> 32位有符号2位补码整数，最小值为`-2^31`，最大值为`2^31-1`。名称`INT`也可用于此类型。
+> A 32-bit signed two\'s complement integer with a minimum value of `-2^31` and a maximum value of `2^31 - 1`. The name `INT` is also available for this type.
 
-# # "BIGINT"
+### `BIGINT`
 
-> 64位有符号二位补码整数，最小值为`-2^63`，最大值为`2^63-1`。
+> A 64-bit signed two\'s complement integer with a minimum value of `-2^63` and a maximum value of `2^63 - 1`.
 
-浮点型
+Floating-Point
 --------------
 
-# #真正的#
+### `REAL`
 
-实数是一种32位不精确的变量精度，实现了IEEE标准的二进制浮点运算754。
+> A real is a 32-bit inexact, variable-precision implementing the IEEE Standard 754 for Binary Floating-Point Arithmetic.
 >
->该类型也有名称`FLOAT`。
+> The name `FLOAT` is also available for this type.
 >
->示例：真实'10.3'，真实'10.3e0'，真实'1.03e1'
+> Example: REAL '10.3', REAL '10.3e0', REAL '1.03e1'
 
-"双"
+### `DOUBLE`
 
-双精度浮点运算器是一种64位的不精确的、可变精度的运算器，它实现了IEEE标准754中的二进制浮点运算。
+> A double is a 64-bit inexact, variable-precision implementing the IEEE Standard 754 for Binary Floating-Point Arithmetic.
 >
->该类型也有名称`DOUBLE PRECISION`。
+> The name `DOUBLE PRECISION` is also available for this type.
 
-固定精度
+Fixed-Precision
 ---------------
 
-# "DECIMAL" （法语）
+### `DECIMAL`
 
->固定精度的十进制数。精度最高可达38位，但性能最高可达18位。
+> A fixed precision decimal number. Precision up to 38 digits is supported but performance is best up to 18 digits.
 >
->该类型也有名称`NUMERIC`和`DEC`。
+> The name `NUMERIC` and `DEC` is also available for this type.
 >
->decimal类型有两个文字参数：
+> The decimal type takes two literal parameters:
 >
-> > - **精度** -总位数
-> > - **scale** -小数位数。Scale可选，默认为0。
+> -   **precision** - total number of digits
+> -   **scale** - number of digits in fractional part. Scale is optional and defaults to 0.
 >
->类型定义示例：`DECIMAL(10,3)`, `DECIMAL(20)`
+> Example type definitions: `DECIMAL(10,3)`, `DECIMAL(20)`
 >
->示例文字：`DECIMAL '10.3'`,`DECIMAL '1234567890'`,`1.1`，等等
+> Example literals: `DECIMAL '10.3'`, `DECIMAL '1234567890'`, `1.1`
 >
 >
-> **说明**
+> **Note**
 >
->由于兼容性原因，没有显式类型说明符的十进制文字（例如： `1.2`）默认作为`DOUBLE`类型的值处理，但此值在以后的版本中可能会更改。这个
->行为受以下控制：
+> For compatibility reasons decimal literals without explicit type specifier (e.g. `1.2`) are treated as the values of the `DOUBLE` type by default, but this is subject to change in future releases. This
+> behavior is controlled by:
 >
-> > -系统范围属性：`parse-decimal-字面值-as-double`
-> > -会话宽属性：`parse_decimal_字面值_as_double`
+> -   System wide property: `parse-decimal-literals-as-double`
+> -   Session wide property: `parse_decimal_literals_as_double`
 
-字符串
+String
 ------
 
-###瓦尔查尔
+### `VARCHAR`
 
->可变长度字符数据，可选最大长度。
+> Variable length character data with an optional maximum length.
 >
->该类型也有名称`STRING`。请注意，`STRING`定义了一个无限长的字符数据，您不应该指定长度，否则它将与`VARCHAR(length)`相同。
+> The name `STRING` is also available for this type. Please be advised, `STRING` defined an unlimited length character data, you should not specify the length, otherwise it will be same as `VARCHAR(length)`.
 >
->类型定义示例：`varchar`,`varchar(20)`,`string`
+> Example type definitions: `varchar`, `varchar(20)`, `string`
 >
-> SQL语句支持简单文字，支持Unicode使用：
+> SQL statements support simple literal, as well as Unicode usage:
 >
-> -字面字符串： ` '你好，冬天！'`
-> - Unicode字符串，默认转义字符为：`U&'你好，冬天\2603 !`
-> -带自定义转义字符的Unicode字符串：`U&' Hello冬季#2603!' UESCAPE '#'`
+> -   literal string : `'Hello winter !'`
+> -   Unicode string with default escape character: `U&'Hello winter \2603 !'`
+> -   Unicode string with custom escape character: `U&'Hello winter #2603 !' UESCAPE '#'`
 >
-> Unicode字符串以`U&`为前缀，需要转义
->字符在任何Unicode字符使用前4位。在
->`\2603`和`#2603`上面的示例表示雪人角色。长
->6位Unicode编码前需加号
->代码。例如，您需要使用`\+01F600`来表示露齿而笑的脸
->表情。
+> A Unicode string is prefixed with `U&` and requires an escape
+> character before any Unicode character usage with 4 digits. In the
+> examples above `\2603` and `#2603` represent a snowman character. Long
+> Unicode codes with 6 digits require usage of the plus symbol before
+> the code. For example, you need to use `\+01F600` for a grinning face
+> emoji.
 
-### CHAR（密码）
+### `CHAR`
 
->定长字符数据。不指定长度的`CHAR`类型具有默认长度1。`CHAR(x)`值始终具有`x`字符。例如，将`dog`转换为`CHAR(7)`会增加4个隐式尾随空格。在比较`CHAR`值时包括前导和尾随空格。因此，两个不同长度的字符值（`CHAR(x）`和`CHAR(y)` where `x != y`)将永远不会
->必须相等。
+> Fixed length character data. A `CHAR` type without length specified has a default length of 1. A `CHAR(x)` value always has `x` characters. For instance, casting `dog` to `CHAR(7)` adds 4 implicit trailing spaces. Leading and trailing spaces are included in comparisons of `CHAR` values. As a result, two character values with different lengths (`CHAR(x)` and `CHAR(y)` where `x != y`) will never
+> be equal.
 >
->类型定义示例：`char`, `char(20)`
+> Example type definitions: `char`, `char(20)`
 
-#变种人#
+### `VARBINARY`
 
->变长二进制数据。
+> Variable length binary data.
 >
->
-> **说明**
->
->长度的二进制字符串尚不支持：`varbinary(n)`
+> 
+> **Note**
+> 
+> Binary strings with length are not yet supported: `varbinary(n)`
 >
 
 ### `JSON`
 
-> JSON值类型，可以是JSON对象、JSON数组、JSON数字、JSON字符串、`true`、`false`或`null`。
+> JSON value type, which can be a JSON object, a JSON array, a JSON number, a JSON string, `true`, `false` or `null`.
 
-日期和时间
+Date and Time
 -------------
 
-另见`/语言/时间戳`{.interpreted-text role="doc"}
+See also `/language/timestamp`
 
-###日期
+### `DATE`
 
->日历日期（年、月、日）。
+> Calendar date (year, month, day).
 >
->示例：`日期'2001-08-22'`
+> Example: `DATE '2001-08-22'`
 
-###时间
+### `TIME`
 
->日时间（时、分、秒、毫秒），不带时区。此类型的值将在会话时区中解析和呈现。
+> Time of day (hour, minute, second, millisecond) without a time zone. Values of this type are parsed and rendered in the session time zone.
 >
->示例：`时间'01:02:03.456'`
+> Example: `TIME '01:02:03.456'`
 
-# # "时间与时区"
+### `TIME WITH TIME ZONE`
 
->带时区的一天中的时间（时、分、秒、毫秒）。此类型的值将使用该值中的时区进行呈现。
+> Time of day (hour, minute, second, millisecond) with a time zone. Values of this type are rendered using the time zone from the value.
 >
->示例：`时间'01:02:03.456美国/洛杉矶
+> Example: `TIME '01:02:03.456 America/Los_Angeles'`
 
-###时间站
+### `TIMESTAMP`
 
->包含日期和时间的即时时间，不带时区。此类型的值将在会话时区中解析和呈现。
+> Instant in time that includes the date and time of day without a time zone. Values of this type are parsed and rendered in the session time zone.
 >
->示例：`TIMESTAMP '2001-08-22 03:04:05.321'`，表示定时同步时间。
+> Example: `TIMESTAMP '2001-08-22 03:04:05.321'`
 
-# #带时区的时区#
+### `TIMESTAMP WITH TIME ZONE`
 
->即时时间，包括带时区的日期和时间。此类型的值将使用该值中的时区进行呈现。
+> Instant in time that includes the date and time of day with a time zone. Values of this type are rendered using the time zone from the value.
 >
->示例：`TIMESTAMP '2001-08-22 03:04:05.321美国/洛杉矶
+> Example: `TIMESTAMP '2001-08-22 03:04:05.321 America/Los_Angeles'`
 
-# #隔年到月#
+### `INTERVAL YEAR TO MONTH`
 
->年月跨度。
+> Span of years and months.
 >
->示例：`INTERVAL '3' MONTH`，表示间隔3个月。
+> Example: `INTERVAL '3' MONTH`
 
-# #隔日到第二日#
+### `INTERVAL DAY TO SECOND`
 
->天数、小时、分钟、秒和毫秒的跨度。
+> Span of days, hours, minutes, seconds and milliseconds.
 >
->示例：`INTERVAL '2' DAY`
+> Example: `INTERVAL '2' DAY`
 
-结构
+Structural
 ----------
 
-###数组类型
+### `ARRAY`
 
->给定组件类型的数组。
+> An array of the given component type.
 >
->示例：`ARRAY【1,2,3】`
+> Example: `ARRAY[1, 2, 3]`
 
-### `MAP` {#map_type}
+### `MAP`
 
->给定组件类型之间的映射。
+> A map between the given component types.
 >
->示例：`MAP（ARRAY【'foo'， 'bar'】， ARRAY【1,2】）`，则返回该错误码。
+> Example: `MAP(ARRAY['foo', 'bar'], ARRAY[1, 2])`
 
-### `ROW` {#row_type}
+### `ROW`
 
->由允许混合类型的字段组成的结构。字段可以是任何SQL类型。
+> A structure made up of fields that allows mixed types. The fields may be of any SQL type.
 >
->行字段默认不命名，但可以指定名称。
+> By default, row fields are not named, but names can be assigned.
 >
->示例：`CAST(ROW(1,2.0) AS ROW(x BIGINT, y DOUBLE))`，则返回该结果。
+> Example: `CAST(ROW(1, 2.0) AS ROW(x BIGINT, y DOUBLE))`
 >
->命名行字段通过字段引用运算符`.`访问。
+> Named row fields are accessed with field reference operator `.`.
 >
->示例：`CAST(ROW(1,2.0) AS ROW(x BIGINT, y DOUBLE)).x`，表示指定行号的行号。
+> Example: `CAST(ROW(1, 2.0) AS ROW(x BIGINT, y DOUBLE)).x`
 >
->已命名或未命名的行字段通过下标运算符`[]`按位置访问。位置从`1`开始，必须是常量。
+> Named or unnamed row fields are accessed by position with the subscript operator `[]`. The position starts at `1` and must be a constant.
 >
->示例：`ROW(1,2.0)[1]`
+> Example: `ROW(1, 2.0)[1]`
 
-网络地址
+Network Address
 ---------------
 
-### `IP地址' {#ipaddress_type}
+### `IPADDRESS`
 
-> IP地址，可以表示IPv4地址，也可以表示IPv6地址。对内为纯IPv6地址。对IPv4的支持是通过*IPv4映射的IPv6地址*范围（[RFC 4291#section-2.5.5.2](https://tools.ietf.org/html/rfc4291.html#section-2.5.5.2）)来处理的。`IPADDRESS`,IPv4地址将映射到该范围。格式化`IPADDRESS`时，在映射范围内的任何地址都会被格式化为IPv4地址。其他地址将使用[RFC 5929] (https://tools.ietf.org/html/rfc5952.html)中定义的标准格式格式化为IPv6。
+> An IP address that can represent either an IPv4 or IPv6 address. Internally, the type is a pure IPv6 address. Support for IPv4 is handled using the *IPv4-mapped IPv6 address* range ([RFC 4291#section-2.5.5.2](https://tools.ietf.org/html/rfc4291.html#section-2.5.5.2 )). When creating an `IPADDRESS`, IPv4 addresses will be mapped into that range. When formatting an `IPADDRESS`, any address within the mapped range will be formatted as an IPv4 address. Other addresses will be formatted as IPv6 using the canonical format defined in [RFC 5929](https://tools.ietf.org/html/rfc5952.html ).
 >
->示例：`IPADDRESS '10.0.0.1'`,`IPADDRESS '2001:db8::1'`等，请根据实际情况替换。
+> Examples: `IPADDRESS '10.0.0.1'`, `IPADDRESS '2001:db8::1'`
 
-唯一标识
+UUID
 ----
 
-### `UUID` {#uuid_type}
+### `UUID`
 
->此类型表示UUID（通用唯一标识符），也称为GUID（全局唯一标识符），使用[RFC 4122](https://tools.ietf.org/html/rfc4122.html)中定义的格式。
+> This type represents a UUID (Universally Unique IDentifier), also known as a GUID (Globally Unique IDentifier), using the format defined in [RFC 4122](https://tools.ietf.org/html/rfc4122.html ).
 >
->示例：`UUID '12151fd2-7586-11e9-8f9e-2a86e4085a59'`，表示指定用户ID的唯一标识。
+> Example: `UUID '12151fd2-7586-11e9-8f9e-2a86e4085a59'`
 
-超级日志
+HyperLogLog
 -----------
 
-与使用
-[HyperLogLog](https://en.wikipedia.org/wiki/HyperLogLog)日志数据的概要信息。请参见[HyperLogLog Functions](../functions/hyperlog.md)中的相关描述，以获取日志的更多信息。
+Calculating the approximate distinct count can be done much more cheaply than an exact count using the
+[HyperLogLog](https://en.wikipedia.org/wiki/HyperLogLog) data sketch. See [HyperLogLog Functions](../functions/hyperloglog.md).
 
-### `HyperLogLog`日志文件类型
+### `HyperLogLog`
 
-> HyperLogLogsketch允许高效地计算[approx_distinct()](../functions/aggregate.md)，它以稀疏表示形式开始，当效率提高时，将转换为密集表示形式。
+> A HyperLogLog sketch allows efficient computation of [approx_distinct()](../functions/aggregate.md). It starts as a sparse representation, switching to a dense representation when it becomes more efficient.
 
-### `P4HyperLogLogLog` {p4hyperlog_type}日志文件类型
+### `P4HyperLogLog`
 
-> P4HyperLogLog草图类似于`hyperloglog_type`，但它以密集表示形式开始（并保留）。
+> A P4HyperLogLog sketch is similar to `hyperloglog_type`, but it starts (and remains) in the dense representation.
 
-分位式文摘
+Quantile Digest
 ---------------
 
-### `QDigest` {#qdigest_type}
+### `QDigest`
 
->分位点摘要（qdigest）是一种摘要结构，它捕捉给定输入集的数据的近似分布，并且可以查询它以从分布中检索近似分位点值。
-精度的qdigest水平是可调的，使更精确的结果牺牲空间。
+> A quantile digest (qdigest) is a summary structure which captures the approximate distribution of data for a given input set, and can be queried to retrieve approximate quantile values from the distribution.
+> The level of accuracy for a qdigest is tunable, allowing for more precise results at the expense of space.
 >
->可用qdigest对询问在某一分位数处属于什么值的询问进行近似回答。qdigest的一个有用的特性是它们是可加的，这意味着它们可以合并在一起而不损失精度。
+> A qdigest can be used to give approximate answer to queries asking for what value belongs at a certain quantile. A useful property of qdigests is that they are additive, meaning they can be merged together without losing precision.
 >
->每当`approx_percentile`的部分结果可以被重用时，qdigest就会有所帮助。例如，人们可能对每日读取的第99百分位数值感兴趣
->一周课程。代替使用`approx_percentile`计算过去一周的数据，`qdigest'可以每天存储，并快速合并以检索第99个百分位值。
+> A qdigest may be helpful whenever the partial results of `approx_percentile` can be reused. For example, one may be interested in a daily reading of the 99th percentile values that are read over
+> the course of a week. Instead of calculating the past week of data with `approx_percentile`, `qdigest`s could be stored daily, and quickly merged to retrieve the 99th percentile value.
