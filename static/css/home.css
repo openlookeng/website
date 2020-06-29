@@ -1,6 +1,6 @@
 .home-banner {
     height: unset;
-    padding-top: 100px;
+    padding-top: 60px;
 }
 
 .home-why .item {
@@ -22,7 +22,7 @@
 .home-banner .banner-p1 {
     font-family: HuaweiSans;
     margin: 0 0 15px 0;
-    height: 44px;
+    height: 40px;
     line-height: 44px;
 }
 
