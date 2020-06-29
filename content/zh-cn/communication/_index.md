@@ -13,8 +13,8 @@ step_one = "点击您想订阅的邮件列表名字"
 step_two = "等待系统跳转到订阅页面"
 step_three = "输入您想接收邮件的邮箱地址并点击Subscribe"
 step_four = "您将会接收到一封订阅确认邮件"
-step_five = "回复该确认邮件"
-step_six = "您将会接收到一封欢迎邮件, 这意味着您已订阅成功!"
+step_five = "回复该确认邮件<>br"
+step_six = "您将会接收到一封欢迎邮件, 这意味着您已订阅成功!<br>"
 
 general_url = "https://openlookeng.slack.com/messages/C016KBU2P5E"
 general_tag = "#general"
@@ -27,3 +27,39 @@ dev_tag = "#dev"
 dev_detail = "对openLooKeng代码库、开发以及开发扩展讨论。"
 
 +++
+<div class="step-left">
+    <div class="step-left-box">
+        <p>点击您想订阅的邮件列表名字</p><br>
+    </div>
+    <div class="step-left-num">
+        <span>1</span>
+    </div>
+    <div class="step-left-line"></div>
+</div>
+<div class="step-right">
+    <div class="step-right-line"></div>
+    <div class="step-right-num">
+        <span>2</span>
+    </div>
+    <div class="step-right-box">
+        <p>等待系统跳转到订阅页面</p><br>
+    </div>
+</div>
+<div class="step-left">
+    <div class="step-left-box">
+        <p>输入您想接收邮件的邮箱地址并点击Subscribe</p><br>
+    </div>
+    <div class="step-left-num">
+        <span>3</span>
+    </div>
+    <div class="step-left-line"></div>
+</div>
+<div class="step-right last">
+    <div class="step-right-line"></div>
+    <div class="step-right-num">
+        <span>4</span>
+    </div>
+    <div class="step-right-box">
+        <p>您将会接收到一封订阅确认邮件</p><br>
+    </div>
+</div>

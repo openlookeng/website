@@ -25,3 +25,39 @@ dev_tag = "#dev"
 dev_detail = "Discussions about openLooKong codebase, development, and development extensions."
 
 +++
+<div class="step-left">
+    <div class="step-left-box">
+        <p>Click the name of the mail list that you want to subscribe to.</p>
+    </div>
+    <div class="step-left-num">
+        <span>1</span>
+    </div>
+    <div class="step-left-line"></div>
+</div>
+<div class="step-right">
+    <div class="step-right-line"></div>
+    <div class="step-right-num">
+        <span>2</span>
+    </div>
+    <div class="step-right-box">
+        <p>Enter an email address that you want to receive from the mail list and click SUBSCRIBE.</p>
+    </div>
+</div>
+<div class="step-left">
+    <div class="step-left-box">
+        <p>You will receive an email asking you to confirm the subscription. Reply the email to confirm your subscription.</p>
+    </div>
+    <div class="step-left-num">
+        <span>3</span>
+    </div>
+    <div class="step-left-line"></div>
+</div>
+<div class="step-right last">
+    <div class="step-right-line"></div>
+    <div class="step-right-num">
+        <span>4</span>
+    </div>
+    <div class="step-right-box">
+        <p>You will receive a welcome email from the email list, which means you’ve successfully subscribed to the mail list!</p>
+    </div>
+</div>

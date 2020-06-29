@@ -78,9 +78,11 @@
                                 <!-- PC 向导模块-->
                                 <div class="isPC maillist  maillist-guidance mail">
                                     <p>{{ .Params.guidance }}</p>
-                                    <div class="maillist-icon-comm"></div>
-                                    <div class="maillist-divider-mail"></div>
-                                    <div class="step-left">
+<!--                                    <div class="maillist-icon-comm"></div>-->
+                                    <div class="maillist-divider-mail">
+                                        <img src="../img/contribution/Group2.png" alt="">
+                                    </div>
+                                    <!--<div class="step-left">
                                         <div class="step-left-box">
                                             <p>{{ .Params.step_one }}</p>
                                         </div>
@@ -108,13 +110,15 @@
                                         <div class="step-left-line"></div>
                                     </div>
                                     <div class="step-right last">
+                                        <div class="step-right-line"></div>
                                         <div class="step-right-num">
                                             <span>4</span>
                                         </div>
                                         <div class="step-right-box">
                                             <p>{{ .Params.step_four }}</p>
                                         </div>
-                                    </div>
+                                    </div>-->
+                                    {{ .Content }}
                                 </div>
 
                                 <!-- mobile 向导模块-->

@@ -22,12 +22,13 @@ step_six = "Before integrating your code, reviewers will review your PR. To make
 
 <!-- PC 向导模块-->
 <div class="isPC maillist maillist-guidance">
-    <div class="maillist-icon"></div>
-    <div class="maillist-divider"></div>
+    <div class="maillist-divider">
+        <img src="../img/contribution/Group.png" alt="">
+    </div>
     <div class="step-left">
         <div class="step-left-box">
             <span>Sign the CLA before You Start</span>
-            <p>Before participating in the community contribution, please sign the <a href="">Contributor License Agreement (CLA).</a></p>
+            <p>Before participating in the community contribution, please sign the <a href="/cla.html" target="_blank">Contributor License Agreement (CLA).</a></p>
         </div>
         <div class="step-left-num">
             <span>1</span>
@@ -41,7 +42,7 @@ step_six = "Before integrating your code, reviewers will review your PR. To make
         </div>
         <div class="step-right-box">
             <span>Find Your Interested Project</span>
-            <p>The openLooKeng project consist of several sub projects, and please visit the <a href="https://gitee.com/openlookeng">Gitee</a> or <a href="https://github.com/openlookeng">Github</a> repository to find projects you are interested in.</p>
+            <p>The openLooKeng project consist of several sub projects, and please visit the <a href="https://gitee.com/openlookeng" target="_blank">Gitee</a> or <a href="https://github.com/openlookeng" target="_blank">Github</a> repository to find projects you are interested in.</p>
         </div>
     </div>
     <div class="step-left">
@@ -67,7 +68,7 @@ step_six = "Before integrating your code, reviewers will review your PR. To make
     <div class="step-left">
         <div class="step-left-box">
             <span>Code Submitting</span>
-            <p>To contribute code, you need to download code from Gitee repository and modify the code in a local branch. Then you need to perform building and local validation before integrate your code through a Pull Request (PR). For details, see <a href="http://git.mydoc.io/?t=153749">Gitee</a> or <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests">Github</a> Workflow Guide.</p>
+            <p>To contribute code, you need to download code from Gitee repository and modify the code in a local branch. Then you need to perform building and local validation before integrate your code through a Pull Request (PR). For details, see <a href="http://git.mydoc.io/?t=153749" target="_blank">Gitee</a> or <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests" target="_blank">Github</a> Workflow Guide.</p>
         </div>
         <div class="step-left-num">
             <span>5</span>
@@ -75,6 +76,7 @@ step_six = "Before integrating your code, reviewers will review your PR. To make
         <div class="step-left-line"></div>
     </div>
     <div class="step-right">
+            <div class="step-right-line"></div>
         <div class="step-right-num">
             <span>6</span>
         </div>

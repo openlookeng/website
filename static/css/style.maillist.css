@@ -67,23 +67,32 @@
     transform: translateX(-47%);
 }
 .maillist .maillist-guidance .maillist-divider {
-    width: 105px;
-    height: 1037px;
-    border-left: 2px dashed #509378;
-    border-bottom: 2px dashed #509378;
-    border-radius: 0 15px;
+    /*width: 105px;*/
+    height: 100%;
+    /*border-left: 2px dashed #509378;*/
+    /*border-bottom: 2px dashed #509378;*/
+    /*border-radius: 0 15px;*/
     position: absolute;
     left: 50%;
     transform: translateX(-1%);
     /*top: 91px;*/
     display: inline-block;
 }
+.maillist .maillist-guidance .maillist-divider img {
+    position: relative;
+    left: -18px;
+    height: 1200px;
+}
+.maillist .maillist-guidance .maillist-divider-mail img {
+    position: relative;
+    left: -18px;
+}
 .maillist .maillist-guidance .maillist-divider-mail {
     width: 105px;
     height: 457px;
-    border-left: 2px dashed #509378;
-    border-bottom: 2px dashed #509378;
-    border-radius: 0 15px;
+    /*border-left: 2px dashed #509378;*/
+    /*border-bottom: 2px dashed #509378;*/
+    /*border-radius: 0 15px;*/
     position: absolute;
     left: 50%;
     top: 91px;
@@ -138,6 +147,7 @@
     border-bottom: 2px dashed #509378;
     display: inline-block;
     vertical-align: middle;
+    opacity: .7;
 }
 .maillist .maillist-guidance .step-left {
     position: relative;
@@ -225,6 +235,7 @@
         border-bottom: none;
         font-size: 16px;
         font-weight: normal;
+        padding: 15px 0;
     }
     .maillist .maillist-info table td {
         border: none;

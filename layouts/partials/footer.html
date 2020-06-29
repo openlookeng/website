@@ -4,15 +4,15 @@
             <div class="col-md-12">
                 <div class="pull-left">
                     <div class="logo">
-                        <img src="../img/banners/openLooKengLogo.png" alt="">
+                        <img src="/img/banners/openLookengLogo.png" alt="">
                     </div>
                     <div class="logo-bottom">
-                        <p><a href="mailto:{{ .Site.Params.email | safeHTML }}"><img src="{{ "img/foundation/email.png" | relURL}}" > {{ .Site.Params.email | safeHTML }}</a></p>
+                        <p><a href="mailto:{{ .Site.Params.email | safeHTML }}">{{ .Site.Params.email | safeHTML }}</a></p>
                 </div>
                 </div>
     
                 <p class="pull-right">
-                {{ .Site.Params.copyright.text | safeHTML }}   
+                {{ .Site.Params.copyright.text | safeHTML }}
                 <span class="block">
                 <i class="size-14px">{{ .Site.Params.provide | safeHTML }}</i><i>{{ .Site.Params.license | safeHTML }}</i>
                 </span>
