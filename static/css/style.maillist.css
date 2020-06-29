@@ -155,6 +155,7 @@
 .maillist .maillist-guidance .step-left {
     position: relative;
     left: 20px;
+    z-index: 20;
 }
 .maillist .maillist-guidance .step-right {
     position: relative;
@@ -261,6 +262,9 @@
     }
     .maillist .maillist-slack {
         margin-bottom: 100px;
+    }
+    .maillist .maillist-slack .slack-empty {
+        margin: 0;
     }
     .maillist .maillist-slack p {
         font-size: 14px;

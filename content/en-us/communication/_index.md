@@ -1,6 +1,6 @@
 +++
 top_title ="Keep in Touch"
-middle_title = "Mailing Lists"
+middle_title = "Mailing List"
 bottom_title = "Slack"
 comm_title = "Communication"
 top_description = "Mailing list is one of the most common communication ways in the world of open source. Welcome to join the openLooKeng mailing lists and then you can communicate with us throught email (The common communication language is English). The mailing lists of openLookeng community are listed as follows:"

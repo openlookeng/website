@@ -10,7 +10,7 @@
     height: 1160px;
     position: absolute;
     left: 240px;
-    top: 700px;
+    top: 610px;
 }
 .event-list .event-content .event-box .event-circle {
     width: 24px;
@@ -125,7 +125,7 @@
         height: 430px;
         position: absolute;
         left: 140px;
-        top: 280px;
+        top: 240px;
     }
     .event-list .event-content .event-box .event-circle {
         width: 24px;
