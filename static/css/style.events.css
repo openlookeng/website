@@ -51,6 +51,12 @@
     color: rgba(0, 0, 0, .7);
 }
 @media screen and (min-width: 995px){
+    .isPC.event-title {
+        display: block;
+    }
+    .isH5.event-title{
+        display: none;
+    }
     .event-list h3 {
         text-align: center;
         font-size: 34px;
@@ -79,6 +85,12 @@
     }
 }
 @media screen and (max-width: 768px) {
+    .isPC.event-title {
+        display: none;
+    }
+    .isH5.event-title {
+        display: block;
+    }
     .event-list h3 {
         text-align: center;
         font-size: 24px;
@@ -112,7 +124,7 @@
         opacity: .09;
         height: 430px;
         position: absolute;
-        left: 150px;
+        left: 140px;
         top: 280px;
     }
     .event-list .event-content .event-box .event-circle {
@@ -128,7 +140,7 @@
     }
     .event-list .event-content .event-box {
         position: relative;
-        left: 180px;
+        left: 170px;
         width: 200px;
     }
 }

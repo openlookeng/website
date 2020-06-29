@@ -1,4 +1,5 @@
 +++
-top_title ="Meet Us in the Upcoming Events"
+top_title = "Meet Us in the Upcoming Events"
+mobile_title = "Events"
 event_head = "Upcoming Events"
 +++
