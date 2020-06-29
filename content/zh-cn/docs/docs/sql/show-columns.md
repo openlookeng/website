@@ -1,14 +1,14 @@
-节目栏目
+SHOW COLUMNS
 ============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-从表中显示列
+``` sql
+SHOW COLUMNS FROM table
 ```
 
-问题描述
+Description
 -----------
 
-列出`table`中的列及其数据类型和其他属性。
+List the columns in `table` along with their data type and other attributes.

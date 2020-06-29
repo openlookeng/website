@@ -1,61 +1,62 @@
-# VDM连接器
+# VDM Connector
 
-有一些用例需要在同一个会话或视图中管理和访问多个数据源。此外，用户可能根本不关心数据的分布和来源。VDM Virtualize Data Market)连接器旨在将该特性引入Presto。
+There are use cases that multiple data sources need to be managed and visited together in one single session or view. Also, users may not care about the distribution and source of data at all. The VDM  (Virtualize Data Market) connector is aimed at bringing in this feature to openLooKeng.
 
-VDM连接器支持：
--创建、更新和删除组合多个目录的视图
--通过视图访问真实数据
--通过视图管理用户权限
--记录每个用户对VDM视图的使用
+The VDM connector supports to:
 
-##用法
+- Create, update and delete views that combines multiple catalogs
+- Visit real data through the views
+- Manage user previlege through the views
+- Log the use of VDM views by each user
 
-VDM使用Presto元数据库存储其数据库信息。它既可以存储在HDFS上，也可以存储在关系数据库中，这取决于Presto元数据库的实现。
+## <a name="usage_section">Usage</a>
 
-因此必须先配置metastore。下面是使用RDBMS作为元存储的示例：
+VDM uses openLooKeng metastore to store its database information. It can be stored either on HDFS or relational database, depending on the implementation of openLooKeng metastore. 
 
-元数据类型=jdbc
-presto.meatstore.db.url=jdbc:mysql://.....数据库安装脚本示例。
-presto.metastore.db.user=使用root用户登录数据库
-数据库密码=123456
+Therefore metastore must be configured first. Here is a example of using RDBMS as metastore, create `etc/hetu-metastore.properties`:
 
-对于用户界面，可以从JDBC或命令行界面访问连接器。当前VDM仅支持逻辑库和视图。不支持表。
+    hetu.metastore.type=jdbc
+    hetu.meatstore.db.url=jdbc:mysql://....
+    hetu.metastore.db.user=root
+    hetu.metastore.db.password=123456
 
-模式操作与通常的presto目录相同，包括`create schema`、`drop schema`、`rename schema`和`show schemas`。
+For user interface, the connector can be accessed from JDBC or command line interface. Currently VDM only supports schemas and views. Tables are NOT supported.
 
-视图可以创建在特定的模式下面：`create view as...`,`drop view`。
+Schema operations are the same as usual openLooKeng catalogs, including `create schema`, `drop schema`, `rename schema` and `show schemas`. 
 
-##使用示例：
+Views can be created under a specific schema: `create view as ...`, `drop view`.
 
-配置数据源`vdm1`，在`etc/catalogs`中新建`vdm1.properties`，内容如下：
+## Example usage:
 
-连接器.name=vdm
+Configure a data source `vdm1` by creating `vdm1.properties` in `etc/catalogs` with following contents:
 
-此示例在`vdm1`目录中创建模式`schema1`，并从其他两个不同的数据源创建两个视图。需要注意的是，metastore需要提前配置好（参考`usage`章节）。
+    connector.name=vdm
 
-创建模式vdm1.schema1；
-使用vdm1.schema1模式；
-创建视图view1作为select * from mysql.table.test；
-创建视图view2作为hive.table.test的select *；
-从view1中选择*；
+This example creates a schema `schema1` in `vdm1` catalog, and creates two views from two other different data sources. Note that metastore must be configured in advance (See [usage](#usage_section) section).
 
-VDM数据源也可以通过动态目录API进行管理。有关更多信息，请参见【动态目录】主题。
+    create schema vdm1.schema1;
+    use vdm1.schema1;
+    create view view1 as select * from mysql.table.test;
+    create view view2 as select * from hive.table.test;
+    select * from view1;
 
-##所有支持的CLI查询
+VDM datasource can also be managed through dynamic catalog API. See [Dynamic Catalog](../admin/dynamic-catalog.md) topic for more information.
 
-支持操作|外部接口（SQL命令）|
-:-|:-|
-添加VDM | `创建目录`（结果） |
-Remove VDM | `删除目录`（恢复式） |
-查询所有VDM | `show catalogs` |
-创建模式| `创建模式` |
-删除模式| `drop schema` |
-重命名模式| `rename schema` |
-查询VDM | `show schemas` |下的所有模式
-查询模式中所有视图| `show tables` |
-创建/更新视图| `创建【或替换】视图` |
-删除视图| `drop view` |
-按视图查询| `select * from view` |
-查询视图创建信息| `show create view` |
-查询视图列信息| `desc view` |
+## All supported CLI queries
+
+| Support operation               | External interface (SQL command) |
+| :------------------------------ | :------------------------------- |
+| Add VDM                         | `create catalog`(resulful)       |
+| Remove VDM                      | `drop catalog`(resulful)         |
+| Query all VDM                   | `show catalogs`                  |
+| Create schema                   | `create schema`                  |
+| Delete schema                   | `drop schema`                    |
+| Rename schema                   | `rename schema`                  |
+| Query all schemas under VDM     | `show schemas`                   |
+| Query all views in the schema   | `show tables`                    |
+| Create/Update View              | `create [or replace] view`       |
+| Delete view                     | `drop view`                      |
+| Query data by view              | `select * from view`             |
+| Query view creation information | `show create view`               |
+| Query view column information   | `desc view`                      |
 

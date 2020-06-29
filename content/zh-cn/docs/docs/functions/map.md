@@ -1,118 +1,118 @@
-地图功能及操作符
+Map Functions and Operators
 ===========================
 
-下标操作符：\[\]
+Subscript Operator: \[\]
 ------------------------
 
-`[]`运算符用于从映射中检索给定键对应的值：
+The `[]` operator is used to retrieve the value corresponding to a given key from a map:
 
-SELECT名称_to_age_map【'Bob'】应用服务器bob_age；
+    SELECT name_to_age_map['Bob'] AS bob_age;
 
-地图功能
+Map Functions
 -------------
 
-**心率(x)** -\> bigint
+**cardinality(x)** -\> bigint
 
-返回map`x`的基数（大小）。
-
-
-
-**元素\_at(map(K,V), key)** -\> V元素
-
-返回给定`key`的值，如果key没有包含在map中，则返回`NULL`。
+Returns the cardinality (size) of the map `x`.
 
 
-**map()** -\> map\<未知，未知\>
 
-返回空的map。：
+**element\_at(map(K,V), key)** -\> V
 
-SELECT映射();--{}
+Returns value for given `key`, or `NULL` if the key is not contained in the map.
 
 
-**map(array(K), array(V))** -\>映射（K,V）映射方式
+**map()** -\> map\<unknown, unknown\>
 
-返回使用给定的key/value数组创建的map。：
+Returns an empty map. :
 
-选择地图(ARRAY[1, 3], ARRAY[2, 4]);--{1->2,3->4}
+    SELECT map(); -- {}
 
-创建聚合映射的操作请参见`map_agg`和`multimap_agg`。
 
-**map\_from\_entries(array(row(K,V)))** -\>映射（K,V） ，其中数组表示K行，数组表示V行。
+**map(array(K), array(V))** -\> map(K,V)
 
-返回从给定的条目数组创建的映射。：
+Returns a map created using the given key/value arrays. :
 
-SELECT map_from_entries（ARRAY【(1, 'x'）, （2, 'y'）)); -- {1-> 'x'， 2-> 'y'} <源索引> <源索引> <目的索引> <目的索引> <目的索引> <源索引> <源索引> <源索引> <源索引> <源索引路径> <源索引> <源索引路径>
+    SELECT map(ARRAY[1,3], ARRAY[2,4]); -- {1 -> 2, 3 -> 4}
 
-**multimap\_from\_entries（数组(行(K,V）))** -\>映射（K，数组(V）)
+See also `map_agg` and `multimap_agg` for creating a map as an aggregation.
 
-返回从给定的条目数组创建的多映射。每个键可以关联多个值。：
+**map\_from\_entries(array(row(K,V)))** -\> map(K,V)
 
-SELECT multimap_from_entries（ARRAY【(1，'x'）,（2，'y'）,（1，'z'）)); -- {1 ->【'x'， 'z'】， 2 ->【'y'】}，从左到右，从左到右，从左到右依次为：
+Returns a map created from the given array of entries. :
 
-**map\_entries(map(K,V))** -\>数组(row(K,V)) ，表示映射的表项。
+    SELECT map_from_entries(ARRAY[(1, 'x'), (2, 'y')]); -- {1 -> 'x', 2 -> 'y'}
 
-返回给定映射中所有项的数组。：
+**multimap\_from\_entries(array(row(K,V)))** -\> map(K,array(V))
 
-SELECT map_entrys（MAP(ARRAY【1,2】， ARRAY【'x'， 'y'】）); --【行号（1, 'x'），行号（2, 'y'）】，行号（x, 'y'），行号（x, 'y'）) ，
+Returns a multimap created from the given array of entries. Each key can be associated with multiple values. :
+
+    SELECT multimap_from_entries(ARRAY[(1, 'x'), (2, 'y'), (1, 'z')]); -- {1 -> ['x', 'z'], 2 -> ['y']}
+
+**map\_entries(map(K,V))** -\> array(row(K,V))
+
+Returns an array of all entries in the given map. :
+
+    SELECT map_entries(MAP(ARRAY[1, 2], ARRAY['x', 'y'])); -- [ROW(1, 'x'), ROW(2, 'y')]
 
 **map\_concat(map1(K,V), map2(K,V), \..., mapN(K,V))** -\> map(K,V)
 
-返回所有给定映射的并集。如果在多个给定映射中找到一个键，则最终映射中的键值来自这些映射中的最后一个。
+Returns the union of all the given maps. If a key is found in multiple given maps, that key\'s value in the resulting map comes from the last one of those maps.
 
-**map\_filter(map(K,V)，函数(K,V,boolean))** -\> map(K,V)函数的关键字
+**map\_filter(map(K,V), function(K,V,boolean))** -\> map(K,V)
 
-从`函数`返回true的`map`的条目构造一个map：
+Constructs a map from those entries of `map` for which `function` returns true:
 
-SELECT map_filter(MAP(ARRAY[], ARRAY[]),(k, v) ->匹配关系标志，即匹配关系)-->true;--{}
-SELECT map_filter（MAP(ARRAY[10, 20, 30], ARRAY【'a'， NULL, 'c'】）, (k, v) -> v是否为空) ; -- {10-> a, 30-> c}，即表示从源到目的的映射集合中选择一个。
-SELECT map_filter（MAP(ARRAY【'k1'， 'k2'， 'k3'】， ARRAY【20, 3, 15】）, (k, v) -> v > 10), -- {k1 -> 20, k3->15}
-
-
-**map\_keys(x(K,V))** -\>数组（K） ，表示映射的密钥。
-
-返回map`x`中的所有key。
+    SELECT map_filter(MAP(ARRAY[], ARRAY[]), (k, v) -> true); -- {}
+    SELECT map_filter(MAP(ARRAY[10, 20, 30], ARRAY['a', NULL, 'c']), (k, v) -> v IS NOT NULL); -- {10 -> a, 30 -> c}
+    SELECT map_filter(MAP(ARRAY['k1', 'k2', 'k3'], ARRAY[20, 3, 15]), (k, v) -> v > 10); -- {k1 -> 20, k3 -> 15}
 
 
-map\_values(x(K,V))** -\>数组（V）数组的数组。
+**map\_keys(x(K,V))** -\> array(K)
 
-返回map`x`中的所有值。
-
-
-**map\_zip\_with(map(K,V1), map(K,V2)，函数(K,V1,V2,V3))** -\> map(K,V3)，函数的编译方法为：
-
-将两个给定的map合并成一个map，方法是对具有相同key的一对值应用`function`。对于只在一个映射中呈现的键，NULL将被传递作为缺失键的值。：
-
-SELECT map_zip_with（MAP(ARRAY【1,2,3】， ARRAY【'a'， 'b'， 'c'】）, -- {1->广告，2->广告主，3->广告主},3->广告主
-MAP（ARRAY【1,2,3】，ARRAY【'd'， 'e'， 'f'】），
-(k, v1, v2) ->合同项（v1, v2）)；
-SELECT map_zip_with（MAP('k1'， 'k2'], ARRAY【1,2】）, -- {k1-> ROW(1, null), k2-> ROW(2, 4), k3 -> ROW（空值，9）}
-MAP（ARRAY【'k2'， 'k3'】， ARRAY【4, 9】），
-(k, v1, v2) -> (v1, v2) ，即从第1个版本到第2个版本。
-SELECT map_zip_with（MAP('a'， 'b'， 'c'], ARRAY【1, 8, 27】）, -- {a-> a1, b-> b4, c-> c9}，即从左向右的顺序排列，即从左向右的顺序排列)
-MAP（ARRAY【'a'， 'b'， 'c'】， ARRAY【1,2,3】），
-(k, v1, v2) -> k || CAST(v1/v2 AS VARCHAR) <idp:styler/> <idp:styler/> <idp:styler/> <idp:styler/> <idp:styler/> <idp:<idp:styler/> <idp:styler idp:style> <id:<id:style> <id:<id:/> <id:/>重新生成的字符串中指定的字符串中指定的字符串的字符，重新编码。
+Returns all the keys in the map `x`.
 
 
-**transform\_keys(map(K1,V), function(K1,V,K2))** -\>地图（K2,V）转换函数，转换函数，转换函数，转换函数
+**map\_values(x(K,V))** -\> array(V)
 
-返回一个将`function`应用到`map`的每个条目的映射，并转换键：
-
-选择变换键(MAP(ARRAY[], ARRAY[]), (k, v) -> k + 1);--{}
-SELECT变换_keys（MAP(ARRAY【1,2,3】， ARRAY【'a'， 'b'， 'c'】）,(k, v) -> k + 1); -- {2 -> a, 3 -> b, 4=>c}
-SELECT transform_keys（MAP('a'， 'b'， 'c'], ARRAY【1,2,3】）, (k, v) -> v * v); --{1->1,4->2,9->3}，表示从第1次开始，第3次开始。
-SELECT变换_keys（MAP(ARRAY【'a'，'b'】， ARRAY【1,2】）,(k, v) -> k|| CAST(v as VARCHAR)); -- {a1->1,b2->2}（注意：这里的v是可变的，不是可变的）
-SELECT变换关键字(MAP(ARRAY[1, 2],ARRAY[1.0,1.4]),--{1->1.0,2->1.4})
-(k, v) -> MAP（ARRAY【1,2】， ARRAY【'1'， '2'】）【k】)；
+Returns all the values in the map `x`.
 
 
-**transform\_values(map(K,V1)，函数(K,V1,V2))** -\>映射（K,V2）转换函数
+**map\_zip\_with(map(K,V1), map(K,V2), function(K,V1,V2,V3))** -\> map(K,V3)
 
-返回一个将`function`应用到`map`的每个条目的映射，并转换值：
+Merges the two given maps into a single map by applying `function` to the pair of values with the same key. For keys only presented in one map, NULL will be passed as the value for the missing key. :
 
-选择变换值(MAP(ARRAY[], ARRAY[]), (k, v) -> v + 1);--{}
-SELECT变换值(MAP(ARRAY[1,2,3], ARRAY[10,20,30]),(k,v)->v+k);--{1,2,22,3,33}，表示从第1次变换到第2次变换到第3次变换。
-SELECT变换值（MAP(ARRAY【1,2,3】， ARRAY【'a'， 'b'， 'c'】）,(k, v) -> k * k);--{1->1,2->4,3->9}，表示从第1次变换到第9次变换的值。
-SELECT变换_values（MAP(ARRAY【'a'， 'b'】， ARRAY【1,2】）, (k, v) -> k || CAST(v as VARCHAR)), -- {a-> a1, b->b2 }命令
-选择变换值(MAP(ARRAY[1, 2], ARRAY[1.0, 1.4]), -- {1->一个1.0, 2->两个1.4}
-(k,v) -> MAP（ARRAY【1,2】，ARRAY【'1'，'2'】）[k]|| '_' || CAST(v AS VARCHAR))，将消息发送到指定的地址进行处理。
+    SELECT map_zip_with(MAP(ARRAY[1, 2, 3], ARRAY['a', 'b', 'c']), -- {1 -> ad, 2 -> be, 3 -> cf}
+                        MAP(ARRAY[1, 2, 3], ARRAY['d', 'e', 'f']),
+                        (k, v1, v2) -> concat(v1, v2));
+    SELECT map_zip_with(MAP(ARRAY['k1', 'k2'], ARRAY[1, 2]), -- {k1 -> ROW(1, null), k2 -> ROW(2, 4), k3 -> ROW(null, 9)}
+                        MAP(ARRAY['k2', 'k3'], ARRAY[4, 9]),
+                        (k, v1, v2) -> (v1, v2));
+    SELECT map_zip_with(MAP(ARRAY['a', 'b', 'c'], ARRAY[1, 8, 27]), -- {a -> a1, b -> b4, c -> c9}
+                        MAP(ARRAY['a', 'b', 'c'], ARRAY[1, 2, 3]),
+                        (k, v1, v2) -> k || CAST(v1/v2 AS VARCHAR));
+
+
+**transform\_keys(map(K1,V), function(K1,V,K2))** -\> map(K2,V)
+
+Returns a map that applies `function` to each entry of `map` and transforms the keys:
+
+    SELECT transform_keys(MAP(ARRAY[], ARRAY[]), (k, v) -> k + 1); -- {}
+    SELECT transform_keys(MAP(ARRAY [1, 2, 3], ARRAY ['a', 'b', 'c']), (k, v) -> k + 1); -- {2 -> a, 3 -> b, 4 -> c}
+    SELECT transform_keys(MAP(ARRAY ['a', 'b', 'c'], ARRAY [1, 2, 3]), (k, v) -> v * v); -- {1 -> 1, 4 -> 2, 9 -> 3}
+    SELECT transform_keys(MAP(ARRAY ['a', 'b'], ARRAY [1, 2]), (k, v) -> k || CAST(v as VARCHAR)); -- {a1 -> 1, b2 -> 2}
+    SELECT transform_keys(MAP(ARRAY [1, 2], ARRAY [1.0, 1.4]), -- {one -> 1.0, two -> 1.4}
+                          (k, v) -> MAP(ARRAY[1, 2], ARRAY['one', 'two'])[k]);
+
+
+**transform\_values(map(K,V1), function(K,V1,V2))** -\> map(K,V2)
+
+Returns a map that applies `function` to each entry of `map` and transforms the values:
+
+    SELECT transform_values(MAP(ARRAY[], ARRAY[]), (k, v) -> v + 1); -- {}
+    SELECT transform_values(MAP(ARRAY [1, 2, 3], ARRAY [10, 20, 30]), (k, v) -> v + k); -- {1 -> 11, 2 -> 22, 3 -> 33}
+    SELECT transform_values(MAP(ARRAY [1, 2, 3], ARRAY ['a', 'b', 'c']), (k, v) -> k * k); -- {1 -> 1, 2 -> 4, 3 -> 9}
+    SELECT transform_values(MAP(ARRAY ['a', 'b'], ARRAY [1, 2]), (k, v) -> k || CAST(v as VARCHAR)); -- {a -> a1, b -> b2}
+    SELECT transform_values(MAP(ARRAY [1, 2], ARRAY [1.0, 1.4]), -- {1 -> one_1.0, 2 -> two_1.4}
+                            (k, v) -> MAP(ARRAY[1, 2], ARRAY['one', 'two'])[k] || '_' || CAST(v AS VARCHAR));
 

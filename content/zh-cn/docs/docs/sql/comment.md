@@ -1,21 +1,21 @@
-意见
+COMMENT
 =======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-评论表名是‘评论’
+``` sql
+COMMENT ON TABLE name IS 'comments'
 ```
 
-问题描述
+Description
 -----------
 
-设置表格注释。可以通过设置注释为`NULL`来移除注释。
+Set the comment for a table. The comment can be removed by setting the comment to `NULL`.
 
-示例
+Examples
 --------
 
-将表`users`的注释修改为`master table`：
+Change the comment for the `users` table to be `master table`:
 
-评论表用户是'主表'；
+    COMMENT ON TABLE users IS 'master table';

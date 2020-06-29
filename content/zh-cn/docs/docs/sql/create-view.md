@@ -1,55 +1,55 @@
-创建视图
+CREATE VIEW
 ===========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-创建【或替换】视图view_name
-【安全{定义| INVOKER}】
-AS查询
+``` sql
+CREATE [ OR REPLACE ] VIEW view_name
+[ SECURITY { DEFINER | INVOKER } ]
+AS query
 ```
 
-问题描述
+Description
 -----------
 
-创建一个[SELECT](./select.md)查询的新视图。视图是一个逻辑表，可以被将来的查询所引用。视图中没有数据。相反，视图存储的查询在每次被其他查询引用时都会执行。
+Create a new view of a [SELECT](select.md) query. The view is a logical table that can be referenced by future queries. Views do not contain any data. Instead, the query stored by the view is executed everytime the view is referenced by another query.
 
-可选`OR REPLACE`子句使视图在已经存在时被替换，而不是引发错误。
+The optional `OR REPLACE` clause causes the view to be replaced if it already exists rather than raising an error.
 
-安全性
+Security
 --------
 
-在默认的安全模式`DEFINER`中，视图内引用的表，将使用视图所有者（视图的*creator*或*definer*）的权限来访问，而不是使用执行查询的用户来访问。这允许提供对基础表的限制访问，而用户可能不允许直接访问这些表。
+In the default `DEFINER` security mode, tables referenced in the view are accessed using the permissions of the view owner (the *creator* or *definer* of the view) rather than the user executing the query. This allows providing restricted access to the underlying tables, for which the user may not be allowed to access directly.
 
-在`INVOKER`安全模式下，视图内引用的表以执行查询的用户（视图的*invoker*）的权限进行访问，以这种模式创建的视图只是存储
-查询。
+In the `INVOKER` security mode, tables referenced in the view are accessed using the permissions of the user executing the query (the *invoker* of the view). A view created in this mode is simply a stored
+query.
 
-不管安全模式如何，`current_user`函数总是返回执行查询的用户，因此可以在视图中使用它来过滤行或限制访问。
+Regardless of the security mode, the `current_user` function will always return the user executing the query and thus may be used within views to filter out rows or otherwise restrict access.
 
-示例
+Examples
 --------
 
-在`orders`表上创建一个简单的视图`test`：
+Create a simple view `test` over the `orders` table:
 
-CREATE VIEW测试用AS
-SELECT订单键，订单状态，总价/ 2 AS半价
-从订单
+    CREATE VIEW test AS
+    SELECT orderkey, orderstatus, totalprice / 2 AS half
+    FROM orders
 
-创建视图`orders_by_date`，对`orders`进行汇总：
+Create a view `orders_by_date` that summarizes `orders`:
 
-CREATE VIEW订单_按日期AS
-SELECT订单日期，sum(totalprice) AS价格
-从订单
-GROUP BY订单日期
+    CREATE VIEW orders_by_date AS
+    SELECT orderdate, sum(totalprice) AS price
+    FROM orders
+    GROUP BY orderdate
 
-创建一个视图，覆盖已有的视图：
+Create a view that replaces an existing view:
 
-创建或替换视图测试AS
-SELECT订单键，订单状态，总价/ 4 AS季度
-从订单
+    CREATE OR REPLACE VIEW test AS
+    SELECT orderkey, orderstatus, totalprice / 4 AS quarter
+    FROM orders
 
-参见
+See Also
 --------
 
 [drop-view](./drop-view), [show-create-view](./show-create-view)

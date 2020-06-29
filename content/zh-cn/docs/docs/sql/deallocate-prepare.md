@@ -1,27 +1,27 @@
-拆除准备
+DEALLOCATE PREPARE
 ==================
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-语句名称
+``` sql
+DEALLOCATE PREPARE statement_name
 ```
 
-问题描述
+Description
 -----------
 
-从会话中的预备语句列表中删除名称是`statement_name`的语句。
+Removes a statement with the name `statement_name` from the list of prepared statements in a session.
 
-示例
+Examples
 --------
 
-去分配一条语句，语句名为`my_query`：
+Deallocate a statement with the name `my_query`:
 
-卸载准备my_query；
+    DEALLOCATE PREPARE my_query;
 
-参见
+See Also
 --------
 
-【准备】（./准备）
+[prepare](./prepare)
 

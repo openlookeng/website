@@ -1,16 +1,16 @@
-表演角色
+SHOW ROLES
 ==========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-显示【当前】角色【来自目录】
+``` sql
+SHOW [CURRENT] ROLES [ FROM catalog ]
 ```
 
-问题描述
+Description
 -----------
 
-`SHOW ROLES`列出`catalog`中的所有角色，如果没有指定`catalog`，则列出当前目录中的所有角色。
+`SHOW ROLES` lists all the roles in `catalog` or in the current catalog if `catalog` is not specified.
 
-`Show CURRENT ROLES`列出了`catalog中会话启用的角色，如果`catalog\`\`没有指定，则列出当前目录中会话启用的角色。
+`SHOW CURRENT ROLES` lists the enabled roles for the session in `catalog, or in the current catalog if`catalog\`\` is not specified.

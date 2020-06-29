@@ -1,32 +1,32 @@
-DROP表名
+DROP TABLE
 ==========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-DROP TABLE [ IF EXISTS ]数据表名
+``` sql
+DROP TABLE  [ IF EXISTS ] table_name
 ```
 
-问题描述
+Description
 -----------
 
-删除一个已存在的表。
+Drops an existing table.
 
-如果表不存在，可选的`IF EXISTS`子句将导致错误被抑制。
+The optional `IF EXISTS` clause causes the error to be suppressed if the table does not exist.
 
-示例
+Examples
 --------
 
-删除表`orders_by_date`，命令如下：
+Drop the table `orders_by_date`:
 
-DROP TABLE按订单_按日期排序
+    DROP TABLE orders_by_date
 
-如果表`orders_by_date`存在，则删除表`orders_by_date`：
+Drop the table `orders_by_date` if it exists:
 
-DROP TABLE IF EXISTS订单列表_按日期排序
+    DROP TABLE IF EXISTS orders_by_date
 
-参见
+See Also
 --------
 
-[alter-table](./alter-table)，【创建表】（./创建表）
+[alter-table](./alter-table), [create-table](./create-table)

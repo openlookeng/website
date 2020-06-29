@@ -1,44 +1,44 @@
-展览奖赏
+SHOW GRANTS
 ===========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-展示授权【表名】表名
+``` sql
+SHOW GRANTS [ ON [ TABLE ] table_name ]
 ```
 
-问题描述
+Description
 -----------
 
-列出当前用户对当前目录中指定表的授权。
+List the grants for the current user on the specified table in the current catalog.
 
-如果未指定表名，则该命令将列出当前用户对当前目录的所有架构中的所有表的授权。
+If no table name is specified, the command lists the grants for the current user on all the tables in all schemas of the current catalog.
 
-该命令要求设置当前编录。
+The command requires the current catalog to be set.
 
 
-**说明**
+**Note**
 
-*执行任何授权命令前，请确保已启用认证*
+*Ensure that authentication has been enabled before running any of the* *authorization commands.*
 
-示例
+Examples
 --------
 
-在表`orders`上列出当前用户的授权：
+List the grants for the current user on table `orders`:
 
-餐桌上展示的赠品；
+    SHOW GRANTS ON TABLE orders;
 
-列出当前用户对当前目录下所有模式中所有表的授权：
+List the grants for the current user on all the tables in all schemas of the current catalog:
 
-展览赠品；
+    SHOW GRANTS;
 
-限制
+Limitations
 -----------
 
-有些连接器不支持`SHOW GRANTS`。有关更多详细信息，请参阅连接器文档。
+Some connectors have no support for `SHOW GRANTS`. See connector documentation for more details.
 
-参见
+See Also
 --------
 
-【授权】（./授权），【撤销】（./撤销）
+[grant](./grant), [ revoke](./ revoke)

@@ -1,28 +1,28 @@
-提交
+COMMIT
 ======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-提交【工作】
+``` sql
+COMMIT [ WORK ]
 ```
 
-问题描述
+Description
 -----------
 
-提交当前事务。
+Commit the current transaction.
 
-示例
+Examples
 --------
 
-``` {.sql}
-提交；
-提交工作；
+``` sql
+COMMIT;
+COMMIT WORK;
 ```
 
-参见
+See Also
 --------
 
-【回滚】(./rollback)
-【启动事务】（./启动事务）
+[rollback](./rollback)
+[start-transaction](./start-transaction)

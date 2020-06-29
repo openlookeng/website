@@ -1,144 +1,144 @@
-选择
+SELECT
 ======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-【with_query[,...】]（带条件查询）
-SELECT【所有|全部】选择表达式【，...】
-【来自_项目[,...】]
-【where条件】
-【分组方式【全部|离散】分组元素[,...】]
-【有条件】
-【{UNION|INTERSECT|除外}[全部|离散】]选择]
-【ORDER BY表达式[ASC | DESC ] [,...】]排序表达式
-【OFFSET数量[ROW | ROWS】]
-【限制{数量|全部}|FETCH{第一条|下一个}【数量】{行|行}{仅|带Ties}】
+``` sql
+[ WITH with_query [, ...] ]
+SELECT [ ALL | DISTINCT ] select_expression [, ...]
+[ FROM from_item [, ...] ]
+[ WHERE condition ]
+[ GROUP BY [ ALL | DISTINCT ] grouping_element [, ...] ]
+[ HAVING condition]
+[ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select ]
+[ ORDER BY expression [ ASC | DESC ] [, ...] ]
+[ OFFSET count [ ROW | ROWS ] ]
+[ LIMIT { count | ALL } | FETCH { FIRST | NEXT } [ count ] { ROW | ROWS } { ONLY | WITH TIES } ]
 ```
 
-其中，`from_item`是
+where `from_item` is one of
 
-"```{.none}"
-table_name [ [ AS ]别名【 （列别名[ , ... 】 ） ] ] ，其中：
+``` sql
+table_name [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
 ```
 
-"```{.none}"
-from_item join_type from_item [ ON join_condition |使用方式（连接字段[, ...]） ]；
+``` sql
+from_item join_type from_item [ ON join_condition | USING ( join_column [, ...] ) ]
 ```
 
-`join_type`是其中的一种。
+and `join_type` is one of
 
-"```{.none}"
-【内幕】加入
-左【外】合
-【外】合
-全【外】合
-交叉连接
+``` sql
+[ INNER ] JOIN
+LEFT [ OUTER ] JOIN
+RIGHT [ OUTER ] JOIN
+FULL [ OUTER ] JOIN
+CROSS JOIN
 ```
 
-和`grouping_element`是其中一个
+and `grouping_element` is one of
 
-"```{.none}"
+``` sql
 ()
-表情
-分组设置（【...栏】）【...栏】)
-CUBE（第【,...】栏）
-ROLLUP（第【,...】列）
+expression
+GROUPING SETS ( ( column [, ...] ) [, ...] )
+CUBE ( column [, ...] )
+ROLLUP ( column [, ...] )
 ```
 
-问题描述
+Description
 -----------
 
-从零个或多个表中检索行。
+Retrieve rows from zero or more tables.
 
-有子句
+WITH Clause
 -----------
 
-`WITH`子句定义在查询中使用的命名关系。它允许扁平化嵌套查询或简化子查询。例如，以下查询是等效的：
+The `WITH` clause defines named relations for use within a query. It allows flattening nested queries or simplifying subqueries. For example, the following queries are equivalent:
 
-选择a,b
-从(
-按a从组中选择a,max(b)
-)ASx；
+    SELECT a, b
+    FROM (
+      SELECT a, MAX(b) AS b FROM t GROUP BY a
+    ) AS x;
     
-WITH x AS（按a从组中选择，最大(b）
-从x中选择a,b；
+    WITH x AS (SELECT a, MAX(b) AS b FROM t GROUP BY a)
+    SELECT a, b FROM x;
 
-这也适用于多个子查询：
+This also works with multiple subqueries:
 
-有
-t1 AS（从x组中按a取a，最大(b） AS b)，
-t2AS（按a从y组中选取a,AVG(d）)
-选择t1.*,t2.*
-从t1开始
-将t1.a=t2.a加入t2；
+    WITH
+      t1 AS (SELECT a, MAX(b) AS b FROM x GROUP BY a),
+      t2 AS (SELECT a, AVG(d) AS d FROM y GROUP BY a)
+    SELECT t1.*, t2.*
+    FROM t1
+    JOIN t2 ON t1.a = t2.a;
 
-此外，`WITH'子句内的关系可以链结：
+Additionally, the relations within a `WITH` clause can chain:
 
-有
-x AS（从t中选择），
-y AS（从x中选择a AS b），
-z AS（从y中选择b AS c）
-从z中选取c；
+    WITH
+      x AS (SELECT a FROM t),
+      y AS (SELECT a AS b FROM x),
+      z AS (SELECT b AS c FROM y)
+    SELECT c FROM z;
 
 
-**提示**
+**Warning**
 
-*目前，`WITH`子句的SQL将在使用* *named关系的任何位置内联。这意味着，如果关系使用的次数超过一次，并且查询是非确定性的，则每次的结果可能都* *不同。*
+*Currently, the SQL for the `WITH` clause will be inlined anywhere the* *named relation is used. This means that if the relation is used more* *than once and the query is non-deterministic, the results may be* *different each time.*
 
-SELECT子句
+SELECT Clause
 -------------
 
-`SELECT`子句指定查询的输出。每个`select_expression`定义一个或几个列包括在结果中。
+The `SELECT` clause specifies the output of the query. Each `select_expression` defines a column or columns to be included in the result.
 
-"```{.none}"
-SELECT【所有|全部】选择表达式【，...】
+``` sql
+SELECT [ ALL | DISTINCT ] select_expression [, ...]
 ```
 
-`ALL`和`DISTINCT`两个量词确定结果集中是否包含重复行。如果指定参数`ALL`，则包含所有行。如果指定了参数`DISTINCT`，结果集中只包含唯一的行。在这种情况下，每个输出列必须具有允许比较的类型。如果没有指定任何参数，则行为默认为`ALL`。
+The `ALL` and `DISTINCT` quantifiers determine whether duplicate rows are included in the result set. If the argument `ALL` is specified, all rows are included. If the argument `DISTINCT` is specified, only unique rows are included in the result set. In this case, each output column must be of a type that allows comparison. If neither argument is specified, the behavior defaults to `ALL`.
 
-**选择表达式**
+**Select expressions**
 
-每一个`select_expression`必须满足如下条件之一：
+Each `select_expression` must be in one of the following forms:
 
-"```{.none}"
-表达式[ [ AS ] column_alias ]
+``` sql
+expression [ [ AS ] column_alias ]
 ```
 
-"```{.none}"
-关系。
+``` sql
+relation.*
 ```
 
-"```{.none}"
+``` sql
 *
 ```
 
-在expression [ [ AS ] column_alias ]`情况下，输出列定义为单列。
+In the case of `expression [ [ AS ] column_alias ]`, a single output column is defined.
 
-对于`relation.*`,`relation`的所有列都包含在结果集中。
+In the case of `relation.*`, all columns of `relation` are included in the result set.
 
-在`*`的情况下，由查询定义的关系的所有列都包含在结果集中。
+In the case of `*`, all columns of the relation defined by the query are included in the result set.
 
-在结果集中，列的顺序与通过选择表达式指定列的顺序相同。如果一个选择表达式返回多个列，则它们将按照源关系中它们的排序方式进行排序。
+In the result set, the order of columns is the same as the order of their specification by the select expressions. If a select expression returns multiple columns, they are ordered the same way they were ordered in the source relation.
 
-GROUP BY子句
+GROUP BY Clause
 ---------------
 
-`GROUP BY`子句将`SELECT`语句的输出分成包含匹配值的行组。一个简单的`GROUPBY`子句可以包含任何由输入列组成的表达式，或者它可以是
-按位置（从1开始）选择输出列的序数。
+The `GROUP BY` clause divides the output of a `SELECT` statement into groups of rows containing matching values. A simple `GROUP BY` clause may contain any expression composed of input columns or it may be an
+ordinal number selecting an output column by position (starting at one).
 
-以下查询是等效的。它们都对`nationkey`输入列的输出进行分组，第一个查询使用输出列的序数位置，第二个查询使用输入列名：
+The following queries are equivalent. They both group the output by the `nationkey` input column with the first query using the ordinal position of the output column and the second query using the input column name:
 
-SELECT count(*) ，从客户组中选择countrykey，输入2；
+    SELECT count(*), nationkey FROM customer GROUP BY 2;
     
-选择计数(*),nationalkey从客户组按nationalkey；
+    SELECT count(*), nationkey FROM customer GROUP BY nationkey;
 
-`GROUP BY`子句可以通过不在select语句的输出中显示的输入列名对输出进行分组。例如，下面的查询使用输入列`mktsegment`生成`customer`表的行数：
+`GROUP BY` clauses can group output by input column names not appearing in the output of a select statement. For example, the following query generates row counts for the `customer` table using the input column `mktsegment`:
 
-根据mktsegment从客户组中选取count(*)；
+    SELECT count(*) FROM customer GROUP BY mktsegment;
 
-"```{.none}"
+``` 
 _col0
 -------
 29968
@@ -146,711 +146,711 @@ _col0
 30189
 29949
 29752
-（5行）
+(5 rows)
 ```
 
-当`SELECT`语句中使用`GROUP BY`子句时，所有输出表达式必须是`GROUP BY`子句中出现的聚合函数或列。
-
-{#复杂分组操作数}
-**复杂分组操作**
+When a `GROUP BY` clause is used in a `SELECT` statement all output expressions must be either aggregate functions or columns present in the `GROUP BY` clause.
 
 
-Presto还支持使用`GROUPING SETS`、`CUBE`和`ROLLUP`语法的复杂聚合。此语法允许用户在单个查询中执行需要对多组列进行聚合的分析。
-复杂分组操作不支持对由输入列组成的表达式进行分组。只能输入列名或序号。
+**Complex Grouping Operations**
 
-复杂的分组操作通常等同于简单的`GROUP BY`表达式`UNION ALL`，如以下示例所示。但是，当聚合的数据源是非确定性的时，这种等效性不适用。
 
-**分组设置**
+openLooKeng also supports complex aggregations using the `GROUPING SETS`, `CUBE` and `ROLLUP` syntax. This syntax allows users to perform analysis that requires aggregation on multiple sets of columns in a single query.
+Complex grouping operations do not support grouping on expressions composed of input columns. Only column names or ordinals are allowed.
 
-分组集允许用户指定要进行分组的多个列列表。不是给定分组列子列表的一部分的列被设置为`NULL`。：
+Complex grouping operations are often equivalent to a `UNION ALL` of simple `GROUP BY` expressions, as shown in the following examples. This equivalence does not apply, however, when the source of data for the aggregation is non-deterministic.
 
-*从运输中选择；
+**GROUPING SETS**
 
-"```{.none}"
-源状态|源压缩|目的状态|目的压缩|包权重
+Grouping sets allow users to specify multiple lists of columns to group on. The columns not part of a given sublist of grouping columns are set to `NULL`. :
+
+    SELECT * FROM shipping;
+
+``` 
+origin_state | origin_zip | destination_state | destination_zip | package_weight
 --------------+------------+-------------------+-----------------+----------------
-加利福尼亚|94131|新泽西|8648|13
-加利福尼亚|94131|新泽西|8540|42
-新泽西|7081|康涅狄格|6708|225
-加州| 90210 |康涅狄格州| 6927 | 1337
-加利福尼亚|94131|科罗拉多|80302|5
-纽约|10002|新泽西|8540|3
-（6行）
+California   |      94131 | New Jersey        |            8648 |             13
+California   |      94131 | New Jersey        |            8540 |             42
+New Jersey   |       7081 | Connecticut       |            6708 |            225
+California   |      90210 | Connecticut       |            6927 |           1337
+California   |      94131 | Colorado          |           80302 |              5
+New York     |      10002 | New Jersey        |            8540 |              3
+(6 rows)
 ```
 
-此示例查询演示`GROUPING SETS`语义：
+`GROUPING SETS` semantics are demonstrated by this example query:
 
-源状态，源zip，目的状态，sum（包权重）
-海运起运
-按组别划分的组别(
-（原始状态）
-（原状态，原压缩文件），
-（目的地状态）)；
+    SELECT origin_state, origin_zip, destination_state, sum(package_weight)
+    FROM shipping
+    GROUP BY GROUPING SETS (
+        (origin_state),
+        (origin_state, origin_zip),
+        (destination_state));
 
-"```{.none}"
-源状态|源压缩|目的状态| _col0
+``` 
+origin_state | origin_zip | destination_state | _col0
 --------------+------------+-------------------+-------
-新泽西| NULL | NULL | 225
-加州| NULL | NULL | 1397
-纽约| NULL | NULL | 3
-加州| 90210 | NULL | 1337
-加利福尼亚|94131|NULL|60
-新泽西| 7081 | NULL | 225
-纽约|10002|NULL|3
-NULL | NULL |科罗拉多州| 5
-NULL | NULL |新泽西州| 58
-NULL | NULL |康涅狄格州| 1562
-（10行）
+New Jersey   | NULL       | NULL              |   225
+California   | NULL       | NULL              |  1397
+New York     | NULL       | NULL              |     3
+California   |      90210 | NULL              |  1337
+California   |      94131 | NULL              |    60
+New Jersey   |       7081 | NULL              |   225
+New York     |      10002 | NULL              |     3
+NULL         | NULL       | Colorado          |     5
+NULL         | NULL       | New Jersey        |    58
+NULL         | NULL       | Connecticut       |  1562
+(10 rows)
 ```
 
-前面的查询在逻辑上相当于多个`GROUP BY`查询中的一个`UNION ALL`：
+The preceding query may be considered logically equivalent to a `UNION ALL` of multiple `GROUP BY` queries:
 
-SELECT起始状态，NULL,NULL,sum（包权重）
-发运组按原产地_状态
+    SELECT origin_state, NULL, NULL, sum(package_weight)
+    FROM shipping GROUP BY origin_state
     
-联合所有
+    UNION ALL
     
-源状态，源zip,NULL，求和（包权重）
-从发货组按原产地_州，原产地_zip
+    SELECT origin_state, origin_zip, NULL, sum(package_weight)
+    FROM shipping GROUP BY origin_state, origin_zip
     
-联合所有
+    UNION ALL
     
-SELECT NULL, NULL，目的状态，求和（包权重）
-从装运组按目的地状态；
+    SELECT NULL, NULL, destination_state, sum(package_weight)
+    FROM shipping GROUP BY destination_state;
 
-但是，使用复杂分组语法（`GROUPING SETS`、`CUBE`或`ROLLUP`）的查询将只从基础数据源读取一次，而使用`UNION ALL`的查询将读取以下三个基础数据
-次。这就是为什么当数据源不是确定性时，`UNION ALL`的查询可能产生不一致的结果的原因。
+However, the query with the complex grouping syntax (`GROUPING SETS`, `CUBE` or `ROLLUP`) will only read from the underlying data source once, while the query with the `UNION ALL` reads the underlying data three
+times. This is why queries with a `UNION ALL` may produce inconsistent results when the data source is not deterministic.
 
-**CUBE类型**
+**CUBE**
 
-`CUBE`运算符生成所有可能的分组集（即：功率集）的给定列集。例如，查询：
+The `CUBE` operator generates all possible grouping sets (i.e. a power set) for a given set of columns. For example, the query:
 
-源状态，目的状态，包权重
-海运起运
-GROUP BY CUBE（源状态，目的状态）；
+    SELECT origin_state, destination_state, sum(package_weight)
+    FROM shipping
+    GROUP BY CUBE (origin_state, destination_state);
 
-等价于：
+is equivalent to:
 
-源状态，目的状态，包权重
-海运起运
-按组别划分的组别(
-（源状态，目的状态），
-（原始状态）
-（目的状态）
-（）)；
+    SELECT origin_state, destination_state, sum(package_weight)
+    FROM shipping
+    GROUP BY GROUPING SETS (
+        (origin_state, destination_state),
+        (origin_state),
+        (destination_state),
+        ());
 
-"```{.none}"
-源状态|目的状态| _col0
+``` 
+origin_state | destination_state | _col0
 --------------+-------------------+-------
-加利福尼亚州|新泽西州|55
-加利福尼亚|科罗拉多|5
-纽约|新泽西|3
-新泽西州康涅狄格州225
-加利福尼亚州|康涅狄格州|1337
-加州| NULL | 1397
-纽约| NULL | 3
-新泽西| NULL | 225
-NULL |新泽西| 58
-NULL |康涅狄格州| 1562
-NULL |科罗拉多州| 5
-NULL |空字符串| 1625
-（12行）
+California   | New Jersey        |    55
+California   | Colorado          |     5
+New York     | New Jersey        |     3
+New Jersey   | Connecticut       |   225
+California   | Connecticut       |  1337
+California   | NULL              |  1397
+New York     | NULL              |     3
+New Jersey   | NULL              |   225
+NULL         | New Jersey        |    58
+NULL         | Connecticut       |  1562
+NULL         | Colorado          |     5
+NULL         | NULL              |  1625
+(12 rows)
 ```
 
-**ROLLUP（角色）**
+**ROLLUP**
 
-`ROLLUP`运算符为给定的一组列生成所有可能的小计。例如，查询：
+The `ROLLUP` operator generates all possible subtotals for a given set of columns. For example, the query:
 
-源状态，源zip,sum（包权重）
-海运起运
-GROUP BY ROLLUP（源状态，源状态压缩）；
+    SELECT origin_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY ROLLUP (origin_state, origin_zip);
 
-"```{.none}"
-原产国|原产zip | _col2
+``` 
+origin_state | origin_zip | _col2
 --------------+------------+-------
-加州|94131|60
-加州| 90210 | 1337
-新泽西州| 7081 | 225
-纽约|10002|3
-加州| NULL | 1397
-纽约| NULL | 3
-新泽西| NULL | 225
-NULL |空字符串| 1625
-（8行）
+California   |      94131 |    60
+California   |      90210 |  1337
+New Jersey   |       7081 |   225
+New York     |      10002 |     3
+California   | NULL       |  1397
+New York     | NULL       |     3
+New Jersey   | NULL       |   225
+NULL         | NULL       |  1625
+(8 rows)
 ```
 
-等价于：
+is equivalent to:
 
-源状态，源zip,sum（包权重）
-海运起运
-GROUP BY GROUPING SETS（(源状态，源状态）,（源状态）,())；
+    SELECT origin_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY GROUPING SETS ((origin_state, origin_zip), (origin_state), ());
 
-**组合多个分组表达式**
+**Combining multiple grouping expressions**
 
-同一查询中的多个分组表达式被解释为具有跨产品语义。例如，下面的查询：
+Multiple grouping expressions in the same query are interpreted as having cross-product semantics. For example, the following query:
 
-源状态，目的状态，源zip,sum（包权重）
-海运起运
-分组方式
-GROUPING SETS（源状态，目的状态），
-ROLLUP（原始文件压缩包）；
+    SELECT origin_state, destination_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY
+        GROUPING SETS ((origin_state, destination_state)),
+        ROLLUP (origin_zip);
 
-可以改写为：
+which can be rewritten as:
 
-源状态，目的状态，源zip,sum（包权重）
-海运起运
-分组方式
-GROUPING SETS（源状态，目的状态），
-分组设置((origin_zip), () )；
+    SELECT origin_state, destination_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY
+        GROUPING SETS ((origin_state, destination_state)),
+        GROUPING SETS ((origin_zip), ());
 
-逻辑上等同于：
+is logically equivalent to:
 
-源状态，目的状态，源zip,sum（包权重）
-海运起运
-按组别划分的组别(
-（源状态，目的状态，源压缩文件），
-（源状态，目的状态）)；
+    SELECT origin_state, destination_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY GROUPING SETS (
+        (origin_state, destination_state, origin_zip),
+        (origin_state, destination_state));
 
-"```{.none}"
-源状态|目的状态|源压缩|_col3
+``` 
+origin_state | destination_state | origin_zip | _col3
 --------------+-------------------+------------+-------
-纽约|新泽西|10002|3
-加利福尼亚|新泽西|94131|55
-新泽西州|康涅狄格州|7081|225
-加利福尼亚|康涅狄格|90210|1337
-加利福尼亚|科罗拉多|94131|5
-纽约|新泽西| NULL | 3
-新泽西|康涅狄格|NULL|225
-加利福尼亚|科罗拉多|NULL|5
-加利福尼亚|康涅狄格|NULL|1337
-加利福尼亚|新泽西|NULL|55
-（10行）
+New York     | New Jersey        |      10002 |     3
+California   | New Jersey        |      94131 |    55
+New Jersey   | Connecticut       |       7081 |   225
+California   | Connecticut       |      90210 |  1337
+California   | Colorado          |      94131 |     5
+New York     | New Jersey        | NULL       |     3
+New Jersey   | Connecticut       | NULL       |   225
+California   | Colorado          | NULL       |     5
+California   | Connecticut       | NULL       |  1337
+California   | New Jersey        | NULL       |    55
+(10 rows)
 ```
 
-`ALL`和`DISTINCT`两个量词决定重复分组是否各自产生不同的输出行。当多个复杂分组集组合在同一
-查询。例如，下面的查询：
+The `ALL` and `DISTINCT` quantifiers determine whether duplicate grouping sets each produce distinct output rows. This is particularly useful when multiple complex grouping sets are combined in the same
+query. For example, the following query:
 
-源状态，目的状态，源zip,sum（包权重）
-海运起运
-按所有分组
-CUBE（源状态，目的状态），
-ROLLUP（原始状态，原始状态压缩）；
+    SELECT origin_state, destination_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY ALL
+        CUBE (origin_state, destination_state),
+        ROLLUP (origin_state, origin_zip);
 
-等价于：
+is equivalent to:
 
-源状态，目的状态，源zip,sum（包权重）
-海运起运
-按组别划分的组别(
-（源状态，目的状态，源压缩文件），
-（原状态，原压缩文件），
-（源状态，目的状态，源压缩文件），
-（原状态，原压缩文件），
-（源状态，目的状态），
-（原始状态）
-（源状态，目的状态），
-（原始状态）
-（源状态，目的状态），
-（原始状态）
-（目的状态）
-（）)；
+    SELECT origin_state, destination_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY GROUPING SETS (
+        (origin_state, destination_state, origin_zip),
+        (origin_state, origin_zip),
+        (origin_state, destination_state, origin_zip),
+        (origin_state, origin_zip),
+        (origin_state, destination_state),
+        (origin_state),
+        (origin_state, destination_state),
+        (origin_state),
+        (origin_state, destination_state),
+        (origin_state),
+        (destination_state),
+        ());
 
-但是，如果查询使用`GROUP BY`的`DISTINCT`量词：
+However, if the query uses the `DISTINCT` quantifier for the `GROUP BY`:
 
-源状态，目的状态，源zip,sum（包权重）
-海运起运
-按地域分组
-CUBE（源状态，目的状态），
-ROLLUP（原始状态，原始状态压缩）；
+    SELECT origin_state, destination_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY DISTINCT
+        CUBE (origin_state, destination_state),
+        ROLLUP (origin_state, origin_zip);
 
-只生成唯一的分组集合：
+only unique grouping sets are generated:
 
-源状态，目的状态，源zip,sum（包权重）
-海运起运
-按组别划分的组别(
-（源状态，目的状态，源压缩文件），
-（原状态，原压缩文件），
-（源状态，目的状态），
-（原始状态）
-（目的状态）
-（）)；
+    SELECT origin_state, destination_state, origin_zip, sum(package_weight)
+    FROM shipping
+    GROUP BY GROUPING SETS (
+        (origin_state, destination_state, origin_zip),
+        (origin_state, origin_zip),
+        (origin_state, destination_state),
+        (origin_state),
+        (destination_state),
+        ());
 
-默认的set类型是`ALL`。
+The default set quantifier is `ALL`.
 
-**分组操作**
+**GROUPING Operation**
 
-分组(col1, ..., colN) -> bigint`，即按优先级排序。
+`grouping(col1, ..., colN) -> bigint`
 
-分组操作返回转换为十进制的位集，指示分组中存在哪些列。必须与`分组设置'、`滚动'、`按CUBE'或`按组设置'及其
-参数必须与在相应的`GROUPING SETS`、`ROLLUP`、`CUBE`或`GROUP BY`子句中引用的列完全匹配。
+The grouping operation returns a bit set converted to decimal, indicating which columns are present in a grouping. It must be used in conjunction with `GROUPING SETS`, `ROLLUP`, `CUBE` or `GROUP BY` and its
+arguments must match exactly the columns referenced in the corresponding `GROUPING SETS`, `ROLLUP`, `CUBE` or `GROUP BY` clause.
 
-为了计算特定行的结果位集，将位分配给参数列，其中最右边的列是最低有效位。对于给定的分组，如果
-对应列包含在分组中，否则为1。例如，考虑下面的查询：
+To compute the resulting bit set for a particular row, bits are assigned to the argument columns with the rightmost column being the least significant bit. For a given grouping, a bit is set to 0 if the
+corresponding column is included in the grouping and to 1 otherwise. For example, consider the query below:
 
-源状态，源zip，目的状态，包权重，
-分组（源状态，源压缩状态，目的状态）
-海运起运
-按组别划分的组别(
-（原始状态）
-（原状态，原压缩文件），
-（目的地状态）)；
+    SELECT origin_state, origin_zip, destination_state, sum(package_weight),
+           grouping(origin_state, origin_zip, destination_state)
+    FROM shipping
+    GROUP BY GROUPING SETS (
+            (origin_state),
+            (origin_state, origin_zip),
+            (destination_state));
 
-"```{.none}"
-源状态|源压缩|目的状态|_col3|_col4
+``` 
+origin_state | origin_zip | destination_state | _col3 | _col4
 --------------+------------+-------------------+-------+-------
-加利福尼亚|NULL|NULL|1397|3
-新泽西| NULL | NULL | 225 | 3
-纽约|NULL|NULL|3|3
-加利福尼亚|94131|NULL|60|1
-新泽西州| 7081 | NULL | 225 | 1
-加利福尼亚|90210|NULL|1337|1
-纽约|10002|NULL|3|1
-NULL | NULL |新泽西州| 58 | 6
-NULL | NULL |康涅狄格州| 1562 | 6
-NULL | NULL |科罗拉多州| 5 | 6
-（10行）
+California   | NULL       | NULL              |  1397 |     3
+New Jersey   | NULL       | NULL              |   225 |     3
+New York     | NULL       | NULL              |     3 |     3
+California   |      94131 | NULL              |    60 |     1
+New Jersey   |       7081 | NULL              |   225 |     1
+California   |      90210 | NULL              |  1337 |     1
+New York     |      10002 | NULL              |     3 |     1
+NULL         | NULL       | New Jersey        |    58 |     6
+NULL         | NULL       | Connecticut       |  1562 |     6
+NULL         | NULL       | Colorado          |     5 |     6
+(10 rows)
 ```
 
-上述结果中第一组只包括`origin_state`列，不包括`origin_zip`和`destination_state`列。为该分组构造的位集为`011`，其中最高位表示`origin_state`。
+The first grouping in the above result only includes the `origin_state` column and excludes the `origin_zip` and `destination_state` columns. The bit set constructed for that grouping is `011` where the most significant bit represents `origin_state`.
 
-HAVING条款
+HAVING Clause
 -------------
 
-`HAVING`子句与聚合函数和`GROUP BY`子句结合使用，以控制选择哪些组。`HAVING'子句排除不满足给定条件的组。
-在计算组和聚合之后，`HAVING`过滤组。
+The `HAVING` clause is used in conjunction with aggregate functions and the `GROUP BY` clause to control which groups are selected. A `HAVING` clause eliminates groups that do not satisfy the given conditions.
+`HAVING` filters groups after groups and aggregates are computed. 
 
-示例：查询表`customer`，选择余额大于指定值的群组。
+The following example queries the `customer` table and selects groups with an account balance greater than the specified value:
 
-SELECT数量(*),mktsegment，国家密钥，
-总计(acctbal)as bigint)as totalbal（总的，总的，总的）
-来自客户
-组由mktsegment，国家关键
-HAVING sum（账户金额）>5700000
-完全按DESC排序；
+    SELECT count(*), mktsegment, nationkey,
+           CAST(sum(acctbal) AS bigint) AS totalbal
+    FROM customer
+    GROUP BY mktsegment, nationkey
+    HAVING sum(acctbal) > 5700000
+    ORDER BY totalbal DESC;
 
-"```{.none}"
-_col0 | mktsegment |国密码|总价
+``` 
+_col0 | mktsegment | nationkey | totalbal
 -------+------------+-----------+----------
-1272 |汽车行业| 19 | 5856939
-1253|家具|14|5794887
-1248|家具|9|5784628
-1243|家具|12|5757371
-1231 |豪斯霍尔德| 3 | 5753216
-1251|机械|2|5719140
-1247|家具|8|5701952
-（7行）
+ 1272 | AUTOMOBILE |        19 |  5856939
+ 1253 | FURNITURE  |        14 |  5794887
+ 1248 | FURNITURE  |         9 |  5784628
+ 1243 | FURNITURE  |        12 |  5757371
+ 1231 | HOUSEHOLD  |         3 |  5753216
+ 1251 | MACHINERY  |         2 |  5719140
+ 1247 | FURNITURE  |         8 |  5701952
+(7 rows)
 ```
 
-UNION \|交互\|例外条款
+UNION \| INTERSECT \| EXCEPT Clause
 -----------------------------------
 
-`UNION``INTERSECT`和`EXCEPT`都是集合操作。这些子句用于将多个select语句的结果组合成单个结果集：
+`UNION` `INTERSECT` and `EXCEPT` are all set operations. These clauses are used to combine the results of more than one select statement into a single result set:
 
-"```{.none}"
-query UNION【全部|离散】查询
+``` sql
+query UNION [ALL | DISTINCT] query
 ```
 
-"```{.none}"
-query INTERSECT [DISTINCT]查询操作
+``` sql
+query INTERSECT [DISTINCT] query
 ```
 
-"```{.none}"
-query接受【DISTINCT】查询
+``` sql
+query EXCEPT [DISTINCT] query
 ```
 
-`ALL`或`DISTINCT`参数控制哪些行包括在最终结果集中。如果指定了参数`ALL`，则即使行完全相同，也会包含所有行。如果指定了参数`DISTINCT`，则组合结果集中只包含唯一的行。如果两者都未指定，则行为默认为`DISTINCT`。`INTERSECT`和`EXCEPT`不支持`ALL`参数。
+The argument `ALL` or `DISTINCT` controls which rows are included in the final result set. If the argument `ALL` is specified all rows are included even if the rows are identical. If the argument `DISTINCT` is specified only unique rows are included in the combined result set. If neither is specified, the behavior defaults to `DISTINCT`. The `ALL` argument is not supported for `INTERSECT` or `EXCEPT`.
 
-多个集合操作从左到右处理，除非通过括号显式指定顺序。此外，`INTERSECT'比`EXCEPT'和`UNION'结合得更紧密。这意味着`UNION B INTERSECT C EXCEPT D`与`UNION (B INTERSECT C) EXCEPT D`是相同的两个概念。
+Multiple set operations are processed left to right, unless the order is explicitly specified via parentheses. Additionally, `INTERSECT` binds more tightly than `EXCEPT` and `UNION`. That means `A UNION B INTERSECT C EXCEPT D` is the same as `A UNION (B INTERSECT C) EXCEPT D`.
 
-**UNION（意大利语）**
+**UNION**
 
-`UNION`将第一次查询结果集中的所有行与第二次查询结果集中的所有行合并。下面是最简单的`UNION'条款之一。它选择值`13`，并将这个结果集与第二个选择值`42`的查询组合：
+`UNION` combines all the rows that are in the result set from the first query with those that are in the result set for the second query. The following is an example of one of the simplest possible `UNION` clauses. It selects the value `13` and combines this result set with a second query that selects the value `42`:
 
-SELECT 13
-联合
-选择42；
+    SELECT 13
+    UNION
+    SELECT 42;
 
-"```{.none}"
+``` 
 _col0
 -------
-13
-42
-（2行）
+   13
+   42
+(2 rows)
 ```
 
-以下查询展示了`UNION`和`UNION ALL`之间的区别。它选择值`13`，并将该结果集与第二个选择值`42`和`13`的查询组合：
+The following query demonstrates the difference between `UNION` and `UNION ALL`. It selects the value `13` and combines this result set with a second query that selects the values `42` and `13`:
 
-SELECT 13
-联合
-从（值42,13）中选择*；
+    SELECT 13
+    UNION
+    SELECT * FROM (VALUES 42, 13);
 
-"```{.none}"
+``` 
 _col0
 -------
-13
-42
-（2行）
+   13
+   42
+(2 rows)
 ```
 
-SELECT 13
-联合所有
-从（值42,13）中选择*；
+    SELECT 13
+    UNION ALL
+    SELECT * FROM (VALUES 42, 13);
 
-"```{.none}"
+``` 
 _col0
 -------
-13
-42
-13
-（2行）
+   13
+   42
+   13
+(2 rows)
 ```
 
-**INTERSECT（间断扫描）**
+**INTERSECT**
 
-`INTERSECT`只返回第一个和第二个查询的结果集中的行。下面是最简单的`INTERSECT`子句之一。它选择值`13`
-和`42`，并将该结果集与第二个选择值`13`的查询组合。由于`42`只出现在第一个查询的结果集中，因此它不会包含在最终结果中。
+`INTERSECT` returns only the rows that are in the result sets of both the first and the second queries. The following is an example of one of the simplest possible `INTERSECT` clauses. It selects the values `13`
+and `42` and combines this result set with a second query that selects the value `13`. Since `42` is only in the result set of the first query, it is not included in the final results.:
 
-从中选择*（值13,42）
-互联
-选择13；
+    SELECT * FROM (VALUES 13, 42)
+    INTERSECT
+    SELECT 13;
 
-"```{.none}"
+``` 
 _col0
 -------
-13
-（2行）
+   13
+(2 rows)
 ```
 
-**例外**
+**EXCEPT**
 
-`EXCEPT`返回第一次查询的结果集中的行，而不是第二次查询结果集中的行。下面是最简单的`EXCEPT'子句之一。取值包括`13`和`42`。
-将这个结果集与第二个选择值`13`的查询组合起来。由于`13`也包含在第二个查询的结果集中，所以它不会包含在最终结果中。
+`EXCEPT` returns the rows that are in the result set of the first query, but not the second. The following is an example of one of the simplest possible `EXCEPT` clauses. It selects the values `13` and `42` and
+combines this result set with a second query that selects the value `13`. Since `13` is also in the result set of the second query, it is not included in the final result.:
 
-从中选择*（值13,42）
-除外
-选择13；
+    SELECT * FROM (VALUES 13, 42)
+    EXCEPT
+    SELECT 13;
 
-"```{.none}"
+``` 
 _col0
 -------
-42
-（2行）
+  42
+(2 rows)
 ```
 
-ORDER BY子句
+ORDER BY Clause
 ---------------
 
-`ORDER BY`子句用于按一个或多个输出表达式对结果集进行排序：
+The `ORDER BY` clause is used to sort a result set by one or more output expressions:
 
-"```{.none}"
-ORDER BY表达式[ ASC | DESC ]【NULLS {第一条|最后一条}】【 , ... 】 ，根据表达式排序
+``` sql
+ORDER BY expression [ ASC | DESC ] [ NULLS { FIRST | LAST } ] [, ...]
 ```
 
-每个表达式可以由输出列组成，也可以是按位置选择输出列的序数（从1开始）。`ORDER BY`子句在任何`GROUP BY`或`HAVING`子句之后，`OFFSET`之前计算。限制或第一取食子句。缺省的空排序是`NULLS LAST`，不管排序方向如何。
+Each expression may be composed of output columns or it may be an ordinal number selecting an output column by position (starting at one). The `ORDER BY` clause is evaluated after any `GROUP BY` or `HAVING` clause and before any `OFFSET`, `LIMIT` or `FETCH FIRST` clause. The default null ordering is `NULLS LAST`, regardless of the ordering direction.
 
-OFFSET子句
+OFFSET Clause
 -------------
 
-`OFFSET`子句用于从结果集中丢弃一些前导行：
+The `OFFSET` clause is used to discard a number of leading rows from the result set:
 
-"```{.none}"
-OFFSET次数【行|行】
+``` sql
+OFFSET count [ ROW | ROWS ]
 ```
 
-如果`ORDER BY`子句存在，则`OFFSET`子句在排序结果集上求值，并在丢弃前导行之后保留排序结果集：
+If the `ORDER BY` clause is present, the `OFFSET` clause is evaluated over a sorted result set, and the set remains sorted after the leading rows are discarded:
 
-从国家选择名称按名称排序设置22；
+    SELECT name FROM nation ORDER BY name OFFSET 22;
 
-"```{.none}"
-姓名
+``` 
+name
 ----------------
-英国
-美利坚合众国
-维特南
-（3行）
+UNITED KINGDOM
+UNITED STATES
+VIETNAM
+(3 rows)
 ```
 
-否则，丢弃哪些行是任意的。如果`OFFSET`子句中指定的计数等于或超过结果集的大小，则最终结果为空。
+Otherwise, it is arbitrary which rows are discarded. If the count specified in the `OFFSET` clause equals or exceeds the size of the result set, the final result is empty.
 
-LIMIT或FETCH FIRST子句
+LIMIT or FETCH FIRST Clauses
 ----------------------------
 
-`LIMIT`或`FETCH FIRST`子句限制
-结果集。
+The `LIMIT` or `FETCH FIRST` clause restricts the number of rows in the
+result set.
 
-"```{.none}"
-限制{计数|全部}
+``` sql
+LIMIT { count | ALL }
 ```
 
-"```{.none}"
-FETCH{第一条|下一条}【数量】{行数|行数} {仅限行数} |带皮条的行数}
+``` sql
+FETCH { FIRST | NEXT } [ count ] { ROW | ROWS } { ONLY | WITH TIES }
 ```
 
-以下示例查询一个大表，但`LIMIT`子句将输出限制为只有五行（因为查询缺少`ORDER BY`，所以返回的行是任意的）：
+The following example queries a large table, but the `LIMIT` clause restricts the output to only have five rows (because the query lacks an `ORDER BY`, exactly which rows are returned is arbitrary):
 
-选择订单日期从订单限制5；
+    SELECT orderdate FROM orders LIMIT 5;
 
-"```{.none}"
-订购日期
+``` 
+orderdate
 ------------
 1994-07-25
 1993-11-12
 1992-10-06
 1994-01-04
 1997-12-28
-（5行）
+(5 rows)
 ```
 
-“LIMIT ALL”与省略“LIMIT”子句相同。
+`LIMIT ALL` is the same as omitting the `LIMIT` clause.
 
-FETCH FIRST子句支持关键字`FIRST`或`NEXT`，也支持关键字`ROW`或`ROWS`。这些关键字是等效的，关键字的选择对查询执行没有影响。
+The `FETCH FIRST` clause supports either the `FIRST` or `NEXT` keywords and the `ROW` or `ROWS` keywords. These keywords are equivalent and the choice of keyword has no effect on query execution.
 
-如果在`FETCH FIRST`子句中没有指定计数，则默认为`1`：
+If the count is not specified in the `FETCH FIRST` clause, it defaults to `1`:
 
-选择订单日期从订单第一排开始；
+    SELECT orderdate FROM orders FETCH FIRST ROW ONLY;
 
-"```{.none}"
-订购日期
+``` 
+orderdate
 ------------
 1994-02-12
-（1行）
+(1 row)
 ```
 
-如果存在`OFFSET`子句，`LIMIT`或`FETCH FIRST`子句将在`OFFSET`子句之后进行计算：
+If the `OFFSET` clause is present, the `LIMIT` or `FETCH FIRST` clause is evaluated after the `OFFSET` clause:
 
-选择*从（值5,2,4,1,3） t(x)顺序由x偏移2限制2 ；
+    SELECT * FROM (VALUES 5, 2, 4, 1, 3) t(x) ORDER BY x OFFSET 2 LIMIT 2;
 
-"```{.none}"
-十
+``` 
+x
 ---
 3
 4
-（2行）
+(2 rows)
 ```
 
-对于`FETCH FIRST`子句，参数`ONLY`或`WITH TIES`控制结果集中包括哪些行。
+For the `FETCH FIRST` clause, the argument `ONLY` or `WITH TIES` controls which rows are included in the result set.
 
-如果指定了参数`ONLY`，结果集将限于由计数确定的前导行的确切数目。
+If the argument `ONLY` is specified, the result set is limited to the exact number of leading rows determined by the count.
 
-如果指定了参数`WITH TIES`，则要求必须出现`ORDER BY`子句。结果集由一组前导行和同一对等组中的所有行组成，其中最后一个
-（'条'）由`ORDER BY'子句中的顺序确定。结果集排序：
+If the argument `WITH TIES` is specified, it is required that the `ORDER BY` clause be present. The result set consists of the same set of leading rows and all of the rows in the same peer group as the last of
+them ('ties') as established by the ordering in the `ORDER BY` clause. The result set is sorted:
 
-选择名称，地区键从国家按地区键排第一排带领带；
+    SELECT name, regionkey FROM nation ORDER BY regionkey FETCH FIRST ROW WITH TIES;
 
-"```{.none}"
-名称|区域密钥
+``` 
+name    | regionkey
 ------------+-----------
-埃塞俄比亚| 0
-摩洛哥|0
-肯尼亚| 0
-阿尔及利亚|0
-莫桑比克|0
-（5行）
+ETHIOPIA   |         0
+MOROCCO    |         0
+KENYA      |         0
+ALGERIA    |         0
+MOZAMBIQUE |         0
+(5 rows)
 ```
 
-表格样例
+TABLESAMPLE
 -----------
 
-有多种样例方法：
+There are multiple sample methods:
 
-伯努利
+`BERNOULLI`
 
-每一行都以样本百分比的概率被选择到表中。当使用Bernoulli方法对表进行抽样时，将扫描该表的所有物理块，并跳过某些行。（基于采样百分比与运行时计算的随机值之间的比较）.
+Each row is selected to be in the table sample with a probability of  the sample percentage. When a  		table is sampled using the Bernoulli method, all physical blocks of the table are scanned and certain rows are skipped (based on a comparison between the sample percentage and a random value calculated at runtime).
 
-结果中包含某一行的概率独立于任何其他行。这不会减少从磁盘读取采样表所需的时间。如果进一步处理采样输出，则可能会影响总查询时间。
+The probability of a row being included in the result is independent from any other row. This does not reduce the time required to read the sampled table from disk. It may have an impact on the total query time if the sampled output is processed further.
 
-制度
+`SYSTEM`
 
-这种抽样方法将表划分为数据的逻辑片段，并以该粒度对表进行抽样。这种抽样方法要么从特定数据段中选择所有行，要么跳过它。（基于采样百分比与运行时计算的随机值之间的比较）.
+This sampling method divides the table into logical segments of data and samples the table at this granularity. This sampling method either selects all the rows from a particular segment of data or skips it (based on a comparison between the sample percentage and a random value calculated at runtime).
 
-在系统抽样中选定的行将取决于所使用的连接器。例如，当与Hive一起使用时，它取决于数据在HDFS上的布局方式。这种方法不保证独立的采样概率。
+The rows selected in a system sampling will be dependent on which connector is used. For example, when used with Hive, it is dependent on how the data is laid out on HDFS. This method does not guarantee independent sampling probabilities.
 
 
-**说明**
+**Note**
 
-*这两个方法都不允许对返回的行数进行确定性限制*。*
+*Neither of the two methods allow deterministic bounds on the number of* *rows returned.*
 
-举例：
+Examples:
 
-选择*
-来自用户的样本BERNOULLI (50)；
+    SELECT *
+    FROM users TABLESAMPLE BERNOULLI (50);
     
-选择*
-来自用户的表样例系统（75） ；
+    SELECT *
+    FROM users TABLESAMPLE SYSTEM (75);
 
-采样连接：
+Using sampling with joins:
 
-选择o.*,i.*
-从订单到表样本系统(10)
-合并细目表一
-订购键=i.orderkey；
+    SELECT o.*, i.*
+    FROM orders o TABLESAMPLE SYSTEM (10)
+    JOIN lineitem i TABLESAMPLE BERNOULLI (40)
+      ON o.orderkey = i.orderkey;
 
-未知
+UNNEST
 ------
 
-`UNNEST`可用于将[ARRAY](../language/types.md)或[MAP](../language/types.md)扩展为关系。数组展开为单列，map展开为两列（key、value）,`UNNEST`也可以和多个参数一起使用，这样它们就展开为多个列。与最高基数参数一样多的行（其他列用空值填充）。`UNNEST`可以有`WITH ORDINALITY`子句，在这种情况下，在末尾添加一个附加的普通列。`UNNEST`通常与`JOIN`一起使用，并且可以从连接左侧的关系中引用列。
+`UNNEST` can be used to expand an [ARRAY](../language/types.md) or [MAP](../language/types.md) into a relation. Arrays are expanded into a single column, and maps are expanded into two columns (key, value). `UNNEST` can also be used with multiple arguments, in which case they are expanded into multiple columns, with as many rows as the highest cardinality argument (the other columns are padded with nulls). `UNNEST` can optionally have a `WITH ORDINALITY` clause, in which case an additional ordinality column is added to the end. `UNNEST` is normally used with a `JOIN` and can reference columns from relations on the left side of the join.
 
-使用单列：
+Using a single column:
 
-选学生，分数
-FROM测试
-跨加盟未得分（得分）为t（得分）；
+    SELECT student, score
+    FROM tests
+    CROSS JOIN UNNEST(scores) AS t (score);
 
-使用多列：
+Using multiple columns:
 
-选择数字，动物，n,a
-从(
-价值
-（ARRAY[2, 5], ARRAY【'狗'， '猫'， '鸟'】），
-（ARRAY【7,8,9】，ARRAY【'牛'，'猪'】）
-)ASx（数字、动物）
-跨接连接（数字，动物）为t(n,a)；
+    SELECT numbers, animals, n, a
+    FROM (
+      VALUES
+        (ARRAY[2, 5], ARRAY['dog', 'cat', 'bird']),
+        (ARRAY[7, 8, 9], ARRAY['cow', 'pig'])
+    ) AS x (numbers, animals)
+    CROSS JOIN UNNEST(numbers, animals) AS t (n, a);
 
-"```{.none}"
-动物数量
+``` 
+numbers  |     animals      |  n   |  a
 -----------+------------------+------+------
-【2、5】|【狗、猫、鸟】| 2 |狗
-【2、5】|【狗、猫、鸟】| 5 |猫
-【2、5】|【狗、猫、鸟】| NULL |鸟
-【7,8,9】|【牛，猪】| 7 |牛
-【7,8,9】|【牛，猪】| 8 |猪
-【7,8,9】|【牛，猪】| 9 | NULL
-（6行）
+[2, 5]    | [dog, cat, bird] |    2 | dog
+[2, 5]    | [dog, cat, bird] |    5 | cat
+[2, 5]    | [dog, cat, bird] | NULL | bird
+[7, 8, 9] | [cow, pig]       |    7 | cow
+[7, 8, 9] | [cow, pig]       |    8 | pig
+[7, 8, 9] | [cow, pig]       |    9 | NULL
+(6 rows)
 ```
 
-`有组织性'条款：
+`WITH ORDINALITY` clause:
 
-SELECT个数字，n,a
-从(
-价值
-（ARRAY[2, 5]） ，
-（天线【7,8,9】）
-)AS x（个）
-交叉连接无（数）与正常t(n,a)；
+    SELECT numbers, n, a
+    FROM (
+      VALUES
+        (ARRAY[2, 5]),
+        (ARRAY[7, 8, 9])
+    ) AS x (numbers)
+    CROSS JOIN UNNEST(numbers) WITH ORDINALITY AS t (n, a);
 
-"```{.none}"
-数字|数字|数字
+``` 
+numbers  | n | a
 -----------+---+---
-[2, 5] | 2 | 1
-[2, 5] | 5 | 2
+[2, 5]    | 2 | 1
+[2, 5]    | 5 | 2
 [7, 8, 9] | 7 | 1
 [7, 8, 9] | 8 | 2
 [7, 8, 9] | 9 | 3
-（5行）
+(5 rows)
 ```
 
-加入
+Joins
 -----
 
-联接允许您组合来自多个关系的数据。
+Joins allow you to combine data from multiple relations.
 
-###交叉连接
+### CROSS JOIN
 
-交叉联接返回两个关系的笛卡尔积（所有组合）。可以使用explit`CROSS JOIN`语法指定交叉连接，也可以在`FROM`子句中指定多个关系。
+A cross join returns the Cartesian product (all combinations) of two relations. Cross joins can either be specified using the explit `CROSS JOIN` syntax or by specifying multiple relations in the `FROM` clause.
 
-以下两个查询是等价的：
+Both of the following queries are equivalent:
 
-选择*
-来自国家
-跨JOIN区域；
+    SELECT *
+    FROM nation
+    CROSS JOIN region;
     
-选择*
-来自国家、地区；
+    SELECT *
+    FROM nation, region;
 
-`nation'表有25行，`region'表有5行，因此两个表之间的交叉连接产生125行：
+The `nation` table contains 25 rows and the `region` table contains 5 rows, so a cross join between the two tables produces 125 rows:
 
-选择n.nameAS国家，r.nameAS区域
-来自国家
-交叉连接区
-按1,2排序；
+    SELECT n.name AS nation, r.name AS region
+    FROM nation AS n
+    CROSS JOIN region AS r
+    ORDER BY 1, 2;
 
-"```{.none}"
-国家|地区
+``` 
+nation     |   region
 ----------------+-------------
-阿尔及利亚|非洲
-ALGERIA |美国
-阿尔及利亚|亚洲
-阿尔及利亚|欧洲
-阿尔及利亚|中东
-阿根廷|非洲
-阿根廷|美国
+ALGERIA        | AFRICA
+ALGERIA        | AMERICA
+ALGERIA        | ASIA
+ALGERIA        | EUROPE
+ALGERIA        | MIDDLE EAST
+ARGENTINA      | AFRICA
+ARGENTINA      | AMERICA
 ...
-（125行）
+(125 rows)
 ```
 
-###后方
+### LATERAL
 
-`FROM`子句中出现的子查询前面可以加上关键字`LATERAL`。这使他们能够引用前面"FROM"项目提供的列。
+Subqueries appearing in the `FROM` clause can be preceded by the keyword `LATERAL`. This allows them to reference columns provided by preceding `FROM` items.
 
-一个`LATERAL`连接可以出现在`FROM`列表的顶层，或者括号括起来的连接树中的任何地方。在后一种情况下，它还可以指在`JOIN'的左手边的任何物项，即它在右手边。
+A `LATERAL` join can appear at the top level in the `FROM` list, or anywhere within a parenthesized join tree. In the latter case, it can also refer to any items that are on the left-hand side of a `JOIN` for which it is on the right-hand side.
 
-当一个`FROM`项目包含`LATERAL`相互参照时，评价按以下方式进行：对于`FROM`项目的每一行，提供相互参照的列，‘LATERAL’项使用列的行集值进行计算。结果行将一如既往地与计算它们的行连接在一起。对于列源表中的行集，重复此过程。
+When a `FROM` item contains `LATERAL` cross-references, evaluation proceeds as follows: for each row of the `FROM` item providing the cross-referenced columns, the `LATERAL` item is evaluated using that row set's values of the columns. The resulting rows are joined as usual with the rows they were computed from. This is repeated for set of rows from the column source tables.
 
-`LATERAL`主要适用于需要交叉引用列来计算要联接的行的情况：
+`LATERAL` is primarily useful when the cross-referenced column is necessary for computing the rows to be joined:
 
-SELECT名称，x,y
-来自国家
-CROSS JOIN LATERAL（选择名称||'：-'ASx）
-横向交叉连接（SELECT x || '）' AS Y)
+    SELECT name, x, y
+    FROM nation
+    CROSS JOIN LATERAL (SELECT name || ' :-' AS x)
+    CROSS JOIN LATERAL (SELECT x || ')' AS y)
 
-###限定列名
+### Qualifying Column Names
 
-当联接中的两个关系具有同名的列时，必须使用关系别名（如果关系具有别名）或使用关系名称对列引用进行限定：
+When two relations in a join have columns with the same name, the column references must be qualified using the relation alias (if the relation has an alias), or with the relation name:
 
-选择国家名称，地区名称
-来自国家
-跨JOIN区域；
+    SELECT nation.name, region.name
+    FROM nation
+    CROSS JOIN region;
     
-选择n.name,r.name
-来自国家
-跨JOIN区域；
+    SELECT n.name, r.name
+    FROM nation AS n
+    CROSS JOIN region AS r;
     
-选择n.name,r.name
-来自国家n
-跨JOIN区；
+    SELECT n.name, r.name
+    FROM nation n
+    CROSS JOIN region r;
 
-下列查询将失败，并显示错误
-`列'名模棱两可：
+The following query will fail with the error
+`Column 'name' is ambiguous`:
 
-SELECT名称
-来自国家
-跨JOIN区域；
+    SELECT name
+    FROM nation
+    CROSS JOIN region;
 
-子查询
+Subqueries
 ----------
 
-子查询是由查询组成的表达式。当子查询引用子查询之外的列时，子查询是相关的。逻辑上，子查询将针对周围查询中的每个行进行计算。因此，在对子查询进行任何单个计算时，所引用的列将保持不变。
+A subquery is an expression which is composed of a query. The subquery is correlated when it refers to columns outside of the subquery. Logically, the subquery will be evaluated for each row in the surrounding query. The referenced columns will thus be constant during any single evaluation of the subquery.
 
 
-**说明**
+**Note**
 
-*关联子查询支持有限。并非每一种标准形式都* *得到支持。*
+*Support for correlated subqueries is limited. Not every standard form is* *supported.*
 
-###退出
+### EXISTS
 
-`EXISTS`谓词确定子查询是否返回任何行：
+The `EXISTS` predicate determines if a subquery returns any rows:
 
-SELECT名称
-来自国家
-WHERE EXISTS（从区域选择*从区域.regionkey=国家.regionkey）
+    SELECT name
+    FROM nation
+    WHERE EXISTS (SELECT * FROM region WHERE region.regionkey = nation.regionkey)
 
-###输入
+### IN
 
-`IN`谓词确定子查询产生的任何值是否等于提供的表达式。`IN`的结果遵循空值的标准规则。子查询必须生成一列：
+The `IN` predicate determines if any values produced by the subquery are equal to the provided expression. The result of `IN` follows the standard rules for nulls. The subquery must produce exactly one column:
 
-SELECT名称
-来自国家
-WHERE regionkey IN（从区域选择区域键）
+    SELECT name
+    FROM nation
+    WHERE regionkey IN (SELECT regionkey FROM region)
 
-###标量子查询
+### Scalar Subquery
 
-标量子查询是返回零行或一行的非相关子查询。子查询生成多行时出错。如果子查询没有输出行，则返回值为`NULL`：
+A scalar subquery is a non-correlated subquery that returns zero or one row. It is an error for the subquery to produce more than one row. The returned value is `NULL` if the subquery produces no rows:
 
-SELECT名称
-来自国家
-WHERE regionkey = （从区域中选择最大区域键）
+    SELECT name
+    FROM nation
+    WHERE regionkey = (SELECT max(regionkey) FROM region)
 
 
 
-**说明**
+**Note**
 
-*标量子查询目前只支持返回单列*
+*Currently only single column can be returned from the scalar subquery.*

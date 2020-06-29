@@ -1,10 +1,10 @@
-Stage资源
+Stage Resource
 ==============
 
--获取/v1/阶段
+- GET /v1/stage
 
-返回Presto查询中有关Stage的详细信息。
+Returns detail about a stage in a openLooKeng query.
 
--删除/v1/stage/{stageId}目录
+- DELETE /v1/stage/{stageId}
 
-删除Presto查询中的Stage。
+Deletes a stage in a openLooKeng query.

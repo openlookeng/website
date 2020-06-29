@@ -1,351 +1,351 @@
-Hive安全配置
+Hive Security Configuration
 ===========================
 
-授权
+Authorization
 -------------
 
-通过在Hivecatalogproperties文件中设置`hive.security`属性，可以启用[hive](./hive)的授权检查。此属性必须是下列值之一：
+You can enable authorization checks for the [hive](./hive) by setting the `hive.security` property in the Hive catalog properties file. This property must be one of the following values:
 
-|属性值|说明|
+| Property Value           | Description                                                  |
 | :----------------------- | :----------------------------------------------------------- |
-| `legacy`（缺省值） |强制执行的授权检查很少，因此允许大多数操作。配置属性`hive.allow-drop-table`, `hive.allow-rename-table`, `hive.allow-add-column`，来指定允许删除的表名，或允许增加的列名。使用了`hive.allow-drop-column`和`hive.allow-rename-column`两个关键字。|
-| `read-only` |允许读数据或元数据的操作，如`SELECT`；但不允许写数据或元数据的操作，如`CREATE`、`INSERT`、`DELETE`。|
-| `file` |授权检查使用Hive配置属性`security.config-file`指定的配置文件执行。详细内容请参见【基于文件的授权】(./hive-security.md#hive-file-based-authorization)。|
-| `sql-standard` |只要符合SQL标准，只要用户具有权限，就可以执行这些操作。在这种模式下，Presto基于Hive元数据库中定义的权限对查询执行授权检查。如果需要修改这些权限，可以使用[GRANT](../sql/grant)和[REVOKE](../sql/revoke)命令。详细信息请参考【SQL标准授权】(./hive-security.md#hive-sql-standard-based-authorization)。|
+| `legacy` (default value) | Few authorization checks are enforced, thus allowing most operations. The config properties `hive.allow-drop-table`, `hive.allow-rename-table`, `hive.allow-add-column`, `hive.allow-drop-column` and `hive.allow-rename-column` are used. |
+| `read-only`              | Operations that read data or metadata, such as `SELECT`, are permitted, but none of the operations that write data or metadata, such as `CREATE`, `INSERT` or `DELETE`, are allowed. |
+| `file`                   | Authorization checks are enforced using a config file specified by the Hive configuration property `security.config-file`. See [File Based Authorization](./hive-security.md#hive-file-based-authorization) for details. |
+| `sql-standard`           | Users are permitted to perform the operations as long as they have the required privileges as per the SQL standard. In this mode, openLooKeng enforces the authorization checks for queries based on the privileges defined in Hive metastore. To alter these privileges, use the [GRANT](../sql/grant) and [REVOKE](../sql/revoke) commands. See [SQL Standard Based Authorization](./hive-security.md#hive-sql-standard-based-authorization) for details. |
 
-###基于SQL标准授权{#hive-sql-standard-based-authorization}
+### SQL Standard Based Authorization
 
-当启用`sql-standard`安全性时，Presto执行与Hive相同的基于SQL标准的授权。
+When `sql-standard` security is enabled, openLooKeng enforces the same SQL standard based authorization as Hive does.
 
-由于Presto\的`ROLE`语法支持与SQL标准匹配，而Hive又不完全遵循SQL标准，因此存在以下限制和差异：
+Since openLooKeng\'s `ROLE` syntax support matches the SQL standard, and Hive does not exactly follow the SQL standard, there are the following limitations and differences:
 
--不支持`CREATE ROLE role WITH ADMIN`子句。
--必须启用`admin`角色才能执行`CREATE ROLE`或`DROP ROLE`。
--不支持'某人授予给用户的巨型角色'。
--不支持'从用户授权角色'。
--新用户会话默认启用除`admin`外的所有角色。
--可通过执行`SET ROLE role`来选择特定的角色。
--“SET ROLE ALL”：启用用户除“admin”以外的所有角色。
--`admin`角色必须通过执行`SET ROLE admin`显式启用。
+-   `CREATE ROLE role WITH ADMIN` is not supported.
+-   The `admin` role must be enabled to execute `CREATE ROLE` or `DROP ROLE`.
+-   `GRANT role TO user GRANTED BY someone` is not supported.
+-   `REVOKE role FROM user GRANTED BY someone` is not supported.
+-   By default, all a user\'s roles except `admin` are enabled in a new user session.
+-   One particular role can be selected by executing `SET ROLE role`.
+-   `SET ROLE ALL` enables all of a user\'s roles except `admin`.
+-   The `admin` role must be enabled explicitly by executing`SET ROLE admin`.
 
-鉴权
+Authentication
 --------------
 
-`/connector/hive`{.interpreted-text role="doc"}的缺省安全配置没有使用
-连接Hadoop集群时的认证。所有查询都以运行Presto进程的用户执行，不管哪个用户提交查询。
+The default security configuration of the `/connector/hive` does not use
+authentication when connecting to a Hadoop cluster. All queries are executed as the user who runs the openLooKeng process, regardless of which user submits the query.
 
-Hive连接器提供了额外的安全选项来支持配置为使用[Kerberos](./hive-security-kerberos-support)的Hadoop集群。
+The Hive connector provides additional security options to support Hadoop clusters that have been configured to use [Kerberos](./hive-security-kerberos-support).
 
-当访问`HDFS（Hadoop分布式文件系统）`时，Presto可以[impersonate](./hive-security-impersonation#impersonate)执行查询的最终用户。这可以与HDFS权限和`ACL（访问控制列表）`一起使用，为数据提供额外的安全性。
+When accessing `HDFS (Hadoop Distributed File System)`, openLooKeng can [impersonate](./hive-security-impersonation#impersonate) the end user who is running the query. This can be used with HDFS permissions and `ACLs (Access Control Lists)` to provide additional security for data.
 
-{#hive-security-kerberos-support}
-**提示**
 
-当使用Kerberos身份验证Hadoop服务时，应该使用Kerberos来保护对Presto协调器的访问。未能确保与普雷斯托协调员的接触可能导致未经授权接触
-Hadoop集群上的敏感数据。
+**Warning**
 
-有关建立Kerberos身份验证的信息，请参阅[server](../security/server)和[cli](../security/cli)。
+Access to the openLooKeng coordinator should be secured using Kerberos when using Kerberos authentication to Hadoop services. Failure to secure access to the openLooKeng coordinator could result in unauthorized access to
+sensitive data on the Hadoop cluster.
+
+See [server](../security/server) and [cli](../security/cli) for information on setting up Kerberos authentication.
 
    
 
-Kerberos支持
+Kerberos Support
 ----------------
 
-为了与使用`kerberos`认证的Hadoop集群使用Hive连接器，您需要将连接器配置为与Hadoop集群上的两个服务一起使用：
+In order to use the Hive connector with a Hadoop cluster that uses `kerberos` authentication, you will need to configure the connector to work with two services on the Hadoop cluster:
 
-- Hive元数据库Thrift服务
-——Hadoop分布式文件系统(HDFS)
+-   The Hive metastore Thrift service
+-   The Hadoop Distributed File System (HDFS)
 
-Hive连接器对这些服务的访问是在属性文件中配置的，该文件包含Hive连接器的一般配置。
+Access to these services by the Hive connector is configured in the properties file that contains the general Hive connector configuration.
 
-**说明**
+**Note**
 
-如果您的`krb5.conf`位置与`/etc/krb5.conf`不同，则必须通过`jvm.config`文件中的`java.security.krb5.conf`JVM属性显式设置。
+If your `krb5.conf` location is different from `/etc/krb5.conf` you must set it explicitly using the `java.security.krb5.conf` JVM property in `jvm.config` file.
 
-示例：`-Djava.security.krb5.conf=/example/路径/krb5.conf`，表示安全配置文件。
+Example: `-Djava.security.krb5.conf=/example/path/krb5.conf`.
 
 
-### Hive Metastore Thrift服务鉴权方式
+### Hive Metastore Thrift Service Authentication
 
-在Kerberized Hadoop集群中，Presto通过
-`SASL（简单身份验证和安全层）`并使用Kerberos进行身份验证。在connector\的properties文件中配置metastore的kerberos认证，使用以下属性：
+In a Kerberized Hadoop cluster, openLooKeng connects to the Hive metastore Thrift service using
+`SASL (Simple Authentication and Security Layer)` and authenticates using Kerberos. Kerberos authentication for the metastore is configured in the connector\'s properties file using the following properties:
 
-|属性名称|描述|
+| Property Name                        | Description                                                  |
 | :----------------------------------- | :----------------------------------------------------------- |
-| `hive.metastore.authentication.type` | Hive元数据库认证类型，包括： |
-| `hive.metastore.service.principal` | Hive元数据库服务的Kerberos主体名称。|
-| `hive.metastore.client.principal` | Presto在连接Hive元数据库服务时将使用的Kerberos主体。|
-| `hive.metastore.client.keytab` | Hive元数据库客户端keytab位置。|
+| `hive.metastore.authentication.type` | Hive metastore authentication type.                          |
+| `hive.metastore.service.principal`   | The Kerberos principal of the Hive metastore service.        |
+| `hive.metastore.client.principal`    | The Kerberos principal that openLooKeng will use when connecting to the Hive metastore service. |
+| `hive.metastore.client.keytab`       | Hive metastore client keytab location.                       |
 
 #### `hive.metastore.authentication.type`
 
-“无”或“柯柏罗斯”中的一个。当使用默认值`NONE`时，Kerberos认证被禁用，无需配置其他属性。
+One of `NONE` or `KERBEROS`. When using the default value of `NONE`, Kerberos authentication is disabled and no other properties need to be configured.
 
-当设置为`KERBEROS`时，Hive连接器将使用SASL连接到Hive元数据库Thrift服务，并使用Kerberos进行身份验证。
+When set to `KERBEROS` the Hive connector will connect to the Hive metastore Thrift service using SASL and authenticate using Kerberos.
 
-此属性是可选的；默认值为`NONE`。
+This property is optional; the default is `NONE`.
 
-#### `hive.metastore.service.principal.`，即主服务，即主服务，即主服务，即主服务。
+#### `hive.metastore.service.principal`
 
-Hive元数据库服务的Kerberos主体。Presto协调器将使用它来认证Hive元数据库。
+The Kerberos principal of the Hive metastore service. The openLooKeng coordinator will use this to authenticate the Hive metastore.
 
-在此属性值中可以使用`_HOST`占位符。Hive连接器在连接Hive元数据库时，会替换连接元数据库服务器的主机名。如果元数据库在多个主机上运行，则这一点非常有用。
+The `_HOST` placeholder can be used in this property value. When connecting to the Hive metastore, the Hive connector will substitute in the hostname of the **metastore** server it is connecting to. This is useful if the metastore runs on multiple hosts.
 
-例如：`hive/hive-server-host@EXAMPLE.COM`或者`hive/_HOST@EXAMPLE.COM`，这两个参数都表示主机。
+Example: `hive/hive-server-host@EXAMPLE.COM` or `hive/_HOST@EXAMPLE.COM`.
 
-此属性是可选的；没有默认值。
+This property is optional; no default value.
 
 #### `hive.metastore.client.principal`
 
-Presto在连接到Hive元数据库时使用的Kerberos主体。
+The Kerberos principal that openLooKeng will use when connecting to the Hive metastore.
 
-在此属性值中可以使用`_HOST`占位符。连接Hive元数据库时，Hive连接器会替换上正在运行的**worker**节点的hostname。如果每个工作节点都有自己的Kerberos主体，那么这个方法很有用。
+The `_HOST` placeholder can be used in this property value. When connecting to the Hive metastore, the Hive connector will substitute in the hostname of the **worker** node openLooKeng is running on. This is useful if each worker node has its own Kerberos principal.
 
-例如：presto/presto-server-node@EXAMPLE.COM，或者presto/_HOST@EXAMPLE.COM等，请根据实际情况修改。
+Example: `openlookeng/openlookeng-server-node@EXAMPLE.COM` or `openlookeng/_HOST@EXAMPLE.COM`.
 
-此属性是可选的；没有默认值。
+This property is optional; no default value.
 
-**提示**
+**Warning**
 
-`hive.metastore.client.principal`指定的主体必须具有足够的权限来删除`hive/warehouse`目录下的文件和目录。如果主体没有，则只有元数据
-将会被删除，数据将继续占用磁盘空间。
+The principal specified by `hive.metastore.client.principal` must have sufficient privileges to remove files and directories within the `hive/warehouse` directory. If the principal does not, only the metadata
+will be removed, and the data will continue to consume disk space.
 
-这是由于Hive元数据库负责删除内部表数据。当元数据库配置为使用Kerberos身份验证时，元数据库执行的所有HDFS操作都会被模拟。删除数据的错误将被静默忽略。
+This occurs because the Hive metastore is responsible for deleting the internal table data. When the metastore is configured to use Kerberos authentication, all of the HDFS operations performed by the metastore are impersonated. Errors deleting data are silently ignored.
 
 
 #### `hive.metastore.client.keytab`
 
-keytab文件的路径，该文件包含由`hive.metastore.client.principal`指定的主体的密钥。该文件必须可由运行Presto的操作系统用户读取。
+The path to the keytab file that contains a key for the principal specified by  `hive.metastore.client.principal`. This file must be readable by the operating system user running openLooKeng.
 
-此属性是可选的；没有默认值。
+This property is optional; no default value.
 
-#### `NONE`认证配置示例
+#### Example configuration with `NONE` authentication
 
-"```{.none}"
-hive.metastore.authentication.type=用户主密钥认证类型
+``` properties
+hive.metastore.authentication.type=NONE
 ```
 
-Hive元数据库默认认证类型为`NONE`。当认证类型为`NONE`时，Presto连接不安全的Hive元数据库。未使用Kerberos。
+The default authentication type for the Hive metastore is `NONE`. When the authentication type is `NONE`, openLooKeng connects to an unsecured Hive metastore. Kerberos is not used.
 
-#### `KERBEROS`认证配置示例
+#### Example configuration with `KERBEROS` authentication
 
-"```{.none}"
-hive.metastore.authentication.type=虚拟存储库类型
-hive.metastore.service.principal=主机名称示例示例
-hive.metastore.client.principal=用户名称@扩展名.COM
-hive.metastore.client.keytab=用户主密钥文件
+``` properties
+hive.metastore.authentication.type=KERBEROS
+hive.metastore.service.principal=hive/hive-metastore-host.example.com@EXAMPLE.COM
+hive.metastore.client.principal=openlk@EXAMPLE.COM
+hive.metastore.client.keytab=/etc/openlookeng/hive.keytab
 ```
 
-当Hive元数据库Thrift服务的认证类型为`KERBEROS`时，Presto将作为属性`hive.metastore.client.principal`指定的Kerberos主体连接。Presto将使用`hive.metastore.client.keytab`属性指定的keytab来验证此主体，并将验证元数据库的身份与`hive.metastore.service.principal`是否匹配。
+When the authentication type for the Hive metastore Thrift service is `KERBEROS`, openLooKeng will connect as the Kerberos principal specified by the property `hive.metastore.client.principal`. openLooKeng will authenticate this principal using the keytab specified by the `hive.metastore.client.keytab` property, and will verify that the identity of the metastore matches `hive.metastore.service.principal`.
 
-Keytab文件需要分发到集群中每一个运行Presto的节点。
+Keytab files must be distributed to every node in the cluster that runs openLooKeng.
 
-【keytab文件附加信息】（./hive-security.md#keytab文件附加信息）
+[Additional Information About Keytab Files](./hive-security.md#Additional Information About Keytab Files)
 
-### HDFS鉴权
+### HDFS Authentication
 
-在Kerberized Hadoop集群中，Presto使用Kerberos对HDFS进行身份验证。HDFS的Kerberos认证配置在connector的properties文件中，使用如下属性：
+In a Kerberized Hadoop cluster, openLooKeng authenticates to HDFS using Kerberos. Kerberos authentication for HDFS is configured in the connector\'s properties file using the following properties:
 
-|属性名称|描述|
+| Property Name                       | Description                                                  |
 | :---------------------------------- | :----------------------------------------------------------- |
-| `hive.hdfs.authentication.type` | HDFS的认证类型，根据实际情况选择。可能的取值为`NONE`或`KERBEROS`。|
-| `hive.hdfs.impersonation.enabled` |启用HDFS的终端用户模拟。|
-| `hive.hdfs.presto.principal` | Presto在连接HDFS时将使用的Kerberos主体。|
-| `hive.hdfs.presto.keytab` | HDFS客户端keytab文件所在的位置。|
-| `hive.hdfs.wire-encryption.enabled` |开启HDFS线路加密功能，启用该功能。|
+| `hive.hdfs.authentication.type`     | HDFS authentication type. Possible values are `NONE` or `KERBEROS`. |
+| `hive.hdfs.impersonation.enabled`   | Enable HDFS end-user impersonation.                          |
+| `hive.hdfs.presto.principal`        | The Kerberos principal that openLooKeng will use when connecting to HDFS. |
+| `hive.hdfs.presto.keytab`           | HDFS client keytab location.                                 |
+| `hive.hdfs.wire-encryption.enabled` | Enable HDFS wire encryption.                                 |
 
 #### `hive.hdfs.authentication.type`
 
-“无”或“柯柏罗斯”中的一个。当使用默认值`NONE`时，Kerberos认证被禁用，无需配置其他属性。
+One of `NONE` or `KERBEROS`. When using the default value of `NONE`, Kerberos authentication is disabled and no other properties need to be configured.
 
-当设置为`KERBEROS`时，Hive连接器将使用Kerberos对HDFS进行身份验证。
+When set to `KERBEROS`, the Hive connector authenticates to HDFS using Kerberos.
 
-此属性是可选的；默认值为`NONE`。
+This property is optional; the default is `NONE`.
 
-#### `hive.hdfs.impersonation.enabled.使能该文件系统
+#### `hive.hdfs.impersonation.enabled`
 
-启用终端用户HDFS模拟。
+Enable end-user HDFS impersonation.
 
-“终端用户模拟”一节对HDFS模拟进行了深入解释。
+The section`End User Impersonation` gives an in-depth explanation of HDFS impersonation.
 
-此属性是可选的；默认值为`false`。
+This property is optional; the default is `false`.
 
-#### `hive.hdfs.presto.principal.`（硬盘分区文件）`（硬盘分区文件）
+#### `hive.hdfs.presto.principal`
 
-Presto在连接到HDFS时将使用的Kerberos主体。
+The Kerberos principal that openLooKeng will use when connecting to HDFS.
 
-在此属性值中可以使用`_HOST`占位符。连接HDFS时，Hive Connector会替换工作节点Presto所在的hostname。如果每个工作节点都有自己的Kerberos主体，那么这个方法很有用。
+The `_HOST` placeholder can be used in this property value. When connecting to HDFS, the Hive connector will substitute in the hostname of the **worker** node openLooKeng is running on. This is useful if each worker node has its own Kerberos principal.
 
-示例：`presto-hdfs-superuser/presto-server-node@EXAMPLE.COM`，表示使用文件系统的超级用户。
+Example: `openlookeng-hdfs-superuser/openlookeng-server-node@EXAMPLE.COM` 
 
-或`presto-hdfs-superuser/_HOST@EXAMPLE.COM`命令，使文件系统处于超级用户状态。
+or `openlookeng-hdfs-superuser/_HOST@EXAMPLE.COM`.
 
-此属性是可选的；没有默认值。
+This property is optional; no default value.
 
-#### hive.hdfs.presto.keytab（预拷贝的密钥文件）
+#### `hive.hdfs.presto.keytab`
 
-keytab文件的路径，该文件包含由`hive.hdfs.presto.principal`指定的主体的密钥。该文件必须可由运行Presto的操作系统用户读取。
+The path to the keytab file that contains a key for the principal specified by `hive.hdfs.presto.principal`. This file must be readable by the operating system user running openLooKeng.
 
-此属性是可选的；没有默认值。
+This property is optional; no default value.
 
 #### `hive.hdfs.wire-encryption.enabled`
 
-在使用HDFS有线加密的Kerberized Hadoop集群中，应设置为`true`，使Presto能够访问HDFS。注意，使用有线加密可能会影响查询执行性能。
+In a Kerberized Hadoop cluster that uses HDFS wire encryption, this should be set to `true` to enable openLooKeng to access HDFS. Note that using wire encryption may impact query execution performance.
 
-#### `NONE`认证的配置示例{#hive-security-simple}
+#### Example configuration with `NONE` authentication
 
-"```{.none}"
-hive.hdfs.authentication.type=硬盘文件系统认证类型=无
+``` properties
+hive.hdfs.authentication.type=NONE
 ```
 
-HDFS默认的认证类型为`NONE`。当认证类型为`NONE`时，Presto通过Hadoop的简单认证机制连接HDFS。未使用Kerberos。
+The default authentication type for HDFS is `NONE`. When the authentication type is `NONE`, openLooKeng connects to HDFS using Hadoop\'s simple authentication mechanism. Kerberos is not used.
 
-####带`KERBEROS`认证的配置示例{#hive-security-kerberos}
+#### Example configuration with `KERBEROS` authentication
 
-"```{.none}"
-hive.hdfs.authentication.type=硬盘文件系统类型
-hive.hdfs.presto.principal=硬盘文件系统名称
-hive.hdfs.presto.keytab= <文件系统根目录>/etc/presto/hdfs.keytab <文件系统根目录>
+``` properties
+hive.hdfs.authentication.type=KERBEROS
+hive.hdfs.presto.principal=hdfs@EXAMPLE.COM
+hive.hdfs.presto.keytab=/etc/openlookeng/hdfs.keytab
 ```
 
-当认证类型为`KERBEROS`时，Presto作为`hive.hdfs.presto.principal`属性指定的principal访问HDFS。Presto将使用`hive.hdfs.presto.keytab`指定的keytab来认证这个主体。
+When the authentication type is `KERBEROS`, openLooKeng accesses HDFS as the principal specified by the `hive.hdfs.presto.principal` property. openLooKeng will authenticate this principal using the keytab specified by the `hive.hdfs.presto.keytab` keytab.
 
-Keytab文件需要分发到集群中每一个运行Presto的节点。
+Keytab files must be distributed to every node in the cluster that runs openLooKeng.
 
-【keytab文件附加信息】（./hive-security.md#keytab文件附加信息）
+[Additional Information About Keytab Files](./hive-security.md#Additional Information About Keytab Files)
 
-模拟终端用户{#hive-security-impersonation}
+End User Impersonation
 ----------------------
 
-###模拟访问HDFS
+### Impersonation Accessing HDFS
 
-Presto可以模拟运行查询的最终用户。在用户从命令行界面运行查询的情况下，最终用户是与PrestoCLI进程或可选的`--user`选项的参数关联的用户名。如果使用了HDFS权限或ACL，模拟最终用户可以在访问HDFS时提供额外的安全性。
+openLooKeng can impersonate the end user who is running a query. In the case of a user running a query from the command line interface, the end user is the username associated with the openLooKeng CLI process or argument to the optional `--user` option. Impersonating the end user can provide additional security when accessing HDFS if HDFS permissions or ACLs are used.
 
-HDFS权限和ACL在《HDFS权限指南》中有说明。
+HDFS Permissions and ACLs are explained in the [HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html).
 
-#### `NONE`HDFS模拟认证{#hive-security-simple-impersonation}的认证方式
+#### `NONE` authentication with HDFS impersonation
 
-"```{.none}"
-hive.hdfs.authentication.type=硬盘文件系统认证类型=无
-hive.hdfs.impersonation.enabled=使用镜像功能
+``` properties
+hive.hdfs.authentication.type=NONE
+hive.hdfs.impersonation.enabled=true
 ```
 
-当使用`NONE`身份验证和模拟时，Presto在访问HDFS时模拟运行查询的用户。用户Presto的运行必须被允许模拟这个用户，如`configuring-hadoop-impersonation`节中所讨论的。未使用Kerberos。
+When using `NONE` authentication with impersonation, openLooKeng impersonates the user who is running the query when accessing HDFS. The user openLooKeng is running as must be allowed to impersonate this user, as discussed in the section `configuring-hadoop-impersonation`. Kerberos is not used.
 
-#### KERBEROS`HDFS模拟认证{#hive-security-kerberos-impersonation}，即使用HDFS模拟认证功能。
+#### `KERBEROS` Authentication With HDFS Impersonation
 
-"```{.none}"
-hive.hdfs.authentication.type=硬盘文件系统类型
-hive.hdfs.impersonation.enabled=使用镜像功能
-hive.hdfs.presto.principal=presto@EXAMPLE.COM
-hive.hdfs.presto.keytab= <文件系统根目录>/etc/presto/hdfs.keytab <文件系统根目录>
+``` properties
+hive.hdfs.authentication.type=KERBEROS
+hive.hdfs.impersonation.enabled=true
+hive.hdfs.presto.principal=openlk@EXAMPLE.COM
+hive.hdfs.presto.keytab=/etc/openlookeng/hdfs.keytab
 ```
 
-当使用`KERBEROS`身份验证和模拟时，Presto在访问HDFS时模拟运行查询的用户。`hive.hdfs.presto.principal`属性指定的主体必须是
-允许模拟此用户，如`configuring-hadoop-impersonation`一节中所讨论的。Presto通过`hive.hdfs.presto.keytab`指定的keytab对`hive.hdfs.presto.principal`进行鉴权，确保用户已经通过验证。
+When using `KERBEROS` authentication with impersonation, openLooKeng impersonates the user who is running the query when accessing HDFS. The principal specified by the `hive.hdfs.presto.principal` property must be
+allowed to impersonate this user, as discussed in the section `configuring-hadoop-impersonation`. openLooKeng authenticates `hive.hdfs.presto.principal` using the keytab specified by `hive.hdfs.presto.keytab`.
 
-Keytab文件需要分发到集群中每一个运行Presto的节点。
+Keytab files must be distributed to every node in the cluster that runs openLooKeng.
 
-【keytab文件附加信息】（./hive-security.md#keytab文件附加信息）
+[Additional Information About Keytab Files](./hive-security.md#Additional Information About Keytab Files)
 
-###模拟访问Hive元数据库
+### Impersonation Accessing the Hive Metastore
 
-Presto目前不支持在访问Hive元数据库时模拟最终用户。
+openLooKeng does not currently support impersonating the end user when accessing the Hive metastore.
 
-### Hadoop模拟实现{#configuring-hadoop-impersonation}（在Hadoop环境中实现）
+### Impersonation in Hadoop
 
-为了使用`NONE` **认证HDFS模拟**或`KERBEROS` **认证HDFS模拟**, Hadoop集群必须配置为允许Presto正在运行的用户或主体模拟登录到Presto的用户。Hadoop中的模拟在`core-site.xml`文件中配置。配置选项的完整描述可以在[Hadoop
-文档包]（https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/超级用户.html#配置文档包）下载链接如下：
+In order to use `NONE` **authentication with HDFS impersonation** or `KERBEROS` **Authentication With HDFS Impersonation**, the Hadoop cluster must be configured to allow the user or principal that openLooKeng is running as to impersonate the users who log in to openLooKeng. Impersonation in Hadoop is configured in the file `core-site.xml`. A complete description of the configuration options can be found in the [Hadoop
+documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/Superusers.html#Configurations).
 
-Keytab文件附加信息{#hive-security-additional-keytab}（keytab文件的附加信息）
+Additional Information About Keytab Files
 -----------------------------------------
 
-Keytab文件包含加密密钥，用于验证Kerberos`KDC（密钥分发中心）`的主体。必须安全地存储这些加密密钥；应采取与保护ssh私钥相同的预防措施来保护它们。
+Keytab files contain encryption keys that are used to authenticate principals to the Kerberos `KDC (Key Distribution Center)`. These encryption keys must be stored securely; you should take the same precautions to protect them that you would to protect ssh private keys.
 
-特别是，对keytab文件的访问应该仅限于实际需要使用它们进行身份验证的帐户。在实际操作中，这是Presto进程作为用户运行的。的所有权和权限。
-keytab文件应设置，防止其他用户读取或修改。
+In particular, access to keytab files should be limited to the accounts that actually need to use them to authenticate. In practice, this is the user that the openLooKeng process runs as. The ownership and permissions on
+keytab files should be set to prevent other users from reading or modifying the files.
 
-需要将keytab文件分发到每个运行Presto的节点。在普通部署情况下，Hive Connector在所有节点上的配置是相同的。这意味着keytab需要在
-每个节点的位置相同。
+Keytab files need to be distributed to every node running openLooKeng. Under common deployment situations, the Hive connector configuration will be the same on all nodes. This means that the keytab needs to be in the
+same location on every node.
 
-分发keytab文件后，需要确保keytab文件在每个节点上都有正确的权限。
+You should ensure that the keytab files have the correct permissions on every node after distributing them.
 
-基于文件授权{#hive-file-based-authorization}
+File Based Authorization
 ------------------------
 
-config文件使用JSON指定，由三个部分组成，每个部分是按config文件中指定的顺序匹配的规则列表。授予用户第一个匹配规则的权限。如果不指定，所有正则表达式都默认为`.*`。
+The config file is specified using JSON and is composed of three sections, each of which is a list of rules that are matched in the orderspecified in the config file. The user is granted the privileges from the first matching rule. All regexes default to `.*` if not specified.
 
-###模式规则
+### Schema Rules
 
-这些规则控制着谁被认为是一个模式的所有者。
+These rules govern who is considered an owner of a schema.
 
-- `user`（可选）：与用户名匹配的正则表达式。
-- `schema`（可选）：正则表达式，用来匹配模式名。
-- `owner`（必填）：布尔值，表示所有权。
+-   `user` (optional): regex to match against user name.
+-   `schema` (optional): regex to match against schema name.
+-   `owner` (required): boolean indicating ownership.
 
-###表规则
+### Table Rules
 
-这些规则管理授予特定表的权限。
+These rules govern the privileges granted on specific tables.
 
-- `user`（可选）：与用户名匹配的正则表达式。
-- `schema`（可选）：正则表达式，用来匹配模式名。
-- `table`（可选）：正则表达式，用来匹配表名。
-- `privileges`（必需）:`SELECT`、`INSERT`、`零个或零个以上
-删除，拥有，选择。
+-   `user` (optional): regex to match against user name.
+-   `schema` (optional): regex to match against schema name.
+-   `table` (optional): regex to match against table name.
+-   `privileges` (required): zero or more of `SELECT`, `INSERT`,
+    `DELETE`, `OWNERSHIP`, `GRANT_SELECT`.
 
-###会话属性规则
+### Session Property Rules
 
-这些规则控制谁可以设置会话属性。
+These rules govern who may set session properties.
 
-- `user`（可选）：与用户名匹配的正则表达式。
-- `property`（可选）：根据会话属性名称匹配的正则表达式。
-- `allowed`(required):boolean类型，表示是否本次会话。
-属性。
+-   `user` (optional): regex to match against user name.
+-   `property` (optional): regex to match against session property name.
+-   `allowed` (required): boolean indicating whether this session
+    property may be set.
 
-见下面的例子。
+See below for an example.
 
-"``` {.json}"
+``` json
 {
-"模式": [
-{
-"user": "管理员"，
-"schema": ".*"，
-"owner":true，表示为真实
-}，
-{
-"user": "访客"，
-"owner"：假的
-}，
-{
-"schema": "默认模式"，
-"owner":true，表示为真实
-}
-]，
-"表格": [
-{
-"user": "管理员"，
-"privileges"：【"选择","插入","删除","拥有"】
-}，
-{
-"user": "禁用用户"，
-"privileges": []
-}，
-{
-"schema": "默认模式"，
-"table": ".*"，
-"privileges": ["SELECT"]
-}
-]，
-"会话属性": [
-{
-"property": "强制本地调度"，
-"allow": "true"：允许通过
-}，
-{
-"user": "管理员"，
-"property": "最大分割大小"，
-"allow": "true"：允许通过
-}
-]
+  "schemas": [
+    {
+      "user": "admin",
+      "schema": ".*",
+      "owner": true
+    },
+    {
+      "user": "guest",
+      "owner": false
+    },
+    {
+      "schema": "default",
+      "owner": true
+    }
+  ],
+  "tables": [
+    {
+      "user": "admin",
+      "privileges": ["SELECT", "INSERT", "DELETE", "OWNERSHIP"]
+    },
+    {
+      "user": "banned_user",
+      "privileges": []
+    },
+    {
+      "schema": "default",
+      "table": ".*",
+      "privileges": ["SELECT"]
+    }
+  ],
+  "sessionProperties": [
+    {
+      "property": "force_local_scheduling",
+      "allow": true
+    },
+    {
+      "user": "admin",
+      "property": "max_split_size",
+      "allow": true
+    }
+  ]
 }
 ```

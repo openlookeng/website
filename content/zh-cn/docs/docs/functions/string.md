@@ -1,178 +1,178 @@
-字符串函数和运算符
+String Functions and Operators
 ==============================
 
-字符串运算符
+String Operators
 ----------------
 
-`||`运算符执行串联。
+The `||` operator performs concatenation.
 
-字符串函数
+String Functions
 ----------------
 
-**说明**
+**Note**
 
-这些函数假定输入字符串包含有效的UTF-8编码的Unicode代码点。没有对有效的UTF-8进行显式检查，函数在无效的UTF-8上可能返回错误结果。
-可以使用`from_utf8`纠正无效的UTF-8数据。
+These functions assume that the input strings contain valid UTF-8 encoded Unicode code points. There are no explicit checks for valid UTF-8 and the functions may return incorrect results on invalid UTF-8.
+Invalid UTF-8 data can be corrected with `from_utf8`.
 
-此外，函数在Unicode编码点上操作，而不是在用户可见的*字符*（或*grapheme簇*）上操作。
-一种语言的书写系统的单元，但是函数将把每个代码点作为一个单独的单元。
+Additionally, the functions operate on Unicode code points and not user visible *characters* (or *grapheme clusters*). Some languages combine multiple code points into a single user-perceived *character*, the basic
+unit of a writing system for a language, but the functions will treat each code point as a separate unit.
 
-`lower`和`upper`函数不执行某些语言所需的区域、上下文或一对多映射。
+The `lower` and `upper` functions do not perform locale-sensitive, context-sensitive, or one-to-many mappings required for some languages. 
 
-具体而言，这将返回立陶宛语、土耳其语和阿塞拜疆语的不正确结果。
+Specifically, this will return incorrect results for Lithuanian, Turkish and Azeri.
 
 **chr(n)** -\> varchar
 
-以单个字符串的形式返回Unicode编码点`n`。
+Returns the Unicode code point `n` as a single character string.
 
-**codepoint(string)** -\>整数类型
+**codepoint(string)** -\> integer
 
-返回`string`唯一字符的Unicode编码点。
+Returns the Unicode code point of the only character of `string`.
 
 **concat(string1, \..., stringN)** -\> varchar
 
-返回`string1`,`string2`,`...`,`stringN`的拼接字符串。此函数提供与SQL标准串联运算符（`||`）相同的功能。
+Returns the concatenation of `string1`, `string2`, `...`, `stringN`. This function provides the same functionality as the SQL-standard concatenation operator (`||`).
 
-**hamming\_distance（字符串1，字符串2）** -\> bigint <字符串1> <字符串2>
+**hamming\_distance(string1, string2)** -\> bigint
 
-返回`string1`和`string2`的汉明距离，即对应字符不同的位置个数。
+Returns the Hamming distance of `string1` and `string2`, i.e. the number  of positions at which the corresponding characters are different.
 
-注意事项
-两个字符串的长度必须相等。
-
-
-长度（字符串） -\> bigint
-
-以字符形式返回`string`的长度。
+Note
+that the two strings must have the same length.
 
 
-**levenshtein\_distance（字符串1，字符串2）** -\> bigint（字符串）
+**length(string)** -\> bigint
 
-返回`string1`和`string2`的Levenshtein编辑距离，即将`string1`更改为`string2`所需的单字符编辑（插入、删除或替换）的最小次数。
+Returns the length of `string` in characters.
+
+
+**levenshtein\_distance(string1, string2)** -\> bigint
+
+Returns the Levenshtein edit distance of `string1` and `string2`, i.e. the minimum number of single-character edits (insertions, deletions or substitutions) needed to change `string1` into `string2`.
 
 **lower(string)** -\> varchar
 
-将`string`转换为小写。
+Converts `string` to lowercase.
 
-**lpad（字符串，大小，padstring）** -\> varchar
+**lpad(string, size, padstring)** -\> varchar
 
-左垫`字符串`到`大小`字符`与`字符串`。如果`size`小于`string`的长度，结果将被截断为`size`个字符。size不能为负数，padstring不能为空。
+Left pads `string` to `size` characters with `padstring`. If `size` is less than the length of `string`, the result is truncated to `size` characters. `size` must not be negative and `padstring` must be non-empty.
 
 **ltrim(string)** -\> varchar
 
-去掉`string`中的前导空格。
+Removes leading whitespace from `string`.
 
-**replace（string，搜索）** -\> varchar（替换后的字符串）
+**replace(string, search)** -\> varchar
 
-从`string`中移除`search`的所有实例。
+Removes all instances of `search` from `string`.
 
-**替换（字符串，搜索，替换）** -\> varchar
+**replace(string, search, replace)** -\> varchar
 
-将`search`的所有实例替换为`string`中的`replace`。
+Replaces all instances of `search` with `replace` in `string`.
 
 
-**反向（字符串）** -\> varchar
+**reverse(string)** -\> varchar
 
-返回字符串`string`，字符顺序颠倒。
+Returns `string` with the characters in reverse order.
 
-**rpad(string,size,padstring)** -\> varchar（字符串类型）
+**rpad(string, size, padstring)** -\> varchar
 
-右垫`字符串`到`大小`字符`与`字符串`。如果`size`小于`string`的长度，结果将被截断为`size`个字符。size不能为负数，padstring不能为空。
+Right pads `string` to `size` characters with `padstring`. If `size` is less than the length of `string`, the result is truncated to `size` characters. `size` must not be negative and `padstring` must be non-empty.
 
 **rtrim(string)** -\> varchar
 
-从`string`中删除尾随的空白。
+Removes trailing whitespace from `string`.
 
-split（string，分隔符） -\>数组(varchar)
+**split(string, delimiter)** -\> array(varchar)
 
-在`delimiter`上拆分`string`，返回一个数组。
+Splits `string` on `delimiter` and returns an array.
 
-split（字符串，分隔符，limit） -\>数组(varchar)
+**split(string, delimiter, limit)** -\> array(varchar)
 
-在`delimiter`上拆分`string`，并返回一个大小为`limit`的数组。数组中的最后一个元素总是包含`string`中剩下的所有内容。`limit`必须是正数。
+Splits `string` on `delimiter` and returns an array of size at most `limit`. The last element in the array always contain everything left in the `string`. `limit` must be a positive number.
 
-split\_part（字符串，分隔符，索引）** -\> varchar
+**split\_part(string, delimiter, index)** -\> varchar
 
-将`string`拆分到`delimiter`上，返回字段`index`。字段索引以`1`开头。如果索引大于字段数，则返回null。
+Splits `string` on `delimiter` and returns the field `index`. Field indexes start with `1`. If the index is larger than than the number of fields, then null is returned.
 
-**split\_to**\_map（string，条目分隔符，keyValue分隔符） -\>映射\<varchar, varchar\>
+**split\_to**\_map(string, entryDelimiter, keyValueDelimiter) -\> map\<varchar, varchar\>
 
-将`string`按`entryDelimiter`和`keyValueDelimiter`进行分割，返回一个map。`entryDelimiter`将`string`分割成键值对。
+Splits `string` by `entryDelimiter` and `keyValueDelimiter` and returns a map. `entryDelimiter` splits `string` into key-value pairs. 
 
-`keyValueDelimiter`将每一对分割成key和value。
+`keyValueDelimiter` splits each pair into key and value.
 
-split\_to\_multimap（字符串类型，输入分隔符，keyValue分隔符） -\> map（varchar，数组类型(varchar）)
+**split\_to**\_multimap(string, entryDelimiter, keyValueDelimiter) -\> map(varchar, array(varchar))
 
-将`string`按`entryDelimiter`和`keyValueDelimiter`拆分，并返回一个map，其中包含每个唯一键的值数组。
+Splits `string` by `entryDelimiter` and `keyValueDelimiter` and returns a map containing an array of values for each unique key. 
 
-`entryDelimiter`将`string`分割成键值对。`keyValueDelimiter`将每一对分割成key和value。每个键的值将按照它们在`string`中出现的顺序排列。
+`entryDelimiter` splits `string` into key-value pairs.  `keyValueDelimiter` splits each pair into key and value. The values for each key will be in the same order as they appeared in `string`.
 
-**strpos（string，子串）** -\> bigint（大字符串）
+**strpos(string, substring)** -\> bigint
 
-返回`string`中`substring`的第一个实例的起始位置。职位以`1`开头。如果未找到，则返回`0`。
+Returns the starting position of the first instance of `substring` in `string`. Positions start with `1`. If not found, `0` is returned.
 
-**position（substring IN字符串）** -\> bigint（子串输入字符串）
+**position(substring IN string)** -\> bigint
 
-返回`string`中`substring`的第一个实例的起始位置。职位以`1`开头。如果未找到，则返回`0`。
+Returns the starting position of the first instance of `substring` in `string`. Positions start with `1`. If not found, `0` is returned.
 
 **substr(string, start)** -\> varchar
 
-从起始位置`start`返回`string`的其余部分。
-职位以`1`开头。负的起始位置被解释为相对于字符串的结尾。
+Returns the rest of `string` from the starting position `start`.
+Positions start with `1`. A negative starting position is interpreted as being relative to the end of the string.
 
-**substr(string, start, length) <字符串长度> <字符串长度> <字符串长度> <字符串长度> <字符串长度> <字符串长度> <字符串长度> -\> varchar
+**substr(string, start, length)** -\> varchar
 
-返回从起始位置`start`开始的长度为`length`的`string`string`的子字符串。职位以`1`开头。负的起始位置被解释为相对于字符串的结尾。
+Returns a substring from `string` of length `length` from the starting position `start`. Positions start with `1`. A negative starting position is interpreted as being relative to the end of the string.
 
-**trim（字符串）** -\> varchar（字符串）
+**trim(string)** -\> varchar
 
-从`string`中去掉前导和尾随的空白。
+Removes leading and trailing whitespace from `string`.
 
 **upper(string)** -\> varchar
 
-将`string`转换为大写。
+Converts `string` to uppercase.
 
-**word\_stem（单词）** -\> varchar <字符串> <字符串> <字符串> <字符串> <字符串>
+**word\_stem(word)** -\> varchar
 
-返回英文单词'word'的词干。
+Returns the stem of `word` in the English language.
 
 **word\_stem(word, lang)** -\> varchar
 
-返回`lang`语言中`word`的词干。
+Returns the stem of `word` in the `lang` language.
 
 
-Unicode函数
+Unicode Functions
 -----------------
 
 **normalize(string)** -\> varchar
 
-转换`string`与NFC归一化形式。
+Transforms `string` with NFC normalization form.
 
-**normalize（string，表单）** -\> varchar（字符串类型）
+**normalize(string, form)** -\> varchar
 
-使用指定的规范化形式转换`string`。`form`必须是下列关键字之一：
+Transforms `string` with the specified normalization form. `form` must be be one of the following keywords:
 
-|形式|说明|
+| Form   | Description                                                  |
 | :----- | :----------------------------------------------------------- |
-| `NFD' |标准分解|
-| `NFC` |规范分解，然后是规范组合|
-| `NFKD' |兼容性分解|
-| `NFKC' |兼容性分解，然后是规范组合|
+| `NFD`  | Canonical Decomposition                                      |
+| `NFC`  | Canonical Decomposition, followed by Canonical Composition   |
+| `NFKD` | Compatibility Decomposition                                  |
+| `NFKC` | Compatibility Decomposition, followed by Canonical Composition |
 
-**说明**
+**Note**
 
-这个SQL标准函数有特殊语法，要求指定`form`为关键字，而不是字符串。
+This SQL-standard function has special syntax and requires specifying `form` as a keyword, not as a string.   
 
-**to\_utf8(string)** -\>变量二进制格式
+**to\_utf8(string)** -\> varbinary
 
-将`string`编码成UTF-8的varbinary表示形式。
+Encodes `string` into a UTF-8 varbinary representation.
 
-**from\_utf8（二进制）** -\> varchar（字符串）
+**from\_utf8(binary)** -\> varchar
 
-从`binary`解码UTF-8编码的字符串。使用Unicode替换字符`U+FFFD`替换无效的UTF-8序列。
+Decodes a UTF-8 encoded string from `binary`. Invalid UTF-8 sequences are replaced with the Unicode replacement character `U+FFFD`.
 
-**from\_utf8（二进制，替换）** -\> varchar（字符串）
+**from\_utf8(binary, replace)** -\> varchar
 
-从`binary`解码UTF-8编码的字符串。将无效的UTF-8序列替换为`replace`。替换字符串`replace`必须是单个字符或空字符（在这种情况下是无效字符）
-移除)。
+Decodes a UTF-8 encoded string from `binary`. Invalid UTF-8 sequences are replaced with `replace`. The replacement string `replace` must either be a single character or empty (in which case invalid characters
+are removed).
 

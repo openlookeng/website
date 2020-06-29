@@ -1,7 +1,7 @@
-UUID函数
+UUID Functions
 ==============
 
 **uuid()** -\> uuid
 
-返回一个伪随机生成的[uuid_type](../language/types) （类型4）。
+Returns a pseudo randomly generated [uuid_type](../language/types) (type 4).
 

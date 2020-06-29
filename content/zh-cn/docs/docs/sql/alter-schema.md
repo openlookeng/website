@@ -1,32 +1,32 @@
-替代计划
+ALTER SCHEMA
 ============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-重命名{SCHEMA|DATABASE}名称重命名
+``` sql
+ALTER {SCHEMA|DATABASE} name RENAME TO new_name
 ```
 
-问题描述
+Description
 -----------
 
-更改现有架构的定义。
+Change the definition of an existing schema.
 
-示例
+Examples
 --------
 
-将模式`web`重命名为`traffic`：
+Rename schema `web` to `traffic`:
 
-ALTER SCHEMA网站改名到流量
-ALTER DATABASE网页改名到流量
+    ALTER SCHEMA web RENAME TO traffic
+    ALTER DATABASE web RENAME TO traffic
 
-限制
+Limitations
 -----------
 
-有些连接器不支持重命名模式，如Hive Connector。有关更多详细信息，请参阅连接器文档。
+Some connectors do not support renaming schema, such as Hive Connector. See connector documentation for more details.
 
-参见
+See Also
 --------
 
-【创建模式】(./create-schema)
+[create-schema](./create-schema)

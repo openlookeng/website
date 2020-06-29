@@ -1,33 +1,33 @@
-落杆
+DROP ROLE
 =========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-DROP ROLE角色名称
+``` sql
+DROP ROLE role_name
 ```
 
-问题描述
+Description
 -----------
 
-`DROP ROLE`删除当前目录中的指定角色。
+`DROP ROLE` drops the specified role in the current catalog.
 
-`DROP ROLE`语句要成功，执行它的用户必须拥有给定角色的管理员权限。
+For `DROP ROLE` statement to succeed, the user executing it should possess admin privileges for the given role.
 
-示例
+Examples
 --------
 
-删除角色`admin` ：
+Drop role `admin` :
 
-删除角色管理；
+    DROP ROLE admin;
 
-限制
+Limitations
 -----------
 
-部分Connector不支持角色管理。有关更多详细信息，请参阅连接器文档。
+Some connectors do not support role management. See connector documentation for more details.
 
-参见
+See Also
 --------
 
-【创建角色】（./create-role），【设置角色】（./set-role），【授权角色】（./grant-roles），【回收角色】(./revoke-roles)
+[create-role](./create-role), [set-role](./set-role), [grant-roles](./grant-roles), [revoke-roles](./revoke-roles)

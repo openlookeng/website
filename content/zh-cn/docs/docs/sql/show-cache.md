@@ -1,31 +1,31 @@
-节目缓存
+SHOW CACHE
 ==========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-节目缓存
+``` sql
+SHOW CACHE
 ```
 
-问题描述
+Description
 -----------
 
-`SHOW CACHE`显示Split缓存协调器元数据。Split cache中包含缓存的表和分区信息。
+`SHOW CACHE` displays the Split cache coordinator metadata. Split cache contains information about table and partition information that are cached.
 
-示例
+Examples
 --------
 
-显示缓存：
+Show cache :
 
-节目缓存
+    SHOW CACHE
 
-限制
+Limitations
 -----------
 
-仅Hive连接器支持该功能。有关更多详细信息，请参阅连接器文档。
+Only Hive connector support this functionality. See connector documentation for more details.
 
-参见
+See Also
 --------
 
 [cache-table](./cache-table), [drop-cache](./drop-cache)

@@ -1,74 +1,74 @@
-描述输出
+DESCRIBE OUTPUT
 ===============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-DESCRIBE输出语句_名称
+``` sql
+DESCRIBE OUTPUT statement_name
 ```
 
-问题描述
+Description
 -----------
 
-列出预备语句的输出列，包括列名（或别名）、目录、模式、表、类型、类型大小（以字节为单位）和是否别名列的布尔值。
+List the output columns of a prepared statement, including the column name (or alias), catalog, schema, table, type, type size in bytes, and a boolean indicating if the column is aliased.
 
-示例
+Examples
 --------
 
-准备并描述一个具有四个输出列的查询：
+Prepare and describe a query with four output columns:
 
-从my_select1开始准备
-从国家选择
+    PREPARE my_select1 FROM
+    SELECT * FROM nation
 
-``` {.sql}
-DESCRIBE输出结果为my_select1 ；
+``` sql
+DESCRIBE OUTPUT my_select1;
 ```
 
-"```{.none}"
-列名|目录|模式|表|类型|类型大小|别名
+``` 
+Column Name | Catalog | Schema | Table  |  Type   | Type Size | Aliased
 -------------+---------+--------+--------+---------+-----------+---------
-国密|tpch|sf1|国密|bigint|8|假
-name | tpch | sf1 |国家名称| varchar | 0 |错误名称
-regionkey | tpch | sf1 |国家名称| bigint | 8 |错误名称
-注释| tpch | sf1 |国家| varchar | 0 |错误
-（4行）
+nationkey   | tpch    | sf1    | nation | bigint  |         8 | false
+name        | tpch    | sf1    | nation | varchar |         0 | false
+regionkey   | tpch    | sf1    | nation | bigint  |         8 | false
+comment     | tpch    | sf1    | nation | varchar |         0 | false
+(4 rows)
 ```
 
-准备并描述一个输出列是表达式的查询：
+Prepare and describe a query whose output columns are expressions:
 
-从my_select2开始准备
-选择计数(*)为my_count,1+2来自国家
+    PREPARE my_select2 FROM
+    SELECT count(*) as my_count, 1+2 FROM nation
 
-``` {.sql}
-描述输出my_select2；
+``` sql
+DESCRIBE OUTPUT my_select2;
 ```
 
-"```{.none}"
-列名|目录|模式|表|类型|类型大小|别名
+``` 
+Column Name | Catalog | Schema | Table |  Type  | Type Size | Aliased
 -------------+---------+--------+-------+--------+-----------+---------
-我的计数| | | | bigint | 8 | true
-_col1||||||bigint工具||8||假
-（2行）
+my_count    |         |        |       | bigint |         8 | true
+_col1       |         |        |       | bigint |         8 | false
+(2 rows)
 ```
 
-准备并描述一个行计数查询：
+Prepare and describe a row count query:
 
-准备从my_create创建
-从国家选择创建表
+    PREPARE my_create FROM
+    CREATE TABLE foo AS SELECT * FROM nation
 
-``` {.sql}
-描述输出my_create；
+``` sql
+DESCRIBE OUTPUT my_create;
 ```
 
-"```{.none}"
-列名|目录|模式|表|类型|类型大小|别名
+``` 
+Column Name | Catalog | Schema | Table |  Type  | Type Size | Aliased
 -------------+---------+--------+-------+--------+-----------+---------
-行数| | | bigint | 8 |错误
-（1行）
+rows        |         |        |       | bigint |         8 | false
+(1 row)
 ```
 
-参见
+See Also
 --------
 
-【准备】（./准备）
+[prepare](./prepare)

@@ -1,19 +1,19 @@
-节目会话
+SHOW SESSION
 ============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-节目会话
+``` sql
+SHOW SESSION
 ```
 
-问题描述
+Description
 -----------
 
-列出当前会话属性。
+List the current session properties.
 
-参见
+See Also
 --------
 
-【重置会话】（./重置会话），【设置会话】(./set-session)
+[reset-session](./reset-session), [set-session](./set-session)

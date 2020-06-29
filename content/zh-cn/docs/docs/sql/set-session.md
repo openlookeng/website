@@ -1,28 +1,28 @@
-设置会话
+SET SESSION
 ===========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-SET SESSION名称=表达式
-SET SESSION catalog.name =会话目录名称表达式
+``` sql
+SET SESSION name = expression
+SET SESSION catalog.name = expression
 ```
 
-问题描述
+Description
 -----------
 
-设置会话属性值。
+Set a session property value.
 
-示例
+Examples
 --------
 
-``` {.sql}
-SET SESSION优化哈希算法生成开关= true；
-SET SESSION hive.optimized_reader_enabled=true; （设置会话是否打开读卡器开关）
+``` sql
+SET SESSION optimize_hash_generation = true;
+SET SESSION hive.optimized_reader_enabled = true;
 ```
 
-参见
+See Also
 --------
 
-【重置会话】（./重置会话），【显示会话】（./显示会话）
+[reset-session](./reset-session), [show-session](./show-session)

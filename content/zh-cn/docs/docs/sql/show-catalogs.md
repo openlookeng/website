@@ -1,14 +1,14 @@
-展览目录
+SHOW CATALOGS
 =============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-节目分类【类似模式】
+``` sql
+SHOW CATALOGS [ LIKE pattern ]
 ```
 
-问题描述
+Description
 -----------
 
-列出可用的目录。可以使用`LIKE`子句限制目录名称列表。
+List the available catalogs. The `LIKE` clause can be used to restrict the list of catalog names.

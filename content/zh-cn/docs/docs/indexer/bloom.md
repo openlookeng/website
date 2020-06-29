@@ -1,15 +1,21 @@
-#布隆索引
+# Bloom Index
 
-##用例
+## Use cases
 
-Bloom Index用于分裂过滤，仅被**coordinator**节点使用。
+Bloom Index is used for split filtering, and is used only by the **coordinator** nodes.
 
-+如果查询中作为谓词一部分的列上存在此索引，Presto可能能够通过筛选计划拆分来提高性能。
+- If this index exists on a column which is part of a predicate in the query, openLooKeng may be able to improve performance by filtering scheduled splits.
 
-例如，如果在列`id`上存在索引，并且查询是`select * from table where id=12345`
+For example, if an index exists on column `id` and the query is:
 
--如果列的值是唯一的，则Bloom索引最有效（例如： userid）和不能太分散。
+```sql
+select * from table where id=12345
+```
 
-例如，假设表中存储了用户信息，表数据在10个文件中。对于给定的用户ID，只有一个文件包含数据。因此，在userid上创建索引将帮助我们在调度时间过滤掉10个文件中的9个，并节省大量用于读取每个文件的IO时间。
-  
--提示：如果可能，建议对被索引列上的数据进行排序。
+
+
+- Bloom index works best if the column's values are unique (e.g. userid) and are not too distributed.
+
+For example, assume the tables stores information about users and the table data is in 10 files.  For a given userid, only one file will contain the data. Therefore creating an index on userid will help us to filter out 9 out of the 10 files at scheduling time and will save significant IO time that would've  therwise been used to read each of the files.
+
+*Tip: if possible, it is recommended to sort the data on the column being indexed.*

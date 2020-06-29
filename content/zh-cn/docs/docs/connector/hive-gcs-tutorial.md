@@ -1,131 +1,138 @@
-Hive连接器GCS教程
+Hive Connector GCS Tutorial
 ===========================
 
-初步步骤
+Preliminary Steps
 -----------------
 
-###确保访问GCS
+### Ensure Access to GCS
 
-访问云存储数据是可能的，这要感谢【Hadoop云存储连接器】（https://cloud.google.com/dataproc/docs/concepts/connectors/cloud-storage）。
+Access to Cloud Storage data is possible thanks to [Hadoop Cloud Storage connector](https://cloud.google.com/dataproc/docs/concepts/connectors/cloud-storage).
 
-如果您的数据是公开的，您不需要做任何事情。但是，在大多数情况下，数据不是公开的，Presto集群需要能够访问这些数据。这通常通过创建具有访问数据权限的服务帐户来实现。
-可在GCP的【业务帐号管理】（https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts）页面进行配置。
-创建业务帐号后，需要创建业务帐号的密钥，并下载JSON格式的密钥。
+If your data is publicly available, you do not need to do anything here. However, in most cases data is not publicly available, and the openLooKeng cluster needs to have access to it. This is typically achieved by creating a service account which has permissions to access your data.
+You can do this on the [service accounts page in GCP](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts).
+Once you create a service account, create a key for it and download the key in JSON format.
 
-### Hive Connector配置信息
+### Hive Connector configuration
 
-另一个要求是您已经在Presto中启用并配置Hive连接器。连接器使用Hive metastore进行数据发现，不限于HDFS上的数据。
+Another requirement is that you have enabled and configured a Hive connector in openLooKeng. The connector uses Hive metastore for data discovery and is not limited to data residing on HDFS.
 
-**配置Hive连接器**
+**Configuring Hive Connector**
 
-- Hive元数据库URL：
+-   URL to Hive metastore:
 
-> -新Hive元数据库在GCP：
->
-> >如果您的Presto节点是由GCP发放的，那么您的Hive
-> >元数据库也应该在GCP上，以最小化延迟和
-> >成本。在上创建新的Hive元数据库的最简单方法
-> > GCP是创建一个Cloud DataProc小集群(1 master, 0
-> > workers)，可从您的Presto集群访问。跟随
-> >该步骤执行完成后，即可对已有的Hive元数据库执行> >操作。
->
-> -现有Hive元数据库：
->
-> >要在Presto集群中使用现有的Hive元数据库，您需要
-> >需要在您的Hive中设置`hive.metastore.uri`属性
-> >目录属性文件
-> > `thrift://${METASTORE_ADDRESS}:${METASTORE_THRIFT_PORT} <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号>。如果
-> >元数据库使用认证，请参考
-> > [hive-security](./hive-security).
+    > -   New Hive metastore on GCP:
+    >
+    >     > If your openLooKeng nodes are provisioned by GCP, your Hive
+    >     > metastore should also be on GCP to minimize latency and
+    >     > costs. The simplest way to create a new Hive metastore on
+    >     > GCP is to create a small Cloud DataProc cluster (1 master, 0
+    >     > workers), accessible from your openLooKeng cluster. Follow the
+    >     > steps for existing Hive metastore after finishing this step.
+    >
+    > -   Existing Hive metastore:
+    >
+    >     > To use an existing Hive metastore with a openLooKeng cluster, you
+    >     > need to set the `hive.metastore.uri` property in your Hive
+    >     > catalog properties file to
+    >     > `thrift://${METASTORE_ADDRESS}:${METASTORE_THRIFT_PORT}`. If
+    >     > the metastore uses authentication, please refer to
+    >     > [hive-security](./hive-security).
 
-- GCS接入：
+-   GCS access:
 
->这里是所有GCS配置属性的示例值，其中
->可以在Hivecatalog属性文件中设置：
->
-> ```{.properties} <属性名称>
-> #访问Google云存储的json密钥文件
-> hive.gcs.json-key-file-path= <证书存放路径>/to/gcs_keyfile.json <证书存放路径>
->
-> #使用客户端提供的OAuth token访问Google云存储
-> hive.gcs.use-access-token=使用gcs访问令牌
-> ```
+    > Here are example values for all GCS configuration properties which
+    > can be set in Hive catalog properties file:
+    >
+    > ``` properties
+    > # JSON key file used to access Google Cloud Storage
+    > hive.gcs.json-key-file-path=/path/to/gcs_keyfile.json
+    >
+    > # Use client-provided OAuth token to access Google Cloud Storage
+    > hive.gcs.use-access-token=false
+    > ```
 
-### Hive Metastore的配置信息
+### Hive Metastore configuration
 
-如果您的Hive元存储使用StorageBasedAuthorization，那么还需要访问GCS来执行POSIX权限检查。为Hive配置GCS访问超出了本教程的范围，但是有一些
-优秀指南在线链接：
+If your Hive metastore uses StorageBasedAuthorization it will also need to access GCS to perform POSIX permission checks. Configuring GCS access for Hive is outside the scope of this tutorial, but there are some
+excellent guides online:
 
--【谷歌：安装云存储连接器】(https://cloud.google.com/dataproc/docs/concepts/connectors/install-storage-connector)
--【HortonWorks：与谷歌云存储合作】（https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/bk_cloud-数据访问/内容/gcp-get-started）网页)
--【Cloudera：配置谷歌云存储连接】(https://www.cloudera.com/documentation/enterprise/latest/topics/admin_gcs_config.html)
+-   [Google: Installing the Cloud Storage connector](https://cloud.google.com/dataproc/docs/concepts/connectors/install-storage-connector)
+-   [HortonWorks: Working with Google Cloud Storage](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/bk_cloud-data-access/content/gcp-get-started.html)
+-   [Cloudera: Configuring Google Cloud Storage Connectivity](https://www.cloudera.com/documentation/enterprise/latest/topics/admin_gcs_config.html)
 
-GCS访问通常在`core-site.xml`中配置，供所有使用ApacheHadoop的组件使用。
+GCS access is typically configured in `core-site.xml`, to be used by all components using Apache Hadoop.
 
-Hadoop的GCS连接器提供了一个HadoopFileSystem的实现。遗憾的是，GCS IAM权限没有映射到Hadoop FileSystem所需的POSIX权限，因此GCS连接器呈现的是伪造的POSIX文件权限。
+GCS connector for Hadoop provides an implementation of a Hadoop FileSystem. Unfortunately GCS IAM permissions don\'t map to POSIX permissions required by Hadoop FileSystem, so the GCS connector presents fake POSIX file permissions.
 
-当Hive元数据库访问GCS时，默认情况下，它将看到伪造的POSIX权限等于`0700`。如果Presto和Hive Metastore以不同的用户帐户运行，这将导致Hive Metastore拒绝Presto
-数据访问。有两种可能的解决方案：
+When Hive metastore accesses GCS, it will by default see fake POSIX permissions equal to `0700`. If openLooKeng and Hive metastore are running as different user accounts, this will cause Hive metastore to deny openLooKeng
+data access. There are two possible solutions to this problem:
 
-- Presto service和Hive服务使用同一个用户运行。
--确保HiveGCS配置包含一个属性a`fs.gs.reported.permissions`，值为`777`。
+-   Run openLooKeng service and Hive service as the same user.
+-   Make sure Hive GCS configuration includes a`fs.gs.reported.permissions` property with a value of `777`.
 
-Presto首次访问GCS数据
+Accessing GCS Data From openLooKeng for the First Time
 -----------------------------------------------
 
-###访问Hive元数据库中已映射的数据
+### Accessing Data Already Mapped in the Hive metastore
 
-如果您从Hive迁移到Presto，则GCS数据可能已经映射到元数据库中的SQL表。在这种情况下，您应该能够查询它。
+If you migrate to openLooKeng from Hive, chances are that your GCS data is already mapped to SQL tables in the metastore. In that case, you should be able to query it.
 
-###访问Hive元数据库中未映射的数据
+### Accessing Data Not Yet Mapped in the Hive metastore
 
-要访问Hive元数据库中尚未映射的GCS数据，需要提供数据的模式、文件格式和数据位置。例如，如果您在GCS桶中有ORC或Parquet文
-`my_bucket`，您将需要执行一个查询：
+To access GCS data that is not yet mapped in the Hive metastore you need to provide the schema of the data, the file format, and the data location. For example, if you have ORC or Parquet files in an GCS bucket
+`my_bucket`, you will need to execute a query:
 
---选择将定义在其中的模式，必须已经存在
-缺省使用hive.default；
-    
---创建表
-CREATE TABLE订单(
-订单键大
-顾客至上，
-orderstatus varchar(1)，
-总价翻倍，
-orderdate日期，
-orderpriority varchar(15)命令的返回值。
-文员varchar(15)，
-船舶优先权整数。
-注释varchar(79)
-)有(
-external_location = '我的桶/路径/文件夹'，
-format = 'ORC' --或者'PARQUET'，表示按ORC格式显示
-)；
+```sql
+-- select schema in which the table will be defined, must already exist
+USE hive.default;
 
-现在您应该能够查询新映射的表：
+-- create table
+CREATE TABLE orders (
+     orderkey bigint,
+     custkey bigint,
+     orderstatus varchar(1),
+     totalprice double,
+     orderdate date,
+     orderpriority varchar(15),
+     clerk varchar(15),
+     shippriority integer,
+     comment varchar(79)
+) WITH (
+     external_location = 'gs://my_bucket/path/to/folder',
+     format = 'ORC' -- or 'PARQUET'
+);
+```
 
-从订单中选择；
+Now you should be able to query the newly mapped table:
 
-使用Presto写GCS数据
+    SELECT * FROM orders;
+
+Writing GCS Data with openLooKeng
 --------------------------
 
-###前提条件
+### Prerequisites
 
-在尝试向GCS写入数据之前，请确保已完成从GCS读取数据所需的所有配置。
+Before you attempt to write data to GCS, make sure you have configured everything necessary to read data from GCS.
 
-###创建导出Schema
+### Create Export Schema
 
-如果Hive元数据库包含映射到GCS位置的schema，则可以使用这些schema导出数据到GCS。如果您不想使用现有的模式（或者Hive元数据库中没有合适的schema）你
-需要创建一个新的：
+If Hive metastore contains schema(s) mapped to GCS locations, you can use them to export data to GCS. If you don\'t want to use existing schemas (or there are no appropriate schemas in the Hive metastore), you
+need to create a new one:
 
-CREATE SCHEMA hive.gcs_export WITH （location = '输入位置名称'）；
+```sql
+CREATE SCHEMA hive.gcs_export WITH (location = 'gs://my_bucket/some/path');
+```
 
-###导出数据到GCS
+### Export Data to GCS
 
-一旦您拥有了一个指向要导出数据的位置的模式，就可以使用`CREATE TABLE AS`语句发出导出命令，并选择所需的文件格式。数据将被写入一个或
-命名空间`gs://my_bucket/some/path/my_table`下的更多文件。
+Once you have a schema pointing to a location where you want to export the data, you can issue the export using a `CREATE TABLE AS` statement and select your desired file format. The data will be written to one or
+more files within the `gs://my_bucket/some/path/my_table` namespace.
 
-示例：
+Example:
 
-创建表hive.gcs_export.orders_export的订单列表
-WITH（format = 'ORC'）语法检查
-从tpch.sf1.orders中选择*；
+```sql
+CREATE TABLE hive.gcs_export.orders_export
+WITH (format = 'ORC')
+AS SELECT * FROM tpch.sf1.orders;
+```
+

@@ -1,42 +1,42 @@
-创建SCHEMA
+CREATE SCHEMA
 =============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-创建{SCHEMA|DATABASE}【如果不存在】模式名称
-【WITH(property_name =表达式【,...】】，以此类推】
+``` sql
+CREATE {SCHEMA|DATABASE} [ IF NOT EXISTS ] schema_name
+[ WITH ( property_name = expression [, ...] ) ]
 ```
 
-问题描述
+Description
 -----------
 
-创建新的空模式。架构是保存表、视图和其他数据库对象的容器。
+Create a new, empty schema. A schema is a container that holds tables, views and other database objects.
 
-如果模式已经存在，可选的`IFNOTEXISTS`子句将导致错误被抑制。
+The optional `IF NOT EXISTS` clause causes the error to be suppressed if the schema already exists.
 
-可选`WITH`子句可用于设置新创建的模式的属性。列出所有可用的schema属性：
+The optional `WITH` clause can be used to set properties on the newly created schema. To list all available schema properties, run the following query:
 
-SELECT *从系统元数据模式属性
+    SELECT * FROM system.metadata.schema_properties
 
-示例
+Examples
 --------
 
-在当前目录下创建一个新的模式`web`：
+Create a new schema `web` in the current catalog:
 
-创建SCHEMA网页
-创建数据库web
+    CREATE SCHEMA web
+    CREATE DATABASE web
 
-在`hive`目录中创建一个新的模式`sales`：
+Create a new schema `sales` in the `hive` catalog:
 
-创建SCHEMA群
+    CREATE SCHEMA hive.sales
 
-如果模式`traffic`不存在，则创建它：
+Create the schema `traffic` if it does not already exist:
 
-如果不存在流量，则创建计划
+    CREATE SCHEMA IF NOT EXISTS traffic
 
-参见
+See Also
 --------
 
-【替换模式】（./alter-schema） ，【删除模式】(./drop-schema)
+[alter-schema](./alter-schema) ,[drop-schema](./drop-schema)

@@ -1,93 +1,93 @@
-解释分析
+EXPLAIN ANALYZE
 ===============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-EXPLAIN ANALYZE [VERBOSE]语句说明
+``` sql
+EXPLAIN ANALYZE [VERBOSE] statement
 ```
 
-问题描述
+Description
 -----------
 
-执行语句，并显示语句的分布式执行计划以及每个操作的开销。
+Execute the statement and show the distributed execution plan of the statement along with the cost of each operation.
 
-`VERBOSE'选项将提供更详细的信息和低层次的统计数据；了解这些可能需要了解Presto的内部细节和执行细节。
+The `VERBOSE` option will give more detailed information and low-level statistics; understanding these may require knowledge of openLooKeng internals and implementation details.
 
 
-**说明**
+**Note**
 
-*统计信息可能不完全准确，特别是对于快速完成的查询。*
+*The stats may not be entirely accurate, especially for queries that* *complete quickly.*
 
-示例
+Examples
 --------
 
-在下面的示例中，您可以看到每个阶段花费的CPU时间，以及该阶段中每个计划节点的相对成本。请注意，计划节点的相对成本基于墙时间，墙时间可能与CPU时间相关，也可能不相关。对于每个计划节点，您都可以看到一些额外的统计数据（e.g：每个节点实例的平均输入，相关计划节点的平均哈希冲突数）这些统计数字是
-当需要检测查询的数据异常（倾斜度、异常哈希冲突）时，它非常有用。
+In the example below, you can see the CPU time spent in each stage, as well as the relative cost of each plan node in the stage. Note that the relative cost of the plan nodes is based on wall time, which may or may not be correlated to CPU time. For each plan node you can see some additional statistics (e.g: average input per node instance, average number of hash collisions for relevant plan nodes). Such statistics are
+useful when one wants to detect data anomalies for a query (skewness, abnormal hash collisions).
 
-"```{.none}"
-presto:sf1>解释分析选择数量（*），文员从订单WHERE订单日期>日期'1995-01-01'组由文员；
+``` sql
+lk:sf1> EXPLAIN ANALYZE SELECT count(*), clerk FROM orders WHERE orderdate > date '1995-01-01' GROUP BY clerk;
 
-查询计划
+                                          Query Plan
 -----------------------------------------------------------------------------------------------
-分片1 [HASH]
-成本：CPU 88.57ms，输入：4000行（148.44kB） ，输出：1000行(28.32kB)
-输出布局：【数量，文员】
-输出分区：SINGLE []
-- Project[] =>【数量：大，文员：varchar(15)】
-成本：26.24%，输入：1000行（37.11kB） ，输出：1000行（28.32kB） ，筛选：0.00%
-输入平均：62.50行，输入std.dev.:14.77%
--聚合（最终）[clerk]【$hashvalue】=>【clerk:varchar(15), $hashvalue:bigint，计数：bigint】，则对内存进行回收。
-成本：16.83%，输出：1000行(37.11kB)
-输入平均：250.00行，输入std.dev.:14.77%
-count := "计数" ("count_8") ，表示计数
-- LocalExchange[HASH]【$hashvalue】（"文员"） =>文员：varchar(15)，计数_8：大号， $hashvalue：大号
-成本：47.28%，产出：4000行(148.44kB)
-输入平均：4000.00行，输入std.dev.:0.00%
-- RemoteSource[2] => [clerk:varchar(15), count_8:bigint, $hashvalue_9:bigint]
-成本：9.65%，输出：4000行(148.44kB)
-输入平均：4000.00行，输入std.dev.:0.00%
+Fragment 1 [HASH]
+    Cost: CPU 88.57ms, Input: 4000 rows (148.44kB), Output: 1000 rows (28.32kB)
+    Output layout: [count, clerk]
+    Output partitioning: SINGLE []
+    - Project[] => [count:bigint, clerk:varchar(15)]
+            Cost: 26.24%, Input: 1000 rows (37.11kB), Output: 1000 rows (28.32kB), Filtered: 0.00%
+            Input avg.: 62.50 lines, Input std.dev.: 14.77%
+        - Aggregate(FINAL)[clerk][$hashvalue] => [clerk:varchar(15), $hashvalue:bigint, count:bigint]
+                Cost: 16.83%, Output: 1000 rows (37.11kB)
+                Input avg.: 250.00 lines, Input std.dev.: 14.77%
+                count := "count"("count_8")
+            - LocalExchange[HASH][$hashvalue] ("clerk") => clerk:varchar(15), count_8:bigint, $hashvalue:bigint
+                    Cost: 47.28%, Output: 4000 rows (148.44kB)
+                    Input avg.: 4000.00 lines, Input std.dev.: 0.00%
+                - RemoteSource[2] => [clerk:varchar(15), count_8:bigint, $hashvalue_9:bigint]
+                        Cost: 9.65%, Output: 4000 rows (148.44kB)
+                        Input avg.: 4000.00 lines, Input std.dev.: 0.00%
 
-碎片2[tpch:orders:1500000]（分片报文）
-成本：CPU 14.00s，输入：818058行（22.62MB） ，输出：4000行(148.44kB)
-输出布局：【文员，count_8,$hashvalue_10】
-输出分区：HASH[clerk][$hashvalue_10]
--聚合（分区）[clerk]【$hashvalue_10】=>【clerk:varchar(15), $hashvalue_10:bigint, count_8:bigint】，则对内存进行回收操作。
-成本：4.47%，输出：4000行(148.44kB)
-输入平均：204514.5行，输入std.dev.:0.05%
-平均碰撞次数：5701.28（约等于17569.93% est.），碰撞次数：1.12%
-count_8 := "计数"(*)
--扫描过滤工程【表= tpch:tpch:orders:sf1.0，原约束= （"订购日期" > "$字面日期"(BIGINT '9131'）)，过滤谓词= （"订购日期" > "$字面值$date(BIGINT '9131'）)] =>【删除内容】
-成本：95.53%，输入：150万行（0B） ，输出：818058行（22.62MB） ，筛选：45.46%
-输入平均：375000.00行，输入std.dev.:0.00%
-$hashvalue_10 := "组合哈希值"（BIGINT '0'， COALESCE("$operator$hash_code"("文员"）, 0))
-orderdate := tpch：订单日期
-职员：=tpch：文员
+Fragment 2 [tpch:orders:1500000]
+    Cost: CPU 14.00s, Input: 818058 rows (22.62MB), Output: 4000 rows (148.44kB)
+    Output layout: [clerk, count_8, $hashvalue_10]
+    Output partitioning: HASH [clerk][$hashvalue_10]
+    - Aggregate(PARTIAL)[clerk][$hashvalue_10] => [clerk:varchar(15), $hashvalue_10:bigint, count_8:bigint]
+            Cost: 4.47%, Output: 4000 rows (148.44kB)
+            Input avg.: 204514.50 lines, Input std.dev.: 0.05%
+            Collisions avg.: 5701.28 (17569.93% est.), Collisions std.dev.: 1.12%
+            count_8 := "count"(*)
+        - ScanFilterProject[table = tpch:tpch:orders:sf1.0, originalConstraint = ("orderdate" > "$literal$date"(BIGINT '9131')), filterPredicate = ("orderdate" > "$literal$date"(BIGINT '9131'))] => [cler
+                Cost: 95.53%, Input: 1500000 rows (0B), Output: 818058 rows (22.62MB), Filtered: 45.46%
+                Input avg.: 375000.00 lines, Input std.dev.: 0.00%
+                $hashvalue_10 := "combine_hash"(BIGINT '0', COALESCE("$operator$hash_code"("clerk"), 0))
+                orderdate := tpch:orderdate
+                clerk := tpch:clerk
 ```
 
-当使用`VERBOSE`选项时，某些运营商可能会报告附加信息。例如，窗口函数运算符将输出：
+When the `VERBOSE` option is used, some operators may report additional information. For example, the window function operator will output the following:
 
-"```{.none}"
-解释分析VERBOSE选择计数（文员）OVER ()从订单WHERE订单日期>日期'1995-01-01'；
+``` sql
+EXPLAIN ANALYZE VERBOSE SELECT count(clerk) OVER() FROM orders WHERE orderdate > date '1995-01-01';
 
-查询计划
+                                          Query Plan
 -----------------------------------------------------------------------------------------------
-...
--窗口[] =>【文员：varchar(15)，计数：bigint】
-开销：{行数：？字节数：?}
-CPU分数：75.93%，输出：8130行(230.24kB)
-输入平均：8130.00行，输入std.dev.:0.00%
-活跃驱动： [1/1]
-索引大小：std.dev.:0.00字节，0.00行
-每个驱动程序的索引数：std.dev.:0.00
-每个驱动程序的行数：std.dev.:0.00
-分区大小：std.dev.:0.00
-count := count（“文员”）
-...
+  ...
+         - Window[] => [clerk:varchar(15), count:bigint]
+                 Cost: {rows: ?, bytes: ?}
+                 CPU fraction: 75.93%, Output: 8130 rows (230.24kB)
+                 Input avg.: 8130.00 lines, Input std.dev.: 0.00%
+                 Active Drivers: [ 1 / 1 ]
+                 Index size: std.dev.: 0.00 bytes , 0.00 rows
+                 Index count per driver: std.dev.: 0.00
+                 Rows per driver: std.dev.: 0.00
+                 Size of partition: std.dev.: 0.00
+                 count := count("clerk")
+ ...
 ```
 
-参见
+See Also
 --------
 
-【解释】（./解释）
+[explain](./explain)

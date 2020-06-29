@@ -1,17 +1,16 @@
 .download-content {
-    margin: 100px auto;
+    margin: 60px auto;
 }
 
 .container-top h1 {
     display: flex;
     justify-content: center;
-    font-size: 44px;
+    font-size: 40px;
     font-family: HuaweiSans;
 }
 
 .container-top img {
     display: flex;
-    margin: 0 auto;
     margin: 26px auto 103px;
 }
 
@@ -161,4 +160,5 @@
 
 .download-container a {
     color: #5A9B83;
+    width: 80%;
 }

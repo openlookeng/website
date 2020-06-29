@@ -1,29 +1,29 @@
-EXPLAIN成本
+Cost in EXPLAIN
 ===============
 
-在计划期间，与计划的每个节点相关联的开销将根据查询中的表的表统计信息计算。此计算的成本将作为[EXPLAIN](../sql/explain)语句的输出的一部分打印出来。
+During planning, the cost associated with each node of the plan is computed based on the table statistics for the tables in the query. This calculated cost is printed as part of the output of an [EXPLAIN](../sql/explain) statement.
 
-计划树展示cost信息，格式为`{rows:XX (XX) ,cpu:XX，内存：XX，网络：XX}`。`rows`是指每个计划节点在执行时期望输出的行数。行数后面的括号中的值表示每个计划节点期望输出的数据大小（以字节为单位）。其他参数表示计划节点执行时，对CPU、内存、网络等资源占用情况的估计值。这些值并不代表任何实际的单位，而是用于比较计划节点之间的相对成本的数字，使优化器能够选择执行查询的最佳计划。如果其中任何一个值未知，则打印`?`。
+Cost information is displayed in the plan tree using the format `{rows: XX (XX), cpu: XX, memory: XX, network: XX}`.  `rows` refers to the expected number of rows output by each plan node during execution.  The value in the parentheses following the number of rows refers to the expected size of the data output by each plan node in bytes. Other parameters indicate the estimated amount of CPU, memory, and network utilized by the execution of a plan node. These values do not represent any actual unit, but are numbers that are used to compare the relative costs between plan nodes, allowing the optimizer to choose the best plan for executing a query. If any of the values is not known, a `?` is printed.
 
  
 
-例如：
+For example:
 
-"```{.none}"
-presto:default>注释从tpch.sf1.nation所在的国家关键字> 3；
+``` sql
+lk:default> EXPLAIN SELECT comment FROM tpch.sf1.nation WHERE nationkey > 3;
 
--输出[comment] =>【【comment】】处理完毕
-估计值：{行数：22 (1.69kB) ,CPU:6148.25，内存：0.00，网络：1734.25}
--远程交换[GATHER]=>[[comment]]
-估计值：{行数：22 (1.69kB) ,CPU:6148.25，内存：0.00，网络：1734.25}
-- ScanFilterProject【表= tpch:nation:sf1.0, filterPredicate = （"nationkey" >大数据INT '3'"）】=>【业务代码关键字信息】
-估算值：{行数：25 (1.94kB) ,cpu:2207.00，内存：0.00，网络：0.00}/{行数：22 (1.69kB) ,cpu:4414.00，内存：0.00，网络：0.00/{行数：22 (1.69kB) ,CPU:6148.25，内存：0.00，网络：0.00}
-Nationalkey := tpch：国家密钥
-注释：= tpch：注释
+- Output[comment] => [[comment]]
+        Estimates: {rows: 22 (1.69kB), cpu: 6148.25, memory: 0.00, network: 1734.25}
+    - RemoteExchange[GATHER] => [[comment]]
+            Estimates: {rows: 22 (1.69kB), cpu: 6148.25, memory: 0.00, network: 1734.25}
+        - ScanFilterProject[table = tpch:nation:sf1.0, filterPredicate = ("nationkey" > BIGINT '3')] => [[comment]]
+                Estimates: {rows: 25 (1.94kB), cpu: 2207.00, memory: 0.00, network: 0.00}/{rows: 22 (1.69kB), cpu: 4414.00, memory: 0.00, network: 0.00}/{rows: 22 (1.69kB), cpu: 6148.25, memory: 0.00, network: 0.00}
+                nationkey := tpch:nationkey
+                comment := tpch:comment
 ```
 
-通常情况下，每个计划节点只打印一份成本。但是，当`Scan`运算符与`Filter`和/或`Project`运算符组合使用时，将打印多个成本结构，每个成本结构对应于组合运算符的一个逻辑部分。例如，`ScanFilterProject`运算符将打印三个成本结构，依次对应`Scan`、`Filter`和`Project`部分。
+Generally, there is only one cost printed for each plan node.  However, when a `Scan` operator is combined with a `Filter` and/or `Project` operator, then multiple cost structures will be printed, each corresponding to an individual logical part of the combined operator. For example, three cost structures will be printed for a `ScanFilterProject` operator, corresponding to the `Scan`, `Filter`, and `Project` parts of the operator, in that order.
 
  
 
-除了实际运行时统计数据外，估计成本也打印在【解释分析】（../sql/解释分析）中。
+Estimated cost is also printed in [explain-analyze](../sql/explain-analyze) in addition to actual runtime statistics.

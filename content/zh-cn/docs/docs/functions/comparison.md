@@ -1,128 +1,128 @@
-比较函数和运算符
+Comparison Functions and Operators
 ==================================
 
-比较运算符
+Comparison Operators
 --------------------
 
-|操作符|说明|
+| Operator | Description                                 |
 | :------- | :------------------------------------------ |
-| `<` |小于|
-| `>` |大于|
-| `<=` |小于等于|
-| `>=` |大于等于|
-| `=` |相等|
-| `<>` |不相等|
-| `!=` |不等（非标准但流行的语法） |
+| `<`      | Less than                                   |
+| `>`      | Greater than                                |
+| `<=`     | Less than or equal to                       |
+| `>=`     | Greater than or equal to                    |
+| `=`      | Equal                                       |
+| `<>`     | Not equal                                   |
+| `!=`     | Not equal (non-standard but popular syntax) |
 
-范围运算符：BETWEEN
+Range Operator: BETWEEN
 -----------------------
 
-`BETWEEN`运算符测试值是否在指定范围内。语法使用`value BETWEEN min AND max`，其中：
+The `BETWEEN` operator tests if a value is within a specified range. It uses the syntax `value BETWEEN min AND max`:
 
-在2和6之间选择3；
+    SELECT 3 BETWEEN 2 AND 6;
 
-上面显示的语句相当于以下语句：
+The statement shown above is equivalent to the following statement:
 
-选择3>=2 AND 3<=6；
+    SELECT 3 >= 2 AND 3 <= 6;
 
-要测试一个值是否不在指定的范围内，使用`NOT BETWEEN`：
+To test if a value does not fall within the specified range use `NOT BETWEEN`:
 
-选择3不在2和6之间；
+    SELECT 3 NOT BETWEEN 2 AND 6;
 
-上面显示的语句相当于以下语句：
+The statement shown above is equivalent to the following statement:
 
-SELECT 3<2或3>6，则返回查询结果。
+    SELECT 3 < 2 OR 3 > 6;
 
-`BETWEEN`或`NOT BETWEEN`语句中的`NULL`使用适用于上述等效表达式的标准`NULL`求值规则进行求值：
+A `NULL` in a `BETWEEN` or `NOT BETWEEN` statement is evaluated using the standard `NULL` evaluation rules applied to the equivalent expression above:
 
-在2和4之间选择NULL; -- null
+    SELECT NULL BETWEEN 2 AND 4; -- null
     
-SELECT 2与6相与； --空
+    SELECT 2 BETWEEN NULL AND 6; -- null
     
-在1和NULL之间取2;--false
+    SELECT 2 BETWEEN 1 AND NULL; -- false
     
-SELECT 8空与6之间； -- false
+    SELECT 8 BETWEEN NULL AND 6; -- false
 
-`BETWEEN`和`NOT BETWEEN`运算符也可用于评价任何可排序的类型。例如，一个`VARCHAR`：
+The `BETWEEN` and `NOT BETWEEN` operators can also be used to evaluate any orderable type. For example, a `VARCHAR`:
 
-在“约翰”和“林戈”中选出“保罗”；--正确
+    SELECT 'Paul' BETWEEN 'John' AND 'Ringo'; -- true
 
-`BETWEEN`和`NOT BETWEEN`的value、min和max参数不能是同一种类型。例如，如果你问John是否在2.3和35.2之间，Presto就会产生一个错误。
+Not that the value, min, and max parameters to `BETWEEN` and `NOT BETWEEN` must be the same type. For example, openLooKeng will produce an error if you ask it if John is between 2.3 and 35.2.
 
-是否为空和是否非空
+IS NULL and IS NOT NULL
 -----------------------
 
-`IS NULL`和`IS NOT NULL`操作符用于检测一个值是否为null（未定义），它们都对所有数据类型起作用。
+The `IS NULL` and `IS NOT NULL` operators test whether a value is null (undefined). Both operators work for all data types. 
 
-使用`NULL`和`IS NULL`求值为true：
+Using `NULL` with `IS NULL` evaluates to true:
 
-select NULL是否为空； -- true
+    select NULL IS NULL; -- true
 
-但其他任何常数都不是：
+But any other constant does not:
 
-SELECT 3.0是否为空；-- false
+    SELECT 3.0 IS NULL; -- false
 
-区别于和不区别于
+IS DISTINCT FROM and IS NOT DISTINCT FROM
 -----------------------------------------
 
-在SQL中`NULL`值表示未知值，因此任何涉及`NULL`的比较都会产生`NULL`。`IS DISTINCT FROM`和`IS NOT DISTINCT FROM`运算符将`NULL`视为已知值，并且两者都
-运算符保证即使存在`NULL`输入时，结果也为真或假：
+In SQL a `NULL` value signifies an unknown value, so any comparison involving a `NULL` will produce `NULL`. The `IS DISTINCT FROM` and `IS NOT DISTINCT FROM` operators treat `NULL` as a known value and both
+operators guarantee either a true or false outcome even in the presence of `NULL` input:
 
-从NULL中选择NULL是否从NULL中分离；--false
+    SELECT NULL IS DISTINCT FROM NULL; -- false
     
-选择空值与空值没有区别； -- true
+    SELECT NULL IS NOT DISTINCT FROM NULL; -- true
 
-在上面的示例中，`NULL`值与`NULL`并不明显。当您比较可能包含`NULL`的值时，使用这些运算符来保证`TRUE`或`FALSE`结果。
+In the example shown above, a `NULL` value is not considered distinct from `NULL`. When you are comparing values which may include `NULL` use these operators to guarantee either a `TRUE` or `FALSE` result.
 
-下面的真值表显示了对`IS DISTINCT FROM`和`IS NOT DISTINCT FROM`中`NULL`的处理：
+The following truth table demonstrate the handling of `NULL` in `IS DISTINCT FROM` and `IS NOT DISTINCT FROM`:
 
-| a | b | a = b | a <> b | a离散b | a不离散b |
+| a      | b      | a = b   | a <> b  | a DISTINCT b | a NOT DISTINCT b |
 | :----- | :----- | :------ | :------ | :----------- | :--------------- |
-|置位|置位|置位|置位|置位|置位|置位|置位|
-|`1`|`2`|`FALSE`|`TRUE`|`TRUE`|`FALSE`|
-| `1` | `NULL` | `NULL` | `NULL` | `TRUE` | `FALSE` |
-| `NULL` | `NULL` | `NULL` | `NULL` | `FALSE` | `TRUE` |
+| `1`    | `1`    | `TRUE`  | `FALSE` | `FALSE`      | `TRUE`           |
+| `1`    | `2`    | `FALSE` | `TRUE`  | `TRUE`       | `FALSE`          |
+| `1`    | `NULL` | `NULL`  | `NULL`  | `TRUE`       | `FALSE`          |
+| `NULL` | `NULL` | `NULL`  | `NULL`  | `FALSE`      | `TRUE`           |
 
-最高和最低
+GREATEST and LEAST
 ------------------
 
-这些函数不是SQL标准中的函数，而是通用的扩展。与Presto中的大多数其他函数一样，如果任何参数为空，它们将返回null。注意，在其他一些数据库，如PostgreSQL，只有当所有参数都是null时，它们才返回null。
+These functions are not in the SQL standard, but are a common extension. Like most other functions in openLooKeng, they return null if any argument is  null. Note that in some other databases, such as PostgreSQL, they only return null if all arguments are null.
 
-支持的类型有：`DOUBLE`,`BIGINT`,`VARCHAR`,`TIMESTAMP`,`TIMESTAMP with TIME ZONE`,`DATE`，时间分区类型，时间分区类型。
+The following types are supported: `DOUBLE`, `BIGINT`, `VARCHAR`, `TIMESTAMP`, `TIMESTAMP WITH TIME ZONE`, `DATE`
 
-**greatest(value1, value2, \..., valueN)** -\> \【与输入值相同\】
+**greatest(value1, value2, \..., valueN)** -\> \[same as input\]
 
-返回所提供值中的最大值。
+Returns the largest of the provided values.
 
-**least(value1, value2, \..., valueN)** -\> \【与输入值相同\】
+**least(value1, value2, \..., valueN)** -\> \[same as input\]
 
-返回给定值中最小的值。
+Returns the smallest of the provided values.
 
 
-量化的比较谓词：ALL、ANY和SOME
+Quantified Comparison Predicates: ALL, ANY and SOME
 ---------------------------------------------------
 
-`ALL`、`ANY`和`SOME`量词可以与比较运算符一起使用，方式如下：
+The `ALL`, `ANY` and `SOME` quantifiers can be used together with comparison operators in the following way:
 
-"```{.none}"
-表达式运算符量化符（子查询）
+``` 
+expression operator quantifier ( subquery )
 ```
 
-例如：
+For example:
 
-选择'hello' = ANY（值'hello'，'world'）; --正确
+    SELECT 'hello' = ANY (VALUES 'hello', 'world'); -- true
     
-SELECT 21 <全部（值19,20,21）; --错误
+    SELECT 21 < ALL (VALUES 19, 20, 21); -- false
     
-SELECT 42 >=某个值（SELECT 41联合所有选择42联合所有选择43） ; --真实
+    SELECT 42 >= SOME (SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43); -- true
 
-以下是一些量词和比较运算符组合的含义：
+Here are the meanings of some quantifier and comparison operator combinations:
 
-|表达式|意义|
+| Expression       | Meaning                                                      |
 | :--------------- | :----------------------------------------------------------- |
-| `A = ALL (...)`|当`A`等于所有值时，赋值为`true`。|
-| `A<>ALL(...)|当`A`不匹配任何值时，赋值为`true`。|
-| `A < ALL (...)` |当`A`小于最小值时，求值为`true`。|
-| `A = ANY (...)`|当`A`等于任何值时，求值为`true`。此形式相当于`A IN (.)'。|
-| `A`<>任何值（.）|当`A`与一个或多个值不匹配时，评价为`true'。|
-| `A<ANY(.)`|当`A`小于最大值时，求`true'。|
+| `A = ALL (...)`  | Evaluates to `true` when `A` is equal to all values.         |
+| `A <> ALL (...)` | Evaluates to `true` when `A` doesn’t match any value.        |
+| `A < ALL (...)`  | Evaluates to `true` when `A` is smaller than the smallest value. |
+| `A = ANY (...)`  | Evaluates to `true` when `A` is equal to any of the values. This form is equivalent to `A IN (...)`. |
+| `A <> ANY (...)` | Evaluates to `true` when `A` doesn’t match one or more values. |
+| `A < ANY (...)`  | Evaluates to `true` when `A` is smaller than the biggest value. |

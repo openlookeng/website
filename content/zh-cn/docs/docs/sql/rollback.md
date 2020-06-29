@@ -1,27 +1,27 @@
-回滚
+ROLLBACK
 ========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-【回退工作】
+``` sql
+ROLLBACK [ WORK ]
 ```
 
-问题描述
+Description
 -----------
 
-回滚当前事务。
+Rollback the current transaction.
 
-示例
+Examples
 --------
 
-``` {.sql}
-回滚；
-回退工作；
+``` sql
+ROLLBACK;
+ROLLBACK WORK;
 ```
 
-参见
+See Also
 --------
 
-[commit](./commit)，【启动事务】（./启动事务）
+[commit](./commit), [start-transaction](./start-transaction)

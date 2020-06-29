@@ -1,60 +1,60 @@
-价值
+VALUES
 ======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-VALUES行【，...】
+``` sql
+VALUES row [, ...]
 ```
 
-其中，`row`是单个表达式或
+where `row` is a single expression or
 
-"```{.none}"
-（列_表达式【, ...】）
+``` sql
+( column_expression [, ...] )
 ```
 
-问题描述
+Description
 -----------
 
-定义文字内联表。
+Defines a literal inline table.
 
-`VALUES`可以在任何可以使用查询的地方使用（例如，[SELECT](./select.md）、[INSERT](./insert.md)的`FROM`子句，甚至可以在最顶层使用)。`创建了一个匿名表，其中没有列名，但是表和列可以用一个`AS`子句命名，其中列名要使用别名。
+`VALUES` can be used anywhere a query can be used (e.g., the `FROM` clause of a [SELECT](select.md), an [INSERT](insert.md), or even at the top level). `VALUES` creates an anonymous table without column names, but the table and columns can be named using an `AS` clause with column aliases.
 
-示例
+Examples
 --------
 
-返回一个一列三行的表：
+Return a table with one column and three rows:
 
-值1,2,3
+    VALUES 1, 2, 3
 
-返回一个两列三行的表：
+Return a table with two columns and three rows:
 
-价值
-（1，'a'），
-（2，'b'），
-（3，'c'）
+    VALUES
+        (1, 'a'),
+        (2, 'b'),
+        (3, 'c')
 
-返回`id`和`name`列的表：
+Return table with column `id` and `name`:
 
-选择*从(
-价值
-（1，'a'），
-（2，'b'），
-（3，'c'）
-)AS t（id，名称）
+    SELECT * FROM (
+        VALUES
+            (1, 'a'),
+            (2, 'b'),
+            (3, 'c')
+    ) AS t (id, name)
 
-创建一个列名为`id`和`name`的新表：
+Create a new table with column `id` and `name`:
 
-CREATE TABLE示例：弹性伸缩
-选择*从(
-价值
-（1，'a'），
-（2，'b'），
-（3，'c'）
-)AS t（id，名称）
+    CREATE TABLE example AS
+    SELECT * FROM (
+        VALUES
+            (1, 'a'),
+            (2, 'b'),
+            (3, 'c')
+    ) AS t (id, name)
 
-参见
+See Also
 --------
 
-【插入】（./插入），【选择】（./选择）
+[insert](./insert), [ select](./ select)

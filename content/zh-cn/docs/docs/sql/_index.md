@@ -2,11 +2,11 @@
 bookCollapseSection = "true"
 weight = 12
 bookToc = false
-title = "SQL语法声明"
+title = "SQL语法介绍"
+
 +++
 
-# SQL语法声明
+# SQL语法介绍
 
 
-本章讲述在openLooKeng中使用SQL语法
-
+本章介绍了openLooKeng所支持的SQL语法，包括语法定义，描述，样例以及限制条件。

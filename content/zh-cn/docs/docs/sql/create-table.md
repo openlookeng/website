@@ -1,114 +1,114 @@
-创建表
+CREATE TABLE
 ============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-CREATE TABLE【如果不存在】
-表名(
-{ column_name data_type【注释】【WITH （属性名=表达式[, ...】） ]
-|类似已有表名称【{包含|排除}属性】}
-[, ...]
+``` sql
+CREATE TABLE [ IF NOT EXISTS ]
+table_name (
+  { column_name data_type [ COMMENT comment ] [ WITH ( property_name = expression [, ...] ) ]
+  | LIKE existing_table_name [ { INCLUDING | EXCLUDING } PROPERTIES ] }
+  [, ...]
 )
-【评论表_评论】
-【WITH(property_name =表达式【,...】】，以此类推】
+[ COMMENT table_comment ]
+[ WITH ( property_name = expression [, ...] ) ]
 ```
 
-问题描述
+Description
 -----------
 
-创建一个具有指定列的新空表。使用`create-table-as`{.interpreted-text role="doc"}创建一个有数据的表。
+Create a new, empty table with the specified columns. Use `create-table-as` to create a table with data.
 
-如果表已经存在，则可选的`IFNOTEXISTS`子句将导致错误被抑制。
+The optional `IF NOT EXISTS` clause causes the error to be suppressed if the table already exists.
 
-可选的`WITH`子句可用于设置新创建的表或单列上的属性。列出所有可用的表属性：
+The optional `WITH` clause can be used to set properties on the newly created table or on single columns. To list all available table properties, run the following query:
 
-SELECT *从系统元数据中选取
+    SELECT * FROM system.metadata.table_properties
 
-例如，对于蜂箱连接器，以下是一些可用且常用的表属性：
+For example, to hive connector, below are some of available and frequently used table properties:
 
-|属性名称|数据类型|说明|缺省值|
+| Property Name    | data type      | Description                                                  | Default |
 | ---------------- | -------------- | ------------------------------------------------------------ | ------- |
-| `format` | varchar |表的Hive存储格式。取值范围：【ORC,PARQUET,AVRO,RCBINARY,RCTEXT,SEQUENCEFILE,JSON,TEXTFILE,CSV】|ORC |
-| `bucket_count` |整数|桶的个数| |
-| `bucketed_by` |数组(varchar) |桶的列数| |
-| `sorted_by` | array(varchar) |桶的排序列| |
-| `external` | boolean |该表是外部表吗| `false` |
-| `location` | varchar |当`external``=``true`时，必须提供表location值的文件系统位置URI | |
-| `partitioned_by` |数组(varchar) |分区列| |
-| `transactional` | boolean |是否启用事务性属性？只有ORC存储格式支持创建事务性表是有限制的| `false` |
+| `format`         | varchar        | Hive storage format for the table. Possible values: [ORC, PARQUET, AVRO, RCBINARY, RCTEXT, SEQUENCEFILE, JSON, TEXTFILE, CSV] | ORC     |
+| `bucket_count`   | integer        | Number of buckets                                            |         |
+| `bucketed_by`    | array(varchar) | Bucketing columns                                            |         |
+| `sorted_by`      | array(varchar) | Bucket sorting columns                                       |         |
+| `external`       | boolean        | Is the table an external table                               | `false` |
+| `location`       | varchar        | File system location URI for the table location value must be provided if `external`=`true` |         |
+| `partitioned_by` | array(varchar) | Partition columns                                            |         |
+| `transactional`  | boolean        | Is transactional property enabled There is a limitation that only ORC Storage format support creating an transactional table | `false` |
 
-列出所有可用的列属性：
+To list all available column properties, run the following query:
 
-SELECT *来自于系统元数据.column_properties
+    SELECT * FROM system.metadata.column_properties
 
-可以使用`LIKE`子句将现有表中的所有列定义包含到新表中。可以指定多个`LIKE`子句，允许从多个表中复制列。
+The `LIKE` clause can be used to include all the column definitions from an existing table in the new table. Multiple `LIKE` clauses may be specified, which allows copying the columns from multiple tables.
 
-如果声明了`INCLUDING PROPERTIES`，那么所有的表属性都会复制到新表中。如果`WITH`子句指定了与所复制的属性之一相同的属性名称，则`WITH`的值
-将使用子句。默认行为是`排除属性`。最多只能为一个表指定“包含属性”选项。
+If `INCLUDING PROPERTIES` is specified, all of the table properties are copied to the new table. If the `WITH` clause specifies the same property name as one of the copied properties, the value from the `WITH`
+clause will be used. The default behavior is `EXCLUDING PROPERTIES`. The `INCLUDING PROPERTIES` option maybe specified for at most one table.
 
-示例
+Examples
 --------
 
-创建新表`orders`：
+Create a new table `orders`:
 
-CREATE TABLE订单(
-订单键大
-订单状态varchar，
-总价翻倍，
-订单日期
-)
-WITH（format = 'ORC'）语法检查
+    CREATE TABLE orders (
+      orderkey bigint,
+      orderstatus varchar,
+      totalprice double,
+      orderdate date
+    )
+    WITH (format = 'ORC')
 
-创建一个新的事务表`orders`：
+Create a new transactional table `orders`:
 
-CREATE TABLE订单(
-订单键大
-订单状态varchar，
-总价翻倍，
-订单日期
-)
-WITH(format = 'ORC'，
-事务性=true)
+    CREATE TABLE orders (
+      orderkey bigint,
+      orderstatus varchar,
+      totalprice double,
+      orderdate date
+    )
+    WITH (format = 'ORC',
+    transactional=true)
 
-创建外部表`orders`：
+Create an external table `orders`:
 
-CREATE TABLE订单(
-订单键大
-订单状态varchar，
-总价翻倍，
-订单日期
-)
-WITH(format = 'ORC'，
-外部=true，
-location='hdfs://hdcluster/tmp/externaltbl（本地磁盘文件）')
+    CREATE TABLE orders (
+      orderkey bigint,
+      orderstatus varchar,
+      totalprice double,
+      orderdate date
+    )
+    WITH (format = 'ORC',
+    external=true,
+    location='hdfs://hdcluster/tmp/externaltbl')
 
-如果表`orders`不存在，则创建表`orders`，并添加表注释和列注释：
+Create the table `orders` if it does not already exist, adding a table comment and a column comment:
 
-CREATE TABLE如果不存在订单(
-订单键大
-订单状态varchar，
-totalprice double COMMENT '价格单位为分'，
-订单日期
-)
-跟踪订单的表格。
+    CREATE TABLE IF NOT EXISTS orders (
+      orderkey bigint,
+      orderstatus varchar,
+      totalprice double COMMENT 'Price in cents.',
+      orderdate date
+    )
+    COMMENT 'A table to keep track of orders.'
 
-使用`orders`的列加上开头和结尾的附加列创建表`barge_orders`：
+Create the table `bigger_orders` using the columns from `orders` plus additional columns at the start and end:
 
-CREATE TABLE biger_orders(创建表时指定的更大的订单数(
-其他_orderkey的bigint类型，
-像命令一样
-other_orderdate订单日期
-)
+    CREATE TABLE bigger_orders (
+      another_orderkey bigint,
+      LIKE orders,
+      another_orderdate date
+    )
 
-限制
+Limitations
 -----------
 
-不同的连接器可能支持不同的数据类型和不同的表/列属性。有关更多详细信息，请参阅连接器文档。
+Different connector might support different data type, and different table/column properties. See connector documentation for more details.
 
-参见
+See Also
 --------
 
-【alter-table(./alter-table)，【drop-table】（./drop-table），【create-table-as】（./create-table-as），【show-create-table】（./show-create-table），中文名称：显示-创建-表，英文名称：显示-创建-表
+[alter-table](./alter-table), [drop-table](./drop-table), [create-table-as](./create-table-as), [show-create-table](./show-create-table)
 

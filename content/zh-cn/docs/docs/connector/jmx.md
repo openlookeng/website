@@ -1,104 +1,104 @@
-JMX连接器
+JMX Connector
 =============
 
-JMX连接器提供从Presto集群中的所有节点查询JMX信息的能力。这对于监视或调试非常有用。Java管理扩展（JMX）提供了有关Java虚拟机和其中运行的所有软件的信息。Presto本身就是通过JMX大量使用的工具。
+The JMX connector provides the ability to query JMX information from all nodes in a openLooKeng cluster. This is very useful for monitoring or debugging. Java Management Extensions (JMX) provides information about the Java Virtual Machine and all of the software running inside it. openLooKeng itself is heavily instrumented via JMX.
 
  
 
-还可以配置这个连接器，以便定期转储所选的JMX信息，并将其存储在内存中，供以后访问。
+This connector can also be configured so that chosen JMX information will be periodically dumped and stored in memory for later access.
 
-配置说明
+Configuration
 -------------
 
-配置JMX Connector需要新建一个目录属性文件`etc/catalog/jmx.properties`，内容如下：
+To configure the JMX connector, create a catalog properties file `etc/catalog/jmx.properties` with the following contents:
 
-"```{.none}"
-连接器.name=jmx
+``` properties
+connector.name=jmx
 ```
 
-若要启用定期转储，请定义以下属性：
+To enable periodical dumps, define the following properties:
 
-"```{.none}"
-连接器.name=jmx
-jmx.dump-tables=java.lang:type=运行时间，presto.execution.scheduler：调度器名称=节点调度器
-jmx.dump-period=转储周期=10秒
+``` properties
+connector.name=jmx
+jmx.dump-tables=java.lang:type=Runtime,presto.execution.scheduler:name=NodeScheduler
+jmx.dump-period=10s
 jmx.max-entries=86400
 ```
 
-`dump-tables`是一个逗号分隔的Managed Beans (MBean)列表，它指定每个`dump-period`将采样哪些MBean并存储在内存中。历史将有有限的"最大条目"大小。`dump-period`和`max-entries`都有一个默认值，分别是`10s`和`86400`。
+`dump-tables` is a comma separated list of Managed Beans (MBean). It specifies which MBeans will be sampled and stored in memory every `dump-period`. History will have limited size of `max-entries` of entries. Both `dump-period` and `max-entries` have default values of `10s` and `86400` accordingly.
 
  
 
-MBean名称中的逗号需要进行转义，转义方式如下：
+Commas in MBean names should be escaped in the following manner:
 
-"```{.none}"
-连接器.name=jmx
-jmx.dump-tables=presto.memory:type=内存池\\，名称=通用，\
-presto.memory:type=内存池\\,name=系统名称，\
-presto.memory:type=内存池\\,name=保留值
+``` properties
+connector.name=jmx
+jmx.dump-tables=presto.memory:type=memorypool\\,name=general,\
+   presto.memory:type=memorypool\\,name=system,\
+   presto.memory:type=memorypool\\,name=reserved
 ```
 
-查询JMX
+Querying JMX
 ------------
 
-JMX连接器提供了两种模式。
+The JMX connector provides two schemas.
 
  
 
-第一个是“current”，它包含Presto集群中每个节点的每个MBean。您可以通过`SHOW TABLES`命令看到所有可用的MBean：
+The first one is `current` that contains every MBean from every node in the openLooKeng cluster. You can see all of the available MBeans by running `SHOW TABLES`:
 
-显示表从jmx.current；
+    SHOW TABLES FROM jmx.current;
 
-MBean名称映射为非标准表名，并且必须用
-在查询中引用双引号时。例如：
-查询每个节点的JVM版本：
+MBean names map to non-standard table names and must be quoted with
+double quotes when referencing them in a query. For example, the
+following query shows the JVM version of every node:
 
-SELECT节点，vmname,vmversion虚拟机名称
-FROM jmx.current.java.lang:type=运行时间"；
+    SELECT node, vmname, vmversion
+    FROM jmx.current."java.lang:type=runtime";
 
-"```{.none}"
-node | vmname | vmversion
+``` 
+node                 |              vmname               | vmversion
 --------------------------------------+-----------------------------------+-----------
-ddc4df17-0b8e-4843-bb14-1b8af1a7451a | Java热区(TM)64位服务器虚拟机| 24.60-b09
-（1行）
+ddc4df17-0b8e-4843-bb14-1b8af1a7451a | Java HotSpot(TM) 64-Bit Server VM | 24.60-b09
+(1 row)
 ```
 
-以下查询显示了每个节点的打开和最大文件描述符计数：
+The following query shows the open and maximum file descriptor counts for each node:
 
-openfiledescriptorcount（打开文件描述符个数）,maxfiledescriptorcount（打开文件描述符个数）
-FROM jmx.current.java.lang:type=操作系统类型"；
+    SELECT openfiledescriptorcount, maxfiledescriptorcount
+    FROM jmx.current."java.lang:type=operatingsystem";
 
-"```{.none}"
-开放文件描述符个数| maxfiledescriptorcount
+``` 
+openfiledescriptorcount | maxfiledescriptorcount
 -------------------------+------------------------
-329 | 10240
-（1行）
+                    329 |                  10240
+(1 row)
 ```
 
-通配符`*`可以与`current`模式下的表名一起使用。这允许在单个查询中匹配多个MBean对象。以下查询返回每个节点上不同Presto内存池的信息：
+The wildcard character `*` may be used with table names in the `current` schema. This allows matching several MBean objects within a single query. The following query returns information from the different openLooKeng memory pools on each node:
 
-SELECT自由字节数，节点，对象名
-from jmx.current."presto.memory:*类型=内存池*"；
+    SELECT freebytes, node, object_name
+    FROM jmx.current."presto.memory:*type=memorypool*";
 
-"```{.none}"
-自由字节|节点|对象名
+``` 
+freebytes  |  node   |                       object_name
 ------------+---------+----------------------------------------------------------
-214748364 |示例| presto.memory:type=内存池，name=保留值
-1073741825 |示例| presto.memory:type=内存池，名称=通用名称
-858993459 |示例| presto.memory:type=内存池，名称=系统名称
-（3行）
+ 214748364 | example | presto.memory:type=MemoryPool,name=reserved
+1073741825 | example | presto.memory:type=MemoryPool,name=general
+ 858993459 | example | presto.memory:type=MemoryPool,name=system
+(3 rows)
 ```
 
-`history`模式包含连接器属性文件中配置的表列表。这些表的列与当前架构中的列相同，但具有存储
-抓拍时间：
+The `history` schema contains the list of tables configured in the connector properties file. The tables have the same columns as those in the current schema, but with an additional timestamp column that stores
+the time at which the snapshot was taken:
 
-从jmx.history.java.lang:type=runtime中选择"时间戳","启动时间"
+    SELECT "timestamp", "uptime" FROM jmx.history."java.lang:type=runtime";
 
-"```{.none}"
-时间戳|运行时间
+``` 
+timestamp        | uptime
 -------------------------+--------
-2016-01-28 10:18:50.000 | 11420
-2016-01-28 10:19:00.000 | 21422
-2016-01-28 10:19:10.000 | 31412
-（3行）
+2016-01-28 10:18:50.000 |  11420
+2016-01-28 10:19:00.000 |  21422
+2016-01-28 10:19:10.000 |  31412
+(3 rows)
 ```

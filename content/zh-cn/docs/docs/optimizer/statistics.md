@@ -1,42 +1,42 @@
-表统计
+Table Statistics
 ================
 
-Presto支持基于统计信息的查询优化。为了让查询利用这些优化，Presto必须拥有该查询中表的统计信息。
+openLooKeng supports statistics based optimizations for queries. For a query to  take advantage of these optimizations, openLooKeng must have statistical information for the tables in that query.
 
-表统计信息由连接器提供给查询计划器。目前仅支持[hive](../connector/hive)类型的连接器。
+Table statistics are provided to the query planner by connectors. Currently, the only connector that supports statistics is the [hive](../en/connector/hive).
 
-表格布局
+Table Layouts
 -------------
 
--通过表布局向查询计划器公开统计信息。表布局表示表数据的子集，并包含有关该数据的组织属性（例如排序顺序和分桶）的信息。
+-   Statistics are exposed to the query planner by a table layout. A table layout represents a subset of a table’s data and contains information about the organizational properties of that data (like sort order and bucketing).
     
      
     
-可用于表的表布局的数量和这些表布局的详细信息是每个连接器特有的。以Hive连接器为例：
+    The number of table layouts available for a table and the details of those table layouts are specific to each connector.  Using the Hive connector as an example:
     
      
     
--非分区表只有一个表布局，表示表中的所有数据
--分区表拥有一系列表布局。每一组要扫描的分区代表一个表布局。Presto将根据查询中的筛选谓词，尝试选择由最少数量的分区组成的表布局。
+    - Non-partitioned tables have just one table layout representing all data in the table
+    - Partitioned tables have a family of table layouts. Each set of partitions to be scanned represents one table layout.  openLooKeng will try to pick a table layout consisting of the smallest number of partitions based on filtering predicates from the query.
 
-可用统计
+Available Statistics
 --------------------
 
-Presto提供以下统计数据：
+The following statistics are available in openLooKeng:
 
  
 
-> -对于表：
-> - **row count**：表布局的总行数。
-> -对于表格中的每一列：
-> - **data size**：需要读取的数据大小
-> - nulls分数：空值的分数
-> - **distinct value count**：表示distinct值的个数。
-> -low value：列中最小值。
-> - high value：列中最大值
+> - For a table:
+>   - **row count**: the total number of rows in the table layout
+> - For each column in a table:
+>   - **data size**: the size of the data that needs to be read
+>   - **nulls fraction**: the fraction of null values
+>   - **distinct value count**: the number of distinct values
+>   - **low value**: the smallest value in the column
+>   - **high value**: the largest value in the column
 
  
 
-可用于特定查询的统计集取决于所使用的连接器，还可以根据表或甚至表布局而变化。例如，Hive连接器目前不提供数据大小的统计信息。
+The set of statistics available for a particular query depends on the connector being used and can also vary by table or even by table layout. For example, the Hive connector does not currently provide statistics on data size.
 
-可以使用[show-stats](../sql/show-stats)命令通过Presto SQL接口显示表统计信息。Hive连接器请参考[Hive Connector](../connector/hive#hive_analyze)文档，了解如何更新表的统计信息。
+Table statistics can be displayed via the openLooKeng SQL interface using the [show-stats](../sql/show-stats) command. For the Hive connector, refer to the [Hive connector](../en/connector/hive#hive_analyze) documentation to learn how to update table statistics.

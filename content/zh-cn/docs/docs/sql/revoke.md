@@ -1,49 +1,49 @@
-n.雷沃克
+REVOKE
 ======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-放弃【给予选择权】
-（特权[,...] |所有特权）
-ON [TABLE] table_name FROM （用户|普通用户|角色角色）
+``` sql
+REVOKE [ GRANT OPTION FOR ]
+( privilege [, ...] | ALL PRIVILEGES )
+ON [ TABLE ] table_name FROM ( user | USER user | ROLE role )
 ```
 
-问题描述
+Description
 -----------
 
-从指定的被授权者撤消指定的特权。
+Revokes the specified privileges from the specified grantee.
 
-指定`ALL PRIVILEGES`将撤消[DELETE](./delete.md)、[INSERT](./insert.md)和[SELETE](./select.md)三个权限，其中：
+Specifying `ALL PRIVILEGES` revokes [DELETE](delete.md), [INSERT](insert.md) and [SELECT](select.md) privileges.
 
-指定`ROLE PUBLIC`将取消`PUBLIC`角色的权限。用户将保留直接或通过其他角色分配给他们的权限。
+Specifying `ROLE PUBLIC` revokes privileges from the `PUBLIC` role. Users will retain privileges assigned to them directly or via other roles.
 
-可选的`GRANT OPTION FOR`子句还撤消授予指定特权的权限。
+The optional `GRANT OPTION FOR` clause also revokes the privileges to grant the specified privileges.
 
-REVOKE语句要成功，执行它的用户除了拥有指定的特权外，还应该拥有这些特权的`GRANT OPTION`。
+For `REVOKE` statement to succeed, the user executing it should possess the specified privileges as well as the `GRANT OPTION` for those privileges.
 
-示例
+Examples
 --------
 
-撤销用户`alice`对表`orders`的`INSERT`和`SELECT`权限：
+Revoke `INSERT` and `SELECT` privileges on the table `orders` from user `alice`:
 
-收回插入，选择从爱丽丝订单；
+    REVOKE INSERT, SELECT ON orders FROM alice;
 
-撤销所有人在表`nation`上的`SELECT`特权，并同时撤销授予`SELECT`特权的特权：
+Revoke `SELECT` privilege on the table `nation` from everyone, additionally revoking the privilege to grant `SELECT` privilege:
 
-从角色公开看国家选择权赠与选择
+    REVOKE GRANT OPTION FOR SELECT ON nation FROM ROLE PUBLIC;
 
-收回用户`alice`对表`test`的所有权限：
+Revoke all privileges on the table `test` from user `alice`:
 
-收回爱丽丝的所有特权；
+    REVOKE ALL PRIVILEGES ON test FROM alice;
 
-限制
+Limitations
 -----------
 
-有些连接器不支持`REVOKE`。有关更多详细信息，请参阅连接器文档。
+Some connectors have no support for `REVOKE`. See connector documentation for more details.
 
-参见
+See Also
 --------
 
-【赠款】（./赠款），【表演赠款】（./表演赠款）
+[grant](./grant), [ show-grants](./ show-grants)

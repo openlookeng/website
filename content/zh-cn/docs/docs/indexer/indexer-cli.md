@@ -1,98 +1,100 @@
-#索引命令行接口
+# Index Command Line Interface
 
-##用法
+## Usage
 
-索引可执行文件将在安装中位于`bin`目录下。例如：`opt/presto-server-316/bin/index`，默认使用相对路径，必须在`bin`目录下执行。
+The index executable will be located under the `bin` directory in the installation. 
+
+For example, `<path to installtion directory>/bin/index` and must be executed from the `bin` directory because it uses relative paths by default.
 
 ```
-使用方法：索引[-v] [--debug]【--disableLocking】--table=<table>索引，指定需要操作锁的表。
-[-c=<configDirPath>]【--column=<columns>[,<columns>...】] <安装目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录> <备份目录>。
-【--partition=<分区>[,<分区>...】]...
-【--type=<indexTypes>[,<indexTypes>...】]...【-p=<插件名称>】[，
-<plugins>...]]... <命令> <命令>
+Usage: index [-v] [--debug] [--disableLocking] --table=<table>
+         [-c=<configDirPath>] [--column=<columns>[,<columns>...]]...
+         [--partition=<partitions>[,<partitions>...]]...
+         [--type=<indexTypes>[,<indexTypes>...]]... [-p=<plugins>[,
+         <plugins>...]]... <command>
 
-使用此索引工具，您可以创建、显示和删除索引。
+Using this index tool, you can CREATE, SHOW and DELETE indexes.
 
-支持的索引类型：BITMAP、BLOOM、MINMAX
+Supported index types: BITMAP, BLOOM, MINMAX
 
-支持的索引存储：LOCAL、HDFS（需要在{--config}/config.properties中配置）
+Supported index stores: LOCAL, HDFS (must be configured in {--config}/config.properties
 
-支持的数据源：使用ORC文件的HIVE（需要在{--config}/catalog/catalog_name.properties中配置）
+Supported data sources: HIVE using ORC files (must be configured in {--config}/catalog/catalog_name.properties
 
 
-<command>命令类型，如create、delete、show等；说明：删除命令
-只能作用于列级。
---column=<columns>【，<columns>...】，指定列号
-列，多列逗号分隔格式
---debug if开启后，每次拆分的原始数据将
-也与索引一起写入文件
---disable在表级别启用默认锁定；如果
-设置为false时，用户必须保证数据相同
-没有被多个呼叫方同时索引
-(索引不同的列或分区是并行的
-允许)
---partition=<分区>【，<分区>...】
-只为这些分区创建索引，逗号分隔
-多分区格式
---table=<table>全限定表名
---type=<indexTypes>【，<indexTypes>...】，指定索引类型名称。
-索引类型，多类型逗号分隔
-(支持的类型：BLOOM、BITMAP、MINMAX
--c, --config=<配置目录>
-presto et目录的根文件夹（默认为../etc）
--p, --plugins=<插件名称>[,<插件名称>...]
-plugins目录或文件，默认为(default：
-/预启发式索引/plugins)
--v详细
+      <command>          command types, e.g. create, delete, show; Note: delete command
+                           works a column level only.
+      --column=<columns>[,<columns>...]
+                         column, comma separated format for multiple columns
+      --debug            if enabled the original data for each split will
+                           also be written to a file alongside the index
+      --disableLocking   by default locking is enabled at the table level; if this
+                           is set to false, the user must ensure that the same data
+                           is not indexed by multiple callers at the same time
+                           (indexing different columns or partitions in parallel is
+                           allowed)
+      --partition=<partitions>[,<partitions>...]
+                         only create index for these partitions, comma separated
+                           format for multiple partitions
+      --table=<table>    fully qualified table name
+      --type=<indexTypes>[,<indexTypes>...]
+                         index type, comma separated format for multiple types
+                           (supported types: BLOOM, BITMAP, MINMAX
+  -c, --config=<configDirPath>
+                         root folder of openLooKeng etc directory (default: ../etc)
+  -p, --plugins=<plugins>[,<plugins>...]
+                         plugins dir or file, defaults to (default: .
+                           /hetu-heuristic-index/plugins)
+  -v                     verbose
 ```
 
-##示例
+## Examples
 
-###创建索引
+### Create index
 
-"没有"
-$ ./index -v -c ../etc --表名称hive.schema.table --列名称column1,column2 --类型bloom,minmax,bitmap --分区名称p=part1创建名称
+``` shell
+$ ./index -v -c ../etc --table hive.schema.table --column column1,column2 --type bloom,minmax,bitmap --partition p=part1 create
 ```
 
-###显示索引
+### Show index
 
-"没有"
-$ ./index -v -c ../etc --表名称模式名
+``` shell
+$ ./index -v -c ../etc --table hive.schema.table show
 ```
 
-###删除索引
+### Delete index
 
-*注意：*索引只能在表或列级别删除，即所有索引类型都将被删除。
+*Note:* index can only be deleted at table or column level, i.e. all index types will be deleted
 
-"没有"
-$ ./index -v -c ../etc --表hive.schema.table --column第1列数据被删除
+``` shell
+$ ./index -v -c ../etc --table hive.schema.table --column column1 delete
 ```
 
-##资源使用说明
+## Notes on resource usage
 
-###内存
+### Memory
 
-默认情况下，JVM MaxHeapSize会使用默认的（`java -XX:+PrintFlagsFinal -version | grep MaxHeapSize`），为了提高性能，建议增大MaxHeapSize的值。这可以是
-通过设置-Xmx值：
+By default the default JVM MaxHeapSize will be used (`java -XX:+PrintFlagsFinal -version | grep MaxHeapSize`). For improved performance, it is recommended to increase the MaxHeapSize. This can be
+done by setting -Xmx value:
 
-"没有"
+``` shell
 export JAVA_TOOL_OPTIONS="-Xmx100G"
 ```
 
-在此示例中，MaxHeapSize将设置为100G。
+In this example the MaxHeapSize will be set to 100G.
 
-###并行索引
+### Indexing in parallel
 
-如果在一台机器上为一个大表创建索引的速度太慢，则可以在不同的机器上并行为不同的分区创建索引。这需要设置--disableLocking标志并指定分区，例如：
+If creating the index for a large table is too slow on one machine, you can create index for different partitions in parallel on different machines. This requires setting the --disableLocking flag and specifying the partition(s). For example:
 
-在机器1上：
+On machine 1:
 
-"没有"
-$ ./index -v ---disableLocking c ../etc --表名称hive.schema.table --column1,column2 --type Bloom,minmax,bitmap --分区名p=分区名1名称
+``` bash 
+$ ./index -v ---disableLocking c ../etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part1 create
 ```
 
-在机器2上：
+On machine 2:
 
-"没有"
-$ ./index -v ---disableLocking c ../etc --表名称hive.schema.table --column1,column2 --type Bloom,minmax,bitmap --分区名称p=分区名称2创建模式
+``` shell
+$ ./index -v ---disableLocking c ../etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part2 create
 ```

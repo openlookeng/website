@@ -1,46 +1,45 @@
-旧时间戳和新时间戳
+Legacy and New Timestamp
 ========================
 
-新的`TIMESTAMP`和`TIME`语义使类型与SQL标准保持一致。详见以下章节。
+New `TIMESTAMP` and `TIME` semantics align the types with the SQL standard. See the following sections for details.
 
 
-**说明**
+**Note**
 
-*新的`TIMESTAMP'语义仍在试验中。建议* *保持遗留的`TIMESTAMP`语义为启用状态。您可以通过全局配置或基于每个会话配置新的语义来试验**。在将来的版本中，可能会废弃旧版的语义。
+*The new `TIMESTAMP` semantics is still experimental. It\'s recommended* *to keep the legacy `TIMESTAMP` semantics enabled. You can experiment* *with the new semantics by configuring it globally or on a per-session* *basis. The legacy semantics may be deprecated in a future release.*
 
 
-配置说明
+Configuration
 -------------
 
-可以使用`deprecated.legacy-timestamp`配置属性启用遗留语义。将其设置为`true`（默认）将启用遗留语义，而将其设置为`false`将启用新的语义。
+The legacy semantics can be enabled using the `deprecated.legacy-timestamp` config property. Setting it to `true` (the default) enables the legacy semantics, whereas setting it to `false` enables the new semantics.
 
-此外，它可以通过`legacy_timestamp`会话属性在每个会话的基础上启用或禁用。
+Additionally, it can be enabled or disabled on a per-session basis with the `legacy_timestamp` session property.
 
-### TIMESTAMP语义变化
+### TIMESTAMP semantic changes
 
-以前，`TIMESTAMP`类型描述的是Presto会话时区中的时间实例。现在， Presto将`TIMESTAMP`值视为一组表示墙时间的字段：
+Previously, the `TIMESTAMP` type described an instance in time in the openLooKeng session\'s time zone. Now, openLooKeng treats `TIMESTAMP` values as a set of the following fields representing wall time:
 
-> - "厄拉年"
-> - "一年中的一个月"
-> - "月日"
-> - "一天中的小时"
-> -小时分钟
-> - "中期" -如"DECIMAL(5,3)"
+- `YEAR OF ERA`
+-   `MONTH OF YEAR`
+-   `DAY OF MONTH`
+-   `HOUR OF DAY`
+-   `MINUTE OF HOUR`
+-   `SECOND OF MINUTE` - as `DECIMAL(5, 3)`
 
-因此，`TIMESTAMP`值不会以任何方式与会话时区链接，直到明确需要某个时区，例如，在转换为`带时区的TIMESTAMP`或`带时区的TIME ZONE`时。入
-这些情况下，将应用会话时区的时区偏移量，如SQL标准中所指定。
+For that reason, a `TIMESTAMP` value is not linked with the session time zone in any way until a time zone is needed explicitly, such as when casting to a `TIMESTAMP WITH TIME ZONE` or `TIME WITH TIME ZONE`. In
+those cases, the time zone offset of the session time zone is applied, as specified in the SQL standard.
 
-###时间语义变化
+### TIME semantic changes
 
-类型`TIME`与`TIMESTAMP`类似。
+The `TIME` type was changed similarly to the `TIMESTAMP` type.
 
-### TIME with TIME ZONE语义变化
+### TIME WITH TIME ZONE semantic changes
 
-由于兼容性要求，与SQL标准完全对齐`TIME WITH TIME ZONE`还是不可能的。因此，在计算`TIME WITH TIME ZONE`的时区偏移量时，
-Presto使用会话的开始日期和时间。
+Due to compatibility requirements, having `TIME WITH TIME ZONE` completely aligned with the SQL standard was not possible yet. For that reason, when calculating the time zone offset for `TIME WITH TIME ZONE`, openLooKeng uses the session\'s start date and time.
 
-这可以在使用`TIME WITH TIME ZONE`的查询中看到，查询的时区已经发生了时区策略更改或使用了夏令时。例如，会话开始时间为2017-03-01：
+This can be seen in queries using `TIME WITH TIME ZONE` in a time zone that has had time zone policy changes or uses DST. For example, with a session start time of 2017-03-01:
 
-> -查询：`选择时间'10:00:00亚洲/加德满都'在时区'UTC'`
-> -源结果：`04:30:00.000 UTC`
-> -新结果：`04:15:00.000 UTC`
+-   Query: `SELECT TIME '10:00:00 Asia/Kathmandu' AT TIME ZONE 'UTC'`
+-   Legacy result: `04:30:00.000 UTC`
+-   New result: `04:15:00.000 UTC`

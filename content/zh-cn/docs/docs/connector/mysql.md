@@ -1,51 +1,51 @@
-MySQL连接器
+MySQL Connector
 ===============
 
-MySQL连接器允许在外部MySQL数据库中查询和创建表。这可用于连接不同系统（如MySQL和Hive）或两个不同的MySQL实例之间的数据。
+The MySQL connector allows querying and creating tables in an external MySQL database. This can be used to join data between different systems like MySQL and Hive, or between two different MySQL instances.
 
-配置说明
+Configuration
 -------------
 
-配置MySQL连接器，在`etc/catalog`目录下创建一个目录属性文件，例如`mysql.properties`，将MySQL连接器挂载为`mysql`目录。使用下列命令创建文件
-内容，则根据您的设置替换连接属性：
+To configure the MySQL connector, create a catalog properties file in`etc/catalog` named, for example, `mysql.properties`, to mount the MySQL connector as the `mysql` catalog. Create the file with the following
+contents, replacing the connection properties as appropriate for your setup:
 
-"```{.none}"
-连接器名称=mysql
-连接URL=jdbc:mysql://示例.net:3306，其中：
-connection-user=根用户
-connection-password=连接密码
+``` properties
+connector.name=mysql
+connection-url=jdbc:mysql://example.net:3306
+connection-user=root
+connection-password=secret
 ```
 
-###多台MySQL服务器
+### Multiple MySQL Servers
 
-可以根据需要创建多个目录，因此，如果您有额外的MySQL服务器，只需在`etc/catalog`中添加另一个属性文件（确保它以`.properties`结尾）。
-如果您将属性文件命名为`sales.properties`,Presto将使用配置的连接器创建一个名为`sales`的目录。
+You can have as many catalogs as you need, so if you have additional MySQL servers, simply add another properties file to `etc/catalog` with a different name (making sure it ends in `.properties`). For example, if
+you name the property file `sales.properties`, openLooKeng will create a catalog named `sales` using the configured connector.
 
-查询MySQL
+Querying MySQL
 --------------
 
-MySQL连接器为每个MySQL *database*提供一个模式。通过`SHOW SCHEMAS`命令可以查看到可用的MySQL数据库：
+The MySQL connector provides a schema for every MySQL *database*. You can see the available MySQL databases by running `SHOW SCHEMAS`:
 
-展示来自mysql的SCHEMAS；
+    SHOW SCHEMAS FROM mysql;
 
-假设您有一个MySQL数据库，名为`web`，那么您可以通过`SHOW TABLES`命令查看该数据库中的表：
+If you have a MySQL database named `web`, you can view the tables in this database by running `SHOW TABLES`:
 
-显示来自mysql.web的表；
+    SHOW TABLES FROM mysql.web;
 
-在`web`数据库中可以看到`clicks`表中的列列表，使用下列方法之一：
+You can see a list of the columns in the `clicks` table in the `web` database using either of the following:
 
-在DESCRIBE mysql.web.
-展示来自mysql.web的COLUMNS。点击；
+    DESCRIBE mysql.web.clicks;
+    SHOW COLUMNS FROM mysql.web.clicks;
 
-最后，您可以访问`web`数据库中的`clicks`表：
+Finally, you can access the `clicks` table in the `web` database:
 
-从mysql.web.clicks；
+    SELECT * FROM mysql.web.clicks;
 
-如果您对目录属性文件使用不同的名称，那么在上面的例子中，请使用该目录名称而不是`mysql`。
+If you used a different name for your catalog properties file, use that catalog name instead of `mysql` in the above examples.
 
-MySQL连接器限制
+MySQL Connector Limitations
 ---------------------------
 
-暂不支持以下SQL语句：
+The following SQL statements are not yet supported:
 
-【删除】（../sql/delete），【授权】（../sql/grant），【回收】（../sql/revoke），【显示-授权】（../sql/show-grantants），【显示-角色】（../sql/show-roles），【显示角色授权】(../sql/show-role-grants) , （显示角色授权）
+[delete](../sql/delete), [grant](../sql/grant), [revoke](../sql/revoke), [show-grants](../sql/show-grants), [show-roles](../sql/show-roles), [show-role-grants](../sql/show-role-grants)

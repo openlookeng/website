@@ -1,415 +1,415 @@
-聚合函数
+Aggregate Functions
 ===================
 
-聚合函数对一组值进行操作以计算单个结果。
+Aggregate functions operate on a set of values to compute a single result.
 
-除`count`、`count_if`、`max_by`、`min_by`、`approx_distinct`外，所有聚合函数均忽略空值，当没有输入行或所有值都为null时，均返回null。例如：`sum`
-返回null而不是零，`avg`在计数中不包括null值。‘coalesce’功能可以
-用于将null转换成零。
+Except for `count`, `count_if`, `max_by`, `min_by` and`approx_distinct`, all of these aggregate functions ignore null values and return null for no input rows or when all values are null. For example,  `sum`
+returns null rather than zero and `avg` does not include null values in the count. The `coalesce` function can
+be used to convert null into zero.
 
-某些聚集函数（如`array_agg`）根据输入的顺序产生不同的结果
-值。可以通过在聚合函数中编写一个`order-by-clause`来指定这种排序：
+Some aggregate functions such as `array_agg` produce different results depending on the order of input
+values. This ordering can be specified by writing an `order-by-clause` within the aggregate function:
 
-array_agg（x ORDER BY y DESC，按照排序方式排序）
-array_agg（x排序方式x,y,z）
+    array_agg(x ORDER BY y DESC)
+    array_agg(x ORDER BY x, y, z)
 
-通用聚合函数
+General Aggregate Functions
 ---------------------------
 
 
-**任意(x)** -\> \【与输入相同\】
+**arbitrary(x)** -\> \[same as input\]
 
-返回`x`的任意非空值（如果存在）。
-
-
-
-**array\_agg(x** -\>数组\<\【与输入相同】\>
-
-返回一个从输入`x`元素创建的数组。
+Returns an arbitrary non-null value of `x`, if one exists.
 
 
 
-**avg(x)** -\>双精度浮点数
+**array\_agg(x** -\> array\<\[same as input\]\>
 
-返回所有输入值的平均值（算术平均数）。
-
-
-
-**avg（时间间隔类型）** -\>时间间隔类型
-
-返回所有输入值的平均间隔长度。
+Returns an array created from the input `x` elements.
 
 
 
-**布尔\_and（布尔型）** -\>布尔型
+**avg(x)** -\> double
 
-如果所有输入值都为`TRUE`，则返回`TRUE`，否则返回`FALSE`。
+Returns the average (arithmetic mean) of all input values.
 
 
 
-**布尔\_or（布尔型）** -\>布尔型
+**avg(time interval type)** -\> time interval type
 
-如果输入值中有任何一个为`TRUE`，则返回`TRUE`，否则返回`FALSE`。
+Returns the average interval length of all input values.
+
+
+
+**bool\_and(boolean)** -\> boolean
+
+Returns `TRUE` if every input value is `TRUE`, otherwise `FALSE`.
+
+
+
+**bool\_or(boolean)** -\> boolean
+
+Returns `TRUE` if any input value is `TRUE`, otherwise `FALSE`.
 
 
 
 **checksum(x)** -\> varbinary
 
-返回给定值的顺序不敏感的校验和。
+Returns an order-insensitive checksum of the given values.
 
 
 
-**count(\*)** -\>大于
+**count(\*)** -\> bigint
 
-返回输入行数。
-
-
-**count(x)** -\>大于
-
-返回非空输入值的数量。
+Returns the number of input rows.
 
 
+**count(x)** -\> bigint
 
-count\_if(x)** -\>大于
-
-返回`TRUE`输入值的个数。此函数等价于`count(CASE WHEN xTHEN 1 END)`。
+Returns the number of non-null input values.
 
 
 
-**every（布尔型）** -\>布尔型
+**count\_if(x)** -\> bigint
 
-这是`bool_and`{.interpreted-text role="func"}的别名。
-
-
-
-**几何\_mean(x)** -\>双精度
-
-返回所有输入值的几何平均值。
+Returns the number of `TRUE` input values. This function is equivalent to `count(CASE WHEN x THEN 1 END)`.
 
 
 
-**max\_by(x, y)** -\> \【与x相同】
+**every(boolean)** -\> boolean
 
-返回所有输入值中与`y`最大值相关的`x`的值。
-
-
-
-**max\_by(x, y, n)** -\>数组\<\【与x相同】\>
-
-返回与所有输入值中最大的一个关联的`x`的`n`值，按`y`降序排列。
+This is an alias for `bool_and`.
 
 
 
-**min\_by(x, y)** -\> \【与x相同】
+**geometric\_mean(x)** -\> double
 
-返回所有输入值中与`y`的最小值相关的`x`的值。
-
-
-
-**min\_by(x, y, n)** -\>数组\<\【与x相同】\>
-
-返回与所有输入值中最小的`n`相关的`x`的`n`值，按`y`升序排列。
+Returns the geometric mean of all input values.
 
 
 
-**max(x)** -\> \【与输入相同\】
+**max\_by(x, y)** -\> \[same as x\]
 
-返回所有输入值的最大值。
-
-
-
-**max(x, n)** -\>数组\<\【与x相同】\>
-
-返回`x`所有输入值中最大的`n`值。
+Returns the value of `x` associated with the maximum value of `y` over all input values.
 
 
 
-**min(x)** -\> \【与输入相同\】
+**max\_by(x, y, n)** -\> array\<\[same as x\]\>
 
-返回所有输入值的最小值。
-
-
-
-**min(x, n)** -\>数组\<\【与x相同】\>
-
-返回`x`所有输入值的`n`最小值。
+Returns `n` values of `x` associated with the `n` largest of all input values of `y` in descending order of `y`.
 
 
 
-**sum(x)** -\> \【与输入相同】
+**min\_by(x, y)** -\> \[same as x\]
 
-返回所有输入值的总和。
+Returns the value of `x` associated with the minimum value of `y` over all input values.
 
 
 
-按位聚合函数
+**min\_by(x, y, n)** -\> array\<\[same as x\]\>
+
+Returns `n` values of `x` associated with the `n` smallest of all input values of `y` in ascending order of `y`.
+
+
+
+**max(x)** -\> \[same as input\]
+
+Returns the maximum value of all input values.
+
+
+
+**max(x, n)** -\> array\<\[same as x\]\>
+
+Returns `n` largest values of all input values of `x`.
+
+
+
+**min(x)** -\> \[same as input\]
+
+Returns the minimum value of all input values.
+
+
+
+**min(x, n)** -\> array\<\[same as x\]\>
+
+Returns `n` smallest values of all input values of `x`.
+
+
+
+**sum(x)** -\> \[same as input\]
+
+Returns the sum of all input values.
+
+
+
+Bitwise Aggregate Functions
 ---------------------------
 
 
 
-**按位排序\_and\_agg(x)** -\> bigint
+**bitwise\_and\_agg(x)** -\> bigint
 
-返回2补码表示法中所有输入值的按位与。
+Returns the bitwise AND of all input values in 2\'s complement representation.
 
 
 
-**按位\_or\_agg(x)** -\>大号
+**bitwise\_or\_agg(x)** -\> bigint
 
-返回2补码表示法中所有输入值的按位或。
+Returns the bitwise OR of all input values in 2\'s complement representation.
 
-地图聚合函数
+Map Aggregate Functions
 -----------------------
 
-**直方图(x)** -\>地图(K,bigint)
+**histogram(x)** -\> map(K,bigint)
 
-返回一个映射，其中包含每个输入值出现的次数计数。
-
-
-
-**map\_agg(key, value)** -\>映射（K,V） ，表示对KV进行映射。
-
-返回一个从`key` / `value`对中创建的映射。
+Returns a map containing the count of the number of times each input value occurs.
 
 
 
-**map\_union(x(K,V))** -\>映射（K,V）映射方式
+**map\_agg(key, value)** -\> map(K,V)
 
-返回所有输入映射的并集。如果在多个输入映射中找到一个键，则所得到的映射中的键值来自任意输入映射。
+Returns a map created from the input `key` / `value` pairs.
+
+
+
+**map\_union(x(K,V))** -\> map(K,V)
+
+Returns the union of all the input maps. If a key is found in multiple input maps, that key\'s value in the resulting map comes from an arbitrary input map.
 
 
 
 **multimap\_agg(key, value)** -\> map(K,array(V))
 
-返回一个从输入`key` / `value`对创建的multimap。每个键可以关联多个值。
+Returns a multimap created from the input `key` / `value` pairs. Each key can be associated with multiple values.
 
 
 
-近似聚合函数
+Approximate Aggregate Functions
 -------------------------------
 
 
 
-**approx\_distinct(x)** -\>对比度分析工具
+**approx\_distinct(x)** -\> bigint
 
-返回非重复输入值的近似数目。该函数提供`count(DISTINCT x)`的近似值。如果所有输入值都为空，则返回零。
+Returns the approximate number of distinct input values. This function provides an approximation of `count(DISTINCT x)`. Zero is returned if all input values are null.
 
-这个函数应该产生2.3%的标准误差，它是所有可能集合上的误差分布（近似正态）的标准差。它不保证任何特定输入集的错误上限。
-
-
-
-**近似值\_可区分度(x, e)** -\> bigint
-
-返回非重复输入值的近似数目。该函数提供`count(DISTINCT x)`的近似值。如果所有输入值都为空，则返回零。
-
-该函数产生的标准误差不应大于`e`，它是所有可能集合上的误差分布（近似正态）的标准差。它不保证任何特定输入集的错误上限。当前实现要求`e`在`[0.0040625, 0.26000]`范围内。
+This function should produce a standard error of 2.3%, which is the standard deviation of the (approximately normal) error distribution over all possible sets. It does not guarantee an upper bound on the error for any specific input set.
 
 
 
-**近似值\_百分比（x，百分比）** -\> \【同x\】
+**approx\_distinct(x, e)** -\> bigint
 
-返回给定`百分比'下`x`所有输入值的近似百分位数。`percentage`的值必须在0和1之间，并且对于所有输入行必须是常量。
+Returns the approximate number of distinct input values. This function provides an approximation of `count(DISTINCT x)`. Zero is returned if all input values are null.
 
-
-
-**近似值\_percentile（x，百分比）** -\>数组\<\【与x相同】\>
-
-返回`x`的所有输入值在每个指定百分比的近似百分位。‘百分比’数组的每个元素必须在零和一之间，并且数组必须为常量
-输入行数。
+This function should produce a standard error of no more than `e`, which is the standard deviation of the (approximately normal) error distribution over all possible sets. It does not guarantee an upper bound on the error for any specific input set. The current implementation of this function requires that `e` be in the range of `[0.0040625, 0.26000]`.
 
 
 
-**近似值\_百分比（x,w，百分比）** -\> \【与x相同】
+**approx\_percentile(x, percentage)** -\> \[same as x\]
 
-返回所有输入值`x`的近似加权百分位数，使用每项目权重`w`在百分比`p`。权重必须为至少一个的整数值。它实际上是百分数集中值`x`的复制计数。`p`的值必须在0和1之间，并且对于所有输入行必须是常量。
-
-
-
-**近似\_百分位（x,w，百分比，准确度）** -\> \【同x\】
-
-返回所有输入值`x`的近似加权百分位，使用每项目权重`w`按百分比`p`计算，最大秩误差`accuracy`。权重值必须为整数，至少为
-一个。它实际上是百分数集中值`x`的复制计数。`p`的值必须在0和1之间，并且对于所有输入行必须是常量。`accuracy`必须是一个大于
-零且小于一，并且对于所有输入行，它必须是常数。
+Returns the approximate percentile for all input values of `x` at the given `percentage`. The value of `percentage` must be between zero and one and must be constant for all input rows.
 
 
 
-**近似值\_percentile（x, w，百分比）** -\>数组\<\【与x相同】\>
+**approx\_percentile(x, percentages)** -\> array\<\[same as x\]\>
 
-在数组中指定的每个给定百分比处，使用每个项的权重`w`，返回所有输入值`x`的近似加权百分数。权重必须为至少一个的整数值。是
-实际上是百分位数集合中值`x`的复制计数。数组的每个元素必须介于0和1之间，并且对于所有输入行，数组必须是常量。
+Returns the approximate percentile for all input values of `x` at each of the specified percentages. Each element of the `percentages` array must be between zero and one, and the array must be constant for all
+input rows.
 
 
 
-**approx\_set(x)** -\>日志收集工具
+**approx\_percentile(x, w, percentage)** -\> \[same as x\]
 
-请参考`hyperloglog`{.interpreted-text角色="doc"}中的说明。
+Returns the approximate weighed percentile for all input values of `x` using the per-item weight `w` at the percentage `p`. The weight must be an integer value of at least one. It is effectively a replication count for the value `x` in the percentile set. The value of `p` must be between zero and one and must be constant for all input rows.
+
+
+
+**approx\_percentile(x, w, percentage, accuracy)** -\> \[same as x\]
+
+Returns the approximate weighed percentile for all input values of `x`  using the per-item weight `w` at the percentage `p`, with a maximum rank error of `accuracy`. The weight must be an integer value of at least
+one. It is effectively a replication count for the value `x` in the percentile set. The value of `p` must be between zero and one and must be constant for all input rows. `accuracy` must be a value greater than
+zero and less than one, and it must be constant for all input rows.
+
+
+
+**approx\_percentile(x, w, percentages)** -\> array\<\[same as x\]\>
+
+Returns the approximate weighed percentile for all input values of `x` using the per-item weight `w` at each of the given percentages specified in the array. The weight must be an integer value of at least one. It is
+effectively a replication count for the value `x` in the percentile set. Each element of the array must be between zero and one, and the array must be constant for all input rows.
+
+
+
+**approx\_set(x)** -\> HyperLogLog
+
+See `hyperloglog`.
 
 
 
 **merge(x)** -\> HyperLogLog
 
-请参考`hyperloglog`{.interpreted-text角色="doc"}中的说明。
+See `hyperloglog`.
 
 
 
-**merge(qdigest(T))** -\> qdigest(T)合并后的数据格式
+**merge(qdigest(T))** -\> qdigest(T)
 
-请参考`qdigest`{.interpreted-text角色="doc"}中的说明。
-
-
-
-**qdigest\_agg(x)** -\> qdigest\<\【与x相同\】\>（与x相同）
-
-请参考`qdigest`{.interpreted-text角色="doc"}中的说明。
+See `qdigest`.
 
 
 
-**qdigest\_agg(x, w)** -\> qdigest\<\【与x相同\】\>（与x相同\）
+**qdigest\_agg(x)** -\> qdigest\<\[same as x\]\>
 
-请参考`qdigest`{.interpreted-text角色="doc"}中的说明。
-
-
-
-**qdigest\_agg(x, w, accuracy)** -\> qdigest\<\【与x相同\】\>（与x相同\）
-
-请参考`qdigest`{.interpreted-text角色="doc"}中的说明。
+See `qdigest`.
 
 
 
-**数值型\_直方图（桶、值、权重）** -\>映射\<double,double\>
+**qdigest\_agg(x, w)** -\> qdigest\<\[same as x\]\>
 
-计算一个近似直方图，其中所有`值`的`桶`最多`桶'数目，每个项目的权重为`权重`。该算法主要基于以下因素：
+See `qdigest`.
 
-"```{.none}"
-Yael Ben-Haim和Elad Tom-Tov,"一种流式并行决策树算法"，
-J.机器学习研究11 (2010) ,pp. 849--872.
+
+
+**qdigest\_agg(x, w, accuracy)** -\> qdigest\<\[same as x\]\>
+
+See `qdigest`.
+
+
+
+**numeric\_histogram(buckets, value, weight)** -\> map\<double, double\>
+
+Computes an approximate histogram with up to `buckets` number of buckets for all `value`s with a per-item weight of `weight`. The algorithm is based loosely on:
+
+``` 
+Yael Ben-Haim and Elad Tom-Tov, "A streaming parallel decision tree algorithm",
+J. Machine Learning Research 11 (2010), pp. 849--872.
 ```
 
-`桶`必须是`bigint`。`value`和`weight`必须是数字。
+`buckets` must be a `bigint`. `value` and `weight` must be numeric.
 
 
 
-**数字\_直方图（桶，值）** -\>映射\<double,double\>
+**numeric\_histogram(buckets, value)** -\> map\<double, double\>
 
-计算一个近似直方图，其中所有`值'的桶数最多为`buckets`。该函数相当于`numeric_histogram`的变体，其权重为``，每个item的权重为`1`。
+Computes an approximate histogram with up to `buckets` number of buckets for all `value`s. This function is equivalent to the variant of `numeric_histogram` that takes a `weight`, with a per-item weight of `1`.
 
 
-统计汇总函数
+Statistical Aggregate Functions
 -------------------------------
 
 
-**corr(y, x)** -\>双精度
+**corr(y, x)** -\> double
 
-返回输入值的相关系数。
-
-
-
-**covar\_pop(y, x)** -\>双精度浮点数
-
-返回输入值的总体协方差。
+Returns correlation coefficient of input values.
 
 
 
-**covar\_samp(y, x)** -\>双精度浮点数
+**covar\_pop(y, x)** -\> double
 
-返回输入值的样本协方差。
+Returns the population covariance of input values.
 
 
 
-**峭度(x)** -\>双峰
+**covar\_samp(y, x)** -\> double
 
-返回所有输入值的多余峰度。使用下列表达式的无偏估计：
+Returns the sample covariance of input values.
 
-"```{.none}"
-峭度(x)=n(n+1)/(n-1)(n-2)(n-3))和[(x_i-mean)^4]/stddev(x)^4-3(n-1)^2/((n-2)(n-3))
+
+
+**kurtosis(x)** -\> double
+
+Returns the excess kurtosis of all input values. Unbiased estimate using the following expression:
+
+``` 
+kurtosis(x) = n(n+1)/((n-1)(n-2)(n-3))sum[(x_i-mean)^4]/stddev(x)^4-3(n-1)^2/((n-2)(n-3))
 ```
 
 
 
 
-**regr\_intercept(y, x)**-\>双精度浮点数
+**regr\_intercept(y, x)**-\> double
 
-返回输入值的线性回归截距。`y`为依赖值。其中，`x`为独立值。
-
-
-
-**regr\_slope(y, x)** -\>倍率，表示从左到右的双倍率。
-
-返回输入值的线性回归斜率。`y`为依赖值。其中，`x`为独立值。
+Returns linear regression intercept of input values. `y` is the dependent value. `x` is the independent value.
 
 
 
-**偏斜度(x)** -\>加倍
+**regr\_slope(y, x)** -\> double
 
-返回所有输入值的偏斜度。
-
-
-
-**stddev(x)** -\>双精度浮点数
-
-这是`stddev_samp`{.interpreted-text role="func"}的别名，此处仅为示例，请以实际环境为准。
+Returns linear regression slope of input values. `y` is the dependent value. `x` is the independent value.
 
 
 
-**stddev\_pop(x)**-\>双精度浮点数
+**skewness(x)** -\> double
 
-返回所有输入值的总体标准偏差。
-
-
-
-**stddev\_samp(x)** -\>双精度浮点数
-
-返回所有输入值的样本标准差。
+Returns the skewness of all input values.
 
 
 
-**方差(x)**-\>倍
+**stddev(x)** -\> double
 
-这是`var_samp`{.interpreted-text role="func"}的别名，用于区别不同的角色。
-
-
-
-**var\_pop(x)**-\>加倍显示
-
-返回所有输入值的总体方差。
+This is an alias for `stddev_samp`.
 
 
 
-**var\_samp(x)**-\>双精度浮点数
+**stddev\_pop(x)**-\> double
 
-返回所有输入值的样本方差。
+Returns the population standard deviation of all input values.
 
 
-Lambda聚合函数
+
+**stddev\_samp(x)** -\> double
+
+Returns the sample standard deviation of all input values.
+
+
+
+**variance(x)**-\> double
+
+This is an alias for `var_samp`.
+
+
+
+**var\_pop(x)**-\> double
+
+Returns the population variance of all input values.
+
+
+
+**var\_samp(x)**-\> double
+
+Returns the sample variance of all input values.
+
+
+Lambda Aggregate Functions
 --------------------------
 
-**reduce\_agg（输入值T，初始状态S，输入函数(S,T,S），合并函数(S,S,S))** -\> S
+**reduce\_agg(inputValue T, initialState S, inputFunction(S, T, S), combineFunction(S, S, S))** -\> S
 
-将所有输入值缩减为单个值。对于每一个非空输入值，都会调用`inputFunction`。`inputFunction`除了取输入值外，还取当前状态，初始为`initialState`，并返回新的状态。调用`combineFunction`将两个状态组合成一个新的状态。返回最终状态：
+Reduces all input values into a single value. `inputFunction` will be invoked for each non-null input value. In addition to taking the input value, `inputFunction` takes the current state, initially `initialState`, and returns the new state. `combineFunction` will be invoked to combine two states into a new state. The final state is returned:
 
-SELECT id,reduce_agg（数值，0,(a,b）)->a+b,(a,b)->a+b) ，依次类推
-从(
-价值
-（1, 3），
-（1, 4），
-（1, 5），
-（2, 6），
-(2, 7)
-)AS t（id，值）
-GROUP BY id方式；
--- (1, 12)
--- (2, 13)
+    SELECT id, reduce_agg(value, 0, (a, b) -> a + b, (a, b) -> a + b)
+    FROM (
+        VALUES
+            (1, 3),
+            (1, 4),
+            (1, 5),
+            (2, 6),
+            (2, 7)
+    ) AS t(id, value)
+    GROUP BY id;
+    -- (1, 12)
+    -- (2, 13)
     
-SELECT id,reduce_agg（值，1,(a,b）->a * b,(a,b)->a * b) ，依次类推。
-从(
-价值
-（1, 3），
-（1, 4），
-（1, 5），
-（2, 6），
-(2, 7)
-)AS t（id，值）
-GROUP BY id方式；
--- (1, 60)
--- (2, 42)
+    SELECT id, reduce_agg(value, 1, (a, b) -> a * b, (a, b) -> a * b)
+    FROM (
+        VALUES
+            (1, 3),
+            (1, 4),
+            (1, 5),
+            (2, 6),
+            (2, 7)
+    ) AS t(id, value)
+    GROUP BY id;
+    -- (1, 60)
+    -- (2, 42)
 
-状态类型必须是布尔型、整型、浮点型或日期/时间/间隔型。
+The state type must be a boolean, integer, floating-point, or date/time/interval.

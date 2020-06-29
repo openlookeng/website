@@ -1,37 +1,37 @@
-准备
+PREPARE
 =======
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-PREPARE语句_name FROM语句
+``` sql
+PREPARE statement_name FROM statement
 ```
 
-问题描述
+Description
 -----------
 
-准备一条语句，以便在以后执行。准备语句是保存在具有给定名称的会话中的查询。语句可以包含参数，以代替执行时要替换的文本。参数用问号表示。
+Prepares a statement for execution at a later time. Prepared statements are queries that are saved in a session with a given name. The statement can include parameters in place of literals to be replaced at execution time. Parameters are represented by question marks.
 
-示例
+Examples
 --------
 
-准备select查询：
+Prepare a select query:
 
-从my_select1开始准备
-*从国家选择；
+    PREPARE my_select1 FROM
+    SELECT * FROM nation;
 
-准备一个包含参数的select query。与`regionkey`和`nationkey`比较的值将用`execute`{.interpreted-text role="doc"}语句填充：
+Prepare a select query that includes parameters. The values to compare with `regionkey` and `nationkey` will be filled in with the `execute` statement:
 
-从my_select2开始准备
-从国家选择名称WHERE regionkey =？和国码<?；
+    PREPARE my_select2 FROM
+    SELECT name FROM nation WHERE regionkey = ? AND nationkey < ?;
 
-准备一个插入查询：
+Prepare an insert query:
 
-准备从my_insert开始
-插入城市价值（1，'旧金山'）；
+    PREPARE my_insert FROM
+    INSERT INTO cities VALUES (1, 'San Francisco');
 
-参见
+See Also
 --------
 
-【执行方式】（./execute），【去分配-准备】（./deallocate-prepare），【描述-输入】（./decribe-输入），【描述-输出】（./decribe-输出）
+[execute](./execute), [deallocate-prepare](./deallocate-prepare), [describe-input](./describe-input), [describe-output](./describe-output)

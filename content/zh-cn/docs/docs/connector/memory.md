@@ -1,47 +1,47 @@
-内存连接器
+Memory Connector
 ================
 
-Memory连接器将所有数据和元数据存储在worker上的RAM中，当Presto重新启动时，两者都将被丢弃。
+The Memory connector stores all data and metadata in RAM on workers and both are discarded when openLooKeng restarts.
 
-配置说明
+Configuration
 -------------
 
-配置Memory连接器，新建一个目录属性文件`etc/catalog/memory.properties`，内容如下：
+To configure the Memory connector, create a catalog properties file `etc/catalog/memory.properties` with the following contents:
 
-"```{.none}"
-Connector.name=内存名称
-内存.max-data-per-node=128MB内存空间
+``` properties
+connector.name=memory
+memory.max-data-per-node=128MB
 ```
 
-`memory.max-data-per-node`定义了每个节点存储在该连接器中的页的内存限制（默认值为128MB）。
+`memory.max-data-per-node` defines memory limit for pages stored in this connector per each node (default value is 128MB).
 
-示例
+Examples
 --------
 
-使用Memory连接器创建表：
+Create a table using the Memory connector:
 
-CREATE TABLE内存.default.nation弹性伸缩服务
-从tpch.tiny.nation文件中选择
+    CREATE TABLE memory.default.nation AS
+    SELECT * from tpch.tiny.nation;
 
-在Memory连接器中向表中插入数据：
+Insert data into a table in the Memory connector:
 
-插入内存.default.nation
-从tpch.tiny.nation中选择，从其他选择
+    INSERT INTO memory.default.nation
+    SELECT * FROM tpch.tiny.nation;
 
-从Memory连接器中选择：
+Select from the Memory connector:
 
-从内存选择
+    SELECT * FROM memory.default.nation;
 
-丢弃表：
+Drop table:
 
-内存表；
+    DROP TABLE memory.default.nation;
 
-内存连接器限制
+Memory Connector Limitations
 ----------------------------
 
-> - `DROP TABLE`内存不会立即释放。在下一次对内存连接器进行写访问后释放。
-> -当一个worker故障/重启时，所有存储在其内存中的数据将永远丢失。为了防止静默数据丢失，此连接器将对此类已损坏的读访问引发错误
->表。
-> -在写内存表过程中，如果由于任何原因导致查询失败，则表将处于未定义状态。此类表应该手动删除并重新创建。尝试从此类表中读取数据可能会失败或返回部分数据。
-> -当协调器失败/重新启动时，有关表的所有元数据都将丢失，但表的数据仍将存在于工作节点上，但这些表将无法访问。
->-该连接器在多个协调器中不能正常工作，因为每个协调器将具有不同的元数据。
+> -   After `DROP TABLE` memory is not released immediately. It is  released after next write access to memory connector.
+>    -   When one worker fails/restarts all data that were stored in its  memory will be lost forever. To prevent silent data loss this  connector will throw an error on any read access to such corrupted
+>  table.
+>    -   When query fails for any reason during writing to memory table,  table will be in undefined state. Such table should be dropped and recreated manually. Reading attempt from such table may fail or  may return partial data.
+>    -   When coordinator fails/restarts all metadata about tables will be  lost, but tables\' data will be still present on the workers however they will be inaccessible.
+>    -   This connector will not work properly with multiple coordinators,  since each coordinator will have a different metadata.

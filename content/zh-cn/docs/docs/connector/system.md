@@ -1,71 +1,71 @@
-系统连接器
+System Connector
 ================
 
-系统连接器提供当前运行的Presto集群的信息和度量。它通过普通的SQL查询使这个功能可用。
+The System connector provides information and metrics about the currently running openLooKeng cluster. It makes this available via normal SQL queries.
 
-配置说明
+Configuration
 -------------
 
-系统连接器不需要进行配置：它会自动通过一个名为`system`的目录获得。
+The System connector doesn\'t need to be configured: it is automatically available via a catalog named `system`.
 
-使用系统连接器
+Using the System Connector
 --------------------------
 
-列出可用的系统模式：
+List the available system schemas:
 
-展示来自系统的方案；
+    SHOW SCHEMAS FROM system;
 
-列出其中一个模式中的表：
+List the tables in one of the schemas:
 
-显示表从系统。运行时；
+    SHOW TABLES FROM system.runtime;
 
-查询其中一张表：
+Query one of the tables:
 
-SELECT *来自于系统.runtime.nodes文件
+    SELECT * FROM system.runtime.nodes;
 
-kill正在运行的查询：
+Kill a running query:
 
-CALL system.runtime.kill_query（query_id => '20151207_215727_00146_tx3nr'， message => '资源使用过多'）；
+    CALL system.runtime.kill_query(query_id => '20151207_215727_00146_tx3nr', message => 'Using too many resources');
 
-系统连接器表
+System Connector Tables
 -----------------------
 
-### `元数据.catalogs`
+### `metadata.catalogs`
 
-catalogs表包含可用的目录列表。
+The catalogs table contains the list of available catalogs.
 
-### `元数据.schema_properties`属性名称
+### `metadata.schema_properties`
 
-架构属性表包含可在创建新架构时设置的可用属性列表。
+The schema properties table contains the list of available properties that can be set when creating a new schema.
 
-###元数据表属性
+### `metadata.table_properties`
 
-表属性表包含可在创建新表时设置的可用属性列表。
+The table properties table contains the list of available properties that can be set when creating a new table.
 
-### `元数据.table_comments`元数据说明
+### `metadata.table_comments`
 
-表comments表包含表comments的列表。
+The table comments table contains the list of table comment.
 
-###运行时节点
+### `runtime.nodes`
 
-nodes表包含Presto集群中可见的节点列表及其状态。
+The nodes table contains the list of visible nodes in the openLooKeng cluster along with their status.
 
-###运行时查询
+### `runtime.queries`
 
-querys表包含有关Presto集群当前和最近运行的查询的信息。从这个表中可以找到原始查询文本（SQL）、运行查询的用户的标识以及查询的性能信息，包括查询的排队和分析时间。
+The queries table contains information about currently and recently running queries on the openLooKeng cluster. From this table you can find out the original query text (SQL), the identity of the user who ran the query and performance information about the query including how long the query was queued and analyzed.
 
-###运行时.tasks
+### `runtime.tasks`
 
-Tasks表包含有关Presto查询中涉及的任务的信息，包括这些任务的执行位置以及每个任务处理的行数和字节数。
+The tasks table contains information about the tasks involved in a openLooKeng query including where they were executed and and how many rows and bytes each task processed.
 
-###运行时。事务
+### `runtime.transactions`
 
-事务表包含当前打开的事务和相关元数据的列表。这包括诸如创建时间、空闲时间、初始化参数和访问的目录等信息。
+The transactions table contains the list of currently open transactions and related metadata. This includes information such as the create time, idle time, initialization parameters, and accessed catalogs.
 
-系统连接器流程
+System Connector Procedures
 ---------------------------
 
-**runtime.kill\_query（query\_id，提示信息）**
+**runtime.kill\_query(query\_id, message)**
 
-kill掉由`query_id`标识的查询。查询失败消息会包含指定的`message`。
+Kill the query identified by `query_id`. The query failure message will include the specified `message`.
 

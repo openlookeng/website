@@ -1,16 +1,18 @@
-#位图索引
+# Bitmap Index
 
-##用例
+## Use cases
 
-Bitmap Index用于过滤从ORC文件中读取的数据，仅供worker节点使用。
+Bitmap Index is used for filtering data read from ORC files and is used only by the **worker** nodes
 
-+如果这个索引存在于查询中谓词的一部分的列上，那么在读取ORC文件时，性能可能会得到改善。
+- If this index exists on a column which is part of a predicate in the query, the performance may be improved while reading the ORC files.
 
-例如，如果在列`country`上存在索引，并且查询是
+For example, if an index exists on column `country` and the query is
 
-从表where国家="中国"中选取*
+``` sql
+select * from table where country="China"
+```
 
--如果列的值不是太明显，则此索引最有效（例如：国家）和分布式。
+- This index works best if the column's values are not too distinct (e.g. country) and are distributed.
 
-例如，假设表存储有关用户来自何处的信息，并且表数据在10个文件中。可能有来自特定国家的多个用户，因此每个文件将有一些来自该国的用户。如果我们在国家列上创建一个位图索引，那么在读取数据文件时，我们可以在早期执行过滤。即，谓词被下推到文件的读取。没有这个索引，所有的数据文件将需要读入内存作为页，然后过滤将发生。使用索引，我们可以确保Pages已经只包含与谓词匹配的行。这可以帮助减少内存和cpu使用率，并且当运行许多并发查询时，可以提高性能。
+For example, assume that the table stores information about where users are from and the table data is in 10 files. There maybe be several users from a particular country, so each file will have some users from the country. If we create a bitmap index on the country column, we can perform filtering early on while reading the data files. i.e. the predicate is pushed down to the reading of the file. Without this index, all the data files will need to be read into memory as Pages and then the filtering would happen. With the index, we can ensure that the Pages already only contain the rows matching the predicate. This can help reduce the memory and CPU usage and can result in improved performance when many concurrent queries are running.
 

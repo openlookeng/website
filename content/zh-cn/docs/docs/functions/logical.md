@@ -1,60 +1,60 @@
-逻辑运算符
+Logical Operators
 =================
 
-逻辑运算符
+Logical Operators
 -----------------
 
-|操作符|说明|示例|
+| Operator | Description                  | Example |
 | :------- | :--------------------------- | :------ |
-| `AND` |如果两个值都为真，则为真| a AND b |
-| `OR` |两个值任意一个为真，就为真| a or b |
-| `NOT` |值为false时为true | not a |
+| `AND`    | True if both values are true | a AND b |
+| `OR`     | True if either value is true | a OR b  |
+| `NOT`    | True if the value is false   | NOT a   |
 
-NULL对逻辑运算符的影响
+Effect of NULL on Logical Operators
 -----------------------------------
 
-`AND`比较的结果，如果表达式的一边或两边都为`NULL`，则结果可能为`NULL`。如果`AND`运算符至少有一边为`FALSE`，则表达式的计算结果为`FALSE`：
+The result of an `AND` comparison may be `NULL` if one or both sides of the expression are `NULL`. If at least one side of an `AND` operator is `FALSE` the expression evaluates to `FALSE`:
 
-SELECT CAST(null as boolean)and true表示将字符串作为布尔值； -- null
+    SELECT CAST(null AS boolean) AND true; -- null
     
-SELECT CAST（将空值作为布尔值）and false; -- false
+    SELECT CAST(null AS boolean) AND false; -- false
     
-SELECT CAST（将空值作为布尔值） and CAST（将空值作为布尔值）; -- null
+    SELECT CAST(null AS boolean) AND CAST(null AS boolean); -- null
 
-`OR`比较的结果，如果表达式的一边或两边都为`NULL`，则结果可能为`NULL`。如果`OR`运算符至少有一边为`TRUE`，则表达式的计算结果为`TRUE`：
+The result of an `OR` comparison may be `NULL` if one or both sides of the expression are `NULL`. If at least one side of an `OR` operator is `TRUE` the expression evaluates to `TRUE`:
 
-SELECT CAST（将空值作为布尔值） or CAST（将空值作为布尔值）; -- null
+    SELECT CAST(null AS boolean) OR CAST(null AS boolean); -- null
     
-SELECT CAST（将空值作为布尔值） or false; -- null
+    SELECT CAST(null AS boolean) OR false; -- null
     
-SELECT CAST（以布尔形式选择空值） or true; -- true
+    SELECT CAST(null AS boolean) OR true; -- true
 
-下面的真值表演示了`AND`和`OR`中`NULL`的处理：
+The following truth table demonstrates the handling of `NULL` in `AND` and `OR`:
 
  
 
-| a|b|a和b|a或b|
+| a       | b       | a AND b | a OR b  |
 | :------ | :------ | :------ | :------ |
-|是|是|是|是|是|是|是
-|是|是|是|是|是
-| `TRUE` | `NULL` | `NULL` | `TRUE` <时钟优先级> |时钟优先级
-|假的|假的|假的|假的|假的|假的|假的
-假的假的假的假的假的
-| `FALSE` | `NULL` | `FALSE` | `NULL` <时钟类型> <时钟类型> <时钟类型>
-| `NULL` | `TRUE` | `NULL` | `TRUE` <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/> <b/c/> <
-| `NULL` | `FALSE` | `FALSE` | `NULL` |
-| `NULL` | `NULL` | `NULL` | `NULL` |
+| `TRUE`  | `TRUE`  | `TRUE`  | `TRUE`  |
+| `TRUE`  | `FALSE` | `FALSE` | `TRUE`  |
+| `TRUE`  | `NULL`  | `NULL`  | `TRUE`  |
+| `FALSE` | `TRUE`  | `FALSE` | `TRUE`  |
+| `FALSE` | `FALSE` | `FALSE` | `FALSE` |
+| `FALSE` | `NULL`  | `FALSE` | `NULL`  |
+| `NULL`  | `TRUE`  | `NULL`  | `TRUE`  |
+| `NULL`  | `FALSE` | `FALSE` | `NULL`  |
+| `NULL`  | `NULL`  | `NULL`  | `NULL`  |
 
  
 
-`NULL`的逻辑补码为`NULL`，如下例所示：
+The logical complement of `NULL` is `NULL` as shown in the following example:
 
-SELECT NOT CAST（将空值作为布尔值）; -- null
+    SELECT NOT CAST(null AS boolean); -- null
 
-下面的真值表演示了对`NOT`中的`NULL`的处理：
+The following truth table demonstrates the handling of `NULL` in `NOT`:
 
-不是
+| a       | NOT a   |
 | :------ | :------ |
-|正确| |错误|
-假的假的假的
-| `NULL` | `NULL` |
+| `TRUE`  | `FALSE` |
+| `FALSE` | `TRUE`  |
+| `NULL`  | `NULL`  |

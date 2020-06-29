@@ -1,52 +1,52 @@
-基于成本的优化
+Cost based optimizations
 ========================
 
-Presto支持多种基于成本的优化，如下所述。
+openLooKeng supports several cost based optimizations, described below.
 
-联接枚举
+Join Enumeration
 ----------------
 
-在查询中执行联接的顺序会对查询的性能产生重大影响。对性能影响最大的连接排序方面是正在网络上处理和传输的数据的大小。如果一个产生大量数据的连接在执行的早期执行，那么后续的阶段需要处理大量数据的时间将长于需要的时间。
-增加查询所需的时间和资源。
+The order in which joins are executed in a query can have a significant impact on the query\'s performance. The aspect of join ordering that has the largest impact on performance is the size of the data being processed and transferred over the network. If a join that produces a lot of data is performed early in the execution, then subsequent stages will need to process large amounts of data for longer than necessary,
+increasing the time and resources needed for the query.
 
-Presto使用基于成本的连接枚举，使用连接器提供的`/optimizer/statistics`{.interpreted-text role="doc"}来估计不同连接订单的成本，并自动选择计算成本最低的连接订单。
+With cost based join enumeration, openLooKeng uses `/optimizer/statistics` provided by connectors to estimate the costs for different join orders and automatically pick the join order with the lowest computed costs.
 
-连接枚举策略由`join_reordering_strategy`会话属性控制，其中
-`optimizer.join-reordering-strategy`配置属性，提供默认值。
+The join enumeration strategy is governed by the `join_reordering_strategy` session property, with the
+`optimizer.join-reordering-strategy` configuration property providing the default value.
 
-有效值如下：
+The valid values are:
 
-- `AUTOMATIC`（缺省值） -启用全自动连接枚举
-- `ELIMINATE_CROSS_JOINS' -消除不必要的交叉连接
--`NONE` -纯句法连接顺序
+-  `AUTOMATIC` (default) - full automatic join enumeration enabled
+- `ELIMINATE_CROSS_JOINS` - eliminate unnecessary cross joins
+-   `NONE` - purely syntactic join order
 
-如果无法使用`AUTOMATIC'和统计数据，或由于任何其他原因无法计算费用，则改用`ELIMINATE_CROSS_JOINS'战略。
+If using `AUTOMATIC` and statistics are not available, or if for any other reason a cost could not be computed, the `ELIMINATE_CROSS_JOINS` strategy is used instead.
 
-Join分布选择
+Join Distribution Selection
 ---------------------------
 
-Presto使用基于哈希的联接算法。这意味着对于每个连接操作符，必须从一个连接输入（称为构建侧）创建哈希表。然后，迭代另一个输入（探针侧），并查询哈希表以找到匹配的行。
+openLooKeng uses a hash based join algorithm. That implies that for each join operator a hash table must be created from one join input (called build side). The other input (probe side) is then iterated and for each row the hash table is queried to find matching rows.
 
-有两种类型的连接分布：
+There are two types of join distributions:
 
--分区：参与查询的每个节点仅从部分数据构建哈希表
--广播：参与查询的每个节点从所有数据构建一个哈希表（数据复制到每个节点）
+- Partitioned: each node participating in the query builds a hash table from only fraction of the data
+- Broadcast: each node participating in the query builds a hash table from all of the data (data is replicated to each node)
 
-每一种都有自己的权衡。分区联接要求使用联接键的散列重分布这两个表。这可能比广播连接慢（有时非常慢），但允许更大的连接。特别是，如果构建端比探测端小得多，则广播联接将更快。但是，广播联接要求联接的构建端上的表在过滤后适合每个节点上的内存，而分布式联接只需要适合所有节点上的分布式内存。
+Each type have their trade offs. Partitioned joins require redistributing both tables using a hash of the join key. This can be slower (sometimes substantially) than broadcast joins, but allows much larger joins. In particular, broadcast joins will be faster if the build side is much smaller than the probe side. However, broadcast joins require that the tables on the build side of the join after filtering fit in memory on each node, whereas distributed joins only need to fit in distributed memory across all nodes.
 
-使用基于成本的连接分布选择， Presto自动选择使用分区连接或广播连接。使用基于成本的连接枚举，Presto自动选择哪一侧是探针和
-也就是build。
+With cost based join distribution selection, openLooKeng automatically chooses to use a partitioned or broadcast join. With cost based join enumeration, openLooKeng automatically chooses which side is the probe and
+which is the build.
 
-连接分发策略由`join_distribution_type`会话属性控制，其中
-`join-distribution-type`配置属性提供默认值。
+The join distribution strategy is governed by the `join_distribution_type` session property, with the
+`join-distribution-type` configuration property providing the default value.
 
-有效值如下：
+The valid values are:
 
-- `AUTOMATIC`（缺省值） -联接分布类型自动为每个联接确定
-- `BROADCAST` -广播连接分布用于所有连接
-- PARTITIONED` -分区连接分布用于所有连接
+- `AUTOMATIC` (default) - join distribution type is determined automatically for each join
+      -   `BROADCAST` - broadcast join distribution is used for all joins
+ -   PARTITIONED` - partitioned join distribution is used for all join
 
-连接器实现
+Connector Implementations
 -------------------------
 
-为了使Presto优化器使用基于成本的策略，连接器实现必须提供`statistics`。
+In order for the openLooKeng optimizer to use the cost based strategies, the connector implementation must provide `statistics`.

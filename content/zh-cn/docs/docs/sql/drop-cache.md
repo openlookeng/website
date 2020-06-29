@@ -1,31 +1,31 @@
-删除缓存
+DROP CACHE
 ==========
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-DROP缓存表
+``` sql
+DROP CACHE table
 ```
 
-问题描述
+Description
 -----------
 
-`DROP CACHE`从coordinator中删除`表的缓存元数据。
+`DROP CACHE` deletes cache metadata of the `table` from coordinator.
 
-示例
+Examples
 --------
 
-丢弃缓存：
+Drop cache :
 
-DROP缓存表
+    DROP CACHE table
 
-限制
+Limitations
 -----------
 
-仅Hive连接器支持该功能。有关更多详细信息，请参阅连接器文档。
+Only Hive connector support this functionality. See connector documentation for more details.
 
-参见
+See Also
 --------
 
 [cache-table](./cache-table), [show-cache](./show-cache)

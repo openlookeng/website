@@ -1,297 +1,307 @@
-Hana连接器
+Hana Connector
 ==============
 
-总体介绍
+Overview
 --------
 
-Hana连接器允许在外部Hana数据库中查询和创建表。这可用于在Hana和Hive等不同系统之间或在两个不同的Hana实例之间联接数据。
+The Hana connector allows querying and creating tables on an external Hana database. This can be used to join data between different systems like Hana and Hive, or between two different Hana instances.
 
-配置信息
+Configurations
 --------------
 
-###基本配置
+### Basic configuration
 
-首先，在您开始使用花环连接器之前，我们应该完成以下步骤。
+First of all, we should finish the following steps before you start to use hana connector.
 
-- JDBC Connection详情，连接SAP HANA数据库
+-   JDBC Connection details to connect to the SAP HANA
 
-它应该以常规Presto连接器配置(例如。这个文件应该包含以下内容，替换连接属性以适合您的设置。
+It should be written in form of a regular openLooKeng connector config (eg. hana.properties for a openLooKeng catalog named hana). The file should contain the following contents, replacing the connection properties as appropriate for your setup.
 
-基本属性设置：
+Base property setting: 
 
-|连接器.name=hana |
+| connector.name=hana                                          |
 | ------------------------------------------------------------ |
-| connection-url=jdbc:sap://主机：端口|
-| connection-user=用户名|
-|连接密码=PASSWD |
-| allow-drop-table=true #是否允许hana连接器丢弃表|
+| connection-url=jdbc:sap://HOST:PORT                          |
+| connection-user=USERNAME                                     |
+| connection-password=PASSWD                                   |
+| allow-drop-table=true # allow hana connector to drop table or not |
 
-——添加SAP HANA驱动
+-   Adding SAP HANA Driver
 
-SAP HANA JDBC Driver不在普通存储库中提供，因此您需要从SAP HANA下载它并手动安装到存储库中。SAP HANA JDBC Driver (ngdbc.jar)可能会安装为
-部分SAP HANA客户端安装，或从SAP HANA办公网站下载安装。一旦您获得了SAP HANA JDBC驱动程序，您就可以将jdbc jar文件部署到协调器和工作节点上的Presto插件文件夹中。例如，jdbc驱动文件为ngdbc.jar，插件包目录为/usr/lib/presto/lib/plugin，则拷贝命令如下： cp ngdbc.jar
-/usr/lib/presto/lib/plugin/hana重启coordinator和worker进程，hana连接器即可正常工作。
+SAP HANA JDBC Driver is not available in common repositories, so you will need to download it from SAP HANA and install manually in your repository. The SAP HANA JDBC Driver (ngdbc.jar) may be installed as
+part of your SAP HANA client installation or you can download it from the SAP HANA office website. Once you have got the SAP HANA JDBC Driver, you can deploy the jdbc jar file to openLooKeng plugin folder on coordinator and worker nodes. For example, if the jdbc driver file is ngdbc.jar and openLooKeng plugin folder is /usr/lib/openlookeng/lib/plugin, use the following command to copy the library to the plugin folder. cp ngdbc.jar
+/usr/lib/openlookeng/lib/plugin/hana Restart the coordinator and worker processes and hana connector will work.
 
--是否开启查询下推特性。
+-   Enable the query push down feature or not.
 
-如果您想启用hana连接器的连接器下推功能，则无需对hana连接器的下推功能做任何操作，默认情况下是打开的。但您也可以设置如下：
+If you want to enable the connector push down feature for hana connector, you do not need to do any things for hana connector\'s push down feature is turn on by default. But you can also set as below:
 
-| hana.query.pushdown.enabled=开启状态|查询状态|下推状态|
+| hana.query.pushdown.enabled=true                    |
 | --------------------------------------------------- |
-| #按下时为真，关闭时为假。|
+| # true to enable pushdown, false to disable it. |
 
-###多Hana数据库或服务器
+### Multiple Hana Databases or Servers
 
-如果您要连接到多个Hana数据库，请将Hana插件的另一个实例配置为一个单独的目录。如需添加其他SAP HANA目录，请在../conf/catalog下添加其他名称的properties文件（注意后缀为.properties），例如：在../conf/catalog目录下新增一个名称为hana2.properties的文件，添加另一个名称为hana2的连接器。
+Please configure another instance of the Hana plugin as a separate catalog if you want to connect to ultiple Hana Databases. To add another SAP HANA catalog, please add another properties file to ../conf/catalog with a different name (making sure it ends in .properties). For example, add a file named hana2.properties to ../conf/catalog to add another connector named hana2.
 
-通过Presto查询Hana
+Querying Hana through openLooKeng
 --------------------------
 
-对于名为hana的SAP HANA连接器，每个SAP HANA数据库的用户都可以运行SHOW SCHEMAS通过hana连接器获取其可用的schema：
+For there is a SAP HANA connector named hana, each SAP HANA Database\'s user can get its available schemas throught the hana connector by running SHOW SCHEMAS:
 
-展示来自汉纳的剧本；
+    SHOW SCHEMAS FROM hana;
 
-如果您已经拥有了这些表，您可以通过SHOW TABLES命令查看名为data的SAP HANA数据库拥有的表：
+If you have, you can view the tables own by a SAP HANA Database named data by running SHOW TABLES:
 
-显示来自hana.data的表；
+    SHOW TABLES FROM hana.data;
 
-若要查看data的架构中名为hello的表中的列的列表，请使用下列方法之一：
+To see a list of the columns in a table named hello in data\'s schema, use either of the following:
 
-数据.hello；
-展示来自hana.data.hello的栏目；
+    DESCRIBE hana.data.hello;
+    SHOW COLUMNS FROM hana.data.hello;
 
-并可以访问data的schema中的hello表：
+And you can access the hello table in data\'s schema:
 
-从hana.data.hello中选择数据
+    SELECT * FROM hana.data.hello;
 
-连接器在这些架构中的权限是在连接属性文件中配置的用户的权限。如果用户无法访问这些表，则特定的连接器将无法访问它们。
+The connector\'s privileges in these schemas are those of the user configured in the connection properties file. If the user does not have access to these tables, the specific connector will not be able to access them.
 
-Presto和Hana之间的映射数据类型
+Mapping Data Types Between openLooKeng and Hana
 ----------------------------------------
 
-### Hana到Presto类型映射
+### Hana-to-openLooKeng Type Mapping
 
-目前支持以下SAP HANA Detabase类型的选择：表格显示了SAP HANA数据类型的映射关系。
+openLooKeng support selecting the following SAP HANA Detabase types. The table shows the mapping from SAP HANA data type.
 
-数据类型投影表：
+Data type projection table:
 
-> | SAP HANA数据库类型| Presto类型| Notes |
+> | SAP HANA Detabase type | openLooKeng type                                              | Notes                    |
 > | :--------------------- | :----------------------------------------------------- | :----------------------- |
-> |解毒剂(p, s) |解毒剂(p, s) | |
-> |小型DECIMAL | DOUBLE |见小十进制映射|
-> |提示|提示| |
-> |小写|小写| |
-> |整型|整型| |
-> |大情报|大情报| |
-> |真实|真实| |
-> |双份|双份| |
-> | FLOAT(n) | n<25 -> real, 25<=n<=53或者未声明n ->双倍| |
-> |布尔|布尔| |
-> | VARCHAR |可变长字符串| |
-> | NVARCHAR |可变长字符串| |
-> | ALPHANUM |字符串| |
-> | SHORTTEXT类型| CHAR类型| |类型
-> |变量|变量| |
-> |日期|日期| |
-> |时间|时间| |
-> |时间戳|时间戳| |
-> |截止时间|不涉及| |
-> |黑名单|不涉及| |
-> | CLOB |北美| |
-> | NCLOB |不适用| |
-> |文本|不适用| |
-> |北信|北美| |
+> | DECIMAL(p, s)          | DECIMAL(p, s)                                          |                          |
+> | SMALLDECIMAL           | DOUBLE                                                 | See smalldecimal mapping |
+> | TINYINT                | TINYINT                                                |                          |
+> | SMALLINT               | SMALLINT                                               |                          |
+> | INTEGER                | INTEGER                                                |                          |
+> | BIGINT                 | BIGINT                                                 |                          |
+> | REAL                   | REAL                                                   |                          |
+> | DOUBLE                 | DOUBLE                                                 |                          |
+> | FLOAT(n)               | n<25 -> real, 25<=n<=53 or n is not declared -> double |                          |
+> | BOOLEAN                | BOOLEAN                                                |                          |
+> | VARCHAR                | VARCHAR                                                |                          |
+> | NVARCHAR               | VARCHAR                                                |                          |
+> | ALPHANUM               | CHAR                                                   |                          |
+> | SHORTTEXT              | CHAR                                                   |                          |
+> | VARBINARY              | VARBINARY                                              |                          |
+> | DATE                   | DATE                                                   |                          |
+> | TIME                   | TIME                                                   |                          |
+> | TIMESTAMP              | TIMESTAMP                                              |                          |
+> | SECONDDATE             | NA                                                     |                          |
+> | BLOB                   | NA                                                     |                          |
+> | CLOB                   | NA                                                     |                          |
+> | NCLOB                  | NA                                                     |                          |
+> | TEXT                   | NA                                                     |                          |
+> | BINTEXT                | NA                                                     |                          |
 
-**说明**
+**Note**
 
-小十进位映射：不会导致精度损失的排列是IEEE754double可精确表示的数字。中的详细说明：
-<https://en.wikipedia.org/wiki/双精度浮点型_格式>。
+smalldecimal mapping: The arrange which do not cause loss of precision is the IEEE 754 double\'s exactly representable numbers. Detail in:
+<https://en.wikipedia.org/wiki/Double-precision_floating-point_format>.
 
 
-### Presto到Hana类型映射
+### openLooKeng-to-Hana Type Mapping
 
-Presto支持在SAP HANA Database中创建以下类型的表。Presto到SAP HANA数据类型的映射关系。
+openLooKeng support creating tables with the following type into a SAP HANA Database. The table shows the mapping from openLooKeng to SAP HANA data types.
 
-> | Presto类型| SAP HANA数据库类型|注意事项|
+> | openLooKeng type                | SAP HANA Detabase type | Notes |
 > | :----------------------- | :--------------------- | :---- |
-> |布尔|布尔| |
-> |提示|提示| |
-> |小写|小写| |
-> |整型|整型| |
-> |大情报|大情报| |
-> |真实|真实| |
-> |双份|双份| |
-> |迪卡迈尔|迪卡迈尔| |
-> | VARCHAR |可变长字符串| |
-> | CHAR | CHAR | |
-> |变量|变量| |
-> | JSON |不涉及| |
-> |日期|日期| |
-> |时间|时间| |
-> |带时区的时间| NA | |
-> |时间戳|时间戳| |
-> |带时区的时间戳| NA | |
+> | BOOLEAN                  | BOOLEAN                |       |
+> | TINYINT                  | TINYINT                |       |
+> | SMALLINT                 | SMALLINT               |       |
+> | INTEGER                  | INTEGER                |       |
+> | BIGINT                   | BIGINT                 |       |
+> | REAL                     | REAL                   |       |
+> | DOUBLE                   | DOUBLE                 |       |
+> | DECIMAL                  | DECIMAL                |       |
+> | VARCHAR                  | VARCHAR                |       |
+> | CHAR                     | CHAR                   |       |
+> | VARBINARY                | VARBINARY              |       |
+> | JSON                     | NA                     |       |
+> | DATE                     | DATE                   |       |
+> | TIME                     | TIME                   |       |
+> | TIME WITH TIME ZONE      | NA                     |       |
+> | TIMESTAMP                | TIMESTAMP              |       |
+> | TIMESTAMP WITH TIME ZONE | NA                     |       |
 
-###前置到Hana函数映射
+### openLooKeng-to-Hana function Mapping
 
-支持映射为SAP HANA功能的Presto函数如下表所示。注：\"\$n\"是占位符，用来在函数中表示一个参数。
+The openLooKeng functions which can be mapped to SAP HANA function is listed in the following table. Note: The \"\$n\" is placeholder to present an argument in a function.
 
-> | Presto功能\| HANA功能|注意事项| |
+> | openLooKeng function                \|               HANA function | notes                                                        |                                                              |
 > | ----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-> | DATE_ADD（单位，$1,$2） | ADD_SECONDS($2,$1)或ADD_DAYS($2,$1)或ADD_MONTHS($2,$1)或ADD_YEARS($2,$2)，表示以年为单位，表示以年为单位。$1) |当单位为微秒、微分或微小时时，对应ADD_SECONDS。当unit为△day△或△week△时，对应ADD_DAYS。当unit为∑month、∑quater时，对应ADD_MONTHS。当unit为∑year∑时，对应ADD_YEARS。|
-> | CORR($1,$2) | CORR（$1,2美元） | |
-> | STDDEV($1) | STDDEV($1) | |
-> |变量($1) |变量($1) | |
-> | ABS($1) | ABS($1) | |
-> | ACOS($1) | ACOS($1) | |
-> | ASIN($1) | ASIN($1) | |
-> | ATAN($1) | ATAN($1) | |
-> | ATAN2($1,$2) | ATAN2($1,$2) | | ($1,$2) ，表示当前费用为$1,$2，表示当前费用为$1,$2，表示当前费用为$1,$2，表示当前费用为$1，
-> | CEIL($1) | CEIL($1) | |
-> | CEILING($1) | CEIL($1) | |
-> |套餐($1) |套餐($1) | |
-> | EXP($1) | EXP($1) | |
-> |地面($1) |地面($1) | |
-> | LN($1) | LN($1) | |
-> | LOG10($1) | LOG(10, $1) | |
-> | LOG2($1) | LOG(2, $1) | |
-> | LOG($1,$2) | LOG($1,$2) | |日志文件类型。
-> | MOD($1,$2) | MOD($1,$2) | | ($1,$2) ，表示修改的金额大于1,2，表示修改的金额大于1,2，表示修改的金额大于2，表示修改的金额大于2。
-> | POW($1,$2) | POW($1,$2) | |订单号
-> | POWER($1,$2) | POWER($1,$2) | | ($1,$2) ，表示当前设备为电源供电。
-> | RAND() | RAND() | |
-> | RANDOM() | RAND() | |
-> |向上取整($1) |向上取整($1) | |
-> |向上取整($1,$2) |向上取整($1,$2) | |
-> | SIGN($1) | SIGN($1) | |
-> | SIN($1) | SIN($1) | |
-> | SQRT($1) | SQRT($1) | |
-> | TAN($1) | TAN($1) | |
-> | CONCAT($1,$2) | CONCAT($1,$2) | | ($1,$2) ，表示用户付费方式，即用户付费方式。
-> |长度($1) |长度($1) | |
-> | LOWER($1) | LOWER($1) | |
-> | LPAD($1,$2,$3) | LPAD($1,$2,$3) | |连续支付方式
-> | LTRIM($1) | LTRIM($1) | |
-> |替换($1,$2) |替换（$1,$2，‘’） | |
-> |替换($1,$2,$3) |替换($1,$2,$3) | |
-> | RPAD($1,$2,$3) | RPAD($1,$2,$3) | |代表不同的价格，即不同的价格。
-> | RTRIM($1) | RTRIM($1) | |
-> | STRPOS($1,$2) | LOCATE($1,$2) | |定位服务费用
-> | SUBSTR($1,$2,$3) | SUBSTR($1,$2,$3) | |
-> |位置($1,$2) |位置($2,$1) | |
-> | TRIM($1) | TRIM($1) | |
-> |超出费用($1) |超出费用($1) | |
-> |年份($1) |年份（从$1开始） | |
-> |月($1) |月（从$1开始） | |
-> | DAY($1) | EXTRACT（从$1开始的一天） | |
-> |每小时($1) |每小时从$1开始| |
-> |分钟($1) |分钟从$1开始| |
-> | SECOND($1) | EXTRACT（从$1开始的秒数） | |
-> |星期几($1) |星期几($1) | |
+> | DATE_ADD(Unit, $1, $2)                                      | ADD_SECONDS($2, $1) or ADD_DAYS($2, $1) or ADD_MONTHS($2, $1) or ADD_YEARS($2, $1) | When unit is ‘second’,’minute’ or ‘hour’, mapping to ADD_SECONDS. When unit is ‘day’ or ‘week’, mapping to ADD_DAYS. When unit is ‘month’ or ‘quarter’, mapping to ADD_MONTHS. When unit is ‘year’, mapping to ADD_YEARS. |
+> | CORR($1,$2)                                                 | CORR($1, $2)                                                 |                                                              |
+> | STDDEV($1)                                                  | STDDEV($1)                                                   |                                                              |
+> | VARIANCE($1)                                                | VAR($1)                                                      |                                                              |
+> | ABS($1)                                                     | ABS($1)                                                      |                                                              |
+> | ACOS($1)                                                    | ACOS($1)                                                     |                                                              |
+> | ASIN($1)                                                    | ASIN($1)                                                     |                                                              |
+> | ATAN($1)                                                    | ATAN($1)                                                     |                                                              |
+> | ATAN2($1,$2)                                                | ATAN2($1, $2)                                                |                                                              |
+> | CEIL($1)                                                    | CEIL($1)                                                     |                                                              |
+> | CEILING($1)                                                 | CEIL($1)                                                     |                                                              |
+> | COS($1)                                                     | COS($1)                                                      |                                                              |
+> | EXP($1)                                                     | EXP($1)                                                      |                                                              |
+> | FLOOR($1)                                                   | FLOOR($1)                                                    |                                                              |
+> | LN($1)                                                      | LN($1)                                                       |                                                              |
+> | LOG10($1)                                                   | LOG(10, $1)                                                  |                                                              |
+> | LOG2($1)                                                    | LOG(2, $1)                                                   |                                                              |
+> | LOG($1,$2)                                                  | LOG($1, $2)                                                  |                                                              |
+> | MOD($1,$2)                                                  | MOD($1, $2)                                                  |                                                              |
+> | POW($1,$2)                                                  | POW($1, $2)                                                  |                                                              |
+> | POWER($1,$2)                                                | POWER($1, $2)                                                |                                                              |
+> | RAND()                                                      | RAND()                                                       |                                                              |
+> | RANDOM()                                                    | RAND()                                                       |                                                              |
+> | ROUND($1)                                                   | ROUND($1)                                                    |                                                              |
+> | ROUND($1,$2)                                                | ROUND($1, $2)                                                |                                                              |
+> | SIGN($1)                                                    | SIGN($1)                                                     |                                                              |
+> | SIN($1)                                                     | SIN($1)                                                      |                                                              |
+> | SQRT($1)                                                    | SQRT($1)                                                     |                                                              |
+> | TAN($1)                                                     | TAN($1)                                                      |                                                              |
+> | CONCAT($1,$2)                                               | CONCAT($1, $2)                                               |                                                              |
+> | LENGTH($1)                                                  | LENGTH($1)                                                   |                                                              |
+> | LOWER($1)                                                   | LOWER($1)                                                    |                                                              |
+> | LPAD($1,$2,$3)                                              | LPAD($1, $2, $3)                                             |                                                              |
+> | LTRIM($1)                                                   | LTRIM($1)                                                    |                                                              |
+> | REPLACE($1,$2)                                              | REPLACE($1, $2, ‘’)                                          |                                                              |
+> | REPLACE($1,$2,$3)                                           | REPLACE($1, $2, $3)                                          |                                                              |
+> | RPAD($1,$2,$3)                                              | RPAD($1, $2, $3)                                             |                                                              |
+> | RTRIM($1)                                                   | RTRIM($1)                                                    |                                                              |
+> | STRPOS($1,$2)                                               | LOCATE($1, $2)                                               |                                                              |
+> | SUBSTR($1,$2,$3)                                            | SUBSTR($1, $2, $3)                                           |                                                              |
+> | POSITION($1,$2)                                             | LOCATE($2, $1)                                               |                                                              |
+> | TRIM($1)                                                    | TRIM($1)                                                     |                                                              |
+> | UPPER($1)                                                   | UPPER($1)                                                    |                                                              |
+> | YEAR($1)                                                    | EXTRACT(YEAR FROM $1)                                        |                                                              |
+> | MONTH($1)                                                   | EXTRACT(MONTH FROM $1)                                       |                                                              |
+> | DAY($1)                                                     | EXTRACT(DAY FROM $1)                                         |                                                              |
+> | HOUR($1)                                                    | EXTRACT(HOUR FROM $1)                                        |                                                              |
+> | MINUTE($1)                                                  | EXTRACT(MINUTE FROM $1)                                      |                                                              |
+> | SECOND($1)                                                  | EXTRACT(SECOND FROM $1)                                      |                                                              |
+> | DAY_OF_WEEK($1)                                             | WEEKDAY($1)                                                  |                                                              |
 
-**说明**
+**Note**
 
-DATE\_ADD（单位，\$1,\$2）：当单位为\'秒\'，\'分钟\'或\'小时\'时，对应ADD\_SECONDS。当unit为\'day\'或\'week\'时，与ADD\_DAYS一一对应。当unit为\'month\'或\'quat\'时，对应ADD\_MONTHS。当unit为\'year\'时，对应ADD\_YEARS。
+DATE\_ADD(Unit, \$1, \$2): When unit is \'second\',\'minute\' or \'hour\', mapping to ADD\_SECONDS. When unit is \'day\' or \'week\', mapping to ADD\_DAYS. When unit is \'month\' or \'quarter\', mapping to ADD\_MONTHS. When unit is \'year\', mapping to ADD\_YEARS.
 
 
-Hana sql迁移到Presto sql指南
+Hana sql migrate to openLooKeng sql guide
 ----------------------------------
 
-### hana和Presto的SQL语法差异
+### SQL grammar differences between hana and openLooKeng
 
-例如，hana sql中的\'map\'函数用于将行数据转换为列数据，Presto sql不支持该函数。但是您可以使用\'case\'作为替代实现。
+Such as \'map\' function in hana sql which is used to transform the row data into column data is not support by openLooKeng sql. But you can use the \'case\' as an alternative implementation.
 
-例如，如果您有一个名为SCORES的表：
+For example, if you have a table named SCORES:
 
-|名称|课程|分数|
+| name | course  | score |
 | :--- | :------ | :---- |
-| zs |英语| 90 |
-| zs |数学| 80 |
-| zs |科学| 99 |
-|数学| 80 |
-|是科学|99|
-| ls |英语| 90 |
-| ww |科学| 99 |
-| ww |数学| 80 |
-| ww |英语| 90 |
+| zs   | English | 90    |
+| zs   | Math    | 80    |
+| zs   | science | 99    |
+| ls   | Math    | 80    |
+| ls   | science | 99    |
+| ls   | English | 90    |
+| ww   | science | 99    |
+| ww   | Math    | 80    |
+| ww   | English | 90    |
 
-可以使用\'map\'函数将行数据转换为列数据：
+In hana you can use \'map\' function to transform the row data into column data:
 
-选择
-姓名，
-SUM（MAP(SUBJECT, '英语'，SCORE,0）)作为"英语"，
-SUM（MAP(SUBJECT, 'Math'，SCORE,0）)按"数学"排序，
-SUM（MAP(SUBJECT, 'Science'，Score,0）)作为"科学"被引用
-来自得分
-按名称分组
+```sql
+SELECT
+  NAME,
+  SUM(MAP(SUBJECT,'English',SCORE,0)) AS "English",
+  SUM(MAP(SUBJECT,'Math',SCORE,0)) AS "Math",
+  SUM(MAP(SUBJECT,'Science',SCORE,0)) AS "Science"
+FROM SCORES
+GROUP BY NAME
+```
 
-在prersto中，您可以使用\'case\'作为替代实现：
+In openLookeng, you can use \'case\' as an alternative implementation:
 
-hana与Presto sql语法的其他差异，请参考以下官方文档列表：
+The other differences between hana and openLooKeng sql grammar, please refer to the official document list below:
 
-|名称|网址|
-| :--- | :----------------------------------------------------------- |
-| Presto | https://presto.io/docs/current/ <当前版本号> <当前版本号> <版本号> <版本号> <版本号> <版本号>
-| hana | https://帮助.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/华为云服务/美国语言/20ff532c751910148657c32fe3431（中文版本） a9f.html <网页名称> |
+| name        | web address                                                                                                    |
+| :-----------| :------------------------------------------------------------------------------------------------------------- |
+| openLooKeng | https://openlookeng.io/docs/current/                                                                                  |
+| hana        | https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/en-US/20ff532c751910148657c32fe3431a9f.html |
 
-###时间依赖类型差异
+### Time dependent type\'s Differences
 
-使用Presto-cli工具连接Presto服务器，对时间和时间戳进行处理时，如果不带时区，返回结果给cli显示时，将取决于Presto-cli工具的启动配置。例如，假设我们以timezone用户启动Presto-cli：
+When we use the openlk-cli to connect the openLooKeng server and handle the time and timestamp without time zone, the result return to the cli to display will depend on the openlk-cli\'s start up configuration. For example, if we start up the openlk-cli with user timezone as:
 
-java -jar -Duser.timezone=亚洲/东京-jar ./onequery-cli-316-可执行文件
---client-request-timeout 30m --服务器ip:8080 --会话遗留时间戳=false
+    java -jar -Duser.timezone=Asia/Tokyo -jar ./hetu-cli-010-executable.jar
+    --client-request-timeout 30m --server ip:8080 --session legacy_timestamp=false
 
-当您处理时间和时间戳相关类型时，Presto-cli将显示带有时区的时间相关类型：
+When you handle time and timestamp dependent types, the openlk-cli will display Time dependent type with time zone:
 
-onequery>select current_time，选择当前查询时间
-_col0
--------------------------
-21:19:49.122亚洲/东京
-onequery> select当前时区（）；
-_col0
-------------
-亚洲/东京
-（1行）
+```sql
+lk> select current_time;
+                  _col0
+          -------------------------
+           21:19:49.122 Asia/Tokyo
+lk> select current_timezone();
+              _col0
+           ------------
+            Asia/Tokyo
+             (1 row)
+```
 
-如果启动Presto-cli时没有timezone用户，则：
+If we start up the openlk-cli without user timezone as:
 
-java -jar ./onequery-cli-316-可执行文件
---client-request-timeout 30m --服务器IP地址：8080超时时间
---session legacy_时间戳=false --catalog节点名称hana2
+```shell
+java -jar ./hetu-cli-010-executable.jar
+--client-request-timeout 30m --server ip:8080
+--session legacy_timestamp=false --catalog hana2
+```
 
-当您处理时间和时间戳相关类型时，Presto-cli将显示不带时区的Time相关类型。相反，它将显示
-UTC/GMT时区：
+When you handle time and timestamp dependent types, the openlk-cli will display Time dependent type without time zone. Instead, it will display
+the UTC/GMT zone:
 
-onequery> select当前时区（）；
-_col0
---------
-+08:00
-（1行）
-onequery>select current_time，选择当前查询时间
-_col0
----------------------
-20:20:45.659 +08:00
-（1行）
+```sql
+lk> select current_timezone();
+          _col0
+        --------
+         +08:00
+         (1 row)
+lk> select current_time;
+          _col0
+          ---------------------
+          20:20:45.659 +08:00
+          (1 row)
+```
 
-但是在hana中，依赖于时间的类型的行为取决于hana服务器。例如，我们直接通过jdbc启动hana客户端：
+But in hana, the time dependent type\'s behavior is depend on the hana server. For example, we start up a hana client through jdbc directly:
 
-java -jar -Duser.timezone=亚洲/东京ngdbc.jar -u环境变量
-database,passwd -n ip:34215 -c "从DUMMY选择当前时间"
-接通了。
-| |
-------------
-| 20:38:57 |
+```shell
+java -jar -Duser.timezone=Asia/Tokyo ngdbc.jar -u
+database,passwd -n ip:34215 -c "SELECT CURRENT_TIME FROM DUMMY"
+       Connected.
+       |          |
+       ------------
+       | 20:38:57 |
+```
 
-Hana连接器的局限性
+Hana Connector\'s Limitations
 -----------------------------
 
-由于hana数据类型与Presto数据类型的差异，在向Presto数据类型插入hana数据类型时存在一些限制。
+For the differences between hana datatype and openLooKeng datatype, there are some limitations when preject the hana data type to the openLooKeng datatype.
 
-### Hana的十进制小数据类型
+### Hana\'s Smalldecimal Data type
 
-汉纳中的小十进位精度和零标度长度可变，但Presto不支持。由于这个原因，Presto将hana中的小十进位转换成了Presto中的double，这将导致一些
-特殊取值范围的精度损失。
+The smalldecimal in hana has a variable precision and zero scale length, but openLooKeng do not support. For the reason about, the openLooKeng translate smalldecimal in hana into double in openLooKeng, and this will cause some
+precision lose in a special value range.
 
-### Hana的tiny int数据类型
+### Hana\'s tiny int data type
 
-hana中的tiny int是一个8位无符号整数，在Presto中会导致一些精度损失。
+Tiny int in hana is a 8 bits integer without sign bit and will cause some precision lose in a special value range in openLooKeng.

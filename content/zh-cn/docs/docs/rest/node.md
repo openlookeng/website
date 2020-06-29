@@ -1,126 +1,122 @@
-节点资源
+Node Resource
 =============
 
 
 
--获取/v1/节点
+- GET /v1/node
 
-返回Presto服务器已知的节点列表。此呼叫没有
-需要一个查询参数，它只返回一个数组，其中
-Presto安装中每个已知节点。
+Returns a list of nodes known to a openLooKeng Server. This call doesn\'t
+require a query parameter of headers, it simply returns an array with
+each known node in a openLooKeng installation.
 
-响应消息中，值包括`recentRequests`、`recentFailures`和
-最近的成功是指数衰减的计数器
-衰减参数为1分钟的时间。这个衰变率意味着如果
-Presto节点在几秒内有1000个成功，这个统计值
-一分钟内会降到367。
+In the response, the values `recentRequests`, `recentFailures`, and
+`recentSuccesses` are decaying counters set to decay exponentially over
+time with a decay parameter of one minute. This decay rate means that if
+a openLooKeng node has 1000 successes in a few seconds, this statistic value
+will drop to 367 in one minute.
 
-`age`显示一个特定节点运行了多长时间，以及uri
-指向特定节点的HTTP服务器。最后一次请求
-和最后响应时间显示了最近一个节点的使用情况。
+`age` shows you how long a particular node has been running, and uri
+points you to the HTTP server for a particular node. The last request
+and last response times show you how recently a node has been used.
 
-下面的示例响应显示一个尚未
-经历了任何故障条件。各节点也上报统计数据
-流量正常、故障等。
+The following example response displays a single node which has not
+experienced any failure conditions. Each node also reports statistics
+about traffic uptime, and failures.
 
-**响应样例**：
+**Example response**:
 
->```{.http} ,（中文名）
-> HTTP/1.1 200确定（中文）
->变量：接受
->内容类型：text/javascript
+> ``` http
+> HTTP/1.1 200 OK
+> Vary: Accept
+> Content-Type: text/javascript
 >
 > [
 > {
-> "uri":"http://10.209.57.156:8080"，
-> "最近请求次数":25.181940555111073，
-> "最近失败次数":0.0，
-> "最近成功数":25.195472984170983，
-> "lastRequestTime":"请求时间2013-12-22T13:32:44.673-05:00"，
-> "最后响应时间":"2013-12-22T13:32:44.677-05:00"，
-> "年龄":"14155.28毫秒"，
-> "近期失败占比":0.0，
-> "最近失败次数按类型":{}
+>     "uri":"http://10.209.57.156:8080",
+> "recentRequests":25.181940555111073,
+> "recentFailures":0.0,
+> "recentSuccesses":25.195472984170983,
+> "lastRequestTime":"2013-12-22T13:32:44.673-05:00",
+> "lastResponseTime":"2013-12-22T13:32:44.677-05:00",
+> "age":"14155.28ms",
+> "recentFailureRatio":0.0,
+> "recentFailuresByType":{}
 > }
 > ```
 >
 > \]
 
-如果一个节点遇到错误，您会看到如下所示的响应
-如下。在这里，我们有一个节点，它经历了一连串的
-错误。recentFailuresByType字段列出了Java异常。
-最近在一个特定节点上发生了。
+If a node is experiencing errors, you\'ll see a response that looks like
+the following. Here we have a node which has experienced a spate of
+errors. The recentFailuresByType field lists the Java exception which
+have occurred recently on a particular node.
 
-**带Errors的响应样例**：
+**Example response with Errors**:
 
->```{.http} ,（中文名）
-> HTTP/1.1 200确定（中文）
+> ``` http
+> HTTP/1.1 200 OK
 > ```
 >
-> Vry：接受内容类型： text/javascript
+> Vry: Accept Content-Type: text/javascript
 >
 > \[
 >
-> ：
+>  {
 >
-> {
+>    ​    \"age\": \"4.45m\", \"lastFailureInfo\": { \"message\":
+>​     \"Connect Timeout\", \"stack\": \[
+>    ​     \"org.eclipse.jetty.io.ManagedSelector\$ConnectTimeout.run(ManagedSelector.java:683)\",
+>    ​     \.... \"java.lang.Thread.run(Thread.java:745)\" \],
+>    ​     \"suppressed\": \[\], \"type\":
+>    ​     \"java.net.SocketTimeoutException\" }, \"lastRequestTime\":
+>    ​     \"2017-08-05T11:53:00.647Z\", \"lastResponseTime\":
+>    ​     \"2017-08-05T11:53:00.647Z\", \"recentFailureRatio\":
+>    ​     0.47263053472046446, \"recentFailures\": 2.8445543205610617,
+>    ​     \"recentFailuresByType\": {
+>    ​     \"java.net.SocketTimeoutException\": 2.8445543205610617 },
+>    ​     \"recentRequests\": 6.018558073577414, \"recentSuccesses\":
+>    ​     3.1746446343010297, \"uri\": \"<http://172.19.0.3:8080>\"
+>    
+>     }
 >
-> : \"age\": \"4.45m\", \"lastFailureInfo\": { \"message\"：
-> \"连接超时\", \"stack\": \[
-> \"org.eclipse.jetty.io.ManagedSelector\$ConnectTimeout.run（管理选择器.java:683）\"，
-> \.... \"java.lang.Thread.run(Thread.java:745)\" \] ,（中文名称：运行线程名称：运行线程名称：运行线程名称）
-> \"suppressed\": \[\], \"类型\"：
-> \"java.net.SocketTimeoutException\" , \"最后请求时间\" ：
-> \"2017-08-05T11:53:00.647Z\", \"最后响应时间\"：
-> \"2017-08-05T11:53:00.647Z\", \"近期失败占比\"：
-> 0.47263053472046446,\"最近失败次数\":2.84445543205610617，
-> \"按类型统计最近失败次数\": {
-> \"java.net.SocketTimeoutException\"：错误码为2.8445543205610617 }，异常信息为异常信息。
-> \"最近请求次数\": 6.018558073577414, \"最近成功次数\"：
-> 3.1746446343010297, \"uri\": <http://172.19.0.3:8080> <用户名> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号>
->
-> }
->
-> \]
-   
+>    \]
 
 
 
-- GET /v1/节点/失败
 
-调用此服务将返回一个JSON文档，其中列出了
-上次心跳检测失败。由此返回的信息
-call与前一个业务返回的信息相同。
+- GET /v1/node/failed
 
-**响应样例**：
+Calling this service returns a JSON document listing all the nodes that
+have failed the last heartbeat check. The information returned by this
+call is the same as the information returned by the previous service.
 
->```{.http} ,（中文名）
->
+**Example response**:
+
+> ``` http
+> 
 > ```
 >
 > \[
 >
-> ：
->
 > {
 >
-> : \"age\": \"1.37m\", \"lastFailureInfo\": { \"message\"：
-> \"连接超时\", \"stack\": \[
-> \"org.eclipse.jetty.io.ManagedSelector\$ConnectTimeout.run（管理选择器.java:683）\"，
-> \.....
-> \"java.util.concurrent.ThreadPoolExecutor\$Worker.run（线程池执行器.java:617）\"，
-> \"java.lang.Thread.run(Thread.java:745)\" \], \"suppressed\" <线程名称> <线程名称> <线程名称> \", \"suppressed\" <线程名称> <线程名称> \", \"suppressed\" <线程名称> <线程名称>
-> \[\], \"类型\": \"java.net.SocketTimeout异常异常\" }，
-> \"lastRequestTime\": \"2017-08-05T11:52:42.647Z\" ，请求终止时间，请求终止时间。
-> \"最后响应时间\": \"2017-08-05T11:52:42.647Z\"，
-> \"最近失败比率\":0.22498784153043677，
->\"最近失败次数\":20.11558290058638，
-> \"按类型统计最近失败次数\": {
-> \"java.net.SocketTimeoutException\"：错误码为20.11558290058638 }，
-> \"最近请求次数\": 89.40742203558189, \"最近成功次数\"：
-> 69.30583024727453, \"uri\": <http://172.19.0.3:8080> <地址> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号> <端口号>
+>    \"age\": \"1.37m\", \"lastFailureInfo\": { \"message\":
+>  \"Connect Timeout\", \"stack\": \[
+>    \"org.eclipse.jetty.io.ManagedSelector\$ConnectTimeout.run(ManagedSelector.java:683)\",
+>      \.....
+>      \"java.util.concurrent.ThreadPoolExecutor\$Worker.run(ThreadPoolExecutor.java:617)\",
+>      \"java.lang.Thread.run(Thread.java:745)\" \], \"suppressed\":
+>      \[\], \"type\": \"java.net.SocketTimeoutException\" },
+>      \"lastRequestTime\": \"2017-08-05T11:52:42.647Z\",
+>      \"lastResponseTime\": \"2017-08-05T11:52:42.647Z\",
+>      \"recentFailureRatio\": 0.22498784153043677,
+>      \"recentFailures\": 20.11558290058638,
+>      \"recentFailuresByType\": {
+>      \"java.net.SocketTimeoutException\": 20.11558290058638 },
+>      \"recentRequests\": 89.40742203558189, \"recentSuccesses\":
+>      69.30583024727453, \"uri\": \"<http://172.19.0.3:8080>\"
+>    
+>    }
 >
-> }
->
-> \]
+>  \]
 >

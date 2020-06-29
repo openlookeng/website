@@ -79,12 +79,12 @@ Then, from within any post, they can be linked to using the site’s root as the
 Including an image asset in a post:
 ```
 ... which is shown in the screenshot below:
-![The architecture](<img src="/blog/author1/2020-01-01-new-years-is-coming-01.png" style="width:100%;">)
+![The architecture](<img src="/en-us/blog/author1/2020-01-01-new-years-is-coming-01.png" style="width:100%;">)
 ```
 
 Linking to a PDF for readers to download:
 ```
-... you can <a href="/blog/author_1/2020-01-01-new-years-is-coming-03.pdf" target="_blank" download >get the PDF</a> directly.
+... you can <a href="/en-us/blog/author_1/2020-01-01-new-years-is-coming-03.pdf" target="_blank" download >get the PDF</a> directly.
 ```
 Linking to a url for readers to visit:
 ```

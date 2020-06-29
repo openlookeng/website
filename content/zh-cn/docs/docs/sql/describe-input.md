@@ -1,59 +1,59 @@
-DESCRIBE输入值
+DESCRIBE INPUT
 ==============
 
-摘要
+Synopsis
 --------
 
-"```{.none}"
-DESCRIBE INPUT语句名称
+``` sql
+DESCRIBE INPUT statement_name
 ```
 
-问题描述
+Description
 -----------
 
-列出预备语句的输入参数以及每个参数的位置和类型。无法确定的参数类型将显示为`unknown`。
+Lists the input parameters of a prepared statement along with the position and type of each parameter. Parameter types that cannot be determined will appear as `unknown`.
 
-示例
+Examples
 --------
 
-准备并描述一个带三个参数的查询：
+Prepare and describe a query with three parameters:
 
-``` {.sql}
-从my_select1开始准备
-是否选择？来自国家何处地区键=？和名称< ?；
+``` sql
+PREPARE my_select1 FROM
+SELECT ? FROM nation WHERE regionkey = ? AND name < ?;
 ```
 
-``` {.sql}
-DESCRIBE传入我的选择1；
+``` sql
+DESCRIBE INPUT my_select1;
 ```
 
-"```{.none}"
-职位|类别
+``` 
+Position | Type
 --------------------
-0 |未知
-1 |大于
-2 | varchar
-（3行）
+       0 | unknown
+       1 | bigint
+       2 | varchar
+(3 rows)
 ```
 
-准备并描述一个无参数的查询：
+Prepare and describe a query with no parameters:
 
-``` {.sql}
-从my_select2开始准备
-*从国家选择；
+``` sql
+PREPARE my_select2 FROM
+SELECT * FROM nation;
 ```
 
-``` {.sql}
-DESCRIBE传入我的选择2；
+``` sql
+DESCRIBE INPUT my_select2;
 ```
 
-"```{.none}"
-职位|类别
+``` 
+Position | Type
 -----------------
-（0行）
+(0 rows)
 ```
 
-参见
+See Also
 --------
 
-【准备】（./准备）
+[prepare](./prepare)
