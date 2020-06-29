@@ -74,7 +74,7 @@ Please select one applicable statement from the following and fill in the blanks
     </tr>
     <tr>
         <td>
-            Address*:
+            Address:
         </td>
         <td>
             <input type="text" id="individual-address" class = "require" maxlength="100" />

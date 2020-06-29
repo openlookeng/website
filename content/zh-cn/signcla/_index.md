@@ -73,7 +73,7 @@ title = "签署CLA"
     </tr>
         <tr>
         <td>
-            地址*:
+            地址:
         </td>
         <td>
             <input type="text" id="individual-address" class = "require" maxlength="100" />
