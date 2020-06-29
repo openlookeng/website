@@ -1,9 +1,9 @@
 +++
 id = "download"
-top_title_max = "openLooKeng version 316 is released!"
+top_title_max = "openLooKeng version 0.1.0 is released!"
 top_title_min = "Download"
 second_title = "Download openLooKeng"
-second_title_description = "The current openLooKeng release is version 316. See the Release Notes for more information."
+second_title_description = "The current openLooKeng release is version 0.1.1. See the Release Notes for more information."
 download_server_title = "openLooKeng Server"
 server_title_description = "openLooKeng released deployment packages, visit Deploying openLookeng for deployment instructions."
 [[server_btn]]

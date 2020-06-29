@@ -32,7 +32,7 @@ other = "全 Active/Active 架构，业务不中断 "
 other = "openLooKeng首次Meetup即将开启"
 
 [HOME_GETSTARTLINK]
-other = "/zh-cn/docs/docs/installation.html"
+other = "/zh-cn/docs/docs/start.html"
 
 [MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
 other = "订阅"
@@ -62,7 +62,7 @@ other = "https://opengauss.org/zh/"
 other = "https://www.huaweicloud.com/kunpeng/"
 
 [DOCS_TITLE]
-other = "一起来了解openLookeng吧"
+other = "一起来了解openLooKeng吧"
 
 [SIDEBAR_TAG]
 other = "标签"

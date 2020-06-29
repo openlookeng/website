@@ -7,13 +7,13 @@ small_title = "PMC 委员"
     title = "Ken Zhang"
     avatar = "img/foundation/KenZhang.png"
     range = "R&D Analytics Platform Lab Director for various Research teams across the Globe"
-    content = "Ken领导和推动分析平台实验室，监督和指导所有组件领域的成员，以确保基准。Ken在IBM Watson Health、Thomson Reuters Open Platform等公司担任架构师，拥有20年的尖端行业经验。他目前在多伦多、深圳、成都、班加罗尔和都柏林的研发成员提供领导和指导。"
+    content = "Ken 是分析平台实验室负责人，团队遍及多伦多、深圳、成都、班加罗尔和都柏林等城市。Ken在IBM Watson Health、Thomson Reuters Open Platform 及 Huawei 等公司担任架构师角色，拥有20年的尖端行业经验。"
 
 [[item]]
-    title = "Micheal Li"
+    title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Micheal领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
+    content = "Michael Li在华为加拿大研究所工作，在数据引擎团队工作了近2年，负责设计、架构和关键特性的开发，并拥有20年的IBM和Platform Computing工作经验。"
 
 [[item]]
     title = "Karmveer Singh"
@@ -43,7 +43,8 @@ small_title = "PMC 委员"
 [[item]]
     title = "冒伟"
     avatar = "img/foundation/WeiMao.png"
-    range = "冒伟先后参与计算机非易失存储系统、大数据查询分析引擎等技术领域多个项目的开发交付和项目管理工作，目前作为版本负责人致力于openLooKeng的竞争力构筑。"
+    range = "openLooKeng版本经理，华为软件工程师"
+    content = "冒伟先后参与计算机非易失存储系统、大数据查询分析引擎等技术领域多个项目的开发交付和项目管理工作，目前作为版本负责人致力于openLooKeng的竞争力构筑。"
 +++
 
 # PMC (Project Management Committee)  

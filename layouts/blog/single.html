@@ -32,14 +32,18 @@
                     <div class="col-md-9" id="blog-post">
 
                         {{ if or .Params.author .Params.date }}
-                          <p class="text-left blog-12px">
-                            {{ if .Params.author }}{{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>{{ end }}
-                            {{ if and .Params.author .Params.date }} | {{ end }}
-                            {{ if .Params.date }}{{ .Date.Format .Site.Params.date_format }} | {{ end }}
-                            {{ range $index, $item := .Params.tags }}
-                              <span class="tag"><a href="#">{{ $item }}</a></span>
-                            {{ end }}
-                          </p>
+                            <p class="text-left blog-12px">
+                                {{ if .Params.author }}{{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>{{ end }}
+                                {{ if and .Params.author .Params.date }}
+                                    <span class="character fz12">|</span>
+                                {{ end }}
+                                {{ if .Params.date }}{{ .Date.Format .Site.Params.date_format }}
+                                    <span class="character fz12">|</span>
+                                {{ end }}
+                                {{ range $index, $item := .Params.tags }}
+                                    <span class="tag"><a href="#">{{ $item }}</a></span>
+                                {{ end }}
+                            </p>
                         {{ end }}
 
                         <div id="post-content">

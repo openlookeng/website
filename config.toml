@@ -1,5 +1,5 @@
 baseurl = "/"
-title = "openLookeng"
+title = "openLooKeng"
 theme = "universal"
 
 languageCode = "en-us"
@@ -278,6 +278,13 @@ paginate = 10
 [params.emails]
     enable = true
 
+[params.slacklink]
+    enable = true
+    text = "<a href=\"https://join.slack.com/t/openlookeng/shared_invite/zt-fgvauxpt-2v7Bghpa2dKFHMDe7IEB4A\" target=\"_blank\">Sign up</a> for Slack or <a href=\"https://openlookeng.slack.com\" target=\"_blank\">sign in</a> if you already have an account Channels."
+
+[languages.zh-cn.params.slacklink]
+    enable = true
+    text = "<a href=\"https://join.slack.com/t/openlookeng/shared_invite/zt-fgvauxpt-2v7Bghpa2dKFHMDe7IEB4A\" target=\"_blank\">请注册</a>openLooKeng Slack。如果已经注册，请直接<a href=\"https://openlookeng.slack.com\" target=\"_blank\">登录</a>频道。"
 
 [params.copyright]
     enable = true
