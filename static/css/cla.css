@@ -14,12 +14,12 @@
 
 .container #individual-table tr td:first-child,
 .container #legalentity-table tr td:first-child {
-    width: 30%;
+    width: 35%;
 }
 
 .container #individual-table tr input[type="text"],
 .container #legalentity-table tr input[type="text"] {
-    width: 80%;
+    width: 99%;
 }
 
 .container #cla-type-table input[type="radio"] {
@@ -33,7 +33,7 @@
 .container #sign-cla-button,
 .container #reset-cla-button {
     width: 80px;
-    margin: 0 20px;
+    margin: 0 20px 0 0;
 }
 
 .container #tip-cla-label {
@@ -43,14 +43,14 @@
 
 .open-lookeng-cla-table {
     background-color: transparent;
-    width: 600px;
+    width: 452px;
     text-align: center;
 }
 
 .open-lookeng-cla-table td,
 .open-lookeng-cla-table th {
     text-align: left;
-    padding: 8px 12px;
+    padding: 10px 8px;
     vertical-align: top;
 }
 
@@ -66,7 +66,7 @@
     background: #5A9B83;
     color: #fff;
     border-color: #5A9B83;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 .cla-sign-btn:hover,
@@ -91,7 +91,22 @@
 }
 
 .cla-bt-color {
-    border-bottom: 5px solid #5A9B83;
+    border-bottom: 4px solid #5A9B83;
+}
+
+.radio-td input {
+    visibility: hidden;
+    display: none;
+}
+
+.btn.disabled {
+    background-color: rgba(0, 0, 0, .25);
+    border-color: rgba(0, 0, 0, 0);
+    opacity: unset;
+}
+
+.btn {
+    border-width: 2px;
 }
 
 .cla-checkbox {
@@ -102,23 +117,46 @@
     margin-right: 10px !important;
 }
 
-#signing-cla {
+.container > h2 {
     margin: 100px 0 60px;
 }
 
 p {
     color: rgba(0, 0, 0, .7);
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 30px;
 }
 
 label {
     color: rgba(0, 0, 0, .7);
-    font-size: 14px;
+    font-size: 16px;
     font-family: HuaweiSansLight;
 }
+
 td {
     color: rgba(0, 0, 0, .7);
-    font-size: 14px;
+    font-size: 16px;
     font-family: HuaweiSansLight;
+}
+
+.radio-td {
+    text-align: center !important;
+}
+
+#cla-table .fz12 a {
+    color: #5A9B83;
+    cursor: pointer;
+}
+
+#cla-table {
+    margin-bottom: 80px;
+}
+
+.fz12 {
+    font-size: 12px;
+}
+
+.h0 {
+    height: 0 !important;
+    padding: 0 !important;
 }

@@ -2,7 +2,7 @@
 title = "Huawei will open source data virtualization engine hetuengine next year to further improve big data development ecology"
 date = "2020-04-06"
 categories = ["Announcement"]
-author = "FI小花花"
+author = "developpaper.com"
 description = "Hou Jinlong, President of Huawei cloud & AI products and services, announced at the 2019 global data infrastructure forum held last week that his data virtualization engine hetuengine will be open-source to help more users reduce the difficulty of data management and simplify the process of data use."
 
 +++
