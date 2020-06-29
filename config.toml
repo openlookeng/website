@@ -285,7 +285,7 @@ paginate = 10
 
 [languages.zh-cn.params.copyright]
     enable = true
-    text = "<a href=\"/zh-cn/legalnotice.html\">法律声明</a><a href=\"/zh-cn/privacypolicy.html\">隐私政策</a><br>版权所有 ©2020 openLooKeng 保留一切权利 "
+    text = "<a href=\"/privacypolicy.html\">隐私政策</a><a href=\"/legalnotice.html\">法律声明</a><br>遵循<a class='pull-apache' href=\"http://www.apache.org/licenses/LICENSE-2.0\">Apache License Version 2.0</a>协议<br>版权所有 ©2020 openLooKeng 保留一切权力&nbsp;&nbsp;"
 
 [markup.goldmark.renderer]
 unsafe= true

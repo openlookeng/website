@@ -186,7 +186,9 @@
     color: #5a9b83;
     font-family: HuaweiSansLight;
 }
-
+.maillist .maillist-slack ul {
+    list-style-type: none;
+}
 @media screen and (min-width: 995px) {
     .isPC.maillist {
         display: block;

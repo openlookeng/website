@@ -3895,8 +3895,8 @@ fieldset[disabled] .btn-template-primary.active {
     float: right;
     margin-right: 15px;
     padding: 9px 10px;
-    margin-top: 14px;
-    margin-bottom: 14px;
+    margin-top: 11px;
+    margin-bottom: 11px;
     background-image: none;
     border-radius: 0;
     border: none;
@@ -3953,6 +3953,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar ul.nav > li.open > a {
         border-bottom: none;
+        height: 30px;
     }
 
     .nav-search {
@@ -5548,7 +5549,11 @@ header {
 
 #copyright .container .pull-right > a {
     padding: 0 10px;
-    font-size: 16px;
+    font-size: 12px;
+}
+
+#copyright .container .pull-right .pull-apache {
+    padding: 0;
 }
 
 
