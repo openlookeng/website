@@ -9,11 +9,11 @@
         <div id="content">
             <div class="container news-detail">
                 <h2 class="news-single-title">{{ .Title }}</h2>
-                <div class="relative-info">
+                <h5 class="author-category">
                     <span class="author">{{ .Params.author }}</span>
-                    <div class="line"></div>
+                    <span class="line"></span>
                     <span class="date">{{ .Date.Format .Site.Params.date_format }}</span>
-                </div>
+                </h5>
                 {{ .Content }}
             </div>
     

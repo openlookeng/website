@@ -1,13 +1,13 @@
 +++
-title = "User Group"
+title = "用户支持组"
 weight = 10
 small_title = "User Group Members"
 
 [[item]]
-    title = "Micheal Li"
+    title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Micheal领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
+    content = "Michael领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
 
 
 [[item]]
@@ -42,7 +42,7 @@ small_title = "User Group Members"
 +++
 
 
-# User Group 
+# 用户支持组
 
 用户组可帮助最终用户了解如何使用openLooKeng，并向PMC收集改进建议。用户组提供邮件列表和Slack，供下游用户进行交流，并提供有关使用openLooKeng的一般问题和讨论。
 

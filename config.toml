@@ -1,5 +1,5 @@
 baseurl = "/"
-title = "openLookeng"
+title = "openLooKeng"
 theme = "universal"
 
 languageCode = "en-us"
@@ -278,14 +278,21 @@ paginate = 10
 [params.emails]
     enable = true
 
+[params.slacklink]
+    enable = true
+    text = "<a href=\"https://join.slack.com/t/openlookeng/shared_invite/zt-fgvauxpt-2v7Bghpa2dKFHMDe7IEB4A\" target=\"_blank\">Sign up</a> for Slack or <a href=\"https://openlookeng.slack.com\" target=\"_blank\">sign in</a> if you already have an account Channels."
+
+[languages.zh-cn.params.slacklink]
+    enable = true
+    text = "<a href=\"https://join.slack.com/t/openlookeng/shared_invite/zt-fgvauxpt-2v7Bghpa2dKFHMDe7IEB4A\" target=\"_blank\">请注册</a>openLooKeng Slack。如果已经注册，请直接<a href=\"https://openlookeng.slack.com\" target=\"_blank\">登录</a>频道。"
 
 [params.copyright]
     enable = true
-    text = "<a href=\"/privacypolicy.html\">Privacy</a><a href=\"/legalnotice.html\">Legal</a><br>Licensed under the<a href=\"http://www.apache.org/licenses/LICENSE-2.0\">Apache License Version 2.0</a><br>Copyright ©2020 openLooKeng. All rights reserved.&nbsp;&nbsp;"
+    text = "<a href=\"/privacypolicy.html\" target='_blank'>Privacy</a><a href=\"/legalnotice.html\" target='_blank'>Legal</a><br>Licensed under the<a href=\"http://www.apache.org/licenses/LICENSE-2.0\" target='_blank'>Apache License Version 2.0</a><br>Copyright ©2020 openLooKeng. All rights reserved.&nbsp;&nbsp;"
 
 [languages.zh-cn.params.copyright]
     enable = true
-    text = "<a href=\"/zh-cn/privacypolicy.html\">隐私政策</a><a href=\"/zh-cn/legalnotice.html\">法律声明</a><br>遵循<a class='pull-apache' href=\"http://www.apache.org/licenses/LICENSE-2.0\">Apache License Version 2.0</a>协议<br>版权所有 ©2020 openLooKeng 保留一切权力&nbsp;&nbsp;"
+    text = "<a href=\"/zh-cn/privacypolicy.html\" target='_blank'>隐私政策</a><a href=\"/zh-cn/legalnotice.html\" target='_blank'>法律声明</a><br>遵循<a class='pull-apache' href=\"http://www.apache.org/licenses/LICENSE-2.0\" target='_blank'>Apache License Version 2.0</a>协议<br>版权所有 ©2020 openLooKeng 保留一切权力&nbsp;&nbsp;"
 
 [markup.goldmark.renderer]
 unsafe= true

@@ -1,6 +1,6 @@
 .home-banner {
     height: unset;
-    padding-top: 100px;
+    padding-top: 60px;
 }
 
 .home-why .item {
@@ -22,7 +22,6 @@
 .home-banner .banner-p1 {
     font-family: HuaweiSans;
     margin: 0 0 15px 0;
-    height: 44px;
     line-height: 44px;
 }
 
@@ -30,6 +29,7 @@
     font-family: HuaweiSansLight;
     font-size: 16px;
     color: rgba(0, 0, 0, .7);
+    margin-bottom: 15px;
 }
 
 .home-banner .home-img {
@@ -97,8 +97,8 @@ h3.title {
 }
 
 .bar .container .col-md-6 ul li a {
-    color: #000;
-    font-family: HuaweiSans;
+    color: rgba(0, 0, 0, .7);
+    font-family: HuaweiSansLight;
 }
 
 .one-row {
@@ -121,6 +121,11 @@ h3.title {
     color: rgba(0, 0, 0, .7);
 }
 
+.bar .container .col-md-6 ul li a p {
+    color: #000;
+    font-family: HuaweiSans;
+}
+
 .home-links {
     margin-bottom: 100px;
 }
@@ -132,6 +137,10 @@ h3.title {
 
 .home-why .summit {
     height: unset;
+}
+
+.home-why > a:hover {
+    text-decoration: none;
 }
 
 .bar .container .col-md-6 > a p {

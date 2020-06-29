@@ -1,5 +1,5 @@
 .container .foundation-content{
-    margin: 100px 0;
+    margin: 60px 0;
 
 }
 
@@ -7,7 +7,7 @@
     text-align: center;
     margin-top: 100px;
     color: #000;
-    font-size: 44px;
+    font-size: 40px;
     font-family: HuaweiSans;
     line-height: 44px;
 }
@@ -35,6 +35,8 @@ pre {
 }
 
 pre code {
+    word-wrap: break-word;
+    word-break: break-all;
     font-family: HuaweiSansLight;
 }
 
@@ -74,7 +76,7 @@ ul {
 }
 
 .foundation-content .foundation-top img {
-    width: 100%;
+    width: 80%;
 }
 
 .foundation-content .foundation-top h1 {
@@ -276,6 +278,10 @@ ul {
     margin-bottom: 40px;
     font-size: 34px;
     font-family: HuaweiSans;
+}
+
+.inner a {
+    color: #5A9B83;
 }
 
 .small-title {

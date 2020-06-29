@@ -10,10 +10,10 @@ small_title = "Committers"
     content = "Ken领导和推动分析平台实验室，监督和指导所有组件领域的成员，以确保基准。Ken在IBM Watson Health、Thomson Reuters Open Platform等公司担任架构师，拥有20年的尖端行业经验。他目前在多伦多、深圳、成都、班加罗尔和都柏林的研发成员提供领导和指导。"
 
 [[item]]
-    title = "Micheal Li"
+    title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Micheal领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
+    content = "Michael领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
 
 [[item]]
     title = "Karmveer Singh"

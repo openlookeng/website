@@ -37,7 +37,7 @@ other = "Active/Active design leads zero outage."
 other = "Get Started"
 
 [HOME_GETSTARTLINK]
-other = "/docs/docs/installation.html"
+other = "/docs/docs/start.html"
 
 [HOME_VIDEO01]
 other = "../../video/file_example_MP4_1280_10MG.mp4"
@@ -87,3 +87,23 @@ other = "Tags"
 [BLOG_LINK]
 other = "/blogguidance.html"
 
+[EVENT_URL]
+other = "/events.html"
+
+[HIGH_LIGHT1]
+other = "video/Highlight1_en.mp4"
+
+[HIGH_LIGHT2]
+other = "video/Highlight2_en.mp4"
+
+[HIGH_LIGHT3]
+other = "video/Highlight3_en.mp4"
+
+[VIDEO_COVER_3]
+other = "img/banners/video-cover3.png"
+
+[RELEASE_NOTES_URL]
+other = "/docs/docs/releasenotes.html"
+
+[DEPLOYING_OPENLOOKENG]
+other = "/docs/docs/installation/deployment.html"

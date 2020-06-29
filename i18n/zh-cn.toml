@@ -32,7 +32,7 @@ other = "全 Active/Active 架构，业务不中断 "
 other = "openLooKeng首次Meetup即将开启"
 
 [HOME_GETSTARTLINK]
-other = "/zh-cn/docs/docs/installation.html"
+other = "/zh-cn/docs/docs/start.html"
 
 [MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
 other = "订阅"
@@ -62,7 +62,7 @@ other = "https://opengauss.org/zh/"
 other = "https://www.huaweicloud.com/kunpeng/"
 
 [DOCS_TITLE]
-other = "一起来了解openLookeng吧"
+other = "一起来了解openLooKeng吧"
 
 [SIDEBAR_TAG]
 other = "标签"
@@ -72,3 +72,24 @@ other = "立即使用"
 
 [BLOG_LINK]
 other = "/zh-cn/blogguidance.html"
+
+[EVENT_URL]
+other = "/zh-cn/events.html"
+
+[HIGH_LIGHT1]
+other = "video/Highlight1.mp4"
+
+[HIGH_LIGHT2]
+other = "video/Highlight2.mp4"
+
+[HIGH_LIGHT3]
+other = "video/Highlight3.mp4"
+
+[VIDEO_COVER_3]
+other = "img/banners/video-cover3-cn.png"
+
+[RELEASE_NOTES_URL]
+other = "/zh-cn/docs/docs/releasenotes.html"
+
+[DEPLOYING_OPENLOOKENG]
+other = "/zh-cn/docs/docs/installation/deployment.html"

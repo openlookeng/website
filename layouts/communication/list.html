@@ -36,6 +36,7 @@
                                             <tr>
                                                 <th>List Name</th>
                                                 <th>Email Address</th>
+                                                <th>Archive</th>
                                                 <th>Description</th>
                                             </tr>
                                             </thead>
@@ -43,7 +44,8 @@
                                             {{ range $paginator.Pages }}
                                             <tr>
                                                 <td>{{ .Params.listname }}</td>
-                                                <td>{{ .Params.emailaddress }}</td>
+                                                <td><a href="{{ .Params.emailaddress }}" target="_blank"><span>{{ .Params.emailaddress }}</span></a></td>
+                                                <td><a href="{{ .Params.archivelink }}" target="_blank"><span>{{ .Params.archivename }}</span></a></td>
                                                 <td>{{ .Params.description }}</td>
                                             </tr>
                                             {{ end }}
@@ -77,42 +79,6 @@
                                     <div class="maillist-divider-mail">
                                         <img src="../img/contribution/Group2.png" alt="">
                                     </div>
-                                    <!--<div class="step-left">
-                                        <div class="step-left-box">
-                                            <p>{{ .Params.step_one }}</p>
-                                        </div>
-                                        <div class="step-left-num">
-                                            <span>1</span>
-                                        </div>
-                                        <div class="step-left-line"></div>
-                                    </div>
-                                    <div class="step-right">
-                                        <div class="step-right-line"></div>
-                                        <div class="step-right-num">
-                                            <span>2</span>
-                                        </div>
-                                        <div class="step-right-box">
-                                            <p>{{ .Params.step_two }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="step-left">
-                                        <div class="step-left-box">
-                                            <p>{{ .Params.step_three }}</p>
-                                        </div>
-                                        <div class="step-left-num">
-                                            <span>3</span>
-                                        </div>
-                                        <div class="step-left-line"></div>
-                                    </div>
-                                    <div class="step-right last">
-                                        <div class="step-right-line"></div>
-                                        <div class="step-right-num">
-                                            <span>4</span>
-                                        </div>
-                                        <div class="step-right-box">
-                                            <p>{{ .Params.step_four }}</p>
-                                        </div>
-                                    </div>-->
                                     {{ .Content }}
                                 </div>
 
@@ -155,7 +121,7 @@
 
                                 <div class="maillist-slack">
                                     <h3>{{ .Params.bottom_title }}</h3>
-                                    <p>{{ .Params.bottom_description }}</p>
+                                    <p>{{ .Params.bottom_description_right }} {{ .Site.Params.slacklink.text | safeHTML }} {{ .Params.bottom_description_left }}</p>
                                     <ul>
                                         <li> · <a href="{{ .Params.general_url }}">{{ .Params.general_tag }}</a> - {{ .Params.general_detail }}</li>
                                         <li> · <a href="{{ .Params.trouble_url }}">{{ .Params.trouble_tag }}</a> - {{ .Params.trouble_detail }}</li>

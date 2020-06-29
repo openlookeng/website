@@ -1,3 +1,6 @@
+.maillist .maillist-title {
+    text-align: center;
+}
 .maillist .maillist-info p {
     font-size: 14px;
     font-family: HuaweiSansLight;
@@ -198,9 +201,9 @@
     }
     .maillist .maillist-title h2 {
         text-align: center;
-        font-size: 44px;
+        font-size: 40px;
         font-family: HuaweiSans;
-        margin: 100px 0 21px 0;
+        margin: 60px 0 21px 0;
         font-weight: normal;
     }
     .maillist .maillist-comm h3 {
@@ -217,33 +220,34 @@
         font-weight: normal;
     }
     .maillist .maillist-title img {
-        max-width: 1108px;
+        max-width: 80%;
         vertical-align: middle;
         margin: 0 auto;
     }
     .maillist .maillist-comm p,
-    .maillist .maillist-info p{
+    .maillist .maillist-info p {
         font-size: 14px;
         font-family: HuaweiSansLight;
         font-weight: 400;
     }
     .maillist .maillist-info table {
-        width: 80%;
-        margin: 0 auto;
+        width: 90%;
+        margin: 30px auto 0;
     }
     .table > thead > tr > th {
         vertical-align: middle;
         border-bottom: none;
         font-size: 16px;
         font-weight: normal;
-        padding: 15px 0;
+        padding: 15px 13px;
     }
     .maillist .maillist-info table td {
         border: none;
         height: 55px;
         line-height: 55px;
+        padding: 15px;
     }
-    .maillist .maillist-info table tr td:nth-child(2) {
+    .maillist .maillist-info table tr td a {
         color: #5a9b83;
     }
     .table-striped > tbody > tr:nth-of-type(odd) {
@@ -266,6 +270,9 @@
     }
     .maillist .maillist-slack ul {
         list-style-type: none;
+    }
+    .table > tr > td:nth-child(3) {
+        width: 30px;
     }
 }
 @media screen and (max-width: 768px) {
