@@ -14,7 +14,7 @@ title = "JDBC驱动"
 <dependency>
     <groupId>io.prestosql</groupId>
     <artifactId>hetu-jdbc</artifactId>
-    <version>316</version>
+    <version>010</version>
 </dependency>
 ```
 

@@ -106,7 +106,7 @@ Below Hive statements are not supported, because of feature differences:
 This tool can be run in interactive mode. The example is like:
 
 ```shell
-java -jar hetu-sql-migration-tool-316.jar
+java -jar hetu-sql-migration-tool-010.jar
 ```
 
 ```sql
@@ -150,7 +150,7 @@ This tool also can take parameters and running in batch mode. It has five parame
 Here is an example of batch mode usage:
 
 ```shell
-    java -jar hetu-sql-migration-tool-316.jar --file /home/Query01.sql --output ./
+    java -jar hetu-sql-migration-tool-010.jar --file /home/Query01.sql --output ./
     May 26, 2020 5:27:10 PM io.airlift.log.Logger info
     INFO: Migration Completed.
     May 26, 2020 5:27:10 PM io.airlift.log.Logger info
@@ -172,7 +172,7 @@ When `file` is specified, parameter `output` must be provided. The converted res
 It is possible to execute a query directly with the command and have the tool exit after transformation completion. Here is the example of using  `execute`:
 
 ```shell
-java -jar hetu-sql-migration-tool-316.jar --execute "INSERT INTO TABLE T1 VALUES(10, 'openLooKeng')" --sourceType hive
+java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 VALUES(10, 'openLooKeng')" --sourceType hive
 
 ==========converted result==========
 INSERT INTO t1
@@ -191,7 +191,7 @@ file name "config.properties" with content as below:
 ```shell
 convertDecimalLiteralsAsDouble=true
 
-java -jar hetu-sql-migration-tool-316.jar --execute "INSERT INTO TABLE T1 select 2.0 * 3" --config config.properties
+java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 select 2.0 * 3" --config config.properties
 
 ==========converted result==========
 INSERT INTO t1

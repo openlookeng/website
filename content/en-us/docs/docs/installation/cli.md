@@ -8,7 +8,7 @@ title = "Command Line Interface"
 
 The openLooKeng CLI provides a terminal-based interactive shell for running queries. The CLI is a [self-executing](http://skife.org/java/unix/2011/06/20/really_executable_jars.html) JAR file, which means it acts like a normal UNIX executable.
 
-Download `hetu-cli-316-executable.jar`, rename it to `openlk-cli`, make
+Download `hetu-cli-010-executable.jar`, rename it to `openlk-cli`, make
 it executable with `chmod +x`, then run it:
 
 ``` shell

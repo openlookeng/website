@@ -14,7 +14,7 @@ The driver is also available from Maven Central:
 <dependency>
     <groupId>io.hetu.core</groupId>
     <artifactId>hetu-jdbc</artifactId>
-    <version>316</version>
+    <version>010</version>
 </dependency>
 ```
 
