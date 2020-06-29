@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install git -y
 
 
-ENV HUGO_VERSION=0.56.3
+ENV HUGO_VERSION=0.73.0
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
