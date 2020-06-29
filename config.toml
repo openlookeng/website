@@ -222,6 +222,7 @@ paginate = 10
     mainSections = ["blog"]
     defaultDescription = "Site template made by devcows using hugo"
     email = "contact@openlookeng.io"
+    footerlogo = "../img/banners/openLookengLogo.png"
 
 
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
@@ -282,9 +283,9 @@ paginate = 10
     enable = true
     text = "<a href=\"/privacypolicy.html\">Privacy</a><a href=\"/legalnotice.html\">Legal</a><br>Licensed under the<a href=\"http://www.apache.org/licenses/LICENSE-2.0\">Apache License Version 2.0</a><br>Copyright ©2020 openLooKeng. All rights reserved.&nbsp;&nbsp;"
 
-[languages.zh.params.copyright]
+[languages.zh-cn.params.copyright]
     enable = true
-    text = "<a href=\"/zh-cn/legalnotice.html\">法律声明</a>&nbsp;&nbsp;<a href=\"/zh-cn/privacypolicy.html\">隐私政策</a><br>版权所有 ©2020 openLooKeng 保留一切权利 "
+    text = "<a href=\"/privacypolicy.html\">隐私政策</a><a href=\"/legalnotice.html\">法律声明</a><br>遵循<a class='pull-apache' href=\"http://www.apache.org/licenses/LICENSE-2.0\">Apache License Version 2.0</a>协议<br>版权所有 ©2020 openLooKeng 保留一切权力&nbsp;&nbsp;"
 
 [markup.goldmark.renderer]
 unsafe= true

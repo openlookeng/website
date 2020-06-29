@@ -31,6 +31,9 @@ other = "全 Active/Active 架构，业务不中断 "
 [HOME_SUMMIT]
 other = "openLooKeng首次Meetup即将开启"
 
+[HOME_GETSTARTLINK]
+other = "/zh-cn/docs/docs/installation.html"
+
 [MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
 other = "订阅"
 

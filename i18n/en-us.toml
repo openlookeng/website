@@ -37,7 +37,7 @@ other = "Active/Active design leads zero outage."
 other = "Get Started"
 
 [HOME_GETSTARTLINK]
-other = "#"
+other = "/docs/docs/installation.html"
 
 [HOME_VIDEO01]
 other = "../../video/file_example_MP4_1280_10MG.mp4"

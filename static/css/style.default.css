@@ -38,13 +38,13 @@
 }
 
 .pull-left .logo {
-    width: 150px;
+    width: 155px;
     /*height: 60px;*/
     border-radius: 4px;
 }
 
 .pull-left .logo img {
-    width: 150px;
+    width: 155px;
     border-radius: 4px;
     margin-top: 15px;
 }
@@ -54,7 +54,7 @@
     font-size: 14px;
     color: rgba(255, 255, 255, .7);
     line-height: 14px;
-    margin-top: 6px;
+    margin-top: 11px;
 }
 
 .pull-left .logo-bottom .small-icon {
@@ -1719,8 +1719,9 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 .news-card .container p {
-    font-size: 16px;
+    font-size: 14px;
     font-family: Helvetica-Light;
+    opacity: .7;
 }
 
 .news-card .container .recent-news {
@@ -1754,7 +1755,7 @@ fieldset[disabled] .btn-template-primary.active {
     font-size: 12px;
     font-family: Helvetica-Light, Helvetica;
     font-weight: 300;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, .7);
     line-height: 16px;
     margin: 10px 0;
 }
@@ -1770,7 +1771,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 .news-card .container .post .author-category .news-date {
-    color: #555;
+    color: rgba(0, 0, 0, .7);
 }
 
 .news-card .container .post .date-comments a {
@@ -3459,7 +3460,7 @@ fieldset[disabled] .btn-template-primary.active {
 #copyright {
     background-color: rgba(0, 0, 0, .75);
     color: rgba(255, 255, 255, .7);
-    padding: 18px 0;
+    padding: 20px 0;
     font-size: 12px;
     line-height: 28px;
 }
@@ -3477,7 +3478,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 #copyright p a {
     color: #fff;
-    opacity: .7;
+    /*opacity: .7;*/
 }
 
 #copyright p span.block {
@@ -3885,7 +3886,7 @@ fieldset[disabled] .btn-template-primary.active {
     .navbar > .container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
         margin-left: -15px;
-        margin-top: 5px;
+        /*margin-top: 5px;*/
     }
 }
 
@@ -3894,8 +3895,8 @@ fieldset[disabled] .btn-template-primary.active {
     float: right;
     margin-right: 15px;
     padding: 9px 10px;
-    margin-top: 14px;
-    margin-bottom: 14px;
+    margin-top: 11px;
+    margin-bottom: 11px;
     background-image: none;
     border-radius: 0;
     border: none;
@@ -3952,6 +3953,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar ul.nav > li.open > a {
         border-bottom: none;
+        height: 30px;
     }
 
     .nav-search {
@@ -5337,7 +5339,7 @@ p.blog-12px .tag a {
     font-family: HuaweiSansLight;
     margin-bottom: 20px;
     color: rgba(0, 0, 0, .7);
-    font-size: 16px;
+    font-size: 14px;
     line-height: 26px;
 }
 
@@ -5533,7 +5535,7 @@ p.home-news .tag a {
 
 /*防止页面抖动*/
 header {
-    height: 62px;
+    height: 70px;
     position: relative;
     z-index: 999;
 }
@@ -5542,10 +5544,16 @@ header {
 #copyright .container > div {
     display: flex;
     justify-content: space-between;
+    padding: 0;
 }
 
 #copyright .container .pull-right > a {
     padding: 0 10px;
+    font-size: 12px;
+}
+
+#copyright .container .pull-right .pull-apache {
+    padding: 0;
 }
 
 
