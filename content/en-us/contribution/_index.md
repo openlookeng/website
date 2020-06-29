@@ -1,5 +1,5 @@
 +++
-top_title ="Welcome to the openLookeng Community"
+top_title ="Your Contribution is More than Welcome"
 mobile_title = "Contribution Guide"
 middle_title = "Start your contribution here!"
 
