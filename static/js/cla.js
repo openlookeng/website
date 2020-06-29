@@ -83,7 +83,7 @@ function oauthLogin() {
     let config = {
         providerID: 'openeuler_bot',
         client_id: $('#client').val(),
-        redirect_uri: window.location.origin + '/signcla.html',
+        redirect_uri: window.location.origin + '/cla',
         response_type: 'code',
         authorization: 'https://gitee.com/oauth/authorize',
         scopes: {
