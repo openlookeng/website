@@ -195,7 +195,7 @@ title = "签署CLA"
     </tr>
     <tr>
         <td>
-            <a href="javascript:;" id="sign-cla-button" class="btn cla-sign-btn disabled" posturl="/cla/">
+            <a href="javascript:;" id="sign-cla-button" class="btn cla-sign-btn disabled" posturl="/cla">
                 签署
             </a>
             <a href="javascript:;" id="reset-cla-button" class="btn cla-reset-btn">

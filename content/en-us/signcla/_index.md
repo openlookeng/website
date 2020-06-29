@@ -187,7 +187,7 @@ Please select one applicable statement from the following and fill in the blanks
     </tr>
     <tr>
         <td>
-            <a href="javascript:;" id="sign-cla-button" class="btn cla-sign-btn disabled" posturl="/cla/">
+            <a href="javascript:;" id="sign-cla-button" class="btn cla-sign-btn disabled" posturl="/cla">
                 Sign
             </a>
             <a href="javascript:;" id="reset-cla-button" class="btn cla-reset-btn">
