@@ -17,22 +17,21 @@
                 <div class="download-container">
                     <div class="container-top">
                         <h1 class="download-title docs-pic-title title-adapter-max">{{ .Params.top_title_max }}</h1>
-                        <h3 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h3>
-                        <img class="docs-pic" src="../img/download/banner.png" alt="">
-                    </div>
-                    <div class="download-descript">
-                        <h2 class="title-adapter-max">{{ .Params.second_title }}</h2>
-                        <p>
-                            {{ .Params.second_title_description }}
+                        <p class="release-notes">{{ .Params.second_title_description1 }}<a target="_blank"
+                                href="{{ i18n "RELEASE_NOTES_URL" }}">{{ .Params.release_notes }}</a>{{ .Params.second_title_description2 }}
                         </p>
+                        <h3 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h3>
+                        <img class="docs-pic" src="{{ "img/download/banner.png" | relURL }}" alt="">
+
                     </div>
                     <div class="download-server">
                         <h3>{{ .Params.download_server_title }}</h3>
                         <p>
-                            {{ .Params.server_title_description }}
+                            {{ .Params.server_title_description1 }}<a target="_blank"
+                                href="{{ i18n "DEPLOYING_OPENLOOKENG" }}">{{ .Params.deployment_packages }}</a>{{ .Params.server_title_description2 }}
                         </p>
                     </div>
-                    <div class="download-button">
+                    <div class="download-button first-btn-wrapper">
                         {{ range .Params.server_btn }}
                         <div class="download-btn btn1">
                             <button url="{{ .url }}" type="button">{{ .file_name }}</button>
@@ -43,8 +42,8 @@
                         {{ range .Params.driver_item }}
                         <div class="download-btn btn1">
                             <h4>{{ .title }}</h4>
-                            <p>{{ .desc }}</p>
-                            <button url="{{ .url }}" type="button">{{ .file_name }}</button>
+                            <p>{{ .desc1 }}<a target="_blank" href="{{ .doc_url }}">{{ .doc }}</a>{{ .desc2 }}</p>
+                            <button class="jar-btn" url="{{ .url }}" type="button">{{ .file_name }}</button>
                         </div>
                         {{ end }}
                     </div>

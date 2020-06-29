@@ -11,7 +11,6 @@
 
 .container-top img {
     display: flex;
-    margin: 0 auto;
     margin: 26px auto 103px;
 }
 
@@ -76,6 +75,9 @@
     .download-descript p {
         padding: 0 3rem;
     }
+    .release-notes {
+        display: none;
+    }
 }
 
 .download-button button {
@@ -98,22 +100,35 @@
 .download-server h3 {
     text-align: center;
     font-family: HuaweiSans;
+    margin-bottom: 40px;
+    font-size: 34px;
 }
 
 .download-server p {
     text-align: center;
     color: rgba(0, 0, 0, .7);
     font-family: HuaweiSansLight;
+    margin-bottom: 25px;
+}
+
+.first-btn-wrapper {
+    justify-content: space-evenly;
 }
 
 .second-btn {
-    margin-top: 60px;
+    margin-top: 100px;
+}
+
+.jar-btn {
+    border: 2px solid #5a9b83 !important;
+    background-color: unset !important;
+    color: #5a9b83 !important;
 }
 
 .second-btn .download-btn p {
     color: rgba(0, 0, 0, .7);
     width: 300px;
-    text-align: center;
+    text-align: left;
     font-size: 14px;
     font-family: HuaweiSans;
 }
@@ -131,5 +146,19 @@
 }
 
 .docs-pic {
+    width: 100%;
+}
+
+.release-notes {
+    text-align: center;
+    position: relative;
+    top: 10px;
+    font-size: 14px;
+    font-family: HuaweiSansLight;
+    color: rgba(0, 0, 0, .7);
+}
+
+.download-container a {
+    color: #5A9B83;
     width: 80%;
 }
