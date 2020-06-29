@@ -280,6 +280,10 @@ ul {
     font-family: HuaweiSans;
 }
 
+.inner a {
+    color: #5A9B83;
+}
+
 .small-title {
     margin: 60px 0 20px 0;
     font-size: 16px;

@@ -35,23 +35,23 @@
                 var offsetTop = $('.container.flex').offset().top;
                 var scrollTop = $(window).scrollTop();
                 var hasClass = $('.download-content').eq(0).siblings().hasClass('book-header');
-                if (offsetTop - scrollTop < 70 && !hasClass) {
+                if (offsetTop - scrollTop < 62 && !hasClass) {
 
                     cloneBookMenuHeader.css({
                         'position': 'fixed',
-                        'top': '70px',
+                        'top': '62px',
                         'width': '100%',
                         'z-index': '999',
                         'background-color': 'white',
                         'padding': '0 30px',
                         'left': '0',
-                        'line-height': '70px'
+                        'line-height': '62px'
                     });
-                    $('.download-content').eq(0).after(cloneBookMenuHeader);
+                    $('#all').append(cloneBookMenuHeader);
                     $('.book-page .book-header').eq(0).hide();
-                } else if (offsetTop - scrollTop >= 70 && hasClass) {
+                } else if (offsetTop - scrollTop >= 62 && hasClass) {
                     $('.book-page .book-header').eq(0).show();
-                    $('.download-content+.book-header').remove();
+                    $('#all > .book-header').remove();
                 }
 
             } catch (error) {

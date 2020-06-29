@@ -11,10 +11,10 @@ server_title_description1 = "openLooKeng发布的安装包。安装指南请见"
 deployment_packages = "部署openLookeng"
 server_title_description2 = "。"
 [[server_btn]]
-    file_name = "hetu-server-316.tar.gz"
+    file_name = "hetu-server-010.tar.gz"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-server-316.tar.gz"
 [[server_btn]]
-    file_name = "hetu-server-rpm-316.x86_64.rpm"
+    file_name = "hetu-server-rpm-010.x86_64.rpm"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-server-rpm-316.x86_64.rpm"
 
 [[driver_item]]
@@ -23,7 +23,7 @@ server_title_description2 = "。"
     doc = "命令行接口"
     doc_url = "/zh-cn/docs/docs/installation/cli.html"
     desc2 = "。"
-    file_name = "hetu-cli-316-executable.jar"
+    file_name = "hetu-cli-010-executable.jar"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-cli-316-executable.jar"
 [[driver_item]]
     title = "JDBC Driver"
@@ -31,7 +31,7 @@ server_title_description2 = "。"
     doc = "JDBC驱动"
     doc_url = "/zh-cn/docs/docs/installation/jdbc.html"
     desc2 = "。"
-    file_name = "hetu-jdbc-316.jar"
+    file_name = "hetu-jdbc-010.jar"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-jdbc-316.jar"
 [[driver_item]]
     title = "ODBC Driver"
@@ -39,6 +39,6 @@ server_title_description2 = "。"
     doc = "openLooKeng ODBC用户手册"
     doc_url = "/zh-cn/docs/docs/installation/odbc.html"
     desc2 = "。"
-    file_name = "hetu-odbc-win64-316.jar"
+    file_name = "hetu-odbc-win64-010.jar"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-odbc-win64-316.msi"
 +++
