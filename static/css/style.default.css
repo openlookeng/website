@@ -4944,10 +4944,7 @@ a.list-group-item.active > .badge,
 
 /* -----------------------------------blog-single模块---------------------------------- */
 #all .blog-single-title {
-    margin-top: 100px;
     margin-bottom: 20px;
-    /* width:1106px; */
-    /* height:96px; */
     font-size: 34px;
     font-family: Helvetica;
     color: rgba(0, 0, 0, 1);
@@ -5403,4 +5400,8 @@ header {
 .container .col-md-9 img {
     height: auto;
     max-width: 60%;
+}
+
+#all {
+    min-height: calc(100% - 190px);
 }
