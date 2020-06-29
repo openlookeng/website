@@ -117,7 +117,7 @@ function initClaPage() {
 
     var cla = readCookie('cla-info');
     if (!cla || cla === '') {
-        // oauthLogin();
+        oauthLogin();
     }
 
     if ($('#cla-type-table').length) {

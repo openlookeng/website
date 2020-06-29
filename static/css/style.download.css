@@ -111,6 +111,7 @@
 }
 
 .second-btn .download-btn p {
+    color: rgba(0, 0, 0, .7);
     width: 300px;
     text-align: center;
     font-size: 14px;
