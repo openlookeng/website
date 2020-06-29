@@ -6,7 +6,11 @@
 
         <div class="container">
             <div class="navbar-header">
+                {{ if eq .Site.LanguageCode "zh-cn"}}
+                <a class="navbar-brand home" href="{{ "/zh-cn" | relURL }}">
+                {{ else }}
                 <a class="navbar-brand home" href="{{ "/" | relURL }}">
+                {{ end }}
                     <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Title }} logo" class="hidden-xs hidden-sm">
                     <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Title }} logo" class="visible-xs visible-sm">
                     <span class="sr-only">{{ .Title }} - {{ i18n "navHome" }}</span>
@@ -36,7 +40,15 @@
                     <ul class="dropdown-menu">
                         <div class="dropdown-arrow"></div>
                         {{ range .Children }}
-                        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                        <li>
+                            {{ if eq .Name "Gitee" }}
+                            <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
+                            {{ else if eq .Name "GitHub"}}
+                            <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
+                            {{ else }}
+                            <a href="{{ .URL }}" >{{ .Name }}</a>
+                            {{ end }}
+                        </li>
                     {{ end }}
                     </ul>
                 {{ else }}
