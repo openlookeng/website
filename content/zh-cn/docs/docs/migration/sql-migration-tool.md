@@ -101,7 +101,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 
 该工具支持交互模式运行。例如：
 
-    java -jar presto-sql-migration-tool-316.jar
+    java -jar hetu-sql-migration-tool-010.jar
     presto:HIVE>
     presto:HIVE> INSERT INTO TABLE table1 VALUES(10, "NAME");
     ==========converted result==========
@@ -136,7 +136,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 
 批处理模式使用示例：
 
-        java -jar presto-sql-migration-tool-316.jar --file /home/Query01.sql --output ./
+        java -jar hetu-sql-migration-tool-010.jar --file /home/Query01.sql --output ./
         May 26, 2020 5:27:10 PM io.airlift.log.Logger info
         INFO: Migration Completed.
         May 26, 2020 5:27:10 PM io.airlift.log.Logger info
@@ -154,7 +154,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 
 可以使用命令直接执行查询，并在转换完成后退出工具。使用`execute`的示例：
 
-    java -jar presto-sql-migration-tool-316.jar --execute "INSERT INTO TABLE T1 VALUES(10, 'presto')" --sourceType hive
+    java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 VALUES(10, 'presto')" --sourceType hive
     
     ==========converted result==========
     INSERT INTO t1
@@ -171,7 +171,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 
     convertDecimalLiteralsAsDouble=true
     
-    java -jar presto-sql-migration-tool-316.jar --execute "INSERT INTO TABLE T1 select 2.0 * 3" --config config.properties
+    java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 select 2.0 * 3" --config config.properties
     
     ==========converted result==========
     INSERT INTO t1
