@@ -1,7 +1,7 @@
 +++
 listname = "Pmc"
 emailaddress = "Pmc@openlookeng.io"
-description = "xxxxxxxxxxxxxxxxxxxxx"
+description = "Mailist only for Project Management Committee (PMC)."
 websitelink = "https://mailweb.openlookeng.io/postorius/lists/pmc.openlookeng.io/"
 archivelink = "https://mailweb.openlookeng.io/hyperkitty/list/pmc@openlookeng.io"
 weight = 11
