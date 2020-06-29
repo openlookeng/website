@@ -23,7 +23,7 @@ bash <(wget -qO- http://openlookeng.io/install.sh)
 or:
 
 ```shell
-wget -O - http://openlookeng.io/install.sh|sh
+wget -O - http://openlookeng.io/install.sh|bash
 ```
 
 Normally, you don\'t need to do any thing, except for the installation to complete. It will automatically start the service.
@@ -173,13 +173,13 @@ exchange.client-threads=8
 It is very easy and straight forward to uninstall openLooKeng Service, simply run below command:
 
 ```shell
-sh /opt/openlookeng/bin/uninstall.sh
+bash /opt/openlookeng/bin/uninstall.sh
 ```
 
 This will uninstall openLooKeng Service by removing directory `/opt/openlookeng` and all files inside it. However, the `openlkadmin` user and all the configuration files under`/home/openlkadmin/` will not be removed. If you wan to delete user and configuration files, you need to run the below command:
 
 ```shell
-sh /opt/openlookeng/bin/uninstall.sh --all
+bash /opt/openlookeng/bin/uninstall.sh --all
 ```
 
 ## Deploying openLooKeng to Cluster offline
@@ -188,23 +188,23 @@ If you can't access the download URL from the machine where you want to install 
 Execute below command to deploy single node cluster:
 
 ```shell
-sh /opt/openlookeng/bin/install_offline.sh`
+bash /opt/openlookeng/bin/install_offline.sh`
 ```
 
 Execute below command to deploy multi-node cluster:
 
 ```shell
-sh /opt/openlookeng/bin/install_offline.sh -m
+bash /opt/openlookeng/bin/install_offline.sh -m
 ```
 
 or:
 ```shell
-sh /opt/openlookeng/bin/install_offline.sh --multi-node
+bash /opt/openlookeng/bin/install_offline.sh --multi-node
 ```
 
 execute the below command to get help on all available options:
 ```shell
-sh /opt/openlookeng/bin/install_offline.sh --help
+bash /opt/openlookeng/bin/install_offline.sh --help
 ```
 
 ## Adding Node to Cluster 
@@ -212,22 +212,22 @@ sh /opt/openlookeng/bin/install_offline.sh --help
 If you want to add node to make the cluster bigger,execute the below command:
 
 ```shell
-sh /opt/openlookeng/bin/add_cluster_node.sh -n
+bash /opt/openlookeng/bin/add_cluster_node.sh -n
 ```
 
 or:
 ```shell
-sh /opt/openlookeng/bin/add_cluster_node.sh --node
+bash /opt/openlookeng/bin/add_cluster_node.sh --node
 ```
 
 or:
 ```shell
-sh /opt/openlookeng/bin/add_cluster_node.sh -f <add_nodes_file_path>
+bash /opt/openlookeng/bin/add_cluster_node.sh -f <add_nodes_file_path>
 ```
 
 or:
 ```shell
-sh /opt/openlookeng/bin/add_cluster_node.sh --file <add_nodes_file_path>
+bash /opt/openlookeng/bin/add_cluster_node.sh --file <add_nodes_file_path>
 ```
 
 If there are multiple nodes,separated by commas(,).
@@ -237,22 +237,22 @@ If there are multiple nodes,separated by commas(,).
 If you want to remove node to make the cluster smaller,execute the below command:
 
 ```shell
-sh /opt/openlookeng/bin/remove_cluster_node.sh -n
+bash /opt/openlookeng/bin/remove_cluster_node.sh -n
 ```
 
 or:
 ```shell
-sh /opt/openlookeng/bin/remove_cluster_node.sh --node
+bash /opt/openlookeng/bin/remove_cluster_node.sh --node
 ```
 
 or:
 ```shell
-sh /opt/openlookeng/bin/remove_cluster_node.sh -f <remove_nodes_file_path>
+bash /opt/openlookeng/bin/remove_cluster_node.sh -f <remove_nodes_file_path>
 ```
 
 or:
 ```shell
-sh /opt/openlookeng/bin/remove_cluster_node.sh --file <remove_nodes_file_path>
+bash /opt/openlookeng/bin/remove_cluster_node.sh --file <remove_nodes_file_path>
 ```
 
 If there are multiple nodes, separate them with commas(,).

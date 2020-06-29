@@ -2,12 +2,11 @@
 bookCollapseSection = "true"
 weight = 9
 bookToc = false
-title = "Connectors"
+title = "连接器"
 +++
 
 
-Connectors
-==========
+# 连接器
 
-This chapter describes the connectors available in openLooKeng to access data
-from different data sources.
+
+本章节介绍openLooKeng中可用的连接器，用于访问不同数据源的数据。

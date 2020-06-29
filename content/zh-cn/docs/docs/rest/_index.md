@@ -2,57 +2,39 @@
 bookCollapseSection = "true"
 weight = 15
 bookToc = false
-title = "openLooKeng REST API"
+title = "openLooKeng REST接口说明"
 +++
 
 
-# openLooKeng REST API
+# openLooKeng REST接口说明
 
 
-This chapter defines the openLooKeng REST API. openLooKeng uses REST for all
-communication within a openLooKeng installation. JSON-based REST services
-facilitate communication between the client and the openLooKeng coordinator as
-well as for communicate between a openLooKeng coordinator and multiple openLooKeng
-workers. In this chapter you will find detailed descriptions of the APIs
-offered by openLooKeng as well as example requests and responses.
+本章介绍openLooKeng REST API的定义。openLooKeng使用REST进行openLooKeng安装中的所有通信。基于JSON的REST服务可以促进客户机与openLooKeng协调器之间的通信，也可以用于openLooKeng协调器与多个openLooKeng工作节点之间的通信。在本章中，您将找到openLooKeng提供的API的详细描述以及请求和响应的示例。
 
 
-## REST API Overview
+## REST接口简介
 
 
-In openLooKeng, everything is exposed as a REST API in openLooKeng and HTTP is the
-method by which all component communicate with each other.
+在openLooKeng中，所有内容都以RESTAPI的形式公开在openLooKeng中，HTTP是所有组件相互通信的方法。
 
-The openLooKeng REST API contains several, high-level resources that correspond
-to the components of a openLooKeng installation.
+> openLooKeng RESTA PI包含若干高级资源，这些资源对应于openLooKeng安装的组件。
 
-Query Resource
+查询资源
 
-> The query resource takes a SQL query. It is available at the path
-> `/v1/query` and accepts several HTTP methods.
+> 查询资源采用SQL查询。它位于`/v1/query`目录下，接受多种HTTP方法。
 
-Node Resource
+节点资源
 
-> The node resource returns information about worker nodes in a openLooKeng
-> installation. It is available at the path `/v1/node`.
+> 节点资源返回openLooKeng安装的worker节点信息。路径：/v1/node。
 
-Stage Resource
+Stage资源
 
-> When a openLooKeng coordinator receives a query it creates distribute system
-> of stages which collaborate with one another to execute a query. The
-> Stage resource is used by the coordinator to create a network of
-> corresponding stages. It is also used by stages to coordinate with one
-> another.
+> 当openLooKeng协调器接收到一个查询时，它会创建多个阶段的分布式系统，这些阶段相互协作以执行一个查询。Stage资源用于协调器创建相应Stage的网络。它还被分阶段使用，以协调彼此。
 
-Statement Resource
+语句资源
 
-> This is the standard resource used by the client to execute a
-> statement. When executing a statement, the openLooKeng client will call this
-> resource repeatedly to get the status of an ongoing statement
-> execution as well as the results of a completed statement.
+> 客户端执行语句的标准资源。当执行一条语句时，openLooKeng客户端会重复调用这个资源来获取正在执行的语句的状态以及已完成语句的结果。
 
-Task Resource
+任务资源
 
-> A stage contains a number of components, one of which is a task. This
-> resource is used by internal components to coordinate the execution of
-> stages.
+> Stage包含若干组件，其中一个组件是任务。内部组件使用这个资源来协调Stage的执行。

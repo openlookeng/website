@@ -9,5 +9,4 @@ title = "Connectors"
 Connectors
 ==========
 
-This chapter describes the connectors available in openLooKeng to access data
-from different data sources.
+This chapter describes the connectors available in openLooKeng to access data from different data sources.
