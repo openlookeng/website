@@ -10,12 +10,12 @@ title = "资源组"
 
 资源组和关联的选择规则由可插拔的管理器配置。添加具有如下内容的`etc/resource-groups.properties`文件使内置管理器可以读取JSON配置文件：
 
-```{.none}
+``` properties
 resource-groups.configuration-manager=file
 resource-groups.config-file=etc/resource-groups.json
 ```
 
-将`resource-groups.config-file`的值修改为指向一个json配置文件，可以是绝对路径，也可以是相对于Presto数据目录的相对路径。
+将`resource-groups.config-file`的值修改为指向一个json配置文件，可以是绝对路径，也可以是相对于openLooKeng数据目录的相对路径。
 
 ## 资源组属性
 
@@ -90,4 +90,4 @@ resource-groups.config-file=etc/resource-groups.json
   - 对于BI工具，每个工具最多可以运行10个并发查询，每个用户最多可以运行3个并发查询。如果总需求超过10的限制，那么运行查询最少的用户将获得下一个并发槽位。这种策略在争用时保证公平。
   - 所有其余的查询都放在`global.adhoc.other`下行为类似的每个用户组中。
 
-[resource-groups-example.json](./resource-groups-example.json)
+[resource-groups-example.json](resource-groups-example.json)

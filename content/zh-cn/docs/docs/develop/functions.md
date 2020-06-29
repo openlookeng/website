@@ -8,7 +8,7 @@ title = "函数"
 
 ## 插件实现
 
-函数框架用于实现 SQL 函数。Presto 包含大量的内置函数。
+函数框架用于实现 SQL 函数。openLooKeng 包含大量的内置函数。
 为了实现新的函数，您可以编写一个插件，用于从 ``getFunctions()`` 返回一个或多个函数：
 
 ``` {.java}
@@ -33,7 +33,7 @@ public class ExampleFunctionsPlugin
 ``getFunctions()`` 方法包含我们将在本教程的下面部分实现的所有函数类。
 
 
-有关代码库的完整示例，请参见 ``presto-m`` 模块中的机器学习函数或 ``presto-teradata-functions`` 模块中与 Teradata 兼容的函数，这两个模块都位于在 Presto 源代码的根目录中。
+有关代码库的完整示例，请参见 ``presto-m`` 模块中的机器学习函数或 ``presto-teradata-functions`` 模块中与 Teradata 兼容的函数，这两个模块都位于在 openLooKeng 源代码的根目录中。
 
 
 

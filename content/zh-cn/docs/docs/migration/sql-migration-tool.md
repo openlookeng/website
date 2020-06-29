@@ -1,4 +1,4 @@
-﻿+++
++++
 
 weight = 2
 title = "SQL迁移工具"
@@ -6,7 +6,7 @@ title = "SQL迁移工具"
 
 # SQL迁移工具
 
-SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目前仅支持Hive SQL语法。
+SQL迁移工具帮助用户将SQL语法转换为openLooKeng兼容的SQL语法。目前仅支持Hive SQL语法。
 
 ## Hive语句检查列表：
 
@@ -33,7 +33,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 
 以下Hive语句部分支持，即不支持某些关键字或属性：
 
-| SQL| 描述| Presto语法参考|
+| SQL| 描述| openLooKeng语法参考|
 |----------|----------|----------|
 | CREATE DATABASE/SCHEMA| 不支持带“COMMENT”、“WITH DBPROPERTIES”的语句| [CREATE SCHEMA](../sql/create-schema.md)|
 | DROP DATABASE/SCHEMA| 不支持带“CASCADE”的语句| [DROP SCHEMA](../sql/drop-schema.md)|
@@ -41,7 +41,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 | CREATE TABLE| 不支持带“SKEWED BY”、“ROW FORMAT”的语句| [CREATE TABLE](../sql/create-table.md)|
 | DROP TABLE| 不支持带“PURGE”的语句| [DROP TABLE](../sql/drop-table.md)|
 | ALTER TABLE| 只支持“重命名表”和“添加单列”| [ALTER TABLE](../sql/alter-table.md)|
-| SHOW CREATE TABLE| 对Hive而言，SHOW TABLE可用于表和视图。但在Presto中，这只能应用于表。| [SHOW CREATE TABLE](../sql/show-create-table.md)|
+| SHOW CREATE TABLE| 对Hive而言，SHOW TABLE可用于表和视图。但在openLooKeng中，这只能应用于表。| [SHOW CREATE TABLE](../sql/show-create-table.md)|
 | DESCRIBE| 支持带列名的语句| [DESCRIBE](../sql/describe.md)|
 | CREATE VIEW| 不支持带“COMMENT”、“WITH DBPROPERTIES”的语句| [CREATE VIEW](../sql/create-view.md)|
 | SHOW FUCNTIONS| 不支持带“like”的语句| [SHOW FUCNTIONS](../sql/show-functions.md)|
@@ -111,6 +111,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
     
     =================Success=============
 
+
 下面是一些常用的命令：
 
 | 命令| 描述|
@@ -136,6 +137,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 
 批处理模式使用示例：
 
+
         java -jar hetu-sql-migration-tool-010.jar --file /home/Query01.sql --output ./
         May 26, 2020 5:27:10 PM io.airlift.log.Logger info
         INFO: Migration Completed.
@@ -143,6 +145,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
         INFO: Result is saved to .//Query01_1590485230193.sql
         May 26, 2020 5:27:10 PM io.airlift.log.Logger info
         INFO: Result is saved to .//Query01_1590485230193.csv
+
 
 当指定`file`时，必须提供参数`output`。转换后的结果会保存为`output`目录下的两个文件：
 
@@ -154,6 +157,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
 
 可以使用命令直接执行查询，并在转换完成后退出工具。使用`execute`的示例：
 
+
     java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 VALUES(10, 'presto')" --sourceType hive
     
     ==========converted result==========
@@ -162,6 +166,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
       ROW (10, 'presto')
     
     =================Success=============
+
 
 如果用户只指定了参数`execute`，则转换后的结果会打印到屏幕上。用户可自行指定`output`参数，将结果保存到目标文件中。
 
@@ -178,6 +183,7 @@ SQL迁移工具帮助用户将SQL语法转换为Presto兼容的SQL语法。目�
     SELECT (DECIMAL '2.0' * 3)
     
     =================Success=============
+
 
 配置文件目前只支持一个属性`convertDecimalLiteralsAsDouble`。该属性意思是是否将十进制文本转换为double默认值为`false`，意味着将十进制文字转换为“decimal”类型。
 

@@ -1,6 +1,6 @@
 +++
 bookCollapseSection = "true"
-weight = 9
+weight = 11
 bookToc = false
 title = "SQL Language"
 +++
@@ -9,7 +9,4 @@ title = "SQL Language"
 # SQL Language
 
 
-- [types](language/types.md)
-- [reserved](language/reserved.md)
-- [timestamp](language/timestamp.md)
 

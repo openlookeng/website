@@ -1,6 +1,6 @@
 +++
 bookCollapseSection = "true"
-weight = 6
+weight = 8
 bookToc = false
 title = "Heuristic Indexer"
 +++
@@ -8,15 +8,5 @@ title = "Heuristic Indexer"
 
 # Heuristic Indexer
 
-
-- [Heuristic Indexer](indexer/overview.md)
-
-- [Indexer Command Line Interface](indexer/indexer-cli.md)
-
-- [Bitmap index](indexer/bitmap.md)
-
-- [Min-max Index](indexer/minmax.md)
-
-- [Bloom Index](indexer/bloom.md)
 
   

@@ -1,16 +1,16 @@
 +++
 
 weight = 8
-title = "部署具有高可用（HA）的Presto"
+title = "部署具有高可用（HA）的openLooKeng"
 +++
 
-# 部署具有高可用（HA）的Presto
+# 部署具有高可用（HA）的openLooKeng
 
-Presto HA解决协调节点单点故障问题。如果一个协调节点出现故障，其他协调节点将不受影响。用户可以在任何协调节点上提交查询，这改进了工作负载平衡。
+openLooKeng HA解决协调节点单点故障问题。如果一个协调节点出现故障，其他协调节点将不受影响。用户可以在任何协调节点上提交查询，这改进了工作负载平衡。
 
 ## 安装HA
 
-安装具有HA的Presto要求集群中至少有2个协调节点。请按照[Presto手动设置](deployment.md)或[Presto自动设置](deployment-auto.md)进行基本设置。
+安装具有HA的openLooKeng要求集群中至少有2个协调节点。请按照[openLooKeng手动设置](deployment.md)或[openLooKeng自动设置](deployment-auto.md)进行基本设置。
 
 ## 配置HA
 
@@ -37,17 +37,17 @@ state-store.cluster=cluster1
 在所有协调节点上的`etc/config.properties`中添加如下配置。
 
 ```{.none}
-presto.multiple-coordinator.enabled=true
-presto.embedded-state-store.enabled=true
+hetu.multiple-coordinator.enabled=true
+hetu.embedded-state-store.enabled=true
 ```
 
 在所有工作节点上的`etc/config.properties`中添加如下配置。
 
 ```{.none}
-presto.multiple-coordinator.enabled=true
+hetu.multiple-coordinator.enabled=true
 ```
 
 上述属性说明如下：
 
-- `presto.multiple-coordinator.enabled`：开启了多协调节点模式。
-- `presto.embedded-state-store.enabled`：允许此协调节点使用嵌入式状态存储。
+- `hetu.multiple-coordinator.enabled`：开启了多协调节点模式。
+- `hetu.embedded-state-store.enabled`：允许此协调节点使用嵌入式状态存储。

@@ -1,6 +1,6 @@
 +++
 bookCollapseSection = "true"
-weight = 8
+weight = 10
 bookToc = false
 title = "Functions and Operators"
 +++
@@ -8,29 +8,3 @@ title = "Functions and Operators"
 
 # Functions and Operators
 
-
-- [logical](functions/logical.md)
-- [comparison](functions/comparison.md)
-- [conditional](functions/conditional.md)
-- [lambda](functions/lambda.md)
-- [conversion](functions/conversion.md)
-- [math](functions/math.md)
-- [bitwise](functions/bitwise.md)
-- [decimal](functions/decimal.md)
-- [string](functions/string.md)
-- [regexp](functions/regexp.md)
-- [binary](functions/binary.md)
-- [json](functions/json.md)
-- [datetime](functions/datetime.md)
-- [aggregate](functions/aggregate.md)
-- [window](functions/window.md)
-- [array](functions/array.md)
-- [map](functions/map.md)
-- [url](functions/url.md)
-- [geospatial](functions/geospatial.md)
-- [hyperloglog](functions/hyperloglog.md)
-- [qdigest](functions/qdigest.md)
-- [uuid](functions/uuid.md)
-- [color](functions/color.md)
-- [session](functions/session.md)
-- [teradata](functions/teradata.md)

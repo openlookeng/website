@@ -6,9 +6,8 @@ title = "属性参考"
 
 # 属性参考
 
-本节将介绍最重要的配置属性，这些属性可用于调优Presto或在需要时更改其行为。
+本节将介绍最重要的配置属性，这些属性可用于调优openLooKeng或在需要时更改其行为。
 
-\[TOC]
 
 ## 通用属性
 
@@ -18,7 +17,7 @@ title = "属性参考"
 > - **允许值：**`AUTOMATIC`，`PARTITIONED`，`BROADCAST`
 > - 默认值：`PARTITIONED`
 > 
-> 要使用的分布式联接的类型。  设置为`PARTITIONED`时，Presto将使用哈希分布式联接。  当设置为`BROADCAST`时，将向集群中所有从左表获得数据的节点广播右表。分区联接要求使用联接键的哈希重分布这两个表。这可能比广播联接慢（有时极慢），但允许更大的联接。特别是如果右表比左表小得多，则广播联接将更快。  但是广播联接要求联接右侧过滤后的表适合每个节点的内存，而分布式联接只需要适合所有节点的分布式内存。当设置为`AUTOMATIC`时，Presto将基于成本决定哪种分布类型是最优的。还将考虑将左右输入切换到联接。  在`AUTOMATIC`模式中，如果无法计算成本，例如表没有统计信息，Presto将默认哈希分布式联接。也可以使用`join_distribution_type`会话属性在每个查询基础上指定。
+> 要使用的分布式联接的类型。  设置为`PARTITIONED`时，openLooKeng将使用哈希分布式联接。  当设置为`BROADCAST`时，将向集群中所有从左表获得数据的节点广播右表。分区联接要求使用联接键的哈希重分布这两个表。这可能比广播联接慢（有时极慢），但允许更大的联接。特别是如果右表比左表小得多，则广播联接将更快。  但是广播联接要求联接右侧过滤后的表适合每个节点的内存，而分布式联接只需要适合所有节点的分布式内存。当设置为`AUTOMATIC`时，openLooKeng将基于成本决定哪种分布类型是最优的。还将考虑将左右输入切换到联接。  在`AUTOMATIC`模式中，如果无法计算成本，例如表没有统计信息，openLooKeng将默认哈希分布式联接。也可以使用`join_distribution_type`会话属性在每个查询基础上指定。
 
 ### `redistribute-writes`
 
@@ -62,7 +61,7 @@ title = "属性参考"
 > - 类型：`data size`
 > - 默认值：`JVM max memory * 0.3`
 > 
-> 此属性是在JVM堆中为Presto不跟踪的分配留作裕量/缓冲区的内存量。
+> 此属性是在JVM堆中为openLooKeng不跟踪的分配留作裕量/缓冲区的内存量。
 
 ## 溢出属性{#tuning-spilling}
 
@@ -157,7 +156,7 @@ title = "属性参考"
 
 ## 交换属性
 
-在Presto节点之间为查询的不同阶段交换数据。调整这些属性可有助于解决节点间通信问题或提高网络利用率。
+在openLooKeng节点之间为查询的不同阶段交换数据。调整这些属性可有助于解决节点间通信问题或提高网络利用率。
 
 ### `exchange.client-threads`
 
@@ -165,7 +164,7 @@ title = "属性参考"
 > - 最小值：`1`
 > - 默认值：`25`
 > 
-> 交换客户端从其他Presto节点获取数据的线程数。对于大型集群或并发量非常高的集群，设置较高的值可以提高性能，但是过高的值可能会由于上下文切换和额外的内存使用而导致性能下降。
+> 交换客户端从其他openLooKeng节点获取数据的线程数。对于大型集群或并发量非常高的集群，设置较高的值可以提高性能，但是过高的值可能会由于上下文切换和额外的内存使用而导致性能下降。
 
 ### `exchange.concurrent-request-multiplier`
 
@@ -223,7 +222,7 @@ title = "属性参考"
 > - 最小值：`1`
 > - 默认值：`3`
 > 
-> 生成HTTP响应时用于处理超时的线程数。如果所有线程都频繁使用，则应增大此值。这可以通过`io.presto.core.server:name=AsyncHttpExecutionMBean:TimeoutExecutor` JMX对象进行监视。如果`ActiveCount`始终与`PoolSize`相同，则增加线程数。
+> 生成HTTP响应时用于处理超时的线程数。如果所有线程都频繁使用，则应增大此值。这可以通过`io.prestosql.core.server:name=AsyncHttpExecutionMBean:TimeoutExecutor` JMX对象进行监视。如果`ActiveCount`始终与`PoolSize`相同，则增加线程数。
 
 ### `task.info-update-interval`
 
@@ -246,7 +245,7 @@ title = "属性参考"
 > - 类型：`integer`
 > - 默认值：`Node CPUs * 2`
 > 
-> 设置工作节点用来处理拆分的线程数。如果工作节点CPU利用率较低且所有线程都在使用，则增加此数量可以提高吞吐量，但会导致堆空间使用率增加。设置过高的值可能会由于上下文切换而导致性能下降。通过`io.presto.core.execution.executor:name=TaskExecutor.RunningSplits` JXM对象的`RunningSplits`属性可以获得活动线程的数量。
+> 设置工作节点用来处理拆分的线程数。如果工作节点CPU利用率较低且所有线程都在使用，则增加此数量可以提高吞吐量，但会导致堆空间使用率增加。设置过高的值可能会由于上下文切换而导致性能下降。通过`io.prestosql.core.execution.executor:name=TaskExecutor.RunningSplits` JXM对象的`RunningSplits`属性可以获得活动线程的数量。
 
 ### `task.min-drivers`
 
@@ -299,7 +298,7 @@ title = "属性参考"
 > - **允许值：**`legacy`，`flat`
 > - 默认值：`legacy`
 > 
-> 设置调度拆分时使用的网络拓扑。`legacy`调度拆分时忽略拓扑。`flat`会尝试在数据所在的主机上调度拆分，为本地拆分预留50%的工作队列。对于分布式存储与Presto worker运行在相同节点上的集群，推荐使用`flat`。
+> 设置调度拆分时使用的网络拓扑。`legacy`调度拆分时忽略拓扑。`flat`会尝试在数据所在的主机上调度拆分，为本地拆分预留50%的工作队列。对于分布式存储与openLooKeng worker运行在相同节点上的集群，推荐使用`flat`。
 
 ### `node-scheduler.enable-split-cache-map`
 
@@ -331,9 +330,9 @@ title = "属性参考"
 > - 类型：`boolean`
 > - 默认值：`false`
 > 
-> 通过使用存储为元数据的值来启用对一些聚合的优化。这允许Presto在恒定的时间内执行一些简单的查询。目前，该优化适用于分区键的`max`、`min`和`approx_distinct`，以及其它对输入（包括`DISTINCT`聚集）的基数不敏感的聚集。使用此属性可以大大加快某些查询的速度。
+> 通过使用存储为元数据的值来启用对一些聚合的优化。这允许openLooKeng在恒定的时间内执行一些简单的查询。目前，该优化适用于分区键的`max`、`min`和`approx_distinct`，以及其它对输入（包括`DISTINCT`聚集）的基数不敏感的聚集。使用此属性可以大大加快某些查询的速度。
 > 
-> 主要的缺点是，如果连接器为没有行的分区返回分区键，可能会产生不正确的结果。特别是，如果空分区是由其他系统创建的（Presto不能创建），那么Hive连接器可以返回空分区。
+> 主要的缺点是，如果连接器为没有行的分区返回分区键，可能会产生不正确的结果。特别是，如果空分区是由其他系统创建的（openLooKeng不能创建），那么Hive连接器可以返回空分区。
 
 ### `optimizer.push-aggregation-through-join`
 
@@ -407,38 +406,38 @@ title = "属性参考"
 
 ## 启发式索引属性
 
-启发式索引是外部索引模块，可用于筛选连接器级别的行。Bitmap、Bloom、MinMaxIndex是Presto提供的索引列表。到目前为止，启发式索引仅用于Hive连接器，特别是ORC格式。
+启发式索引是外部索引模块，可用于筛选连接器级别的行。Bitmap、Bloom、MinMaxIndex是openLooKeng提供的索引列表。到目前为止，启发式索引仅用于Hive连接器，特别是ORC格式。
 
-- `presto.filter.enabled`
+- `hetu.filter.enabled`
   
   类型：`boolean` 默认值：`false` 此属性启用启发式索引。
 
-- `presto.filter.cache.max-indices-number`
+- `hetu.filter.cache.max-indices-number`
   
   类型：`integer` 默认值：`10,000,000` 缓存索引文件可以提供更好的性能，索引文件是只读的，很少被修改。缓存节省了从索引存储读取文件的时间。部分缓存此属性控制可以缓存的索引文件的最大数量。当超过限制时，基于LRU的现有条目将从缓存中移除，新条目将添加到缓存中。
 
-- `presto.filter.plugins`
+- `hetu.filter.plugins`
   
   类型：`string` 此属性用于定义支持启发式索引所需的插件的位置。属性接受多个插件，由逗号分隔。
 
-- `presto.filter.indexstore.uri`
+- `hetu.filter.indexstore.uri`
   
-  类型：`string` 默认值：`/opt/presto/indices/` 存放所有索引文件的目录。每个索引将存储在自己的子目录中。
+  类型：`string` 默认值：`/opt/hetu/indices/` 存放所有索引文件的目录。每个索引将存储在自己的子目录中。
 
-- `presto.filter.indexstore.type`
+- `hetu.filter.indexstore.type`
   
   类型`string` 允许值：`hdfs, local` 默认值：`local` 此属性定义索引文件的持久性存储区。必须定义其他特定于存储的属性。
 
 ```
-presto.filter.hdfs.**
+hetu.filter.hdfs.**
 ```
 
 > HDFS索引存储的属性。一些例子如下：
 > 
-> presto.filter.indexstore.hdfs.config.resource presto.filter.indexstore.hdfs.authentication.type presto.filter.indexstore.hdfs.krb5.keytab.path presto.filter.indexstore.hdfs.krb5.conf.path presto.filter.indexstore.hdfs.krb5.principal
+> hetu.filter.indexstore.hdfs.config.resource hetu.filter.indexstore.hdfs.authentication.type hetu.filter.indexstore.hdfs.krb5.keytab.path hetu.filter.indexstore.hdfs.krb5.conf.path hetu.filter.indexstore.hdfs.krb5.principal
 
 ```
-presto.filter.local.**
+hetu.filter.local.**
 ```
 
 > 本地索引存储的属性。

@@ -1,10 +1,10 @@
 +++
 
 weight = 9
-title = "Presto ODBC用户手册"
+title = "openLooKeng ODBC用户手册"
 +++
 
-# Presto ODBC用户手册
+# openLooKeng ODBC用户手册
 
 ## 总览
 

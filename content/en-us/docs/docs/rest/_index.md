@@ -1,6 +1,6 @@
 +++
 bookCollapseSection = "true"
-weight = 13
+weight = 15
 bookToc = false
 title = "openLooKeng REST API"
 +++
@@ -16,11 +16,6 @@ well as for communicate between a openLooKeng coordinator and multiple openLooKe
 workers. In this chapter you will find detailed descriptions of the APIs
 offered by openLooKeng as well as example requests and responses.
 
-[node](rest/node.md)
-[query](rest/query.md)
-[stage](rest/stage.md)
-[statement](rest/statement.md)
-[task](rest/task.md)
 
 ## REST API Overview
 

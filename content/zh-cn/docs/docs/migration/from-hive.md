@@ -1,4 +1,4 @@
-﻿+++
++++
 
 weight = 1
 title = "从Hive迁移"
@@ -6,7 +6,7 @@ title = "从Hive迁移"
 
 # 从Hive迁移
 
-Presto使用ANSI SQL语法和语义，而Hive使用一种类似SQL的语言HiveQL，它松散地以MySQL为模型（与ANSI SQL有很多不同）。
+openLooKeng使用ANSI SQL语法和语义，而Hive使用一种类似SQL的语言HiveQL，它松散地以MySQL为模型（与ANSI SQL有很多不同）。
 
 ## 使用下标代替UDF访问数组的动态索引
 
@@ -70,7 +70,7 @@ SQL中的下标运算符支持全表达式，而Hive只支持常量。因此，�
 
 ## 使用CAST进行整数除法
 
-Presto在对两个整数做除法时遵循执行整数除法的标准行为。例如，`7`除以`2`结果是`3`，而不是`3.5`。要对两个整数进行浮点除法，将其中一个转换为double：
+openLooKeng在对两个整数做除法时遵循执行整数除法的标准行为。例如，`7`除以`2`结果是`3`，而不是`3.5`。要对两个整数进行浮点除法，将其中一个转换为double：
 
     SELECT CAST(5 AS DOUBLE) / 2
 
@@ -88,7 +88,7 @@ Presto在对两个整数做除法时遵循执行整数除法的标准行为。�
 
 ## 使用UNNEST来扩展数组和映射
 
-Presto支持`unnest`{.interpreted-text role="ref"}用于扩展数组和映射。使用`UNNEST`代替`LATERAL VIEW explode()`。
+openLooKeng支持`unnest`{.interpreted-text role="ref"}用于扩展数组和映射。使用`UNNEST`代替`LATERAL VIEW explode()`。
 
 Hive查询：
 
@@ -96,7 +96,7 @@ Hive查询：
     FROM tests
     LATERAL VIEW explode(scores) t AS score;
 
-Presto查询：
+openLooKeng查询：
 
     SELECT student, score
     FROM tests

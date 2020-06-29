@@ -6,7 +6,7 @@ title = "基准驱动"
 
 # 基准驱动
 
-基准驱动可用于测量Presto集群中查询的性能。我们用它来连续测量主干的性能。
+基准驱动可用于测量openLooKeng集群中查询的性能。我们用它来连续测量主干的性能。
 
 下载：maven\_download:\[benchmark-driver]{.title-ref}，重命名为`presto-benchmark-driver`后，使用`chmod +x`使其可执行。
 
@@ -39,7 +39,7 @@ SQL文件包含在名为`sql`的目录中，并且必须具有`.sql`文件扩展
 
 ## 输出
 
-基准驱动将测量挂钟时间、所有Presto进程使用的CPU总时间以及查询使用的CPU时间。对于每次计时，驱动报告查询运行的中位数、平均值和标准偏差。进程CPU时间和查询CPU时间之差是查询开销，这通常是垃圾收集造成的。下面是上述`file_formats`套件的输出：
+基准驱动将测量挂钟时间、所有openLooKeng进程使用的CPU总时间以及查询使用的CPU时间。对于每次计时，驱动报告查询运行的中位数、平均值和标准偏差。进程CPU时间和查询CPU时间之差是查询开销，这通常是垃圾收集造成的。下面是上述`file_formats`套件的输出：
 
 ```
 suite        query          compression format scale wallTimeP50 wallTimeMean wallTimeStd processCpuTimeP50 processCpuTimeMean processCpuTimeStd queryCpuTimeP50 queryCpuTimeMean queryCpuTimeStd

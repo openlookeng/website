@@ -21,7 +21,7 @@ Create an `etc` directory inside the installation directory. This will hold the 
 -   Node Properties: environmental configuration specific to each node
 -   JVM Config: command line options for the Java Virtual Machine
 -   Config Properties: configuration for the openLooKeng server
--   Catalog Properties: configuration for [connector](../connector.md) (data sources)
+-   Catalog Properties: configuration for [connector](../connector/_index.md) (data sources)
 
 ### Node Properties
 
@@ -143,7 +143,7 @@ Catalogs are registered by creating a catalog properties file in the `etc/catalo
 connector.name=jmx
 ```
 
-See [connector](../connector.md) for more information about configuring connectors.
+See [connector](../connector/_index.md) for more information about configuring connectors.
 
 ## Running openLooKeng
 
@@ -169,4 +169,4 @@ After launching, you can find the log files in `var/log`:
 
 ## See Also
 
-[deployment-auto](./deployment.md)
+[deployment-auto](deployment.md)

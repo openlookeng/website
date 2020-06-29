@@ -1,13 +1,13 @@
 +++
 
 weight = 5
-title = "Presto验证器"
+title = "openLooKeng验证器"
 +++
 
 
-# Presto验证器
+# openLooKeng验证器
 
-Presto验证器可用于针对另一个数据库（如MySQL）测试Presto，或针对彼此测试两个Presto集群。在开发Presto时，我们使用它来针对先前的发行版持续测试主干。使用下表创建MySQL数据库，并通过你想要运行的查询加载该数据库：
+openLooKeng验证器可用于针对另一个数据库（如MySQL）测试openLooKeng，或针对彼此测试两个openLooKeng集群。在开发openLooKeng时，我们使用它来针对先前的发行版持续测试主干。使用下表创建MySQL数据库，并通过你想要运行的查询加载该数据库：
 
 ```{.sql}
 CREATE TABLE verifier_queries(
@@ -38,8 +38,8 @@ CREATE TABLE verifier_queries(
 ```{.none}
 suite=my_suite
 query-database=jdbc:mysql://localhost:3306/my_database?user=my_username&password=my_password
-control.gateway=jdbc:presto://localhost:8080
-test.gateway=jdbc:presto://localhost:8081
+control.gateway=jdbc:lk://localhost:8080
+test.gateway=jdbc:lk://localhost:8081
 thread-count=1
 ```
 

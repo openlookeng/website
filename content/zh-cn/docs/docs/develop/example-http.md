@@ -11,7 +11,7 @@ Example HTTP 连接器有一个简单目标：通过 HTTP 读取逗号分隔的�
 
 ## 代码
 
-可以在 Presto 源代码树根目录下的 `presto-example-http` 目录中找到 Example HTTP 连接器。
+可以在 openLooKeng 源代码树根目录下的 `presto-example-http` 目录中找到 Example HTTP 连接器。
 
 ## 插件实现
 
@@ -31,9 +31,9 @@ public Iterable<ConnectorFactory> getConnectorFactories()
 
 ## ConnectorFactory Implementation
 
-在 Presto 中，处理 Presto 与特定类型数据源之间连接的主要对象是 `Connector` 对象，该对象是使用 `ConnectorFactory` 创建的。
+在 openLooKeng 中，处理 openLooKeng 与特定类型数据源之间连接的主要对象是 `Connector` 对象，该对象是使用 `ConnectorFactory` 创建的。
 
-类 `ExampleConnectorFactory` 中提供了该实现。连接器工厂实现所做的第一件事是指定该连接器的名称。这是用于在 Presto 配置中引用此连接器的同一字符串。
+类 `ExampleConnectorFactory` 中提供了该实现。连接器工厂实现所做的第一件事是指定该连接器的名称。这是用于在 openLooKeng 配置中引用此连接器的同一字符串。
 
 ```{.java}
 @Override
@@ -62,18 +62,18 @@ return injector.getInstance(ExampleConnector.class);
 
 ### 连接器：ExampleConnector
 
-该类使 Presto 能够获取对连接器提供的各种服务的引用。
+该类使 openLooKeng 能够获取对连接器提供的各种服务的引用。
 
 ### 元数据：ExampleMetadata
 
-该类负责报告表名、表元数据、列名、列元数据以及有关该连接器提供的模式的其他信息。Presto 还调用 `ConnectorMetadata` 来确保特定的连接器能够理解和处理给定的表名。
+该类负责报告表名、表元数据、列名、列元数据以及有关该连接器提供的模式的其他信息。openLooKeng 还调用 `ConnectorMetadata` 来确保特定的连接器能够理解和处理给定的表名。
 
 `ExampleMetadata` 实现将许多此类调用委托给 `ExampleClient`，该类可以实现连接器的大部分核心功能。
 
 ### 拆分管理器： ExampleSplitManager
 
-拆分管理器将表的数据分区成多个块，这些块由 Presto 分发至工作节点进行处理。对于 Example HTTP 连接器，每个表都包含一个或多个指向实际数据的 URI。系统针对每个 URI 创建一个拆分。
+拆分管理器将表的数据分区成多个块，这些块由 openLooKeng 分发至工作节点进行处理。对于 Example HTTP 连接器，每个表都包含一个或多个指向实际数据的 URI。系统针对每个 URI 创建一个拆分。
 
 ### 记录集提供程序：ExampleRecordSetProvider
 
-记录集提供程序创建一个记录集，后者又相应地创建一个向 Presto 返回实际数据的记录游标。`ExampleRecordCursor` 通过 HTTP 从 URI 读取数据。每一行对应于单个记录行。行通过逗号拆分为各个字段值，然后这些字段值返回至 Presto。
+记录集提供程序创建一个记录集，后者又相应地创建一个向 openLooKeng 返回实际数据的记录游标。`ExampleRecordCursor` 通过 HTTP 从 URI 读取数据。每一行对应于单个记录行。行通过逗号拆分为各个字段值，然后这些字段值返回至 openLooKeng。

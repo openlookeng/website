@@ -10,12 +10,12 @@ title = "会话属性管理器"
 
 添加具有如下内容的`etc/session-property-config.properties`文件使内置管理器可以读取JSON配置文件：
 
-```{.none}
+``` properties
 session-property-config.configuration-manager=file
 session-property-manager.config-file=etc/session-property-config.json
 ```
 
-将`session-property-manager.config-file`的值修改为指向一个json配置文件，可以是绝对路径，也可以是相对于Presto数据目录的相对路径。
+将`session-property-manager.config-file`的值修改为指向一个json配置文件，可以是绝对路径，也可以是相对于openLooKeng数据目录的相对路径。
 
 此配置文件由匹配规则列表和默认情况下应应用的会话属性列表组成，每条匹配规则指定查询必须满足的条件列表。所有匹配规则都有助于构造会话属性列表。规则按指定的顺序应用。文件中较晚指定的规则将重写以前遇到的属性的值。
 
@@ -44,7 +44,7 @@ session-property-manager.config-file=etc/session-property-config.json
 
 这些要求可以用以下规则来表达：
 
-```{.json}
+``` json
 [
   {
     "group": "global.*",

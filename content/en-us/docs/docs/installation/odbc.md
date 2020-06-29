@@ -34,9 +34,9 @@ The ODBC driver enables applications to connect to databases. This product is th
 
 ## Installing the openLooKeng ODBC Driver
 
-This document describes how to distribute binary files, that is, how to install the MSI installation package. For developers who need to compile and install the MSI installation package from the source code, see **Build.md** in the open-source code.
+This document describes installing from binary distribution for ODBC driver, which is an MSI package. For developers who need to compile and install from the source code, please refer to **Build.md** along with the open-source code.
 
-### Configuration Requirements
+### System Requirements
 
 * This driver provides only the 64-bit installation package. Ensure that the OS is Windows 10 64-bit.
 

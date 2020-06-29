@@ -6,9 +6,9 @@ title = "动态目录"
 
 # 动态目录
 
-本节介绍Presto的动态目录特性。通常Presto管理员通过将目录概要文件（例如`hive.properties`）放置在连接节点目录（`etc/catalog`）下来将数据源添加到引擎。每当需要添加、更新或删除目录时，都需要重启所有协调节点和工作节点。
+本节介绍openLooKeng的动态目录特性。通常openLooKeng管理员通过将目录概要文件（例如`hive.properties`）放置在连接节点目录（`etc/catalog`）下来将数据源添加到引擎。每当需要添加、更新或删除目录时，都需要重启所有协调节点和工作节点。
 
-为了动态修改目录，Presto引入了动态目录的特性。开启此特性需要在`etc/config.properties`中配置：
+为了动态修改目录，openLooKeng引入了动态目录的特性。开启此特性需要在`etc/config.properties`中配置：
 
     catalog.dynamic-enabled=true
 
@@ -16,7 +16,7 @@ title = "动态目录"
 
 ## 使用
 
-目录操作是通过Presto协调节点上的RESTful API来完成的。HTTP请求具有如下形态（以hive连接节点为例）：
+目录操作是通过openLooKeng协调节点上的RESTful API来完成的。HTTP请求具有如下形态（以hive连接节点为例）：
 
     request: POST/DELETE/PUT
     
