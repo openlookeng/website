@@ -1,11 +1,11 @@
 .download-content {
-    margin: 100px auto;
+    margin: 70px auto;
 }
 
 .container-top h1 {
     display: flex;
     justify-content: center;
-    font-size: 44px;
+    font-size: 40px;
     font-family: HuaweiSans;
 }
 
@@ -131,5 +131,5 @@
 }
 
 .docs-pic {
-    width: 100%;
+    width: 80%;
 }

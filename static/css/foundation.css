@@ -1,5 +1,5 @@
 .container .foundation-content{
-    margin: 100px 0;
+    margin: 70px 0;
 
 }
 
@@ -7,7 +7,7 @@
     text-align: center;
     margin-top: 100px;
     color: #000;
-    font-size: 44px;
+    font-size: 40px;
     font-family: HuaweiSans;
     line-height: 44px;
 }
@@ -74,7 +74,7 @@ ul {
 }
 
 .foundation-content .foundation-top img {
-    width: 100%;
+    width: 80%;
 }
 
 .foundation-content .foundation-top h1 {
