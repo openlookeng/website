@@ -1,11 +1,15 @@
 +++
 id = "download"
-top_title_max = "openLooKeng v316 现已发布"
+top_title_max = "openLooKeng v0.1.0 现已发布"
 top_title_min = "下载"
 second_title = "下载openLooKeng"
-second_title_description = "openLooKeng v316 是目前发布的最新版本，详细内容请查看发布说明。"
+second_title_description1 = "详细内容请见"
+release_notes = "发行说明"
+second_title_description2 = ""
 download_server_title = "openLooKeng server"
-server_title_description = "openLooKeng发布的安装包，支持ARM及x86平台。安装指南请见部署openLookeng。"
+server_title_description1 = "openLooKeng发布的安装包。安装指南请见"
+deployment_packages = "部署openLookeng"
+server_title_description2 = "。"
 [[server_btn]]
     file_name = "hetu-server-316.tar.gz"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-server-316.tar.gz"
@@ -15,17 +19,26 @@ server_title_description = "openLooKeng发布的安装包，支持ARM及x86平�
 
 [[driver_item]]
     title = "Command Line Interface"
-    desc = "openLooKeng CLI 提供一种以交互式执行SQL的工具。安装指南请见命令行接口"
+    desc1 = "openLooKeng CLI 提供一种以交互式执行SQL的工具。安装指南请见"
+    doc = "命令行接口"
+    doc_url = "/zh-cn/docs/docs/installation/cli.html"
+    desc2 = "。"
     file_name = "hetu-cli-316-executable.jar"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-cli-316-executable.jar"
 [[driver_item]]
     title = "JDBC Driver"
-    desc = "JDBC驱动程序支持用户直接从任何支持JDBC连接的Java应用程序连接到openLooKeng server。安装指南请见JDBC驱动。"
+    desc1 = "JDBC驱动程序支持用户直接从任何支持JDBC连接的Java应用程序连接到openLooKeng server。安装指南请见"
+    doc = "JDBC驱动"
+    doc_url = "/zh-cn/docs/docs/installation/jdbc.html"
+    desc2 = "。"
     file_name = "hetu-jdbc-316.jar"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-jdbc-316.jar"
 [[driver_item]]
     title = "ODBC Driver"
-    desc = "ODBC驱动提供标准ODBC协议连接到openLooKeng server。安装指南请见ODBC驱动。"
+    desc1 = "ODBC驱动提供标准ODBC协议连接到openLooKeng server。安装指南请见"
+    doc = "openLooKeng ODBC用户手册"
+    doc_url = "/zh-cn/docs/docs/installation/odbc.html"
+    desc2 = "。"
     file_name = "hetu-odbc-win64-316.jar"
     url = "https://download.openlookeng.io/openlookeng-beta/hetu-odbc-win64-316.msi"
 +++
