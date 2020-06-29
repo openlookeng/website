@@ -36,7 +36,7 @@ Please select one applicable statement from the following and fill in the blanks
 
 <table id="individual-table" class="open-lookeng-cla-table">
     <tr>
-        <td colspan="2">
+        <td colspan="2" class="fz12">
             I am an individual, and no other individual or legal entity, including my employer, has or will have rights with respect to My Contribution.
         </td>
     </tr>
@@ -89,7 +89,7 @@ Please select one applicable statement from the following and fill in the blanks
         </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="2" class="fz12">
             * require field. Please make sure the E-Mail is related with your gitee account.
         </td>
     </tr>
@@ -97,13 +97,13 @@ Please select one applicable statement from the following and fill in the blanks
 
 <table id="legalentity-table" class="open-lookeng-cla-table">
     <tr>
-        <td colspan="2">
-            <p>I am a legal entity, the individual below signing this Agreement is authorized by and on behalf of me.</p>
+        <td colspan="2" class="fz12">
+            I am a legal entity, the individual below signing this Agreement is authorized by and on behalf of me.
         </td>
     </tr>
     <tr>
         <td>
-            Authorized Representative(Name)*:
+            Name*:
         </td>
         <td>
             <input type="text" id="legalentity-name" class = "require" maxlength="100" />
@@ -165,15 +165,15 @@ Please select one applicable statement from the following and fill in the blanks
             <input type="text" id="legalentity-date" class = "require" maxlength="100" />
         </td>
     </tr>
-    <tr>
-        <td>
+    <tr class="h0">
+        <td class="h0">
             <input type="hidden" value="" id="oauth-code" />
             <input type="hidden" value="" id="client" />
             <input type="hidden" value="en" id="language" />
         </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="2" class="fz12">
             * require field. Please make sure the E-Mail is related with your gitee account.
         </td>
     </tr>
@@ -182,7 +182,7 @@ Please select one applicable statement from the following and fill in the blanks
 <table id="cla-table" class="open-lookeng-cla-table">
     <tr>
         <td colspan="2">
-            <label><input type="checkbox" name="" class="cla-checkbox" />Check before you sign xxxxxxxxxxxxxxxxx</label>
+            <label class="fz12"><input type="checkbox" name="" class="cla-checkbox " />I have read the <a>Privacy Policy</a> and hereby consent to  the processing of my data by openLooKeng in Hong Kong.</label>
         </td>
     </tr>
     <tr>

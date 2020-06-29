@@ -35,7 +35,7 @@ title = "签署CLA"
 
 <table id="individual-table" class="open-lookeng-cla-table">
     <tr>
-        <td colspan="2">
+        <td colspan="2" class="fz12">
             “我”是一个个人，没有其他人或实体，包括“我的”雇主有或者将有对“我”的“贡献”的权利。
         </td>
     </tr>
@@ -88,7 +88,7 @@ title = "签署CLA"
         </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="2" class="fz12">
             * 必填。请确保邮箱与你的gitee账号绑定。
         </td>
     </tr>
@@ -96,8 +96,8 @@ title = "签署CLA"
 
 <table id="legalentity-table" class="open-lookeng-cla-table">
     <tr>
-        <td colspan="2">
-            <p>“我”是一个法律实体，如下签字的个人是“我”授权并代表“我”。</p>
+        <td colspan="2" class="fz12">
+            “我”是一个法律实体，如下签字的个人是“我”授权并代表“我”。
         </td>
     </tr>
     <tr>
@@ -174,15 +174,15 @@ title = "签署CLA"
             <input type="text" id="legalentity-date" class = "require" maxlength="100" />
         </td>
     </tr>
-    <tr>
-        <td>
+    <tr class="h0">
+        <td class="h0">
              <input type="hidden" value="" id="oauth-code" />
              <input type="hidden" value="" id="client" />
              <input type="hidden" value="zh" id="language" />
         </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="2" class="fz12">
             * 必填。请确保邮箱与你的gitee账号绑定。
         </td>
     </tr>
@@ -190,7 +190,7 @@ title = "签署CLA"
 <table id="cla-table" class="open-lookeng-cla-table">
     <tr>
         <td colspan="2">
-            <label><input type="checkbox" name="" class="cla-checkbox" />签署前请阅读 xxxxxxxxxxxxxxxxx</label>
+            <label class="fz12"><input type="checkbox" name="" class="cla-checkbox" />我已阅读<a>隐私政策</a>，并同意openLooKeng社区将我的信息存储于香港地区</label>
         </td>
     </tr>
     <tr>

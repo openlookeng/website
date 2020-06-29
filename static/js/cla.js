@@ -83,7 +83,7 @@ function oauthLogin() {
     let config = {
         providerID: 'openeuler_bot',
         client_id: $('#client').val(),
-        redirect_uri: window.location.origin + '/cla',
+        redirect_uri: window.location.origin + '/signcla.html',
         response_type: 'code',
         authorization: 'https://gitee.com/oauth/authorize',
         scopes: {
@@ -119,7 +119,8 @@ function initClaPage() {
     if (!cla || cla === '') {
         oauthLogin();
     }
-
+    var getLang = $('html').attr('lang') === 'zh-cn' ? '/zh-cn' : '';
+    $('#cla-table .fz12 a').attr('href', window.location.origin + getLang + '/privacypolicy.html');
     if ($('#cla-type-table').length) {
         // default show individual
         $('#individual-table').show();
