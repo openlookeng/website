@@ -105,7 +105,7 @@ openLooKeng的协调节点和工作节点的通用配置从配置文件`/home/he
 
 修改配置文件\[/home/hetuadmin/.hetuadmin/cluster\_config\_info]{.title-ref}，然后执行以下命令将配置部署到openLooKeng集群：
 
-    sh /opt/hetu/bin/configuration_deploy.sh
+    bash /opt/hetu/bin/configuration_deploy.sh
 
 注意，如果想添加更多配置或自定义配置，可以将属性添加到模板存入到位于`/home/hetuadmin/.hetuadmin/.etc_template/coordinator`
 
@@ -129,16 +129,16 @@ exchange.client-threads=8
 
 卸载openLooKeng Service非常简单直接，只需运行以下命令：
 
-    sh /opt/hetu/bin/cleanup.sh
+    bash /opt/hetu/bin/cleanup.sh
 
 这将通过移除删除目录`/opt/hetu`和其中所有文件来卸载openLooKeng服务。但不会删除`hetuadmin`用户及`/home/hetuadmin/`下的所有配置文件。如果要删除用户和配置文件，使用以下命令：
 
-    sh /opt/hetu/bin/uninstall.sh --all
+    bash /opt/hetu/bin/uninstall.sh --all
 
 ## 将openLooKeng离线部署到集群
 
-如果你无法连接到我们的服务器，可以下载离线tarball并解压缩到**/opt**目录。执行以下命令部署单节点集群：`sh /opt/hetu/bin/install_offline.sh` 执行以下命令部署多节点集群：`sh /opt/hetu/bin/install_offline.sh -m` 或：`sh /opt/hetu/bin/install_offline.sh --multi-node` 更多帮助信息，请执行下面的命令部署单节点集群：`sh /opt/hetu/bin/install_offline.sh -m`  
-或`sh /opt/hetu/bin/install_offline.sh --help`
+如果你无法连接到我们的服务器，可以下载离线tarball并解压缩到**/opt**目录。执行以下命令部署单节点集群：`bash /opt/hetu/bin/install_offline.sh` 执行以下命令部署多节点集群：`bash /opt/hetu/bin/install_offline.sh -m` 或：`sh /opt/hetu/bin/install_offline.sh --multi-node` 更多帮助信息，请执行下面的命令部署单节点集群：`bash /opt/hetu/bin/install_offline.sh -m`  
+或`bash /opt/hetu/bin/install_offline.sh --help`
 
 ## 参考资料
 

@@ -7,6 +7,4 @@ title = "SQL Statement Syntax"
 
 # SQL Statement Syntax
 
-
-This chapter describes the SQL syntax used in openLooKeng.
-
+This chapter lists all the SQL Statement Syntax supported in openLooKeng. Each document contains the Synopsis, Descriptions, Examples and Limitations.  

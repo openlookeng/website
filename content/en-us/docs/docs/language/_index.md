@@ -8,5 +8,5 @@ title = "SQL Language"
 
 # SQL Language
 
-
+This chapter describes the definition and usage of different data types available in openLooKeng.  
 
