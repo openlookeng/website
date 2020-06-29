@@ -155,6 +155,7 @@
 .maillist .maillist-guidance .step-left {
     position: relative;
     left: 20px;
+    z-index: 20;
 }
 .maillist .maillist-guidance .step-right {
     position: relative;
