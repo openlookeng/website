@@ -13,7 +13,7 @@ The driver is also available from Maven Central:
 ```xml
 <dependency>
     <groupId>io.hetu.core</groupId>
-    <artifactId>presto-jdbc</artifactId>
+    <artifactId>hetu-jdbc</artifactId>
     <version>316</version>
 </dependency>
 ```
