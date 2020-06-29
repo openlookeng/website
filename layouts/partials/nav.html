@@ -33,26 +33,30 @@
                 {{ $current := . }}
                 {{ range .Site.Menus.main }}
                 {{ $topLevel := replace .URL "/" "" }}
-                    <li class="dropdown{{ if eq $current.RelPermalink .URL | or (eq $current.Type $topLevel) | or (and (eq (default (trim .URL "/") .Identifier) "blog") (in (slice "taxonomy" "taxonomyTerm") $current.Kind)) }} active{{ end }} {{ if eq .Identifier "lang" }}lang{{ end }}">
-                    {{ if .HasChildren }}
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ .Name }}
-                    </a>
-                    <ul class="dropdown-menu">
-                        <div class="dropdown-arrow"></div>
-                        {{ range .Children }}
-                        <li>
-                            {{ if eq .Name "Gitee" }}
-                            <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
-                            {{ else if eq .Name "GitHub"}}
-                            <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
-                            {{ else }}
-                            <a href="{{ .URL }}" >{{ .Name }}</a>
-                            {{ end }}
-                        </li>
-                    {{ end }}
-                    </ul>
+                <li class="dropdown{{ if eq $current.RelPermalink .URL | or (eq $current.Type $topLevel) | or (and (eq (default (trim .URL "/") .Identifier) "blog") (in (slice "taxonomy" "taxonomyTerm") $current.Kind)) }} active{{ end }} {{ if eq .Identifier "lang" }}lang{{ end }}">
+                {{ if .HasChildren }}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ .Name }}
+                </a>
+                <ul class="dropdown-menu">
+                    <div class="dropdown-arrow"></div>
+                    {{ range .Children }}
+                    <li>
+                        {{ if eq .Name "Gitee" }}
+                        <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
+                        {{ else if eq .Name "GitHub"}}
+                        <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
+                        {{ else }}
+                        <a href="{{ .URL }}" >{{ .Name }}</a>
+                        {{ end }}
+                    </li>
+                {{ end }}
+                </ul>
                 {{ else }}
+                    {{ if eq .Identifier "lang"}}
+                    <a  onclick="switchLanguage()">{{ .Name }}</a>
+                    {{ else}}
                     <a href="{{ .URL }}">{{ .Name }}</a>
+                    {{end}}
                 {{ end  }}
                     </li>
                 {{ end }}
@@ -80,5 +84,16 @@
     <!-- /#navbar -->
 
 </div>
-
+<script>
+var switchLanguage = function(){
+    var url = window.location.href;
+    if(url.indexOf('zh-cn/')>-1){
+        url=url.replace('zh-cn/','');
+        window.location.href=url;
+    }else{
+        url=url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
+        window.location.href=url;
+    }
+}
+</script>
 <!-- *** NAVBAR END ***-->
