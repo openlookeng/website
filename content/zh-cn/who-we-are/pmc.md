@@ -47,7 +47,7 @@ small_title = "PMC 委员"
     content = "冒伟先后参与计算机非易失存储系统、大数据查询分析引擎等技术领域多个项目的开发交付和项目管理工作，目前作为版本负责人致力于openLooKeng的竞争力构筑。"
 +++
 
-# PMC (Project Management Committee)  
+# PMC (项目管理委员会)  
 
 
 项目管理委员会（PMC）是负责openLooKeng项目的委员会。尽管项目的committers有能力更新代码，但只有PMC作为一个机构才有权对项目软件的正式版本进行决策。PMC还负责对该项目的新committer和PMC成员进行投票，并遵循本文档中概述的其他政策。PMC采用懒惰的共识方法做出决策：有赞成票而没有反对票即视为通过。
