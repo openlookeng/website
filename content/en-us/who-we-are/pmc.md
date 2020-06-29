@@ -10,10 +10,10 @@ small_title = "PMC Members"
     content = "Ken leads and drives Analytics Platform Lab, oversees and guides members in all components areas to ensure benchmark. Ken has 20 years of cutting edge industry experience as Architect with IBM Watson Health, Thomson Reuters Open Platform etc. In his current role, he provides leadership and guidance to R&D members in Toronto, Shenzhen, Chengdu, Bangalore and Dublin."
 
 [[item]]
-    title = "Micheal Li"
+    title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Micheal leads and guides engineers and researchers on multiple R&D projects. Nearly 2 years at Huawei Canada with Data Engine team, lead design, architecture, and delivery of key benchmarks. With 20 years of core experience with IBM and Platform Computing."
+    content = "Michael leads and guides engineers and researchers on multiple R&D projects. Nearly 2 years at Huawei Canada with Data Engine team, lead design, architecture, and delivery of key benchmarks. With 20 years of core experience with IBM and Platform Computing."
 
 [[item]]
     title = "Karmveer Singh"
@@ -55,9 +55,9 @@ The openLooKeng project is managed by PMC (Project Management Committee), a comm
 
  While committers on a project have the ability to update the code, only the PMC as a body has the authority to vote on formal releases of the project's software. The PMC is also responsible for voting in new committers and PMC members to the project, as well as following other policies as outlined in this document. The PMC make decisions with a lazy consensus approach: a few positive votes with no negative vote is enough to get going.
  
-  Th PMC has the following responsibilities:
+  The PMC has the following responsibilities:
 
-    · Report project status biweekly or when requested to the community 
+    · Report project status biweekly or when requested to the community
 
     · Collaborate remotely, having a face-to-face every 6 monthes. Have regularly online meeting in between. 
 
@@ -70,8 +70,7 @@ The openLooKeng project is managed by PMC (Project Management Committee), a comm
     · Adjust existing projects in the community according to the community development blueprint, delete or archive projects that do not meet the project goal.
     
      Mail List: pmc@openlookeng.io 
-
-     
+ 
      Slack: 
 
      Biweekly meeting: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.
