@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" >
+<html lang="{{ .Site.LanguageCode }}">
 {{ partial "head.html" . }}
 
 <head>
@@ -7,19 +7,22 @@
 	{{ partial "docs/inject/head" . }}
 </head>
 
-<body >
+<body>
 	<div id="all">
 		<header>
 			{{ partial "nav.html" . }}
 		</header>
-		<div class="download-content">
-			<div class="download-container">
-				<div class="container-top">
-					<h1 class="download-title docs-pic-title">{{ i18n "DOCS_TITLE"}}</h1>
-					<img class="docs-pic" src="/img/book-menu/docsBanner.png" alt="">
+		<div class="container">
+			<div class="download-content">
+				<div class="download-container">
+					<div class="container-top">
+						<h1 class="download-title docs-pic-title">{{ i18n "DOCS_TITLE"}}</h1>
+						<img class="docs-pic" src="{{ "/img/book-menu/docsBanner.png" | relURL}}" alt="Docs banner">
+					</div>
 				</div>
 			</div>
 		</div>
+
 		<div id="content">
 			<div class="container">
 				<input type="checkbox" class="hidden" id="menu-control" />

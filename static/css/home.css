@@ -1,5 +1,6 @@
 .home-banner {
     height: unset;
+    padding-top: 100px;
 }
 
 .home-why .item {
@@ -20,7 +21,9 @@
 
 .home-banner .banner-p1 {
     font-family: HuaweiSans;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
+    height: 44px;
+    line-height: 44px;
 }
 
 .home-banner .banner-p2 {
@@ -147,6 +150,11 @@ h3.title {
 .text-right {
     text-align: right !important;
 }
+
+.video {
+    outline: none;
+}
+
 .video:hover {
     cursor: pointer;
 }

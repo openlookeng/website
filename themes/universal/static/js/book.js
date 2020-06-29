@@ -127,4 +127,19 @@
         $('.book-header .book-icon').eq(0).trigger('click');
     });
 
+    if ($('.book-menu').find('.active').length) {
+        var targetDom = $('.book-menu').offset();
+        $('html,body').animate({
+            scrollTop: targetDom.top - 62 + 'px'
+        }, 200);
+    }
+
+    $('#book-search-results').hide();
+    $('#book-search-input').on('input', function () {
+        if ($(this).val()) {
+            $('#book-search-results').show();
+        } else {
+            $('#book-search-results').hide();
+        }
+    });
 })();
