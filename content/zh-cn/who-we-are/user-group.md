@@ -7,14 +7,14 @@ small_title = "User Group Members"
     title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Michael领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
+    content = "Michael 在华为加拿大研究所工作，在数据引擎团队工作了近2年，负责设计、架构和关键特性的开发，并拥有20年的IBM和Platform Computing工作经验。"
 
 
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
     range = "Chief Architect at Bangalore Research Centre, Committer of Apache CarbonData project"
-    content = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
+    content = "Raghunandan是华为班加罗尔研究所大数据平台系统工程小组技术负责人，致力于大数据组件的性能优化、可用性、可维护性等功能的设计和开发。在他的领导下，团队在Intra City BigData HA Cluster项目中构筑了多个关键技术竞争力，包括超大集群（2万节点）部署和零宕机解决方案等。"
 
 [[item]]
     title = "廖登宏"
