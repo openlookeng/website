@@ -3,6 +3,10 @@
     padding-top: 60px;
 }
 
+.search-img {
+    background: url("../img/icons/search.png") no-repeat center cover;
+}
+
 .home-why .item {
     width: unset;
 }

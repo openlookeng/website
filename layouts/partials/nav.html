@@ -19,7 +19,7 @@
                 <div class="navbar-buttons">
                     <a type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">{{ i18n "navToggle" }}</span>
-                        <i class="fas fa-align-justify"></i>
+                        <i class="fas fa-align-justify"><img class="fas fa-search search-img" src="{{ "img/book-menu/Contents.svg" | relURL }}" alt=""></i>
                     </a>
                 </div>
                 
@@ -61,8 +61,8 @@
                     </li>
                 {{ end }}
                 <li class="dropdown nav-search">
-                    <a href="javascript:;" class="dropdown-toggle data-toggle='dropdown' role='button' ">
-                        <i class="fas fa-search"></i>
+                    <a href="javascript:;" class="dropdown-toggle fas fa-search data-toggle='dropdown' role='button' ">
+                        <img class="fas fa-search search-img" src="{{ "img/icons/search.png" | relURL }}" alt="">
                     </a>
                 </li>
                 <li class="dropdown nav-search-input">
@@ -71,7 +71,7 @@
                         
                         <input type="text" id="book-search-input" placeholder="{{ i18n "SEARCH" }}" aria-label="{{ i18n "SEARCH" }}" maxlength="64" data-hotkeys="s/" />
                         <a href="javascript:;" class="book-search-spinner dropdown-toggle data-toggle='dropdown' role='button' ">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search"><img class="fas fa-search search-img" src="{{ "img/icons/icon-search.png" | relURL }}" alt=""></i>
                         </a>
                         <ul id="book-search-results"></ul>
                     </div>    
