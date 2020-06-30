@@ -1,6 +1,10 @@
 {{ if .Site.Params.widgets.tags }}
 {{ if isset .Site.Taxonomies "tags" }}
 {{ if not (eq (len .Site.Taxonomies.tags) 0) }}
+{{$lan := index (split .URL "/") 1 }}
+{{if ne $lan "zh-cn"}}
+{{$lan = "" }}
+{{end}}
 <div class="panel sidebar-menu">
     <h3 class="post-blog">
         <a href={{ i18n "BLOG_LINK"}} >
@@ -15,9 +19,8 @@
     <div class="panel-body">
         <ul class="tag-cloud">
             {{ $current := . }}
-            {{ range $name, $items := .Site.Taxonomies.tags }}
-            <li{{ if eq $current.RelPermalink ($name | urlize | lower | printf "/tags/%s/") }} class="active" {{ end }}>
-                <a href="{{ "tags/" | relURL }}{{ $name | urlize | lower }}.html"> {{ $name }}</a>
+            {{ range $index, $items :=  .Site.Taxonomies.tags }}
+            <li><a href="{{ $.Site.BaseURL }}/{{$lan}}/tags/{{ $index | urlize }}.html"> {{ $index }}</a>
             </li>
             {{ end }}
         </ul>

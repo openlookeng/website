@@ -2,6 +2,11 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 {{ partial "head.html" . }}
+{{ partial "head.html" . }}
+{{$lan := index (split .URL "/") 1 }}
+{{if ne $lan "zh-cn"}}
+{{$lan = "" }}
+{{end}}
 <link rel="stylesheet" href="{{ "css/blog.css" | relURL}}">
 
 <body>
@@ -67,7 +72,7 @@
                                             {{ if gt (len .Params.tags) 0 }}
                                             {{ range .Params.tags }}
                                             <a class="fz12"
-                                                href='{{ "tags/" | relURL }}{{ . | urlize | lower }}'>{{ . }}</a>
+                                            href="{{ $.Site.BaseURL }}/{{$lan}}//tags/{{ . | urlize }}.html">{{ . }}</a>
                                             {{ end }}
                                             {{ end }}
                                             {{ end }}
