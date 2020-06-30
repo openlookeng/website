@@ -1,9 +1,9 @@
 
 [HOME_BANNER_SLOGAN]
-other = "openLooKeng, Making Big Data Simple"
+other = "openLooKeng, Big Data Simplified"
 
 [HOME_BANNER_DES]
-other = "A Data Virtualization Engine Approaching to Big Data Base"
+other = "A Distributed, Low Latency, Reliable Data Engine for All Data, Big or Small, Local or Remote."
 
 [HOME_WHY]
 other = "Why openLooKeng?"
@@ -28,10 +28,10 @@ other = "Just add connectors for new data resources."
 other = "Move processing to data. Query data where it is."
 
 [HOME_AVAIABLE]
-other = "High Reliability"
+other = "High Availability"
 
 [HOME_AVAIABLE_DES1]
-other = "Active/Active design leads zero outage."
+other = "Active/Active design leads zero downtime."
 
 [HOME_GETSTART]
 other = "Get Started"
