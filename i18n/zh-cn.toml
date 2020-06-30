@@ -77,13 +77,13 @@ other = "/zh-cn/blogguidance.html"
 other = "/zh-cn/events.html"
 
 [HIGH_LIGHT1]
-other = "video/Highlight1.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight1.mp4"
 
 [HIGH_LIGHT2]
-other = "video/Highlight2.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight2.mp4"
 
 [HIGH_LIGHT3]
-other = "video/Highlight3.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight3.mp4"
 
 [VIDEO_COVER_3]
 other = "img/banners/video-cover3-cn.png"
