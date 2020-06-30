@@ -53,7 +53,7 @@
                 </ul>
                 {{ else }}
                     {{ if eq .Identifier "lang"}}
-                    <a  onclick="switchLanguage()">{{ .Name }}</a>
+                    <a href="javascript:;" onclick="switchLanguage()">{{ .Name }}</a>
                     {{ else}}
                     <a href="{{ .URL }}">{{ .Name }}</a>
                     {{end}}

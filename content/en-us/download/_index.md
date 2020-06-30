@@ -12,10 +12,10 @@ deployment_packages = "Deploying openLooKeng"
 server_title_description2 = " for deployment instructions."
 [[server_btn]]
     file_name = "hetu-server-010.tar.gz"
-    url = "https://download.openlookeng.io/openlookeng-beta/hetu-server-316.tar.gz"
+    url = "https://download.openlookeng.io/010/hetu-server-010.tar.gz"
 [[server_btn]]
     file_name = "hetu-server-rpm-010.x86_64.rpm"
-    url = "https://download.openlookeng.io/openlookeng-beta/hetu-server-rpm-316.x86_64.rpm"
+    url = "https://download.openlookeng.io/010/hetu-server-rpm-010.x86_64.rpm"
 
 [[driver_item]]
     title = "Command Line Interface"
@@ -24,7 +24,7 @@ server_title_description2 = " for deployment instructions."
     doc_url = "/docs/docs/installation/cli.html"
     desc2 = " for installation instructions."
     file_name = "hetu-cli-010-executable.jar"
-    url = "https://download.openlookeng.io/openlookeng-beta/hetu-cli-316-executable.jar"
+    url = "https://download.openlookeng.io/010/hetu-cli-010-executable.jar"
 [[driver_item]]
     title = "JDBC Driver"
     desc1 = "JDBC Driver enables users to connect with live openLooKeng server, directly from any Java applications that support JDBC connectivity.  Visit "
@@ -32,7 +32,7 @@ server_title_description2 = " for deployment instructions."
     doc_url = "/docs/docs/installation/jdbc.html"
     desc2 = " for installation instructions."
     file_name = "hetu-jdbc-010.jar"
-    url = "https://download.openlookeng.io/openlookeng-beta/hetu-jdbc-316.jar"
+    url = "https://download.openlookeng.io/010/hetu-jdbc-010.jar"
 [[driver_item]]
     title = "ODBC Driver"
     desc1 = "ODBC Driver lets you communicate with openLooKeng server via standard ODBC protocol. Visit "
@@ -40,5 +40,5 @@ server_title_description2 = " for deployment instructions."
     doc_url = "/docs/docs/installation/odbc.html"
     desc2 = " for installation instructions."
     file_name = "hetu-odbc-win64-010.jar"
-    url = "https://download.openlookeng.io/openlookeng-beta/hetu-odbc-win64-316.msi"
+    url = "https://download.openlookeng.io/010/hetu-odbc-win64-010.msi"
 +++
