@@ -26,10 +26,10 @@ other = "采集变连接、数据零搬迁"
 other = "高可靠"
 
 [HOME_AVAIABLE_DES1]
-other = "全 Active/Active 架构，业务不中断 "
+other = "全 Active/Active 架构，业务零中断 "
 
 [HOME_SUMMIT]
-other = "openLooKeng首次Meetup即将开启"
+other = "openLooKeng首次Meetup即将到来"
 
 [HOME_GETSTARTLINK]
 other = "/zh-cn/docs/docs/start.html"
@@ -47,7 +47,7 @@ other = "博客"
 other = "新闻"
 
 [MAIN_RELATED_LINKS]
-other = "相关链接"
+other = "友好链接"
 
 [MAIN_POSTBLOG_SOURCE]
 other = "写博客"
@@ -68,7 +68,7 @@ other = "一起来了解openLooKeng吧"
 other = "标签"
 
 [HOME_GETSTART]
-other = "立即使用"
+other = "立即体验"
 
 [BLOG_LINK]
 other = "/zh-cn/blogguidance.html"
