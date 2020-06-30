@@ -18,20 +18,20 @@ small_title = "Committers"
 [[item]]
     title = "Karmveer Singh"
     avatar = "img/foundation/KarmveerSingh.png"
-    range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
+    range = "Senior member of Database Engine R&D team in Analytics Platform Lab"
     content = "Karmveer has 10 years of cutting edge experience with AWS and Amazon in Seattle, Vancouver, Toronto. Most notable project prior to Huawei is Memory management for AWS S3 Select, Disk IO optimizations for handling delete requests in AWS S3, Distributed pre-compute framework for Promotions data on Amazon website."
     
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
-    range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
+    range = "Senior member of Database Engine R&D team in Analytics Platform Lab"
     content = "Raghunandan leads the BigData platform system Engineering Group at BRC, which focuses on adding performance, usability, maintability features to the available Opensources big data components. Under his technical leadership, team has built competitive features like Ultra Large mono clusters (20K nodes) and Zero downtime solution for Intra City BigData HA cluster deployments."
 
 [[item]]
     title = "Haochen Ding"
     avatar = "img/foundation/ArvenDing.png"
-    range = "Core Member of Hetu Engine R&D Team"
-    content = "Haochen has 6+ years of industry experience including highly scalable web services and big data. As a core member of Hetu Engine R&D team, leads and contributes to a lot of key engine design, optimizations and performance improvement."
+    range = "Core Member of Database Engine R&D team in Analytics Platform Lab"
+    content = "Haochen has 6+ years of industry experience including highly scalable web services and big data. As a core member of Database Engine R&D team, leads and contributes to a lot of key engine design, optimizations and performance improvement."
     
 [[item]]
     title = "Gobinath"
