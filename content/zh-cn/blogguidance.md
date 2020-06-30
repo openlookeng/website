@@ -4,7 +4,7 @@ title = "如何发表博客"
 +++
 
 
-## 准备
+### 准备
 
 1. 参考 <http://git.mydoc.io/?t=179267> 注册Gitee账号。
 
@@ -14,7 +14,7 @@ title = "如何发表博客"
 
 1. 参考<http://git.mydoc.io/?t=180692>准备你的git环境。
 
-## 理解博客格式
+### 理解博客格式
 
 openLooKeng是用markdown格式写博客的。
 
@@ -36,7 +36,7 @@ Here you can edit your blog.
 
 小提示：你可以复制 docs/blog_example/2020-03-03-sample-post.md 到你的工作路径下然后继续编辑。
 
-## 提交博客
+### 提交博客
 
 博客的提交利用了[Gitee](gitee.com)的PR(Pull Request)。
 

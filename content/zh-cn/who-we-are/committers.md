@@ -7,37 +7,37 @@ small_title = "Committers"
     title = "Ken Zhang"
     avatar = "img/foundation/KenZhang.png"
     range = "R&D Analytics Platform Lab Director for various Research teams across the Globe"
-    content = "Ken领导和推动分析平台实验室，监督和指导所有组件领域的成员，以确保基准。Ken在IBM Watson Health、Thomson Reuters Open Platform等公司担任架构师，拥有20年的尖端行业经验。他目前在多伦多、深圳、成都、班加罗尔和都柏林的研发成员提供领导和指导。"
+    content = "Ken 是分析平台实验室负责人，团队遍及多伦多、深圳、成都、班加罗尔和都柏林等城市。Ken在IBM Watson Health、Thomson Reuters Open Platform 及 Huawei 等公司担任架构师角色，拥有20年的尖端行业经验。"
 
 [[item]]
     title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Michael领导并指导工程师和研究人员进行多个研发项目。在华为加拿大公司与数据引擎团队一起工作了近2年，负责设计、架构和关键基准的交付。拥有20年的IBM和Platform Computing核心经验。"
+    content = "Michael在华为加拿大研究所工作，在数据引擎团队工作了近2年，负责设计、架构和关键特性的开发，并拥有20年的IBM和Platform Computing工作经验。"
 
 [[item]]
     title = "Karmveer Singh"
     avatar = "img/foundation/KarmveerSingh.png"
     range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
-    content = "Karmveer在位于Seattle、Vancouver、Toronto的AWS、Amazon拥有10年的前沿经验。在华为之前最著名的项目是AWS S3 Select的内存管理，用于处理AWS S3中删除请求的磁盘IO优化，亚马逊网站上促销数据的分布式预计算框架。"
+    content = "Karmveer在华为加拿大研究所工作。拥有10年AWS、Amazon的工作经验。作为核心成员参与过AWS S3 Select内存管理项目，用于处理AWS S3中删除请求的磁盘IO优化，以及亚马逊网站上促销数据的分布式预计算框架。"
 
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
     range = "Chief Architect at Bangalore Research Centre, Committer of Apache CarbonData project"
-    content = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
+    content = "Raghunandan是华为班加罗尔研究所大数据平台系统工程小组技术负责人，致力于大数据组件的性能优化、可用性、可维护性等功能的设计和开发。在他的领导下，团队在Intra City BigData HA Cluster项目中构筑了多个关键技术竞争力，包括超大集群（2万节点）部署和零宕机解决方案等。"
 
 [[item]]
     title = "Haochen Ding"
     avatar = "img/foundation/ArvenDing.png"
     range = "Core Member of Hetu Engine R&D Team"
-    content = "Haochen拥有6年以上的行业经验，包括高度可扩展的Web服务和大数据。作为Hetu引擎研发团队的核心成员，他领导并未许多关键引擎设计、优化和性能改进做出了贡献。"
+    content = "Haochen拥有6年以上的高可扩展Web服务和大数据技术等领域行业经验。作为数据引擎研发团队的核心成员，他领导并为许多关键引擎设计、优化和性能改进做出了贡献。"
     
 [[item]]
     title = "Gobinath"
     avatar = "img/foundation/Gobinath.png"
     range = "Software Development Engineer"
-    content = "Gobinath在构建实时和批处理数据分析引擎方面拥有2年以上经验。他致力于数据引擎设计、优化和性能基准测试。"
+    content = "Gobinath拥有2年以上的构建实时和批处理数据分析引擎的项目经验，专注于数据引擎设计、优化和性能基准测试等关键技术。"
 
 
 [[item]]
@@ -50,7 +50,7 @@ small_title = "Committers"
     title = "李铮"
     avatar = "img/foundation/ZhengLi.png"
     range = "Huawei R&D Senior Engineer"
-    content = "李铮，华中科技大学武汉光电国家实验室2013级博士，2018年6月毕业加入华为，现任华为研发高级工程师。当前聚焦于openLooKeng的性能优化研究深入参与大数据查询分析引擎架构设计及实现等相关工作。 "
+    content = "李铮，华中科技大学武汉光电国家实验室2013级博士，2018年6月毕业加入华为，现任华为研发高级工程师。当前聚焦于openLooKeng的性能优化研究深入参与大数据查询分析引擎架构设计及实现等相关工作。"
 
 +++
 

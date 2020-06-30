@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    $(' a[href^="#"][href!="#"]').click(function () {
+        var target = document.getElementById(decodeURI(this.hash).split('#')[1]);
+        if (!target) {
+            return;
+        }
+        var targetOffset = $(target).offset().top - 140 + 'px';
+        $('html,body').animate({
+            scrollTop: targetOffset
+        },300);
+        return false;
+    });
+</script>

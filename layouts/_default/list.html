@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 
-  {{ partial "head.html" . }}
+    {{ partial "head.html" . }}
+    {{$lan := index (split .URL "/") 1 }}
+    {{if ne $lan "zh-cn"}}
+    {{$lan = "" }}
+    {{end}}
 
-  <body>
+    <body>
 
-  <div id="all">
+    <div id="all">
 
       <header>
 
@@ -25,73 +29,65 @@
                       {{ $paginator := .Paginate (where .Data.Pages "Type" "blog") }}
                       {{ range $paginator.Pages }}
                       <section class="post">
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-                                  <div class="clearfix">
-                                      <p class="author">
-                                          {{ if isset .Params "author" }}
-                                          <span>{{ .Params.author }}</span>
-                                          {{ end }}
-                                      </p>
-                                      {{ if isset .Params "date" }}
-                                      <p class="date-comments">
-                                          <span class="character">|</span>
-                                          <span> {{ .Date.Format .Site.Params.date_format }}</span>
-                                          <span class="character">|</span>
-                                      </p>
-                                      {{ end }}
-                                      <p class="tags">
-                                          {{ if isset .Params "tags" }}
-                                          {{ if gt (len .Params.tags) 0 }}
-                                          {{ range .Params.tags }}
-                                          <a href='{{ "tags/" | relURL }}{{ . | urlize | lower }}.html'>{{ . }}</a>
-                                          {{ end }}
-                                          {{ end }}
-                                          {{ end }}
-                                      </p>
-                                  </div>
-                                  <p class="intro">{{ .Summary }}</p>
-                                  <p class="read-more"><a href="{{ .Permalink }}" class="btn btn-template-main">{{ i18n "MAIN_LIST_MORE" }}</a>
-                                  </p>
-                              </div>
-                          </div>
-                      </section>
-                      {{ end }}
+                            <div class="row">
+                            <div class="col-md-12">
+                                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                                <div class="clearfix">
+                                <p class="author">
+                                        {{ if isset .Params "author" }}
+                                        <span>{{ .Params.author }}</span>
+                                        {{ end }}
+                                    </p>
+                                    {{ if isset .Params "date" }}
+                                    <p class="date-comments">
+                                        <span class="character">|</span>
+                                        <span> {{ .Date.Format .Site.Params.date_format }}</span>
+                                        <span class="character">|</span>
+                                    </p>
+                                    {{ end }}
+                                    <p class="tags">
+                                            {{ if isset .Params "tags" }}
+                                            {{ if gt (len .Params.tags) 0 }}
+                                            {{ range .Params.tags }}
+                                            <a  href="{{ $.Site.BaseURL }}/{{$lan}}/tags/{{ . | urlize }}.html">{{ . }}</a>
+                                            {{ end }}
+                                            {{ end }}
+                                            {{ end }}
+                                </p>
+                                </div>
+                                <p class="intro">{{ .Summary }}</p>
+                                <p class="read-more"><a href="{{ .Permalink }}" class="btn btn-template-main">{{ i18n "MAIN_LIST_MORE" }}</a>
+                                </p>
+                            </div>
+                            </div>
+                            </section>
+                    {{ end }}
 
-                  </div>
-                  <!-- /.col-md-9 -->
+                </div>
 
-                  <!-- *** LEFT COLUMN END *** -->
+                <div class="col-md-3">
 
-                  <!-- *** RIGHT COLUMN ***
-     _________________________________________________________ -->
 
-                  <div class="col-md-3">
+                    {{ partial "sidebar.html" . }}
 
-                      <!-- *** MENUS AND WIDGETS *** -->
-                      {{ partial "sidebar.html" . }}
 
-                      <!-- *** MENUS AND FILTERS END *** -->
 
-                  </div>
-                  <!-- /.col-md-3 -->
+                </div>
 
-                  <!-- *** RIGHT COLUMN END *** -->
 
-              </div>
-              <!-- /.row -->
-          </div>
-          <!-- /.container -->
-      </div>
-      <!-- /#content -->
+        </div>
 
-      {{ partial "footer.html" . }}
+        </div>
 
-  </div>
-  <!-- /#all -->
+    </div>
+
+
+    {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
 
     {{ partial "scripts.html" . }}
 
-  </body>
+</body>
 </html>
