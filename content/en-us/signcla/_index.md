@@ -77,7 +77,7 @@ Please select one applicable statement from the following and fill in the blanks
             Address:
         </td>
         <td>
-            <input type="text" id="individual-address" class = "require" maxlength="100" />
+            <input type="text" id="individual-address" maxlength="100" />
         </td>
     </tr>
     <tr>
@@ -127,10 +127,10 @@ Please select one applicable statement from the following and fill in the blanks
     </tr>
     <tr>
         <td>
-            Mailing Address*:
+            Mailing Address:
         </td>
         <td>
-            <input type="text" id="legalentity-address" class = "require" maxlength="100" />
+            <input type="text" id="legalentity-address" maxlength="100" />
         </td>
     </tr>
     <tr>

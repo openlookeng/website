@@ -25,7 +25,7 @@ step_six = "在合入您的代码之前，评审者将评审您的PR。为了使
     <div class="step-left">
         <div class="step-left-box">
             <span>请签署CLA</span>
-            <p>在参与项目贡献之前，请签署<a href="/cla.html"  target="_blank">贡献者许可协议 (CLA)</a>。</p>
+            <p>在参与项目贡献之前，请签署<a href="/zh-cn/signcla.html"  target="_blank">贡献者许可协议 (CLA)</a>。</p>
         </div>
         <div class="step-left-num">
             <span>1</span>

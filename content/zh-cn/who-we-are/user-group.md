@@ -1,5 +1,5 @@
 +++
-title = "User Group"
+title = "用户支持组"
 weight = 10
 small_title = "User Group Members"
 
@@ -42,7 +42,7 @@ small_title = "User Group Members"
 +++
 
 
-# User Group 
+# 用户支持组
 
 用户组可帮助最终用户了解如何使用openLooKeng，并向PMC收集改进建议。用户组提供邮件列表和Slack，供下游用户进行交流，并提供有关使用openLooKeng的一般问题和讨论。
 

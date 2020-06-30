@@ -28,6 +28,18 @@ dev_url = "https://openlookeng.slack.com/messages/C015EQ0V45D"
 dev_tag = "#dev"
 dev_detail = "对openLooKeng代码库、开发以及开发扩展讨论。"
 
+[[table_header]]
+    name = "名称"
+
+[[table_header]]
+    name = "邮件列表"
+
+[[table_header]]
+    name = "归档路径"
+
+[[table_header]]
+    name = "描述"
+
 +++
 <div class="step-left">
     <div class="step-left-box">

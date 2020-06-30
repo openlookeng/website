@@ -16,15 +16,27 @@ step_two = "Enter an email address that you want to receive from the mail list a
 step_three = "You will receive an email asking you to confirm the subscription. Reply the email to confirm your subscription."
 step_four = "You will receive a welcome email from the email list, which means you’ve successfully subscribed to the mail list!"
 
-general_url = ""
+general_url = "https://openlookeng.slack.com/messages/C016KBU2P5E"
 general_tag = "#general"
 general_detail = "Discussions about using and developing openLooKeng."
-trouble_url = ""
+trouble_url = "https://openlookeng.slack.com/messages/C015W5B4GKV"
 trouble_tag = "#troubleshooting"
 trouble_detail ="Need help?"
-dev_url = ""
+dev_url = "https://openlookeng.slack.com/messages/C015EQ0V45D"
 dev_tag = "#dev"
 dev_detail = "Discussions about openLooKeng codebase, development, and development extensions."
+
+[[table_header]]
+    name = "Name"
+
+[[table_header]]
+    name = "Mailling List"
+
+[[table_header]]
+    name = "Archive"
+
+[[table_header]]
+    name = "Description"
 
 +++
 <div class="step-left">

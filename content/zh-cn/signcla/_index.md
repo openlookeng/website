@@ -76,7 +76,7 @@ title = "签署CLA"
             地址:
         </td>
         <td>
-            <input type="text" id="individual-address" class = "require" maxlength="100" />
+            <input type="text" id="individual-address" maxlength="100" />
         </td>
     </tr>
     <tr>
@@ -136,10 +136,10 @@ title = "签署CLA"
     </tr>
     <tr>
         <td>
-            地址*:
+            地址:
         </td>
         <td>
-            <input type="text" id="legalentity-address" class = "require" maxlength="100" />
+            <input type="text" id="legalentity-address" maxlength="100" />
         </td>
     </tr>
     <tr>

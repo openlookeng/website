@@ -218,7 +218,6 @@
         font-size: 24px;
         font-family: HuaweiSans;
         font-weight: normal;
-        margin: 100px 0 73px;
     }
     .maillist .maillist-title img {
         max-width: 80%;
@@ -302,7 +301,6 @@
         font-size: 24px;
         font-family: HuaweiSans;
         font-weight: normal;
-        margin: 60px 0 40px 0;
     }
     .maillist .maillist-title img {
         max-width: 100%;
@@ -310,6 +308,7 @@
     .maillist .maillist-info span {
         font-size: 16px;
         font-weight: 600;
+        color: #5a9b83;
     }
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
