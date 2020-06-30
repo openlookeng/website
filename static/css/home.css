@@ -170,7 +170,9 @@ h3.title {
 
 @media (max-width: 994px) {
     .home-banner .home-img a {
-        display: none;
+        width: 150px;
+        margin-left: -75px;
+        top: -25%;
     }
 
     .home-info-adapter {

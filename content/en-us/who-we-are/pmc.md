@@ -53,24 +53,22 @@ small_title = "PMC Members"
 The openLooKeng project is managed by PMC (Project Management Committee), a committee with responsibility and governance for the openLooKeng project. The PMC is the vehicle through which decision making power and responsibility for oversight devolves to developers.
 
 
- While committers on a project have the ability to update the code, only the PMC as a body has the authority to vote on formal releases of the project's software. The PMC is also responsible for voting in new committers and PMC members to the project, as well as following other policies as outlined in this document. The PMC make decisions with a lazy consensus approach: a few positive votes with no negative vote is enough to get going.
- 
-  The PMC has the following responsibilities:
+While committers on a project have the ability to update the code, only the PMC as a body has the authority to vote on formal releases of the project's software. The PMC is also responsible for voting in new committers and PMC members to the project, as well as following other policies as outlined in this document. The PMC make decisions with a lazy consensus approach: a few positive votes with no negative vote is enough to get going.
 
-    · Report project status biweekly or when requested to the community
+The PMC has the following responsibilities:
 
-    · Collaborate remotely, having a face-to-face every 6 monthes. Have regularly online meeting in between. 
+· Report project status biweekly or when requested to the community
 
-    · Guide and decide project technology roadmap, interface definition, architecture design, build release, etc. Establishing the rule of community gradually. 
+· Collaborate remotely, having a face-to-face every 6 monthes. Have regularly online meeting in between. 
 
-    · Coordinate cross-projects cooperation and make decisions on cross-project technical issues in the community 
+· Guide and decide project technology roadmap, interface definition, architecture design, build release, etc. Establishing the rule of community gradually. 
 
-    · Formulate project incubation and development processes to support the healthy development of community technology ecology 
+· Coordinate cross-projects cooperation and make decisions on cross-project technical issues in the community 
 
-    · Adjust existing projects in the community according to the community development blueprint, delete or archive projects that do not meet the project goal.
+· Formulate project incubation and development processes to support the healthy development of community technology ecology 
+
+· Adjust existing projects in the community according to the community development blueprint, delete or archive projects that do not meet the project goal.
     
-     Mail List: pmc@openlookeng.io 
- 
-     Slack: 
+Mail List: pmc@openlookeng.io 
 
-     Biweekly meeting: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.
+Biweekly meeting: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.

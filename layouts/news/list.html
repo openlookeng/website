@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 {{ partial "head.html" . }}
-<link rel="stylesheet" href="{{ "css/news.css" | relURL}}">
+<link rel="stylesheet" href="{{ "css/news.css" | relURL}}{{ .Site.Params.version }}">
 <div id="all">
     <header>
         {{ partial "nav.html" . }}

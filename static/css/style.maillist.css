@@ -28,9 +28,6 @@
 .maillist .maillist-info table tr td:first-child {
     padding-left: 60px;
 }
-.maillist .maillist-info table tr td:nth-child(2) {
-    color: #5a9b83;
-}
 .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, .05);
 }

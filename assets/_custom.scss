@@ -8,6 +8,7 @@ body {
 .book-menu nav {
     // margin-top: 80px;
     position: static;
+    padding-left: 0;
 }
 
 .book-toc {
@@ -146,6 +147,11 @@ li:not(.book-section-flat) ul {
 .book-page .markdown a {
     color: #5A9B83;
 }
+
 .book-toc {
     left: 0;
+}
+
+main.container {
+    padding: 0;
 }

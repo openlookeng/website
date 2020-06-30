@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 {{ partial "head.html" . }}
-<link rel="stylesheet" href="{{ "css/foundation.css" | relURL}}">
+<link rel="stylesheet" href="{{ "css/foundation.css" | relURL}}{{ .Site.Params.version }}">
 
 <body>
 
@@ -64,7 +64,7 @@
     </div>
 
     {{ partial "scripts.html" . }}
-    <script src="{{ "js/foundation.js" | relURL }}"></script>
+    <script src="{{ "js/foundation.js" | relURL }}{{ .Site.Params.version }}"></script>
 </body>
 
 </html>

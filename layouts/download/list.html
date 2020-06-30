@@ -58,7 +58,7 @@
     </div>
 
     {{ partial "scripts.html" . }}
-    <script src="{{ "js/download.js" | relURL }}"></script>
+    <script src="{{ "js/download.js" | relURL }}{{ .Site.Params.version }}"></script>
 </body>
 
 </html>

@@ -42,8 +42,8 @@
                                             <tbody>
                                             {{ range $paginator.Pages }}
                                             <tr>
-                                                <td>{{ .Params.listname }}</td>
-                                                <td><a href="{{ .Params.websitelink }}" target="_blank"><span>{{ .Params.emailaddress }}</span></a></td>
+                                                <td><a href="{{ .Params.websitelink }}" target="_blank"><span>{{ .Params.listname }}</span></a></td>
+                                                <td>{{ .Params.emailaddress }}</td>
                                                 <td><a href="{{ .Params.archivelink }}" target="_blank"><span>{{ .Params.archivename }}</span></a></td>
                                                 <td>{{ .Params.description }}</td>
                                             </tr>
@@ -65,7 +65,7 @@
                                             <tbody>
                                             {{ range $paginator.Pages }}
                                             <tr>
-                                                <td>{{ .Params.listname }}</td>
+                                                <td><a href="{{ .Params.archivelink }}" target="_blank"><span>{{ .Params.listname }}</span></a></td>
                                                 <td><a href="{{ .Params.archivelink }}" target="_blank"><span>{{ .Params.archivename }}</span></a></td>
                                                 <td>{{ .Params.description }}</td>
                                             </tr>
