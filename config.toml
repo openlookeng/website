@@ -280,7 +280,7 @@ paginate = 10
 
 [params.slacklink]
     enable = true
-    text = "<a href=\"https://join.slack.com/t/openlookeng/shared_invite/zt-fgvauxpt-2v7Bghpa2dKFHMDe7IEB4A\" target=\"_blank\">Sign up</a> for Slack or <a href=\"https://openlookeng.slack.com\" target=\"_blank\">sign in</a> if you already have an account Channels."
+    text = "<a href=\"https://join.slack.com/t/openlookeng/shared_invite/zt-fgvauxpt-2v7Bghpa2dKFHMDe7IEB4A\" target=\"_blank\">Sign up</a> for Slack or <a href=\"https://openlookeng.slack.com\" target=\"_blank\">Sign in</a> if you already have an account Channels."
 
 [languages.zh-cn.params.slacklink]
     enable = true

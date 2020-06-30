@@ -260,6 +260,9 @@
     .maillist .maillist-slack {
         margin-bottom: 100px;
     }
+    .maillist .maillist-slack .slack-empty {
+        margin: 0;
+    }
     .maillist .maillist-slack p {
         font-size: 14px;
         font-weight: normal;
