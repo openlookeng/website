@@ -13,19 +13,19 @@ small_title = "PMC 委员"
     title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Michael Li在华为加拿大研究所工作，在数据引擎团队工作了近2年，负责设计、架构和关键特性的开发，并拥有20年的IBM和Platform Computing工作经验。"
+    content = "Michael 在华为加拿大研究所工作，在数据引擎团队工作了近2年，负责设计、架构和关键特性的开发，并拥有20年的IBM和Platform Computing工作经验。"
 
 [[item]]
     title = "Karmveer Singh"
     avatar = "img/foundation/KarmveerSingh.png"
     range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
-    content = "Karmveer在位于Seattle、Vancouver、Toronto的AWS、Amazon拥有10年的前沿经验。在华为之前最著名的项目是AWS S3 Select的内存管理，用于处理AWS S3中删除请求的磁盘IO优化，亚马逊网站上促销数据的分布式预计算框架。"
+    content = "Karmveer在华为加拿大研究所工作。拥有10年AWS、Amazon的工作经验。作为核心成员参与过AWS S3 Select内存管理项目，用于处理AWS S3中删除请求的磁盘IO优化，以及亚马逊网站上促销数据的分布式预计算框架。"
 
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
     range = "Chief Architect at Bangalore Research Centre, Committer of Apache CarbonData project"
-    content = "Raghunandan领导BRC的大数据平台系统工程小组，该小组致力于将性能、可用性、可维护性功能添加大可用的开源大数据组件中。在他的技术领导下，团队已经为城市内BigData HA集群部署构建了竞争功能，例如超大型单集群（20K节点）和零停机解决方案。"
+    content = "Raghunandan是华为班加罗尔研究所大数据平台系统工程小组技术负责人，致力于大数据组件的性能优化、可用性、可维护性等功能的设计和开发。在他的领导下，团队在Intra City BigData HA Cluster项目中构筑了多个关键技术竞争力，包括超大集群（2万节点）部署和零宕机解决方案等。"
 
 [[item]]
     title = "张巍"
