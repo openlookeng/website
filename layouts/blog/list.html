@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 {{ partial "head.html" . }}
-<link rel="stylesheet" href="{{ "css/blog.css" | relURL}}">
+<link rel="stylesheet" href="{{ "css/blog.css" | relURL}}{{ .Site.Params.version }}">
 
 <body>
 
@@ -115,7 +115,7 @@
     <!-- /#all -->
 
     {{ partial "scripts.html" . }}
-    <script src="{{ "js/blog.js" | relURL }}"></script>
+    <script src="{{ "js/blog.js" | relURL }}{{ .Site.Params.version }}"></script>
 
 </body>
 

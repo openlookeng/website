@@ -48,4 +48,3 @@ The User Group helps end users on how to use openLooKeng, and collects improveme
 
 Mail List: users@openlookeng.io
 
-Slack:

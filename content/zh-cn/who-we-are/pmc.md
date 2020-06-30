@@ -69,6 +69,4 @@ PMC的职责如下：
 
 Mail List: pmc@openlookeng.io
 
-Slack:
-
 双周会议: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.

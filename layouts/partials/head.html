@@ -18,7 +18,7 @@
     {{ hugo.Generator }}
 
     <!-- Font -->
-    <link rel="stylesheet" href="{{ "css/font.css" | relURL}}">
+    <link rel="stylesheet" href="{{ "css/font.css" | relURL}}{{ .Site.Params.version }}">
 
     <!-- Bootstrap and Font Awesome CSS -->
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -37,14 +37,11 @@
     {{ end }}
 
     <!-- Download stylesheet-->
-    <link href="{{ "css/style.download.css" | relURL}}" rel="stylesheet">
-    <link href="{{ "css/style.mobilenav.css" | relURL}}" rel="stylesheet">
-    <link href="{{ "css/style.maillist.css" | relURL}}" rel="stylesheet">
-    <link href="{{ "css/style.events.css" | relURL}}" rel="stylesheet">
-    <link href="{{ "css/news.css" | relURL}}" rel="stylesheet">
-
-    <!-- Custom stylesheet - for your changes -->
-    <link href="{{ "css/custom.css" | relURL}}" rel="stylesheet">
+    <link href="{{ "css/style.download.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.mobilenav.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.maillist.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.events.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/news.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
 
     <!-- Responsivity for older IE -->
     {{ `
@@ -109,4 +106,6 @@
     <meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z0700" }}">{{ end }}
     {{ end }}
     {{ partial "docs/html-head.html" . }}
+    <!-- Custom stylesheet - for your changes -->
+    <link href="{{ "css/custom.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
 </head>

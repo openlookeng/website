@@ -1,7 +1,7 @@
 +++
 title = "用户支持组"
 weight = 10
-small_title = "User Group Members"
+small_title = "用户组成员"
 
 [[item]]
     title = "Michael Li"
@@ -48,6 +48,4 @@ small_title = "User Group Members"
 
 
 邮件列表：users@openlookeng.io
-
-Slack：
 
