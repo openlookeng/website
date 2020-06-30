@@ -15,11 +15,11 @@ Almost exactly three years ago in June 2017, Huawei launched its public cloud bu
 
 The top vendors in the space were:
 
-<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-01.jpg" >
+<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-01.png" >
 
 Three years later, and Canalys has just released its latest figures for the China public cloud market, as of June 2020:
 
-<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-02.jpg" >
+<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-02.png" >
 
 Several things are noteworthy from a comparison between 2017 and 2020:
 
@@ -77,7 +77,7 @@ _With GAIA-X, representatives from politics, business and science from France an
 
 According to a recent Gartner study, the adoption rate of public cloud for many European countries is similar to that of China and also lags many other markets:
 
-<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-04.jpg" >
+<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-04.png" >
 
 With projects like Next Generation EU and GAIA-X, however, European adoption of cloud and digital technologies should rapidly accelerate over the next few years. And just as in China and around the world, we look forward to sharing our experience and expertise and to working together openly and securely to build out this next generation of digital services.
 
@@ -88,7 +88,7 @@ How was HUAWEI CLOUD able to grow so quickly over such a short time? One of the 
 This is how we view our HUAWEI CLOUD business:
 
 
-<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-05.jpg" >
+<img src="/blog/bryanche/2020-06-24-the-future-of-cloud-in-a-covid-19-era-05.png" >
 
 ### Open Hardware
 
@@ -111,4 +111,3 @@ It’s not just in open source communities that we collaborate with others. This
 I hope that during this period of deep trouble, a spirit of open, collaborative innovation can help us all work together for our shared recovery. Cloud computing works because it shares resources across many different users. Huawei Cloud has succeeded because we share in the open development and benefits of cloud.
 
 Europe, China, and the world will all have different paths forward out of our current situation. But, may the next three years and beyond bring for everyone a hopeful and triumphant future.
-
