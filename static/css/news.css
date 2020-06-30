@@ -111,9 +111,6 @@
 /* ---------------------------------995屏自适应-------------------------------- */
 
 @media screen and (min-width: 995px){
-    #content {
-        margin-bottom: 250px;
-    }
     .news-card .container .recent-news {
         font-size: 34px;
         line-height: 48px;
@@ -165,4 +162,7 @@
         line-height: 34px;
         margin: 40px 0 20px 0;
     }
+}
+#content {
+    min-height: calc(100vh - 214px);
 }
