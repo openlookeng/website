@@ -107,3 +107,9 @@ other = "/docs/docs/releasenotes.html"
 
 [DEPLOYING_OPENLOOKENG]
 other = "/docs/docs/installation/deployment.html"
+
+[BLOG_TITLE]
+other = "Blog"
+
+[NEWS_TITLE]
+other = "Latest News"

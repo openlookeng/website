@@ -37,10 +37,10 @@
                                             <div class="event-circle">
                                                 <div class="inner-circle"></div>
                                             </div>
-                                            <h6><a href="{{ .Params.link }}">{{ .Params.title }}</a></h6>
+                                            <h6><a href="{{ .Params.link }}" target="_blank">{{ .Params.title }}</a></h6>
                                             <span>{{ .Params.time }}</span>
                                             <p>{{ .Params.location}}</p>
-                                            <img src="{{ .Params.img }}" alt="">
+                                            <a href="{{ .Params.link }}" target="_blank"><img src="{{ .Params.img }}" alt=""></a>
                                         </div>
                                         {{ end }}
                                     </div>

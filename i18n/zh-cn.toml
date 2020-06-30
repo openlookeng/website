@@ -93,3 +93,9 @@ other = "/zh-cn/docs/docs/releasenotes.html"
 
 [DEPLOYING_OPENLOOKENG]
 other = "/zh-cn/docs/docs/installation/deployment.html"
+
+[BLOG_TITLE]
+other = "博客"
+
+[NEWS_TITLE]
+other = "新闻"

@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="recent-news">Recent News</h2>
+                        <h2 class="recent-news">{{ i18n "NEWS_TITLE" }}</h2>
                         {{ $paginator := .Paginate (where .Data.Pages "Type" "news") }}
                         {{ range $paginator.Pages }}
                         <section class="post">
