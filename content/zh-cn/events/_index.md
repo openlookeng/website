@@ -1,4 +1,4 @@
 +++
-top_title ="精彩活动等你来"
+top_title ="精彩活动等您来"
 event_head = "活动预告"
 +++

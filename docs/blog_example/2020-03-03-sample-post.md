@@ -3,7 +3,7 @@ title = "Sample Post"
 date = "2020-03-03"
 tags = ["Sample", "ABC", "cccc"]
 archives = "2020-03"
-author = "openEuler Blog Maintainer"
+author = "openLooKeng Blog Maintainer"
 summary = "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
 +++
 

@@ -12,7 +12,7 @@ small_title = "User Group Members"
 [[item]]
     title = "Raghunandan"
     avatar = "img/foundation/Raghunandan.png"
-    range = "Senior member of Hetu Database Engine R&D team in Analytics Platform Lab"
+    range = "Senior member of Database Engine R&D team in Analytics Platform Lab"
     content = "Raghunandan leads the BigData platform system Engineering Group at BRC, which focuses on adding performance, usability, maintability features to the available Opensources big data components. Under his technical leadership, team has built competitive features like Ultra Large mono clusters (20K nodes) and Zero downtime solution for Intra City BigData HA cluster deployments."
 
 [[item]]

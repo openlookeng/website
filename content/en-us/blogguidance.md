@@ -28,7 +28,7 @@ date = "2020-03-03"
 tags = ["Sample", "ABC", "cccc"]
 archives = "2020-03"
 author = "openLooKeng Blog Author"
-summary = "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
+description = "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
 +++
 
 Here you can edit your blog. 

@@ -4,7 +4,7 @@ date = "2020-06-29"
 tags = ["大数据", "数据虚拟化"]
 archives = "2020-06"
 author = "Morewell"
-summary = "介绍数据虚拟化的起源以及什么是数据虚拟化"
+description = "介绍数据虚拟化的起源以及什么是数据虚拟化"
 +++
 
 

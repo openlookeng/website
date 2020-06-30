@@ -4,7 +4,7 @@ date = "2020-06-30"
 tags = ["ARM"]
 archives = "2020-06"
 author = "Amit Dattatray Khandekar"
-summary = "The story of ARM began in 1993 with a joint venture of Apple with ARM (then Acorn RISC Machines) to launch the “Apple Newton” handheld PC. And the story continues today with news that Apple is going to switch their MACs to ARM processors. What has not changed in the story is ARM’s reputation as a power-efficient processor. "
+description = "The story of ARM began in 1993 with a joint venture of Apple with ARM (then Acorn RISC Machines) to launch the “Apple Newton” handheld PC. And the story continues today with news that Apple is going to switch their MACs to ARM processors. What has not changed in the story is ARM’s reputation as a power-efficient processor. "
 +++
 
 Source: https://amitdkhan-pg.blogspot.com/
