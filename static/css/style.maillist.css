@@ -308,6 +308,7 @@
     .maillist .maillist-info span {
         font-size: 16px;
         font-weight: 600;
+        color: #5a9b83;
     }
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
