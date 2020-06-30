@@ -34,10 +34,9 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th>List Name</th>
-                                                <th>Email Address</th>
-                                                <th>Archive</th>
-                                                <th>Description</th>
+                                                {{ range .Params.table_header }}
+                                                <th>{{ .name }}</th>
+                                                {{ end }}
                                             </tr>
                                             </thead>
                                             <tbody>
