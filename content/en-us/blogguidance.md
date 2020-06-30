@@ -10,7 +10,7 @@ title = "Guidance to Post a Blog"
 
 2. Set your primary mail box in gitee settings <https://gitee.com/profile/emails>.
 
-3. Sign your CLA in <https://openlookeng.io/en-us/cla.html>.
+3. Sign your CLA in <https://openlookeng.io/signcla.html>.
 
 4. Prepare your git environment refering to <http://git.mydoc.io/?t=180692>.
 
@@ -38,7 +38,7 @@ Tips: you can copy docs/blog_example/2020-03-03-sample-post.md to your folder an
 
 ## Post your blog
 
-The blog posting follows the pull request of [Gitee](gitee.com).
+The blog posting follows the pull request of [Gitee](https://gitee.com).
 
 1. Fork openLooKeng blog project <https://gitee.com/openlookeng/website> to your own gitee. Refer to <http://git.mydoc.io/?t=153749> for detailed guidance.
 

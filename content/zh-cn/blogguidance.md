@@ -10,7 +10,7 @@ title = "如何发表博客"
 
 1. 在Gitee个人设置中设置主邮箱地址，在此<https://gitee.com/profile/emails>。
 
-1. 签署贡献者协议，<https://openlookeng.io/zh-cn/cla.html>。
+1. 签署贡献者协议，<https://openlookeng.io/zh-cn/signcla.html>。
 
 1. 参考<http://git.mydoc.io/?t=180692>准备你的git环境。
 
@@ -28,7 +28,7 @@ date = "2020-03-03"
 tags = ["Sample", "ABC", "cccc"]
 archives = "2020-03"
 author = "openLooKeng Blog Author"
-summary = "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
+description = "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
 +++
 
 Here you can edit your blog. 
@@ -38,7 +38,7 @@ Here you can edit your blog.
 
 ### 提交博客
 
-博客的提交利用了[Gitee](gitee.com)的PR(Pull Request)。
+博客的提交利用了[Gitee](https://gitee.com)的PR(Pull Request)。
 
 1. Fork openLooKeng 博客项目 <https://gitee.com/openlookeng/website> 到你自己的Gitee上。如果需要具体指导请参考 <http://git.mydoc.io/?t=153749> 。
 
