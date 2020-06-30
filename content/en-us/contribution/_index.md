@@ -28,7 +28,7 @@ step_six = "Before integrating your code, reviewers will review your PR. To make
     <div class="step-left">
         <div class="step-left-box">
             <span>Sign the CLA before You Start</span>
-            <p>Before participating in the community contribution, please sign the <a href="/cla.html" target="_blank">Contributor License Agreement (CLA).</a></p>
+            <p>Before participating in the community contribution, please sign the <a href="/signcla.html" target="_blank">Contributor License Agreement (CLA).</a></p>
         </div>
         <div class="step-left-num">
             <span>1</span>
