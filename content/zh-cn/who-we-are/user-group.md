@@ -32,7 +32,7 @@ small_title = "用户组成员"
     title = "黄焰"
     avatar = "img/foundation/YanHuang.png"
     range = "Huawei Big Data Technology Expert"
-    content = "黄焰专注的领域包含大数据元数据管理、数据血缘以及数据虚拟化技术。目前负责openLooKeng项目客户需求澄清及解决方案设计，同事带领团队负责openLooKeng开源项目伙伴拓展及客户支持工作。"
+    content = "黄焰专注的领域包含大数据元数据管理、数据血缘以及数据虚拟化技术。目前负责openLooKeng项目客户需求澄清及解决方案设计，同时带领团队负责openLooKeng开源项目伙伴拓展及客户支持工作。"
 
 
 
