@@ -6,8 +6,8 @@ small_title = "PMC 委员"
 [[item]]
     title = "Ken Zhang"
     avatar = "img/foundation/KenZhang.png"
-    range = "R&D Analytics Platform Lab Director for various Research teams across the Globe"
-    content = "Ken 是分析平台实验室负责人，团队遍及多伦多、深圳、成都、班加罗尔和都柏林等城市。Ken在IBM Watson Health、Thomson Reuters Open Platform 及 Huawei 等公司担任架构师角色，拥有20年的尖端行业经验。"
+    range = "Analytics Platform Architect"
+    content = "Ken致力于极简大数据平台的设计与开发，以期获得更高的系统和人工效率。Ken负责大数据分析引擎总体设计与开发，通过标准接口支持100+ms查询时间的AI和BI场景。 Ken拥有20多年的技术开发经验。目前，Ken 是分析平台实验室Leader，团队遍及多伦多、深圳、成都、班加罗尔和都柏林等城市。"
 
 [[item]]
     title = "Michael Li"
