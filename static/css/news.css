@@ -4,9 +4,6 @@
 
 /* -----------------------------------news-banner-container模块---------------------------------- */
 
-.news-card .container {
-    height: 800px;
-}
 .news-card .container p {
     font-size: 14px;
     font-family: HuaweiSansLight;
