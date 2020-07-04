@@ -67,6 +67,6 @@ PMC的职责如下：
 
 · 根据社区发展蓝图调整社区中现有的项目，删除或归档不符合项目目标的项目。
 
-Mail List: pmc@openlookeng.io
+Mail List: dev@openlookeng.io
 
 双周会议: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.
