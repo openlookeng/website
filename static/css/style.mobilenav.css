@@ -6,4 +6,10 @@
     .isH5 {
         display: block;
     }
+    .isPC.img {
+        display: none;
+    }
+    .isH5.img {
+        display: block;
+    }
 }

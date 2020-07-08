@@ -418,8 +418,8 @@ ul.list-style-none {
     font-family: HuaweiSans;
     color: #000;
     letter-spacing: .08em;
-    border-top: solid 5px transparent;
-    height: 70px;
+    border-top: solid transparent;
+    height: 52px;
     font-size: 16px;
 }
 
@@ -1489,6 +1489,9 @@ fieldset[disabled] .btn-template-primary.active {
 @media (min-width: 995px) {
     .home-carousel .right {
         text-align: right;
+    }
+    .isH5.img {
+        display: none;
     }
 }
 
@@ -4208,11 +4211,11 @@ fieldset[disabled] .btn-template-primary.active {
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #38a7bb;
+    background-color: #fff;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: # 888;
+    background-color: #888;
 }
 
 .navbar-default .navbar-collapse,

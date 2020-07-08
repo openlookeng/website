@@ -122,10 +122,10 @@
     .event-list .event-content .event-leftline {
         border-left: 2px solid #000;
         opacity: .09;
-        height: 430px;
+        height: 630px;
         position: absolute;
         left: 140px;
-        top: 240px;
+        top: 330px;
     }
     .event-list .event-content .event-box .event-circle {
         width: 24px;
