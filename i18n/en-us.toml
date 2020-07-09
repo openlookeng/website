@@ -116,3 +116,6 @@ other = "Latest News"
 
 [DOCS_CONTENTS]
 other = "Table of Contents"
+
+[WECHAT_QRCODE]
+other = "Wechat Subscription"
