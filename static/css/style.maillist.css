@@ -3,7 +3,7 @@
 }
 .maillist .maillist-info p {
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     font-weight: 400;
     margin: 40px 0 20px 0;
 }
@@ -33,7 +33,7 @@
 }
 .maillist .maillist-guidance p {
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     font-weight: 400;
     margin: 57px 0 61px 0;
 }
@@ -220,7 +220,7 @@
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
         font-size: 14px;
-        font-family: HuaweiSansLight;
+        font-family: Roboto;
         font-weight: 400;
     }
     .maillist .maillist-info table {
@@ -261,8 +261,7 @@
     .maillist .maillist-slack p {
         font-size: 14px;
         font-weight: normal;
-        font-family: HuaweiSansLight;
-        /*padding: 0 25px;*/
+        font-family: Roboto;
     }
     .maillist .maillist-slack ul {
         list-style-type: none;
@@ -308,7 +307,7 @@
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
         font-size: 14px;
-        font-family: HuaweiSansLight;
+        font-family: Roboto;
         font-weight: 400;
     }
     .maillist .maillist-info table {
@@ -505,11 +504,11 @@
     }
     .maillist .maillist-title img {
         max-width: 100%;
+        margin: 0 auto;
     }
     .maillist .maillist-info span {
         font-size: 16px;
         font-weight: 600;
-        color: #5a9b83;
     }
     .maillist .maillist-comm p,
     .maillist .maillist-info p {

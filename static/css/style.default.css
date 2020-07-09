@@ -418,8 +418,8 @@ ul.list-style-none {
     font-family: HuaweiSans;
     color: #000;
     letter-spacing: .08em;
-    border-top: solid 5px transparent;
-    height: 70px;
+    border-top: solid transparent;
+    height: 52px;
     font-size: 16px;
 }
 
@@ -1490,6 +1490,9 @@ fieldset[disabled] .btn-template-primary.active {
 @media (min-width: 995px) {
     .home-carousel .right {
         text-align: right;
+    }
+    .isH5.img {
+        display: none;
     }
 }
 
@@ -2855,7 +2858,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 #blog-listing-medium .post .intro {
     text-align: justify;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
     height: 52px;
     line-height: 26px;
@@ -3848,7 +3851,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar-nav .open .dropdown-menu > li > a,
     .navbar-nav .open .dropdown-menu .dropdown-header {
-        padding: 5px 15px 5px 25px;
+        /*padding: 5px 15px 5px 25px;*/
     }
 
     .navbar-nav .open .dropdown-menu > li > a {
@@ -3861,9 +3864,9 @@ fieldset[disabled] .btn-template-primary.active {
     }
 
     .navbar-nav > li {
-        border-bottom: 1px solid #cecbcb;
-        margin-left: 16px;
-        margin-right: 16px;
+        /*border-bottom: 1px solid #cecbcb;*/
+        /*margin-left: 16px;*/
+        /*margin-right: 16px;*/
     }
 
     .navbar-nav > li > a {
@@ -4209,11 +4212,11 @@ fieldset[disabled] .btn-template-primary.active {
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #38a7bb;
+    background-color: #fff;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: # 888;
+    background-color: #888;
 }
 
 .navbar-default .navbar-collapse,
@@ -4546,6 +4549,7 @@ h3,
 
 p {
     margin: 0 0 10px;
+    font-family: Roboto Light;
 }
 
 .lead {
@@ -4971,7 +4975,7 @@ a.list-group-item.active > .badge,
 
 #content #blog-post #post-content {
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
     line-height: 26px;
 }

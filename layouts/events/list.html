@@ -24,7 +24,8 @@
                                 <div class="maillist-title">
                                     <h2 class="isPC event-title">{{ .Params.top_title }}</h2>
                                     <h2 class="isH5 event-title">{{ .Params.mobile_title }}</h2>
-                                    <img class="maillist-pic" src="../img/banners/eventsBanner.png" alt="">
+                                    <img class="maillist-pic isPC img" src="../img/banners/eventsBanner.png" alt="">
+                                    <img class="maillist-pic isH5 img" src="../img/events/banner-mobile.png" alt="">
                                 </div>
 
                                 <!--事件列表模块-->
@@ -40,7 +41,7 @@
                                             <h6><a href="{{ .Params.link }}" target="_blank">{{ .Params.title }}</a></h6>
                                             <span>{{ .Params.time }}</span>
                                             <p>{{ .Params.location}}</p>
-                                            <a href="{{ .Params.link }}" target="_blank"><img src="{{ .Params.img }}" alt=""></a>
+                                            <a href="{{ .Params.link }}" target="_blank"><img class="isPC img" src="{{ .Params.img }}" alt=""><img class="isH5 img" src="{{ .Params.img_mobile }}" alt=""></a>
                                         </div>
                                         {{ end }}
                                     </div>
