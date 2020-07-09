@@ -84,6 +84,11 @@ YEAR-MONTH-DAY-title-NN.MARKUP
 2020-01-01-new-years-is-coming-02.gif
 2020-01-01-new-years-is-coming-03.pdf
 ```
+使用HTML `<img>` 标签嵌入图片， 输入图片名称作为 `src` 值：
+
+```
+<img src = "2020-01-01-new-years-is-coming-01.png">
+```
 
 5. commit你的博客
 

@@ -9,7 +9,7 @@ description = "华为正式宣布开源数据虚拟化引擎openLooKeng，开源
 新闻来源：<https://www.huawei.com/cn/news/2020/7/huawei-data-virtualization-engine-openlookeng>
 
 
-<img src="/zh-cn/blog/zerodefect/2020-07-01-openlookeng-open-source.jpg">
+<img src="2020-07-01-openlookeng-open-source.jpg">
 
 [中国，深圳，2020年7月1日] 昨日，华为正式宣布开源数据虚拟化引擎openLooKeng，开源社区官网（<https://openlookeng.io>）同步上线。openLooKeng致力于为大数据用户提供极简的数据分析体验，让用户像使用“数据库”一样使用“大数据”。
 
