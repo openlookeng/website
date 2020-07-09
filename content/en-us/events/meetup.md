@@ -5,5 +5,5 @@ event_head = "Upcoming Events"
 location = " · Location: To Be Announced" 
 img = "/img/events/events1.png"
 link = "" 
-weight = 1
+weight = 99
 +++

@@ -4,5 +4,5 @@ title = "HUAWEI CONNECT 2020"
 location = " · Location: Shanghai, China" 
 img = "/img/events/HC2020.png" 
 link = "https://www.huawei.com/en/events/huaweiconnect2020"
-weight = 2
+weight = 100
 +++

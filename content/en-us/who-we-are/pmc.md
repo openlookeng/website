@@ -69,6 +69,6 @@ The PMC has the following responsibilities:
 
 · Adjust existing projects in the community according to the community development blueprint, delete or archive projects that do not meet the project goal.
     
-Mail List: pmc@openlookeng.io 
+Mail List: dev@openlookeng.io 
 
 Biweekly meeting: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.
