@@ -100,7 +100,7 @@ other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/hi
 other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight3_en.mp4"
 
 [VIDEO_COVER_3]
-other = "img/banners/video-cover3.png"
+other = "img/banners/video-cover3.gif"
 
 [RELEASE_NOTES_URL]
 other = "/docs/docs/releasenotes.html"
@@ -113,3 +113,6 @@ other = "Blog"
 
 [NEWS_TITLE]
 other = "Latest News"
+
+[DOCS_CONTENTS]
+other = "Table of Contents"

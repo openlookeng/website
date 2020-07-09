@@ -6,6 +6,15 @@
 
     $('.book-icon').on('click', function () {
         $('#TableOfContents').closest('aside').toggleClass('hidden');
+        $('.mask').toggleClass('hidden');
+        $('.book-header').hide();
+        setTimeout(function () {
+            $('.book-header').show();    
+        }, 100);
+    });
+
+    $('.navbar-buttons').click(function () {
+        $('.book-header').toggle();
     });
 
     $($(window).scroll(function () {
@@ -106,16 +115,24 @@
     // $('.book-toc nav').prepend($('.book-search'));
 
     var $menuList = $('.book-menu nav>ul li a');
+    if(!$menuList.hasClass('active')){
+        $('#docPreviousPage').remove();
+        $('#docNextPage').remove();
+        $('.doc-back').remove();
+        $('.doc-next').remove();
+    }
     $menuList.each(function (index) {
         if ($(this).hasClass('active')) {
             if (index === 0) {
                 $('.doc-back').remove();
+                $('#docPreviousPage').remove();
             } else {
                 $('.doc-back').attr('href', $menuList.eq(index - 1).attr('href'));
                 $('#docPreviousPage').text('<' + $menuList.eq(index - 1).text());
             }
             if (index === ($menuList.length - 1)) {
                 $('.doc-next').remove();
+                $('#docNextPage').remove();
             } else {
                 $('.doc-next').attr('href', $menuList.eq(index + 1).attr('href'));
                 $('#docNextPage').text($menuList.eq(index + 1).text() + '>');
@@ -124,7 +141,7 @@
     });
 
 
-    $('.book-header .book-header-title').click(function () {
+    $('.book-header .book-header-title, .mask').click(function () {
         $('.book-header .book-icon').eq(0).trigger('click');
     });
     $('#book-search-results').hide();
@@ -137,4 +154,9 @@
     });
 
     $('#TableOfContents > ul > li ul').remove();
+
+    $('.book-menu nav > ul > li > ul > li > a').not('.collapsed').css({
+        'padding-left': '20px'
+    });
+
 })();
