@@ -39,6 +39,6 @@ server_title_description2 = "。"
     doc = "openLooKeng ODBC用户手册"
     doc_url = "/zh-cn/docs/docs/installation/odbc.html"
     desc2 = "。"
-    file_name = "hetu-odbc-win64-010.jar"
+    file_name = "hetu-odbc-win64-010.msi"
     url = "https://download.openlookeng.io/010/hetu-odbc-win64-010.msi"
 +++
