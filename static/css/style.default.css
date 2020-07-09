@@ -2857,7 +2857,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 #blog-listing-medium .post .intro {
     text-align: justify;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
     height: 52px;
     line-height: 26px;
@@ -3850,7 +3850,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar-nav .open .dropdown-menu > li > a,
     .navbar-nav .open .dropdown-menu .dropdown-header {
-        padding: 5px 15px 5px 25px;
+        /*padding: 5px 15px 5px 25px;*/
     }
 
     .navbar-nav .open .dropdown-menu > li > a {
@@ -3863,9 +3863,9 @@ fieldset[disabled] .btn-template-primary.active {
     }
 
     .navbar-nav > li {
-        border-bottom: 1px solid #cecbcb;
-        margin-left: 16px;
-        margin-right: 16px;
+        /*border-bottom: 1px solid #cecbcb;*/
+        /*margin-left: 16px;*/
+        /*margin-right: 16px;*/
     }
 
     .navbar-nav > li > a {
@@ -4548,6 +4548,7 @@ h3,
 
 p {
     margin: 0 0 10px;
+    font-family: Roboto Light;
 }
 
 .lead {
@@ -4973,7 +4974,7 @@ a.list-group-item.active > .badge,
 
 #content #blog-post #post-content {
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
     line-height: 26px;
 }

@@ -6,7 +6,7 @@
 
 .news-card .container p {
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     opacity: .7;
     margin-bottom: 20px;
 }
@@ -80,7 +80,7 @@
 .news-detail p {
     font-size: 14px;
     line-height: 26px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
     margin: 20px 0;
 }

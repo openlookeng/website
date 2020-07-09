@@ -13,3 +13,8 @@
         display: block;
     }
 }
+@media screen and (min-width: 768px) and (max-width: 994px) {
+    .isH5.img {
+        display: none;
+    }
+}
