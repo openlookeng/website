@@ -35,26 +35,26 @@
 
 .pull-left {
     float: left !important;
+    margin: 10px 0;
 }
 
 .pull-left .logo {
-    width: 155px;
+    width: 158px;
     /*height: 60px;*/
     border-radius: 4px;
 }
 
 .pull-left .logo img {
-    width: 155px;
+    width: 158px;
     border-radius: 4px;
     margin-top: 15px;
 }
 
 .pull-left .logo-bottom {
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     color: rgba(255, 255, 255, .7);
     line-height: 14px;
-    margin-top: 11px;
 }
 
 .pull-left .logo-bottom .small-icon {
@@ -412,14 +412,12 @@ ul.list-style-none {
 }
 
 .navbar ul.nav > li > a {
-    /*text-transform: uppercase;*/
     text-decoration: none;
-    /*font-weight: bold;*/
     font-family: HuaweiSans;
     color: #000;
     letter-spacing: .08em;
     border-top: solid transparent;
-    height: 52px;
+    height: 62px;
     font-size: 16px;
 }
 
@@ -3396,7 +3394,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 #copyright p {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 }
 
 #copyright p img {
@@ -3800,9 +3798,14 @@ fieldset[disabled] .btn-template-primary.active {
 
 .navbar-brand {
     float: left;
-    padding: 25px 15px;
+    padding: 23px 15px;
     font-size: 18px;
     line-height: 20px;
+    height: 20px;
+}
+
+.navbar-brand > img {
+    width: 126px;
     height: 20px;
 }
 
@@ -3865,7 +3868,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar-nav > li {
         /*border-bottom: 1px solid #cecbcb;*/
-        /*margin-left: 16px;*/
+        margin-left: 16px;
         /*margin-right: 16px;*/
     }
 
@@ -4033,7 +4036,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 @media (min-width: 995px) {
     .navbar-nav > li:nth-last-child(3) {
-        margin-top: 21px;
+        margin-top: 20px;
         padding-left: 20px;
         margin-left: 20px;
         height: 31px;
@@ -5352,6 +5355,7 @@ header {
 /*footer样式重写*/
 #copyright .container > div {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 0;
 }
@@ -5362,7 +5366,7 @@ header {
 
 #copyright .container .pull-right > a:first-child {
     padding: 0 10px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #copyright .container .pull-right > a:nth-child(2) {
@@ -5385,12 +5389,8 @@ header {
         flex-direction: column;
     }
 
-    #copyright .container .pull-left {
-        margin-bottom: 20px;
-    }
-
     #copyright .container .pull-left .logo {
-        margin: 0 auto;
+        margin: 0 auto 5px;
     }
 
     .pull-left .logo-bottom {
