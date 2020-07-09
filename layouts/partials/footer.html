@@ -10,13 +10,28 @@
                         <p><a href="mailto:{{ .Site.Params.email | safeHTML }}">{{ .Site.Params.email | safeHTML }}</a></p>
                 </div>
                 </div>
-    
-                <p class="pull-right">
-                {{ .Site.Params.copyright.text | safeHTML }}
-                <span class="block">
-                <i class="size-14px">{{ .Site.Params.provide | safeHTML }}</i><i>{{ .Site.Params.license | safeHTML }}</i>
-                </span>
-                </p>
+
+                <div class="copyright-right">
+                    <div class="pull-code isPC img">
+                        <p class="code-sub">
+                            {{ .Site.Params.scancode.text | safeHTML }}
+                        </p>
+                        <img src="/img/icons/wechat_QR.jpg" alt="">
+                    </div>
+                    <div class="pull-code isH5 img">
+                        <img src="/img/icons/wechat_QR.jpg" alt="">
+                        <p class="code-sub">
+                            <span>{{ i18n "WECHAT_QRCODE" }}</span>
+                        </p>
+                    </div>
+                    <div class="pull-right">
+                        {{ .Site.Params.copyright.text | safeHTML }}
+                        <span class="block">
+                        <i class="size-14px">{{ .Site.Params.provide | safeHTML }}</i><i>{{ .Site.Params.license | safeHTML }}</i>
+                    </span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

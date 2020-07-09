@@ -87,13 +87,53 @@
 <script>
 var switchLanguage = function(){
     var url = window.location.href;
-    if(url.indexOf('zh-cn/')>-1){
-        url=url.replace('zh-cn/','');
-        window.location.href=url;
-    }else{
-        url=url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
-        window.location.href=url;
+
+    if (url.indexOf('zh-cn/')>-1) {
+        if (url.indexOf('news/') > -1) {
+            url = url.replace('zh-cn/','');
+            backToNew(url, 'news/', 'news.html/')
+        } else if (url.indexOf('blog/') > -1) {
+            url = url.replace('zh-cn/','');
+            backToBlog(url, 'blog/', 'blog.html/')
+        } else {
+            url = url.replace('zh-cn/','');
+            window.location.href = url;
+        }
+    } else {
+        if (url.indexOf('news/') > -1) {
+            url = url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
+            backToNew(url, 'news/', 'news.html/')
+        } else if (url.indexOf('blog/') > -1) {
+            url = url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
+            backToBlog(url, 'blog/', 'blog.html/')
+        }  else {
+            url = url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
+            window.location.href = url;
+        }
+
     }
+}
+const backToNew = function (url, originUrl, newUrl) {
+    let origin = originUrl
+    let toggle = newUrl
+    let replace = url.replace(origin,toggle);
+    replace = replace.split('/')
+
+    replace.pop()
+    let localUrl = replace.join('/')
+
+    window.location.href = localUrl;
+}
+
+const backToBlog = function (url, originUrl, newUrl) {
+    let origin = originUrl
+    let toggle = newUrl
+    let replace = url.replace(origin,toggle);
+    replace = replace.split('/')
+    replace = replace.slice(0, replace.length - 4)
+    let localUrl = replace.join('/')
+
+    window.location.href = localUrl;
 }
 </script>
 <!-- *** NAVBAR END ***-->
