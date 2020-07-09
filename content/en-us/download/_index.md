@@ -1,6 +1,6 @@
 +++
 id = "download"
-top_title_max = "openLooKeng version v0.1.0 Has Arrived"
+top_title_max = "openLooKeng v0.1.0 Has Arrived"
 top_title_min = "Download"
 second_title = "Download openLooKeng"
 second_title_description1 = "Find the "
@@ -39,6 +39,6 @@ server_title_description2 = " for deployment instructions."
     doc = "openLooKeng ODBC User Manual"
     doc_url = "/docs/docs/installation/odbc.html"
     desc2 = " for installation instructions."
-    file_name = "hetu-odbc-win64-010.jar"
+    file_name = "hetu-odbc-win64-010.msi"
     url = "https://download.openlookeng.io/010/hetu-odbc-win64-010.msi"
 +++
