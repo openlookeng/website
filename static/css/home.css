@@ -1,6 +1,18 @@
 .home-banner {
     height: unset;
     padding-top: 60px;
+    margin-bottom: 60px;
+}
+
+.bar.background-white {
+    margin-top: 60px;
+}
+
+.home-links h2 {
+    margin-top: 0;
+    font-style: 40px;
+    color: #000;
+    font-family: HuaweiSans;
 }
 
 .search-img {
@@ -27,12 +39,15 @@
     font-family: HuaweiSans;
     margin: 0;
     line-height: 44px;
+    font-size: 40px;
+    color: #000;
 }
 
 .home-banner .banner-p2 {
-    font-family: HuaweiSansLight;
-    font-size: 16px;
-    color: rgba(0, 0, 0, .7);
+    font-family: Roboto-Regular, Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
     margin-bottom: 15px;
 }
 
@@ -57,7 +72,7 @@ h3.title {
 .home-banner .home-img a {
     border-radius: 4px;
     background-color: rgba(90, 155, 131, 1);
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     position: absolute;
     width: 120px;
@@ -79,8 +94,9 @@ h3.title {
 }
 
 .home-why .summit .summit-title {
-    padding-top: 60px;
+    padding-top: 40px;
     height: unset;
+    font-size: 40px;
     font-family: HuaweiSans;
 }
 
@@ -101,8 +117,9 @@ h3.title {
 }
 
 .bar .container .col-md-6 ul li a {
-    color: rgba(0, 0, 0, .7);
-    font-family: HuaweiSansLight;
+    color: rgba(0, 0, 0, 1);
+    font-family: Roboto-Light, Roboto;
+    font-weight: 300;
 }
 
 .one-row {
@@ -121,8 +138,10 @@ h3.title {
 }
 
 .bar .container .col-md-6 ul li > p {
-    font-family: HuaweiSansLight;
-    color: rgba(0, 0, 0, .7);
+    font-family: Roboto-Regular, Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
 }
 
 .bar .container .col-md-6 ul li a p {
@@ -148,7 +167,9 @@ h3.title {
 }
 
 .bar .container .col-md-6 > a p {
-    font-family: HuaweiSansLight;
+    font-family: Roboto-Regular, Roboto;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .special-item .video {
@@ -195,9 +216,10 @@ h3.title {
 
 .videos-wrapper .title {
     text-align: center;
-    font-size: 34px;
+    font-size: 40px;
     font-family: HuaweiSans;
-    margin: 0 0 32px 0;
+    margin: 0 0 40px 0;
+    color: #000;
 }
 
 .videos-wrapper .video-right-item {
@@ -221,20 +243,20 @@ h3.title {
 .videos-wrapper .video-right-item .item-left .left-title {
     color: #000;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 30px;
     font-family: HuaweiSans;
 }
 
 .videos-wrapper .video-right-item .item-left p {
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-family: HuaweiSansLight;
-    color: rgba(0, 0, 0, .7);
+    font-size: 14px;
+    font-family: Roboto-Light, Roboto;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
 }
 
 .videos-wrapper .video-right-item .item-right .video {
     width: 100% !important;
-    margin: 70px 0;
+    margin: 40px 0;
 }
 
 .videos-wrapper .video-left-item {
@@ -259,16 +281,16 @@ h3.title {
     color: #000;
     text-align: right;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 30px;
     font-family: HuaweiSans;
 }
 
 .videos-wrapper .video-left-item .item-right p {
     text-align: right;
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-family: HuaweiSansLight;
-    color: rgba(0, 0, 0, .7);
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Roboto-Light, Roboto;
+    color: rgba(0, 0, 0, 1);
 }
 
 .videos-wrapper .video-left-item .item-left .video {
@@ -287,16 +309,17 @@ h3.title {
     }
     .home-banner .banner-p1 {
         margin: 0 0 10px 0;
+        font-size: 30px;
     }
     .home-banner .banner-p2 {
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
     .home-banner {
         margin-bottom: 40px;
     }
     .videos-wrapper .title {
-        margin-bottom: 22px;
-        font-size: 24px;
+        margin-bottom: 20px;
+        font-size: 30px;
     }
     .videos-wrapper .video-left-item {
         flex-direction: column;
@@ -311,19 +334,18 @@ h3.title {
         width: 100%;
     }
     .videos-wrapper .video-right-item .item-left .left-title {
-        margin: 19px 0 11px 0;
+        margin: 20px 0 15px 0;
         text-align: center;
-        font-size: 16px;
+        font-size: 24px;
     }
     .videos-wrapper .video-right-item .item-left p {
         text-align: center;
-        margin-bottom: 11px;
         font-size: 14px;
     }
     .videos-wrapper .video-left-item .item-right .right-title {
-        margin: 19px 0 11px 0;
+        margin: 20px 0 15px 0;
         text-align: center;
-        font-size: 16px;
+        font-size: 24px;
     }
     .videos-wrapper .video-left-item .item-right p {
         text-align: center;
@@ -331,16 +353,16 @@ h3.title {
         font-size: 14px;
     }
     .videos-wrapper .video-left-item .item-left {
-        margin-top: 49px;
+        margin-top: 40px;
     }
     .videos-wrapper .video-right-item .item-right {
-        margin-top: 49px;
+        margin-top: 40px;
     }
     .home-why .summit {
         margin-top: 49px;
     }
     .home-why .summit img {
-        margin-top: 20px;
+        margin-top: 14px;
     }
     .mt100 {
         margin-top: 60px !important;
@@ -356,4 +378,30 @@ h3.title {
         width: 180px;
         height: 60px;
     }
+    .home-why .why-title,
+    .home-why .summit-title,
+    .home-links h2 {
+        font-size: 30px !important;
+    }
+    .bar .container .col-md-6 > h2 {
+        margin-top: 0;
+        font-size: 30px !important;
+    }
+    .home-links-imgs a {
+        margin-bottom: 30px;
+    }
+    .home-links {
+        margin-bottom: 30px !important;
+    }
+}
+
+.bar .container .col-md-6 > h2 {
+    font-size: 40px;
+    color: #000;
+}
+
+.home-blog,
+.home-news {
+    font-family: Roboto-Light, Roboto !important;
+    color: #000 !important;
 }

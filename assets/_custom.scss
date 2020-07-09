@@ -155,3 +155,16 @@ li:not(.book-section-flat) ul {
 main.container {
     padding: 0;
 }
+.mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    width: calc(100vw);
+    z-index: 99999;
+}
+.mobile-header-wrapper {
+    height: 70px;
+}

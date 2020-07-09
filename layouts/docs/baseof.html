@@ -22,10 +22,14 @@
 					</aside>
 
 					<div class="book-page">
-						<header class="book-header">
-							{{ template "header" . }}
-							<!-- Mobile layout header -->
-						</header>
+                        <div class="mask hidden"></div>
+                        <div class="mobile-header-wrapper">
+                            <header class="book-header">
+                                {{ template "header" . }}
+                                <!-- Mobile layout header -->
+                            </header>
+                        </div>
+						
 
 						{{ partial "docs/inject/content-before" . }}
 						{{ template "main" . }}
@@ -55,7 +59,7 @@
 		</div>
 		<!-- /#content -->
 		{{ partial "footer.html" . }}
-	</div>
+    </div>
 	<!-- /#all -->
 	{{ partial "scripts.html" . }}
 	<script src='{{ "js/book.js" | relURL }}{{ .Site.Params.version }}'></script>

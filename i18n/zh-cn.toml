@@ -86,7 +86,7 @@ other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/hi
 other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight3.mp4"
 
 [VIDEO_COVER_3]
-other = "img/banners/video-cover3-cn.png"
+other = "img/banners/video-cover3-cn.gif"
 
 [RELEASE_NOTES_URL]
 other = "/zh-cn/docs/docs/releasenotes.html"
@@ -99,3 +99,6 @@ other = "博客"
 
 [NEWS_TITLE]
 other = "新闻"
+
+[DOCS_CONTENTS]
+other = "目录"
