@@ -11,18 +11,18 @@
                 {{ else }}
                 <a class="navbar-brand home" href="{{ "/" | relURL }}">
                 {{ end }}
-                    <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Title }} logo" class="hidden-xs hidden-sm">
-                    <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Title }} logo" class="visible-xs visible-sm">
-                    <span class="sr-only">{{ .Title }} - {{ i18n "navHome" }}</span>
+                <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Title }} logo" class="hidden-xs hidden-sm">
+                <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Title }} logo" class="visible-xs visible-sm">
+                <span class="sr-only">{{ .Title }} - {{ i18n "navHome" }}</span>
                 </a>
-                
+
                 <div class="navbar-buttons">
                     <a type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">{{ i18n "navToggle" }}</span>
                         <i class="fas fa-align-justify"><img class="fas fa-search search-img" src="{{ "img/book-menu/menu.png" | relURL }}" alt=""></i>
                     </a>
                 </div>
-                
+
             </div>
             <!--/.navbar-header -->
 
@@ -30,52 +30,52 @@
                 <div class="collapse clearfix" id="search">
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                {{ $current := . }}
-                {{ range .Site.Menus.main }}
-                {{ $topLevel := replace .URL "/" "" }}
-                <li class="dropdown{{ if eq $current.RelPermalink .URL | or (eq $current.Type $topLevel) | or (and (eq (default (trim .URL "/") .Identifier) "blog") (in (slice "taxonomy" "taxonomyTerm") $current.Kind)) }} active{{ end }} {{ if eq .Identifier "lang" }}lang{{ end }}">
-                {{ if .HasChildren }}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ .Name }}
-                </a>
-                <ul class="dropdown-menu">
-                    <div class="dropdown-arrow"></div>
-                    {{ range .Children }}
-                    <li>
-                        {{ if eq .Name "Gitee" }}
-                        <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
-                        {{ else if eq .Name "GitHub"}}
-                        <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
-                        {{ else }}
-                        <a href="{{ .URL }}" >{{ .Name }}</a>
+                    {{ $current := . }}
+                    {{ range .Site.Menus.main }}
+                    {{ $topLevel := replace .URL "/" "" }}
+                    <li class="dropdown{{ if eq $current.RelPermalink .URL | or (eq $current.Type $topLevel) | or (and (eq (default (trim .URL "/") .Identifier) "blog") (in (slice "taxonomy" "taxonomyTerm") $current.Kind)) }} active{{ end }} {{ if eq .Identifier "lang" }}lang{{ end }}">
+                    {{ if .HasChildren }}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ .Name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <div class="dropdown-arrow"></div>
+                        {{ range .Children }}
+                        <li>
+                            {{ if eq .Name "Gitee" }}
+                            <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
+                            {{ else if eq .Name "GitHub"}}
+                            <a href="{{ .URL }}" target="_blank">{{ .Name }}</a>
+                            {{ else }}
+                            <a href="{{ .URL }}" >{{ .Name }}</a>
+                            {{ end }}
+                        </li>
                         {{ end }}
-                    </li>
-                {{ end }}
-                </ul>
-                {{ else }}
+                    </ul>
+                    {{ else }}
                     {{ if eq .Identifier "lang"}}
                     <a href="javascript:;" onclick="switchLanguage()">{{ .Name }}</a>
                     {{ else}}
                     <a href="{{ .URL }}">{{ .Name }}</a>
                     {{end}}
-                {{ end  }}
+                    {{ end  }}
                     </li>
-                {{ end }}
-                <li class="dropdown nav-search">
-                    <a href="javascript:;" class="dropdown-toggle fas fa-search data-toggle='dropdown' role='button' ">
-                        <img class="fas fa-search search-img" src="{{ "img/icons/search.png" | relURL }}" alt="">
-                    </a>
-                </li>
-                <li class="dropdown nav-search-input">
-                    
-                    <div class="book-search">
-                        
-                        <input type="text" id="book-search-input" placeholder="{{ i18n "SEARCH" }}" aria-label="{{ i18n "SEARCH" }}" maxlength="64" data-hotkeys="/" />
-                        <a href="javascript:;" class="book-search-spinner dropdown-toggle data-toggle='dropdown' role='button' ">
-                            <i class="fas fa-search"><img class="fas fa-search search-img" src="{{ "img/icons/icon-search.png" | relURL }}" alt=""></i>
+                    {{ end }}
+                    <li class="dropdown nav-search">
+                        <a href="javascript:;" class="dropdown-toggle fas fa-search data-toggle='dropdown' role='button' ">
+                            <img class="fas fa-search search-img" src="{{ "img/icons/search.png" | relURL }}" alt="">
                         </a>
-                        <ul id="book-search-results"></ul>
-                    </div>    
-                </li>
+                    </li>
+                    <li class="dropdown nav-search-input">
+
+                        <div class="book-search">
+
+                            <input type="text" id="book-search-input" placeholder="{{ i18n "SEARCH" }}" aria-label="{{ i18n "SEARCH" }}" maxlength="64" data-hotkeys="/" />
+                            <a href="javascript:;" class="book-search-spinner dropdown-toggle data-toggle='dropdown' role='button' ">
+                                <i class="fas fa-search"><img class="fas fa-search search-img" src="{{ "img/icons/icon-search.png" | relURL }}" alt=""></i>
+                            </a>
+                            <ul id="book-search-results"></ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -85,15 +85,55 @@
 
 </div>
 <script>
-var switchLanguage = function(){
-    var url = window.location.href;
-    if(url.indexOf('zh-cn/')>-1){
-        url=url.replace('zh-cn/','');
-        window.location.href=url;
-    }else{
-        url=url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
-        window.location.href=url;
+    var switchLanguage = function(){
+        var url = window.location.href;
+
+        if (url.indexOf('zh-cn/')>-1) {
+            if (url.indexOf('news/') > -1) {
+                url = url.replace('zh-cn/','');
+                backToNew(url, 'news/', 'news.html/')
+            } else if (url.indexOf('blog/') > -1) {
+                url = url.replace('zh-cn/','');
+                backToBlog(url, 'blog/', 'blog.html/')
+            } else {
+                url = url.replace('zh-cn/','');
+                window.location.href = url;
+            }
+        } else {
+            if (url.indexOf('news/') > -1) {
+                url = url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
+                backToNew(url, 'news/', 'news.html/')
+            } else if (url.indexOf('blog/') > -1) {
+                url = url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
+                backToBlog(url, 'blog/', 'blog.html/')
+            }  else {
+                url = url.replace('openlookeng.io/','openlookeng.io/zh-cn/');
+                window.location.href = url;
+            }
+
+        }
     }
-}
+    const backToNew = function (url, originUrl, newUrl) {
+        let origin = originUrl
+        let toggle = newUrl
+        let replace = url.replace(origin,toggle);
+        replace = replace.split('/')
+
+        replace.pop()
+        let localUrl = replace.join('/')
+
+        window.location.href = localUrl;
+    }
+
+    const backToBlog = function (url, originUrl, newUrl) {
+        let origin = originUrl
+        let toggle = newUrl
+        let replace = url.replace(origin,toggle);
+        replace = replace.split('/')
+        replace = replace.slice(0, replace.length - 4)
+        let localUrl = replace.join('/')
+
+        window.location.href = localUrl;
+    }
 </script>
 <!-- *** NAVBAR END ***-->
