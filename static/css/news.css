@@ -6,7 +6,7 @@
 
 .news-card .container p {
     font-size: 14px;
-    font-family: Roboto;
+    font-family: Roboto-Regular, Roboto;
     opacity: .7;
     margin-bottom: 20px;
 }
@@ -25,7 +25,7 @@
 .news-card .container .post .author-category {
     height: 16px;
     font-size: 12px;
-    font-family: HuaweiSansLight, HuaweiSans;
+    font-family: Roboto-Light, Roboto;
     font-weight: 300;
     color: rgba(0, 0, 0, .7);
     line-height: 16px;
@@ -80,7 +80,7 @@
 .news-detail p {
     font-size: 14px;
     line-height: 26px;
-    font-family: Roboto;
+    font-family: Roboto-Regular, Roboto;
     color: rgba(0, 0, 0, .7);
     margin: 20px 0;
 }

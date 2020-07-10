@@ -33,7 +33,7 @@
 }
 .maillist .maillist-guidance p {
     font-size: 14px;
-    font-family: Roboto;
+    font-family: Roboto-Regular, Roboto;
     font-weight: 400;
     margin: 57px 0 61px 0;
 }
@@ -220,7 +220,7 @@
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
         font-size: 14px;
-        font-family: Roboto;
+        font-family: Roboto-Regular, Roboto;
         font-weight: 400;
     }
     .maillist .maillist-info table {
@@ -261,7 +261,7 @@
     .maillist .maillist-slack p {
         font-size: 14px;
         font-weight: normal;
-        font-family: Roboto;
+        font-family: Roboto-Regular, Roboto;
     }
     .maillist .maillist-slack ul {
         list-style-type: none;
