@@ -1202,7 +1202,7 @@ fieldset[disabled] .btn-template-primary.active {
 .panel.sidebar-menu .post-blog a {
     font-size: 18px;
     font-weight: normal;
-    color: #5a9b83;
+    color:rgba(0,0,0,1);;
 }
 
 .panel.sidebar-menu .post-blog a:hover,
@@ -2319,7 +2319,8 @@ fieldset[disabled] .btn-template-primary.active {
 
 @media (max-width: 994px) {
     #heading-breadcrumbs h1 {
-        text-align: center;
+        color: #fff;
+        font-size: 3px;
     }
 }
 

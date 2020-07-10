@@ -7,6 +7,8 @@
 {{$lan := index (split .URL "/") 1 }}
 {{if ne $lan "zh-cn"}}
 {{$lan = "" }}
+{{else}}
+{{$lan = "zh-cn/" }}
 {{end}}
 
 <body>
@@ -21,18 +23,19 @@
         <div class="tag-filter">
             <div class="tag-filter-header">
                 <div class="header-left">
-                    <img src="img/blogs/ic_filter.png" alt="">
+                    <img style="height:16px; width: 16px;" src="../img/blogs/ic_filter.png" alt="">
                     <span>{{ i18n "MAIN_POSTBLOG_FILTER"}}</span>
                 </div>
-                <div class="header-right">
-                    <img src="img/blogs/Style.png" alt="">
+                <div  class="header-right">
+                    <a style="color:rgba(0,0,0,1);line-height:26px;" href={{ i18n "BLOG_LINK"}} >
+                    <img style="height:16px; width: 16px;" src="../img/blogs/Style.png" alt="">
                     <span>{{ i18n "MAIN_POSTBLOG_SOURCE"}}</span>
+                </a>
                 </div>
             </div>
             <div class="tag-filter-content hide">
-                <p>{{ i18n "tagsTitle" }}</p>
-                <ul class="tag-cloud">
-                    {{ $current := . }}
+                <p>{{ i18n "SIDEBAR_TAG" }}</p>
+                <ul>
                     {{ range $name, $items := .Site.Taxonomies.tags }}
                         <a href="{{ "tags/" | relURL }}{{ $name | urlize | lower }}.html"> {{ $name }}</a>
                         {{ end }}
@@ -72,7 +75,7 @@
                                             {{ if gt (len .Params.tags) 0 }}
                                             {{ range .Params.tags }}
                                             <a class="fz12"
-                                            href="{{ $.Site.BaseURL }}/{{$lan}}//tags/{{ . | urlize }}.html">{{ . }}</a>
+                                            href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ . | urlize }}.html">{{ . }}</a>
                                             {{ end }}
                                             {{ end }}
                                             {{ end }}
