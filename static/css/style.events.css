@@ -34,14 +34,14 @@
 }
 .event-list .event-content .event-box p {
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto-Regular, Roboto;
     line-height: 26px;
     color: rgba(0, 0, 0, .7);
 }
 .event-list .event-content .event-box span {
     width: 68px;
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto-Regular, Roboto;
     line-height: 26px;
     display: inline-block;
     text-align: center;
