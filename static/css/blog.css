@@ -4,28 +4,31 @@ ul {
 }
 
 a {
-    text-decoration: none;
+    color:rgba(0,0,0,1);
 }
 
 .tag-filter {
     display: none;
-    position: fixed;
-    top: 60px;
-    width: 100%;
-    min-height: 50px;
-    background-color: rgba(255, 255, 255, 1);
-    z-index: 999;
+    height: 50px;
+    position: sticky;
+    background-color:#fff;
+
+
 }
 
 .tag-filter .tag-filter-header {
+    padding-top:10px;
     margin: 0 auto;
-    height: 50px;
+    height: 20px;
     width: 90%;
-    line-height: 50px;
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    color: #5A9B83;
+    font-size: 16px;
+    font-family:Roboto-Regular,Roboto;
+    font-weight:400;
+    color:rgba(0,0,0,1);
+
+
 }
 
 .tag-filter .tag-filter-header > div {
@@ -42,22 +45,42 @@ a {
 }
 
 .tag-filter .tag-filter-content p {
-    margin-left: 20px;
+    padding:40px 0px;
+    margin: 0 auto;
+    height: 50px;
+    width: 88%;
+    font-size:18px;
+    font-family:HuaweiSans;
+    color:rgba(0,0,0,1);
+    
 }
 
-.tag-filter .tag-filter-content ul li {
+.tag-filter .tag-filter-content {
+    background: #fff;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 10px 10px;
+
+}
+
+
+.tag-filter .tag-filter-content a {
+    margin: 0px 4px;
     display: inline-block;
-    padding: 0 15px;
-    border: 1px solid #409D81;
+    padding: 2px 10px 2px !important;
+    font-family: Roboto Light;
+    color:  rgba(0, 0, 0, .7);
+    font-size: 12px;
+    line-height: 12px;
     border-radius: 4px;
-    margin-bottom: 18px;
-    margin-right: 20px;
+    text-transform: uppercase;
+    border: .5px solid rgba(0, 0, 0, .39);
+
 }
 
-.tag-filter .tag-filter-content ul li a {
-    color: rgba(0, 0, 0, .7);
-    font-size: 12px;
-}
+
+
+
 
 @media (max-width: 994px) {
     .tag-filter {
