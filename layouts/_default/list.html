@@ -5,6 +5,8 @@
     {{$lan := index (split .URL "/") 1 }}
     {{if ne $lan "zh-cn"}}
     {{$lan = "" }}
+    {{else}}
+    {{$lan = "zh-cn/" }}
     {{end}}
 
     <body>
@@ -49,7 +51,7 @@
                                             {{ if isset .Params "tags" }}
                                             {{ if gt (len .Params.tags) 0 }}
                                             {{ range .Params.tags }}
-                                            <a  href="{{ $.Site.BaseURL }}/{{$lan}}/tags/{{ . | urlize }}.html">{{ . }}</a>
+                                            <a  href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ . | urlize }}.html">{{ . }}</a>
                                             {{ end }}
                                             {{ end }}
                                             {{ end }}
