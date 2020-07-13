@@ -1,3 +1,8 @@
++++
+
+title = "COMMIT"
++++
+
 COMMIT
 ======
 
@@ -24,5 +29,5 @@ COMMIT WORK;
 See Also
 --------
 
-[rollback](./rollback.html)
-[start-transaction](./start-transaction.html)
+[ROLLBACK](./rollback.html)
+[START TRANSACTION](./start-transaction.html)

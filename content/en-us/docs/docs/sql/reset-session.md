@@ -1,3 +1,8 @@
++++
+
+title = "RESET SESSION"
++++
+
 RESET SESSION
 =============
 
@@ -25,4 +30,4 @@ RESET SESSION hive.optimized_reader_enabled;
 See Also
 --------
 
-[set-session](./set-session.html), [show-session](./show-session.html)
+[SET SESSION](./set-session.html), [SHOW SESSION](./show-session.html)

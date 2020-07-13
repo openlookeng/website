@@ -1,3 +1,8 @@
++++
+
+title = "CREATE VIEW"
++++
+
 CREATE VIEW
 ===========
 
@@ -13,7 +18,7 @@ AS query
 Description
 -----------
 
-Create a new view of a [SELECT](select.html) query. The view is a logical table that can be referenced by future queries. Views do not contain any data. Instead, the query stored by the view is executed everytime the view is referenced by another query.
+Create a new view of a [SELECT](./select.html) query. The view is a logical table that can be referenced by future queries. Views do not contain any data. Instead, the query stored by the view is executed everytime the view is referenced by another query.
 
 The optional `OR REPLACE` clause causes the view to be replaced if it already exists rather than raising an error.
 
@@ -52,4 +57,4 @@ Create a view that replaces an existing view:
 See Also
 --------
 
-[drop-view](./drop-view.html), [show-create-view](./show-create-view.html)
+[DROP VIEW](./drop-view.html), [SHOW CREATE VIEW](./show-create-view.html)

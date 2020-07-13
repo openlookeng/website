@@ -1,3 +1,8 @@
++++
+
+title = "EXPLAIN ANALYZE"
++++
+
 EXPLAIN ANALYZE
 ===============
 
@@ -90,4 +95,4 @@ EXPLAIN ANALYZE VERBOSE SELECT count(clerk) OVER() FROM orders WHERE orderdate >
 See Also
 --------
 
-[explain](./explain.html)
+[EXPLAIN](./explain.html)

@@ -1,3 +1,8 @@
++++
+
+title = "REVOKE"
++++
+
 REVOKE
 ======
 
@@ -46,4 +51,4 @@ Some connectors have no support for `REVOKE`. See connector documentation for mo
 See Also
 --------
 
-[grant](./grant.html), [show-grants](./show-grants.html)
+[GRANT](./grant.html), [SHOW GRANTS](./show-grants.html)

@@ -101,15 +101,20 @@ SQL迁移工具帮助用户将SQL语法转换为openLooKeng兼容的SQL语法。
 
 该工具支持交互模式运行。例如：
 
-    java -jar hetu-sql-migration-tool-010.jar
-    presto:HIVE>
-    presto:HIVE> INSERT INTO TABLE table1 VALUES(10, "NAME");
-    ==========converted result==========
-    INSERT INTO table1
-     VALUES
-      ROW (10, 'NAME')
-    
-    =================Success=============
+```shell
+java -jar hetu-sql-migration-tool-010.jar
+```
+
+```sql
+lk:HIVE>
+lk:HIVE> INSERT INTO TABLE table1 VALUES(10, "NAME");
+==========converted result==========
+INSERT INTO table1
+ VALUES
+  ROW (10, 'NAME')
+
+=================Success=============
+```
 
 
 下面是一些常用的命令：
@@ -133,18 +138,20 @@ SQL迁移工具帮助用户将SQL语法转换为openLooKeng兼容的SQL语法。
 
 *提示：*
 
-*如果用户有大量的SQL语句需要转换，更好的方法是将所有语句合并到一个文件中，并使用批处理模式*
+*如果用户有大量的SQL语句需要转换，建议是将所有语句合并到一个文件中，并使用批处理模式*
 
 批处理模式使用示例：
 
 
-        java -jar hetu-sql-migration-tool-010.jar --file /home/Query01.sql --output ./
-        May 26, 2020 5:27:10 PM io.airlift.log.Logger info
-        INFO: Migration Completed.
-        May 26, 2020 5:27:10 PM io.airlift.log.Logger info
-        INFO: Result is saved to .//Query01_1590485230193.sql
-        May 26, 2020 5:27:10 PM io.airlift.log.Logger info
-        INFO: Result is saved to .//Query01_1590485230193.csv
+```shell
+    java -jar hetu-sql-migration-tool-010.jar --file /home/Query01.sql --output ./
+    May 26, 2020 5:27:10 PM io.airlift.log.Logger info
+    INFO: Migration Completed.
+    May 26, 2020 5:27:10 PM io.airlift.log.Logger info
+    INFO: Result is saved to .//Query01_1590485230193.sql
+    May 26, 2020 5:27:10 PM io.airlift.log.Logger info
+    INFO: Result is saved to .//Query01_1590485230193.csv
+```
 
 
 当指定`file`时，必须提供参数`output`。转换后的结果会保存为`output`目录下的两个文件：
@@ -158,14 +165,17 @@ SQL迁移工具帮助用户将SQL语法转换为openLooKeng兼容的SQL语法。
 可以使用命令直接执行查询，并在转换完成后退出工具。使用`execute`的示例：
 
 
-    java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 VALUES(10, 'presto')" --sourceType hive
-    
-    ==========converted result==========
-    INSERT INTO t1
-     VALUES
-      ROW (10, 'presto')
-    
-    =================Success=============
+```shell
+java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 VALUES(10, 'openLooKeng')" --sourceType hive
+
+
+==========converted result==========
+INSERT INTO t1
+ VALUES
+  ROW (10, 'openLooKeng')
+
+=================Success=============
+```
 
 
 如果用户只指定了参数`execute`，则转换后的结果会打印到屏幕上。用户可自行指定`output`参数，将结果保存到目标文件中。
@@ -174,19 +184,23 @@ SQL迁移工具帮助用户将SQL语法转换为openLooKeng兼容的SQL语法。
 
 文件名为“config.properties”，内容如下：
 
-    convertDecimalLiteralsAsDouble=true
-    
-    java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 select 2.0 * 3" --config config.properties
-    
-    ==========converted result==========
-    INSERT INTO t1
-    SELECT (DECIMAL '2.0' * 3)
-    
-    =================Success=============
+``` shell
+convertDecimalLiteralsAsDouble=true
+
+
+java -jar hetu-sql-migration-tool-010.jar --execute "INSERT INTO TABLE T1 select 2.0 * 3" --config config.properties
+
+
+==========converted result==========
+INSERT INTO t1
+SELECT (DECIMAL '2.0' * 3)
+
+=================Success=============
+```
 
 
 配置文件目前只支持一个属性`convertDecimalLiteralsAsDouble`。该属性意思是是否将十进制文本转换为double默认值为`false`，意味着将十进制文字转换为“decimal”类型。
 
 ## 限制
 
-- 不支持对SQL语句中的UDF和函数进行转换。
+不支持对SQL语句中的UDF和函数进行转换。

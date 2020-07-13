@@ -1,3 +1,8 @@
++++
+
+title = "UPDATE"
++++
+
 UPDATE
 ======
 
@@ -35,4 +40,4 @@ Limitations
 See Also
 --------
 
-[insert](./insert.html), [insert-overwrite](./insert-overwrite.html)
+[INSERT](./insert.html), [INSERT OVERWRITE](./insert-overwrite.html)

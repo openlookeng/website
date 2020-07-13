@@ -1,3 +1,8 @@
++++
+
+title = "DESCRIBE INPUT"
++++
+
 DESCRIBE INPUT
 ==============
 
@@ -56,4 +61,4 @@ Position | Type
 See Also
 --------
 
-[prepare](./prepare.html)
+[PREPARE](./prepare.html)

@@ -1,31 +1,38 @@
-SHOW CACHE
-==========
++++
 
-Synopsis
---------
+title = "SHOW CACHE"
++++
+
+# SHOW CACHE
+
+## 摘要
 
 ``` sql
 SHOW CACHE
 ```
 
-Description
------------
+## 说明
 
-`SHOW CACHE` displays the Split cache coordinator metadata. Split cache contains information about table and partition information that are cached.
+`SHOW CACHE` 显示分离式缓存协调器元数据。分离式缓存包含有关缓存的表和分区的信息。
 
-Examples
---------
+## 示例
 
-Show cache :
+显示所有缓存元数据
 
-    SHOW CACHE
+```sql
+    SHOW CACHE;
+```
 
-Limitations
------------
+显示销售表的缓存元数据
 
-Only Hive connector support this functionality. See connector documentation for more details.
+```sql
+    SHOW CACHE sales;
+```  
 
-See Also
---------
+## 限制
 
-[cache-table](./cache-table.html), [drop-cache](./drop-cache.html)
+目前只有Hive连接器支持此功能。 有关更多详细信息，请参见连接器文档。
+
+## 另请参见
+
+[CACHE TABLE](./cache-table.html)、[DROP CACHE](./drop-cache.html)

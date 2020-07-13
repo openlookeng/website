@@ -1,3 +1,8 @@
++++
+
+title = "SHOW SESSION"
++++
+
 SHOW SESSION
 ============
 
@@ -16,4 +21,4 @@ List the current session properties.
 See Also
 --------
 
-[reset-session](./reset-session.html), [set-session](./set-session.html)
+[RESET SESSION](./reset-session.html), [SET SESSION](./set-session.html)

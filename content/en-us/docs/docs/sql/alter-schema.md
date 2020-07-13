@@ -1,3 +1,8 @@
++++
+
+title = "ALTER SCHEMA"
++++
+
 ALTER SCHEMA
 ============
 
@@ -29,4 +34,4 @@ Some connectors do not support renaming schema, such as Hive Connector. See conn
 See Also
 --------
 
-[create-schema](./create-schema.html)
+[CREATE SCHEMA](./create-schema.html)

@@ -1,3 +1,8 @@
++++
+
+title = "VALUES"
++++
+
 VALUES
 ======
 
@@ -19,7 +24,7 @@ Description
 
 Defines a literal inline table.
 
-`VALUES` can be used anywhere a query can be used (e.g., the `FROM` clause of a [SELECT](select.html), an [INSERT](insert.html), or even at the top level). `VALUES` creates an anonymous table without column names, but the table and columns can be named using an `AS` clause with column aliases.
+`VALUES` can be used anywhere a query can be used (e.g., the `FROM` clause of a [SELECT](./select.html), an [INSERT](./insert.html), or even at the top level). `VALUES` creates an anonymous table without column names, but the table and columns can be named using an `AS` clause with column aliases.
 
 Examples
 --------
@@ -57,4 +62,4 @@ Create a new table with column `id` and `name`:
 See Also
 --------
 
-[insert](./insert.html), [select](./select.html)
+[INSERT](./insert.html), [SELECT](./select.html)

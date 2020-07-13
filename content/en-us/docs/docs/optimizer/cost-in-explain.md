@@ -1,3 +1,8 @@
++++
+weight = 2
+title = "Cost in EXPLAIN"
++++
+
 Cost in EXPLAIN
 ===============
 
@@ -26,4 +31,4 @@ Generally, there is only one cost printed for each plan node.  However, when a `
 
  
 
-Estimated cost is also printed in [explain-analyze](../sql/explain-analyze.html) in addition to actual runtime statistics.
+Estimated cost is also printed in [EXPLAIN ANALYZE](../sql/explain-analyze.html) in addition to actual runtime statistics.

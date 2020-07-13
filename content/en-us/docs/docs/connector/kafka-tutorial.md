@@ -1,3 +1,8 @@
++++
+weight = 11
+title = "Kafka Connector Tutorial"
++++
+
 Kafka Connector Tutorial
 ========================
 
@@ -9,7 +14,7 @@ The Kafka Connector for openLooKeng allows access to live topic data from Apache
 Installation
 ------------
 
-This tutorial assumes familiarity with openLooKeng and a working local openLooKeng installation (see [deployment](../installation/deployment.html). It will focus on setting up Apache Kafka and integrating it with openLooKeng.
+This tutorial assumes familiarity with openLooKeng and a working local openLooKeng installation (see [Deploying openLooKeng Manually](../installation/deployment.html). It will focus on setting up Apache Kafka and integrating it with openLooKeng.
 
 ### Step 1: Install Apache Kafka
 

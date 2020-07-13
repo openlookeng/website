@@ -1,3 +1,8 @@
++++
+weight = 14
+title = "MySQL"
++++
+
 MySQL Connector
 ===============
 
@@ -48,4 +53,4 @@ MySQL Connector Limitations
 
 The following SQL statements are not yet supported:
 
-[delete](../sql/delete.html), [grant](../sql/grant.html), [revoke](../sql/revoke.html), [show-grants](../sql/show-grants.html), [show-roles](../sql/show-roles.html), [show-role-grants](../sql/show-role-grants.html)
+[DELETE](../sql/delete.html), [GRANT](../sql/grant.html), [REVOKE](../sql/revoke.html), [SHOW GRANTS](../sql/show-grants.html), [SHOW ROLES](../sql/show-roles.html), [SHOW ROLE GRANTS](../sql/show-role-grants.html)

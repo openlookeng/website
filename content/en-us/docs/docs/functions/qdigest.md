@@ -1,3 +1,8 @@
++++
+weight = 21
+title = "Quantile Digest Functions"
++++
+
 Quantile Digest Functions
 =========================
 

@@ -7,7 +7,7 @@ title = "SPI Overview"
 
 # SPI Overview
 
-When you implement a new openLooKeng plugin, you implement interfaces and override methods defined by the SPI. Plugins can provide additional [connectors](connectors.html), [types](types.html), [functions](functions.html) and [system-access-control](system-access-control.html). In particular, connectors are the source of all data for queries in openLooKeng: they back each catalog available to openLooKeng.
+When you implement a new openLooKeng plugin, you implement interfaces and override methods defined by the SPI. Plugins can provide additional [Connectors](./connectors.html), [Types](./types.html), [Functions](./functions.html) and [System Access Control](./system-access-control.html). In particular, connectors are the source of all data for queries in openLooKeng: they back each catalog available to openLooKeng.
 
 ## Code
 

@@ -1,3 +1,8 @@
++++
+weight = 1
+title = "Data Types"
++++
+
 Data Types
 ==========
 
@@ -6,7 +11,7 @@ openLooKeng has a set of built-in data types, described below. Additional types 
 
 **Note**
 
-*Connectors are not required to support all types. See connector* *documentation for details on supported types.*
+*Connectors are not required to support all types. See [Connectors](../connector/_index.html) for details on supported types.*
 
 Boolean
 -------
@@ -126,7 +131,7 @@ String
 Date and Time
 -------------
 
-See also `/language/timestamp`
+See also [Legacy and New Timestamp](./timestamp.html).
 
 ### `DATE`
 
@@ -179,6 +184,7 @@ Structural
 >
 > Example: `ARRAY[1, 2, 3]`
 
+
 ### `MAP`
 
 > A map between the given component types.
@@ -206,7 +212,7 @@ Network Address
 
 ### `IPADDRESS`
 
-> An IP address that can represent either an IPv4 or IPv6 address. Internally, the type is a pure IPv6 address. Support for IPv4 is handled using the *IPv4-mapped IPv6 address* range ([RFC 4291#section-2.5.5.2](https://tools.ietf.org/html/rfc4291.html#section-2.5.5.2 )). When creating an `IPADDRESS`, IPv4 addresses will be mapped into that range. When formatting an `IPADDRESS`, any address within the mapped range will be formatted as an IPv4 address. Other addresses will be formatted as IPv6 using the canonical format defined in [RFC 5929](https://tools.ietf.org/html/rfc5952.html ).
+> An IP address that can represent either an IPv4 or IPv6 address. Internally, the type is a pure IPv6 address. Support for IPv4 is handled using the *IPv4-mapped IPv6 address* range ([RFC 4291#section-2.5.5.2](https://tools.ietf.org/html/rfc4291.html#section-2.5.5.2)). When creating an `IPADDRESS`, IPv4 addresses will be mapped into that range. When formatting an `IPADDRESS`, any address within the mapped range will be formatted as an IPv4 address. Other addresses will be formatted as IPv6 using the canonical format defined in [RFC 5929](https://tools.ietf.org/html/rfc5952.html ).
 >
 > Examples: `IPADDRESS '10.0.0.1'`, `IPADDRESS '2001:db8::1'`
 
@@ -215,7 +221,7 @@ UUID
 
 ### `UUID`
 
-> This type represents a UUID (Universally Unique IDentifier), also known as a GUID (Globally Unique IDentifier), using the format defined in [RFC 4122](https://tools.ietf.org/html/rfc4122.html ).
+> This type represents a UUID (Universally Unique IDentifier), also known as a GUID (Globally Unique IDentifier), using the format defined in [RFC 4122](https://tools.ietf.org/html/rfc4122.html).
 >
 > Example: `UUID '12151fd2-7586-11e9-8f9e-2a86e4085a59'`
 

@@ -134,7 +134,7 @@ Here are some frequently used command:
 
 **Batch mode**
 
-This tool also can take parameters and running in batch mode. It has five parameters, \"file\", \"sourceType\", \"execute\", \"output\" and "config\".  The meaning of each parameters lists as below:
+This tool also can take parameters and running in batch mode. It has five parameters, \"file\", \"sourceType\", \"execute\", \"output\" and \"config\".  The meaning of each parameters lists as below:
 
 | Parameter    | Description                                                  |
 | ------------ | ------------------------------------------------------------ |

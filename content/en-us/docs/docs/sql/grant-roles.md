@@ -1,3 +1,8 @@
++++
+
+title = "GRANT ROLES"
++++
+
 GRANT ROLES
 ===========
 
@@ -41,4 +46,4 @@ Some connectors do not support role management. See connector documentation for 
 See Also
 --------
 
-[create-role](./create-role.html), [drop-role](./drop-role).html, [ set-role](./set-role.html), [revoke-roles](./revoke-roles.html)
+[CREATE ROLE](./create-role.html), [DROP ROLE](./drop-role).html, [SET ROLE](./set-role.html), [REVOKE ROLES](./revoke-roles.html)

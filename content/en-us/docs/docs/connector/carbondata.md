@@ -1,9 +1,12 @@
++++
+weight = 1
+title = "Carbondata"
++++
+
 
 
 # Carbondata Connector
 
-
-<hr/>
 ## Overview
 
 The Carbondata connector allows querying data stored in a Carbondata warehouse. Carbondata is a combination of three components:
@@ -57,9 +60,9 @@ Whenever you change the user which openLooKeng is using to access HDFS, remove `
 
 Kerberos authentication is supported for both HDFS and the Hive metastore. However, Kerberos authentication by ticket cache is not yet supported.
 
-The properties that apply to Carbondata connector security are listed in the [Carbondata Configuration Properties](#carbondata-configuration-properties) table. Please see the [Hive Security Configuration](hive-security.html) section for a more detailed discussion of the security options.
+The properties that apply to Carbondata connector security are listed in the [Carbondata Configuration Properties](./carbondata.html#carbondata-configuration-properties) table. Please see the [Hive Security Configuration](./hive-security.html) section for a more detailed discussion of the security options.
 
-## <a name="carbondata-configuration-properties">Carbondata Configuration Properties</a>
+## Carbondata Configuration Properties
 
 | Property Name                             | Description                                                  | Default                                         |
 | ----------------------------------------- | :----------------------------------------------------------- | ----------------------------------------------- |
@@ -70,9 +73,9 @@ The properties that apply to Carbondata connector security are listed in the [Ca
 | `hive.hdfs.impersonation.enabled`         | Enable HDFS end user impersonation.                          | `false`                                         |
 | `hive.hdfs.presto.principal`              | The Kerberos principal that openLooKeng will use when connecting to HDFS. |                                                 |
 | `hive.hdfs.presto.keytab`                 | HDFS client keytab location.                                 |                                                 |
-| `hive.collect-column-statistics-on-write` | Enables automatic column level statistics collection on write. See [Table Statistics](hive.html#table-statistics) for details. | `true`                                          |
+| `hive.collect-column-statistics-on-write` | Enables automatic column level statistics collection on write. See [Table Statistics](./hive.html#table-statistics) for details. | `true`                                          |
 
-## <a name="hive-thrift-metastore-configuration-properties">Hive Thrift Metastore Configuration Properties</a>
+## Hive Thrift Metastore Configuration Properties
 
 | Property Name                        | Description                                                  |
 | ------------------------------------ | ------------------------------------------------------------ |
@@ -220,7 +223,7 @@ Drop an existing table.
 DROP TABLE orders;
 ```
 
-## <a name="">Carbondata Connector Limitations</a>
+## Carbondata Connector Limitations
 
 The following operations are not supported currently with Carbondata connector:
 
