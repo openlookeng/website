@@ -4,10 +4,10 @@ weight = 10
 small_title = "User Group Members"
 
 [[item]]
-    title = "Micheal Li"
+    title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Micheal leads and guides engineers and researchers on multiple R&D projects. Nearly 2 years at Huawei Canada with Data Engine team, lead design, architecture, and delivery of key benchmarks. With 20 years of core experience with IBM and Platform Computing."
+    content = "Michael leads and guides engineers and researchers on multiple R&D projects. Nearly 2 years at Huawei Canada with Data Engine team, lead design, architecture, and delivery of key benchmarks. With 20 years of core experience with IBM and Platform Computing."
 
 [[item]]
     title = "Raghunandan"
