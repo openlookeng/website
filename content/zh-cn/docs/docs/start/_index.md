@@ -6,7 +6,7 @@ title = "快速入门"
 +++
 
 # 快速入门
-本文档旨在指导用户快速在本地机器上部署并启动openLooKeng服务，更详细的安装要求和部署方式请参考[安装指南](../installation/_index.html)
+本文档旨在指导用户快速在本地机器上部署并启动openLooKeng服务，更详细的安装要求和部署方式请参考[安装指南](../docs/installation.html)
 
 ## 环境准备
 
@@ -29,7 +29,7 @@ wget -O - https://download.openlookeng.io/install.sh|bash
 
 当用户看到如下日志，便可以认为openLooKeng 部署成功了。
 
-<img src="./images/BE670A8C-9EA4-461D-AD22-AF12849D72F0.png" >
+![](./images/BE670A8C-9EA4-461D-AD22-AF12849D72F0.png)
 
 
 
@@ -37,11 +37,11 @@ wget -O - https://download.openlookeng.io/install.sh|bash
 
 - 一键部署给openLooKeng 默认配置了以下几个内置数据源，供用户直接使用。
 
-  - [tpcds](../connector/tpcds.html)
-  - [tpch](../connector/tpch.html)
-  - [memory](../connector/memory.html)
+  - [tpcds](../docs/connector/tpcds.html)
+  - [tpch](../docs/connector/tpch.html)
+  - [memory](../docs/connector/memory.html)
 
-- openLooKeng 的安装路径为`/opt/openlookeng`。用户可以在这里找到openLooKeng 的配置文件。关于配置文件以及配置项，你可以从[这里](../installation/deployment.html)了解到更多信息。
+- openLooKeng 的安装路径为`/opt/openlookeng`。用户可以在这里找到openLooKeng 的配置文件。关于配置文件以及配置项，你可以从[这里](../docs/installation/deployment.html)了解到更多信息。
 
 - 新的用户`openlkadmin`会被创建用于执行 openLooKeng 相关的操作，包括启动/停止openLooKeng 服务、扩展/减小集群规模等。
 
@@ -49,7 +49,7 @@ wget -O - https://download.openlookeng.io/install.sh|bash
 
 - openLooKeng的运行日志存储于`/home/openlookeng/.openlkadmin/`
 
-- 一键部署也提供了[命令行工具（cli)](../installation/cli.html)，用于连接openLooKeng 服务。
+- 一键部署也提供了[命令行工具（cli)](../docs/installation/cli.html)，用于连接openLooKeng 服务。
 
 
 
@@ -61,20 +61,20 @@ wget -O - https://download.openlookeng.io/install.sh|bash
 bash /opt/openlookeng/bin/openlk-cli 
 ```
 
-<img src="./images/cli.png" >
+![](./images/cli.png)
 
 
 在cli 中用户可以输入标准SQL 与openLooKeng 服务器端进行交互。
 
-例如，用户查看当前系统有已经配置的[catalog](../overview/concepts.html):
+例如，用户查看当前系统有已经配置的[catalog](../docs/overview/concepts.html):
 
 ```sql
 show catalogs;
 ```
 
-<img src="./images/catalogs.png" >
+![](./images/catalogs.png)
 
-查看有tpcds 有包含哪些[schema](../overview/concepts.html)：
+查看有tpcds 有包含哪些[schema](../docs/overview/concepts.html)：
 
 ```sql
 show schemas from tpcds;
@@ -102,7 +102,7 @@ tiny
 show tables from tpcds.sf1;
 ```
 
-<img src="./images/image-20200629140454598.png" >
+![](./images/image-20200629140454598.png)
 
 
 用户可以选择表进行数据检索：
@@ -111,7 +111,7 @@ show tables from tpcds.sf1;
 select c_customer_id, c_first_name, c_last_name from tpcds.sf1.customer limit 10;
 ```
 
-<img src="./images/image-20200629141214172.png" >
+![](./images/image-20200629141214172.png)
 
 或者运行更加复杂的多表联合查询：
 
@@ -128,10 +128,10 @@ SELECT
    GROUP BY "sr_customer_sk", "sr_store_sk"
 ```
 
-<img src="./images//image-20200629141757336.png" >
+![](./images/image-20200629141757336.png)
 
-用户可以查阅 [openLooKeng语法文档](../sql/_index.html)，了解更多语法规则。
+用户可以查阅 [openLooKeng语法文档](../docs/sql.html)，了解更多语法规则。
 
-关于openLooKeng 的更多功能和特性，请查阅[用户指导手册](../overview/_index.html)
+关于openLooKeng 的更多功能和特性，请查阅[用户指导手册](../docs/overview.html)
 
 
