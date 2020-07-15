@@ -201,3 +201,6 @@ main.container {
 #docstreeview > ul > .jstree-leaf {
     padding-left: 16px;
 }
+.jstree-anchor:focus {
+    outline: none;
+}
