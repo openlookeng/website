@@ -174,6 +174,12 @@
         });
         $('#docstreeview').on('ready.jstree', function (e, data) {
             $('#docstreeview').show();
+            $('.jstree-anchor').on('click', function () {
+                $(this).prev().trigger('click');
+                if (!$(this).parent('.jstree-leaf').length) {
+                    return false;
+                }
+            });
             var relativeURL = getRelativePath();
             var wholeData = $('#docstreeview').jstree().get_json();
             var currentID = getCurrentID(wholeData, relativeURL);
