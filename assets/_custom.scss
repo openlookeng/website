@@ -168,3 +168,36 @@ main.container {
 .mobile-header-wrapper {
     height: 70px;
 }
+@media screen and (max-width: 56rem) {
+    .book-menu {
+        margin-inline-start: -18rem;
+    }
+}
+.book-menu {
+    flex: 0 0 18rem;
+}
+@media screen and (max-width: 56rem) {
+    #menu-control:checked + main .book-menu nav, #menu-control:checked + main .book-page {
+        transform: translateX(18rem);
+    }
+}
+.jstree-open > i {
+    background:url(img/book-menu/Down.png) left center no-repeat !important;
+    width: 16px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: sub;
+}
+.jstree-closed > i {
+    background: url(img/book-menu/Right.png) left center no-repeat !important;
+    width: 16px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: sub;
+}
+.jstree-anchor {
+    display: inline-block;
+}
+#docstreeview > ul > .jstree-leaf {
+    padding-left: 16px;
+}

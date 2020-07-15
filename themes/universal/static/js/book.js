@@ -70,7 +70,7 @@
         }
 
     }));
-    $('.book-menu>nav>ul>li>a').remove();
+    // $('.book-menu>nav>ul>li>a').remove();
     var $activeMenuParents = $('.book-menu').find('.active').parents('li');
 
     $activeMenuParents.each(function () {
@@ -81,7 +81,7 @@
     });
     var $delArrowDown = $('.book-menu').find('.active');
     if (!$delArrowDown.hasClass('collapsed')) {
-        $delArrowDown.removeClass('arrow-down');
+        // $delArrowDown.removeClass('arrow-down');
     }
     $delArrowDown.closest('li').siblings().find('a').not('.collapsed').addClass('unsel-menu-color');
 
@@ -111,36 +111,6 @@
         });
     $('.book-toc nav').append(div);
 
-    // $('#book-search-input').attr('placeholder', 'Search');
-    // $('.book-toc nav').prepend($('.book-search'));
-
-    var $menuList = $('.book-menu nav>ul li a');
-    if(!$menuList.hasClass('active')){
-        $('#docPreviousPage').remove();
-        $('#docNextPage').remove();
-        $('.doc-back').remove();
-        $('.doc-next').remove();
-    }
-    $menuList.each(function (index) {
-        if ($(this).hasClass('active')) {
-            if (index === 0) {
-                $('.doc-back').remove();
-                $('#docPreviousPage').remove();
-            } else {
-                $('.doc-back').attr('href', $menuList.eq(index - 1).attr('href'));
-                $('#docPreviousPage').text('<' + $menuList.eq(index - 1).text());
-            }
-            if (index === ($menuList.length - 1)) {
-                $('.doc-next').remove();
-                $('#docNextPage').remove();
-            } else {
-                $('.doc-next').attr('href', $menuList.eq(index + 1).attr('href'));
-                $('#docNextPage').text($menuList.eq(index + 1).text() + '>');
-            }
-        }
-    });
-
-
     $('.book-header .book-header-title, .mask').click(function () {
         $('.book-header .book-icon').eq(0).trigger('click');
     });
@@ -158,5 +128,122 @@
     $('.book-menu nav > ul > li > ul > li > a').not('.collapsed').css({
         'padding-left': '20px'
     });
-
+    function getRelativePath() {
+        var url = location.href;
+        var arrURL = url.split('//');
+        return arrURL[1].substring(arrURL[1].indexOf('/'));
+    }
+    function getCurrentID(wholeData, relativeURL) {
+        for (var j in wholeData) {
+            var href = wholeData[j].a_attr.href;
+            var text = wholeData[j].text;
+            if ((href === relativeURL) || (text.indexOf(relativeURL) >= 0)) {
+                return wholeData[j].id;
+            } else {
+                if (wholeData[j].children.length > 0) {
+                    var v = getCurrentID(wholeData[j].children, relativeURL);
+                    if (v != '') {
+                        return v;
+                    }
+                }
+            }
+        }
+        return '';
+    }
+    if ($('#docstreeview').length) {
+        $('#docstreeview').jstree();
+        $('#docstreeview').jstree().hide_dots();
+        $('#docstreeview').jstree().hide_icons();
+        $('#docstreeview').on('changed.jstree', function (e, data) {
+            if (data.node) {
+                var link = data.node.a_attr.href;
+                if (link == '' || link == '#') {
+                    var aElementID = '#' + data.node.id + '_anchor';
+                    var aElement = $(aElementID).find('a');
+                    if (aElement.length) {
+                        link = aElement.attr('href');
+                    }
+                }
+                console.log(link);
+                var relativeURL = getRelativePath();
+                console.log(relativeURL);
+                if (link != relativeURL) {
+                    location.href = link;
+                }
+            }
+        });
+        $('#docstreeview').on('ready.jstree', function (e, data) {
+            $('#docstreeview').show();
+            var relativeURL = getRelativePath();
+            var wholeData = $('#docstreeview').jstree().get_json();
+            var currentID = getCurrentID(wholeData, relativeURL);
+            $('#docstreeview').jstree()._open_to(currentID);
+            $('#docstreeview').jstree().select_node(currentID);
+            $('#docstreeview').jstree().open_node(currentID);
+            var data = $('#docstreeview').jstree().get_json();
+            var nodeList = [];
+            /*把树状平铺，用于查看是否有上一页下一页*/
+            var getAllData = function (Arr) {
+                for (var i = 0; i < Arr.length; i++) {
+                    var tempNode = {};
+                    tempNode.id = Arr[i].id;
+                    var href = Arr[i].a_attr.href;
+                    if (href === '#') {
+                        /*转为jq对象特殊处理*/
+                        var jqNode = $(Arr[i].text);
+                        tempNode.href = jqNode.find('a').attr('href');
+                        tempNode.text = jqNode.find('a').text() || Arr[i].text;
+                    } else {
+                        tempNode.href = href;
+                        tempNode.text = Arr[i].text;
+                    }
+                    nodeList.push(tempNode);
+                    if (Arr[i].children !== []) {
+                        getAllData(Arr[i].children);
+                    }
+                }
+            };
+            /*获取上一页、下一页*/
+            var nextAndPevious = function (arr, id) {
+                var result = [];
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].id === id) {
+                        if (i === 0) {
+                            result.push(null);
+                        } else {
+                            result.push({
+                                href: arr[i - 1].href,
+                                text: arr[i - 1].text
+                            });
+                        }
+                        if (i === arr.length - 1) {
+                            result.push(null);
+                        } else {
+                            result.push({
+                                href: arr[i + 1].href,
+                                text: arr[i + 1].text
+                            });
+                        }
+                    }
+                }
+                return result;
+            };
+            getAllData(wholeData);
+            var nextAndPeviousArr = nextAndPevious(nodeList, currentID);
+            if (nextAndPeviousArr[0] == null) {
+                $('.doc-back').remove();
+                $('#docPreviousPage').remove();
+            } else {
+                $('.doc-back').attr('href', nextAndPeviousArr[0].href);
+                $('#docPreviousPage').text('<' + nextAndPeviousArr[0].text);
+            }
+            if (nextAndPeviousArr[1] == null) {
+                $('.doc-next').remove();
+                $('#docNextPage').remove();
+            } else {
+                $('.doc-next').attr('href', nextAndPeviousArr[1].href);
+                $('#docNextPage').text('<' + nextAndPeviousArr[1].text);
+            }
+        });
+    }
 })();

@@ -12,7 +12,6 @@ buildFuture = true
 # Define the number of posts per page
 paginate = 10
 
-
 [languages]
 
 [languages.en-us]
@@ -237,6 +236,7 @@ paginate = 10
 
     logo = "img/logo.png"
     logo_small = "img/logo-small.png"
+    BookMenuBundle = "/menu"
 
 [Permalinks]
     blog = "/blog/:year/:month/:day/:filename/"
