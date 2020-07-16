@@ -1,3 +1,8 @@
++++
+
+title = "DROP VIEW"
++++
+
 DROP VIEW
 =========
 
@@ -29,4 +34,4 @@ Drop the view `orders_by_date` if it exists:
 See Also
 --------
 
-[create-view](./create-view)
+[CREATE VIEW](./create-view.html)

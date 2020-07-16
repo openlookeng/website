@@ -1,3 +1,8 @@
++++
+
+title = "CREATE TABLE"
++++
+
 CREATE TABLE
 ============
 
@@ -110,5 +115,5 @@ Different connector might support different data type, and different table/colum
 See Also
 --------
 
-[alter-table](./alter-table), [drop-table](./drop-table), [create-table-as](./create-table-as), [show-create-table](./show-create-table)
+[ALTER TABLE](./alter-table.html), [DROP TABLE](./drop-table.html), [CREATE TABLE AS](./create-table-as.html), [SHOW CREATE TABLE](./show-create-table.html)
 

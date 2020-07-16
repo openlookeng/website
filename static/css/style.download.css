@@ -107,7 +107,7 @@
 .download-server p {
     text-align: center;
     color: rgba(0, 0, 0, .7);
-    font-family: HuaweiSansLight;
+    font-family: Roboto Light;
     margin-bottom: 25px;
 }
 
@@ -130,7 +130,7 @@
     width: 300px;
     text-align: left;
     font-size: 14px;
-    font-family: HuaweiSans;
+    font-family: Roboto Light;
 }
 
 .second-btn .download-btn {
@@ -154,7 +154,7 @@
     position: relative;
     top: 10px;
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
 }
 

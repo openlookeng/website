@@ -1,3 +1,8 @@
++++
+
+title = "SHOW CREATE TABLE"
++++
+
 SHOW CREATE TABLE
 =================
 
@@ -39,4 +44,4 @@ partitioned_by = ARRAY['orderdate']
 See Also
 --------
 
-[create-table](./create-table)
+[CREATE TABLE](./create-table.html)

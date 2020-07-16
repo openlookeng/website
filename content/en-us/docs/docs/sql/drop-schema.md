@@ -1,3 +1,8 @@
++++
+
+title = "DROP SCHEMA"
++++
+
 DROP SCHEMA
 ===========
 
@@ -35,4 +40,4 @@ Functionally, `CASCADE` and `RESTRICT` is not supported yet.
 See Also
 --------
 
-[alter-schema](./alter-schema), [create-schema](./create-schema)
+[ALTER SCHEMA](./alter-schema.html), [CREATE SCHEMA](./create-schema.html)

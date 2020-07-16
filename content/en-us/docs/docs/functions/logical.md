@@ -1,3 +1,8 @@
++++
+weight = 1
+title = "Logical Operators"
++++
+
 Logical Operators
 =================
 

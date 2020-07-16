@@ -6,4 +6,80 @@
     .isH5 {
         display: block;
     }
+    .isPC.img {
+        display: none;
+    }
+    .isH5.img {
+        display: block;
+    }
+    .lang a {
+        font-size: 16px;
+    }
+    .navbar ul.nav > li > a {
+        height: 52px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 994px) {
+    .isH5.img {
+        display: none;
+    }
+}
+
+/*-----------------------------------footer模块----------------------------------*/
+
+@media screen and (min-width: 995px){
+    .copyright-right {
+        /*display: flex;
+        justify-content: center;
+        align-items: center;*/
+    }
+
+    .pull-code {
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        padding: 4px 4px 4px 13px;
+        margin-left: 20px;
+        margin-top: 7px;
+        border-radius: 2px;
+        border: .5px solid rgba(225, 225, 225, .7);
+    }
+
+    .pull-code p {
+        margin: 0;
+    }
+
+    .pull-code p > span {
+        display: block;
+        line-height: 24px;
+        text-align: right;
+    }
+
+    .pull-code > img {
+        width: 60px;
+        height: 60px;
+        margin-left: 8px;
+    }
+}
+
+@media screen and (max-width: 994px) {
+    .pull-right {
+        text-align: center;
+        margin-top: 10px;
+    }
+    .pull-code {
+        text-align: center;
+    }
+    #copyright .pull-code p {
+        line-height: 14px;
+    }
+    .pull-code > img {
+        width: 80px;
+        height: 80px;
+    }
+    .pull-code p > span {
+        font-size: 12px;
+    }
 }

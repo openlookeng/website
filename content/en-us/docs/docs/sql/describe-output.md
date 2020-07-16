@@ -1,3 +1,8 @@
++++
+
+title = "DESCRIBE OUTPUT"
++++
+
 DESCRIBE OUTPUT
 ===============
 
@@ -71,4 +76,4 @@ rows        |         |        |       | bigint |         8 | false
 See Also
 --------
 
-[prepare](./prepare)
+[PREPARE](./prepare.html)

@@ -1,3 +1,8 @@
++++
+
+title = "DROP TABLE"
++++
+
 DROP TABLE
 ==========
 
@@ -29,4 +34,4 @@ Drop the table `orders_by_date` if it exists:
 See Also
 --------
 
-[alter-table](./alter-table), [create-table](./create-table)
+[ALTER TABLE](./alter-table.html), [CREATE TABLE](./create-table.html)

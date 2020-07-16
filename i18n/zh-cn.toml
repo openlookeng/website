@@ -102,3 +102,6 @@ other = "新闻"
 
 [DOCS_CONTENTS]
 other = "目录"
+
+[WECHAT_QRCODE]
+other = "微信公众号"

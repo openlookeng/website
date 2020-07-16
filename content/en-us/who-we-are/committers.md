@@ -6,14 +6,14 @@ small_title = "Committers"
 [[item]]
     title = "Ken Zhang"
     avatar = "img/foundation/KenZhang.png"
-    range = "R&D Analytics Platform Lab Director for various Research teams across the Globe"
-    content = "Ken leads and drives Analytics Platform Lab, oversees and guides members in all components areas to ensure benchmark. Ken has 20 years of cutting edge industry experience as Architect with IBM Watson Health, Thomson Reuters Open Platform etc. In his current role, he provides leadership and guidance to R&D members in Toronto, Shenzhen, Chengdu, Bangalore and Dublin."
+    range = "Analytics Platform Architect"
+    content = "Ken envisions a simplified big data platform in the hope of higher system and human efficiency. He leads the overall development of analytics engine support both AI and BI use cases requiring 100+ms response time through standard interfaces. Ken has 20 and counting years of development experience. In his current role, he provides leadership and guidance to R&D members in Toronto, Shenzhen, Chengdu, Bangalore and Dublin."
 
 [[item]]
-    title = "Micheal Li"
+    title = "Michael Li"
     avatar = "img/foundation/MichaelLi.png"
     range = "Team lead for Engine, Performance, Curation teams in Analytics Platform Lab"
-    content = "Micheal leads and guides engineers and researchers on multiple R&D projects. Nearly 2 years at Huawei Canada with Data Engine team, lead design, architecture, and delivery of key benchmarks. With 20 years of core experience with IBM and Platform Computing."
+    content = "Michael leads and guides engineers and researchers on multiple R&D projects. Nearly 2 years at Huawei Canada with Data Engine team, lead design, architecture, and delivery of key benchmarks. With 20 years of core experience with IBM and Platform Computing."
 
 [[item]]
     title = "Karmveer Singh"

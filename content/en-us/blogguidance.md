@@ -80,6 +80,11 @@ The following are one example.
 2020-01-01-new-years-is-coming-02.gif
 2020-01-01-new-years-is-coming-03.pdf
 ```
+To embed an image in your post, use HTML `<img>` tag and enter name of the image as `src` attribute:
+
+```
+<img src = "2020-01-01-new-years-is-coming-01.png">
+```
 
 5. Commit your post
 

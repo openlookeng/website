@@ -1,3 +1,8 @@
++++
+
+title = "DEALLOCATE PREPARE"
++++
+
 DEALLOCATE PREPARE
 ==================
 
@@ -23,5 +28,5 @@ Deallocate a statement with the name `my_query`:
 See Also
 --------
 
-[prepare](./prepare)
+[PREPARE](./prepare.html)
 

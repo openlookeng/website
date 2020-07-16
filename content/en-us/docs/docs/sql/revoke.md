@@ -1,3 +1,8 @@
++++
+
+title = "REVOKE"
++++
+
 REVOKE
 ======
 
@@ -15,7 +20,7 @@ Description
 
 Revokes the specified privileges from the specified grantee.
 
-Specifying `ALL PRIVILEGES` revokes [DELETE](delete.md), [INSERT](insert.md) and [SELECT](select.md) privileges.
+Specifying `ALL PRIVILEGES` revokes [DELETE](delete.html), [INSERT](insert.html) and [SELECT](select.html) privileges.
 
 Specifying `ROLE PUBLIC` revokes privileges from the `PUBLIC` role. Users will retain privileges assigned to them directly or via other roles.
 
@@ -46,4 +51,4 @@ Some connectors have no support for `REVOKE`. See connector documentation for mo
 See Also
 --------
 
-[grant](./grant), [ show-grants](./ show-grants)
+[GRANT](./grant.html), [SHOW GRANTS](./show-grants.html)

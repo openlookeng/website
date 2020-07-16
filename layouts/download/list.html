@@ -21,7 +21,8 @@
                                 href="{{ i18n "RELEASE_NOTES_URL" }}">{{ .Params.release_notes }}</a>{{ .Params.second_title_description2 }}
                         </p>
                         <h3 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h3>
-                        <img class="docs-pic" src="{{ "img/download/banner.png" | relURL }}" alt="">
+                        <img class="docs-pic isPC img" src="{{ "img/download/banner.png" | relURL }}" alt="">
+                        <img class="docs-pic isH5 img" src="{{ "img/download/banner-mobile.png" | relURL }}" alt="">
 
                     </div>
                     <div class="download-server">

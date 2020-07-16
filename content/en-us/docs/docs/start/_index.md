@@ -7,7 +7,7 @@ title = "Get Started"
 
 # Get Started
 
-This document provides guidance for users to quickly deploy and start the openLooKeng service on the local host. For details about the installation requirements and deployment mode, see [Installation Guide](https://openlookeng.io/docs/docs/installation.html).
+This document provides guidance for users to quickly deploy and start the openLooKeng service on the local host. For details about the installation requirements and deployment mode, see [Installation Guide](../docs/installation/deployment.html).
 
 ## Preparing the Environment
 
@@ -23,25 +23,25 @@ This document provides guidance for users to quickly deploy and start the openLo
 Run the following command to start the installation and deployment:
 
 ```shell
-wget -O - https://download.openlookeng.io/install.sh|sh
+wget -O - https://download.openlookeng.io/install.sh|bash
 ```
 
 This command is used to download the installation script from the openLooKeng official website and start the script. During the script running, the latest installation package and dependent components are automatically downloaded from the openLooKeng official website. After the download is complete, the deployment automatically starts. No extra operation is required.
 
 If the following log is displayed, openLooKeng is successfully deployed.
 
-<img src="./images/BE670A8C-9EA4-461D-AD22-AF12849D72F0.png" >
+![](./images/BE670A8C-9EA4-461D-AD22-AF12849D72F0.png)
 
 
 After successful deployment, you can learn the following information to better use the openLooKeng service.
 
 - By default, the following built-in data sources are configured for openLooKeng for one-click deployment:
 
-  - [tpcds](https://openlookeng.io/docs/docs/connector/tpcds.html)
-  - [tpch](https://openlookeng.io/docs/docs/connector/tpch.html)
-  - [memory](https://openlookeng.io/docs/docs/connector/memory.html)
+  - [tpcds](../docs/connector/tpcds.html)
+  - [tpch](../docs/connector/tpch.html)
+  - [memory](../docs/connector/memory.html)
 
-- The installation path of openLooKeng is `/opt/openlookeng`. You can find the configuration file of openLooKeng here. For more information about configuration files and configuration items, see [Here](https://openlookeng.io/docs/docs/installation/deployment.html).
+- The installation path of openLooKeng is `/opt/openlookeng`. You can find the configuration file of openLooKeng here. For more information about configuration files and configuration items, see [Here](../docs/installation/deployment.html).
 
 - The new user `openlkadmin` will be created to perform operations related to openLooKeng, including starting/stopping the openLooKeng service and expanding/reducing the cluster scale.
 
@@ -49,7 +49,7 @@ After successful deployment, you can learn the following information to better u
 
 - openLooKeng run logs are stored in `/home/openlkadmin/.openlkadmin/logs`.
 
-- One-click deployment also provides [CLI](https://openlookeng.io/docs/docs/installation/cli.html) for connecting to the openLooKeng service.
+- One-click deployment also provides [CLI](../docs/installation/cli.html) for connecting to the openLooKeng service.
 
 
 
@@ -61,20 +61,20 @@ Users can use the command line tool (cli) to connect to the openLooKeng service 
 bash /opt/openlookeng/bin/openlk-cli
 ```
 
-<img src="./images/cli.png" >
+![](./images/cli.png)
 
 
 Users can enter standard SQL in the CLI to interact with the openLooKeng server.
 
-For example, to view the configured [catalog](https://openlookeng.io/docs/docs/overview/concepts.html), run the following command:
+For example, to view the configured [catalog](../docs/overview/concepts.html), run the following command:
 
 ```sql
 show catalogs;
 ```
 
-<img src="./images/catalogs.png" >
+![](./images/catalogs.png)
 
-Run the following command to check the [schema](https://openlookeng.io/docs/docs/overview/concepts.html) contained in the tpcds:
+Run the following command to check the [schema](../docs/overview/concepts.html) contained in the tpcds:
 
 ```sql
 show schemas from tpcds;
@@ -102,7 +102,7 @@ Check the data tables in sf1.
 show tables from tpcds.sf1;
 ```
 
-<img src="./images/image-20200629140454598.png" >
+![](./images/image-20200629140454598.png)
 
 
 
@@ -112,7 +112,7 @@ You can select a table to search for data.
 select c_customer_id, c_first_name, c_last_name from tpcds.sf1.customer limit 10;
 ```
 
-<img src="./images/image-20200629141214172.png" >
+![](./images/image-20200629141214172.png)
 
 Or run more complex multi-table joint query:
 
@@ -129,11 +129,11 @@ AND ("d_year" = 2000)
 GROUP BY "sr_customer_sk", "sr_store_sk"
 ```
 
-<img src="./images//image-20200629141757336.png" >
+![](./images/image-20200629141757336.png)
 
-You can read the [openLooKeng syntax document](https://openlookeng.io/docs/docs/sql.html) to learn more syntax rules.
+You can read the [openLooKeng syntax document](../docs/sql.html) to learn more syntax rules.
 
-For more features and features of openLooKeng, please refer to the [User Guide](https://openlookeng.io/docs/docs/overview.html).
+For more features and features of openLooKeng, please refer to the [User Guide](../docs/overview.html).
 
 
 

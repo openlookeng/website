@@ -1,3 +1,8 @@
++++
+weight = 4
+title = "Lambda Expressions"
++++
+
 Lambda Expressions
 ==================
 

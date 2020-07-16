@@ -1,3 +1,8 @@
++++
+
+title = "SHOW CREATE VIEW"
++++
+
 SHOW CREATE VIEW
 ================
 
@@ -16,4 +21,4 @@ Show the SQL statement that creates the specified view.
 See Also
 --------
 
-[create-view](./create-view)
+[CREATE VIEW](./create-view.html)

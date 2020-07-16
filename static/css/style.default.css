@@ -35,26 +35,26 @@
 
 .pull-left {
     float: left !important;
+    margin: 10px 0;
 }
 
 .pull-left .logo {
-    width: 155px;
+    width: 158px;
     /*height: 60px;*/
     border-radius: 4px;
 }
 
 .pull-left .logo img {
-    width: 155px;
+    width: 158px;
     border-radius: 4px;
     margin-top: 15px;
 }
 
 .pull-left .logo-bottom {
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     color: rgba(255, 255, 255, .7);
     line-height: 14px;
-    margin-top: 11px;
 }
 
 .pull-left .logo-bottom .small-icon {
@@ -412,14 +412,12 @@ ul.list-style-none {
 }
 
 .navbar ul.nav > li > a {
-    /*text-transform: uppercase;*/
     text-decoration: none;
-    /*font-weight: bold;*/
     font-family: HuaweiSans;
     color: #000;
     letter-spacing: .08em;
-    border-top: solid 5px transparent;
-    height: 70px;
+    border-top: solid transparent;
+    height: 62px;
     font-size: 16px;
 }
 
@@ -682,7 +680,7 @@ body.boxed .navbar-affixed-top.affix {
 /* buttons */
 .btn {
     font-weight: 700;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Roboto-Regular, Roboto;
     text-transform: uppercase;
     letter-spacing: .08em;
     padding: 6px 12px;
@@ -1109,7 +1107,8 @@ fieldset[disabled] .btn-template-primary.active {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 40px 20px;
-    box-shadow: 1px 2px 10px 8px rgba(0, 0, 0, .15);
+    box-shadow:1px 2px 10px 0px rgba(0,0,0,0.15);
+    border-radius:8px;
 }
 
 .panel.sidebar-menu .panel-heading {
@@ -1203,7 +1202,7 @@ fieldset[disabled] .btn-template-primary.active {
 .panel.sidebar-menu .post-blog a {
     font-size: 18px;
     font-weight: normal;
-    color: #5a9b83;
+    color:rgba(0,0,0,1);;
 }
 
 .panel.sidebar-menu .post-blog a:hover,
@@ -1489,6 +1488,9 @@ fieldset[disabled] .btn-template-primary.active {
 @media (min-width: 995px) {
     .home-carousel .right {
         text-align: right;
+    }
+    .isH5.img {
+        display: none;
     }
 }
 
@@ -2317,7 +2319,8 @@ fieldset[disabled] .btn-template-primary.active {
 
 @media (max-width: 994px) {
     #heading-breadcrumbs h1 {
-        text-align: center;
+        color: #fff;
+        font-size: 3px;
     }
 }
 
@@ -2791,7 +2794,7 @@ fieldset[disabled] .btn-template-primary.active {
     font-weight: 300;
     font-size: 12px;
     font-weight: normal;
-    font-family: HuaweiSansLight;
+    font-family: Roboto-Light, Roboto;
 }
 
 #blog-listing-medium .post .clearfix {
@@ -2810,7 +2813,7 @@ fieldset[disabled] .btn-template-primary.active {
 #blog-listing-medium .post .tags a {
     display: inline-block;
     padding: 2px 10px 2px !important;
-    font-family: HuaweiSansLight;
+    font-family: Roboto-Light, Roboto;
     color:  rgba(0, 0, 0, .7);
     font-size: 12px;
     line-height: 12px;
@@ -2848,13 +2851,13 @@ fieldset[disabled] .btn-template-primary.active {
 @media (min-width: 995px) {
     #blog-listing-medium .post .date-comments {
         text-align: right;
-        font-family: HuaweiSansLight;
+        font-family: Roboto-Light, Roboto;
     }
 }
 
 #blog-listing-medium .post .intro {
     text-align: justify;
-    font-family: HuaweiSansLight;
+    font-family: Roboto-Regular, Roboto;
     color: rgba(0, 0, 0, .7);
     height: 52px;
     line-height: 26px;
@@ -2917,7 +2920,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 #blog-listing-medium .post .read-more .btn-template-main {
     border: none;
-    font-weight: 300;
+    font-weight: 400;
     color: #5a9b83;
     text-transform: none;
     padding: 0;
@@ -3392,7 +3395,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 #copyright p {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 }
 
 #copyright p img {
@@ -3796,9 +3799,14 @@ fieldset[disabled] .btn-template-primary.active {
 
 .navbar-brand {
     float: left;
-    padding: 25px 15px;
+    padding: 23px 15px;
     font-size: 18px;
     line-height: 20px;
+    height: 20px;
+}
+
+.navbar-brand > img {
+    width: 126px;
     height: 20px;
 }
 
@@ -3847,7 +3855,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar-nav .open .dropdown-menu > li > a,
     .navbar-nav .open .dropdown-menu .dropdown-header {
-        padding: 5px 15px 5px 25px;
+        /*padding: 5px 15px 5px 25px;*/
     }
 
     .navbar-nav .open .dropdown-menu > li > a {
@@ -3860,9 +3868,9 @@ fieldset[disabled] .btn-template-primary.active {
     }
 
     .navbar-nav > li {
-        border-bottom: 1px solid #cecbcb;
+        /*border-bottom: 1px solid #cecbcb;*/
         margin-left: 16px;
-        margin-right: 16px;
+        /*margin-right: 16px;*/
     }
 
     .navbar-nav > li > a {
@@ -3974,6 +3982,15 @@ fieldset[disabled] .btn-template-primary.active {
 
 #navigation #book-search-input {
     border-radius: 4px;
+    width: 90%;
+}
+
+#navigation .book-search {
+    text-align: center;
+}
+
+#navigation .book-search .search-input {
+    margin-left: 20px;
 }
 
 #navigation .nav-search-input ul {
@@ -4029,7 +4046,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 @media (min-width: 995px) {
     .navbar-nav > li:nth-last-child(3) {
-        margin-top: 21px;
+        margin-top: 20px;
         padding-left: 20px;
         margin-left: 20px;
         height: 31px;
@@ -4208,11 +4225,11 @@ fieldset[disabled] .btn-template-primary.active {
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #38a7bb;
+    background-color: #fff;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: # 888;
+    background-color: #888;
 }
 
 .navbar-default .navbar-collapse,
@@ -4295,7 +4312,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #267280;
+    color: #fff;
     text-decoration: underline;
 }
 
@@ -4545,6 +4562,7 @@ h3,
 
 p {
     margin: 0 0 10px;
+    font-family: Roboto Light;
 }
 
 .lead {
@@ -4970,7 +4988,7 @@ a.list-group-item.active > .badge,
 
 #content #blog-post #post-content {
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
     line-height: 26px;
 }
@@ -5347,6 +5365,7 @@ header {
 /*footer样式重写*/
 #copyright .container > div {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 0;
 }
@@ -5357,12 +5376,12 @@ header {
 
 #copyright .container .pull-right > a:first-child {
     padding: 0 10px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #copyright .container .pull-right > a:nth-child(2) {
     padding-left: 10px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #copyright .container .pull-right .pull-apache {
@@ -5380,12 +5399,8 @@ header {
         flex-direction: column;
     }
 
-    #copyright .container .pull-left {
-        margin-bottom: 20px;
-    }
-
     #copyright .container .pull-left .logo {
-        margin: 0 auto;
+        margin: 0 auto 5px;
     }
 
     .pull-left .logo-bottom {

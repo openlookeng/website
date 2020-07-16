@@ -197,7 +197,7 @@ h3.title {
     .home-banner .home-img a {
         width: 150px;
         margin-left: -75px;
-        top: -25%;
+        top: -3%;
     }
 
     .home-info-adapter {
@@ -303,6 +303,9 @@ h3.title {
     height: 80px;
 }
 
+.navbar-buttons .navbar-toggle .search-img {
+    vertical-align: middle;
+}
 @media (max-width: 994px) {
     .home-banner {
         padding: 40px 0 0 0;

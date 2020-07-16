@@ -4,6 +4,8 @@
 {{$lan := index (split .URL "/") 1 }}
 {{if ne $lan "zh-cn"}}
 {{$lan = "" }}
+{{else}}
+{{$lan = "zh-cn/" }}
 {{end}}
 <div class="panel sidebar-menu">
     <h3 class="post-blog">
@@ -20,7 +22,7 @@
         <ul class="tag-cloud">
             {{ $current := . }}
             {{ range $index, $items :=  .Site.Taxonomies.tags }}
-            <li><a href="{{ $.Site.BaseURL }}/{{$lan}}/tags/{{ $index | urlize }}.html"> {{ $index }}</a>
+            <li><a href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ $index | urlize }}.html"> {{ $index }}</a>
             </li>
             {{ end }}
         </ul>

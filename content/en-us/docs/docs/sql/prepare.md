@@ -1,3 +1,8 @@
++++
+
+title = "PREPARE"
++++
+
 PREPARE
 =======
 
@@ -34,4 +39,4 @@ Prepare an insert query:
 See Also
 --------
 
-[execute](./execute), [deallocate-prepare](./deallocate-prepare), [describe-input](./describe-input), [describe-output](./describe-output)
+[EXECUTE](./execute.html), [DEALLOCATE PREPARE](./deallocate-prepare.html), [DESCRIBE INPUT](./describe-input.html), [DESCRIBE OUTPUT](./describe-output.html)

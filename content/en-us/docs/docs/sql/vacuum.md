@@ -1,3 +1,8 @@
++++
+
+title = "VACUUM"
++++
+
 VACUUM
 ======
 
@@ -65,4 +70,4 @@ VACUUM TABLE compact_test_table_with_partition FULL AND WAIT;
 See Also
 --------
 
-[update](./update), [ delete](./ delete)
+[UPDATE](./update.html), [DELETE](./delete.html)

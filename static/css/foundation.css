@@ -19,7 +19,7 @@ h1 {
 .foundation-content p {
     word-wrap: break-word;
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family: Roboto-Regular, Roboto;
     color: rgba(0, 0, 0, .7);
     margin: 30px 0;
 }

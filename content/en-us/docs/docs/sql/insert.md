@@ -1,3 +1,8 @@
++++
+
+title = "INSERT"
++++
+
 INSERT
 ======
 
@@ -44,4 +49,4 @@ Insert a row without specifying the `comment` column. That column will be `null`
 See Also
 --------
 
-[values](./values), [insert-overwrite](./insert-overwrite)
+[VALUES](./values.html), [INSERT OVERWRITE](./insert-overwrite.html)

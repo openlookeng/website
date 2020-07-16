@@ -1,3 +1,8 @@
++++
+weight = 16
+title = "SQL Server"
++++
+
 SQL Server Connector
 ====================
 
@@ -64,9 +69,8 @@ openLooKeng supports the following SQL Server data types. The following table sh
 | `varchar(n)`    | `varchar(n)` |
 | `date`          | `date`       |
 
-Complete list of [SQL Server data
-types](https://msdn.microsoft.com/en-us/library/ms187752.aspx).
+Complete list of [SQL Server data types](https://msdn.microsoft.com/en-us/library/ms187752.aspx).
 
 The following SQL statements are not yet supported:
 
-[delete](../sql/delete), [grant](../sql/grant), [revoke](../sql/revoke)
+[DELETE](../sql/delete.html), [GRANT](../sql/grant.html), [REVOKE](../sql/revoke.html)

@@ -1,3 +1,8 @@
++++
+
+title = "CREATE SCHEMA"
++++
+
 CREATE SCHEMA
 =============
 
@@ -39,4 +44,4 @@ Create the schema `traffic` if it does not already exist:
 See Also
 --------
 
-[alter-schema](./alter-schema) ,[drop-schema](./drop-schema)
+[ALTER SCHEMA](./alter-schema.html) ,[DROP SCHEMA](./drop-schema.html)

@@ -1,3 +1,8 @@
++++
+weight = 2
+title = "DataCenter"
++++
+
 Data Center Connector
 ====================
 
@@ -89,4 +94,4 @@ Data Center Connector Limitations
 
 Data Center connector is a read-only connector. The following SQL statements are not yet supported:
 
-[alter-schema](../sql/alter-schema), [alter-table](../sql/alter-table), [analyze](../sql/analyze), [cache-table](../sql/cache-table), [comment](../sql/comment), [create-schema](../sql/create-schema), [create-table](../sql/create-table), [create-table-as](../sql/create-table-as), [create-view](../sql/create-view), [delete](../sql/delete), [drop-cache](../sql/drop-cache), [drop-schema](../sql/drop-schema), [drop-table](../sql/drop-table), [drop-view](../sql/drop-view), [grant](../sql/grant), [insert](../sql/insert), [insert-overwrite](../sql/insert-overwrite), [revoke](../sql/revoke), [revoke](../sql/revoke), [show-cache](../sql/show-cache), [show-create-view](../sql/show-create-view), [show-grants](../sql/show-grants), [show-roles](../sql/show-roles), [show-role-grants](../sql/show-role-grants), [update](../sql/update), [vacuum](../sql/vacuum)
+[ALTER SCHEMA](../sql/alter-schema.html), [ALTER TABLE](../sql/alter-table.html), [ANALYZE](../sql/analyze.html), [CACHE TABLE](../sql/cache-table.html), [COMMENT](../sql/comment.html), [CREATE SCHEMA](../sql/create-schema.html), [CREATE TABLE](../sql/create-table.html), [CREATE TABLE AS](../sql/create-table-as.html), [CREATE VIEW](../sql/create-view.html), [DELETE](../sql/delete.html), [DROP CACHE](../sql/drop-cache.html), [DROP SCHEMA](../sql/drop-schema.html), [DROP TABLE](../sql/drop-table.html), [DROP VIEW](../sql/drop-view.html), [GRANT](../sql/grant.html), [INSERT](../sql/insert.html), [INSERT OVERWRITE](../sql/insert-overwrite.html), [REVOKE](../sql/revoke.html), [SHOW CACHE](../sql/show-cache.html), [SHOW CREATE VIEW](../sql/show-create-view.html), [SHOW GRANTS](../sql/show-grants.html), [SHOW ROLES](../sql/show-roles.html), [SHOW ROLE GRANTS](../sql/show-role-grants.html), [UPDATE](../sql/update.html), [VACUUM](../sql/vacuum.html)

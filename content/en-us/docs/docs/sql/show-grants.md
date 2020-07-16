@@ -1,3 +1,8 @@
++++
+
+title = "SHOW GRANTS"
++++
+
 SHOW GRANTS
 ===========
 
@@ -41,4 +46,4 @@ Some connectors have no support for `SHOW GRANTS`. See connector documentation f
 See Also
 --------
 
-[grant](./grant), [ revoke](./ revoke)
+[GRANT](./grant.html), [REVOKE](./revoke.html)

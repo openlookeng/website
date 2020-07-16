@@ -1,3 +1,8 @@
++++
+weight = 8
+title = "Decimal Functions and Operators"
++++
+
 Decimal Functions and Operators
 ===============================
 

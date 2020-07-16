@@ -1,3 +1,8 @@
++++
+
+title = "SET ROLE"
++++
+
 SET ROLE
 ========
 
@@ -27,4 +32,4 @@ Some connectors do not support role management. See connector documentation for 
 See Also
 --------
 
-[create-role](./create-role), [drop-role](./drop-role), [grant-roles](./grant-roles), [revoke-roles](./revoke-roles)
+[CREATE ROLE](./create-role.html), [DROP ROLE](./drop-role.html), [GRANT ROLES](./grant-roles.html), [REVOKE ROLES](./revoke-roles.html)

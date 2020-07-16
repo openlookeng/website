@@ -1,3 +1,8 @@
++++
+
+title = "ROLLBACK"
++++
+
 ROLLBACK
 ========
 
@@ -24,4 +29,4 @@ ROLLBACK WORK;
 See Also
 --------
 
-[commit](./commit), [start-transaction](./start-transaction)
+[COMMIT](./commit.html), [START TRANSACTION](./start-transaction.html)

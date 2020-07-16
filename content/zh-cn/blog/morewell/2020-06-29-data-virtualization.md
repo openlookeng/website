@@ -24,7 +24,7 @@ description = "介绍数据虚拟化的起源以及什么是数据虚拟化"
 
 目前从业界来看，数据虚拟化技术在未来将拥有非常好的前景。Gartner认为在2019年数据虚拟化将节省40%的数据集成成本，并预测到2020年将有50%的组织和企业采用数据虚拟化作为他们的数据集成技术，到2022年这个数据将变为60%（Gartner Market Guide for Data Virtualization，16 November 2018）。
 
-![Source: Gartner (September 2018)](<img src="/zh-cn/blog/morewell/2020-06-29-data-virtualization-03.jpg">)
+<img src="/zh-cn/blog/morewell/2020-06-29-data-virtualization-03.jpg">
 
 根据Gartner的预测，在不远的未来，将会有越来越多的企业通过引入数据虚拟化技术来应对和解决他们的大数据业务需求；与此同时多个研究分析机构或媒体对于数据虚拟化市场也持看好姿态，均预测在未来几年数据虚拟化的市场将呈现非常可观的增长趋势。
 

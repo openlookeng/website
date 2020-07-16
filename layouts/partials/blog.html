@@ -20,7 +20,7 @@
                 {{ if .Params.date }}{{ .Date.Format .Site.Params.date_format }}{{ end }}
             </p>
             {{ end }}
-            <p class="two-row">{{ .Params.description }}</p>
+            <p class="two-row">{{ .Summary }}</p>
         </li>
         {{ end }}
     </ul>
