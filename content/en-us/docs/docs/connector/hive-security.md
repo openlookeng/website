@@ -1,9 +1,3 @@
-
-Authorization
--------------
-
-You can enable authorization checks for the [hive](./hive) by setting the `hive.security` property in the Hive catalog properties file. This property must be one of the following values:
-=======
 +++
 weight = 8
 title = "Hive Security Configuration"

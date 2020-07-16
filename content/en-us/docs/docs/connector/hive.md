@@ -1,7 +1,3 @@
-
-Overview
---------
-=======
 +++
 weight = 6
 title = "Hive"

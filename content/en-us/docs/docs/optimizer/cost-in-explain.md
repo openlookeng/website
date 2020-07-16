@@ -1,6 +1,3 @@
-
-During planning, the cost associated with each node of the plan is computed based on the table statistics for the tables in the query. This calculated cost is printed as part of the output of an [EXPLAIN](../sql/explain) statement.
-=======
 +++
 weight = 2
 title = "Cost in EXPLAIN"

@@ -1,6 +1,3 @@
-
-All of the regular expression functions use the [Java pattern]() syntax, with a few notable exceptions:
-=======
 +++
 weight = 10
 title = "Regular Expression Functions"

@@ -1,5 +1,3 @@
-
-A system access control plugin enforces authorization at a global level, before any connector level authorization. You can either use one of the built-in plugins in openLooKeng or provide your own by following the guidelines in [system-access-control](../en/develop/system-access-control). openLooKeng offers three built-in plugins:
 =======
 +++
 weight = 5
