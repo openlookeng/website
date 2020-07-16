@@ -1,4 +1,3 @@
-=======
 +++
 weight = 21
 title = "Quantile Digest Functions"
