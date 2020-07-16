@@ -16,10 +16,10 @@ $(function () {
         $tabsContent.hide().eq($(this).index()).show();
     });
 
-    $tabsContent.eq(0).find('.foundation-tab-pane-title span').addClass('inner-arrow-down');
+    // $tabsContent.eq(0).find('.foundation-tab-pane-title span').addClass('inner-arrow-down');
 
     if ($(window).width() < 978) {
-        $tabsContent.show().eq(0).siblings().find('.foundation-tab-pane-title').siblings().hide();
+        $tabsContent.show().find('.foundation-tab-pane-title').siblings().hide();
     }
 
     $tabsContentTitle.on('click', function () {
@@ -34,6 +34,7 @@ $(function () {
                 .closest('.foundation-tab-pane-title')
                 .siblings()
                 .hide();
+            $('html, body').scrollTop($(this).offset().top - 70);
         }
     });
 
