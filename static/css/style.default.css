@@ -3726,7 +3726,7 @@ fieldset[disabled] .btn-template-primary.active {
 .navbar-fixed-top .navbar-collapse,
 .navbar-affixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
-    max-height: 340px;
+    /*max-height: 340px;*/
 }
 
 @media (max-width: 480px) and (orientation: landscape) {
@@ -3825,14 +3825,14 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 .navbar-toggle {
-    position: relative;
+    /*position: relative;
     float: right;
     margin-right: 15px;
-    padding: 9px 10px;
+    padding: 9px 10px;*/
     margin-top: 11px;
-    margin-bottom: 11px;
+    /*margin-bottom: 11px;
     background-image: none;
-    border-radius: 0;
+    border-radius: 0;*/
     border: none;
 }
 
@@ -3885,9 +3885,16 @@ fieldset[disabled] .btn-template-primary.active {
         text-align: left;
     }
 
+    .navbar ul.nav > li > a {
+        border-bottom: none;
+        height: 30px;
+        color: #000;
+    }
+
     .navbar ul.nav > li.open > a {
         border-bottom: none;
         height: 30px;
+        color: #000;
     }
 
     .nav-search {
@@ -4241,7 +4248,7 @@ fieldset[disabled] .btn-template-primary.active {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
     background-color: #fff;
-    color: #5a9b83;
+    color: #000;
 }
 
 @media (max-width: 994px) {

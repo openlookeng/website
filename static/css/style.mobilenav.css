@@ -82,4 +82,12 @@
     .pull-code p > span {
         font-size: 12px;
     }
+    a i[class^="fa"],
+    button i[class^="fa"] {
+        margin-left: 20px;
+    }
+    .navbar ul.nav > li > a:hover {
+        color: #000;
+        border-bottom: none;
+    }
 }
