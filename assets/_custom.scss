@@ -172,6 +172,13 @@ main.container {
     .book-menu {
         margin-inline-start: -18rem;
     }
+    .book-menu > nav {
+        height: 100vh;
+        overflow-y: scroll;
+    }
+    #content {
+        overflow-x: hidden;
+    }
 }
 .book-menu {
     flex: 0 0 18rem;
