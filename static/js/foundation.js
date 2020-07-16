@@ -16,8 +16,6 @@ $(function () {
         $tabsContent.hide().eq($(this).index()).show();
     });
 
-    // $tabsContent.eq(0).find('.foundation-tab-pane-title span').addClass('inner-arrow-down');
-
     if ($(window).width() < 978) {
         $tabsContent.show().find('.foundation-tab-pane-title').siblings().hide();
     }

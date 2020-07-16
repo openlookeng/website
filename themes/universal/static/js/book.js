@@ -70,7 +70,7 @@
         }
 
     }));
-    // $('.book-menu>nav>ul>li>a').remove();
+
     var $activeMenuParents = $('.book-menu').find('.active').parents('li');
 
     $activeMenuParents.each(function () {
@@ -80,9 +80,7 @@
         }
     });
     var $delArrowDown = $('.book-menu').find('.active');
-    if (!$delArrowDown.hasClass('collapsed')) {
-        // $delArrowDown.removeClass('arrow-down');
-    }
+
     $delArrowDown.closest('li').siblings().find('a').not('.collapsed').addClass('unsel-menu-color');
 
     var div = document.createElement('div');
