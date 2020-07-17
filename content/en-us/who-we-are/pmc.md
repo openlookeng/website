@@ -45,6 +45,21 @@ small_title = "PMC Members"
     avatar = "img/foundation/WeiMao.png"
     range = "openLooKeng Version Manager, Huawei Software Engineer"
     content = "Wei Mao has participated in the development and delivery of multiple projects in the technical field of computer non-volatile storage systems, big data query and analysis engines, and project management. Currently, he is committed to building the competitivemess of openLooKeng as the version leader."
+
+
+[[item]]
+    title = "Xutianli"
+    avatar = "img/foundation/xutianli.png"
+    range = "HUAWEI CLOUD Big Data Architect"
+    content = "Xutianli is working as big data architecture on HUAWEI CLOUD. He was also member of openLooKeng design team."
+
+
+[[item]]
+    title = "Lifeng Xu"
+    avatar = "img/foundation/xulifeng.png"
+    range = "Senior Big Data Architect of HUAWEI CLOUD"
+    content = "Responsible for the architecture and technology planning of Big Data which is dedicated to provide leading big data products and solutions on Huawei Cloud Stack for enterprises. With rich experience in developing and implementing products and projects such as big data platform, machine learning, personalized recommendation, and graph computing."
+
 +++
 
 # PMC (Project Management Committee)  
