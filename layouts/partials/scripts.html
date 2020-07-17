@@ -6,7 +6,7 @@
 <script src='{{ "common/jquery.waypoints.min.js" | relURL }}'></script>
 <script src='{{ "common/jquery.counterup.min.js" | relURL }}'></script>
 <script src='{{ "common/jquery-parallax.js" | relURL }}'></script>
-
+<script src='{{ "common/jqtree.js" | relURL }}' crossorigin="anonymous"></script>
 <script src='{{ "js/front.js" | relURL }}{{ .Site.Params.version }}'></script>
 <script src='{{ "js/nav_event.js" | relURL }}{{ .Site.Params.version }}'></script>
 
@@ -20,4 +20,11 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(hm, s);
     })();
+    //中英文页面下使用不同字体
+    if ({{ .Site.LanguageCode }} === "zh-cn") {
+        $('h1,h2,h3,h4,h5,div,p,a,li,span').attr("style", "font-family:方正兰亭!important");
+    } else {
+        $('div,p,a,li,span').attr("style", "font-family:roboto!important");
+        $('h1,h2,h3,h4,h5').attr("style", "font-family:HuaweiSans!important");
+    }
 </script>

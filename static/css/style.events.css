@@ -7,7 +7,7 @@
 .event-list .event-content .event-leftline {
     border-left: 2px solid #000;
     opacity: .09;
-    height: 2400px;
+    height: 65%;
     position: absolute;
     left: 240px;
     top: 610px;
@@ -101,11 +101,8 @@
     }
     .event-list .event-content {
         margin-bottom: 40px;
-        padding: 30px 0;
     }
-    .event-list .event-content {
-        padding: 60px 0;
-    }
+
     .event-list .event-content .event-box img {
         max-width: 200px;
     }
@@ -122,7 +119,7 @@
     .event-list .event-content .event-leftline {
         border-left: 2px solid #000;
         opacity: .09;
-        height: 840px;
+        height: 75%;
         position: absolute;
         left: 140px;
         top: 330px;
@@ -142,5 +139,6 @@
         position: relative;
         left: 170px;
         width: 200px;
+        margin-top: 60px;
     }
 }
