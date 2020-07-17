@@ -1,7 +1,3 @@
-+++
-weight = 1
-title = "Data Types"
-+++
 
 Data Types
 ==========
@@ -11,7 +7,7 @@ openLooKeng has a set of built-in data types, described below. Additional types 
 
 **Note**
 
-*Connectors are not required to support all types. See [Connectors](../connector/_index.html) for details on supported types.*
+*Connectors are not required to support all types. See [Connectors](../connector.html) for details on supported types.*
 
 Boolean
 -------
@@ -183,6 +179,7 @@ Structural
 > An array of the given component type.
 >
 > Example: `ARRAY[1, 2, 3]`
+
 
 ### `MAP`
 

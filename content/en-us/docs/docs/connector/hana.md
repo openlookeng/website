@@ -1,7 +1,3 @@
-+++
-weight = 4
-title = "Hana"
-+++
 
 Hana Connector
 ==============
@@ -204,7 +200,7 @@ Hana sql migrate to openLooKeng sql guide
 
 ### SQL grammar differences between hana and openLooKeng
 
-Such as \'map\' function in hana sql which is used to transform the row data into column data is not support by openLooKeng sql. But you can use the \'case\' as an alternative implementation.
+Such as `map` function in hana sql which is used to transform the row data into column data is not support by openLooKeng sql. But you can use the `case` as an alternative implementation.
 
 For example, if you have a table named SCORES:
 
@@ -220,7 +216,7 @@ For example, if you have a table named SCORES:
 | ww   | Math    | 80    |
 | ww   | English | 90    |
 
-In hana you can use \'map\' function to transform the row data into column data:
+In hana you can use `map` function to transform the row data into column data:
 
 ```sql
 SELECT
@@ -232,13 +228,13 @@ FROM SCORES
 GROUP BY NAME
 ```
 
-In openLookeng, you can use \'case\' as an alternative implementation:
+In openLookeng, you can use `case` as an alternative implementation:
 
 The other differences between hana and openLooKeng sql grammar, please refer to the official document list below:
 
 | name        | web address                                                                                                    |
 | :-----------| :------------------------------------------------------------------------------------------------------------- |
-| openLooKeng | [SQL Grammar](../sql/_index.html)                                                                                  |
+| openLooKeng | [SQL Grammar](../sql.html)                                                                                  |
 | hana        | [SQL Grammar](https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/en-US/20ff532c751910148657c32fe3431a9f.html) |
 
 ### Time dependent type\'s Differences
