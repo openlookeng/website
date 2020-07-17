@@ -220,7 +220,7 @@ main.container {
 }
 @media screen and (max-width: 56rem) {
     #menu-control:checked + main .book-menu nav, #menu-control:checked + main .book-page {
-        transform: translateX(20rem);
+        transform: translateX(19rem);
     }
 }
 .jstree-open > i {
@@ -261,6 +261,7 @@ main.container {
         top: 130px;
         max-height: calc(100vh - 265px);
         overflow-y: scroll;
+        padding-right: 0;
     }
 }
 
@@ -268,7 +269,13 @@ main.container {
     .book-menu > nav {
         padding: 0;
     }
+    #docstreeview {
+        padding-left: 10px;
+    }
 }
 .book-toc-avtive {
     color: #5A9B83 !important;
+}
+.doc-menu-control {
+    text-align: center;
 }
