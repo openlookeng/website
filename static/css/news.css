@@ -7,7 +7,6 @@
 .news-card .container p {
     font-size: 14px;
     font-family: Roboto-Regular, Roboto;
-    opacity: .7;
     margin-bottom: 20px;
 }
 .news-card .container .post {
@@ -54,9 +53,8 @@
 }
 .news-card .container .post .view-more a {
     color: #5a9b83;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Helvetica-Light;
-    opacity: .7;
 }
 
 /* ---------------------------------news-sigle页面-------------------------------- */

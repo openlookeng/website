@@ -1672,9 +1672,8 @@ fieldset[disabled] .btn-template-primary.active {
 }
 .news-card .container .post .view-more a {
   color: #5a9b83;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Helvetica-Light;
-  opacity: 0.7;
 }
 .customers {
   padding: 0;
@@ -3722,9 +3721,9 @@ a {
 }
 a:hover,
 a:focus {
-  color: #267280;
-  text-decoration: underline;
+  text-decoration: none;
 }
+
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
