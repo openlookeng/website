@@ -45,6 +45,21 @@ small_title = "PMC 委员"
     avatar = "img/foundation/WeiMao.png"
     range = "openLooKeng版本经理，华为软件工程师"
     content = "冒伟先后参与计算机非易失存储系统、大数据查询分析引擎等技术领域多个项目的开发交付和项目管理工作，目前作为版本负责人致力于openLooKeng的竞争力构筑。"
+
+
+[[item]]
+    title = "许田立"
+    avatar = "img/foundation/xutianli.png"
+    range = "华为云大数据架构师"
+    content = "负责华为大数据平台产品的系统设计工作，有丰富的系统架构设计经验，精通各类大数据组件，Openlookeng的首批设计人员，负责多个特性的设计工作。"
+
+
+[[item]]
+    title = "徐礼锋"
+    avatar = "img/foundation/xulifeng.png"
+    range = "华为云大数据高级架构师"
+    content = "负责Huawei Cloud Stack大数据产品架构与技术规划，致力于为企业提供领先的大数据产品和解决方案，有丰富的大数据平台、机器学习、个性化推荐、图计算等产品和项目开发实施经验。"
+
 +++
 
 # PMC (项目管理委员会)  
