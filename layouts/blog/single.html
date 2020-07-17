@@ -33,7 +33,7 @@
 
                             {{ if or .Params.author .Params.date }}
                                 <p class="text-left blog-12px">
-                                    {{ if .Params.author }}{{ i18n "authorBy" }} <a href="#">{{ .Params.author }}</a>{{ end }}
+                                    {{ if .Params.author }}{{ i18n "authorBy" }} {{ .Params.author }}</a>{{ end }}
                                     {{ if and .Params.author .Params.date }}
                                         <span class="character fz12">|</span>
                                     {{ end }}
@@ -41,7 +41,7 @@
                                         <span class="character fz12">|</span>
                                     {{ end }}
                                     {{ range $index, $item := .Params.tags }}
-                                        <span class="tag"><a href="#">{{ $item }}</a></span>
+                                        <span class="tag">{{ $item }}</a></span>
                                     {{ end }}
                                 </p>
                             {{ end }}

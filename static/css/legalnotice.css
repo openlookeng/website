@@ -1,16 +1,17 @@
 #content .legal-title {
     color: #000;
-    font-size: 34px;
+    font-size: 30px;
     font-family: HuaweiSans;
     line-height: 48px;
     margin: 100px 0 60px 0;
 }
 
-#content h3 {
+#content h3,
+#content strong {
     margin: 30px 0 20px 0;
-    font-size: 16px;
+    font-size: 24px;
     color: #000;
-    font-family: HuaweiSans;
+    font-family:HuaweiSans;
     height: 26px;
     line-height: 26px;
 }
@@ -18,9 +19,14 @@
 #content p {
     color: rgba(0, 0, 0, .7);
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    font-family:Roboto-Regular,Roboto;
 
 }
+
+#content ul {
+    color: rgba(0, 0, 0, .7);
+}
+
 #content {
     margin-bottom: 100px;
 }
