@@ -185,7 +185,7 @@
             }
         });
         $('#docstreeview').on('ready.jstree', function (e, data) {
-            $('#docstreeview').show();
+            $('#docstreeview').removeClass('hide');
             $('.jstree-anchor').on('click', function () {
                 $(this).prev().trigger('click');
                 if (!$(this).parent('.jstree-leaf').length) {
