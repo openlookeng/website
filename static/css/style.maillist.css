@@ -28,9 +28,15 @@
 .maillist .maillist-info table tr td:first-child {
     padding-left: 60px;
 }
-.table-striped > tbody > tr:nth-of-type(odd) {
+.table-striped > thead > tr {
     background-color: rgba(0, 0, 0, .05);
 }
+.table-striped > tbody > tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, .05);
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+     background-color: #fff;
+ }
 .maillist .maillist-guidance p {
     font-size: 14px;
     font-family: Roboto-Regular, Roboto;
@@ -243,7 +249,7 @@
     .maillist .maillist-info table tr td a {
         color: #5a9b83;
     }
-    .table-striped > tbody > tr:nth-of-type(odd) {
+    .table-striped > tbody > tr:nth-of-type(even) {
         background-color: rgba(0, 0, 0, .05);
     }
     .maillist .maillist-info table tr td:first-child {
@@ -330,7 +336,7 @@
     .maillist .maillist-info table tr td a {
         color: #5a9b83;
     }
-    .table-striped > tbody > tr:nth-of-type(odd) {
+    .table-striped > tbody > tr:nth-of-type(even) {
         background-color: rgba(0, 0, 0, .05);
     }
     .maillist .maillist-info table tr td:first-child {
@@ -507,8 +513,8 @@
         margin: 0 auto;
     }
     .maillist .maillist-info span {
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 400;
     }
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
@@ -520,11 +526,17 @@
         margin: 40px auto 40px;
         box-sizing: border-box;
     }
-    .table > thead > tr > th:first-child,
-    .maillist .maillist-info table tr td:first-child
-    {
-        padding-left: 15px;
+    .maillist .maillist-info table td {
+        line-height: 26px;
     }
+    .table > thead > tr > th:first-child,
+    .maillist .maillist-info table tr td:first-child {
+        padding-left: 15px;
+        vertical-align: middle;
+    }.table > thead > tr > th:first-child,
+     .maillist .maillist-info table tr td:nth-child(2) {
+         vertical-align: middle;
+     }
     .isH5 > p {
         font-size: 14px;
         text-align: left;
@@ -547,11 +559,10 @@
         font-size: 24px;
     }
     .isH5 .maillist-H5-step .maillist-H5-description {
-        width: 380px;
         box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
         border-radius: 8px;
         padding: 25px 20px;
-        margin: 0 auto;
+        margin: 0 45px;
     }
     .isH5 .maillist-H5-step .maillist-H5-description p {
         margin: 0;

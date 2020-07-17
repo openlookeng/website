@@ -41,11 +41,14 @@ $(function (){
         navEvent()
         // debounce(navEvent, 1000)
     }
-    
-
 
     if($(window).width() < 751){
         $(".container .navbar-header").append($(".lang"));
+
+        $('.navbar-toggle').click(function () {
+            $('.search-img').eq(0).toggleClass('mobile')
+            $('.search-img').eq(1).toggleClass('mobile')
+        });
     }
     if($(window).width() < 978){
         $("#search").append($(".nav-search-input .book-search"));
@@ -57,7 +60,6 @@ $(function (){
             if(!$(".container .navbar-header").find(".lang").length){
                 $(".container .navbar-header").append($(".lang"));  
             }
-            
         }else{
             if(!$(".container .nav-search").find(".lang").length){
                 $(".container .nav-search").before($(".lang"));   
@@ -76,7 +78,6 @@ $(function (){
             }
             
         }
-
     })
 
     $(".nav-search").on("click", function (){
