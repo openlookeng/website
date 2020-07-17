@@ -22,6 +22,10 @@ body {
     border-radius: 8px;
 }
 
+#TableOfContents {
+    padding-top: 2em;
+}
+
 .book-toc nav a {
     color: rgba(0, 0, 0, .7);
     font-size: 16px;
@@ -121,19 +125,24 @@ li:not(.book-section-flat) ul {
     color: rgba(0, 0, 0, .7) !important;
     font-family: Helvetica-Light, Helvetica;
 }
-
-.book-menu a {
+.book-menu > nav > div > ul > li > a > p > a {
     font-size: 16px;
+}
+.book-menu a {
+    font-size: 14px;
+    font-family: HuaweiSans;
 }
 
 .book-page .markdown h1 {
-    font-size: 34px;
+    font-size: 30px;
     color: #000;
+    font-family: HuaweiSans;
 }
 
 .book-page .markdown h2 {
-    font-size: 34px;
+    font-size: 24px;
     color: #000;
+    font-family: HuaweiSans;
 }
 
 .book-page .markdown p,
@@ -141,7 +150,7 @@ li:not(.book-section-flat) ul {
 .book-page .markdown ol li {
     font-size: 14px;
     color: rgba(0, 0, 0, .7);
-    font-family: HuaweiSansLight;
+    font-family: Roboto-regular;
 }
 
 .book-page .markdown a {
@@ -150,6 +159,7 @@ li:not(.book-section-flat) ul {
 
 .book-toc {
     left: 0;
+    padding-top: 70px !important;
 }
 
 main.container {
@@ -170,22 +180,47 @@ main.container {
 }
 @media screen and (max-width: 56rem) {
     .book-menu {
-        margin-inline-start: -18rem;
+        margin-inline-start: -20rem;
     }
     .book-menu > nav {
-        height: 100vh;
         overflow-y: scroll;
+        width: 18rem;
+        padding-left: 3px !important;
+        background-color: #fff;
+        z-index: 2;
+        position: fixed;
+        top: 130px;
+        max-height: calc(100vh - 130px);
     }
     #content {
         overflow-x: hidden;
+        margin-bottom: 0;
     }
 }
 .book-menu {
-    flex: 0 0 18rem;
+    flex: 0 0 20rem;
+    margin-top: 60px;
+}
+.book-menu > nav {
+    overflow-x: visible;
+}
+.book-menu > nav::-webkit-scrollbar {
+    width: 4px;
+}
+.book-menu > nav::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+.book-menu > nav::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+
 }
 @media screen and (max-width: 56rem) {
     #menu-control:checked + main .book-menu nav, #menu-control:checked + main .book-page {
-        transform: translateX(18rem);
+        transform: translateX(20rem);
     }
 }
 .jstree-open > i {
@@ -194,6 +229,7 @@ main.container {
     height: 20px;
     display: inline-block;
     vertical-align: sub;
+    margin-right: 2px;
 }
 .jstree-closed > i {
     background: url(img/book-menu/Right.png) left center no-repeat !important;
@@ -201,6 +237,9 @@ main.container {
     height: 20px;
     display: inline-block;
     vertical-align: sub;
+    position: relative;
+    left: 4px;
+    margin-right: 2px;
 }
 .jstree-anchor {
     display: inline-block;
@@ -210,4 +249,26 @@ main.container {
 }
 .jstree-anchor:focus {
     outline: none;
+}
+@media screen and (min-width: 80rem) {
+    .book-page, .book-menu nav, .book-toc nav {
+        padding-top: unset;
+    }
+    .book-menu > nav {
+        background-color: #fff;
+        z-index: 2;
+        position: fixed;
+        top: 130px;
+        max-height: calc(100vh - 265px);
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (max-width: 56rem) {
+    .book-menu > nav {
+        padding: 0;
+    }
+}
+.book-toc-avtive {
+    color: #5A9B83 !important;
 }

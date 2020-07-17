@@ -6,6 +6,11 @@
 $(function () {
     $('.tag-filter .tag-filter-header .header-left').on('click', function () {
         $('.tag-filter .tag-filter-content').toggleClass('hide');
+        $('.blog-mask').toggleClass('hide');
+    });
+    $('.blog-mask').on('click', function () {
+        $(this).toggleClass('hide');
+        $('.tag-filter .tag-filter-content').toggleClass('hide');
     });
     $($(window).scroll(function () {
 

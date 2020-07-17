@@ -156,3 +156,6 @@
 a {
     color: #5A9B83;
 }
+html {
+    overflow-y: scroll;
+}

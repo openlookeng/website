@@ -2,6 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
 
     {{ partial "head.html" . }}
+    <link rel="stylesheet" href="{{ "css/blog.css" | relURL}}{{ .Site.Params.version }}">
     {{$lan := index (split .URL "/") 1 }}
     {{if ne $lan "zh-cn"}}
     {{$lan = "" }}
@@ -18,7 +19,29 @@
           {{ partial "nav.html" . }}
 
       </header>
-
+      <div class="blog-mask hide"></div>
+      <div class="tag-filter">
+          <div class="tag-filter-header">
+              <div class="header-left">
+                  <img style="height:16px; width: 16px;" src="../img/blogs/ic_filter.png" alt="">
+                  <span>{{ i18n "MAIN_POSTBLOG_FILTER"}}</span>
+              </div>
+              <div  class="header-right">
+                  <a style="color:rgba(0,0,0,1);line-height:26px;" href={{ i18n "BLOG_LINK"}} >
+                  <img style="height:16px; width: 16px;" src="../img/blogs/Style.png" alt="">
+                  <span>{{ i18n "MAIN_POSTBLOG_SOURCE"}}</span>
+              </a>
+              </div>
+          </div>
+          <div class="tag-filter-content hide">
+              <p>{{ i18n "SIDEBAR_TAG" }}</p>
+              <ul>
+                  {{ range $name, $items := .Site.Taxonomies.tags }}
+                      <a href="{{ "tags/" | relURL }}{{ $name | urlize | lower }}.html"> {{ $name }}</a>
+                      {{ end }}
+              </ul>
+          </div>
+      </div>
       <div id="content" class="blog-footer">
           <div class="container">
               <div class="row">
@@ -90,6 +113,7 @@
     <!-- /#all -->
 
     {{ partial "scripts.html" . }}
+    <script src="{{ "js/blog.js" | relURL }}{{ .Site.Params.version }}"></script>
 
 </body>
 </html>
