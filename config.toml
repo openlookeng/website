@@ -63,6 +63,13 @@ paginate = 10
     parent = 'community'
 
 [[menu.main]]
+    identifier = "security"
+    name = "Security"
+    url  = "/security.html"
+    weight = 4
+    parent = 'community'    
+
+[[menu.main]]
     identifier = "newsroom"
     name = "Newsroom"
     weight = 4
@@ -156,6 +163,14 @@ paginate = 10
     url  = "/zh-cn/communication.html"
     weight = 3
     parent = 'community'
+
+
+[[languages.zh-cn.menu.main]]
+    identifier = "security"
+    name = "安全"
+    url  = "/zh-cn/security.html"
+    weight = 4
+    parent = 'community'   
 
 [[languages.zh-cn.menu.main]]
     identifier = "newsroom"
