@@ -2895,10 +2895,8 @@ fieldset[disabled] .btn-template-primary.active {
 
 #blog-listing-medium .post .read-more .btn-template-main {
     border: none;
-    font-weight: 400;
+    font-size: 14px;
     color: #5a9b83;
-    text-transform: none;
-    padding: 0;
 }
 
 #blog-listing-medium .post .read-more .btn-template-main:hover {
@@ -4252,11 +4250,9 @@ a {
     text-decoration: none;
     color: #FFF;
 }
-
 a:hover,
 a:focus {
-    color: #fff;
-    text-decoration: underline;
+  text-decoration: none;
 }
 
 a:focus {
