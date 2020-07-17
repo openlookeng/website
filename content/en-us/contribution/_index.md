@@ -1,6 +1,6 @@
 +++
 top_title ="Your Contribution is More than Welcome"
-mobile_title = "Contribution Guide"
+mobile_title = "Contribution"
 middle_title = "Start your contribution here!"
 
 step_one_title = "Sign the CLA before You Start"
