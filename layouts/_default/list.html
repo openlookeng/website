@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
 
     {{ partial "head.html" . }}
-    <link rel="stylesheet" href="{{ "css/blog.css" | relURL}}{{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ "css/blog.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
     {{$lan := index (split .URL "/") 1 }}
     {{if ne $lan "zh-cn"}}
     {{$lan = "" }}
@@ -113,7 +113,7 @@
     <!-- /#all -->
 
     {{ partial "scripts.html" . }}
-    <script src="{{ "js/blog.js" | relURL }}{{ .Site.Params.version }}"></script>
+    <script src="{{ "js/blog.js?v=20200717" | relURL }}{{ .Site.Params.version }}"></script>
 
 </body>
 </html>

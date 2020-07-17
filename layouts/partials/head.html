@@ -18,7 +18,7 @@
     {{ hugo.Generator }}
 
     <!-- Font -->
-    <link rel="stylesheet" href="{{ "css/font.css" | relURL}}{{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ "css/font.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
 
     <!-- Bootstrap and Font Awesome CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -26,21 +26,21 @@
 
 
     <!-- CSS animations  -->
-    <link href="{{ "css/animate.css" | relURL}}" rel="stylesheet">
+    <link href="{{ "css/animate.css?v=20200717" | relURL}}" rel="stylesheet">
 
     <!-- Theme stylesheet, if possible do not edit this stylesheet -->
     {{ with .Site.Params.style }}
     <link href="{{ "css/style" | relURL}}.{{ . }}.css" rel="stylesheet" id="theme-stylesheet">
     {{ else }}
-    <link href="{{ "css/style.default.css" | relURL}}" rel="stylesheet" id="theme-stylesheet">
+    <link href="{{ "css/style.default.css?v=20200717" | relURL}}" rel="stylesheet" id="theme-stylesheet">
     {{ end }}
 
     <!-- Download stylesheet-->
-    <link href="{{ "css/style.download.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/style.mobilenav.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/style.maillist.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/style.events.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/news.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.download.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.mobilenav.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.maillist.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.events.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/news.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
 
     <!-- Responsivity for older IE -->
     {{ `
@@ -55,8 +55,8 @@
     <link rel="apple-touch-icon" href="{{ "img/apple-touch-icon.png" | relURL }}" >
 
     <!-- owl carousel CSS -->
-    <link href="{{ "css/owl.carousel.css" | relURL}}" rel="stylesheet">
-    <link href="{{ "css/owl.theme.css" | relURL}}" rel="stylesheet">
+    <link href="{{ "css/owl.carousel.css?v=20200717" | relURL}}" rel="stylesheet">
+    <link href="{{ "css/owl.theme.css?v=20200717" | relURL}}" rel="stylesheet">
 
     <!-- RSS feed -->
     <link rel="alternate" href="{{ "/index.xml" | absURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
