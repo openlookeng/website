@@ -77,6 +77,17 @@ a {
     border: .5px solid rgba(0, 0, 0, .39);
 
 }
+.blog-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 70px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 2;
+}
 
 
 
@@ -85,5 +96,6 @@ a {
 @media (max-width: 994px) {
     .tag-filter {
         display: block;
+        z-index: 3;
     }
 }
