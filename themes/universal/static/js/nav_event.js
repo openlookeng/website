@@ -66,6 +66,15 @@ $(function (){
         }
     }
 
+    var judgeDocs = function (str) {
+
+        if (str.includes('docs')) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     var navStyle = function () {
 
         var currentUrl = window.location.href
@@ -73,10 +82,11 @@ $(function (){
         currentUrl = currentUrl.split('/')
         var strUrl = currentUrl.join('')
 
-        if (judgeCommunity(strUrl)) {
+        if (judgeDocs(strUrl)) {
+            $(".dropdown").eq(1).addClass('active')
+        } else if (judgeCommunity(strUrl)) {
             $(".dropdown").eq(2).addClass('active')
-        }
-        if (judgeNewsroom(strUrl)) {
+        } else if (judgeNewsroom(strUrl)) {
             $(".dropdown").eq(3).addClass('active')
         }
     }

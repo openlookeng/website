@@ -96,4 +96,7 @@
     .navbar-buttons .navbar-toggle .search-img.mobile {
         display: none;
     }
+    .header-right a {
+        color: #000;
+    }
 }
