@@ -184,7 +184,6 @@ Structural
 >
 > Example: `ARRAY[1, 2, 3]`
 
-
 ### `MAP`
 
 > A map between the given component types.
