@@ -1,5 +1,5 @@
 .container .foundation-content{
-    margin: 120px 0;
+    margin: 100px 0;
 
 }
 
@@ -295,6 +295,10 @@ ul {
 
 
 @media (max-width: 994px) {
+    .container .foundation-content{
+        margin: 40px 0;
+
+    }
     .small-title {
         display: none;
     }
