@@ -164,4 +164,7 @@
     .second-btn {
         margin-top: 40px;
     }
+    .second-btn .download-btn p {
+        width: 80%;
+    }
 }

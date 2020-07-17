@@ -7,13 +7,13 @@ openLooKeng is a high-performance distributed data virtualization query engine t
 Join us to build a more secure big data in-memory computing engine.
 
 ### Reporting Security Issues to the openLooKeng Community
-
+<br>
 Use the [Suspected Security Issue Reporting Template ](https://gitee.com/openlookeng/community/blob/master/security/report-template_en.md) to report the potential security issue so that the vulnerability management team (VMT) can identify and fix the issue as soon as possible. Your email will be acknowledged within one working day and replied with more details and subsequent handling measures within seven days.
 
 - Please send your email to securities@openlookeng.io.
 
 ### Security Issue Disclosure Process in the openLooKeng Community
-
+<br>
 The security issues are handled as follows:
 
 - After receiving the security issue reported, the VMT immediately confirms the issue severity and integrity of the information reported.
@@ -23,7 +23,7 @@ The security issues are handled as follows:
 - Release the patch and SA.
 
 ### openLooKeng Community VMT
-
+<br>
 The VMT consists of vulnerability management experts in the community. The team is responsible for coordinating the entire vulnerability fixing process, including:
 
 - Vulnerability collection: Potential security vulnerabilities discovered by community members and external researchers can be reported to the VMT via securities@openlookeng.io.
@@ -31,6 +31,6 @@ The VMT consists of vulnerability management experts in the community. The team 
 - Responsible disclosure: After the vulnerability is fixed, the VMT releases the vulnerability information to the community in the form of SA.
 
 ### openLooKeng SA
-
+<br>
 
 
