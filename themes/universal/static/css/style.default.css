@@ -1624,7 +1624,7 @@ fieldset[disabled] .btn-template-primary.active {
   font-size: 34px;
   line-height: 48px;
   font-weight: normal;
-  margin: 100px -15px 50px -15px;
+  margin: 120px -15px 50px -15px;
 }
 
 .news-card .container .post {
@@ -2543,7 +2543,7 @@ fieldset[disabled] .btn-template-primary.active {
   text-align: right;
 }
 .blog-post {
-  margin: 100px 0 60px;
+  margin: 120px 0 60px;
   font-size: 34px;
 }
 #blog-listing-medium .post {
