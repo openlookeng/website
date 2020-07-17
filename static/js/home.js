@@ -4,10 +4,11 @@
 
 $(function () {
     $('video').on('click', function () {
+        var that = this;
         if ($(this)[0].paused) {
             $(this).attr('controls', true);
             setTimeout(function () {
-                $(this)[0].play();
+                $(that)[0].play();
             });
 
         }

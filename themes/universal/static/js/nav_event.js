@@ -90,5 +90,13 @@ $(function (){
             $(".nav-search-input").removeClass("nav-search-input-show");
         }
     });
+    $('#book-search-results').hide();
+    $('#book-search-input').on('input', function () {
+        if ($(this).val()) {
+            $('#book-search-results').show();
+        } else {
+            $('#book-search-results').hide();
+        }
+    });
 })
 
