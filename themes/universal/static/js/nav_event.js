@@ -1,9 +1,9 @@
 $(function (){
     var es = function (selector){
-        var elements = document.querySelectorAll(selector)
+        var elements = document.querySelectorAll(selector);
         if (elements.length === 0) {
-            var s = "选择器" + selector + "获取错误"
-            alert(s)
+            var s = "选择器" + selector + "获取错误";
+            alert(s);
             return null
         } else {
             return elements
@@ -11,30 +11,30 @@ $(function (){
     }
 
     var childHide = function (element, target){
-        var arrow = element.querySelector('.dropdown-arrow')
-        var t = target
+        var arrow = element.querySelector('.dropdown-arrow');
+        var t = target;
         element.addEventListener('mouseleave', function () {
-            target.classList.remove('hover')
-            arrow.classList.remove('hover')
+            target.classList.remove('hover');
+            arrow.classList.remove('hover');
         })
     }
 
     var childShow = function (element, target){
-        var arrow = element.querySelector('.dropdown-arrow')
-        var t = target
+        var arrow = element.querySelector('.dropdown-arrow');
+        var t = target;
         element.addEventListener('mouseover', function (e) {
-            target.classList.add('hover')
-            arrow.classList.add('hover')
+            target.classList.add('hover');
+            arrow.classList.add('hover');
         })
     }
 
     var navEvent = function (){
-        var uls = es('.dropdown-menu')
+        var uls = es('.dropdown-menu');
         for (var i = 0; i < uls.length; i++) {
-            var ul = uls[i]
-            var parent = ul.closest('.dropdown')
-            childShow(parent, ul)
-            childHide(parent, ul)
+            var ul = uls[i];
+            var parent = ul.closest('.dropdown');
+            childShow(parent, ul);
+            childHide(parent, ul);
         }
     }
 
@@ -77,23 +77,23 @@ $(function (){
 
     var navStyle = function () {
 
-        var currentUrl = window.location.href
+        var currentUrl = window.location.href;
 
-        currentUrl = currentUrl.split('/')
-        var strUrl = currentUrl.join('')
+        currentUrl = currentUrl.split('/');
+        var strUrl = currentUrl.join('');
 
         if (judgeDocs(strUrl)) {
-            $(".dropdown").eq(1).addClass('active')
+            $(".dropdown").eq(1).addClass('active');
         } else if (judgeCommunity(strUrl)) {
-            $(".dropdown").eq(2).addClass('active')
+            $(".dropdown").eq(2).addClass('active');
         } else if (judgeNewsroom(strUrl)) {
-            $(".dropdown").eq(3).addClass('active')
+            $(".dropdown").eq(3).addClass('active');
         }
     }
 
     var __main = function (){
-        navEvent()
-        navStyle()
+        navEvent();
+        navStyle();
         // debounce(navEvent, 1000)
     }
 
@@ -101,13 +101,15 @@ $(function (){
         $(".container .navbar-header").append($(".lang"));
 
         $('.navbar-toggle').click(function () {
-            $('.search-img').eq(0).toggleClass('mobile')
-            $('.search-img').eq(1).toggleClass('mobile')
+            $('.search-img').eq(0).toggleClass('mobile');
+            $('.search-img').eq(1).toggleClass('mobile');
             $('.nav-mask').toggleClass('hide');
         });
         $('.nav-mask').on('click', function () {
+            $('.search-img').eq(0).toggleClass('mobile');
+            $('.search-img').eq(1).toggleClass('mobile');
             $(this).toggleClass('hide');
-            $('#navigation').removeClass('in')
+            $('#navigation').removeClass('in');
         });
     }
     if($(window).width() < 978){
