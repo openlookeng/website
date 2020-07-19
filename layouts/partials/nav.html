@@ -89,6 +89,9 @@
     var switchLanguage = function(){
         var url = window.location.href;
 
+        if (url.indexOf('tags/') > -1){
+            window.location.href = url.substring(0, url.indexOf('tags/')) + 'blog.html';
+        }
         if (url.indexOf('zh-cn/')>-1) {
             if (url.indexOf('news/') > -1) {
                 url = url.replace('zh-cn/','');
