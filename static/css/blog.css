@@ -93,7 +93,10 @@ a {
     background: rgba(0,0,0,0.2);
     z-index: 2;
 }
-
+.selectedTag{
+    color: #5a9b83 !important;
+    border-color: #5a9b83 !important;
+}
 
 
 

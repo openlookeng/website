@@ -9,7 +9,7 @@
     {{else}}
     {{$lan = "zh-cn/" }}
     {{end}}
-
+    {{ $currentTag :=.Title}}
     <body>
 
     <div id="all">
@@ -60,25 +60,29 @@
                                 <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
                                 <div class="clearfix">
                                 <p class="author">
-                                        {{ if isset .Params "author" }}
-                                        <span>{{ .Params.author }}</span>
-                                        {{ end }}
-                                    </p>
-                                    {{ if isset .Params "date" }}
-                                    <p class="date-comments">
-                                        <span class="character">|</span>
-                                        <span> {{ .Date.Format .Site.Params.date_format }}</span>
-                                        <span class="character">|</span>
-                                    </p>
+                                    {{ if isset .Params "author" }}
+                                    <span>{{ .Params.author }}</span>
                                     {{ end }}
-                                    <p class="tags">
-                                            {{ if isset .Params "tags" }}
-                                            {{ if gt (len .Params.tags) 0 }}
-                                            {{ range .Params.tags }}
-                                            <a  href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ . | urlize }}.html">{{ . }}</a>
-                                            {{ end }}
-                                            {{ end }}
-                                            {{ end }}
+                                </p>
+                                {{ if isset .Params "date" }}
+                                <p class="date-comments">
+                                    <span class="character">|</span>
+                                    <span> {{ .Date.Format .Site.Params.date_format }}</span>
+                                    <span class="character">|</span>
+                                </p>
+                                {{ end }}
+                                <p class="tags">
+                                    {{ if isset .Params "tags" }}
+                                    {{ if gt (len .Params.tags) 0 }}
+                                    {{ range .Params.tags }}
+                                    {{ if eq $currentTag .}}
+                                    <a  href="{{ $.Site.BaseURL }}{{$lan}}blog.html" class="selectedTag">{{ . }}</a>
+                                    {{ else }}
+                                    <a  href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ . | urlize }}.html">{{ . }}</a>
+                                    {{ end }}
+                                    {{ end }}
+                                    {{ end }}
+                                    {{ end }}
                                 </p>
                                 </div>
                                 <p class="intro">{{ .Summary }}</p>
