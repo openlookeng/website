@@ -103,6 +103,11 @@ $(function (){
         $('.navbar-toggle').click(function () {
             $('.search-img').eq(0).toggleClass('mobile')
             $('.search-img').eq(1).toggleClass('mobile')
+            $('.nav-mask').toggleClass('hide');
+        });
+        $('.nav-mask').on('click', function () {
+            $(this).toggleClass('hide');
+            $('#navigation').removeClass('in')
         });
     }
     if($(window).width() < 978){
@@ -154,5 +159,6 @@ $(function (){
             $('#book-search-results').hide();
         }
     });
+
 })
 
