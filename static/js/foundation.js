@@ -22,17 +22,13 @@ $(function () {
 
     $tabsContentTitle.on('click', function () {
         if (!$(this).find('span').hasClass('inner-arrow-down')) {
-            $(this).find('span').addClass('inner-arrow-down')
+            $(this).find('span').removeClass('inner-arrow-right').addClass('inner-arrow-down')
                 .closest('.foundation-tab-pane')
-                .find('.inner').show()
+                .find('.inner').show();
+        } else {
+            $(this).find('span').removeClass('inner-arrow-down').addClass('inner-arrow-right')
                 .closest('.foundation-tab-pane')
-                .siblings()
-                .find('.foundation-tab-pane-title span')
-                .removeClass('inner-arrow-down')
-                .closest('.foundation-tab-pane-title')
-                .siblings()
-                .hide();
-            $('html, body').scrollTop($(this).offset().top - 70);
+                .find('.inner').hide();
         }
     });
 
