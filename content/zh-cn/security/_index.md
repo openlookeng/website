@@ -6,7 +6,7 @@ openLooKeng是一个高性能的分布式数据虚拟化查询引擎，支持跨
 为了构建更安全的大数据内存计算引擎，需要您一起来参与。
 
 ### 如何向openLooKeng社区上报安全问题
-
+<br>
 
 如果您发现了疑似安全问题，请您使用[疑似安全问题上报模板](https://gitee.com/openlookeng/community/blob/master/security/report-template_zh_cn.md)进行反馈，以便社区漏洞管理团队在能够获得足够详细信息的条件下，尽快确认并修复问题。您的邮件将在1个工作日内得到确认，在7天内对您反馈的疑似安全问题提供更详细的回复，并给出下一步的处理策略。
 
