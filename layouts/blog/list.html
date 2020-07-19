@@ -38,7 +38,7 @@
                 <p>{{ i18n "SIDEBAR_TAG" }}</p>
                 <ul>
                     {{ range $name, $items := .Site.Taxonomies.tags }}
-                        <a href="{{ "tags/" | relURL }}{{ $name | urlize | lower }}.html"> {{ $name }}</a>
+                        <a href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ $name | urlize }}.html"> {{ $name }}</a>
                         {{ end }}
                 </ul>
             </div>

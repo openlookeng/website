@@ -37,8 +37,63 @@ $(function (){
             childHide(parent, ul)
         }
     }
+
+    var judgeCommunity = function (str) {
+
+        if (str.includes('contribution')) {
+            return true
+        } else if (str.includes('who-we-are')) {
+            return true
+        } else if (str.includes('communication')) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    var judgeNewsroom = function (str) {
+
+        if (str.includes('tags')) {
+            return true
+        } else if (str.includes('blog')) {
+            return true
+        } else if (str.includes('news')) {
+            return true
+        } else if (str.includes('events')) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    var judgeDocs = function (str) {
+
+        if (str.includes('docs')) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    var navStyle = function () {
+
+        var currentUrl = window.location.href
+
+        currentUrl = currentUrl.split('/')
+        var strUrl = currentUrl.join('')
+
+        if (judgeDocs(strUrl)) {
+            $(".dropdown").eq(1).addClass('active')
+        } else if (judgeCommunity(strUrl)) {
+            $(".dropdown").eq(2).addClass('active')
+        } else if (judgeNewsroom(strUrl)) {
+            $(".dropdown").eq(3).addClass('active')
+        }
+    }
+
     var __main = function (){
         navEvent()
+        navStyle()
         // debounce(navEvent, 1000)
     }
 
@@ -55,6 +110,7 @@ $(function (){
     }else{
         __main();
     }
+
     $(window).resize(function (){
         if($(window).width() < 751){
             if(!$(".container .navbar-header").find(".lang").length){
