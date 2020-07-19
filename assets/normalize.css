@@ -196,7 +196,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+  -webkit-appearance: none;
 }
 
 /**
@@ -306,7 +306,7 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
+  -webkit-appearance: none; /* 1 */
   font: inherit; /* 2 */
 }
 
