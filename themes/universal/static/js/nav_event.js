@@ -46,6 +46,8 @@ $(function (){
             return true
         } else if (str.includes('communication')) {
             return true
+        }  else if (str.includes('security')) {
+            return true
         } else {
             return false
         }
