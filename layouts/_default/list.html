@@ -24,7 +24,7 @@
           <div class="tag-filter-header">
               <div class="header-left">
                   <img style="height:16px; width: 16px;" src="../img/blogs/ic_filter.png" alt="">
-                  <span>{{ i18n "MAIN_POSTBLOG_FILTER"}}</span>
+                  <span class="selectedTag">{{ i18n "MAIN_POSTBLOG_FILTER"}}</span>
               </div>
               <div  class="header-right">
                   <a style="color:rgba(0,0,0,1);line-height:26px;" href={{ i18n "BLOG_LINK"}} >
@@ -36,9 +36,13 @@
           <div class="tag-filter-content hide">
               <p>{{ i18n "SIDEBAR_TAG" }}</p>
               <ul>
-                  {{ range $name, $items := .Site.Taxonomies.tags }}
-                      <a href="{{ "tags/" | relURL }}{{ $name | urlize | lower }}.html"> {{ $name }}</a>
-                      {{ end }}
+                {{ range $name, $items := .Site.Taxonomies.tags }}
+                {{ if eq ($currentTag|urlize)  ($name|urlize) }}
+                <a href="{{ $.Site.BaseURL }}{{$lan}}blog.html" class="selectedTag"> {{ $name }}</a>
+                {{ else }}
+                <a href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ $name | urlize | lower }}.html" > {{ $name }}</a>
+                {{ end }}
+                {{ end }}
               </ul>
           </div>
       </div>
