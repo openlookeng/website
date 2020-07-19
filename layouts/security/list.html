@@ -5,7 +5,10 @@
 
 <body>
     <div id="all">
-        {{ partial "nav.html" . }}
+        <header>
+            {{ partial "nav.html" . }}
+        </header>
+        <div class="nav-mask hide"></div>
         <div id="content">
             <div class="container">
                 <h2 class="policy-title">{{ .Params.title }}</h2>
