@@ -21,9 +21,14 @@
     <div class="panel-body">
         <ul class="tag-cloud">
             {{ $current := . }}
+            {{ $currentTag := index (split $current "/") 2}}
+            {{ $currentTag := index (split $currentTag ")") 0}}
             {{ range $index, $items :=  .Site.Taxonomies.tags }}
-            <li><a href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ $index | urlize }}.html"> {{ $index }}</a>
-            </li>
+            {{ if eq $index $currentTag }}
+            <li><a href="{{ $.Site.BaseURL }}{{$lan}}blog.html" class="selectedTag"> {{ $index }}</a></li>
+            {{ else}}
+            <li><a href="{{ $.Site.BaseURL }}{{$lan}}tags/{{ $index | urlize }}.html"> {{ $index }}</a></li>
+            {{ end }}
             {{ end }}
         </ul>
     </div>
