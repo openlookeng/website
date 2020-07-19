@@ -6,6 +6,7 @@
     margin: 120px 0 60px 0;
 }
 
+
 #content h3,
 #content strong {
     margin: 30px 0 20px 0;
@@ -27,9 +28,6 @@
     color: rgba(0, 0, 0, .7);
 }
 
-.container {
-    color: rgba(0, 0, 0, .7);
-}
 
 #content {
     margin-bottom: 100px;
