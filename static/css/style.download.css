@@ -129,6 +129,9 @@
     color: #5A9B83;
     width: 80%;
 }
+.download-container {
+    min-height: calc(100vh - 203px);
+}
 
 @media (max-width: 994px) {
     .download-button {

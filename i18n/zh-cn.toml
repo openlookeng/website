@@ -52,6 +52,9 @@ other = "友好链接"
 [MAIN_POSTBLOG_SOURCE]
 other = "写博客"
 
+[MAIN_POSTBLOG_FILTER]
+other = "标签筛选"
+
 [OPEN_EULER_WEBSITE_URL]
 other = "https://openeuler.org/zh/"
 

@@ -140,6 +140,30 @@
     .bar .container .col-md-6 > a p {
         text-align: center;
     }
+    #blog-post .tag-mobile {
+        border: 1px solid rgba(0, 0, 0, .7);
+        border-radius: 4px;
+        padding: 1px 10px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: rgba(0, 0, 0, .7);
+    }
+    #blog-post .tag-mobile-wrapper {
+        margin-bottom: 40px;
+    }
+    p.blog-12px .tag {
+        display: none;
+    }
+    .mobile-character {
+        display: none;
+    }
+    #content #blog-post p.blog-12px {
+        margin-bottom: 20px;
+    }
+    #all .blog-single-title {
+        margin-bottom: 0;
+    }
 }
 
 
@@ -158,4 +182,13 @@ a {
 }
 html {
     overflow-y: scroll;
+}
+p.blog-12px .tag {
+    border: 1px solid rgba(0, 0, 0, .7);
+    border-radius: 4px;
+    padding: 2px 15px;
+    margin-left: 10px;
+}
+header {
+    height: 60px;
 }

@@ -159,6 +159,56 @@ $(function (){
             $('#book-search-results').hide();
         }
     });
-
+    $('.nav-lang-btn').on('click', function () {
+        var url = window.location.href;
+        if (url.indexOf('zh-cn/')>-1) {
+            if (url.indexOf('tags/') > -1){
+                url = url.replace('zh-cn/','');
+                window.location.href = url.substring(0, url.indexOf('tags/')) + 'blog.html';
+                return false;
+            }
+            if (url.indexOf('news/') > -1) {
+                url = url.replace('zh-cn/','');
+                backToList(url, 'news/', 'news.html/')
+            } else if (url.indexOf('blog/') > -1) {
+                url = url.replace('zh-cn/','');
+                backToList(url, 'blog/', 'blog.html/')
+            } else {
+                url = url.replace('zh-cn/','');
+                window.location.href = url;
+            }
+        } else {
+            if (url.indexOf('tags/') > -1){
+                url = url.replace('openlookeng.io/', 'openlookeng.io/zh-cn/');
+                window.location.href = url.substring(0, url.indexOf('tags/')) + 'blog.html';
+                return false;
+            }
+            if (url.indexOf('news/') > -1) {
+                url = url.replace('openlookeng.io/', 'openlookeng.io/zh-cn/');
+                backToList(url, 'news/', 'news.html/')
+            } else if (url.indexOf('blog/') > -1) {
+                url = url.replace('openlookeng.io/', 'openlookeng.io/zh-cn/');
+                backToList(url, 'blog/', 'blog.html/')
+            } else {
+                url = url.replace('openlookeng.io/', 'openlookeng.io/zh-cn/');
+                window.location.href = url;
+            }
+        }
+    });
+    var backToList = function (url, originUrl, newUrl) {
+        var origin = originUrl
+        var toggle = newUrl
+        var replace = url.replace(origin,toggle);
+        if (origin === 'news/') {
+            replace = replace.split('/')
+            replace.pop()
+            var localUrl = replace.join('/')
+        } else if (origin === 'blog/') {
+            replace = replace.split('/')
+            replace = replace.slice(0, replace.length - 4)
+            var localUrl = replace.join('/')
+        }
+        window.location.href = localUrl;
+    }
 })
 
