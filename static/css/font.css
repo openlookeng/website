@@ -44,3 +44,12 @@
     font-family: "HuaweiSans-Thin";
     src: url(../fonts/HuaweiSans-Thin.ttf);
 }
+
+@font-face {
+    font-family: "roboto-regular";
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: "roboto-light";
+    src: url(../fonts/Roboto-Light.ttf);
+}

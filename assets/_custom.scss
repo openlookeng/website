@@ -134,12 +134,15 @@ li:not(.book-section-flat) ul {
 }
 
 .book-page .markdown h1 {
+    margin-top: 60px;
     font-size: 30px;
     color: #000;
     font-family: HuaweiSans;
 }
 
 .book-page .markdown h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
     font-size: 24px;
     color: #000;
     font-family: HuaweiSans;
@@ -195,6 +198,15 @@ main.container {
     #content {
         overflow-x: hidden;
         margin-bottom: 0;
+    }
+    .book-page .markdown h1 {
+        font-size: 30px !important;
+        margin-top: 0 !important;
+        margin-bottom: 40px;
+    }
+    
+    .book-page .markdown h2 {
+        font-size: 16px !important;
     }
 }
 .book-menu {
@@ -264,8 +276,24 @@ aside nav ul a:hover {
         position: fixed;
         top: 130px;
         max-height: calc(100vh - 274px);
-        overflow-y: scroll;
+        overflow-y: hidden;
         padding-right: 0;
+    }
+    .book-menu > nav:hover {
+        overflow-y: auto;
+    }
+    .mobile-header-wrapper {
+        display: none;
+    }
+    #docstreeview > ul > li:first-child {
+        margin-top: 0;
+    }
+    .book-page {
+        margin-left: -45px;
+        margin-right: 14px;
+    }
+    .book-toc #TableOfContents {
+        width: 220px;
     }
 }
 

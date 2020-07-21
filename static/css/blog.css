@@ -110,14 +110,23 @@ a {
     vertical-align: sub !important;
 }
 
-.panel.sidebar-menu ul.tag-cloud li a {
-    line-height: 11px;
-}
-
-
 @media (max-width: 994px) {
     .tag-filter {
         display: block;
         z-index: 3;
     }
+}
+.panel.sidebar-menu ul.tag-cloud li a {
+    padding: 4px 19px 5px !important;
+    margin-right: 10px !important;
+}
+#blog-listing-medium .post .tags a {
+    padding: 4px 10px 5px !important;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#blog-listing-medium .post .clearfix {
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
 }
