@@ -166,9 +166,15 @@ div#comments.comments.v{
   display: none !important;
 }
 .vat{
-  line-height: 26px !important;
-  font-weight: normal !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
   color: #5a9b83 !important;
+  width: 60px;
+  height: 26px;
+  font-size: 14px;
+  border: 2px solid #5a9b83;
+  text-align: center;
+  border-radius: 4px;
 }
 .vnick:hover{
   color: #5a9b83 !important;
