@@ -18,7 +18,7 @@
                         {{ range $paginator.Pages }}
                         <section class="post">
                             <div class="row">
-                                <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                                <h3><a href="{{ .Permalink }}" target="_blank">{{ .Title }}</a></h3>
                                 <h5 class="author-category">
                                     {{ if isset .Params "author" }}
                                     <span>{{ .Params.author }}</span>
@@ -28,7 +28,7 @@
                                     {{ end }}
                                 </h5>
                                 <p>{{ .Params.description }}</p>
-                                <p class="view-more"><a href="{{ .Permalink }}">{{ i18n "MAIN_LIST_MORE" }} </a></p>
+                                <p class="view-more"><a href="{{ .Permalink }}" target="_blank">{{ i18n "MAIN_LIST_MORE" }} </a></p>
                             </div>
                         </section>
                         {{ end }}

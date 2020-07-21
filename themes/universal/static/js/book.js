@@ -45,7 +45,7 @@
                     $('.book-toc nav').css({
                         'position': 'fixed',
                         'top': '120px',
-                        'left': $('.markdown').offset().left + $('.markdown').innerWidth() + 15 + 'px',
+                        'left': $('.markdown').offset().left + $('.markdown').innerWidth() + 30 + 'px',
                         'bottom': 'unset'
                     });
                 } else {
@@ -58,8 +58,7 @@
             }
 
         }
-
-        if ($(window).innerWidth() <= 992) {
+        if (($(window).innerWidth() <= 992) && $('.book-header').length === 1) {
             try {
                 var cloneBookMenuHeader = $('.book-page .book-header').clone(true);
                 var offsetTop = $('.container.flex').offset().top;
@@ -264,4 +263,14 @@
             }
         });
     }
+    $('.book-menu a').attr('style', 'font-family:HuaweiSans');
+    setTimeout(function () {
+        $('.book-menu a.active').closest('.jstree-open').children('.jstree-anchor').css({
+            'color': '#5a9b83'
+        });
+    }, 100)
+    $('.book-menu a.active').parent('.jstree-open').css({
+        'color': '#5a9b83'
+    });
+    $('.markdown p').attr('style', 'font-family:roboto-regular');
 })();

@@ -2758,7 +2758,6 @@ fieldset[disabled] .btn-template-primary.active {
 
 #blog-listing-medium .post .tags a {
     display: inline-block;
-    padding: 2px 10px 2px !important;
     font-family: Roboto-Light, Roboto;
     color:  rgba(0, 0, 0, .7);
     font-size: 12px;

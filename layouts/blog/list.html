@@ -58,7 +58,7 @@
                         <section class="post">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2><a class="fz16" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                                    <h2><a class="fz16" href="{{ .Permalink }}" target="_blank">{{ .Title }}</a></h2>
                                     <div class="clearfix">
                                         <p class="author fz12">
                                             {{ if isset .Params "author" }}
@@ -84,7 +84,7 @@
                                         </p>
                                     </div>
                                     <p class="intro fz14">{{ .Summary }}</p>
-                                    <p class="read-more"><a href="{{ .Permalink }}"class="view-more">{{ i18n "MAIN_LIST_MORE" }}</a>
+                                    <p class="read-more"><a href="{{ .Permalink }}"class="view-more" target="_blank">{{ i18n "MAIN_LIST_MORE" }}</a>
                                     </p>
                                 </div>
                             </div>
