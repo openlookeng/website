@@ -189,6 +189,9 @@
 .maillist .maillist-slack ul {
     list-style-type: none;
 }
+.maillist .maillist-info h2 {
+    margin-bottom: 40px!important;
+}
 @media screen and (min-width: 1200px) {
     .isPC.maillist {
         display: block;

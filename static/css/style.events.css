@@ -7,10 +7,10 @@
 .event-list .event-content .event-leftline {
     border-left: 2px solid #000;
     opacity: .09;
-    height: 65%;
+    height: 78%;
     position: absolute;
     left: 240px;
-    top: 610px;
+    top: 19%;
 }
 .event-list .event-content .event-box .event-circle {
     width: 24px;
@@ -81,7 +81,7 @@
     .event-list .event-content .event-box {
         position: relative;
         left: 260px;
-        margin-top: 120px;
+        margin-top: 60px;
     }
 }
 @media screen and (max-width: 768px) {
