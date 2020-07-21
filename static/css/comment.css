@@ -162,5 +162,15 @@ div#comments.comments.v{
 .v .vwrap .vedit .vctrl{
     display:none !important;
 }
-
+.cancel-reply-btn{
+  display: none !important;
+}
+.vat{
+  line-height: 26px !important;
+  font-weight: normal !important;
+  color: #5a9b83 !important;
+}
+.vnick:hover{
+  color: #5a9b83 !important;
+}
 /**/
