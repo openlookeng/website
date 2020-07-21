@@ -12,7 +12,7 @@ body {
 }
 
 .book-toc {
-    padding-top: 7.5em;
+    padding-top: 60px;
 }
 
 .book-toc nav {
@@ -159,7 +159,7 @@ li:not(.book-section-flat) ul {
 
 .book-toc {
     left: 0;
-    padding-top: 70px !important;
+    padding-top: 60px !important;
 }
 
 main.container {
@@ -176,7 +176,7 @@ main.container {
     z-index: 99999;
 }
 .mobile-header-wrapper {
-    height: 70px;
+    height: 60px;
 }
 @media screen and (max-width: 56rem) {
     .book-menu {
@@ -224,28 +224,32 @@ main.container {
     }
 }
 .jstree-open > i {
-    background:url(img/book-menu/Down.png) left center no-repeat !important;
+    background:url(img/book-menu/Unfold.svg) left center no-repeat !important;
     width: 16px;
     height: 20px;
     display: inline-block;
     vertical-align: sub;
-    margin-right: 2px;
+    margin-right: 6px;
 }
 .jstree-closed > i {
-    background: url(img/book-menu/Right.png) left center no-repeat !important;
+    background: url(img/book-menu/Fold.svg) left center no-repeat !important;
     width: 16px;
     height: 20px;
     display: inline-block;
     vertical-align: sub;
     position: relative;
     left: 4px;
-    margin-right: 2px;
+    margin-right: 6px;
 }
 .jstree-anchor {
     display: inline-block;
 }
 #docstreeview > ul > .jstree-leaf {
-    padding-left: 16px;
+    padding-left: 22px;
+}
+aside nav ul a:hover {
+    color: unset;
+    opacity: unset
 }
 .jstree-anchor:focus {
     outline: none;
@@ -259,7 +263,7 @@ main.container {
         z-index: 2;
         position: fixed;
         top: 130px;
-        max-height: calc(100vh - 265px);
+        max-height: calc(100vh - 274px);
         overflow-y: scroll;
         padding-right: 0;
     }
@@ -278,4 +282,7 @@ main.container {
 }
 .doc-menu-control {
     text-align: center;
+}
+#content {
+    width: 100%;
 }

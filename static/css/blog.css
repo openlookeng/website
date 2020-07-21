@@ -39,6 +39,10 @@ a {
     cursor: pointer;
 }
 
+.tag-filter .tag-filter-header > div img {
+    margin-bottom: 3px;
+}
+
 .tag-filter .tag-filter-header img {
     vertical-align: middle;
     margin-right: 5px;
@@ -93,12 +97,22 @@ a {
     background: rgba(0,0,0,0.2);
     z-index: 2;
 }
-.selectedTag{
+.selectedTag {
+    color: #fff !important;
+    border-color: #5a9b83 !important;
+    background-color: #5a9b83;
+}
+.selectedTagFilter {
     color: #5a9b83 !important;
     border-color: #5a9b83 !important;
 }
+.panel.sidebar-menu h3 img {
+    vertical-align: sub !important;
+}
 
-
+.panel.sidebar-menu ul.tag-cloud li a {
+    line-height: 11px;
+}
 
 
 @media (max-width: 994px) {

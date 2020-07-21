@@ -38,10 +38,16 @@
                                         <span class="character fz12">|</span>
                                     {{ end }}
                                     {{ if .Params.date }}{{ .Date.Format .Site.Params.date_format }}
-                                        <span class="character fz12">|</span>
+                                        <span class="character mobile-character fz12">|</span>
                                     {{ end }}
                                     {{ range $index, $item := .Params.tags }}
                                         <span class="tag">{{ $item }}</a></span>
+                                    {{ end }}
+                                    
+                                </p>
+                                <p class="tag-mobile-wrapper">
+                                    {{ range $index, $item := .Params.tags }}
+                                    <span class="tag-mobile">{{ $item }}</a></span>
                                     {{ end }}
                                 </p>
                             {{ end }}

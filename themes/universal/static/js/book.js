@@ -44,7 +44,7 @@
                 if ($('.book-toc').offset().top - $(window).scrollTop() < 120) {
                     $('.book-toc nav').css({
                         'position': 'fixed',
-                        'top': '140px',
+                        'top': '120px',
                         'left': $('.markdown').offset().left + $('.markdown').innerWidth() + 15 + 'px',
                         'bottom': 'unset'
                     });
