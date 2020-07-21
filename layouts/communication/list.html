@@ -22,12 +22,12 @@
                         <div class="row">
                             <div class="col-md-12 maillist">
                                 <div class="maillist-title">
-                                    <h2>{{ .Params.top_title }}</h2>
-                                    <img class="maillist-pic isPC img" src="../img/banners/communicationBanner.png" alt="">
-                                    <img class="maillist-pic isH5 img" src="../img/communication/banner-mobile.png" alt="">
+                                    <h1>{{ .Params.top_title }}</h1>
+                                    <img class="maillist-pic top-banner isPC img" src="../img/banners/communicationBanner.png" alt="">
+                                    <img class="maillist-pic top-banner isH5 img" src="../img/communication/banner-mobile.png" alt="">
                                 </div>
                                 <div class="maillist-info">
-                                    <h3>{{ .Params.middle_title }}</h3>
+                                    <h2>{{ .Params.middle_title }}</h2>
                                     <p>{{ .Params.top_description }}</p>
 
                                     <!--table 模块-->
@@ -124,7 +124,7 @@
                                 </div>
 
                                 <div class="maillist-slack">
-                                    <h3>{{ .Params.bottom_title }}</h3>
+                                    <h2>{{ .Params.bottom_title }}</h2>
                                     <p>{{ .Params.bottom_description_right }} {{ .Site.Params.slacklink.text | safeHTML }} {{ .Params.bottom_description_left }}</p>
                                     <p class="slack-empty"><br></p>
                                     <ul>

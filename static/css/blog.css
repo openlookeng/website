@@ -97,6 +97,15 @@ a {
     background: rgba(0,0,0,0.2);
     z-index: 2;
 }
+#blog-listing-medium {
+    margin-top: -20px;
+}
+#blog-listing-medium .fz16 {
+    color: #000;
+}
+#blog-listing-medium .fz16:hover {
+    color: #000;
+}
 .selectedTag {
     color: #fff !important;
     border-color: #5a9b83 !important;
@@ -109,7 +118,9 @@ a {
 .panel.sidebar-menu h3 img {
     vertical-align: sub !important;
 }
-
+.sidebar-menu .post-blog .post-img {
+    vertical-align: middle;
+}
 @media (max-width: 994px) {
     .tag-filter {
         display: block;

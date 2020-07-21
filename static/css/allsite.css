@@ -1,0 +1,51 @@
+.container .top-banner {
+    width: auto!important;
+    height: 220px!important;
+}
+
+.container h1 {
+    font-size: 40px!important;
+    margin-top: 60px!important;
+    margin-bottom: 40px!important;
+    text-align: center;
+}
+
+.inner h1 {
+    font-size: 30px!important;
+}
+
+section h2,
+.container h2 {
+    margin: 30px auto 20px!important;
+    font-size: 30px!important;
+    text-align: center;
+}
+
+.container h3 {
+    margin-top: 40px!important;
+    margin-bottom: 20px!important;
+}
+
+.author-category {
+    margin-top: 20px!important;
+    margin-bottom: 40px!important;
+}
+
+@media (max-width: 994px) {
+    .container h1 {
+        font-size: 30px!important;
+    }
+    .container .top-banner {
+        width: auto!important;
+        height: 200px!important;
+    }
+    .container .policy-title {
+        font-size: 30px!important;
+        margin: 40px auto!important;
+    }
+    .container h3 {
+        font-size: 16px!important;
+        height: auto!important;
+        margin: 40px auto 20px!important;
+    }
+}

@@ -1,11 +1,19 @@
 .home-banner {
     height: unset;
-    padding-top: 60px;
     margin-bottom: 60px;
 }
 
 .bar.background-white {
-    margin-top: 60px;
+    margin-top: 0;
+    padding-bottom: 0;
+}
+
+.bar.background-white .container {
+    padding-left: 0;
+}
+
+.bar.background-white .col-md-6.mt62 {
+    padding-left: 0;
 }
 
 .home-links h2 {
@@ -37,7 +45,7 @@
 
 .home-banner .banner-p1 {
     font-family: HuaweiSans;
-    margin: 0;
+    margin-bottom: 0!important;
     line-height: 44px;
     font-size: 40px;
     color: #000;
@@ -110,6 +118,7 @@ h3.title {
 
 .home-info-adapter {
     font-family: HuaweiSans;
+    text-align: left!important;
 }
 
 .fz16 {
@@ -151,6 +160,12 @@ h3.title {
 
 .home-links {
     margin-bottom: 100px;
+}
+
+.home-why .summit img {
+    width: unset;
+    height: 220px;
+    margin-bottom: 20px;
 }
 
 .home-why .summit {
@@ -218,7 +233,6 @@ h3.title {
 }
 
 .videos-wrapper .video-right-item {
-    padding: 0 10%;
     display: flex;
     justify-content: space-around;
 }
@@ -255,7 +269,6 @@ h3.title {
 }
 
 .videos-wrapper .video-left-item {
-    padding: 0 10%;
     display: flex;
     justify-content: space-around;
 }

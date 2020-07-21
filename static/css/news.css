@@ -19,7 +19,7 @@
     text-decoration: none;
 }
 .news-card .container .post h3 {
-    margin: 0;
+    margin: 0!important;
 }
 .news-card .container .post .author-category {
     height: 16px;
@@ -65,6 +65,7 @@
     font-family: HuaweiSans;
     line-height: 48px;
     margin: 100px 0 20px;
+    text-align: left!important;
 }
 .news-detail .author-category {
     height: 16px;
@@ -111,6 +112,7 @@
         line-height: 48px;
         font-weight: normal;
         margin: 60px 0 50px 0;
+        text-align: left;
     }
     .news-card .container .post h3 a {
         color: #000;
