@@ -94,7 +94,7 @@
 
 a i[class^="fa"],
 button i[class^="fa"] {
-    margin: 0 15px;
+    margin: 0 17px;
 }
 
 .clickable {
@@ -3917,7 +3917,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 .book-search input {
-    padding-left: 27px !important;
+    padding-left: 32px !important;
 }
 
 #navigation .nav-search-input {
@@ -4894,8 +4894,7 @@ a.list-group-item.active > .badge,
 
 .home-why .summit img {
     margin-top: 11px;
-    width: 1044px;
-    height: 479px;
+    height: 220px;
 }
 
 /* -----------------------------------blog-single模块---------------------------------- */
