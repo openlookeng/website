@@ -77,9 +77,8 @@
                         'line-height': '62px'
                     });
                     $('#all').append(cloneBookMenuHeader);
-                    $('.book-page .book-header').eq(0).hide();
+                    $('.book-page .book-header').remove();
                 } else if (offsetTop - scrollTop >= 62 && hasClass) {
-                    $('.book-page .book-header').eq(0).show();
                     $('#all > .book-header').remove();
                 }
 
@@ -228,6 +227,9 @@
                         if (i === 0) {
                             result.push(null);
                         } else {
+                            if(arr[i - 1].href == '%22#%22'){
+                                arr[i - 1] = arr[i - 2];
+                            }
                             result.push({
                                 href: arr[i - 1].href,
                                 text: arr[i - 1].text
@@ -236,6 +238,9 @@
                         if (i === arr.length - 1) {
                             result.push(null);
                         } else {
+                            if(arr[i + 1].href == '%22#%22'){
+                                arr[i + 1] = arr[i + 2];
+                            }
                             result.push({
                                 href: arr[i + 1].href,
                                 text: arr[i + 1].text
