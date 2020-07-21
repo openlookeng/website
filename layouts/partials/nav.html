@@ -19,15 +19,35 @@
                 <div class="navbar-buttons">
                     <a type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">{{ i18n "navToggle" }}</span>
-                        <img class="search-img" src="{{ "img/book-menu/menu.png" | relURL }}" alt="">
-                        <img class="search-img mobile" src="{{ "img/book-menu/menuMobile.png" | relURL }}" alt="">
+                        <svg class="search-img" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>Menu_Black</title>
+                            <g id="Menu_Black" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="18" height="18"></rect>
+                                <g id="menu" transform="translate(2.000000, 1.000000)" fill="#000000">
+                                    <rect id="Rectangle" x="0" y="0.8" width="16" height="1.5"></rect>
+                                    <rect id="Rectangle" x="0" y="7.7" width="16" height="1.5"></rect>
+                                    <rect id="Rectangle" x="0" y="14.5" width="16" height="1.5"></rect>
+                                </g>
+                            </g>
+                        </svg>
+                        <svg class="search-img mobile" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>Menu_Green</title>
+                            <g id="Menu_Green" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="18" height="18"></rect>
+                                <g id="menu" transform="translate(2.000000, 1.000000)" fill="#5A9B83">
+                                    <rect id="Rectangle" x="0" y="0.8" width="16" height="1.5"></rect>
+                                    <rect id="Rectangle" x="0" y="7.7" width="16" height="1.5"></rect>
+                                    <rect id="Rectangle" x="0" y="14.5" width="16" height="1.5"></rect>
+                                </g>
+                            </g>
+                        </svg>
                     </a>
                 </div>
 
             </div>
             <!--/.navbar-header -->
 
-            <div class="navbar-collapse collapse" id="navigation">
+            <div class="navbar-collapse collapse fontHuaweiSans" id="navigation">
                 <div class="collapse clearfix" id="search">
                 </div>
                 <ul class="nav navbar-nav navbar-right">
@@ -72,7 +92,18 @@
 
                             <input type="text" id="book-search-input" placeholder="{{ i18n "SEARCH" }}" aria-label="{{ i18n "SEARCH" }}" maxlength="64" data-hotkeys="/" />
                             <a href="javascript:;" class="book-search-spinner dropdown-toggle data-toggle='dropdown' role='button' ">
-                                <i class="fas fa-search"><img class="fas fa-search search-img" src="{{ "img/icons/icon-search.png" | relURL }}" alt=""></i>
+                                <i class="fas fa-search">
+                                    <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <title>Search_Grey</title>
+                                        <g id="Search_Grey" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="18" height="18"></rect>
+                                            <g id="Group" transform="translate(4.000000, 2.500000)" stroke="#BFBFBF" stroke-width="1.5">
+                                                <circle id="Oval" cx="6" cy="6" r="6"></circle>
+                                                <line x1="12" y1="13.8" x2="9.5" y2="11" id="Stroke-3" stroke-linecap="round" stroke-linejoin="round"></line>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </i>
                             </a>
                             <ul id="book-search-results"></ul>
                         </div>
