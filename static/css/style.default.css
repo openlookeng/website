@@ -5200,7 +5200,7 @@ p.blog-12px .tag a {
 }
 
 .home-links-imgs {
-    max-width: 80%;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
