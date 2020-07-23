@@ -2,9 +2,9 @@
 {{ if .Site.Params.news.enable }}
 
 <div class="col-md-6 mt62">
-    <h2 class="title fz24 home-info-adapter">
+    <h1 class="title fz24 home-info-adapter">
         {{ i18n "MAIN_NEWS_TITLE" }}
-    </h2>
+    </h1>
 
     <ul>
         {{ $posts := where .Site.RegularPages "Type" "news" }}

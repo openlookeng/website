@@ -2718,10 +2718,15 @@ fieldset[disabled] .btn-template-primary.active {
     margin: 60px 15px 60px;
     font-size: 34px;
     font-family: HuaweiSans;
+    text-align: left!important;
 }
 
 #blog-listing-medium .post {
     margin-bottom: 60px;
+}
+
+#blog-listing-medium .post h2 {
+    text-align: left;
 }
 
 #blog-listing-medium .post h2 {
@@ -2800,7 +2805,7 @@ fieldset[disabled] .btn-template-primary.active {
     }
 
     .blog-post {
-        text-align: center;
+        text-align: center;!important;
         margin-top: 120px;
         font-size: 24px !important;
     }
@@ -4728,7 +4733,6 @@ a.list-group-item.active > .badge,
     height: 500px;
     text-align: center;
     color: rgba(0, 0, 0, 1);
-    padding: 50px 0 0 0;
     margin-bottom: 100px;
 }
 
@@ -5285,7 +5289,7 @@ p.home-news .tag a {
 
 /*防止页面抖动*/
 header {
-    height: 70px;
+    height: 60px;
     position: relative;
     z-index: 999;
 }
@@ -5321,23 +5325,6 @@ header {
     border-right: 1px solid rgba(255, 255, 255, 1);
 }
 
-@media (max-width: 994px) {
-    #copyright .container > div {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #copyright .container .pull-left .logo {
-        margin: 0 auto 5px;
-    }
-
-    .pull-left .logo-bottom {
-        display: block;
-        text-align: center;
-    }
-}
-
-
 .news-detail img {
     height: auto;
     max-width: 60%;
@@ -5357,4 +5344,27 @@ header {
 
 #all {
     min-height: calc(100% - 190px);
+}
+
+@media (max-width: 994px) {
+    #copyright .container > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #copyright .container .pull-left .logo {
+        margin: 0 auto 5px;
+    }
+
+    .pull-left .logo-bottom {
+        display: block;
+        text-align: center;
+    }
+    .blog-post {
+        text-align: center!important;
+    }
+    .container .recent-news,
+    .container .blog-post {
+        margin: 40px auto!important;
+    }
 }

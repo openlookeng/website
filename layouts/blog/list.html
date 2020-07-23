@@ -49,7 +49,7 @@
                 <div class="row">
                     <!-- *** LEFT COLUMN *** -->
 
-                    <h2 class="blog-post">{{ i18n "BLOG_TITLE" }}</h2>
+                    <h1 class="blog-post">{{ i18n "BLOG_TITLE" }}</h1>
 
                     <div class="col-md-9" id="blog-listing-medium">
 
@@ -57,8 +57,8 @@
                         {{ range $paginator.Pages }}
                         <section class="post">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h2><a class="fz16" href="{{ .Permalink }}" target="_blank">{{ .Title }}</a></h2>
+                                <div class="col-md-12 fontHuaweiSans">
+                                    <h3><a class="fz16" href="{{ .Permalink }}" target="_blank">{{ .Title }}</a></h3>
                                     <div class="clearfix">
                                         <p class="author fz12">
                                             {{ if isset .Params "author" }}

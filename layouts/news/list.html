@@ -13,12 +13,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="recent-news">{{ i18n "NEWS_TITLE" }}</h2>
+                        <h1 class="recent-news">{{ i18n "NEWS_TITLE" }}</h1>
                         {{ $paginator := .Paginate (where .Data.Pages "Type" "news") }}
                         {{ range $paginator.Pages }}
                         <section class="post">
                             <div class="row">
-                                <h3><a href="{{ .Permalink }}" target="_blank">{{ .Title }}</a></h3>
+                                <h3 class="fontHuaweiSans"><a href="{{ .Permalink }}" target="_blank">{{ .Title }}</a></h3>
                                 <h5 class="author-category">
                                     {{ if isset .Params "author" }}
                                     <span>{{ .Params.author }}</span>

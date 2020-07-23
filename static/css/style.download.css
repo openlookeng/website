@@ -1,5 +1,5 @@
 .download-content {
-    margin: 60px auto;
+    margin: 60px auto 100px;
 }
 
 .container-top h1 {
@@ -11,7 +11,7 @@
 
 .container-top img {
     display: flex;
-    margin: 26px auto 103px;
+    margin: 0 auto;
 }
 
 .download-descript h2,
