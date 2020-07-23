@@ -4,6 +4,8 @@
 
 
 $(function () {
+    $('.post .row .col-md-12 h3 a').attr('style', 'font-family:HuaweiSans');
+    $('.read-more a').attr('style', 'font-family:roboto!important');
     $('.tag-filter .tag-filter-header .header-left').on('click', function () {
         $('.tag-filter .tag-filter-content').toggleClass('hide');
         $('.blog-mask').toggleClass('hide');

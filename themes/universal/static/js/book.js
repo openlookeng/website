@@ -44,7 +44,7 @@
                 if ($('.book-toc').offset().top - $(window).scrollTop() < 120) {
                     $('.book-toc nav').css({
                         'position': 'fixed',
-                        'top': '120px',
+                        'top': '126px',
                         'left': $('.markdown').offset().left + $('.markdown').innerWidth() + 30 + 'px',
                         'bottom': 'unset'
                     });
@@ -278,4 +278,5 @@
         'color': '#5a9b83'
     });
     $('.markdown p').attr('style', 'font-family:roboto-regular');
+    $('#TableOfContents > ul > li > a').attr('style', 'font-family:HuaweiSans');
 })();

@@ -76,14 +76,14 @@ a {
     margin-right: 8px;
     margin-bottom: 10px;
     display: inline-block;
-    padding: 5px 15px 5px !important;
+    padding: 4px 15px 4px !important;
     font-family: Roboto Light;
-    color:  rgba(0, 0, 0, .7);
+    color:  #5a9b83;
     font-size: 12px;
     line-height: 12px;
     border-radius: 4px;
     text-transform: uppercase;
-    border: .5px solid rgba(0, 0, 0, .39);
+    border: 1px solid #5a9b83;
 
 }
 .blog-mask {
@@ -99,6 +99,7 @@ a {
 }
 #blog-listing-medium {
     margin-top: -20px;
+    margin-bottom: 80px;
 }
 #blog-listing-medium .fz16 {
     color: #000;
@@ -120,6 +121,7 @@ a {
 }
 .sidebar-menu .post-blog .post-img {
     vertical-align: text-bottom;
+    margin-right: 5px;
 }
 @media (max-width: 994px) {
     .tag-filter {
@@ -128,11 +130,15 @@ a {
     }
 }
 .panel.sidebar-menu ul.tag-cloud li a {
-    padding: 4px 19px 5px !important;
-    margin-right: 10px !important;
+    color: #5a9b83;
+    border: 1px solid #5a9b83 !important;
+    padding: 4px 19px 4px !important;
+    margin: 5px 10px 5px 0 !important;
 }
 #blog-listing-medium .post .tags a {
-    padding: 4px 10px 5px !important;
+    color: #5a9b83;
+    border: 1px solid #5a9b83 !important;
+    padding: 4px 10px 4px !important;
     margin-right: 10px;
     margin-bottom: 10px;
 }
@@ -140,4 +146,10 @@ a {
 #blog-listing-medium .post .clearfix {
     margin-top: 10px !important;
     margin-bottom: 0 !important;
+}
+.panel.sidebar-menu .panel-heading .panel-title {
+    margin: 20px 0 -10px 0 !important;
+}
+#blog-listing-medium .post {
+    margin-bottom: 20px !important;
 }
