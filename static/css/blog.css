@@ -119,7 +119,7 @@ a {
     vertical-align: sub !important;
 }
 .sidebar-menu .post-blog .post-img {
-    vertical-align: middle;
+    vertical-align: text-bottom;
 }
 @media (max-width: 994px) {
     .tag-filter {
