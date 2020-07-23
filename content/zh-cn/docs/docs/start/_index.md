@@ -60,7 +60,7 @@ bash /opt/openlookeng/bin/openlk-cli
 
 在cli 中用户可以输入标准SQL 与openLooKeng 服务器端进行交互。
 
-例如，用户查看当前系统有已经配置的[catalog](../docs/overview/concepts.html):
+例如，用户查看当前系统有已经配置的[catalog](../docs/overview/concepts.html#目录):
 
 ```sql
 show catalogs;
@@ -68,7 +68,7 @@ show catalogs;
 
 ![](./images/catalogs.png)
 
-查看有tpcds 有包含哪些[schema](../docs/overview/concepts.html)：
+查看有tpcds 有包含哪些[schema](../docs/overview/concepts.html#模式)：
 
 ```sql
 show schemas from tpcds;

@@ -1,5 +1,6 @@
 .maillist .maillist-title {
     text-align: center;
+    margin-bottom: 80px;
 }
 .maillist .maillist-info p {
     font-size: 14px;
@@ -83,7 +84,7 @@
 .maillist .maillist-guidance .maillist-divider img {
     position: relative;
     left: -18px;
-    height: 1400px;
+    height: 100%;
 }
 .maillist .maillist-guidance .maillist-divider-mail img {
     position: relative;
@@ -116,7 +117,6 @@
     font-family: HuaweiSans;
     font-weight: bold;
     line-height: 26px;
-    opacity: .7;
 }
 .maillist .maillist-guidance .step-left .step-left-box p,
 .maillist .maillist-guidance .step-right .step-right-box p {
@@ -136,7 +136,7 @@
 .maillist .maillist-guidance .step-left .step-left-num span,
 .maillist .maillist-guidance .step-right .step-right-num span {
     display: inline-block;
-    margin: 25px auto;
+    margin: 26px auto;
     color: #fff;
     font-size: 24px;
 }
@@ -189,10 +189,13 @@
 .maillist .maillist-slack ul {
     list-style-type: none;
 }
+.maillist .maillist-info h2 {
+    margin-bottom: 40px!important;
+}
 @media screen and (min-width: 1200px) {
     .isPC.maillist {
         display: block;
-        margin-bottom: 150px;
+        margin-bottom: 60px;
     }
     .isH5.maillist {
         display: none;

@@ -1075,7 +1075,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 .panel.sidebar-menu h3 img {
-    margin-right: 15px;
+    margin-right: 5px;
     width: 20px;
     height: 20px;
     vertical-align: middle;
@@ -2718,10 +2718,15 @@ fieldset[disabled] .btn-template-primary.active {
     margin: 60px 15px 60px;
     font-size: 34px;
     font-family: HuaweiSans;
+    text-align: left!important;
 }
 
 #blog-listing-medium .post {
     margin-bottom: 60px;
+}
+
+#blog-listing-medium .post h2 {
+    text-align: left;
 }
 
 #blog-listing-medium .post h2 {
@@ -2800,7 +2805,7 @@ fieldset[disabled] .btn-template-primary.active {
     }
 
     .blog-post {
-        text-align: center;
+        text-align: center;!important;
         margin-top: 120px;
         font-size: 24px !important;
     }
@@ -4010,7 +4015,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar-nav > .dropdown.lang > a:hover,
     .navbar-nav > .dropdown.nav-search > a:hover {
-        color: #555;
+        color: #000;
         border-bottom: solid 4px #fff;
     }
 
@@ -4728,7 +4733,6 @@ a.list-group-item.active > .badge,
     height: 500px;
     text-align: center;
     color: rgba(0, 0, 0, 1);
-    padding: 50px 0 0 0;
     margin-bottom: 100px;
 }
 
@@ -5200,7 +5204,7 @@ p.blog-12px .tag a {
 }
 
 .home-links-imgs {
-    max-width: 80%;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -5285,7 +5289,7 @@ p.home-news .tag a {
 
 /*防止页面抖动*/
 header {
-    height: 70px;
+    height: 60px;
     position: relative;
     z-index: 999;
 }
@@ -5319,6 +5323,18 @@ header {
 
 #copyright .container .pull-right > a:nth-child(1) {
     border-right: 1px solid rgba(255, 255, 255, 1);
+}
+
+.markdown > :first-child {
+    text-align: left;
+}
+
+.markdown a {
+    color: #5a9b83!important;
+}
+
+.markdown h2 {
+    text-align: left!important;
 }
 
 @media (max-width: 994px) {
@@ -5357,4 +5373,27 @@ header {
 
 #all {
     min-height: calc(100% - 190px);
+}
+
+@media (max-width: 994px) {
+    #copyright .container > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #copyright .container .pull-left .logo {
+        margin: 0 auto 5px;
+    }
+
+    .pull-left .logo-bottom {
+        display: block;
+        text-align: center;
+    }
+    .blog-post {
+        text-align: center!important;
+    }
+    .container .recent-news,
+    .container .blog-post {
+        margin: 40px auto!important;
+    }
 }

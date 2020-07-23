@@ -8,9 +8,9 @@ openLooKeng是一个高性能的分布式数据虚拟化查询引擎，支持跨
 ### 如何向openLooKeng社区上报安全问题
 <br>
 
-如果您发现了疑似安全问题，请您使用[疑似安全问题上报模板](https://gitee.com/openlookeng/community/blob/master/security/report-template_zh_cn.md)进行反馈，以便社区漏洞管理团队在能够获得足够详细信息的条件下，尽快确认并修复问题。您的邮件将在1个工作日内得到确认，在7天内对您反馈的疑似安全问题提供更详细的回复，并给出下一步的处理策略。
+如果您发现了疑似安全问题，请您使用[疑似安全问题上报模板](https://gitee.com/openlookeng/community/blob/master/security/report-template_zh_ch.md)进行反馈，以便社区漏洞管理团队在能够获得足够详细信息的条件下，尽快确认并修复问题。您的邮件将在1个工作日内得到确认，在7天内对您反馈的疑似安全问题提供更详细的回复，并给出下一步的处理策略。
 
-- 安全邮箱：securities@openlookeng.io
+- 安全邮箱： securities@openlookeng.io
 
 ### openLooKeng社区安全问题披露流程
 <br>
@@ -28,7 +28,7 @@ openLooKeng是一个高性能的分布式数据虚拟化查询引擎，支持跨
 <br>
 漏洞管理团队（Vulnerability Management Team）由社区内的漏洞管理专家组成，工作职责为协调漏洞从接收到披露的整个过程，包括：
 
-- 漏洞收集：社区成员和外部研究者发现的疑似安全漏洞，都可以通过securities@openlookeng.io上报给VMT；
+- 漏洞收集：社区成员和外部研究者发现的疑似安全漏洞，都可以通过 securities@openlookeng.io 上报给VMT；
 - 漏洞跟踪处置：VMT会将确认的漏洞录入openLooKeng社区，并负责漏洞的确认/修复，期间会与上报者保持有效沟通；
 - 负责任的披露：漏洞得到妥善的修复后，VMT将会以SA的形式将漏洞信息发布到社区。
 
