@@ -36,4 +36,4 @@ Some connectors do not support role management. See connector documentation for 
 See Also
 --------
 
-[DROP ROLE](./drop-role.html), [SET ROLE](./set-role.html), [GRANT ROLES](./grant-roles.html),[REVOKE ROLES](./revoke-roles.html)
+[DROP ROLE](./drop-role.html), [SET ROLE](./set-role.html), [GRANT ROLES](./grant-roles.html), [REVOKE ROLES](./revoke-roles.html)

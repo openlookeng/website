@@ -25,5 +25,4 @@ COMMIT WORK;
 See Also
 --------
 
-[ROLLBACK](./rollback.html)
-[START TRANSACTION](./start-transaction.html)
+[ROLLBACK](./rollback.html), [START TRANSACTION](./start-transaction.html)

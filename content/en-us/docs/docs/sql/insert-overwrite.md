@@ -59,4 +59,4 @@ Right now only Hive Connector support insert overwrite.
 See Also
 --------
 
-[VALUES](./values), [INSERT](./insert.html)
+[VALUES](./values.html), [INSERT](./insert.html)
