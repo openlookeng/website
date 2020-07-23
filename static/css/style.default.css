@@ -4015,7 +4015,7 @@ fieldset[disabled] .btn-template-primary.active {
 
     .navbar-nav > .dropdown.lang > a:hover,
     .navbar-nav > .dropdown.nav-search > a:hover {
-        color: #555;
+        color: #000;
         border-bottom: solid 4px #fff;
     }
 
@@ -5324,6 +5324,35 @@ header {
 #copyright .container .pull-right > a:nth-child(1) {
     border-right: 1px solid rgba(255, 255, 255, 1);
 }
+
+.markdown > :first-child {
+    text-align: left;
+}
+
+.markdown a {
+    color: #5a9b83!important;
+}
+
+.markdown h2 {
+    text-align: left!important;
+}
+
+@media (max-width: 994px) {
+    #copyright .container > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #copyright .container .pull-left .logo {
+        margin: 0 auto 5px;
+    }
+
+    .pull-left .logo-bottom {
+        display: block;
+        text-align: center;
+    }
+}
+
 
 .news-detail img {
     height: auto;

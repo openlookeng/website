@@ -61,14 +61,14 @@
 }
 
 .download-server {
-    margin-top: 60px;
+    margin-top: 80px;
 }
 
 .download-server h3 {
     text-align: center;
     font-family: HuaweiSans;
     margin-bottom: 40px;
-    font-size: 34px;
+    font-size: 30px;
 }
 
 .download-server p {
@@ -121,6 +121,7 @@
     position: relative;
     top: 10px;
     font-size: 14px;
+    margin-top: -25px;
     font-family: Roboto;
     color: rgba(0, 0, 0, .7);
 }

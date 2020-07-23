@@ -20,13 +20,13 @@
                         <p class="release-notes">{{ .Params.second_title_description1 }}<a target="_blank"
                                 href="{{ i18n "RELEASE_NOTES_URL" }}">{{ .Params.release_notes }}</a>{{ .Params.second_title_description2 }}
                         </p>
-                        <h3 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h3>
+                        <h2 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h2>
                         <img class="docs-pic top-banner isPC img" src="{{ "img/download/banner.png" | relURL }}" alt="">
                         <img class="docs-pic top-banner isH5 img" src="{{ "img/download/banner-mobile.png" | relURL }}" alt="">
 
                     </div>
                     <div class="download-server">
-                        <h3>{{ .Params.download_server_title }}</h3>
+                        <h2>{{ .Params.download_server_title }}</h2>
                         <p>
                             {{ .Params.server_title_description1 }}<a target="_blank"
                                 href="{{ i18n "DEPLOYING_OPENLOOKENG" }}">{{ .Params.deployment_packages }}</a>{{ .Params.server_title_description2 }}
