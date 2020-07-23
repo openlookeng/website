@@ -79,7 +79,7 @@ other = "https://opengauss.org/en/"
 other = "https://www.huaweicloud.com/kunpeng/"
 
 [OPEN_MULAN_WEBSITE_URL]
-other = "https://mulanos.oschina.net/"
+other = "http://www.mulanos.cn/"
 
 [DOCS_TITLE]
 other = "Learn More with OpenLooKeng Document"

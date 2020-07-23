@@ -65,7 +65,7 @@ other = "https://opengauss.org/zh/"
 other = "https://www.huaweicloud.com/kunpeng/"
 
 [OPEN_MULAN_WEBSITE_URL]
-other = "https://mulanos.oschina.net/"
+other = "http://www.mulanos.cn/"
 
 [DOCS_TITLE]
 other = "一起来了解openLooKeng吧"
