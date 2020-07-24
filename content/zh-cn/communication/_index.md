@@ -41,7 +41,7 @@ dev_detail = "对openLooKeng代码库、开发以及开发扩展讨论。"
     name = "描述"
 
 +++
-<div class="step-left">
+<div class="step-left fixHeight">
     <div class="step-left-box">
         <p>点击您想订阅的邮件列表名字</p><br>
     </div>
@@ -50,7 +50,7 @@ dev_detail = "对openLooKeng代码库、开发以及开发扩展讨论。"
     </div>
     <div class="step-left-line"></div>
 </div>
-<div class="step-right">
+<div class="step-right fixHeight">
     <div class="step-right-line"></div>
     <div class="step-right-num">
         <span>2</span>
@@ -59,7 +59,7 @@ dev_detail = "对openLooKeng代码库、开发以及开发扩展讨论。"
         <p>等待系统跳转到订阅页面</p><br>
     </div>
 </div>
-<div class="step-left">
+<div class="step-left fixHeight">
     <div class="step-left-box">
         <p>输入您想接收邮件的邮箱地址并点击Subscribe</p><br>
     </div>
@@ -68,7 +68,7 @@ dev_detail = "对openLooKeng代码库、开发以及开发扩展讨论。"
     </div>
     <div class="step-left-line"></div>
 </div>
-<div class="step-right last">
+<div class="step-right fixHeight">
     <div class="step-right-line"></div>
     <div class="step-right-num">
         <span>4</span>
