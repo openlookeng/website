@@ -16,6 +16,10 @@ h1 {
     margin-top: unset;
 }
 
+h2 {
+    text-align: left !important;
+}
+
 .foundation-content p {
     word-wrap: break-word;
     font-size: 14px;

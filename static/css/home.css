@@ -339,7 +339,7 @@ h3.title {
 }
 @media (max-width: 994px) {
     .home-banner {
-        padding: 40px 0 0 0;
+        padding: 0 0 0 0;
     }
     .home-banner .banner-p1 {
         margin: 0 0 10px 0;
