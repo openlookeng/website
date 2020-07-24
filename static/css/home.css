@@ -346,7 +346,8 @@ h3.title {
         font-size: 30px;
     }
     .home-banner .banner-p2 {
-        margin-bottom: 50px;
+        margin-top:10px !important;
+        margin-bottom: 20px !important;
     }
     .home-banner {
         margin-bottom: 40px;

@@ -7,7 +7,7 @@ description = "Today, at the 2019 Global Intelligent Data Infrastructure Forum h
 
 +++
 
-## Aiming for a Vibrant Kunpeng Computing Industry, Huawei Announces Data Infrastructure Strategy and the Open Sourcing of Its Data Virtualization Engine HetuEngine
+#### Aiming for a Vibrant Kunpeng Computing Industry, Huawei Announces Data Infrastructure Strategy and the Open Sourcing of Its Data Virtualization Engine HetuEngine
 
 [Shenzhen, China, November 19, 2019] Today, at the 2019 Global Intelligent Data Infrastructure Forum hosted by Huawei in Shenzhen, Huawei announced the launch of its data infrastructure strategy, as well as the decision to open source its data virtualization engine called HetuEngine. The aim is to allow partners to use big data with the simplicity of an ordinary database, and simplify data governance.
 
