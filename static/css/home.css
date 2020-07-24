@@ -10,10 +10,17 @@
 
 .bar.background-white .container {
     padding-left: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .bar.background-white .col-md-6.mt62 {
     padding-left: 0;
+    max-width: 530px;
+}
+.bar.background-white .container:after,
+.bar.background-white .container:before {
+    display: none!important;
 }
 
 .home-links h2 {

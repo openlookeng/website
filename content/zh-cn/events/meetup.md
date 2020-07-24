@@ -6,5 +6,5 @@ location = " · 地点: 待定"
 img = "/img/events/events1.png"
 img_mobile = '/img/events/events1.png'
 link = "" 
-weight = 99
+weight = 98
 +++

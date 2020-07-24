@@ -39,7 +39,7 @@ dev_detail = "Discussions about openLooKeng codebase, development, and developme
     name = "Description"
 
 +++
-<div class="step-left">
+<div class="step-left fixHeight">
     <div class="step-left-box">
         <p>Click the name of the mail list that you want to subscribe to.</p>
     </div>
@@ -48,7 +48,7 @@ dev_detail = "Discussions about openLooKeng codebase, development, and developme
     </div>
     <div class="step-left-line"></div>
 </div>
-<div class="step-right">
+<div class="step-right fixHeight">
     <div class="step-right-line"></div>
     <div class="step-right-num">
         <span>2</span>
@@ -57,7 +57,7 @@ dev_detail = "Discussions about openLooKeng codebase, development, and developme
         <p>Enter an email address that you want to receive from the mail list and click SUBSCRIBE.</p>
     </div>
 </div>
-<div class="step-left">
+<div class="step-left fixHeight">
     <div class="step-left-box">
         <p>You will receive an email asking you to confirm the subscription. Reply the email to confirm your subscription.</p>
     </div>
@@ -66,7 +66,7 @@ dev_detail = "Discussions about openLooKeng codebase, development, and developme
     </div>
     <div class="step-left-line"></div>
 </div>
-<div class="step-right last">
+<div class="step-right fixHeight">
     <div class="step-right-line"></div>
     <div class="step-right-num">
         <span>4</span>

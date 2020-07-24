@@ -5191,6 +5191,7 @@ p.blog-12px .tag a {
 /* -----------------------------------home-links模块---------------------------------- */
 .home-links {
     margin-bottom: 100px;
+    padding: 0;
 }
 
 .home-links h2 {
