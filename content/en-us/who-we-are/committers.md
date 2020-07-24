@@ -55,7 +55,7 @@ small_title = "Committers"
 +++
 
 
-# Committers 
+## Committers 
 
 
 The responsibility of Committers is to review and approve the commits made by developers. 
