@@ -5192,6 +5192,7 @@ p.blog-12px .tag a {
 .home-links {
     margin-bottom: 100px;
     padding: 0;
+    width: auto;
 }
 
 .home-links h2 {

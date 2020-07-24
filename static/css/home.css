@@ -222,12 +222,28 @@ h3.title {
         font-size: 24px;
     }
 
+    .bar.background-white .col-md-6.mt62 {
+        padding-left: 15px;
+    }
+
+    .bar.background-white .container {
+        padding-left: 15px;
+    }
+
     .bar .container .col-md-6 ul li > p:nth-last-child(1) {
         display: none;
     }
 
+    .bar.background-white .container {
+        display: block;
+    }
+
     .home-links-imgs {
         margin-bottom: unset;
+    }
+    .home-info-adapter {
+        font-family: HuaweiSans;
+        text-align: center!important;
     }
 }
 
@@ -314,7 +330,7 @@ h3.title {
 }
 
 .home-links-imgs img {
-    width: 240px;
+    width: auto;
     height: 80px;
 }
 
