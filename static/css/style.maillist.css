@@ -42,7 +42,7 @@
     font-size: 14px;
     font-family: Roboto-Regular, Roboto;
     font-weight: 400;
-    margin: 57px 0 61px 0;
+    margin: 40px 0 40px 0;
 }
 .maillist .maillist-guidance.mail {
     position: relative;
@@ -209,7 +209,7 @@
 @media screen and (min-width: 1200px) {
     .isPC.maillist {
         display: block;
-        margin-bottom: 150px;
+        margin-bottom: 40px;
     }
     .isH5.maillist {
         display: none;
@@ -298,7 +298,7 @@
 @media screen and (min-width: 995px) and (max-width: 1200px) {
     .isPC.maillist {
         display: block;
-        margin-bottom: 150px;
+        margin-bottom: 40px;
     }
     .isH5.maillist {
         display: none;
