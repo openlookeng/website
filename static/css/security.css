@@ -6,6 +6,10 @@
     margin: 120px 0 60px 0;
 }
 
+#content .security-banner {
+    text-align: center;
+    margin-bottom: 80px;
+}
 
 #content h3,
 #content strong {
@@ -31,4 +35,17 @@
 
 #content {
     margin-bottom: 100px;
+}
+@media screen and (min-width: 994px) {
+    #content .isH5 {
+        display: none;
+    }
+}
+@media screen and (max-width: 995px){
+    #content .security-banner {
+        margin-bottom: 80px;
+    }
+    #content .security-banner img {
+        margin: 0 auto;
+    }
 }
