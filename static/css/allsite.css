@@ -12,7 +12,6 @@
 
 .inner h1 {
     font-size: 30px!important;
-    text-align: left;
 }
 
 section h2,
@@ -30,7 +29,7 @@ section h2,
 @media (max-width: 994px) {
     .container h1 {
         font-size: 30px!important;
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
     .container .fs24 {
         font-size: 24px!important;
