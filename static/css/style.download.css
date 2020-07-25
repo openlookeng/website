@@ -1,12 +1,19 @@
 .download-content {
     margin: 60px auto 100px;
 }
-
+.container h1 {
+    margin-bottom: 0 !important;
+}
 .container-top h1 {
     display: flex;
     justify-content: center;
     font-size: 40px;
     font-family: HuaweiSans;
+    color: #000;
+    height: 62px;
+}
+.container .container-top h1 {
+    margin-bottom: 0 !important;
 }
 
 .container-top img {
@@ -117,12 +124,10 @@
 
 .release-notes {
     text-align: center;
-    position: relative;
-    top: 10px;
     font-size: 14px;
-    margin-top: -25px;
     font-family: Roboto;
     color: rgba(0, 0, 0, .7);
+    margin-top: 3px;
 }
 
 .download-container a {
