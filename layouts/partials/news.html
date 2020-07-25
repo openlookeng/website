@@ -10,7 +10,7 @@
         {{ $posts := where .Site.RegularPages "Type" "news" }}
         {{ range first 2 $posts }}
         <li>
-            <a href="{{ .URL }}" class="fz16">
+            <a href="{{ .URL }}" class="fz16" target="_blank">
                 <p class="one-row">{{ .Title }}</p>
             </a>
             {{ if or .Params.author .Params.date }}
@@ -24,7 +24,7 @@
         </li>
         {{ end }}
     </ul>
-    <a href="{{"/news" | relLangURL}}.html" target="_blank">
+    <a href="{{"/news" | relLangURL}}.html">
         <p> {{ i18n "MAIN_LIST_MORE" }} </p>
     </a>
 </div>
