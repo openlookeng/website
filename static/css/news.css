@@ -9,7 +9,7 @@
     font-family: Roboto-Regular, Roboto;
     margin-bottom: 20px;
 }
-.news-card .container .post {
+.news-card .container .post:last-child {
     margin-bottom: 60px;
 }
 .news-card .container .post .row {

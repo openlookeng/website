@@ -4,7 +4,7 @@ title = "Guidance to Post a Blog"
 +++
 
 
-## Preparation
+### Preparation
 
 1. Refer to <http://git.mydoc.io/?t=179267> to register Gitee account.
 
@@ -14,7 +14,7 @@ title = "Guidance to Post a Blog"
 
 4. Prepare your git environment refering to <http://git.mydoc.io/?t=180692>.
 
-## Understand blog format
+### Understand blog format
 
 The openLooKeng blog is written in markdown format.
 
@@ -36,7 +36,7 @@ Here you can edit your blog.
 
 Tips: you can copy docs/blog_example/2020-03-03-sample-post.md to your folder and edit it.
 
-## Post your blog
+### Post your blog
 
 The blog posting follows the pull request of [Gitee](https://gitee.com).
 
