@@ -8,6 +8,7 @@
     font-size: 14px;
     font-family: Roboto-Regular, Roboto;
     margin-bottom: 20px;
+    color: rgba(0, 0, 0, .7);
 }
 .news-card .container .post:last-child {
     margin-bottom: 60px;

@@ -62,7 +62,7 @@
     font-family: Roboto-Regular, Roboto;
     font-size: 14px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, .7);
     margin-bottom: 15px;
 }
 
@@ -157,7 +157,7 @@ h3.title {
     font-family: Roboto-Regular, Roboto;
     font-size: 14px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, .7);
 }
 
 .bar .container .col-md-6 ul li a p {
@@ -283,7 +283,7 @@ h3.title {
     font-size: 14px;
     font-family: Roboto-Regular, Roboto;
     font-weight: 400;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, .7);
 }
 
 .videos-wrapper .video-right-item .item-right .video {
@@ -321,7 +321,7 @@ h3.title {
     font-size: 14px;
     font-weight: 400;
     font-family: Roboto-Regular, Roboto;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, .7);
 }
 
 .videos-wrapper .video-left-item .item-left .video {
@@ -438,6 +438,6 @@ h3.title {
 .home-blog,
 .home-news {
     font-family: Roboto-Light, Roboto !important;
-    color: #000 !important;
+    color: rgba(0, 0, 0, .7) !important;
     margin: 10px 0 11px 0;
 }

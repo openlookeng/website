@@ -95,7 +95,7 @@ step_six = "Before integrating your code, reviewers will review your PR. To make
         </div>
         <div class="maillist-H5-description">
             <span>Sign the CLA before You Start</span>
-            <p>Before participating in the community contribution, please sign the <a href="">Contributor License Agreement (CLA).</a></p>
+            <p>Before participating in the community contribution, please sign the <a href="/signcla.html">Contributor License Agreement (CLA).</a></p>
         </div>
     </div>
     <div class="maillist-H5-step">

@@ -7,6 +7,7 @@
     font-family: Roboto;
     font-weight: 400;
     margin: 40px 0 20px 0;
+    color: rgba(0, 0, 0, .7);
 }
 .maillist .maillist-info table {
     width: 80%;
@@ -25,6 +26,7 @@
     border: none;
     height: 55px;
     line-height: 55px;
+    color: rgba(0, 0, 0, .7);
 }
 .maillist .maillist-info table tr td:first-child {
     padding-left: 60px;
@@ -43,6 +45,7 @@
     font-family: Roboto-Regular, Roboto;
     font-weight: 400;
     margin: 40px 0 40px 0;
+    color: rgba(0, 0, 0, .7);
 }
 .maillist .maillist-guidance.mail {
     position: relative;
@@ -130,6 +133,7 @@
     margin: 10px 0 0;
     line-height: 26px;
     font-weight: normal;
+    color: rgba(0, 0, 0, .7);
 }
 .maillist .maillist-guidance .fixHeight .step-left-box p,
 .maillist .maillist-guidance .fixHeight .step-right-box p {
@@ -205,6 +209,7 @@
 }
 .maillist .maillist-info h2 {
     margin-bottom: 40px!important;
+    color: #000;
 }
 @media screen and (min-width: 1200px) {
     .isPC.maillist {
@@ -279,9 +284,11 @@
     .maillist .maillist-slack {
         margin-bottom: 100px;
         margin-top:100px;
+        color: rgba(0, 0, 0, .7);
     }
     .maillist .maillist-slack h2 {
         margin-bottom: 40px !important;
+        color: #000;
     }
     .maillist .maillist-slack .slack-empty {
         margin: 0;
