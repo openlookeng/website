@@ -9,6 +9,7 @@ a {
 .read-more{
     font-size:14px;
     color:#5a9b83;
+    margin-bottom: 0;
 }
 .read-more a:hover{
     color:#5a9b83;
@@ -20,6 +21,13 @@ a {
     background-color:#fff;
 
 
+}
+.container .post h3 {
+    margin-top: 0 !important;
+}
+
+.container .blog-post {
+    margin-bottom: 50px !important;
 }
 
 .tag-filter .tag-filter-header {
@@ -98,7 +106,6 @@ a {
     z-index: 2;
 }
 #blog-listing-medium {
-    margin-top: -20px;
     margin-bottom: 80px;
 }
 #blog-listing-medium .fz16 {
@@ -151,5 +158,8 @@ a {
     margin: 20px 0 -10px 0 !important;
 }
 #blog-listing-medium .post {
+    margin-bottom: 40px !important;
+}
+#blog-listing-medium .post:last-child {
     margin-bottom: 20px !important;
 }

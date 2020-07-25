@@ -12,6 +12,9 @@
             $('.book-header').show();    
         }, 100);
     });
+    $('.nav-mask').on('click', function () {
+        $('.navbar-buttons').trigger('click');
+    })
 
     $('.navbar-buttons').click(function () {
         $('.book-header').toggle();
@@ -78,8 +81,6 @@
                     });
                     $('#all').append(cloneBookMenuHeader);
                     $('.book-page .book-header').remove();
-                } else if (offsetTop - scrollTop >= 62 && hasClass) {
-                    $('#all > .book-header').remove();
                 }
 
             } catch (error) {

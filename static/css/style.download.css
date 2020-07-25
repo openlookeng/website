@@ -134,6 +134,11 @@
 }
 
 @media (max-width: 994px) {
+    .download-server p {
+        text-align: left;
+        width: 80%;
+        margin: 0 auto;
+    }
     .download-button {
         display: flex;
         /* justify-content: center; */

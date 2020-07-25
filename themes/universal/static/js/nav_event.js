@@ -77,7 +77,7 @@ $(function (){
         }
     }
 
-    var navStyle = function () {
+    var navStyle = function (isMobile) {
 
         var currentUrl = window.location.href;
 
@@ -85,11 +85,11 @@ $(function (){
         var strUrl = currentUrl.join('');
 
         if (judgeDocs(strUrl)) {
-            $(".dropdown").eq(1).addClass('active');
+            $(".dropdown").eq(isMobile ? 2 : 1).addClass('active');
         } else if (judgeCommunity(strUrl)) {
-            $(".dropdown").eq(2).addClass('active');
+            $(".dropdown").eq(isMobile ? 3 : 2).addClass('active');
         } else if (judgeNewsroom(strUrl)) {
-            $(".dropdown").eq(3).addClass('active');
+            $(".dropdown").eq(isMobile ? 4 : 3).addClass('active');
         }
     }
 
@@ -116,6 +116,7 @@ $(function (){
     }
     if($(window).width() < 978){
         $("#search").append($(".nav-search-input .book-search"));
+        navStyle(true);
     }else{
         __main();
     }
