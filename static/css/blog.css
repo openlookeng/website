@@ -135,6 +135,9 @@ a {
         display: block;
         z-index: 3;
     }
+    #blog-listing-medium .post .intro {
+        word-break: break-all;
+    }
 }
 .panel.sidebar-menu ul.tag-cloud li a {
     color: #5a9b83;
