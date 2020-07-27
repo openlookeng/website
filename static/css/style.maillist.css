@@ -98,12 +98,6 @@
     height: 470px;
 }
 .maillist .maillist-guidance .maillist-divider-mail {
-/*    width: 105px;
-    height: 457px;
-    position: absolute;
-    left: 50%;
-    top: 91px;
-    display: inline-block;*/
     width: 2px;
     left: 50%;
     height: 394px;
@@ -169,11 +163,6 @@
 }
 .maillist .maillist-guidance .step-left .step-left-line,
 .maillist .maillist-guidance .step-right .step-right-line {
-    /*width: 107px;
-    border-bottom: 2px dashed #509378;
-    display: inline-block;
-    vertical-align: middle;
-    opacity: .7;*/
     width: 107px;
     height: 2px;
     display: inline-block;
