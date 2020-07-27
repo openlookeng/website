@@ -81,7 +81,7 @@
                                     <p>{{ .Params.guidance }}</p>
 <!--                                    <div class="maillist-icon-comm"></div>-->
                                     <div class="maillist-divider-mail">
-                                        <img src="../img/contribution/Group2.png" alt="">
+                                        <div class="maillist-icon-comm"></div>
                                     </div>
                                     {{ .Content }}
                                 </div>
@@ -128,11 +128,11 @@
                                     <p>{{ .Params.bottom_description_right }} {{ .Site.Params.slacklink.text | safeHTML }} {{ .Params.bottom_description_left }}</p>
                                     <p class="slack-empty"><br></p>
                                     <ul>
-                                        <li> · <a href="{{ .Params.general_url }}">{{ .Params.general_tag }}</a> - {{ .Params.general_detail }}</li>
+                                        <li><p> · <a href="{{ .Params.general_url }}">{{ .Params.general_tag }}</a> - {{ .Params.general_detail }}</p></li>
                                         <li><p class="slack-empty"><br></p></li>
-                                        <li> · <a href="{{ .Params.trouble_url }}">{{ .Params.trouble_tag }}</a> - {{ .Params.trouble_detail }}</li>
+                                        <li><p> · <a href="{{ .Params.trouble_url }}">{{ .Params.trouble_tag }}</a> - {{ .Params.trouble_detail }}</p></li>
                                         <li><p class="slack-empty"><br></p></li>
-                                        <li> · <a href="{{ .Params.dev_url }}">{{ .Params.dev_tag }}</a> - {{ .Params.dev_detail }}</li>
+                                        <li><p> · <a href="{{ .Params.dev_url }}">{{ .Params.dev_tag }}</a> - {{ .Params.dev_detail }}</p></li>
                                     </ul>
                                 </div>
                             </div>

@@ -25,7 +25,6 @@ openLooKeng是一个高性能的分布式数据虚拟化查询引擎，支持跨
 
 ### openLooKeng社区漏洞管理团队（VMT）
 
-<br>
 漏洞管理团队（Vulnerability Management Team）由社区内的漏洞管理专家组成，工作职责为协调漏洞从接收到披露的整个过程，包括：
 
 - 漏洞收集：社区成员和外部研究者发现的疑似安全漏洞，都可以通过 securities@openlookeng.io 上报给VMT；
@@ -34,4 +33,3 @@ openLooKeng是一个高性能的分布式数据虚拟化查询引擎，支持跨
 
 ### openLooKeng安全公告（SA）
 
-<br>
