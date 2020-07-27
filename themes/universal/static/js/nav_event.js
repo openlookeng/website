@@ -119,7 +119,7 @@ $(function (){
         __main();
     }
 
-    if(767 < $(window).width()){
+    if(978 < $(window).width()){
         navStyle();
     } else {
         navStyle(true);
