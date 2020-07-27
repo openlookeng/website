@@ -23,7 +23,7 @@ step_six = "Before integrating your code, reviewers will review your PR. To make
 <!-- PC 向导模块-->
 <div class="isPC maillist maillist-guidance">
     <div class="maillist-divider">
-        <img src="../img/contribution/Group.png" alt="">
+        <div class="maillist-icon-comm"></div>
     </div>
     <div class="step-left">
         <div class="step-left-box">

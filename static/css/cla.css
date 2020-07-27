@@ -43,7 +43,7 @@
 
 .open-lookeng-cla-table {
     background-color: transparent;
-    width: 452px;
+    max-width: 452px;
     text-align: center;
 }
 
@@ -160,4 +160,10 @@ td {
 .h0 {
     height: 0 !important;
     padding: 0 !important;
+}
+
+@media (max-width: 994px) {
+    .open-lookeng-cla-table {
+        width: 100%;
+    }
 }

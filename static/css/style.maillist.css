@@ -71,18 +71,20 @@
     height: 0;
     border-width: 15px;
     border-style: solid;
-    border-color: #509378 transparent transparent transparent;
+    border-color: rgba(80, 147, 120, 1) transparent transparent transparent;
     position: absolute;
     left: 50%;
-    transform: translateX(-47%);
+    transform: translateX(-50%);
+    z-index: 2;
 }
 .maillist .maillist-guidance .maillist-divider {
-    height: 100%;
-    position: absolute;
+    width: 2px;
     left: 50%;
-    transform: translateX(-1%);
-    /*top: 91px;*/
-    display: inline-block;
+    height: 1198px;
+    background-image: linear-gradient(to top, rgba(80, 147, 120, .7) 0%, rgba(80, 147, 120, .7) 50%, transparent 50%);
+    background-size: 2px 11px;
+    background-repeat: repeat-y;
+    position: absolute;
 }
 .maillist .maillist-guidance .maillist-divider img {
     position: relative;
@@ -96,12 +98,13 @@
     height: 470px;
 }
 .maillist .maillist-guidance .maillist-divider-mail {
-    width: 105px;
-    height: 457px;
-    position: absolute;
+    width: 2px;
     left: 50%;
-    top: 91px;
-    display: inline-block;
+    height: 394px;
+    background-image: linear-gradient(to top, rgba(80, 147, 120, .7) 0%, rgba(80, 147, 120, .7) 50%, transparent 50%);
+    background-size: 2px 11px;
+    background-repeat: repeat-y;
+    position: absolute;
 }
 .maillist .maillist-guidance .step-left .step-left-box,
 .maillist .maillist-guidance .step-right .step-right-box {
@@ -161,10 +164,13 @@
 .maillist .maillist-guidance .step-left .step-left-line,
 .maillist .maillist-guidance .step-right .step-right-line {
     width: 107px;
-    border-bottom: 2px dashed #509378;
+    height: 2px;
     display: inline-block;
     vertical-align: middle;
-    opacity: .7;
+    border-spacing: 24px;
+    background-image: linear-gradient(to right, rgba(80, 147, 120, .7) 0%, rgba(80, 147, 120, .7) 50%, transparent 50%);
+    background-size: 8px 2px;
+    background-repeat: repeat-x;
 }
 .maillist .maillist-guidance .step-left {
     position: relative;
@@ -601,6 +607,9 @@
     .maillist .maillist-slack {
         margin-bottom: 80px;
         margin-top: 60px;
+    }
+    .maillist .maillist-slack ul{
+        padding: 0;
     }
     .maillist .maillist-slack p {
         font-size: 14px;

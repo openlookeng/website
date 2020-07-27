@@ -2415,7 +2415,7 @@ fieldset[disabled] .btn-template-primary.active {
 .bar .container .col-md-6 ul li > p {
     font-size: 16px;
     font-weight: 300;
-    line-height: 22px;
+    line-height: 15px;
     overflow: hidden;
 }
 
@@ -5394,5 +5394,8 @@ header {
     .container .recent-news,
     .container .blog-post {
         margin: 40px auto!important;
+    }
+    #post-content > p > img {
+        max-width: 100%;
     }
 }

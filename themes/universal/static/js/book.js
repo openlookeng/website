@@ -189,9 +189,7 @@
                         link = aElement.attr('href');
                     }
                 }
-                console.log(link);
                 var relativeURL = getRelativePath();
-                console.log(relativeURL);
                 if (link != relativeURL) {
                     location.href = link;
                 }
