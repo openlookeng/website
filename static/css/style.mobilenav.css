@@ -69,6 +69,13 @@
     }
 }
 
+@media (min-width: 767px) and (max-width:995px) {
+    a i[class^="fa"],
+    button i[class^="fa"] {
+        margin-left: 39px !important;
+    }
+}
+
 @media screen and (max-width: 994px) {
     .pull-right {
         text-align: center;

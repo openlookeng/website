@@ -34,6 +34,20 @@
         $('.book-toc #TableOfContents ul a[href]').removeClass('book-toc-avtive');
         $('.book-toc #TableOfContents ul a[href]').eq(0).addClass('book-toc-avtive');
     }
+    var cloneBookMenuHeader = $('.book-page .book-header').clone(true);
+
+    cloneBookMenuHeader.css({
+        'position': 'fixed',
+        'top': '62px',
+        'width': '100%',
+        'z-index': '999',
+        'background-color': 'white',
+        'padding': '0 30px',
+        'left': '0',
+        'line-height': '62px'
+    });
+    $('#all').append(cloneBookMenuHeader);
+    $('.book-page .book-header').remove();
     $($(window).scroll(function () {
         if ($('.container').innerWidth() === 1170 || $('.container').innerWidth() === 970) {
             try {

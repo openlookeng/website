@@ -1,5 +1,4 @@
 .container .top-banner {
-    width: auto!important;
     height: 220px!important;
 }
 
@@ -35,7 +34,6 @@ section h2,
         font-size: 24px!important;
     }
     .container .top-banner {
-        width: auto!important;
         height: 200px!important;
     }
     .container .policy-title {
