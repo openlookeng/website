@@ -21,3 +21,9 @@
 #content {
     margin-bottom: 80px;
 }
+#post-content p {
+    word-break: break-all;
+}
+#blog-post .tag-mobile {
+    display: inline-block;
+}

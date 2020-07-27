@@ -95,11 +95,10 @@ $(function (){
 
     var __main = function (){
         navEvent();
-        navStyle();
         // debounce(navEvent, 1000)
     }
 
-    if($(window).width() < 751){
+    if($(window).width() < 978){
         $(".container .navbar-header").append($(".lang"));
 
         $('.navbar-toggle').click(function () {
@@ -116,13 +115,18 @@ $(function (){
     }
     if($(window).width() < 978){
         $("#search").append($(".nav-search-input .book-search"));
-        navStyle(true);
     }else{
         __main();
     }
 
+    if(767 < $(window).width()){
+        navStyle();
+    } else {
+        navStyle(true);
+    }
+
     $(window).resize(function (){
-        if($(window).width() < 751){
+        if($(window).width() < 978){
             if(!$(".container .navbar-header").find(".lang").length){
                 $(".container .navbar-header").append($(".lang"));  
             }
