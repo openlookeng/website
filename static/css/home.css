@@ -158,6 +158,15 @@ h3.title {
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, .7);
+    line-height: 26px;
+}
+
+.bar .container .col-md-6 ul li > .home-blog {
+    font-weight: 300;
+}
+
+.bar .container .col-md-6 ul li > .home-news {
+    font-weight: 300;
 }
 
 .bar .container .col-md-6 ul li a p {
