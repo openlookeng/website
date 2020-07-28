@@ -352,3 +352,7 @@ aside > nav > div > ul > li > ul {
 #content {
     min-height: calc(100vh - 193px);
 }
+.book-page p {
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
