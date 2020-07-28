@@ -199,7 +199,7 @@
             $('#docstreeview').removeClass('hide');
             $('.jstree-anchor').on('click', function () {
                 $(this).prev().trigger('click');
-                if (!$(this).parent('.jstree-leaf').length) {
+                if($(this).find("a[href='%22#%22']").length){
                     return false;
                 }
             });

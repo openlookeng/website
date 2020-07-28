@@ -338,9 +338,17 @@ aside > nav > div > ul > li > ul {
     margin-top: -6px !important;
     margin-bottom: 20px !important;
 }
-.navbar-affixed-top.affix-top {
+.navbar-affixed-top.affix-top,
+.navbar-affixed-top.affix {
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    webkit-transition: unset;
+    -moz-transition: unset;
+    transition: unset;
+    transition-property: unset;
+}
+#content {
+    min-height: calc(100vh - 193px);
 }
