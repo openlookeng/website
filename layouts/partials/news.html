@@ -9,7 +9,7 @@
     <ul>
         {{ $posts := where .Site.RegularPages "Type" "news" }}
         {{ range first 2 $posts }}
-        <li>
+        <li class="fontHuaweiSans">
             <a href="{{ .URL }}" class="fz16" target="_blank">
                 <p class="one-row">{{ .Title }}</p>
             </a>
