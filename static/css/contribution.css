@@ -1,0 +1,75 @@
+.step-info {
+    width: 340px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 20px;
+}
+
+html[lang=zh-cn] .maillist-guidance .fix-height:nth-child(2) .step-left-box {
+    padding: 0;
+    height: 156px;
+}
+
+html[lang=zh-cn] .maillist-guidance .fix-height:nth-child(4) .step-left-box {
+    padding: 0;
+    height: 216px;
+}
+
+html[lang=zh-cn] .maillist-guidance .fix-height:nth-child(6) .step-left-box {
+    padding: 0;
+    height: 246px;
+}
+
+html[lang=zh-cn] .maillist-guidance .fix-height:nth-child(3) .step-right-box {
+    padding: 0;
+    height: 156px;
+}
+
+html[lang=zh-cn] .maillist-guidance .fix-height:nth-child(5) .step-right-box {
+    padding: 0;
+    height: 156px;
+}
+
+html[lang=zh-cn] .maillist-guidance .fix-height:nth-child(7) .step-right-box {
+    padding: 0;
+    height: 276px;
+}
+
+html[lang=zh-cn] .maillist .maillist-guidance .maillist-divider {
+    height: 915px;
+}
+
+.maillist-guidance .fix-height:nth-child(2) .step-left-box {
+    padding: 0;
+    height: 148px;
+}
+
+.maillist-guidance .fix-height:nth-child(4) .step-left-box {
+    padding: 0;
+    height: 250px;
+}
+
+.maillist-guidance .fix-height:nth-child(6) .step-left-box {
+    padding: 0;
+    height: 252px;
+}
+
+.maillist-guidance .fix-height:nth-child(3) .step-right-box {
+    padding: 0;
+    height: 174px;
+}
+
+.maillist-guidance .fix-height:nth-child(5) .step-right-box {
+    padding: 0;
+    height: 174px;
+}
+
+.maillist-guidance .fix-height:nth-child(7) .step-right-box {
+    padding: 0;
+    height: 344px;
+}
+
+.maillist .maillist-guidance .maillist-divider {
+    height: 1016px;
+}
