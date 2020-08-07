@@ -3,7 +3,7 @@ title = "体验驱动开源 | openLooKeng，我们玩儿点不一样的！"
 date = "2020-08-01"
 tags = ["UXD", "体验设计", "openLooKeng"]
 archives = "2020-08"
-author = "王一, 子欣"
+author = "王一婷, 子欣"
 description = "本文讲述openLooKeng开源社区的体验设计故事。"
 +++
 
