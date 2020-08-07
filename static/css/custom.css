@@ -192,3 +192,6 @@ p.blog-12px .tag {
 header {
     height: 60px;
 }
+#navigation .nav-search-input {
+    height: 60px;
+}

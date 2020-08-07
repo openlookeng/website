@@ -12,6 +12,9 @@
             $('.book-header').show();    
         }, 100);
     });
+    $('.nav-mask').on('click', function () {
+        $('.navbar-buttons').trigger('click');
+    })
 
     $('.navbar-buttons').click(function () {
         $('.book-header').toggle();
@@ -31,6 +34,20 @@
         $('.book-toc #TableOfContents ul a[href]').removeClass('book-toc-avtive');
         $('.book-toc #TableOfContents ul a[href]').eq(0).addClass('book-toc-avtive');
     }
+    var cloneBookMenuHeader = $('.book-page .book-header').clone(true);
+
+    cloneBookMenuHeader.css({
+        'position': 'fixed',
+        'top': '62px',
+        'width': '100%',
+        'z-index': '999',
+        'background-color': 'white',
+        'padding': '0 30px',
+        'left': '0',
+        'line-height': '62px'
+    });
+    $('#all').append(cloneBookMenuHeader);
+    $('.book-page .book-header').remove();
     $($(window).scroll(function () {
         if ($('.container').innerWidth() === 1170 || $('.container').innerWidth() === 970) {
             try {
@@ -78,8 +95,6 @@
                     });
                     $('#all').append(cloneBookMenuHeader);
                     $('.book-page .book-header').remove();
-                } else if (offsetTop - scrollTop >= 62 && hasClass) {
-                    $('#all > .book-header').remove();
                 }
 
             } catch (error) {
@@ -174,9 +189,7 @@
                         link = aElement.attr('href');
                     }
                 }
-                console.log(link);
                 var relativeURL = getRelativePath();
-                console.log(relativeURL);
                 if (link != relativeURL) {
                     location.href = link;
                 }
@@ -186,7 +199,7 @@
             $('#docstreeview').removeClass('hide');
             $('.jstree-anchor').on('click', function () {
                 $(this).prev().trigger('click');
-                if (!$(this).parent('.jstree-leaf').length) {
+                if($(this).find("a[href='%22#%22']").length){
                     return false;
                 }
             });

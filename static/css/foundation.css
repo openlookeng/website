@@ -2,8 +2,10 @@
     margin: 60px 0;
 
 }
-
-.foundation-content > h1 {
+.foundation-content h2 {
+    margin-top: 0 !important;
+}
+.foundation-content > h2 {
     text-align: center;
     margin-top: 100px;
     color: #000;
@@ -12,7 +14,7 @@
     line-height: 44px;
 }
 
-h1 {
+h2 {
     margin-top: unset;
 }
 
@@ -76,7 +78,7 @@ ul {
     margin-top: -10px;
 }
 
-.inner h1 {
+.inner h2 {
     margin-top: 0!important;
 }
 
@@ -89,7 +91,7 @@ ul {
     width: 80%;
 }
 
-.foundation-content .foundation-top h1 {
+.foundation-content .foundation-top h2 {
     font-size: 44px;
     font-family: HuaweiSans;
 }
@@ -281,7 +283,7 @@ ul {
     margin-right: 9px;
 }
 
-.inner > h1 {
+.inner > h2 {
     margin-bottom: 40px;
     font-size: 34px;
     font-family: HuaweiSans;
@@ -293,7 +295,7 @@ ul {
 
 .small-title {
     margin: 40px 0 20px 0;
-    font-size: 14px;
+    font-size: 16px;
     font-family: HuaweiSans;
     color: #000;
 }
@@ -312,7 +314,7 @@ ul {
     .foundation-content .foundation-top {
         margin-bottom: 40px;
     }
-    .foundation-content .foundation-top h1 {
+    .foundation-content .foundation-top h2 {
         font-size: 24px;
     }
 
@@ -352,7 +354,7 @@ ul {
         font-size: 16px;
     }
 
-    .foundation-content .foundation-tab-pane .inner > h1 {
+    .foundation-content .foundation-tab-pane .inner > h2 {
         display: none;
     }
 

@@ -6,19 +6,24 @@
     .isH5 {
         display: block;
     }
+
     .isPC.img {
         display: none;
     }
+
     .isH5.img {
         display: block;
     }
+
     .lang a {
         font-size: 16px;
     }
-    .navbar ul.nav > li > a {
+
+    .navbar ul.nav>li>a {
         height: 52px;
     }
 }
+
 @media screen and (min-width: 768px) and (max-width: 994px) {
     .isH5.img {
         display: none;
@@ -27,7 +32,7 @@
 
 /*-----------------------------------footer模块----------------------------------*/
 
-@media screen and (min-width: 995px){
+@media screen and (min-width: 995px) {
     .copyright-right {
         /*display: flex;
         justify-content: center;
@@ -51,16 +56,23 @@
         margin: 0;
     }
 
-    .pull-code p > span {
+    .pull-code p>span {
         display: block;
         line-height: 24px;
         text-align: right;
     }
 
-    .pull-code > img {
+    .pull-code>img {
         width: 60px;
         height: 60px;
         margin-left: 8px;
+    }
+}
+
+@media (min-width: 767px) and (max-width:995px) {
+    a i[class^="fa"],
+    button i[class^="fa"] {
+        margin-left: 39px !important;
     }
 }
 
@@ -69,33 +81,42 @@
         text-align: center;
         margin-top: 10px;
     }
+
     .pull-code {
         text-align: center;
     }
+
     #copyright .pull-code p {
         line-height: 14px;
     }
-    .pull-code > img {
+
+    .pull-code>img {
         width: 80px;
         height: 80px;
     }
-    .pull-code p > span {
+
+    .pull-code p>span {
         font-size: 12px;
     }
+
     a i[class^="fa"],
     button i[class^="fa"] {
         margin-left: 23px;
     }
-    .navbar ul.nav > li > a:hover {
+
+    .navbar ul.nav>li>a:hover {
         color: #000;
         border-bottom: none;
     }
+
     .navbar-buttons .navbar-toggle .search-img.mobile {
         display: none;
     }
+
     .header-right a {
         color: #000;
     }
+
     .nav-mask {
         position: fixed;
         left: 0;
@@ -104,7 +125,13 @@
         top: 63px;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.2);
+        background: rgba(0, 0, 0, 0.2);
         z-index: 2;
+    }
+
+    .navbar-default .navbar-nav>.open>a,
+    .navbar-default .navbar-nav>.open>a:hover,
+    .navbar-default .navbar-nav>.open>a:focus {
+        color: #5a9b83;
     }
 }

@@ -1,0 +1,18 @@
+.container h2 {
+    margin-top: 60px !important;
+    line-height: 30px;
+}
+#all .news-single-title {
+    margin-bottom: 0 !important;
+}
+#content a {
+    word-wrap:break-word;
+}
+.news-detail {
+    margin-bottom: 100px;
+}
+@media (max-width: 994px) {
+    .container h2 {
+        font-size: 24px !important;
+    }
+}
