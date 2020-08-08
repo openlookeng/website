@@ -84,4 +84,4 @@ PMC的职责如下：
 
 Mail List: dev@openlookeng.io
 
-双周会议: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.
+双周会议: 11:00 am - 12:00 pm (Noon), Friday, Beijing Time. It happens on Slack.

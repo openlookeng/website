@@ -86,4 +86,4 @@ The PMC has the following responsibilities:
     
 Mail List: dev@openlookeng.io 
 
-Biweekly meeting: 02:00-03:00 am, Tuesday, UTC. It happens on Slack.
+Biweekly meeting: 11:00 am - 12:00 pm (Noon), Friday, Beijing Time. It happens on Slack.
