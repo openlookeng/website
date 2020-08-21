@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ "css/news-single.css" | relURL}}{{ .Site.Params.version }}">
+<body>
+    <div id="all">
+        <header>
+            {{ partial "nav.html" . }}
+        </header>
+        <div class="nav-mask hide"></div>
+        <div id="content">
+            <div class="container news-detail">
+                <h2 class="news-single-title">{{ .Title }}</h2>
+                <h5 class="author-category">
+                    <span class="author">{{ .Params.author }}</span>
+                    <span class="line"></span>
+                    <span class="date">{{ .Date.Format .Site.Params.date_format }}</span>
+                </h5>
+                {{ .Content }}
+            </div>
+    
+        </div>
+        {{ partial "footer.html" . }}
+    </div>
+    {{ partial "scripts.html" . }}
+</body>
+</html>

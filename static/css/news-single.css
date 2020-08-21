@@ -1,6 +1,7 @@
 .container h2 {
     margin-top: 60px !important;
     line-height: 30px;
+    text-align: left;
 }
 #all .news-single-title {
     margin-bottom: 0 !important;
