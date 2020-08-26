@@ -3759,7 +3759,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 .navbar-brand {
     float: left;
-    padding: 23px 15px;
+    padding: 17px 15px;
     font-size: 18px;
     line-height: 20px;
     height: 20px;
@@ -3767,7 +3767,6 @@ fieldset[disabled] .btn-template-primary.active {
 
 .navbar-brand > img {
     width: 126px;
-    height: 20px;
 }
 
 .navbar-brand:hover,
