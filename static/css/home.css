@@ -179,14 +179,17 @@ h3.title {
 }
 
 .home-why .summit img {
-    width: unset;
-    height: 220px;
+    width: 1140px;
+    height: unset;
     margin-bottom: 20px;
 }
 
 .home-why .summit {
     height: unset;
+    background: #fff;
+
 }
+
 
 .home-why > a:hover {
     text-decoration: none;
