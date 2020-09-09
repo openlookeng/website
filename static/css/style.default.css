@@ -5310,6 +5310,11 @@ header {
 }
 
 #copyright .container .pull-right > a:nth-child(2) {
+    padding:0 10px;
+    font-size: 14px;
+}
+
+#copyright .container .pull-right > a:nth-child(3) {
     padding-left: 10px;
     font-size: 14px;
 }
@@ -5320,6 +5325,10 @@ header {
 
 
 #copyright .container .pull-right > a:nth-child(1) {
+    border-right: 1px solid rgba(255, 255, 255, 1);
+}
+
+#copyright .container .pull-right > a:nth-child(2) {
     border-right: 1px solid rgba(255, 255, 255, 1);
 }
 
