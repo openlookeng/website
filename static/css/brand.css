@@ -1,0 +1,79 @@
+#content .brand-title {
+    color: #000;
+    font-size: 30px;
+    font-family: HuaweiSans;
+    line-height: 48px;
+    margin: 120px 0 60px 0;
+    text-align: left;
+}
+
+#content .rowtitle{
+    font-size: 24px !important;
+    color: #000000;
+    text-align: left;
+    margin-bottom: 40px !important;
+
+}
+.description{
+    font-size:14px;
+    line-height: 26px;
+    margin-bottom: 60px;
+}
+.strongnotice{
+    color:#FF0000;
+}
+.cell{
+    width: 340px;
+    height: 255px;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin:0 25px 60px 25px;
+    text-align: center;   
+}
+
+.cellLogo a{
+    width: 60px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1.5px solid #5A9B83;
+    font-family: Roboto-Regular, Roboto;
+    font-weight: 400;
+    color: #5A9B83;
+    line-height: 16px;
+    display:inline-block;
+    line-height: 25px;
+    font-size:14px;
+    margin:25px 13px 5px 14px;
+
+}
+.cellLogo img{
+    width:240px;
+    margin:40px 0 0 0;
+}
+.cellppt{
+    padding:0 !important;
+    font-size: 16px;
+}
+.pptImg{
+    height:191.25px;
+}
+.cellppt img{
+    border-radius: 10px 10px 0 0;
+}
+.pptImgContainer{
+    width:100%;
+    height:100%;
+    border: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.buttondescription{
+    margin-top: 15px;
+    font-size: 16px;
+    font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
+    font-weight: normal;
+    color: #000000;
+    line-height: 26px;
+}

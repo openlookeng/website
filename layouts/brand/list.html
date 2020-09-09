@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    {{ partial "head.html" . }}
+    <link rel="stylesheet" href="{{ "css/brand.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
+    <body>
+        <div id="all">
+            <header>
+            {{ partial "nav.html" . }}
+            </header>
+            <div id="content">
+                <div class="container">
+                    <h1 class="brand-title">{{ .Params.title }}</h1>
+                    <h2 class="rowtitle">{{ .Params.rowtitle1 }}</h2>
+                    <div class="row" >
+                        <div class="col-lg-12 description"><div class="notice">{{.Params.notice}}</div>{{.Params.description}}<span class="strongnotice">{{.Params.strongnotice}}</span></div>
+                        {{ range where $.Page.Site.Pages "Type" "brand" }}
+                        {{ if .Params }}
+                        {{ if .Params.viewurl}}
+                        {{ if eq .Params.picturetype "logo"}}
+                            <div class="col-md-4 col-xs-12 cell cellLogo" >
+                                <div>
+                                    <img src="{{ .Params.viewurl }}" />
+                                </div>
+                                <div style="margin-top:20px;">
+                                    <a href="{{.Params.jpgdownloadurl}}" target="_blank" download >JPG</a>
+                                    <a href="{{.Params.pngdownloadurl}}" target="_blank" download >PNG</a>
+                                    <a href="{{.Params.svgdownloadurl}}" target="_blank" download >SVG</a>
+                                </div>
+                            </div>
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                        <!-- /.col-md-9 -->
+                    </div>
+                    <!-- /.row -->
+                    <h2 class="rowtitle">{{ .Params.rowtitle2 }}</h2>
+                    <div class="row" >
+                        {{ range where $.Page.Site.Pages "Type" "brand" }}
+                        {{ if .Params }}
+                        {{ if .Params.viewurl}}
+                        {{ if eq .Params.picturetype "ppt"}}
+                            <div class="col-md-4 col-xs-12 cell cellppt" >
+                                <div class="pptImgContainer">
+                                    <div class="pptImg">
+                                        <a href="{{.Params.downloadurl}}">
+                                            <img style="width:100%;"src="{{ .Params.viewurl }}" />
+                                        </a>
+                                    </div>
+                                    <div class="buttondescription">
+                                        <span>{{.Params.buttondescription}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                        <!-- /.col-md-9 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /#content -->
+            {{ partial "footer.html" . }}
+        </div>
+        <!-- /#all -->
+        {{ partial "scripts.html" . }}
+    </body>
+</html>
