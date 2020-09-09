@@ -3,7 +3,6 @@
 
 {{ partial "head.html" . }}
 <link rel="stylesheet" href="{{ "css/home.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
-
 <body>
 
     <div id="all">
@@ -22,14 +21,12 @@
         </div>
         <section>
             <div class="home-why unset">
-                <a href="{{ i18n "EVENT_URL"}}">
+                <a href="{{ i18n "EVENT_URL"}}" target="_blank">
                     <div class="summit">
-                        <h1 class="summit-title">{{ i18n "HOME_SUMMIT" }}</h1>
-                        <img class="isPC img" src="{{ "img/banners/meetup-banner.png" | relURL}}" alt="">
-                        <img class="isH5 img" src="{{ "img/banners/meetup-banner-mobile.png" | relURL}}" alt="">
+                        <img class="isPC img" src="{{ i18n "BANNER_HC"| relURL }}" alt="">
+                        <img class="isH5 img" src="{{ i18n "BANNER_WEB_HC"| relURL }}" alt="">
                     </div>
                 </a>
-
             </div>
         </section>
         <div class="container">

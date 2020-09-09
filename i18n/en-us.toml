@@ -91,7 +91,7 @@ other = "Tags"
 other = "/blogguidance.html"
 
 [EVENT_URL]
-other = "/events.html"
+other = "https://e.huawei.com/topic/hic-hc-2020/en/index.html?utm_campaign=04MHQHQ20W6R9P&;utm_medium=pm-display&amp;utm_source=openlookeng&source=openlookeng&utm_content=hic_hc_2020"
 
 [HIGH_LIGHT1]
 other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight1_en.mp4"
@@ -104,6 +104,12 @@ other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/hi
 
 [VIDEO_COVER_3]
 other = "img/banners/video-cover3.gif"
+
+[BANNER_HC]
+other = "img/banners/HC_banner_en.gif"
+
+[BANNER_WEB_HC]
+other = "img/banners/web_HC_banner_en.png"
 
 [RELEASE_NOTES_URL]
 other = "/docs/docs/releasenotes.html"
