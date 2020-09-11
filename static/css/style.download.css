@@ -137,6 +137,16 @@
 .download-container {
     min-height: calc(100vh - 203px);
 }
+.download-button .download-url {
+    font-size: 12px;
+    font-family: roboto;
+    color: #5A9B83;
+    line-height: 16px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
 
 @media (max-width: 994px) {
     .download-server p {

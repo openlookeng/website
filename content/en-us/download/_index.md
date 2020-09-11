@@ -13,9 +13,13 @@ server_title_description2 = " for deployment instructions."
 [[server_btn]]
     file_name = "hetu-server-010.tar.gz"
     url = "https://download.openlookeng.io/010/hetu-server-010.tar.gz"
+    downloadUrl = "https://download.openlookeng.io/010/hetu-server-010.tar.gz.sha256sum"
+    download_name = "hetu-server-010.tar.gz.sha256sum"
 [[server_btn]]
     file_name = "hetu-server-rpm-010.x86_64.rpm"
     url = "https://download.openlookeng.io/010/hetu-server-rpm-010.x86_64.rpm"
+    downloadUrl = "https://download.openlookeng.io/010/hetu-server-rpm-010.x86_64.rpm.sha256sum"
+    download_name = "hetu-server-rpm-010.x86_64.rpm.sha256sum"
 
 [[driver_item]]
     title = "Command Line Interface"
@@ -25,6 +29,8 @@ server_title_description2 = " for deployment instructions."
     desc2 = " for installation instructions."
     file_name = "hetu-cli-010-executable.jar"
     url = "https://download.openlookeng.io/010/hetu-cli-010-executable.jar"
+    downloadUrl = "https://download.openlookeng.io/010/hetu-cli-010-executable.jar.sha256sum"
+    download_name = "hetu-cli-010-executable.jar.sha256sum"
 [[driver_item]]
     title = "JDBC Driver"
     desc1 = "JDBC Driver enables users to connect with live openLooKeng Server, directly from any Java applications that support JDBC connectivity.  Visit "
@@ -33,6 +39,8 @@ server_title_description2 = " for deployment instructions."
     desc2 = " for installation instructions."
     file_name = "hetu-jdbc-010.jar"
     url = "https://download.openlookeng.io/010/hetu-jdbc-010.jar"
+    downloadUrl = "https://download.openlookeng.io/010/hetu-jdbc-010.jar.sha256sum"
+    download_name = "hetu-jdbc-010.jar.sha256sum"
 [[driver_item]]
     title = "ODBC Driver"
     desc1 = "ODBC Driver lets you communicate with openLooKeng Server via standard ODBC protocol. Visit "
@@ -41,4 +49,6 @@ server_title_description2 = " for deployment instructions."
     desc2 = " for installation instructions."
     file_name = "hetu-odbc-win64-010.msi"
     url = "https://download.openlookeng.io/010/hetu-odbc-win64-010.msi"
+    downloadUrl = "https://download.openlookeng.io/010/hetu-odbc-win64-010.msi.sha256sum"
+    download_name = "hetu-odbc-win64-010.msi.sha256sum"
 +++
