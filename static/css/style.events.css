@@ -7,10 +7,10 @@
 .event-list .event-content .event-leftline {
     border-left: 2px solid #000;
     opacity: .09;
-    height: 81%;
+    height: 83%;
     position: absolute;
     left: 240px;
-    top: 19%;
+    top: 15%;
 }
 .event-list .event-content .event-box .event-circle {
     width: 24px;
@@ -122,7 +122,7 @@
         height: 75%;
         position: absolute;
         left: 140px;
-        top: 31%;
+        top: 25%;
     }
     .event-list .event-content .event-box .event-circle {
         width: 24px;
