@@ -1,8 +1,6 @@
 +++
 id = "download"
 top_title_max = "openLooKeng v0.1.0 现已发布"
-top_title_min = "下载"
-second_title = "下载openLooKeng"
 second_title_description1 = "详细内容请见"
 release_notes = "发行说明"
 second_title_description2 = ""
@@ -10,6 +8,7 @@ download_server_title = "openLooKeng Server"
 server_title_description1 = "openLooKeng发布的安装包。安装指南请见"
 deployment_packages = "部署openLooKeng"
 server_title_description2 = "。"
+
 [[server_btn]]
     file_name = "hetu-server-010.tar.gz"
     url = "https://download.openlookeng.io/010/hetu-server-010.tar.gz"
