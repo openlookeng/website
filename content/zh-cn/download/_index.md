@@ -1,9 +1,16 @@
 +++
 id = "download"
 top_title_max = "openLooKeng v0.1.0 现已发布"
+
+top_title_min = "下载"
+second_title = "下载openLookeng"
+
 second_title_description1 = "详细内容请见"
 release_notes = "发行说明"
-second_title_description2 = ""
+second_title_description2 = "。"
+click_here = "点击这里"
+second_title_description3 = "下载历史版本。"
+
 download_server_title = "openLooKeng Server"
 server_title_description1 = "openLooKeng发布的安装包。安装指南请见"
 deployment_packages = "部署openLooKeng"

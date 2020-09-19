@@ -2,9 +2,15 @@
 id = "download"
 top_title_max = "openLooKeng v0.1.0 Has Arrived"
 
+top_title_min = "Download"
+second_title = "Download openLookeng"
+
 second_title_description1 = "Find the "
 release_notes = "Release Notes"
 second_title_description2 = " for more information."
+click_here = "Click here"
+second_title_description3 = " to download previous releases."
+
 download_server_title = "openLooKeng Server"
 server_title_description1 = "openLooKeng released deployment packages, visit "
 deployment_packages = "Deploying openLooKeng"
