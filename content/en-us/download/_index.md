@@ -1,8 +1,7 @@
 +++
 id = "download"
 top_title_max = "openLooKeng v0.1.0 Has Arrived"
-top_title_min = "Download"
-second_title = "Download openLooKeng"
+
 second_title_description1 = "Find the "
 release_notes = "Release Notes"
 second_title_description2 = " for more information."
@@ -10,6 +9,7 @@ download_server_title = "openLooKeng Server"
 server_title_description1 = "openLooKeng released deployment packages, visit "
 deployment_packages = "Deploying openLooKeng"
 server_title_description2 = " for deployment instructions."
+
 [[server_btn]]
     file_name = "hetu-server-010.tar.gz"
     url = "https://download.openlookeng.io/010/hetu-server-010.tar.gz"
