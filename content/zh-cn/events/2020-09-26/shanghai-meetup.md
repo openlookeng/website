@@ -6,7 +6,7 @@ location = " · 地点: 中国上海"
 img = "./events/2020-09-26/banner.png" 
 img_mobile = './events/2020-09-26/banner.png'
 link = "./events/2020-09-26/shanghai-meetup.html"
-weight = 96
+weight = 95
 +++
 
 
