@@ -101,6 +101,7 @@
 .second-btn .download-btn p {
     color: rgba(0, 0, 0, .7);
     width: 300px;
+    height: 100px;
     text-align: left;
     font-size: 14px;
     font-family: Roboto Light;
