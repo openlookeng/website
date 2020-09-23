@@ -19,8 +19,7 @@
                         <h1 class="download-title docs-pic-title title-adapter-max">{{ .Params.top_title_max }}</h1>
                         <p class="release-notes">{{ .Params.second_title_description1 }}<a target="_blank"
                                 href="{{ i18n "RELEASE_NOTES_URL" }}">{{ .Params.release_notes }}</a>{{ .Params.second_title_description2 }}
-                                <!--@todo 等新版本上线后同步取消注释 -->
-                                <!-- <a target="_blank" href="https://download.openlookeng.io/010">{{ .Params.click_here }}</a>{{ .Params.second_title_description3 }}-->
+                                <a target="_blank" href="https://download.openlookeng.io">{{ .Params.click_here }}</a>{{ .Params.second_title_description3 }}
                         </p>
                         <h2 class="download-title docs-pic-title title-adapter-min">{{ .Params.top_title_min }}</h2>
                         <img class="docs-pic top-banner isPC img" src="{{ "img/download/banner.png" | relURL }}" alt="">
