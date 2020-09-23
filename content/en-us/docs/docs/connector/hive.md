@@ -119,7 +119,8 @@ Please see the [Hive Security Configuration](./hive-security.html) section for a
 | `hive.auto-vacuum-enabled`                | Enable auto-vacuum on Hive tables. To enable auto-vacuum on engine side, add `auto-vacuum.enabled=true` in config.properties of coordinator node(s). | `false`  |
 | `hive.vacuum-delta-num-threshold`         | Maximum number of delta directories to allow without compacting it. Minimum value is 2.       | 10    |
 | `hive.vacuum-delta-percent-threshold`     | Maximum percent of delta directories to allow without compacting it. Value should be in range 0.1 to 1.0      | 0.1   |
-| `hive.vacuum-cleanup-recheck-interval`    | Interval after which vacuum cleanup task will be resubmitted.     | `1 Minute`    |
+| `hive.vacuum-cleanup-recheck-interval`    | Interval after which vacuum cleanup task will be resubmitted. Minimum value is 5 minutes.    | `5 Minutes`    |
+| `hive.vacuum-collector-interval`    | Interval after which vacuum collector task will be resubmitted.     | `5 Minutes`    |
 
 
 
@@ -701,6 +702,11 @@ DROP SCHEMA hive.web
 ```
 
 
+
+## Known Issues
+
+
+- During concurrent queries (involving select, update, delete, vacuum) or vacuum cleanups running parallelly, some queries might fail due to conflicts. And there is also a possibility of read queries to fail with "FileNotFoundException". These scenarios are caused due to a bug in Hive ACID utils but will not lead to any data loss. Also, re-running read/select queries would succeed. 
 
 
 ## Hive Connector Limitations
