@@ -46,7 +46,7 @@
                         {{ range .Params.driver_item }}
                         <div class="download-btn btn1">
                             <h4>{{ .title }}</h4>
-                            <p>{{ .desc1 }}<a target="_blank" href="{{ .doc_url }}">{{ .doc }}</a>{{ .desc2 }}</p>
+                            <p class="download-desc">{{ .desc1 }}<a target="_blank" href="{{ .doc_url }}">{{ .doc }}</a>{{ .desc2 }}</p>
                             <button class="jar-btn" url="{{ .url }}" type="button">{{ .file_name }}</button>
                             <a class="download-url" href="{{ .downloadUrl }}">{{ .download_name }}</a>
                         </div>
