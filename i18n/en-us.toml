@@ -112,7 +112,7 @@ other = "img/banners/HC_banner_en.gif"
 other = "img/banners/web_HC_banner_en.png"
 
 [RELEASE_NOTES_URL]
-other = "/docs/docs/releasenotes.html"
+other = "/docs/docs/releasenotes-1.0.0.html"
 
 [DEPLOYING_OPENLOOKENG]
 other = "/docs/docs/installation/deployment.html"
