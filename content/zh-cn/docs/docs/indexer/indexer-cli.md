@@ -36,7 +36,7 @@
       --type=<indexTypes>[,<indexTypes>...]
                          索引类型，用逗号分隔多种类型 (支持的类型：BLOOM, BITMAP, MINMAX
   -c, --config=<configDirPath>
-                         openLooKeng etc目录的根目录（默认为../etc）
+                         openLooKeng etc目录的根目录（/xx/hetu-server-xx/etc）
   -p, --plugins=<plugins>[,<plugins>...]
                          plugins目录或文件(默认为. /hetu-heuristic-index/plugins）
                            
@@ -45,16 +45,20 @@
 
 ## 示例
 
+路径配置白名单：["/tmp", "/opt/hetu", "/opt/openlookeng", "/etc/hetu", "/etc/openlookeng", 工作目录]
+
+`etc` 目录包含config.properties，在指定config时，我们需要写绝对路径，该路径必须是白名单中路径的子目录
+
 ### 创建索引
 
 ``` shell
-$ ./index -v -c ../etc --table hive.schema.table --column column1,column2 --type bloom,minmax,bitmap --partition p=part1 create
+$ ./index -v -c /xx/hetu-server-xx/etc --table hive.schema.table --column column1,column2 --type bloom,minmax,bitmap --partition p=part1 create
 ```
 
 ### 显示索引
 
 ``` shell
-$ ./index -v -c ../etc --table hive.schema.table show
+$ ./index -v -c /xx/hetu-server-xx/etc --table hive.schema.table show
 ```
 
 ### 删除索引
@@ -62,7 +66,7 @@ $ ./index -v -c ../etc --table hive.schema.table show
 *注意：* 索引只能在表或列级别删除，即所有索引类型都将被删除。
 
 ``` shell
-$ ./index -v -c ../etc --table hive.schema.table --column column1 delete
+$ ./index -v -c /xx/hetu-server-xx/etc --table hive.schema.table --column column1 delete
 ```
 
 ## 资源使用说明
@@ -85,11 +89,11 @@ export JAVA_TOOL_OPTIONS="-Xmx100G"
 在机器1上：
 
 ``` bash
-$ ./index -v ---disableLocking c ../etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part1 create
+$ ./index -v ---disableLocking c /xx/hetu-server-xx/etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part1 create
 ```
 
 在机器2上：
 
 ``` shell
-$ ./index -v ---disableLocking c ../etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part2 create
+$ ./index -v ---disableLocking c /xx/hetu-server-xx/etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part2 create
 ```
