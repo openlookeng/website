@@ -40,7 +40,7 @@ Supported data sources: HIVE using ORC files (must be configured in {--config}/c
                          index type, comma separated format for multiple types
                            (supported types: BLOOM, BITMAP, MINMAX
   -c, --config=<configDirPath>
-                         root folder of openLooKeng etc directory (default: ../etc)
+                         root folder of openLooKeng etc directory (/xx/hetu-sever-xx/etc)
   -p, --plugins=<plugins>[,<plugins>...]
                          plugins dir or file, defaults to (default: .
                            /hetu-heuristic-index/plugins)
@@ -49,16 +49,21 @@ Supported data sources: HIVE using ORC files (must be configured in {--config}/c
 
 ## Examples
 
+Path white list：["/tmp", "/opt/hetu", "/opt/openlookeng", "/etc/hetu", "/etc/openlookeng", current workspace]
+
+`etc` directory includes config.properties, and --config should specify an absolute path,
+the path should be children directory of Path white list
+
 ### Create index
 
 ``` shell
-$ ./index -v -c ../etc --table hive.schema.table --column column1,column2 --type bloom,minmax,bitmap --partition p=part1 create
+$ ./index -v -c /xx/hetu-sever-xx/etc --table hive.schema.table --column column1,column2 --type bloom,minmax,bitmap --partition p=part1 create
 ```
 
 ### Show index
 
 ``` shell
-$ ./index -v -c ../etc --table hive.schema.table show
+$ ./index -v -c /xx/hetu-sever-xx/etc --table hive.schema.table show
 ```
 
 ### Delete index
@@ -66,7 +71,7 @@ $ ./index -v -c ../etc --table hive.schema.table show
 *Note:* index can only be deleted at table or column level, i.e. all index types will be deleted
 
 ``` shell
-$ ./index -v -c ../etc --table hive.schema.table --column column1 delete
+$ ./index -v -c /xx/hetu-sever-xx/etc --table hive.schema.table --column column1 delete
 ```
 
 ## Notes on resource usage
@@ -89,11 +94,11 @@ If creating the index for a large table is too slow on one machine, you can crea
 On machine 1:
 
 ``` bash 
-$ ./index -v ---disableLocking c ../etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part1 create
+$ ./index -v ---disableLocking c /xx/hetu-sever-xx/etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part1 create
 ```
 
 On machine 2:
 
 ``` shell
-$ ./index -v ---disableLocking c ../etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part2 create
+$ ./index -v ---disableLocking c /xx/hetu-sever-xx/etc --table hive.schema.table --columncolumn1,column2 --type bloom,minmax,bitmap --partition p=part2 create
 ```
