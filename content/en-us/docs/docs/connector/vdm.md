@@ -18,7 +18,7 @@ Therefore metastore must be configured first.
 * Here is an example of using RDBMS as metastore, create `etc/hetu-metastore.properties`:
 ```
 hetu.metastore.type=jdbc
-hetu.meatstore.db.url=jdbc:mysql://....
+hetu.metastore.db.url=jdbc:mysql://....
 hetu.metastore.db.user=root
 hetu.metastore.db.password=123456
 ```
