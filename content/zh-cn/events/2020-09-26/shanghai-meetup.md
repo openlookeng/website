@@ -32,6 +32,8 @@ https://www.slidestalk.com/m/290
 
 欢迎大家报名
 
+### 资料下载
+<a href="https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/讲师PPT.zip" download>点击下载议题资料</a>
 ### 活动议程
 <img src="./agenda.png" style="width:100%;!important">
 
