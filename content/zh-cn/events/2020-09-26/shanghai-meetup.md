@@ -26,11 +26,9 @@ openLooKeng社区用开源的魅力吸引真正热爱技术并持续探索的用
 
 上海市黄浦区延安东路550号海洋大厦29层（氪空间）
 
-### 报名及直播地址
+### 回放地址
 
-https://www.slidestalk.com/m/290
-
-欢迎大家报名
+https://space.bilibili.com/627629884/channel/detail?cid=151660
 
 ### 资料下载
 <a href="https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/讲师PPT.zip" download>点击下载议题资料</a>
