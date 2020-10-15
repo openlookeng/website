@@ -54,7 +54,7 @@
     如果没有配置，那么当前工作目录为openlookeng server的目录
 
     hetu.heuristicindex.filter.enabled=true
-    hetu.hetu.heuristicindex.filter.cache.max-memory=2GB
+    hetu.heuristicindex.filter.cache.max-memory=2GB
     hetu.heuristicindex.indexstore.uri=/opt/hetu/indices
     hetu.heuristicindex.indexstore.filesystem.profile=index-store-profile
     
@@ -77,7 +77,7 @@
 
 要创建索引，首先将工作目录cd至安装目录的`bin`文件夹，然后运行：
 
-    java -jar ./hetu-cli-*.jar --config <your-etc-folder-directory> --execute 'CREATE INDEX index_name USING bloom ON table1 (column)'
+    java -jar ./hetu-cli-*.jar --server xxx:xxx --config <your-etc-folder-directory> --execute 'CREATE INDEX index_name USING bloom ON table1 (column)'
     
 ### 运行语句
 
