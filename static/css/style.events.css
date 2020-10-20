@@ -13,7 +13,7 @@
     top: 18%;
 }
 html[lang=zh-cn] .event-list .event-content .event-leftline {
-    top: 13%;
+    top: 11%;
 }
 .event-list .event-content .event-box .event-circle {
     width: 24px;
@@ -128,8 +128,8 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
         top: 26%;
     }
     html[lang=zh-cn] .event-list .event-content .event-leftline {
-        top: 20%;
-        height: 81%;
+        top: 17%;
+        height: 83%;
     }
     .event-list .event-content .event-box .event-circle {
         width: 24px;
