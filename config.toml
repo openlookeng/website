@@ -237,7 +237,7 @@ paginate = 10
     defaultDescription = "Site template made by devcows using hugo"
     email = "contact@openlookeng.io"
     footerlogo = "../img/banners/openLookengLogo.png"
-    version = "?v=0.0.11"
+    version = "?v=0.0.12"
 
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "default"
