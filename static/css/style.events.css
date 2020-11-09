@@ -10,10 +10,10 @@
     height: 83%;
     position: absolute;
     left: 240px;
-    top: 18%;
+    top: 510px;
 }
 html[lang=zh-cn] .event-list .event-content .event-leftline {
-    top: 11%;
+    top: 510px;
 }
 .event-list .event-content .event-box .event-circle {
     width: 24px;
@@ -125,10 +125,10 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
         height: 75%;
         position: absolute;
         left: 140px;
-        top: 26%;
+        top: 420px;
     }
     html[lang=zh-cn] .event-list .event-content .event-leftline {
-        top: 17%;
+        top: 420px;
         height: 83%;
     }
     .event-list .event-content .event-box .event-circle {
