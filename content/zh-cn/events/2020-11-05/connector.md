@@ -10,8 +10,6 @@ weight = 93
 +++
 
 
-### 【1105直播回顾】如何在openLooKeng上开发一个Connector
-
 讲师：黎一泽  openLooKeng开源社区代码贡献者
 
 <img src="./title.jpg">
