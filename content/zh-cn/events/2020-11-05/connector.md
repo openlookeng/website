@@ -14,7 +14,7 @@ weight = 93
 
 讲师：黎一泽  openLooKeng开源社区代码贡献者
 
-<img src="./banner.jpg">
+<img src="./title.jpg">
 
 ### 直播回放地址：
 
