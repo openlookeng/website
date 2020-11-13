@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="61px" height="61px" viewBox="0 0 61 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_member</title>
+    <g id="wireframe2_web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A_Home1920" transform="translate(-1323.000000, -1973.000000)" stroke-width="1.5">
+            <g id="Data" transform="translate(0.000000, 1874.000000)">
+                <g id="contributors" transform="translate(1274.000000, 100.000000)">
+                    <g id="icon_member" transform="translate(50.000000, 0.000000)">
+                        <path d="M44.0019273,15.0605455 L50.5942909,15.0605455 C53.0499273,15.0605455 55.0397455,17.0514545 55.0397455,19.5070909 L55.0397455,58.3958182 L3.86847273,58.3958182 L3.86847273,19.5070909 C3.86847273,17.0514545 5.85938182,15.0605455 8.31501818,15.0605455 L14.4110182,15.0605455" id="Stroke-1" stroke="#000000" stroke-linecap="round"></path>
+                        <polyline id="Stroke-3" stroke="#5DCB9E" stroke-linejoin="round" points="38.5122545 57.2911636 38.5122545 58.3820727 37.4213455 58.3820727"></polyline>
+                        <line x1="35.1447273" y1="58.3820727" x2="22.6254545" y2="58.3820727" id="Stroke-5" stroke="#5DCB9E" stroke-linejoin="round" stroke-dasharray="2.086,2.086"></line>
+                        <polyline id="Stroke-7" stroke="#5DCB9E" stroke-linejoin="round" points="21.4880727 58.3820727 20.3971636 58.3820727 20.3971636 57.2911636"></polyline>
+                        <path d="M20.3971636,55.1780727 L20.3971636,49.3242545 C20.3971636,44.3224364 24.4520727,40.2675273 29.4549818,40.2675273 C34.4568,40.2675273 38.5117091,44.3224364 38.5117091,49.3242545 L38.5117091,56.2340727" id="Stroke-9" stroke="#5DCB9E" stroke-linejoin="round" stroke-dasharray="1.937,1.937"></path>
+                        <line x1="0.130145455" y1="58.3953818" x2="58.7785091" y2="58.3953818" id="Stroke-11" stroke="#000000" stroke-linecap="round"></line>
+                        <path d="M29.4547636,0.513818182 C21.4213091,0.513818182 14.9074909,7.02654545 14.9074909,15.06 C14.9074909,23.0945455 21.4213091,29.6072727 29.4547636,29.6072727 C37.4882182,29.6072727 44.0020364,23.0945455 44.0020364,15.06 C43.9922182,7.03090909 37.4838545,0.522545455 29.4547636,0.513818182 Z" id="Stroke-13" stroke="#000000" stroke-linecap="round"></path>
+                        <path d="M41.1607636,23.6930182 L41.1607636,35.0701091 C41.1607636,36.3453818 39.4589455,37.1613818 38.0734909,36.5362909 L29.4553091,32.6853818 L20.8196727,36.5362909 C19.4505818,37.1613818 17.7476727,36.3453818 17.7476727,35.0701091 L17.7531273,23.6930182" id="Stroke-15" stroke="#000000" stroke-linecap="round"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
