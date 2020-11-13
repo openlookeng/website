@@ -1,7 +1,7 @@
 +++ 
 author = "openLookeng"
 time = "2020.11.05" 
-title = "【1105直播回顾】如何在openLooKeng上开发一个Connector？" 
+title = "线上活动(3)：如何在openLooKeng上开发一个Connector？" 
 location = " · 地点: 在线" 
 img = "./events/2020-11-05/banner.jpg" 
 img_mobile = './events/2020-11-05/banner.jpg'
@@ -26,7 +26,7 @@ https://www.bilibili.com/video/BV1it4y1e7cc
 
 <img src="./detail.png">
 
-更多详情，请关注
+### 更多详情，请关注
 
 openLooKeng 官方公众号
 
