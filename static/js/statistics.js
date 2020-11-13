@@ -1,13 +1,13 @@
 const format = function (string) {
-    string = string.toString()
-    let len = string.length
-    let digit = Math.pow(10, len-1)
-    let num = Number(string)
+    string = string.toString();
+    let len = string.length;
+    let digit = Math.pow(10, len-1);
+    let num = Number(string);
     if (len > 4) {
-        num = num / digit
+        num = num / digit;
         num = num.toFixed(1) + 'W';
     } else if (len > 3) {
-        num = num / digit
+        num = num / digit;
         num = num.toFixed(1) + 'K';
     }
     return num
