@@ -1,5 +1,5 @@
 .home-banner {
-    height: unset;
+    height: 440px;
     margin-bottom: 60px;
 }
 
@@ -99,6 +99,71 @@ h3.title {
     margin-left: -60px;
 }
 
+.home-banner .banner_content .getStart {
+    border-radius: 4px;
+    background-color: rgba(90, 155, 131, 1);
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.swiper-slide .banner_content .banner-pc {
+    display: block;
+    width: 80%;
+    margin: 0 auto 50px;
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    width: 20px;
+    height: 3px;
+    border-radius: 3px;
+}
+
+.swiper-pagination-bullet-active {
+    background: #5a9b83;
+}
+
+.swiper-button-prev {
+    background: url("../img/banners/arrow-left.svg") no-repeat center;
+    width: 36px;
+}
+
+.swiper-button-next {
+    background: url("../img/banners/arrow-right.svg") no-repeat center;
+    width: 36px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    display: none;
+}
+
+.swiper-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-link .isPC {
+    width: 1140px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.swiper-link .isH5 {
+    width: 345px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .home-why .item .video02 {
     margin-left: unset;
 }
@@ -178,6 +243,21 @@ h3.title {
     margin-bottom: 100px;
 }
 
+.home-powered-links {
+    margin-bottom: 40px;
+}
+
+.home-powered-imgs {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-powered-imgs .power-box {
+    margin: 0 auto;
+}
+
 .home-why .summit img {
     width: 1140px;
     height: unset;
@@ -253,6 +333,26 @@ h3.title {
     .home-links-imgs {
         margin-bottom: unset;
     }
+
+    .home-powered-imgs {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-powered-imgs a {
+        margin-bottom: 30px;
+    }
+
+    .home-powered-links {
+         margin-bottom: unset;
+    }
+
+    .home-powered-imgs img {
+        height: 60px;
+    }
+
     .home-info-adapter {
         font-family: HuaweiSans;
         text-align: center!important;

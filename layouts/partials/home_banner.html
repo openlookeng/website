@@ -1,5 +1,5 @@
 
-<section>
+<!--<section>
     <div class="home-banner">
         <h1 class="banner-p1 margin-auto">{{ i18n "HOME_BANNER_SLOGAN" }}</h1>
         <p class="banner-p2 margin-auto">{{ i18n "HOME_BANNER_DES" }}</p>
@@ -9,4 +9,35 @@
             <img class="top-banner isH5 img" src="../img/banners/Banner-mobile.png" alt="">
         </div>
     </div>
+</section>-->
+<section>
+    <div class="swiper-container banner_swiper home-banner">
+        <div class="swiper-wrapper banner_swiper_wrapper">
+            {{ range (where .Data.Pages "Type" "banner") }}
+            <div class="swiper-slide banner_swiper_slide">
+                {{ if eq .Params.number "1" }}
+                <div class="banner_content">
+                    <h1 class="banner-p1 margin-auto">{{ .Title }}</h1>
+                    <p class="banner-p2 margin-auto">{{ .Params.info }}</p>
+                    <a class="getStart" href={{ i18n "HOME_GETSTARTLINK" }}>{{ i18n "HOME_GETSTART" }}</a>
+                    <img class="top-banner isPC img" src="{{ .Site.BaseURL}}{{ .Params.bgUrl }}">
+                    <img class="top-banner isH5 img" src="{{ .Site.BaseURL}}{{ .Params.mobileUrl }}">
+                </div>
+                {{ else }}
+                <a class="swiper-link" href="{{ .Params.link }}" target="_blank">
+                    <img class="isPC img" src="{{ .Site.BaseURL}}{{ .Params.bgUrl }}">
+                    <img class="isH5 img" src="{{ .Site.BaseURL}}{{ .Params.mobileUrl }}">
+                </a>
+                {{ end }}
+
+            </div>
+            {{ end }}
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination banner_swiper_pagination"></div>
+    </div>
 </section>
+
+
