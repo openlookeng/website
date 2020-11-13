@@ -1,19 +1,8 @@
-
-<!--<section>
-    <div class="home-banner">
-        <h1 class="banner-p1 margin-auto">{{ i18n "HOME_BANNER_SLOGAN" }}</h1>
-        <p class="banner-p2 margin-auto">{{ i18n "HOME_BANNER_DES" }}</p>
-        <div class="home-img">
-            <a href={{ i18n "HOME_GETSTARTLINK" }}>{{ i18n "HOME_GETSTART" }}</a>
-            <img class="top-banner isPC img" src="../img/banners/homeBanner.png" alt="">
-            <img class="top-banner isH5 img" src="../img/banners/Banner-mobile.png" alt="">
-        </div>
-    </div>
-</section>-->
 <section>
     <div class="swiper-container banner_swiper home-banner">
         <div class="swiper-wrapper banner_swiper_wrapper">
-            {{ range (where .Data.Pages "Type" "banner") }}
+            {{ range where $.Page.Site.Pages "Type" "banner" }}
+            {{ if .Params.number}}
             <div class="swiper-slide banner_swiper_slide">
                 {{ if eq .Params.number "1" }}
                 <div class="banner_content">
@@ -29,8 +18,8 @@
                     <img class="isH5 img" src="{{ .Site.BaseURL}}{{ .Params.mobileUrl }}">
                 </a>
                 {{ end }}
-
             </div>
+            {{ end }}
             {{ end }}
         </div>
 
