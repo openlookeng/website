@@ -9,13 +9,13 @@
                     <h1 class="banner-p1 margin-auto">{{ .Title }}</h1>
                     <p class="banner-p2 margin-auto">{{ .Params.info }}</p>
                     <a class="getStart" href={{ i18n "HOME_GETSTARTLINK" }}>{{ i18n "HOME_GETSTART" }}</a>
-                    <img class="top-banner isPC img" src="{{ .Site.BaseURL}}{{ .Params.bgUrl }}">
-                    <img class="top-banner isH5 img" src="{{ .Site.BaseURL}}{{ .Params.mobileUrl }}">
+                    <img class="top-banner isPC img" src="{{ .Params.bgUrl }}">
+                    <img class="top-banner isH5 img" src="{{ .Params.mobileUrl }}">
                 </div>
                 {{ else }}
                 <a class="swiper-link" href="{{ .Params.link }}" target="_blank">
-                    <img class="isPC img" src="{{ .Site.BaseURL}}{{ .Params.bgUrl }}">
-                    <img class="isH5 img" src="{{ .Site.BaseURL}}{{ .Params.mobileUrl }}">
+                    <img class="isPC img" src="{{ .Params.bgUrl }}">
+                    <img class="isH5 img" src="{{ .Params.mobileUrl }}">
                 </a>
                 {{ end }}
             </div>
