@@ -39,3 +39,9 @@
     padding-left:0 !important;
     margin-bottom: 10px;
 }
+
+#post-content .mng-20 {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+}
