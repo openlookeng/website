@@ -64,6 +64,9 @@ other = "友好链接"
 [MAIN_POWERED_LINKS]
 other = "搭载openLooKeng"
 
+[MAIN_POWERED_BEIMING]
+other = "http://www.bmsoft.com.cn/index.php?c=show&id=368"
+
 [MAIN_POWERED_HWAWEIYUN]
 other = "https://www.huaweicloud.com/product/dli.html"
 
