@@ -5373,6 +5373,22 @@ header {
     transform: translateX(-50%);
 }
 
+.news-detail .gray {
+    color: #888;
+}
+
+.news-detail video {
+    display: block;
+    margin: 0 auto;
+}
+
+.news-detail .right-title {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #9d9d9d;
+}
+
 .container .col-md-9 img {
     height: auto;
     max-width: 60%;

@@ -3,6 +3,7 @@
 
 {{ partial "head.html" . }}
 <link rel="stylesheet" href="{{ "css/home.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
+<link rel="stylesheet" href="{{ "css/statistics.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
 <body>
 
     <div id="all">
@@ -16,11 +17,10 @@
         <div class="nav-mask hide"></div>
         <div class="container">
             {{ partial "home_banner.html" . }}
-
             {{ partial "home_why_openLookeng.html" }}
         </div>
         <section>
-            <div class="home-why unset">
+            <div class="home-why unset hide">
                 <a href="{{ i18n "EVENT_URL"}}" target="_blank">
                     <div class="summit">
                         <img class="isPC img" src="{{ i18n "BANNER_HC"| relURL }}" alt="">
@@ -30,7 +30,11 @@
             </div>
         </section>
         <div class="container">
+            {{ partial "statistics.html" . }}
+
             {{ partial "blog_news.html" . }}
+
+            {{ partial "powered.html" }}
 
             {{ partial "partner.html" }}
         </div>
@@ -42,7 +46,7 @@
 
     {{ partial "scripts.html" . }}
     <script src="{{ "js/home.js?v=20200717" | relURL }}{{ .Site.Params.version }}"></script>
-
+    <script src="{{ "js/statistics.js?v=20200717" | relURL }}{{ .Site.Params.version }}"></script>
 </body>
 
 </html>

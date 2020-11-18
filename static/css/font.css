@@ -53,3 +53,7 @@
     font-family: "roboto-light";
     src: url(../fonts/Roboto-Light.ttf);
 }
+@font-face {
+    font-family: "roboto-blod";
+    src: url(../fonts/Roboto-Bold.ttf);
+}

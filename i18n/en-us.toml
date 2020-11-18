@@ -42,6 +42,18 @@ other = "/docs/docs/start.html"
 [HOME_VIDEO01]
 other = "../../video/file_example_MP4_1280_10MG.mp4"
 
+[HOEM_STATISTICE_TITLE]
+other = "Thriving openLooKeng Community"
+
+[HOME_STATISTICS_CONTRIBUTION]
+other = "Contributors"
+
+[HOME_STATISTICS_USERS]
+other = "Users"
+
+[HOME_STATISTICS_MEETUP]
+other = "Community Members"
+
 [HOME_SUMMIT]
 other = "openLooKeng First Meetup is Coming"
 
@@ -59,6 +71,15 @@ other = "News"
 
 [MAIN_RELATED_LINKS]
 other = "Related Links"
+
+[MAIN_POWERED_LINKS]
+other = "Powered by openLooKeng"
+
+[MAIN_POWERED_BEIMING]
+other = "http://www.bmsoft.com.cn/index.php?c=show&id=368"
+
+[MAIN_POWERED_HWAWEIYUN]
+other = "https://www.huaweicloud.com/en-us/product/dli.html"
 
 [MAIN_POSTBLOG_SOURCE]
 other = "Post Your Blog"

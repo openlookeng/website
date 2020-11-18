@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57px" height="60px" viewBox="0 0 57 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_contributor</title>
+    <g id="wireframe2_web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A_Home1920" transform="translate(-539.000000, -1974.000000)">
+            <g id="Data" transform="translate(0.000000, 1874.000000)">
+                <g id="contributors" transform="translate(488.000000, 100.000000)">
+                    <g id="icon_contributor" transform="translate(51.000000, 0.000000)">
+                        <path d="M43.6862,23.6375 L50.3842,23.6375 C51.4912,23.6375 52.3872,24.5345 52.3872,25.6405 L52.3872,45.5885 L3.8782,45.5885 L3.8782,25.6405 C3.8782,24.5345 4.7752,23.6375 5.8812,23.6375 L12.7592,23.6375" id="Stroke-1" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                        <g id="Group-6" transform="translate(20.000000, 34.000000)">
+                            <line x1="0.4537" y1="1.474" x2="16.7607" y2="1.474" id="Fill-3" fill="#FFFFFF"></line>
+                            <line x1="0.4537" y1="1.474" x2="16.7607" y2="1.474" id="Stroke-5" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></line>
+                        </g>
+                        <path d="M0.7501,51.1092 L0.7501,51.1092 C0.7501,55.5652 4.3621,59.1772 8.8181,59.1772 L47.7621,59.1772 C52.2181,59.1772 55.8301,55.5652 55.8301,51.1092 C55.8301,50.2182 55.1071,49.4952 54.2161,49.4952 L2.3641,49.4952 C1.4721,49.4952 0.7501,50.2182 0.7501,51.1092 Z" id="Stroke-7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path d="M17.1803,15.1512 C16.8193,17.1432 16.9783,19.1612 17.6383,20.9892 C18.1173,22.3162 18.8743,23.5822 19.8243,24.6452 C21.1213,26.0982 21.8353,28.0432 21.8353,30.1232 L21.8353,31.7372 L34.7443,31.7372 L34.7443,30.1232 C34.7443,28.1192 35.5243,26.0932 36.9403,24.4262 C37.8303,23.3812 38.5063,22.2222 38.9443,20.9802 C39.3693,19.7792 39.5853,18.5122 39.5853,17.2142 C39.5853,10.2392 33.3263,4.8462 26.2383,6.1022 C21.7373,6.8902 18.0133,10.6092 17.1803,15.1512 Z" id="Stroke-9" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path d="M12.9801,16.4496 C12.9801,16.1136 12.9901,15.7806 13.0111,15.4496" id="Stroke-11" stroke="#5DCB9E" stroke-width="1.5" stroke-linejoin="round"></path>
+                        <path d="M13.2736,13.4188 C14.6846,6.2388 21.0136,0.8228 28.6066,0.8228 C36.5536,0.8228 43.1146,6.7528 44.1056,14.4298" id="Stroke-13" stroke="#5DCB9E" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="2.047,2.047"></path>
+                        <path d="M44.2028,15.4496 C44.2238,15.7806 44.2338,16.1136 44.2338,16.4496" id="Stroke-15" stroke="#5DCB9E" stroke-width="1.5" stroke-linejoin="round"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

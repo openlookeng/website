@@ -15,6 +15,7 @@ FROM nginx:latest
 
 COPY --from=builder /src/website/public/ /usr/share/nginx/html/
 RUN chown nginx:nginx -R /usr/share/nginx/html
+COPY ./deploy/nginx/default.conf /etc/nginx/conf.d/
 ENV RUN_USER nginx
 ENV RUN_GROUP nginx
 EXPOSE 80

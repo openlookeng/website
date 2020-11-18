@@ -34,6 +34,18 @@ other = "openLooKeng首次Meetup即将到来"
 [HOME_GETSTARTLINK]
 other = "/zh-cn/docs/docs/start.html"
 
+[HOEM_STATISTICE_TITLE]
+other = "openLooKeng社区活力"
+
+[HOME_STATISTICS_CONTRIBUTION]
+other = "贡献者"
+
+[HOME_STATISTICS_USERS]
+other = "用户"
+
+[HOME_STATISTICS_MEETUP]
+other = "社区会员"
+
 [MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
 other = "订阅"
 
@@ -48,6 +60,15 @@ other = "新闻"
 
 [MAIN_RELATED_LINKS]
 other = "友好链接"
+
+[MAIN_POWERED_LINKS]
+other = "搭载openLooKeng"
+
+[MAIN_POWERED_BEIMING]
+other = "http://www.bmsoft.com.cn/index.php?c=show&id=368"
+
+[MAIN_POWERED_HWAWEIYUN]
+other = "https://www.huaweicloud.com/product/dli.html"
 
 [MAIN_POSTBLOG_SOURCE]
 other = "写博客"

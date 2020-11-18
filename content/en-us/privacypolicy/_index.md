@@ -17,15 +17,13 @@ This website (https://openlookeng.io) is operated by openLooKeng Community (here
 * When you use our mail subscription service, we will collect the following personal data:
    + your email address.
 
-* To keep track of the running status of the Community so as to provide better service for you, we will collect the following personal data:
-   + your IP address. 
-
 * When you use our Tryme service, subject to your authorization, we will collect the following personal data from third parties: 
    + your username;
    + your name;
    + your user ID;
    + your email addresses.
 
+* To keep track of the running status of the Community so as to provide better service for you, we will collect your information when you access the website, including but not limited to your IP address, browser type, used language, access date and time, software and hardware features, web page you accessed, device model, device identity code, operating system, resolution, telecom carrier, and download clicks.
 ### 2. How will we process your personal data
 
 We will not use your personal data for any other purpose except under the following circumstances:
