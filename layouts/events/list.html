@@ -29,23 +29,370 @@
                                 </div>
 
                                 <!--事件列表模块-->
-                                <div class="event-list">
-                                    <h2 class="fs24">{{ .Params.event_head }}</h2>
-                                    <div class="event-content">
-                                        <div class="event-leftline"></div>
-                                        {{ range $paginator.Pages }}
-                                        <div class="event-box fontHuaweiSans">
-                                            <div class="event-circle">
-                                                <div class="inner-circle"></div>
-                                            </div>
-                                            <h6><a href="{{ .Params.link }}" target="_blank">{{ .Params.title }}</a></h6>
-                                            <span>{{ .Params.time }}</span>
-                                            <p>{{ .Params.location}}</p>
-                                            <a href="{{ .Params.link }}" target="_blank"><img class="isPC img" src="{{ .Params.img }}" alt=""><img class="isH5 img" src="{{ .Params.img_mobile }}" alt=""></a>
+                                <div class="event-list isPc">
+                                    <div class="event-tag col-md-2">
+                                        <p class="tag-item tag-coming active">{{ i18n "EVENT_COMING"}}</p>
+                                        <p class="tag-item tag-back">{{ i18n "EVENT_LOOKBACK"}}</p>
+                                        <p class="tag-item tag-plan">{{ i18n "EVENT_PLANN"}}</p>
+                                    </div>
+                                    <div class="event-right  col-md-10">
+                                        <div class="js-pc-latest event-item-content hide js-clone-out">
+                                            <p class="item-line">
+                                                <img src="../img/events/event-open.svg">
+                                                <span class="event-item-time"></span>
+                                            </p>
                                         </div>
-                                        {{ end }}
+                                        <div class="event-item-box js-clone-inside hide">
+                                            <div class="item-box-left">
+                                                <p class="item-left-time">
+                                                    <img src="../img/events/icon_time.svg" alt="">
+                                                    <span></span>
+                                                </p>
+                                                <p class="item-left-location">
+                                                    <img src="../img/events/icon_loca.svg" alt="">
+                                                    <span></span>
+                                                </p>
+                                                <p class="item-left-tag">
+                                                    <img src="../img/events/icon_tag.svg" alt="">
+                                                    <span></span>
+                                                </p>
+                                            </div>
+                                            <div class="item-box-right">
+                                                <h5></h5>
+                                                <p></p>
+                                                <a href="" target="_blank">
+                                                    <img class="isPC img" src="" alt="">
+                                                    <img class="isH5 img" src="" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="js-event-item-pc event-item item-coming active">
+                                            <h4>{{ i18n "EVENT_COMING"}}</h4>
+                                            <div class="event-cont js-latest-event">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="js-pc-older event-item-content hide js-back-out">
+                                            <p class="item-line">
+                                                <img src="../img/events/event-open.svg">
+                                                <span class="event-item-time"></span>
+                                            </p>
+                                            
+                                        </div>
+                                        <div class="event-item-box js-back-inside hide">
+                                            <div class="item-box-left">
+                                                <p class="item-left-time">
+                                                    <img src="../img/events/icon_time.svg" alt="">
+                                                    <span></span>
+                                                </p>
+                                                <p class="item-left-location">
+                                                    <img src="../img/events/icon_loca.svg" alt="">
+                                                    <span></span>
+                                                </p>
+                                                <p class="item-left-tag">
+                                                    <img src="../img/events/icon_tag.svg" alt="">
+                                                    <span></span>
+                                                </p>
+                                            </div>
+                                            <div class="item-box-right">
+                                                <h5></h5>
+                                                <p></p>
+                                                <a href="" target="_blank">
+                                                    <img class="isPC img" src="" alt="">
+                                                    <img class="isH5 img" src="" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="js-event-item-pc event-item item-back">
+                                            <h4>{{ i18n "EVENT_LOOKBACK"}}</h4>
+                                            <div class="event-cont js-back-event">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="event-item item-plan">
+                                            <h4>{{ i18n "EVENT_PLANN"}}</h4>
+                                            <div class="plan-content">
+                                                <div class="plan-month plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "mouth"}}
+                                                    <p class="det-title">{{ .Params.title}}</p>
+                                                    {{ range .Params.mouth }}
+                                                    <p class="det-item">{{ .name }}</p>
+                                                    {{ end }}
+                                                    {{ end }}
+                                                    {{ end}}
+                                                </div>
+                                                <div class="plan-meeting plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "meeting"}}
+                                                    <p  class="det-title">{{ .Params.title}}</p>
+                                                    <div class="det-content">
+                                                        {{ range .Params.meeting}}
+                                                        {{ $box := mul .box_104 104 }}
+                                                        {{ $margin :=  mul .margin_8  8 }}
+                                                        {{ $one_third :=  mul .one_third_24 24 }}
+                                                        {{ $a_half := mul .a_half_40 40 }}
+                                                        {{ $a := add $box $margin }}
+                                                        {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                                <div class="plan-hackathon plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "hackathon"}}
+                                                    <p class="det-title">{{ .Params.title}}</p>
+                                                    <div class="det-content">
+                                                        {{ range .Params.hackathon}}
+                                                            {{ $box := mul .box_104 104 }}
+                                                            {{ $margin :=  mul .margin_8  8 }}
+                                                            {{ $one_third :=  mul .one_third_24 24 }}
+                                                            {{ $a_half := mul .a_half_40 40 }}
+                                                            {{ $a := add $box $margin }}
+                                                            {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                                <div class="plan-competition plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "competition"}}
+                                                    <p class="det-title">{{ .Params.title}}</p>
+                                                    <div class="det-content">
+                                                        {{ range .Params.competition}}
+                                                            {{ $box := mul .box_104 104 }}
+                                                            {{ $margin :=  mul .margin_8  8 }}
+                                                            {{ $one_third :=  mul .one_third_24 24 }}
+                                                            {{ $a_half := mul .a_half_40 40 }}
+                                                            {{ $a := add $box $margin }}
+                                                            {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                                <div class="plan-gathering plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "gathering"}}
+                                                    <p class="det-title">{{ .Params.title}}</p>
+                                                    <div class="det-content">
+                                                        {{ range .Params.gathering}}
+                                                            {{ $box := mul .box_104 104 }}
+                                                            {{ $margin :=  mul .margin_8  8 }}
+                                                            {{ $one_third :=  mul .one_third_24 24 }}
+                                                            {{ $a_half := mul .a_half_40 40 }}
+                                                            {{ $a := add $box $margin }}
+                                                            {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="event-list isH5">
+                                    <div class="event-tag js-latest-tag js-h5-latest">
+                                        <div class="tag-item tag-coming js-tag-item active">
+                                            <span class="tag-title">{{ i18n "EVENT_COMING"}}</span>
+                                            <span class="js-arrow inner-arrow-down"></span>
+                                        </div>
+                                        <div class="plan-meeting hide js-latest-h5-outside">
+                                            <div class="meeting-inner">
+                                                <div class="event-item-content">
+                                                    <p class="item-line">
+                                                        <img src="../img/events/event-open.svg">
+                                                        <span class="event-item-time"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="js-content"></div>
+                                        <div class="event-item-box hide js-latest-h5-inside">
+                                            <a href="" target="_blank">
+                                                <img class="isH5 img" src="" alt="">
+                                            </a>
+                                            <h5></h5>
+                                            <p class="item-left-time">
+                                                <img src="../img/events/icon_time.svg" alt="">
+                                                <span></span>
+                                            </p>
+                                            <p class="item-left-location">
+                                                <img src="../img/events/icon_loca.svg" alt="">
+                                                <span></span>
+                                            </p>
+                                            <p class="item-left-tag">
+                                                <img src="../img/events/icon_tag.svg" alt="">
+                                                <span></span>
+                                            </p>
+                                            <p class="js-desc"></p>
+                                        </div>
+                                    </div>
+                                    <div class="event-tag js-back-tag js-h5-older">
+                                        <div class="tag-item tag-back js-tag-item">
+                                            <span class="tag-title">{{ i18n "EVENT_LOOKBACK"}}</span>
+                                            <span class="js-arrow inner-arrow-right"></span>
+                                        </div>
+                                        <div class="plan-back hide js-back-h5-outside">
+                                            <div class="meeting-inner">
+                                                <div class="event-item-content">
+                                                    <p class="item-line">
+                                                        <img src="../img/events/event-open.svg">
+                                                        <span class="event-item-time"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="js-content hide"></div>
+                                        <div class="event-item-box hide js-back-h5-inside">
+                                            <a href="" target="_blank">
+                                                <img class="isH5 img" src="" alt="">
+                                            </a>
+                                            <h5></h5>
+                                            <p class="item-left-time">
+                                                <img src="../img/events/icon_time.svg" alt="">
+                                                <span></span>
+                                            </p>
+                                            <p class="item-left-location">
+                                                <img src="../img/events/icon_loca.svg" alt="">
+                                                <span></span>
+                                            </p>
+                                            <p class="item-left-tag">
+                                                <img src="../img/events/icon_tag.svg" alt="">
+                                                <span></span>
+                                            </p>
+                                            <p class="js-desc"></p>
+                                        </div>
+                                    </div>
+                                    <div class="event-tag">
+                                        <div class="tag-item tag-plan js-tag-item">
+                                            <span class="tag-title">{{ i18n "EVENT_PLANN"}}</span>
+                                            <span class="js-arrow inner-arrow-right"></span>
+                                        </div>
+                                        <div class="date-inner js-content hide">
+                                            <div class="plan-month plan-detail">
+                                                {{ range $paginator.Pages }}
+                                                {{ if eq .Params.plan "mouth"}}
+                                                <p class="det-title">{{ .Params.title}}</p>
+                                                {{ range .Params.mouth }}
+                                                <p class="det-item">{{ .name }}</p>
+                                                {{ end }}
+                                                {{ end }}
+                                                {{ end}}
+                                            </div>
+                                            <div class="plan-select">
+                                                <!-- <p class="plan-selected">会议
+                                                    <span class="inner-arrow-right selected"></span>
+                                                </p>
+                                                <ul>
+                                                    <li class="plan-meeting">会议</li>
+                                                    <li class="plan-hackathon">黑客松</li>
+                                                    <li class="plan-competition">开发者竞赛</li>
+                                                    <li class="plan-gathering">聚会</li>
+                                                </ul> -->
+                                                <select class="js-event-sel">
+                                                    <option selected value="1">{{ i18n "EVENT_SELECT_MEETING"}}</option>
+                                                    <option value="2">{{ i18n "EVENT_SELECT_HACKATHON"}}</option>
+                                                    <option value="3">{{ i18n "EVENT_SELECT_COMPETITION"}}</option>
+                                                    <option value="4">{{ i18n "EVENT_SELECT_GATHERING"}}</option>
+                                                </select>
+                                                <div class="plan-meeting plan-detail js-plan-detail1 active js-plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "meeting"}}
+                                                    <div class="det-content">
+                                                        {{ range .Params.meeting}}
+                                                        {{ $box := mul .box_104 104 }}
+                                                        {{ $margin :=  mul .margin_8  8 }}
+                                                        {{ $one_third :=  mul .one_third_24 24 }}
+                                                        {{ $a_half := mul .a_half_40 40 }}
+                                                        {{ $a := add $box $margin }}
+                                                        {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                                <div class="plan-hackathon plan-detail js-plan-detail2 js-plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "hackathon"}}
+                                                    <div class="det-content">
+                                                        {{ range .Params.hackathon}}
+                                                        {{ $box := mul .box_104 104 }}
+                                                        {{ $margin :=  mul .margin_8  8 }}
+                                                        {{ $one_third :=  mul .one_third_24 24 }}
+                                                        {{ $a_half := mul .a_half_40 40 }}
+                                                        {{ $a := add $box $margin }}
+                                                        {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                                <div class="plan-competition plan-detail js-plan-detail3 js-plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "competition"}}
+                                                    <div class="det-content">
+                                                        {{ range .Params.competition}}
+                                                        {{ $box := mul .box_104 104 }}
+                                                        {{ $margin :=  mul .margin_8  8 }}
+                                                        {{ $one_third :=  mul .one_third_24 24 }}
+                                                        {{ $a_half := mul .a_half_40 40 }}
+                                                        {{ $a := add $box $margin }}
+                                                        {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                                <div class="plan-gathering plan-detail js-plan-detail4 js-plan-detail">
+                                                    {{ range $paginator.Pages }}
+                                                    {{ if eq .Params.plan "gathering"}}
+                                                    <div class="det-content">
+                                                        {{ range .Params.gathering}}
+                                                        {{ $box := mul .box_104 104 }}
+                                                        {{ $margin :=  mul .margin_8  8 }}
+                                                        {{ $one_third :=  mul .one_third_24 24 }}
+                                                        {{ $a_half := mul .a_half_40 40 }}
+                                                        {{ $a := add $box $margin }}
+                                                        {{ $b := add $one_third $a_half}}
+                                                        <ul class="plan-item" style="height: {{ .height }}px; top: {{ add $a $b }}px;">
+                                                            <p>{{ .name }}</p>
+                                                        </ul>
+                                                        {{ end }}
+                                                        {{ end }}
+                                                        {{ end}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </section>
@@ -64,6 +411,23 @@
     <!-- /#all -->
 
     {{ partial "scripts.html" . }}
-
+    <script>
+        var eventList = [];
+        {{ range where .Data.Pages "Type" "events" }}
+        {{ if .Params.time }}
+        eventList.push({
+            date: '{{ .Params.time }}',
+            title: '{{ .Params.title }}',
+            location: '{{ .Params.location }}',
+            tag: '{{ .Params.tag }}',
+            description: '{{ .Params.description }}',
+            img: '{{ .Params.img }}',
+            img_mobile: '{{ .Params.img_mobile }}',
+            link: '{{ .Params.link }}'
+        })
+        {{ end }}
+        {{ end }}
+    </script>
+    <script src="{{ "js/event.js?v=20200717" | relURL }}{{ .Site.Params.version }}"></script>
     </body>
 </html>

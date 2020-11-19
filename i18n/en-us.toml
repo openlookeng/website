@@ -149,3 +149,24 @@ other = "Table of Contents"
 
 [WECHAT_QRCODE]
 other = "Wechat Subscription"
+
+[EVENT_COMING]
+other = "Upcoming"
+
+[EVENT_LOOKBACK]
+other = "Highlights"
+
+[EVENT_PLANN]
+other = "2021 Plan"
+
+[EVENT_SELECT_MEETING]
+other = "Conference"
+
+[EVENT_SELECT_HACKATHON]
+other = "Hackathon"
+
+[EVENT_SELECT_COMPETITION]
+other = "Developer Challenge"
+
+[EVENT_SELECT_GATHERING]
+other = "Meetup"
