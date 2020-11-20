@@ -115,12 +115,6 @@ other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/hi
 [VIDEO_COVER_3]
 other = "img/banners/video-cover3-cn.gif"
 
-[BANNER_HC]
-other = "img/banners/HC_banner_zh.gif"
-
-[BANNER_WEB_HC]
-other = "img/banners/web_HC_banner_zh.png"
-
 [RELEASE_NOTES_URL]
 other = "/zh-cn/docs/docs/releasenotes/releasenotes-1.0.1.html"
 
