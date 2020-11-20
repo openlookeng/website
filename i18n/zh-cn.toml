@@ -138,3 +138,24 @@ other = "目录"
 
 [WECHAT_QRCODE]
 other = "微信公众号"
+
+[EVENT_COMING]
+other = "最新活动"
+
+[EVENT_LOOKBACK]
+other = "精彩回顾"
+
+[EVENT_PLANN]
+other = "年度规划"
+
+[EVENT_SELECT_MEETING]
+other = "会议"
+
+[EVENT_SELECT_HACKATHON]
+other = "黑客松"
+
+[EVENT_SELECT_COMPETITION]
+other = "开发者竞赛"
+
+[EVENT_SELECT_GATHERING]
+other = "聚会"

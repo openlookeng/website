@@ -1,6 +1,7 @@
 +++ 
 time = "2020.09.24" 
 title = "HUAWEI CONNECT 2020 - Basic Software Summit" 
+tag = "会议"
 location = " · Location: Expo Center Room 515, Shanghai" 
 img = "/img/events/software_en.png" 
 img_mobile = '/img/events/software_mobile_en.png'

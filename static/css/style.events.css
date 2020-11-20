@@ -1,3 +1,7 @@
+.isH5 {
+    display: none;
+}
+
 .event-list p,
 .event-list span {
     font-size: 14px;
@@ -53,6 +57,173 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     top: 5px;
     color: rgba(0, 0, 0, .7);
 }
+
+.event-tag .tag-item {
+    width: 100px;
+    height: 24px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: FZLTHJW;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.event-tag .tag-item.active {
+    color: #5A9B83;
+    position: relative;
+}
+
+.tag-item.active::before {
+    content: "";
+    width: 4px;
+    height: 24px;
+    background: #5A9B83;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+}
+
+.event-right .event-item.active {
+    display: block;
+}
+
+.event-right .event-item {
+    display: none;
+}
+
+.event-item h4 {
+    font-size: 30px;
+    line-height: 48px;
+}
+
+.event-cont {
+    border-left: 2px solid rgba(247, 248, 249, 0.7);
+    margin-top: 40px;
+    padding-top: 20px;
+}
+.event-item-box {
+    box-shadow: 0px 6px 30px 0px rgba(90, 155, 131, 0.1);
+    border-radius: 4px;
+    margin: 40px 0 60px 33px;
+    padding: 20px 40px;
+    display: flex;
+    width: 910px;
+}
+
+.event-item-content .item-line {
+    height: 32px;
+    position: relative;
+    left: -13px;
+}
+
+.item-line img {
+    vertical-align: sub;
+}
+
+.event-item-content .event-item-time {
+    display: inline-block;
+    font-size: 24px;
+    color: #5A9B83;
+    line-height: 32px;
+}
+
+.event-item-box p,
+.event-item-box span {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.item-box-left {
+    width: 200px;
+}
+
+.item-box-right {
+    width: 630px;
+}
+
+.item-box-right h5 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.item-box-right img {
+    width: 100%;
+}
+
+.item-plan .plan-content {
+    display: flex;
+}
+
+.plan-content .plan-detail {
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 100px;
+}
+
+.plan-content .plan-month {
+    width: 80px;
+}
+
+.plan-detail .det-title {
+    text-align: center;
+    font-size: 16px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.plan-month .det-title {
+    font-size: 30px;
+    color: #dfdfdf;
+    text-align: right;
+}
+
+.plan-detail .det-item {
+    text-align: center;
+    height: 104px;
+    line-height: 104px;
+    margin-bottom: 0;
+}
+
+.plan-month .det-item {
+    text-align: left;
+    font-size: 16px;
+}
+
+.det-content {
+    position: relative;
+}
+
+.det-content .plan-item {
+    position: absolute;
+    display: block;
+    padding: 0;
+    width: 100%;
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.det-content .plan-item p {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    display: inline-block;
+    padding: 0 20px;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.event-cont .event-item-content {
+    margin-bottom: 60px;
+}
+
+
 @media screen and (min-width: 995px){
     .isPC.event-title {
         display: block;
@@ -88,6 +259,9 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     }
 }
 @media screen and (max-width: 768px) {
+    .isH5 {
+        display: block;
+    }
     .isPC.event-title {
         display: none;
     }
@@ -147,5 +321,171 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
         left: 170px;
         width: 200px;
         margin-top: 60px;
+    }
+
+    .item-plan h4 {
+        display: none;
+    }
+
+    .event-tag .tag-item {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        text-align: left;
+        margin: 0;
+        padding-left: 30px;
+        border-top: 1px solid rgba(0, 0, 0, 0.24);
+    }
+    .event-tag .tag-plan {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+    }
+    .inner-arrow-right {
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(../img/foundation/Right.png) no-repeat;
+        background-position: center center;
+        vertical-align: middle;
+        right: 34px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .inner-arrow-down {
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(../img/foundation/Down.png) no-repeat;
+        background-position: center center;
+        vertical-align: middle;
+        right: 34px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .tag-item.active::before {
+        display: none;
+    }
+    .meeting-inner {
+        margin-left: 40px;
+        padding-top: 25px;
+        border-left: 2px solid rgba(247, 248, 249, 0.7);
+    }
+    .event-item-box {
+        display: block;
+        width: 280px;
+        margin: 40px 30px 40px 20px;
+        padding: 20px;
+    }
+    .event-item-box .isH5.img {
+        width: 100%;
+    }
+    .tag-item .tag-title {
+        font-size: 16px;
+    }
+    .event-tag .tag-item.active {
+        color: #000;
+    }
+    .event-tag .active .tag-title {
+        color: #5a9b83;
+    }
+    .event-tag .tag-plan.active {
+        border-bottom: none;
+    }
+    .plan-month .det-title {
+        width: 78px;
+        font-size: 30px;
+        display: inline-block;
+    }
+    .plan-select {
+        margin-left: 10px;
+        margin-right: 47px;
+        width: 100%;
+    }
+    .plan-select .plan-selected {
+        width: 200px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 16px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+        border: 1px solid #5A9B83;
+        position: relative;
+    }
+    .plan-select ul {
+        display: none;
+        padding: 0;
+        border-radius: 4px;
+        border: 1px solid #5A9B83;
+    }
+    .plan-select li {
+        list-style: none;
+        height: 32px;
+        font-size: 14px;
+        line-height: 32px;
+        text-align: center;
+    }
+    .plan-month .det-item {
+        width: 80px;
+    }
+    .date-inner {
+        display: flex;
+        padding-top: 60px;
+        margin-bottom: 100px;
+    }
+    .plan-detail .det-title {
+        height: unset;
+        line-height: unset;
+    }
+    .inner-arrow-right.selected {
+        right: 13px;
+    }
+    .inner-arrow-down.selected {
+        right: 13px;
+    }
+    .plan-select .plan-detail {
+        display: none;
+        margin-top: 8px;
+    }
+    .plan-select .plan-detail.active {
+        display: block;
+    }
+    .det-content .plan-item {
+        border: none;
+    }
+    .event-item-box h5 {
+        font-size: 16px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+    .event-item-box .item-left-tag {
+        margin-bottom: 25px;
+    }
+    .item-left-tag img {
+        vertical-align: sub;
+    }
+    .plan-back,
+    .plan-meeting {
+        margin-bottom: 40px;
+        height: 100%;
+    }
+    .plan-month {
+        margin-left: 40px;
+    }
+    .det-content {
+        height: 100%;
+        margin-top: 15px;
+    }
+    .event-item-content .event-item-time {
+        font-size: 16px;
+    }
+    .plan-select select {
+        width: 200px;
+        height: 32px;
+        margin-top: 5px;
     }
 }
