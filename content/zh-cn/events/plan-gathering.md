@@ -104,6 +104,13 @@ title = "聚会"
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
+    name = "Apache Hadoop"
+    height = 88
+    box_104 = 9
+    margin_8 = 1
+    one_third_24 = 0
+    a_half_40 = 0
+[[gathering]]
     name = "北京Meetup"
     height = 40
     box_104 = 10
