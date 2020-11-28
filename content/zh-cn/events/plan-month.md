@@ -1,32 +1,32 @@
 +++ 
-plan = "mouth"
+plan = "month"
 weight = 1
 title = "2021"
 
 
-[[mouth]]
+[[month]]
     name = "1月"
-[[mouth]]
+[[month]]
     name = "2月"
-[[mouth]]
+[[month]]
     name = "3月"
-[[mouth]]
+[[month]]
     name = "4月"
-[[mouth]]
+[[month]]
     name = "5月"
-[[mouth]]
+[[month]]
     name = "6月"
-[[mouth]]
+[[month]]
     name = "7月"
-[[mouth]]
+[[month]]
     name = "8月"
-[[mouth]]
+[[month]]
     name = "9月"
-[[mouth]]
+[[month]]
     name = "10月"
-[[mouth]]
+[[month]]
     name = "11月"
-[[mouth]]
+[[month]]
     name = "12月"
     
 +++

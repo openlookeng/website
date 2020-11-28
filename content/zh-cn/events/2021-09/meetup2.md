@@ -1,7 +1,7 @@
 +++ 
 author = "openLookeng"
 time = "2021.09" 
-title = "OSCAR开源产业大会" 
+title = "OSCAR云计算开源产业大会" 
 location = "北京" 
 tag = "会议"
 img = "" 
