@@ -1,12 +1,12 @@
 +++ 
 author = "openLookeng"
 time = "2021.09" 
-title = "OSCAR开源产业大会" 
-location = "北京" 
-tag = "会议"
+title = "OSCAR Cloud Computing Open Source Industries Conference" 
+location = "Beijing" 
+tag = "Conference"
 img = "" 
 img_mobile = ''
 link = ""
-description = "当今世界，开源技术不仅是软件开发的基石，而且正在对更多的行业产生深远的影响。OSCAR开源产业大会将云集百位开源领域技术专家，共同探讨云计算、大数据、人工智能等领域新兴的开源技术的应用，开源技术以及生态的未来发展方向。"
+description = "In today's world, open source technology is not only the cornerstone of software development, but is also having a profound impact on more industries. The OSCAR Open Source Industry Conference will gather hundreds of technical experts in the open source field to discuss the application of emerging open source technologies in cloud computing, big data, artificial intelligence and other fields, open source technology and the future development direction of the ecology."
 weight = 92
 +++

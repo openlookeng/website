@@ -1,12 +1,12 @@
 +++ 
 author = "openLookeng"
 time = "2021.09-2021.12" 
-title = "CCF大数据与计算智能大赛" 
-location = "线上" 
-tag = "开发者竞赛"
+title = "CCF Big Data & Computing Intelligence Contest" 
+location = "Online" 
+tag = "Developers Competition"
 img = "" 
 img_mobile = ''
 link = ""
-description = "CCF大数据与计算智能大赛（以下简称CCF BDCI）由中国计算机学会2013年创办。大赛是大数据与人工智能领域的算法、应用、系统、创业大型挑战赛事。大赛面向重点行业和应用领域征集需求，以前沿技术与行业应用问题为导向，以促进行业发展及产业升级为目标，以众智、众包的方式，汇聚海内外产学研用多方智慧，为社会发现和培养了大量高质量数据人才。openLooKeng预计将参加本次活动，提供赛题和奖金。"
+description = "CCF Big Data & Computing Intelligence (CCF BDCI) Contest was founded in 2013 by the China Computer Federation. The competition is a large-scale competition for algorithms, applications, systems, and entrepreneurship in the field of big data and artificial intelligence. The competition is oriented towards soliciting needs from key industries and application fields, and is oriented towards cutting-edge technology and industry application issues, with the goal of promoting industry development and industrial upgrading, and in a crowd-sourcing and crowd-sourcing way, it gathers domestic and foreign industry, academia, and research to use multi-intelligence for the society Discovered and trained a large number of high-quality data talents. openLooKeng is expected to participate in this event, providing contest questions and bonuses."
 weight = 92
 +++

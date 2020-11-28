@@ -114,9 +114,9 @@
                                             <div class="plan-content">
                                                 <div class="plan-month plan-detail">
                                                     {{ range $paginator.Pages }}
-                                                    {{ if eq .Params.plan "mouth"}}
+                                                    {{ if eq .Params.plan "month"}}
                                                     <p class="det-title">{{ .Params.title}}</p>
-                                                    {{ range .Params.mouth }}
+                                                    {{ range .Params.month }}
                                                     <p class="det-item">{{ .name }}</p>
                                                     {{ end }}
                                                     {{ end }}
@@ -288,9 +288,9 @@
                                         <div class="date-inner js-content hide">
                                             <div class="plan-month plan-detail">
                                                 {{ range $paginator.Pages }}
-                                                {{ if eq .Params.plan "mouth"}}
+                                                {{ if eq .Params.plan "month"}}
                                                 <p class="det-title">{{ .Params.title}}</p>
-                                                {{ range .Params.mouth }}
+                                                {{ range .Params.month }}
                                                 <p class="det-item">{{ .name }}</p>
                                                 {{ end }}
                                                 {{ end }}

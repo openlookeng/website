@@ -1,12 +1,12 @@
 +++ 
 author = "openLookeng"
 time = "2021.04" 
-title = "openEuler峰会" 
-location = "待定" 
-tag = "会议"
+title = "openEuler Summit" 
+location = "TBD" 
+tag = "Conference"
 img = "" 
 img_mobile = ''
 link = ""
-description = "openEuler峰会是openEuler社区面向全球开源社区参与者的年度旗舰活动。openEuler社区秉承“共建、共享、共治”的理念，打造多样性计算场景最佳操作系统，同时鼓励开发者、合作伙伴、开源爱好者在这个平台上提出新想法、新思路，实践新方案，加速计算产业创新发展。作为大数据领域的关键项目，我们将在现场为你展现大数据的极简之美！关注openLooKeng的朋友们，可不要错过这个精彩峰会。"
+description = "openEuler Summit is an event held by the openEuler community for developers to exchange the latest developments. The first offline openEuler Summit 2020 will be held in Beijing in December. openEuler is not only an operating system that supports multiple processor architectures, but also the most dynamic open source community. The Summit invites developers, users, community contributors, and software enthusiasts of the OS ecosystem to interpret the latest openEuler version and discuss the future technology roadmap, catalyzing the synergy between technologies, ecosystems, and businesses."
 weight = 92
 +++

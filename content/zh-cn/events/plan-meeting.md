@@ -5,7 +5,7 @@ title = "会议"
 
 
 [[meeting]]
-    name = "HDC.Cloud"
+    name = "HDC.Cloud 2021"
     height = 88
     box_104 = 2
     margin_8 = 1
@@ -33,7 +33,7 @@ title = "会议"
     one_third_24 = 1
     a_half_40 = 0
 [[meeting]]
-    name = "Huawei Connect"
+    name = "华为全连接2021"
     height = 24
     box_104 = 8
     margin_8 = 3
@@ -61,7 +61,7 @@ title = "会议"
     one_third_24 = 2
     a_half_40 = 0
 [[meeting]]
-    name = "COSCon"
+    name = "COSCon'21"
     height = 88
     box_104 = 10
     margin_8 = 1

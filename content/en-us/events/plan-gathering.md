@@ -1,11 +1,11 @@
 +++ 
 plan = "gathering"
 weight = 1
-title = "聚会"
+title = "Meetup"
 
 
 [[gathering]]
-    name = "深圳Meetup"
+    name = "Shenzhen Meetup"
     height = 40
     top = 8
     box_104 = 0
@@ -13,126 +13,126 @@ title = "聚会"
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "Meetup（地点待定）"
+    name = "Meetup (City TBD)"
     height = 40
     box_104 = 0
     margin_8 = 2
     one_third_24 = 0
     a_half_40 = 1
 [[gathering]]
-    name = "北京Meetup"
+    name = "Beijing Meetup"
     height = 40
     box_104 = 2
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "成都Meetup"
+    name = "Chengdu Meetup"
     height = 40
     box_104 = 2
     margin_8 = 2
     one_third_24 = 0
     a_half_40 = 1
 [[gathering]]
-    name = "武汉Meetup"
+    name = "Wuhan Meetup"
     height = 88
     box_104 = 3
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "杭州Meetup"
+    name = "Hangzhou Meetup"
     height = 40
     box_104 = 4
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "Meetup（地点待定）"
+    name = "Meetup (City TBD)"
     height = 40
     box_104 = 4
     margin_8 = 2
     one_third_24 = 0
     a_half_40 = 1
 [[gathering]]
-    name = "北京Meetup"
+    name = "Beijing Meetup"
     height = 40
     box_104 = 5
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "Meetup（地点待定）"
+    name = "Meetup (City TBD)"
     height = 40
     box_104 = 5
     margin_8 = 2
     one_third_24 = 0
     a_half_40 = 1
 [[gathering]]
-    name = "深圳Meetup"
+    name = "Shenzhen Meetup"
     height = 40
     box_104 = 6
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "Meetup（地点待定）"
+    name = "Meetup (City TBD)"
     height = 40
     box_104 = 6
     margin_8 = 2
     one_third_24 = 0
     a_half_40 = 1
 [[gathering]]
-    name = "长沙Meetup"
+    name = "Changsha Meetup"
     height = 40
     box_104 = 7
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "Meetup（地点待定）"
+    name = "Meetup (City TBD)"
     height = 40
     box_104 = 7
     margin_8 = 2
     one_third_24 = 0
     a_half_40 = 1
 [[gathering]]
-    name = "成都Meetup"
+    name = "Chengdu Meetup"
     height = 88
     box_104 = 8
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "Apache Hadoop"
+    name = "Apache Hadoop (City TBD)"
     height = 88
     box_104 = 9
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "北京Meetup"
+    name = "Beijing Meetup"
     height = 40
     box_104 = 10
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "西安Meetup"
+    name = "Xi'an Meetup"
     height = 40
     box_104 = 10
     margin_8 = 2
     one_third_24 = 0
     a_half_40 = 1
 [[gathering]]
-    name = "杭州Meetup"
+    name = "Hangzhou Meetup"
     height = 40
     box_104 = 11
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[gathering]]
-    name = "Meetup（地点待定）"
+    name = "Meetup (City TBD)"
     height = 40
     box_104 = 11
     margin_8 = 2
