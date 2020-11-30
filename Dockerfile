@@ -9,7 +9,7 @@ RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
     curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz | tar -xz && \
     mv hugo /usr/local/bin/
-RUN cd /src/website/ && hugo -b /
+RUN cd /src/website/ && hugo -b / --minify
 
 FROM nginx:latest
 
