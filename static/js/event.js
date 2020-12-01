@@ -43,7 +43,9 @@ $(function () {
         return Number(b.month.substring(0, 4) + b.month.substring(5, 7)) - Number(a.month.substring(0, 4) + a.month.substring(5, 7));
     })
     var date = new Date();
-    var curDate = Number('' + date.getFullYear() + (date.getMonth() + 1) + date.getDate());
+    var curMonth = (date.getMonth() < 9) ? ('0' + (date.getMonth() + 1)) : date.getMonth() + 1;
+    var curDate = (date.getDate().toString().length === 1) ? ('0' + date.getDate()) : date.getDate();
+    var curDate = Number('' + date.getFullYear() + curMonth + curDate);
     var filterFlag = false;
     newEventList.forEach(function (item) {
         filterFlag = false;
