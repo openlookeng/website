@@ -62,6 +62,13 @@ openLooKeng欢迎朋友们报名参赛，一起拥抱开源，共建开源项目
 
 3.通过openLooKeng pyton客户端能正常访问openLooKeng业务。
 
+<strong>赛题解读视频链接:</strong>
+
+https://space.bilibili.com/627629884/channel/detail?cid=159205
+
+<a href="./pdf_source.zip" download>点击下载议题资料</a>
+
+
 ### Hi，可爱的朋友们 咱们openLooKeng迎来新一波的大活动
 
 ### 2020 openEuler 高校开发者大赛
