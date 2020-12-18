@@ -1,7 +1,7 @@
 ﻿+++ 
 author = "openLookeng"
 time = "2020.12.04" 
-title = "openLooKeng PMC Biweekly meeting(2)" 
+title = "20201204_openLooKeng PMC Biweekly Meeting" 
 location = "线上" 
 tag = "直播"
 img = "./events/2020-12-04/banner.png" 
