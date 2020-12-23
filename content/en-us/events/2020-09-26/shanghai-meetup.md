@@ -1,5 +1,5 @@
 ﻿+++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2020.09.26" 
 title = "Apache Hadoop大数据技术Meetup" 
 location = " · 地点: 中国上海" 

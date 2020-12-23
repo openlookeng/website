@@ -51,7 +51,7 @@ small_title = "PMC 委员"
     title = "许田立"
     avatar = "img/foundation/xutianli.png"
     range = "华为云大数据架构师"
-    content = "负责华为大数据平台产品的系统设计工作，有丰富的系统架构设计经验，精通各类大数据组件，Openlookeng的首批设计人员，负责多个特性的设计工作。"
+    content = "负责华为大数据平台产品的系统设计工作，有丰富的系统架构设计经验，精通各类大数据组件，openLooKeng的首批设计人员，负责多个特性的设计工作。"
 
 
 [[item]]

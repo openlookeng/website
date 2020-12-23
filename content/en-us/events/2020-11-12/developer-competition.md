@@ -1,5 +1,5 @@
 +++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2020.11.05-2021.04.20" 
 title = "openLooKeng参加openEuler高校开发者大赛，50万奖金等你来赢" 
 location = "线上" 

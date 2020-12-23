@@ -29,9 +29,9 @@ openLooKeng使用了业界著名的开源SQL引擎Presto来提供交互式查询
 
 作为开源社区，openLooKeng开源项目采用商业友好的Apache License 2.0发行许可证，让开发者、用户和伙伴使用更自由，并期待更多大数据领域的开发者参与到社区，共建、共享，共同推动社区的繁荣发展。
 
-openLookeng社区主页： https://openlookeng.io
+openLooKeng社区主页： https://openlookeng.io
 
-openLookeng代码托管地址：
+openLooKeng代码托管地址：
 https://gitee.com/openlookeng
 https://github.com/openlookeng
 

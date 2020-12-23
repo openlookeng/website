@@ -1,5 +1,5 @@
-+++ 
-author = "openLookeng"
++++
+author = "openLooKeng"
 time = "2021.05" 
 title = "中国开源黑客松" 
 location = "待定" 

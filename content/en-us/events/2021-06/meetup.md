@@ -1,5 +1,5 @@
 +++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2021.06" 
 title = "openLooKeng Meetup" 
 location = "Beijing (Tentatively)" 

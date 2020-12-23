@@ -1,5 +1,5 @@
-+++ 
-author = "openLookeng"
++++
+author = "openLooKeng"
 time = "2021.09" 
 title = "OSCAR云计算开源产业大会" 
 location = "北京" 

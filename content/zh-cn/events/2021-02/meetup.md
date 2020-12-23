@@ -1,5 +1,5 @@
-+++ 
-author = "openLookeng"
++++
+author = "openLooKeng"
 time = "2021.02-2021.07" 
 title = "开源软件供应链点亮计划-暑期2021" 
 location = "线上" 

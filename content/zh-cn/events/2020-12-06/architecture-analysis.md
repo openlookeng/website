@@ -1,5 +1,5 @@
 ﻿+++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2020.12.06-2020.12.07" 
 title = "QCon深圳2020 — openLooKeng架构解析和性能优化实践" 
 location = "深圳" 
