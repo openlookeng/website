@@ -1,5 +1,5 @@
 ﻿+++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2020.12.24-2020.12.25" 
 title = "圣诞节,与openLooKeng一起听一场不一样的开源故事" 
 location = "北京" 

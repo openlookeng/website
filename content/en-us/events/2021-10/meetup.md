@@ -1,5 +1,5 @@
-+++ 
-author = "openLookeng"
++++
+author = "openLooKeng"
 time = "2021.10" 
 title = "openEuler Summit" 
 location = "TBD" 

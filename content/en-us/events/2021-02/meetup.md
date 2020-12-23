@@ -1,5 +1,5 @@
 +++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2021.02-2021.07" 
 title = "Open Source Software Supply Chain Program - Summer 2021" 
 location = "Online" 

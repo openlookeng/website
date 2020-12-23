@@ -1,5 +1,5 @@
 +++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2020.11.05" 
 title = "线上活动(3)：如何在openLooKeng上开发一个Connector？" 
 location = "线上" 

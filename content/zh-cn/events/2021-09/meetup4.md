@@ -1,5 +1,5 @@
-+++ 
-author = "openLookeng"
++++
+author = "openLooKeng"
 time = "2021.09-2021.12" 
 title = "CCF大数据与计算智能大赛" 
 location = "线上" 

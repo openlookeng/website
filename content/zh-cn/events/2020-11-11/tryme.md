@@ -1,5 +1,5 @@
-+++ 
-author = "openLookeng"
++++
+author = "openLooKeng"
 time = "2020.11.11" 
 title = "线上直播(4)：想深入了解openLooKeng，从试用开始" 
 location = "线上" 

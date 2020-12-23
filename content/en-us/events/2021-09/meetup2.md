@@ -1,5 +1,5 @@
 +++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2021.09" 
 title = "OSCAR Cloud Computing Open Source Industries Conference" 
 location = "Beijing" 

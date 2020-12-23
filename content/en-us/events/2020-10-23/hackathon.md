@@ -1,5 +1,5 @@
 +++ 
-author = "openLookeng"
+author = "openLooKeng"
 time = "2020.10.23-2020.10.26" 
 title = "2020 第十一届中国开源黑客松" 
 location = "长沙" 

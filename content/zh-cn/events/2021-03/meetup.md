@@ -1,5 +1,5 @@
-+++ 
-author = "openLookeng"
++++
+author = "openLooKeng"
 time = "2021.03" 
 title = "华为开发者大会HDC.Cloud " 
 location = "深圳" 
