@@ -60,6 +60,12 @@ small_title = "PMC 委员"
     range = "华为云大数据高级架构师"
     content = "负责Huawei Cloud Stack大数据产品架构与技术规划，致力于为企业提供领先的大数据产品和解决方案，有丰富的大数据平台、机器学习、个性化推荐、图计算等产品和项目开发实施经验。"
 
+[[item]]
+    title = "吴酋珉"
+    avatar = "img/foundation/wuqiuming.png"
+    range = "招商银行大数据技术专家"
+    content = "负责招商银行大数据平台架构规划、建设及维护管理，在金融科技领域有着9年大数据相关工作经验。同时也是金融行业第一位HCIE-Bigdata证书的获得者。"
+
 +++
 
 ## PMC (项目管理委员会)  

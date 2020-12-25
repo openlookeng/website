@@ -9,7 +9,7 @@ img_mobile = './events/2020-12-06/banner.png'
 link = "./events/2020-12-06/architecture-analysis.html"
 eventtype = "upComing"
 description = ""
-weight = 95
+weight = 94
 +++
 
 

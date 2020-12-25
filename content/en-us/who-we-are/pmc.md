@@ -60,6 +60,12 @@ small_title = "PMC Members"
     range = "Senior Big Data Architect of HUAWEI CLOUD"
     content = "Responsible for the architecture and technology planning of Big Data which is dedicated to provide leading big data products and solutions on Huawei Cloud Stack for enterprises. With rich experience in developing and implementing products and projects such as big data platform, machine learning, personalized recommendation, and graph computing."
 
+[[item]]
+    title = "Qiumin Wu"
+    avatar = "img/foundation/wuqiuming.png"
+    range = "Big Data Expert in China Merchants Bank (CMB)"
+    content = "Wu has 9-year big data experience in Fin-tech area, and is responsible for architectural design, implementation and maintenance of the big data platform in CMB. Wu is also the first HCIE-Bigdata certification holder in the finance industry."
+
 +++
 
 ## PMC (Project Management Committee)  
