@@ -27,12 +27,24 @@ small_title = "User Group Members"
     range = "Huawei R&D Engineer"
     content = "Dezhi has been engaged in the demand anlysis, development and tesing of products and overall solutions in the filed of Huawei storage and big data for more than 10 years."
 
-[[item]]
-    title = "Yan Huang"
-    avatar = "img/foundation/YanHuang.png"
-    range = "Huawei Big Data Technology Expert"
-    content = "Yan has been focused on areas including big data metadata management, data lineage, and data virtualization technology. He is currently responsible for clarification of customer needs and solution design of the openLooKeng project, and leading the team in charge of partner development and customer support in openLooKeng project."
 
+[[item]]
+    title = "Yu Jiwen"
+    avatar = "img/foundation/yujiwen.png"
+    range = "Huawei R&D Senior Engineer"
+    content = "Yu Jiwen, received his Master degrees in Automation from Shanghai Jiao Tong University. He has six years of experience in software development and Big data solution. Currently, he participates in the version planning and delivery management of openLooKeng."
+
+[[item]]
+    title = "Runchao Wu "
+    avatar = "img/foundation/wurunchao.png"
+    range = "Huawei R&D Senior Engineer"
+    content = "Runchao Wu joined the OpenLooKeng project at the early stage of incubation. He participated in project solution design, code development, and PoC verification. and dedicate to optimizing high-availability and high-performance big data query scenarios, especially in cross-domain big data query performance optimization."
+
+[[item]]
+    title = "Shengxia Tu"
+    avatar = "img/foundation/tushengxia.png"
+    range = "Huawei R&D Senior Engineer"
+    content = "As a key R&D member of the team, Shengxia Tu has participated in the design and implementation of key features of the OpenLooKeng kernel and is familiar with the connector development and heuristic index mechanism."
 
 
 

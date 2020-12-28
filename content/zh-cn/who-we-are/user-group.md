@@ -29,13 +29,22 @@ small_title = "用户组成员"
     content = "许德智从事华为存储和大数据领域的产品和整体解决方案的需求分析、开发、测试工作十余年。"
 
 [[item]]
-    title = "黄焰"
-    avatar = "img/foundation/YanHuang.png"
-    range = "Huawei Big Data Technology Expert"
-    content = "黄焰专注的领域包含大数据元数据管理、数据血缘以及数据虚拟化技术。目前负责openLooKeng项目客户需求澄清及解决方案设计，同时带领团队负责openLooKeng开源项目伙伴拓展及客户支持工作。"
+    title = "余吉文"
+    avatar = "img/foundation/yujiwen.png"
+    range = "Huawei R&D Senior Engineer"
+    content = "余吉文，上海交通大学自动化专业硕士，现任华为研发高级工程师。拥有6年软件开发和大数据领域行业经验，目前参与openLooKeng的版本规划和交付进度管理工作。"
 
+[[item]]
+    title = "吴润超"
+    avatar = "img/foundation/wurunchao.png"
+    range = "Huawei R&D Senior Engineer"
+    content = "吴润超在openLooKeng项目孵化初期就已加入，参与项目的方案设计、代码开发和POC验证等工作，致力于大数据的高可用高性能的查询场景优化，特别在跨域场景的大数据查询的性能优化方面经验丰富。"
 
-
+[[item]]
+    title = "涂盛霞"
+    avatar = "img/foundation/tushengxia.png"
+    range = "Huawei R&D Senior Engineer"
+    content = "涂盛霞作为团队的研发骨干，一直参与openLooKeng内核关键特性的设计和开发工作，熟悉connector开发流程和启发式索引机制。"
 
 
 
