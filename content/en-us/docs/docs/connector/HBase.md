@@ -74,6 +74,7 @@ debug=true;
 | ----------------------------------- | ------------- | -------- | ------------------------------------------------------------ |
 | hbase.zookeeper.quorum              | (none)        | Yes      | Zookeeper cluster address                                    |
 | hbase.zookeeper.property.clientPort | (none)        | Yes      | Zookeeper client port                                        |
+| hbase.zookeeper.znode.parent        | /hbase        | No       | Zookeeper znode parent of hbase                                   |
 | hbase.client.retries.number         | 3             | No       | Retry times to connect to hbase client                       |
 | hbase.client.pause.time             | 100           | No       | HBase client disconnect time                                 |
 | hbase.rpc.protection.enable         | false         | No       | Communication privacy protection. You can get this from `hbase-site.xml`. |
@@ -85,6 +86,7 @@ debug=true;
 | hbase.hbase.site.path               | (none)        | No       | Configuration used to connect to a secure hbase cluster      |
 | hbase.jaas.conf.path                | (none)        | No       | Jaas for security authentication                             |
 | hbase.krb5.conf.path                | (none)        | No       | Krb5 for security authentication                             |
+
 
 ## Table Properties
 
@@ -139,7 +141,7 @@ HBase Connector supports two forms of table creation:
 
 1. Create a table and directly link to a existing table in the HBase data source.
 
-2. Create a new table that does not exist in the HBase data source.
+2. Create a new table that does not exist in the HBase data source. We must specify 'external = false'.
 
 
 Below is an example of how to create a table `schemaName.tableName` and link it to an existing table named `hbaseNamespace:hbaseTable` :
