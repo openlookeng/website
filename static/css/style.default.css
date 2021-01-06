@@ -3354,12 +3354,41 @@ fieldset[disabled] .btn-template-primary.active {
 
 #get-it p {
     margin: 0 0 20px;
+    position: relative;
 }
 
 #footer {
     height: 120px;
 }
-
+#report {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    z-index: 90;
+}
+@media screen and (max-width: 1000px) {
+    #report {
+        display: none;
+    }
+}
+#report .icon-close {
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url('/img//icons/icon-close.png');
+    background-size: contain;
+    position: absolute;
+    right: -22px;
+    top: 0;
+    cursor: pointer;
+}
+#report img {
+    display: block;
+    width: 172px;
+    height: 144px;
+    margin-top: 22px;
+    cursor: pointer;
+}
 #copyright {
     background-color: rgba(0, 0, 0, .75);
     color: rgba(255, 255, 255, .7);
