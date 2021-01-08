@@ -1,14 +1,14 @@
 +++ 
 author = "openLooKeng"
 time = "2020.10.23-2020.10.26" 
-title = "2020 第十一届中国开源黑客松" 
-location = "长沙" 
-tag = "黑客松"
+title = "The 11th China Open Source Hackathon" 
+location = "Changsha" 
+tag = "Hackathon"
 img = "./events/2020-10-23/banner.png" 
 img_mobile = './events/2020-10-23/banner.png'
 link = "./events/2020-10-23/hackathon.html"
 eventtype = "lookBack"
-description = "由中国电子技术标准化研究院、华为、腾讯云、英特尔，鹏城实验室联合主办第十一届中国开源黑客松活动将与1024程序员节相结合，规模空前，相信一定可以碰撞出不一样的火花。"
+description = ""
 weight = 94
 +++
 

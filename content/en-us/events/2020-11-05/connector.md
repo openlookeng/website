@@ -1,14 +1,14 @@
 +++ 
 author = "openLooKeng"
 time = "2020.11.05" 
-title = "线上活动(3)：如何在openLooKeng上开发一个Connector？" 
-location = "线上" 
-tag = "直播"
+title = "How to add a connector in openLooKeng?" 
+location = "Online" 
+tag = "Live"
 img = "./events/2020-11-05/banner.jpg" 
 img_mobile = './events/2020-11-05/banner.jpg'
 link = "./events/2020-11-05/connector.html"
 eventtype = "lookBack"
-description = "如何在openLooKeng上开发一个Connector？"
+description = ""
 
 weight = 93
 +++
