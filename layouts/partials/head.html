@@ -18,31 +18,31 @@
     {{ hugo.Generator }}
 
     <!-- Font -->
-    <link rel="stylesheet" href="{{ "css/font.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ "css/font.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
 
     <!-- Bootstrap and Font Awesome CSS -->
-    <link href="{{ "css/bootstrap.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/swiper.min.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/bootstrap.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
+    <link href="{{ "css/swiper.min.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
 
 
     <!-- CSS animations  -->
-    <link href="{{ "css/animate.css?v=20200717" | relURL}}" rel="stylesheet">
+    <link href="{{ "css/animate.css" | relURL}}" rel="stylesheet">
 
     <!-- Theme stylesheet, if possible do not edit this stylesheet -->
     {{ with .Site.Params.style }}
     <link href="{{ "css/style" | relURL}}.{{ . }}.css" rel="stylesheet" id="theme-stylesheet">
     {{ else }}
-    <link href="{{ "css/style.default.css?v=20210106" | relURL}}" rel="stylesheet" id="theme-stylesheet">
+    <link href="{{ "css/style.default.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet" id="theme-stylesheet">
     {{ end }}
 
     <!-- Download stylesheet-->
-    <link href="{{ "css/style.download.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/style.mobilenav.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/style.maillist.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/style.events.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/news.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/allsite.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
-    <link href="{{ "css/contribution.css?v=20200717" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/style.download.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
+    <link href="{{ "css/style.mobilenav.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
+    <link href="{{ "css/style.maillist.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
+    <link href="{{ "css/style.events.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
+    <link href="{{ "css/news.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
+    <link href="{{ "css/allsite.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
+    <link href="{{ "css/contribution.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
 
     <!-- Responsivity for older IE -->
     {{ `
@@ -57,8 +57,8 @@
     <link rel="apple-touch-icon" href="{{ "img/apple-touch-icon.png" | relURL }}" >
 
     <!-- owl carousel CSS -->
-    <link href="{{ "css/owl.carousel.css?v=20200717" | relURL}}" rel="stylesheet">
-    <link href="{{ "css/owl.theme.css?v=20200717" | relURL}}" rel="stylesheet">
+    <link href="{{ "css/owl.carousel.css" | relURL}}" rel="stylesheet">
+    <link href="{{ "css/owl.theme.css" | relURL}}" rel="stylesheet">
 
     <!-- RSS feed -->
     <link rel="alternate" href="{{ "/index.xml" | absURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
@@ -108,5 +108,5 @@
     {{ end }}
     {{ partial "docs/html-head.html" . }}
     <!-- Custom stylesheet - for your changes -->
-    <link href="{{ "css/custom.css" | relURL}}{{ .Site.Params.version }}" rel="stylesheet">
+    <link href="{{ "css/custom.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
 </head>

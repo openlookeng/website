@@ -2,8 +2,8 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 {{ partial "head.html" . }}
-<link rel="stylesheet" href="{{ "css/home.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
-<link rel="stylesheet" href="{{ "css/statistics.css?v=20200717" | relURL}}{{ .Site.Params.version }}">
+<link rel="stylesheet" href="{{ "css/home.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
+<link rel="stylesheet" href="{{ "css/statistics.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
 <body>
 
     <div id="all">
@@ -35,8 +35,8 @@
     <!-- /#all -->
 
     {{ partial "scripts.html" . }}
-    <script src="{{ "js/home.js?v=20200717" | relURL }}{{ .Site.Params.version }}"></script>
-    <script src="{{ "js/statistics.js?v=20200717" | relURL }}{{ .Site.Params.version }}"></script>
+    <script src="{{ "js/home.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
+    <script src="{{ "js/statistics.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
 </body>
 
 </html>
