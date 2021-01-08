@@ -1,14 +1,14 @@
 +++ 
 author = "openLooKeng"
 time = "2020.11.11" 
-title = "线上直播(4)：想深入了解openLooKeng，从试用开始" 
-location = "线上" 
-tag = "直播"
+title = "How to learn more about openLooKeng？Try it." 
+location = "Online" 
+tag = "Live"
 img = "./events/2020-11-11/banner.jpg" 
 img_mobile = './events/2020-11-11/banner.jpg'
 link = "./events/2020-11-11/tryme.html"
 eventtype = "lookBack"
-description = "想深入了解openLooKeng，从试用开始"
+description = ""
 weight = 92
 +++
 
