@@ -428,6 +428,6 @@
         {{ end }}
         {{ end }}
     </script>
-    <script src="{{ "js/event.js?v=20200717" | relURL }}{{ .Site.Params.version }}"></script>
+    <script src="{{ "js/event.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
     </body>
 </html>
