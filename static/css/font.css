@@ -1,59 +1,73 @@
 @font-face {
+    font-display: swap;
     font-family: "FZLTCHJW";
     src: url(../fonts/FZLTCHJW.TTF);
 }
 @font-face {
+    font-display: swap;
     font-family: "FZLTHBJW";
     src: url(../fonts/FZLTHBJW.TTF);
 }
 @font-face {
+    font-display: swap;
     font-family: "FZLTHJW";
     src: url(../fonts/FZLTHJW.TTF);
 }
 @font-face {
+    font-display: swap;
     font-family: "FZLTXHJW";
     src: url(../fonts/FZLTXHJW.TTF);
 }
 @font-face {
+    font-display: swap;
     font-family: "FZLTXIHJW";
     src: url(../fonts/FZLTXIHJW.TTF);
 }
 @font-face {
+    font-display: swap;
     font-family: "FZLTZHJW";
     src: url(../fonts/FZLTZHJW.TTF);
 }
 
 
 @font-face {
+    font-display: swap;
     font-family: "HuaweiSans-Bold";
     src: url(../fonts/HuaweiSans-Bold.ttf);
 }
 @font-face {
+    font-display: swap;
     font-family: "HuaweiSans-Light";
     src: url(../fonts/HuaweiSans-Light.ttf);
 }
 @font-face {
+    font-display: swap;
     font-family: "HuaweiSans-Medium";
     src: url(../fonts/HuaweiSans-Medium.ttf);
 }
 @font-face {
+    font-display: swap;
     font-family: "HuaweiSans";
     src: url(../fonts/HuaweiSans-Regular.ttf);
 }
 @font-face {
+    font-display: swap;
     font-family: "HuaweiSans-Thin";
     src: url(../fonts/HuaweiSans-Thin.ttf);
 }
 
 @font-face {
+    font-display: swap;
     font-family: "roboto-regular";
     src: url(../fonts/Roboto-Regular.ttf);
 }
 @font-face {
+    font-display: swap;
     font-family: "roboto-light";
     src: url(../fonts/Roboto-Light.ttf);
 }
 @font-face {
+    font-display: swap;
     font-family: "roboto-blod";
     src: url(../fonts/Roboto-Bold.ttf);
 }
