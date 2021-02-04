@@ -245,17 +245,14 @@ h3.title {
 
 .home-powered-links {
     margin-bottom: 40px;
+    margin: 0 -15px;
 }
 
 .home-powered-imgs {
-    max-width: 900px;
+    max-width: 924px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-}
-
-.home-powered-imgs .power-box {
-    margin: 0 auto;
+    justify-content: space-around;
 }
 
 .home-why .summit img {
@@ -340,17 +337,12 @@ h3.title {
         align-items: center;
         justify-content: center;
     }
-
     .home-powered-imgs a {
         margin-bottom: 30px;
     }
 
     .home-powered-links {
          margin-bottom: unset;
-    }
-
-    .home-powered-imgs img {
-        height: 60px;
     }
 
     .home-info-adapter {
