@@ -1,4 +1,4 @@
-'+++
++++
 title = "中科大星辰队openLooKeng性能优化论文，2020 CCF BDCI竞赛一等奖实至名归"
 date = "2021-01-28"
 tags = ["大数据", "数据虚拟化", "openLooKeng"]
