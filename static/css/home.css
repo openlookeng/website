@@ -172,6 +172,10 @@ h3.title {
     display: none;
 }
 
+.navbar-nav > .dropdown.lang > .nav-lang-btn:hover {
+    border-bottom: 0;
+}
+
 .home-why .item .video02 {
     margin-left: unset;
 }
