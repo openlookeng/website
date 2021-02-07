@@ -164,6 +164,14 @@ h3.title {
     transform: translateY(-50%);
 }
 
+.swiper-newyear .isH5 {
+    width: 100%;
+}
+
+.banner_swiper .swiper-button-disabled {
+    display: none;
+}
+
 .home-why .item .video02 {
     margin-left: unset;
 }
