@@ -9,13 +9,23 @@
                     <h1 class="banner-p1 margin-auto">{{ .Title }}</h1>
                     <p class="banner-p2 margin-auto">{{ .Params.info }}</p>
                     <a class="getStart" href={{ i18n "HOME_GETSTARTLINK" }}>{{ i18n "HOME_GETSTART" }}</a>
+                    {{ if .Params.hrefUrl }}
+                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="top-banner isPC img" src="{{ .Params.bgUrl }}"></a>
+                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="top-banner isH5 img" src="{{ .Params.mobileUrl }}"></a>
+                    {{ else }}
                     <img loading="lazy" class="top-banner isPC img" src="{{ .Params.bgUrl }}">
                     <img loading="lazy" class="top-banner isH5 img" src="{{ .Params.mobileUrl }}">
+                    {{ end }}
                 </div>
                 {{ else }}
                 <div class="swiper-link swiper-newyear">
+                    {{ if .Params.hrefUrl }}
+                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="isPC img" src="{{ .Params.bgUrl }}"></a>
+                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="isH5 img" src="{{ .Params.mobileUrl }}"></a>
+                    {{ else }}
                     <img loading="lazy" class="isPC img" src="{{ .Params.bgUrl }}">
                     <img loading="lazy" class="isH5 img" src="{{ .Params.mobileUrl }}">
+                    {{ end }}
                 </div>
                 {{ end }}
             </div>
