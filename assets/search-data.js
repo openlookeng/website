@@ -12,8 +12,16 @@
     field: ['title', 'content'],
     store: ['title', 'href', 'content'],
   };
-
-  const index = FlexSearch.create('balance', indexCfg);
+  var index = FlexSearch.create({
+    encode: false,
+    tokenize: function(str){
+      var enWords = str;
+      var zhWordsArr = str.replace(/[\x00-\x7F]/g,"").split("");
+      enWords = enWords.replace(/[\u4e00-\u9fa5]/g,"").split("");
+      return zhWordsArr.concat(enWords)
+    },
+    doc: indexCfg.doc
+  })
   window.bookSearchIndex = index;
   {{ range $index, $page := where .Site.Pages "Kind" "in" (slice "page" "section") }}
   index.add({
