@@ -5,20 +5,13 @@ title = "聚会"
 
 
 [[gathering]]
-    name = "深圳Meetup"
+    name = "线上Meetup"
     height = 40
     top = 8
     box_104 = 0
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
-[[gathering]]
-    name = "Meetup（地点待定）"
-    height = 40
-    box_104 = 0
-    margin_8 = 2
-    one_third_24 = 0
-    a_half_40 = 1
 [[gathering]]
     name = "北京Meetup"
     height = 40

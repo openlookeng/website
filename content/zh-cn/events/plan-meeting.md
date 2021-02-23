@@ -7,14 +7,14 @@ title = "会议"
 [[meeting]]
     name = "HDC.Cloud 2021"
     height = 88
-    box_104 = 2
+    box_104 = 3
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
 [[meeting]]
     name = "openEuler 峰会"
     height = 88
-    box_104 = 3
+    box_104 = 4
     margin_8 = 1
     one_third_24 = 0
     a_half_40 = 0
