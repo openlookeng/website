@@ -1,0 +1,13 @@
++++
+author = "openLooKeng"
+time = "2021.02.19" 
+title = "20210219_openLooKeng PMC Biweekly Meeting" 
+location = "线上" 
+tag = "直播"
+img = "./events/2021-02-19/banner.jpg" 
+img_mobile = "./events/2021-02-19/banner.jpg" 
+link = "https://www.bilibili.com/video/BV1e5411N7U3"
+eventtype = "lookBack"
+description = ""
+weight = 91
++++
