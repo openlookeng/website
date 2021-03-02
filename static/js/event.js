@@ -13,10 +13,34 @@ $(function () {
     }
 
     var newEventList = [];
+    var timesList = [];
     var checkFlag = false;
+
+    var date = new Date();
+    var curMonth = (date.getMonth() < 9) ? ('0' + (date.getMonth() + 1)) : date.getMonth() + 1;
+    var monthDate = (date.getDate().toString().length === 1) ? ('0' + date.getDate()) : date.getDate();
+    var curYearMonth = Number('' + date.getFullYear() + curMonth);
+    var curDate = Number('' + date.getFullYear() + curMonth + monthDate);
+
     eventList = eventList.sort(function (a, b){
         return Number(b.date.substring(0, 4) + b.date.substring(5, 7)) - Number(a.date.substring(0, 4) + a.date.substring(5, 7));
     })
+    eventList = eventList.filter(function (item) {
+        var dateTemp = item.date.split('-');
+        if(!item.date.includes('-')){
+            return true;
+        }
+        if(item.date.includes('-')){
+            if((Number(dateTemp[0].substring(0, 4) + dateTemp[0].substring(5, 7)) < curYearMonth) && (curYearMonth < Number(dateTemp[1].substring(0, 4) + dateTemp[1].substring(5, 7)))){
+                item.realMonth = date.getFullYear() + '.' + curMonth;
+                timesList.push(item);
+                return false;
+            }else{
+                return true;
+            }
+        }
+    })
+    
     eventList.forEach(function (item, index) {
         if(index){
             checkFlag = false;
@@ -39,13 +63,25 @@ $(function () {
             })
         }
     })
+    timesList.forEach(function(item) {
+        checkFlag = false;
+        newEventList.forEach(function (newItem) {
+            if(item.realMonth.includes(newItem.month)){
+                checkFlag = true;
+                newItem.eventList.push(item);
+            }
+        })
+        if(!checkFlag){
+            newEventList.push({
+                month: item.realMonth,
+                eventList: [item]
+            })
+        }
+    })
     newEventList = newEventList.sort(function (a, b){
         return Number(b.month.substring(0, 4) + b.month.substring(5, 7)) - Number(a.month.substring(0, 4) + a.month.substring(5, 7));
     })
-    var date = new Date();
-    var curMonth = (date.getMonth() < 9) ? ('0' + (date.getMonth() + 1)) : date.getMonth() + 1;
-    var curDate = (date.getDate().toString().length === 1) ? ('0' + date.getDate()) : date.getDate();
-    var curDate = Number('' + date.getFullYear() + curMonth + curDate);
+    
     var filterFlag = false;
     newEventList.forEach(function (item) {
         filterFlag = false;
