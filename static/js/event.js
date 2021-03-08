@@ -63,6 +63,7 @@ $(function () {
             })
         }
     })
+
     timesList.forEach(function(item) {
         checkFlag = false;
         newEventList.forEach(function (newItem) {
@@ -81,7 +82,7 @@ $(function () {
     newEventList = newEventList.sort(function (a, b){
         return Number(b.month.substring(0, 4) + b.month.substring(5, 7)) - Number(a.month.substring(0, 4) + a.month.substring(5, 7));
     })
-    
+
     var filterFlag = false;
     newEventList.forEach(function (item) {
         filterFlag = false;
@@ -113,7 +114,7 @@ $(function () {
             item.isLatest = true;
         }
     })
-    var checkAllFlag = 0;;
+    var checkAllFlag = 0;
     newEventList.forEach(function (item) {
         checkAllFlag = false;
         item.eventList.forEach(function (secondItem) {
@@ -125,16 +126,26 @@ $(function () {
             item.all = true;
         }
     })
+
     var outsideDom = null;
     var insideDom = null;
     var olderOutsideDom = null;
     var olderInsideDom = null;
+    var sortDate = function (date) {
+        let a = date
+        return a.date.substring(8, 10) === '' ? Number(a.date.substring(0, 4) + a.date.substring(5, 7) + '00') : Number(a.date.substring(0, 4) + a.date.substring(5, 7) + a.date.substring(8, 10));
+    }
     newEventList.reverse().forEach(function (item){
+        let sortEventList = item.eventList.sort((a, b) => {
+            a = sortDate(a);
+            b = sortDate(b);
+            return a - b;
+        })
         if(item.isLatest){
             if($(window).innerWidth() > 992){
                 outsideDom = $('.js-clone-out').clone().removeClass('hide').removeClass('js-clone-out');
                 $(outsideDom).find('.event-item-time').text(item.month);
-                item.eventList.forEach(function (itemEvent){
+                sortEventList.forEach(function (itemEvent){
                     if(itemEvent.isLatest){
                         insideDom = $('.js-clone-inside').clone().removeClass('hide').removeClass('js-clone-inside');
                         $(insideDom).find('.item-left-time span').text(itemEvent.date);
@@ -153,7 +164,7 @@ $(function () {
             }else{
                 outsideDom = $('.js-latest-h5-outside').clone().removeClass('hide').removeClass('js-latest-h5-outside');
                 $(outsideDom).find('.event-item-time').text(item.month);
-                item.eventList.forEach(function (itemEvent){
+                sortEventList.forEach(function (itemEvent){
                     if(itemEvent.isLatest){
                         insideDom = $('.js-latest-h5-inside').clone().removeClass('hide').removeClass('js-latest-h5-inside');
                         $(insideDom).find('.item-left-time span').text(itemEvent.date);
@@ -178,7 +189,7 @@ $(function () {
             if($(window).innerWidth() > 992){
                 olderOutsideDom = $('.js-back-out').clone().removeClass('hide').removeClass('js-back-out');
                 $(olderOutsideDom).find('.event-item-time').text(item.month);
-                item.eventList.forEach(function (itemEvent){
+                sortEventList.forEach(function (itemEvent){
                     if(!itemEvent.isLatest){
                         olderInsideDom = $('.js-back-inside').clone().removeClass('hide').removeClass('js-back-inside');
                         $(olderInsideDom).find('.item-left-time span').text(itemEvent.date);
@@ -197,7 +208,7 @@ $(function () {
             }else{
                 olderOutsideDom = $('.js-back-h5-outside').clone().removeClass('hide').removeClass('js-back-h5-outside');
                 $(olderOutsideDom).find('.event-item-time').text(item.month);
-                item.eventList.forEach(function (itemEvent){
+                sortEventList.forEach(function (itemEvent){
                     if(!itemEvent.isLatest){
                         olderInsideDom = $('.js-back-h5-inside').clone().removeClass('hide').removeClass('js-back-h5-inside');
                         $(olderInsideDom).find('.item-left-time span').text(itemEvent.date);
