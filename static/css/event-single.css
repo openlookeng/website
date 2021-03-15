@@ -25,6 +25,12 @@
 #post-content p {
     word-break: break-all;
 }
+#post-content th {
+    padding-left: 20px;
+}
+#post-content td {
+    padding-left: 20px;
+}
 #blog-post .tag-mobile {
     display: inline-block;
 }
