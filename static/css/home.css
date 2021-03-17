@@ -159,9 +159,6 @@ h3.title {
 
 .swiper-link .isH5 {
     width: 345px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .swiper-newyear .isH5 {
