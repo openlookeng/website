@@ -11,7 +11,7 @@ To create an index you can run sql statements of the form:
 CREATE INDEX [ IF NOT EXISTS ] index_name
 USING [ BITMAP | BLOOM | BTREE | MINMAX ]
 ON tbl_name (col_name)
-WITH ( "level" = ['STRIPE', 'PARTITION'], "bloom.fpp" = '0.001', [, …] )
+WITH ( 'level' = ['STRIPE', 'PARTITION'], "bloom.fpp" = '0.001', [, …] )
 WHERE predicate;
 ```
 
@@ -19,7 +19,7 @@ WHERE predicate;
 - `WITH` can be used to specify index properties or index level. See individual index documentation to support properties.
 - `"level"='STRIPE'` if not specified
 
-If the table is partitioned, you can specify a single partition to create an index on, or an in-predicate to specify multiple partitions: 
+If the table is partitioned, you can specify a single partition to create an index on, or an in-predicate to specify multiple partitions:
 
 ```roomsql
 CREATE INDEX index_name USING bloom ON hive.schema.table (column1);
@@ -27,9 +27,12 @@ CREATE INDEX index_name USING bloom ON hive.schema.table (column1) WITH ("bloom.
 CREATE INDEX index_name USING bloom ON hive.schema.table (column1) WHERE p in (part1, part2, part3);
 ```
 
+**Note:** If the table is multi-partitioned (for example, partitioned by colA and colB), only index creation on the **first** level is supported (colA).
+
 ## SHOW
 
-To show all indexes or a specific index_name: 
+To show all indexes or a specific index_name:
+
 ```roomsql
 SHOW INDEX;
 SHOW INDEX index_name;
@@ -38,6 +41,7 @@ SHOW INDEX index_name;
 ## DROP
 
 To delete an index by name:
+
 ```roomsql
 DROP INDEX index_name
 WHERE predicate;
@@ -62,7 +66,4 @@ Therefore, the temporary directory should have sufficient space. To change the t
 -Djava.io.tmpdir=/path/to/another/dir
 ```
 
-The size of the index depends closely on the column properties such as number of unique values.
-As a rough estimate, the available temporary disk space should be table size divided by the number of columns.
-For example, e.g. for a table of 100GB with five mostly unique columns, 25GB of temporary disk space should be available.
 

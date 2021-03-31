@@ -121,7 +121,12 @@ Please see the [Hive Security Configuration](./hive-security.html) section for a
 | `hive.vacuum-delta-percent-threshold`     | Maximum percent of delta directories to allow without compacting it. Value should be in range 0.1 to 1.0      | 0.1   |
 | `hive.vacuum-cleanup-recheck-interval`    | Interval after which vacuum cleanup task will be resubmitted. Minimum value is 5 minutes.    | `5 Minutes`    |
 | `hive.vacuum-collector-interval`    | Interval after which vacuum collector task will be resubmitted.     | `5 Minutes`    |
-| `hive.max-splits-to-group`    | Max number of splits can be grouped. If value is 1 it will not group. Minimum value is 1     | `1`    |
+| `hive.max-splits-to-group`    | Max number of splits can be grouped. If value is 1 it will not group. Minimum value is 1     | 1   |
+| `hive.metastore-client-service-threads` | Number of threads for metastore clients to operate in parallel to communicate with hive metastore. | 4 |
+| `hive.worker-metastore-cache-enabled` | Enable the caching of the hive metastore on the worker nodes also. | `false` |
+
+
+
 
 
 ## Hive Thrift Metastore Configuration Properties
@@ -138,6 +143,7 @@ Please see the [Hive Security Configuration](./hive-security.html) section for a
 | `hive.metastore.client.principal`                   | The Kerberos principal that openLooKeng will use when connecting to the Hive metastore service. |
 | `hive.metastore.client.keytab`                      | Hive metastore client keytab location.                       |
 | `hive.metastore.thrift.is-role-name-case-sensitive` | whether the role name to be Case-Sensitive or not, default value false. |
+| `hive.metastore.krb5.conf.path`                     | The Kerberos configuration file location. |
 
 
 
@@ -277,13 +283,13 @@ The Hive connector can access data stored in GCS, using the `gs://` URI prefix. 
 
 ## ORC Cache Configuration
 
- 
+
 Hive connector caches the ORC file data to provide better performance and reduce query latency. Workers cache the data on their local memory.
 When enabled, Workers cache all ORC files tail, stripe-footer, row-index, bloom-filter information. However, the workers cache row data of only specific ORC 
 files that are matching the predicates provided via `cache table` sql statement.
 
 ### ORC Cache Properties
- 
+
 | Property Name                              | Description                                          | Default   |
 | :----------------------------------------- | :--------------------------------------------------- | :-------- |
 | `hive.orc.file-tail.cache.enabled`         | Enable ORC file tail cache                           | `false`   |
@@ -701,6 +707,109 @@ Drop a schema:
 ```sql
 DROP SCHEMA hive.web
 ```
+
+
+
+## Performance tuning notes:
+
+#### INSERT
+
+* A bulk load insert operation like "*CREATE TABLE AS*" or *"INSERT INTO TABLE SELECT COL1, COL2 FROM QUERY"* can be tuned for higher performance by configuring higher number of [writer tasks](../admin/properties.html#task.writer-count) configurations.
+
+  ```properties
+  SET SESSION task_writer_count=<num>;
+  
+  #Note: `num' is default number of local parallel table writer jobs per worker, must be a power of 2.
+  #Recommended value: 50% of the total cpu cores available in the worker node can be given here
+  ```
+
+  Multiple writers per workers will ensure higher consumption of data, however, this leads to multiple files generation per partition; large number of small files is suboptimal for read operations.
+
+  Following recommendations can be used by the administrator/developer to ensure less files are generated: -
+
+  * **For AARCH64:**
+
+    - Use [vacuum operation unify](../vacuum.html) to merge the multiple files created by many file writes in each partition such that scheduling splits becomes faster during read.
+
+      ```sql
+      VACUUM TABLE catalog_sales FULL UNIFY;
+      ```
+
+      **<u>*Before Vacuum Unify*</u>**: Insert generates multiple files by each writer for a given partition:
+      
+      ![](../images/vaccum_full_unify_B.png)
+      
+      
+      
+      **<u>*After Vacuum Unify*</u>:** VACUUM FULL UNIFY command, all file small files are unified to one for a given partition.
+      
+      ![](../images/vaccum_full_unify_A.png)
+
+  * **For Intel X86:**
+
+    * Following session parameter can ensure only 1 file is created per partition by adding a plan node to shuffle the records across workers; such that only designated workers write particular partitions.
+
+      ```properties
+      SET SESSION hive.write_partition_distribution=true
+      #Default: false
+      ```
+
+  * ##### Hive Metastore timeout
+
+    The large partitioned table contains an excessive large number of partitions, causing task timeout. Large number of partitions may take more time to load and synchronize with the metastore cache, hence for better performance in higher scale storage its recommended to accordingly adjust the 'hive.metastore-timeout' parameter.
+
+    The following property should be set in the hive config file.
+
+    ```properties
+    hive.metastore-timeout=<TimeWithUnit>;
+
+    #Note: `TimeWithUnit' is the time with unit in seconds or minutes. 
+    #Default: 10s (where 's' stands for seconds)
+    #Recommended value: For operation in large partition table it can be 60s or higher. This needs to be configured according to the data volume. The values shown here are for reference only. It is recommended to adjust them according to the actual situation.
+    ```
+
+
+  
+
+* ##### Parallel Metastore operations
+
+  The following parameter should be set on the hive config.
+
+  ``` properties
+  hive.metastore-client-service-threads = 4
+  #Default: 4
+  #Recommended: The number of running HMS service.
+  ```
+
+  Based on the number of thread pool that many parallel HMS operation can be called, this shall reduce the overall time to get the partitions.
+
+  **Note**: additionally, multiple Hive Metastore services can be added to the cluster, the same will be accessed in round-robin manner thereby ensuring better load over hive metastore.
+
+  
+
+* ##### Direct Delete for whole partition deletes
+
+  If delete request is on partition column then it will be directly deleted, so the partition will be deleted using metadata call.
+  delete delta file will not be created on that partition because entire data of that partition is getting deleted.
+
+  The following parameter should be set on the application session level:
+
+  ``` properties
+  delete_transactional_table_direct=true
+  #Default: false
+  ```
+
+  **Usage:**
+
+  ```sql
+  DELETE FROM table_test WHERE partition_column >= (SELECT max(done_paritions) FROM tracking_table);
+  ```
+
+  > Note:
+  >
+  > a) Only `>,>=,<,<=` operators are supported for direct deletion.
+  >
+  > b) Delete command output shall not print the number of records deleted when whole partition is deleted.
 
 
 

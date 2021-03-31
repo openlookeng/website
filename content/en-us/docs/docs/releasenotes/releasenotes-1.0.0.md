@@ -42,6 +42,9 @@ This release focused on making improvements in 3 main areas: Performance, Securi
 | ORC Data Cache          | Capture ORC cache metrics via JMX.                           | 33, 142                                                      |
 |                         | CACHE sql command usability enhancements to provide more flexibility as to what partitions can be cached. | 90, 99                                                       |
 
+
 ## Obtaining the Document 
 
 For details, see [https://gitee.com/openlookeng/hetu-core/tree/1.0.0/hetu-docs/en](https://gitee.com/openlookeng/hetu-core/tree/1.0.0/hetu-docs/en)
+
+
