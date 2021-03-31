@@ -130,7 +130,7 @@ other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/hi
 other = "img/banners/video-cover3.gif"
 
 [RELEASE_NOTES_URL]
-other = "/docs/docs/releasenotes/releasenotes-1.1.0.html"
+other = "/docs/docs/releasenotes/releasenotes-1.2.0.html"
 
 [DEPLOYING_OPENLOOKENG]
 other = "/docs/docs/installation/deployment.html"
