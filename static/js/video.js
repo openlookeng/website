@@ -49,9 +49,7 @@ $(function($) {
                 return false;
         }
     });
-    // $(".video-content[index]").find(".video-msg").click(function(){
-    //     var address = $(this).attr("href");
-    //     console.log('address', address)
-    //     window.location.href = address;
-    // });
+    $(".video-content[index='feature']").find(".more-btn").addClass('hide');
+    $(".video-content[index='developer']").find(".more-btn").addClass('hide');
+
 });

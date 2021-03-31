@@ -1,4 +1,5 @@
-{{ $posts := (where .Site.RegularPages "Section" "==" "video") }}
+{{ $posts := where .Site.RegularPages "Type" "==" "video" }}
+
 {{ $postCount := len $posts }}
 {{ if gt $postCount 0 }}
 
@@ -11,7 +12,6 @@
 
             <div class="home_video">
                 <div class="video_total video-total-home">
-                    {{ $posts := where .Data.Pages "Type" "video" }}
                     {{ range first 4 $posts }}
                     <div class="video_item video-in-home">
                         <a href="{{ .Params.videourl }}" target="_blank">
