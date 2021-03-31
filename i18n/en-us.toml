@@ -9,29 +9,25 @@ other = "A Distributed, Low Latency, Reliable Data Engine for All Data, Big or S
 other = "Why openLooKeng?"
 
 [HOME_SIMPLE]
-other = "Simple Experience"
+other = "Data Analysis Across Data Centers"
 
 [HOME_SIMPLE_DES1]
-other = "SQL to access all kinds of data sources."
-
-[HOME_SIMPLE_DES2]
-other = "Query data across data centers and hybrid clouds."
-
+other = "Unified SQL interfaces ensure data access across data centers and hybrid clouds."
 
 [HOME_FLEXIBLE]
-other = "Flexible Extensibility"
+other = "Simple Data Analysis"
 
 [HOME_FLEXIBLE_DES1]
-other = "Just add connectors for new data resources."
-
-[HOME_FLEXIBLE_DES2]
-other = "Move processing to data. Query data where it is."
+other = "Unified SQL interfaces enable you to access multiple data sources."
 
 [HOME_AVAIABLE]
-other = "High Availability"
+other = "Flexible Extensibility"
 
 [HOME_AVAIABLE_DES1]
-other = "Active/Active design leads zero downtime."
+other = "openLooKeng allows you to effortlessly add connectors for new data sources,"
+
+[HOME_AVAIABLE_DES2]
+other = "removing the need for data migration."
 
 [HOME_GETSTART]
 other = "Get Started"
@@ -118,16 +114,37 @@ other = "/blogguidance.html"
 other = "https://e.huawei.com/en/solutions/hic?utm_campaign=04MHQHQ20W6R9P&utm_medium=pm-display&utm_source=openlookeng&source=openlookeng&utm_content=hic_hc_2020"
 
 [HIGH_LIGHT1]
-other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight1_en.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/Feature1.mp4"
 
 [HIGH_LIGHT2]
-other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight2_en.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/Feature2.mp4"
 
 [HIGH_LIGHT3]
-other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight3_en.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/Feature3.mp4"
 
 [VIDEO_COVER_3]
 other = "img/banners/video-cover3.gif"
+
+[VIDEO_MORE]
+other = "View More"
+
+[VIDEO_DEFAULT]
+other = "Collapse"
+
+[VIDEO_FEATURE]
+other = "Feature Description"
+
+[VIDEO_THEME]
+other = "Themed Livestream"
+
+[VIDEO_TECHNICAL]
+other = "Technical Exchanges"
+
+[VIDEO_DEVELOPER]
+other = "Developer Contests"
+
+[VIDEO_LIST_LINK]
+other = "/video.html"
 
 [RELEASE_NOTES_URL]
 other = "/docs/docs/releasenotes/releasenotes-1.2.0.html"
@@ -167,3 +184,9 @@ other = "Developer Challenge"
 
 [EVENT_SELECT_GATHERING]
 other = "Meetup"
+
+[FAQ_URL]
+other = "https://openlookeng.io/docs/docs/faq.html"
+
+[HOME_VIDEO]
+other = "Featured Videos"

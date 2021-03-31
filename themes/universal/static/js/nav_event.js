@@ -63,6 +63,8 @@ $(function (){
             return true
         } else if (str.includes('events')) {
             return true
+        } else if (str.includes('video')) {
+            return true
         } else {
             return false
         }

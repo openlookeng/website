@@ -5,28 +5,25 @@ other = "openLooKeng，让大数据更简单"
 other = "面向大数据库的数据虚拟化引擎"
 
 [HOME_SIMPLE]
-other = "极简数据分析体验"
+other = "跨数据中心数据分析"
 
 [HOME_SIMPLE_DES1]
-other = "统一的SQL接口访问多种数据源"
-
-[HOME_SIMPLE_DES2]
-other = "支持跨数据中心、跨云数据源分析"
+other = "统一的SQL接口访问跨数据中心、跨云的数据源"
 
 [HOME_FLEXIBLE]
-other = "灵活、易扩展"
+other = "极简的跨源数据分析体验"
 
 [HOME_FLEXIBLE_DES1]
-other = "可以通过增加Connector来增加数据源"
-
-[HOME_FLEXIBLE_DES2]
-other = "采集变连接、数据零搬迁"
+other = "统一的SQL接口访问多种数据源"
 
 [HOME_AVAIABLE]
-other = "高可靠"
+other = "易扩展数据源"
 
 [HOME_AVAIABLE_DES1]
-other = "全 Active/Active 架构，业务零中断 "
+other = "可以通过增加Connector来增加数据源"
+
+[HOME_AVAIABLE_DES2]
+other = "采集变连接、数据零搬迁"
 
 [HOME_SUMMIT]
 other = "openLooKeng首次Meetup即将到来"
@@ -107,16 +104,37 @@ other = "/zh-cn/blogguidance.html"
 other = "https://e.huawei.com/cn/solutions/hic?utm_campaign=04MHQHQ20W6R9P&utm_medium=pm-display&utm_source=openlookeng&source=openlookeng&utm_content=hic_hc_2020"
 
 [HIGH_LIGHT1]
-other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight1.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/Feature1.mp4"
 
 [HIGH_LIGHT2]
-other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight2.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/Feature2.mp4"
 
 [HIGH_LIGHT3]
-other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight3.mp4"
+other = "https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/Feature3.mp4"
 
 [VIDEO_COVER_3]
 other = "img/banners/video-cover3-cn.gif"
+
+[VIDEO_MORE]
+other = "查看更多"
+
+[VIDEO_DEFAULT]
+other = "向上收起"
+
+[VIDEO_FEATURE]
+other = "特性介绍"
+
+[VIDEO_THEME]
+other = "专题直播"
+
+[VIDEO_TECHNICAL]
+other = "技术交流"
+
+[VIDEO_DEVELOPER]
+other = "开发者大赛"
+
+[VIDEO_LIST_LINK]
+other = "/zh-cn/video.html"
 
 [RELEASE_NOTES_URL]
 other = "/zh-cn/docs/docs/releasenotes/releasenotes-1.2.0.html"
@@ -156,3 +174,9 @@ other = "开发者竞赛"
 
 [EVENT_SELECT_GATHERING]
 other = "聚会"
+
+[FAQ_URL]
+other = "https://openlookeng.io/zh-cn/docs/docs/faq.html"
+
+[HOME_VIDEO]
+other = "精选视频"

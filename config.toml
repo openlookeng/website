@@ -118,6 +118,13 @@ paginate = 10
     parent = 'newsroom'
 
 [[menu.main]]
+    identifier = "video"
+    name = "Video"
+    url  = "/video.html"
+    weight = 4
+    parent = 'newsroom'
+
+[[menu.main]]
     identifier = "lang"
     name = "中"
     url  = "/zh-cn"
@@ -219,6 +226,13 @@ paginate = 10
     name = "博客"
     url  = "/zh-cn/blog.html"
     weight = 3
+    parent = 'newsroom'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "video"
+    name = "视频"
+    url  = "/zh-cn/video.html"
+    weight = 4
     parent = 'newsroom'
 
 [[languages.zh-cn.menu.main]]
