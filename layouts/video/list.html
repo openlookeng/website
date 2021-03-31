@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ "css/video.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
+
+<body>
+
+<div id="all">
+
+    <header>
+
+        {{ partial "nav.html" . }}
+
+    </header>
+    <div class="nav-mask hide"></div>
+    <div id="content">
+        <div class="container">
+            <div class="row">
+
+                {{ $paginator := .Paginate (where .Data.Pages "Type" "video") }}
+                <section class="post">
+                    <div class="row">
+                        <div class="col-md-12 maillist">
+                            <div class="maillist-title">
+                                <h1 class="isPC event-title">{{ .Params.top_title }}</h1>
+                                <h1 class="isH5 event-title">{{ .Params.mobile_title }}</h1>
+                                <img class="maillist-pic top-banner isPC img" src="../img/banners/eventsBanner.png" alt="">
+                                <img class="maillist-pic top-banner isH5 img" src="../img/events/banner-mobile.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="video-list" id="video-box">
+                            <div class="video-content" index="feature">
+                                <div class="video-title">
+                                    <h3>{{ i18n "VIDEO_FEATURE" }}</h3>
+                                </div>
+                                {{ $videoData := (where .Data.Pages "Type" "video") }}
+                                <div class="video-list">
+                                    <div class="list-box">
+                                        {{ range $videoData }}
+                                        {{ if eq .Params.tag "feature" }}
+                                        <a class="video-msg" href="{{ .Params.videourl }}" target="_blank">
+                                            <img class="transition_3" src="{{ .Params.banner | relURL }}">
+                                            <div class="title-box">
+                                                {{ if .Params.mobtitle}}
+                                                <p class="mobile-title">{{ .Params.mobtitle }}</p>
+                                                <p class="web-title" title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ else }}
+                                                <p title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ end }}
+                                            </div>
+                                        </a>
+                                        {{ end }}
+                                        {{ end }}
+                                    </div>
+                                    <div class="more-btn" index="feature">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_MORE" }}</span>
+                                            <i class="icon-down"></i>
+                                        </p>
+                                    </div>
+                                    <div class="hide-btn hide" index="feature">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_DEFAULT" }}</span>
+                                            <i class="icon-up"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="video-content" index="theme">
+                                <div class="video-title">
+                                    <h3>{{ i18n "VIDEO_THEME" }}</h3>
+                                </div>
+                                {{ $videoData := (where .Data.Pages "Type" "video") }}
+                                <div class="video-list">
+                                    <div class="list-box">
+                                        {{ range $videoData }}
+                                        {{ if eq .Params.tag "theme" }}
+                                        <a class="video-msg" href="{{ .Params.videourl }}" target="_blank">
+                                            <img class="transition_3" src="{{ .Params.banner | relURL }}">
+                                            <div class="title-box">
+                                                {{ if .Params.mobtitle}}
+                                                <p class="mobile-title">{{ .Params.mobtitle }}</p>
+                                                <p class="web-title" title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ else }}
+                                                <p title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ end }}
+                                            </div>
+                                        </a>
+                                        {{ end }}
+                                        {{ end }}
+                                    </div>
+                                    <div class="more-btn" index="theme">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_MORE" }}</span>
+                                            <i class="icon-down"></i>
+                                        </p>
+                                    </div>
+                                    <div class="hide-btn hide" index="theme">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_DEFAULT" }}</span>
+                                            <i class="icon-up"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="video-content" index="technical">
+                                <div class="video-title">
+                                    <h3>{{ i18n "VIDEO_TECHNICAL" }}</h3>
+                                </div>
+                                {{ $videoData := (where .Data.Pages "Type" "video") }}
+                                <div class="video-list">
+                                    <div class="list-box">
+                                        {{ range $videoData }}
+                                        {{ if eq .Params.tag "technical" }}
+                                        <a class="video-msg" href="{{ .Params.videourl }}" target="_blank">
+                                            <img class="transition_3" src="{{ .Params.banner | relURL }}">
+                                            <div class="title-box">
+                                                {{ if .Params.mobtitle}}
+                                                <p class="mobile-title">{{ .Params.mobtitle }}</p>
+                                                <p class="web-title" title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ else }}
+                                                <p title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ end }}
+                                            </div>
+                                        </a>
+                                        {{ end }}
+                                        {{ end }}
+                                    </div>
+                                    <div class="more-btn" index="technical">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_MORE" }}</span>
+                                            <i class="icon-down"></i>
+                                        </p>
+                                    </div>
+                                    <div class="hide-btn hide" index="technical">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_DEFAULT" }}</span>
+                                            <i class="icon-up"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="video-content" index="developer">
+                                <div class="video-title">
+                                    <h3>{{ i18n "VIDEO_DEVELOPER" }}</h3>
+                                </div>
+                                {{ $videoData := (where .Data.Pages "Type" "video") }}
+                                <div class="video-list">
+                                    <div class="list-box">
+                                        {{ range $videoData }}
+                                        {{ if eq .Params.tag "developer" }}
+                                        <a class="video-msg" href="{{ .Params.videourl }}" target="_blank">
+                                            <img class="transition_3" src="{{ .Params.banner | relURL }}">
+                                            <div class="title-box">
+                                                {{ if .Params.mobtitle}}
+                                                <p class="mobile-title">{{ .Params.mobtitle }}</p>
+                                                <p class="web-title" title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ else }}
+                                                <p title="{{ .Params.title }}">{{ .Params.hometitle }}</p>
+                                                {{ end }}
+                                            </div>
+                                        </a>
+                                        {{ end }}
+                                        {{ end }}
+                                    </div>
+                                    <div class="more-btn" index="developer">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_MORE" }}</span>
+                                            <i class="icon-down"></i>
+                                        </p>
+                                    </div>
+                                    <div class="hide-btn hide" index="developer">
+                                        <p>
+                                            <span>{{ i18n "VIDEO_DEFAULT" }}</span>
+                                            <i class="icon-up"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- *** COLUMN END *** -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#content -->
+
+    {{ partial "footer.html" . }}
+
+</div>
+<!-- /#all -->
+
+{{ partial "scripts.html" . }}
+
+<script src="{{ "js/video.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
+</body>
+</html>

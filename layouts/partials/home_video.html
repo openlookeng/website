@@ -1,0 +1,35 @@
+{{ $posts := (where .Site.RegularPages "Section" "==" "video") }}
+{{ $postCount := len $posts }}
+{{ if gt $postCount 0 }}
+
+<section>
+    <div class="content">
+        <div class="content_video content-video-home">
+            <div class="content_video_title">
+                <h1>{{ i18n "HOME_VIDEO"}}</h1>
+            </div>
+
+            <div class="home_video">
+                <div class="video_total video-total-home">
+                    {{ $posts := where .Data.Pages "Type" "video" }}
+                    {{ range first 4 $posts }}
+                    <div class="video_item video-in-home">
+                        <a href="{{ .Params.videourl }}" target="_blank">
+                            <div class="home_video_infro_bg video-img-home"><img loading="lazy" class="" src="{{ .Site.BaseURL}}{{ .Params.banner }}"></div>
+                            <div class="home_video_title">
+                                <p>{{ .Title }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+
+            <div class="see_more">
+                <a class="see_more_btn" href="{{ i18n "VIDEO_LIST_LINK" }}">{{ i18n "MAIN_LIST_MORE" }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ end }}
