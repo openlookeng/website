@@ -10,7 +10,7 @@
 CREATE INDEX [ IF NOT EXISTS ] index_name
 USING [ BITMAP | BLOOM | BTREE | MINMAX ]
 ON tbl_name (col_name)
-WITH ( "level" = ['STRIPE', 'PARTITION'], "bloom.fpp" = '0.001', [, …] )
+WITH ( 'level' = ['STRIPE', 'PARTITION'], "bloom.fpp" = '0.001', [, …] )
 WHERE predicate;
 ```
 
@@ -19,15 +19,19 @@ WHERE predicate;
 - `"level"='STRIPE'` 如缺省，默认创建级别是STRIPE
 
 如果表是分区的，可以用一个等于表达式来指定一个创建的分区，或使用IN来指定多个。
+
 ```roomsql
 CREATE INDEX index_name USING bloom ON hive.schema.table (column1);
 CREATE INDEX index_name USING bloom ON hive.schema.table (column1) WITH ("bloom.fpp"="0.01") WHERE p=part1;
 CREATE INDEX index_name USING bloom ON hive.schema.table (column1) WHERE p in (part1, part2, part3);
 ```
 
+**注意:** 如果表使用多重分区（例如被colA和colB）两列分区，则索引创建仅支持使用**第一级**分区值。
+
 ## SHOW
 
 显示所有索引或只根据名字显示一个索引：
+
 ```roomsql
 SHOW INDEX;
 SHOW INDEX index_name;
@@ -57,9 +61,3 @@ DROP INDEX index_name where p=part1;
 ```
 -Djava.io.tmpdir=/path/to/another/dir
 ```
-
-下面的公式给出了一个对于Bloom索引占用磁盘空间的大致估计。Bloom索引使用的空间大致与用于创建索引的表的大小成正比，同时与指定的`fpp`值的对数相反数成正比。因此，更小的fpp值和更大的数据集会使得创建的索引更大：
-
-索引大小 = -log(fpp) * 表占用空间 * C
-
-系数C还与其他许多因素相关，例如创建索引的列占表总数据的比重，但这些因素的影响应当不如fpp和表的大小重要，且变化较小。作为一个典型的拥有几个列的数据表，这个系数C在0.04左右。这就是说，为一个100GB的数据表的一列创建一个`fpp=0.001`的索引大致需要12GB磁盘空间，而创建`fpp=0.0001`的索引则需要16GB左右。

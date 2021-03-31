@@ -20,6 +20,7 @@
 |                  | Simplify the configurations                                  | 397,369,449                     |
 | Security         | Support integration with Apache Ranger for unified permission control | 491                             |
 
+
 ## Known Issues
 
 | Category          | Description                                                  | Gitee issue                                                  |
@@ -37,4 +38,3 @@
 ## Obtaining the Document 
 
 For details, see [https://gitee.com/openlookeng/hetu-core/tree/1.1.0/hetu-docs/en](https://gitee.com/openlookeng/hetu-core/tree/1.1.0/hetu-docs/en)
-

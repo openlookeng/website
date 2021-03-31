@@ -96,13 +96,13 @@ When writing data, the Carbondata connector always collects basic statistics (`n
 | `SMALLINT `  | Y          | Y                     | Y       |
 | `INTEGER`    | Y          | Y                     | Y       |
 | `BIGINT`     | Y          | Y                     | Y       |
-| `DOUBLE`     | Y          | Y                     | Y       |
-| `REAL `      | Y          | Y                     | Y       |
+| `DOUBLE`    | Y          | Y                     | Y       |
+| `REAL `     | Y          | Y                     | Y       |
 | `DECIMAL `   | Y          | Y                     | Y       |
-| `DATE `      | Y          | Y                     | Y       |
+| `DATE `     | Y          | Y                     | Y       |
 | `TIMESTAMP ` | Y          | Y                     | N       |
 | `VARCHAR`    | Y          | Y                     | N       |
-| `CHAR `      | Y          | Y                     | N       |
+| `CHAR `     | Y          | Y                     | N       |
 | `VARBINARY`  | Y          | N                     | N       |
 | `BOOLEAN`    | Y          | Y                     | N       |
 
@@ -267,4 +267,4 @@ The following operations are not supported currently with Carbondata connector:
 - Materialized views are not supported.
 - Complex data types such as Arrays, Lists and Maps are not supported.
 - Alter table usage is not supported.
-- Operation on partitioned tables is not supported.
+- Create and Insert operation is not supported on partitioned tables.

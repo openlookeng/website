@@ -32,9 +32,17 @@ SAP HANA JDBC驱动不在普通存储库中提供，因此需要从SAP HANA下�
 
 如果要启用hana连接器的连接器下推功能，不需要做任何操作，hana连接器的下推功能默认是打开的。但也可以按如下设置：
 
-| hana.query.pushdown.enabled=true|
+| jdbc.pushdown-enabled=true|
 |----------|
 | #true表示打开下推，false表示关闭。|
+
+- 下推模式选择。
+
+如果要启用hana连接器的全部下推功能，不需要做任何操作，hana连接器的下推模式默认是全部下推的。但也可以按如下设置：
+
+| jdbc.pushdown-module=FULL_PUSHDOWN|
+|----------|
+| #FULL_PUSHDOWN，表示全部下推；BASE_PUSHDOWN，表示部分下推，其中部分下推是指filter/aggregation/limit/topN/project这些可以下推。|
 
 ### 多套Hana数据库或服务器
 
@@ -65,11 +73,11 @@ SAP HANA JDBC驱动不在普通存储库中提供，因此需要从SAP HANA下�
 
 ### Hana到openLooKeng类型映射
 
-openLooKeng支持选择以下SAP HANA数据库类型：下表显示了SAP HANA数据类型的映射关系。
+openLooKeng支持读取以下SAP HANA的数据类型：下表显示了SAP HANA数据类型到openLooKeng数据类型的映射关系。
 
 数据类型投影表：
 
-> | SAP HANA数据库类型| openLooKeng类型| 说明|
+> | SAP HANA数据类型| openLooKeng类型| 说明|
 > |:----------|:----------|:----------|
 > | DECIMAL(p, s)| DECIMAL(p, s)| |
 > | SMALLDECIMAL| DOUBLE| 见smalldecimal映射|
@@ -89,12 +97,12 @@ openLooKeng支持选择以下SAP HANA数据库类型：下表显示了SAP HANA�
 > | DATE| DATE| |
 > | TIME| TIME| |
 > | TIMESTAMP| TIMESTAMP| |
-> | SECONDDATE| 不涉及| |
-> | n.布卢布| 不涉及| |
-> | CLOB| 不涉及| |
-> | NCLOB| 不涉及| |
-> | TEXT| 不涉及| |
-> | BINTEXT| 不涉及| |
+> | SECONDDATE| NA| 不支持 |
+> | BLOB| NA| 不支持 |
+> | CLOB| NA| 不支持 |
+> | NCLOB| NA| 不支持 |
+> | TEXT| NA| 不支持 |
+> | BINTEXT| NA| 不支持 |
 
 
 
@@ -104,7 +112,7 @@ smalldecimal映射：不造成精度损失的排列是IEEE754 double的精确表
 
 ### openLooKeng到Hana类型映射
 
-openLooKeng支持在SAP HANA数据库中创建以下类型的表。下表显示了从openLooKeng到SAP HANA数据类型的映射关系。
+openLooKeng支持通过Hana connector在SAP HANA数据库中创建以下类型的表。下表显示了从openLooKeng到SAP HANA数据类型的映射关系。
 
 > | openLooKeng类型| SAP HANA数据库类型| 说明|
 > |:----------|:----------|:----------|
@@ -119,12 +127,12 @@ openLooKeng支持在SAP HANA数据库中创建以下类型的表。下表显示�
 > | VARCHAR| VARCHAR| |
 > | CHAR| CHAR| |
 > | VARBINARY| VARBINARY| |
-> | JSON| 不涉及| |
+> | JSON| NA| 不支持 |
 > | DATE| DATE| |
-> | TIME| TIME| |
-> | TIME WITH TIME ZONE| 不涉及| |
-> | TIMESTAMP| TIMESTAMP| |
-> | TIMESTAMP WITH TIME ZONE| 不涉及| |
+> | TIME| NA| 不支持 |
+> | TIME WITH TIME ZONE| NA| 不支持|
+> | TIMESTAMP| NA| 不支持|
+> | TIMESTAMP WITH TIME ZONE| NA| 不支持|
 
 
 
