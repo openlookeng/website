@@ -89,7 +89,9 @@
         height: unset !important;
         margin: 0 0 !important;
     }
-
+    .item-right video {
+        width: 100% !important;
+    }
     video + div,
     .mid-content {
         width: 80% !important;
