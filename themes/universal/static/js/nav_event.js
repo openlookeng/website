@@ -196,10 +196,10 @@ $(function (){
             }
             if (url.indexOf('news/') > -1) {
                 url = url.replace('openlookeng.io/', 'openlookeng.io/zh-cn/');
-                backToList(url, 'news/', 'news.html/')
+                backToList(url, 'news/', 'news.html/');
             } else if (url.indexOf('blog/') > -1) {
                 url = url.replace('openlookeng.io/', 'openlookeng.io/zh-cn/');
-                backToList(url, 'blog/', 'blog.html/')
+                backToList(url, 'blog/', 'blog.html/');
             } else {
                 url = url.replace('openlookeng.io/', 'openlookeng.io/zh-cn/');
                 window.location.href = url;
@@ -207,17 +207,18 @@ $(function (){
         }
     });
     var backToList = function (url, originUrl, newUrl) {
-        var origin = originUrl
-        var toggle = newUrl
+        var origin = originUrl;
+        var toggle = newUrl;
         var replace = url.replace(origin,toggle);
         if (origin === 'news/') {
-            replace = replace.split('/')
-            replace.pop()
-            var localUrl = replace.join('/')
+            replace = replace.split('/');
+            var index = replace.indexOf('news.html') + 1;
+            replace = replace.slice(0, index);
+            var localUrl = replace.join('/');
         } else if (origin === 'blog/') {
-            replace = replace.split('/')
-            replace = replace.slice(0, replace.length - 4)
-            var localUrl = replace.join('/')
+            replace = replace.split('/');
+            replace = replace.slice(0, replace.length - 4);
+            var localUrl = replace.join('/');
         }
         window.location.href = localUrl;
     }

@@ -606,6 +606,7 @@ h3.title {
 .faq img {
     width: 80px;
     height: 80px;
+    z-index: 99;
 }
 .video-gif {
     width: 640px;
@@ -636,7 +637,7 @@ h3.title {
     .faq {
         bottom: 20px;
         right: 20px;
-        z-index: 1;
+        z-index: 99;
     }
     .faq img {
         width: 60px;
