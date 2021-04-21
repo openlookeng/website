@@ -1,4 +1,7 @@
 +++
+title = "交流"
+description = "您可以通过邮件列表和Slack与openLooKeng社区进行交流。"
+keywords = ["邮件列表","Slack"]
 top_title ="保持联系"
 middle_title = "邮件列表"
 bottom_title = "Slack"

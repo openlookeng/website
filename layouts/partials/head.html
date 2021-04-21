@@ -3,18 +3,22 @@
     <meta name="robots" content="all,follow">
     <meta name="googlebot" content="index,follow,snippet,archive">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ $is_docs := eq .Type "docs"}}
     {{ $title_plain := .Title | markdownify | plainify }}
-    <title>{{ $title_plain }}</title>
-    <meta name="author" content="{{ .Param "author" }}" >
-    {{ $keywords := .Site.Params.defaultKeywords | default (slice "" | first 0) }}
-    {{ if isset .Params "tags" }}{{ range .Params.tags }}{{ $keywords = $keywords | append . }}{{ end }}{{ end }}
-    {{ if isset .Params "keywords" }}{{ range .Params.keywords }}{{ $keywords = $keywords | append . }}{{ end }}{{ end }}
-    {{ if gt (len $keywords) 0 }}
-    <meta name="keywords" content="{{ delimit (uniq $keywords) ", " }}">
-    {{ end }}
     {{ $description_plain := default .Site.Params.defaultDescription .Description | markdownify | plainify }}
-    <meta name="description" content="{{ $description_plain }}">
-
+    {{ $keywords := default .Site.Params.defaultKeywords .Keywords}}
+    {{ if gt (len $keywords) 0 }}
+        <meta name="keywords" content="{{ delimit (uniq $keywords) ", " }}">
+    {{ end }}
+    {{ if $is_docs}}
+        <meta name="description" content="{{ default .Summary .Description }}">
+    {{ else }}
+        <title>{{ $title_plain }}</title>
+        <meta name="author" content="{{ .Param "author" }}" >
+        {{ if isset .Params "tags" }}{{ range .Params.tags }}{{ $keywords = $keywords | append . }}{{ end }}{{ end }}
+        {{ if isset .Params "keywords" }}{{ range .Params.keywords }}{{ $keywords = $keywords | append . }}{{ end }}{{ end }}
+        <meta name="description" content="{{ $description_plain }}">
+    {{ end }}
     {{ hugo.Generator }}
 
     <!-- Font -->
@@ -107,6 +111,10 @@
     <meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z0700" }}">{{ end }}
     {{ end }}
     {{ partial "docs/html-head.html" . }}
+
+    <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
+{{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}?t={{ mul 1000 (time now).Unix }}" integrity="{{ $styles.Data.Integrity }}">
     <!-- Custom stylesheet - for your changes -->
     <link href="{{ "css/custom.css" | relURL}}?t={{ mul 1000 (time now).Unix }}" rel="stylesheet">
 </head>

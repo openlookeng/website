@@ -246,9 +246,9 @@ paginate = 10
 [params]
     viewMorePostLink = "/blog/"
     author = "DevCows"
-    defaultKeywords = ["devows", "hugo", "go"]
+    defaultKeywords = ["data engine", "big data", "distributed","reliable","low latency"]
     mainSections = ["blog"]
-    defaultDescription = "Site template made by devcows using hugo"
+    defaultDescription = "openLooKeng is a distributed, low latency, reliable data engine for all data, big or Small, local or remote, which makes big data simplified."
     email = "contact@openlookeng.io"
     footerlogo = "../img/banners/openLookengLogo.png"
 
