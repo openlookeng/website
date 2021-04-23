@@ -1,4 +1,7 @@
 +++
+title = "download"
+description = "openLooKeng new version has arrived，find the release notes for more information. click here to download previous releases."
+keywords = ["releases","version","packages"]
 id = "download"
 top_title_max = "openLooKeng v1.2.0 Has Arrived"
 

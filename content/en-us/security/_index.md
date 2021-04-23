@@ -1,5 +1,6 @@
 +++
 title = "Security"
+description = "openLooKeng is a high-performance distributed data virtualization query engine that supports joint query from heterogeneous data sources in different domains. It is applicable to interactive queries from TB or PB of data and must meet security requirements in various scenarios. "
 +++
 
 openLooKeng is a high-performance distributed data virtualization query engine that supports joint query from heterogeneous data sources in different domains. It is applicable to interactive queries from TB or PB of data and must meet security requirements in various scenarios. As a high-performance big data in-memory computing engine, openLooKeng can run on different CPU platforms. Users can run standard SQL query statements to obtain query results. As data is the core asset, it is essential for perform continuous security protection of the big data system.

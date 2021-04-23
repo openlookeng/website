@@ -1,4 +1,7 @@
 +++
+title = "下载"
+description = "openLooKeng 最新版本现已发布，详细内容请见发行说明。点击这里下载历史版本。"
+keywords = ["发行","版本","软件包"]
 id = "download"
 top_title_max = "openLooKeng v1.2.0 现已发布"
 

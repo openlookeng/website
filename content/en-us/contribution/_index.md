@@ -1,4 +1,6 @@
 +++
+title = "Contributeion"
+description = "Your Contribution is More than Welcome. Start your contribution here!"
 top_title ="Your Contribution is More than Welcome"
 mobile_title = "Contribution"
 middle_title = "Start your contribution here!"

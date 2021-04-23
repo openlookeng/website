@@ -1,4 +1,6 @@
 +++
+title = "贡献"
+description = "您的贡献将为用户创造价值，从这里开始您的贡献之旅！"
 top_title ="您的贡献将为用户创造价值"
 mobile_title = "贡献"
 middle_title = "从这里开始您的贡献之旅"

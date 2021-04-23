@@ -1,4 +1,7 @@
 +++
+title = "Communication"
+description = "You can communicate in the community through mailing list and slack."
+keywords = ["mailing list","Slack"]
 top_title ="Keep in Touch"
 middle_title = "Mailing List"
 bottom_title = "Slack"
