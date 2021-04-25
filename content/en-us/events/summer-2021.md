@@ -140,8 +140,8 @@ openLooKeng community is releasing three tasks in Summer 2021. Students can find
 | Jan 29th               | Open of application for open source community                            |
 | Apr 2nd               | Announcement of the first list of accepted open source community
 |
-| Apr 30th               | Deadline of application for open source community                        |
-| May 2nd             | Announcement of the second list of accepted open source community                        |
+| May 20th               | Deadline of application for open source community                        |
+| May 21th             | Announcement of the second list of accepted open source community                        |
 | **May 24th - Jun 13th** | **Student application period**                     |
 | **Jun 30th**               | **Announcement of accepted student application**                     |
 | Jul 1st - Aug 15th | The first phase of developing project                         |
