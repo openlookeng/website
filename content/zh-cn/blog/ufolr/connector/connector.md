@@ -65,7 +65,7 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
 
 ### <b> 2 Connector 结构 </b>
 
-<img src="/zh-cn/blog/connector/2021-03-11-connector01.jpg">
+<img src="/zh-cn/blog/ufolr/connector/2021-03-11-connector01.jpg">
 
 ### <b> 3 Connector 开发 </b>
 
@@ -145,17 +145,17 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
 
 Connector 的加载由 ConnectorFactory 实现。但真正能够使用该 Connector 还需要加载 Catalog，所谓Catalog就是Hetu的数据源类别，Hetu通过如下三级结构来定义数据表。
 
-<img src="/zh-cn/blog/connector/2021-03-11-connector02.jpg">
+<img src="/zh-cn/blog/ufolr/connector/2021-03-11-connector02.jpg">
 
 #### <b> 3.2 非JDBC数据源 </b>
 
 对于非JDBC数据源，我们需要根据数据源的情况，手动实现一个完整Connector的几个必须组件。
 
-<img src="/zh-cn/blog/connector/2021-03-11-connector03.jpg">
+<img src="/zh-cn/blog/ufolr/connector/2021-03-11-connector03.jpg">
 
 其调用逻辑如下图:
 
-<img src="/zh-cn/blog/connector/2021-03-11-connector04.jpg">
+<img src="/zh-cn/blog/ufolr/connector/2021-03-11-connector04.jpg">
 
 <b> Metadata </b>
 
