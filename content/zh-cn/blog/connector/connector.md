@@ -3,7 +3,7 @@ title = "openLooKeng Connector 原理"
 date = "2021-03-11"
 tags = ["openLooKeng","大数据" ]
 archives = "2020-06"
-author = "gravitys169"
+author = "ufolr"
 description = "朋友们，如果您已经对 openLooKeng 的整体方案有了解，知道 openLooKeng 有一个Connector 来连接数据源。如果您还想更深入了解 openLooKeng Connector 的实现原理，ufolr 的原创笔记应该能帮到您。"
 +++
 
@@ -40,7 +40,7 @@ openLooKeng中有一个presto-spi模块，该模块即定义了openLooKeng对外
 <font size=2>
 
 ```
-ConnectorSplitSource getSplits();
+io.prestosql.spi.Plugin
 ```
 
 </font>
@@ -75,8 +75,6 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
 
 2. 将当前模块加入io.hetu.core组中，版本需要和当前openLooKeng工程版本一致：
 
-<font size=2>
-
 ```
   <parent>
 
@@ -89,11 +87,7 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
   </parent>
 ```
 
-</font>
-
 3. 定义当前工程信息，添加packaging选项为hetu-plugin在打包编译时会将当前工程打包到heto-core的plugin目录下。
-
-<font size=2>
 
 ```
   <artifactId>hetu-example</artifactId>
@@ -105,11 +99,8 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
   <packaging>hetu-plugin</packaging>
 ```
 
-</font>
 
 4. 引入 SPI 依赖，每个Plugin工程都会依赖 presto-spi 模块:
-
-<font size=2>
 
 ```
   <dependency>
@@ -123,13 +114,9 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
   </dependency>
 ```
 
-</font>
-
 5. 在整个编译整个openLooKeng工程时，我们需要将自定义添加的connector也编译打包到plugin目录下，通过以下的配置即可达到我们的目的：
   
   - 在hetu core根目录下的pom.xml中，将我们新增的Connector加入到modules中。
-
-  <font size=2>
   
   ```
     <modules>
@@ -139,11 +126,7 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
     </modules>
   ```
 
-  </font>
-
   - 在hetu-server的 src/main/provisio/hetu.xml 配置文件中，注册新增的Connector
-
-  <font size=2>
 
   ```
     <artifactSet to="plugin/hetu-example">
@@ -157,7 +140,6 @@ Connector实例由ConnectorFactory实例创建，openLooKeng调用插件上的 g
     </artifactSet>
   ```
 
-  </font>
 
 经过以上步骤，新增Connector的准备工作就已经完成。在开发过程中根据具体实现使用到的类来添加依赖。Plugin使用了独立的类加载器，和其他的类是隔离的，因此Plugin可以使用不同版本的类库，区别于hetu core内部使用的版本。
 
@@ -195,36 +177,16 @@ ConnectorSplitSource getSplits();
 
 ConnectorSplitSource为一个Connector中具体表的Split集合，主要包含以下几个方法:
 
-<font size=2>
-
-<pre>
-<em>//批量获取Splits列表，maxSize默认为1000，Split如何组织以及每调用一次该方法如何返回ConnectorSplitBatch都由各个Connector定义</em>
-</pre>
-
-</font>
-
-<font size=2>
-
 ```
+//批量获取Splits列表，maxSize默认为1000，Split如何组织以及每调用一次该方法如何返回ConnectorSplitBatch都由各个Connector定义
+
 CompletableFuture<ConnectorSplitBatch> getNextBatch(ConnectorPartitionHandle partitionHandle, int maxSize);
-```
 
-</font>
+//Split列表是否获取完毕
 
-<font size=2>
-
-<pre>
-<em>//Split列表是否获取完毕</em>
-</pre>
-
-</font>
-
-<font size=2>
-
-```
 boolean isFinished();
 ```
-</font>
+
 
 <b> RecordSetProvider </b>
 

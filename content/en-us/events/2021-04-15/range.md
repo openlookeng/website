@@ -22,7 +22,7 @@ What are the new permission management functions after Ranger is integrated?
 
 https://www.bilibili.com/video/BV1kb4y1D7GK
 
-### Please click the link below to download the PDF if you need.
+### Download the PDF if you need.
 
 <a href="openLooKeng_Ranger权限管理.pdf" download="">Click here</a>
 
