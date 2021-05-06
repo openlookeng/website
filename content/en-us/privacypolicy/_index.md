@@ -69,6 +69,8 @@ Like many other websites or Internet service providers, we use cookies to improv
 *  Statistics and analysis. For instance, we use cookie to count the number of visitors of the Website and to learn about sources of your visiting.
 *  Security. We use cookie to secure the operation of the Website.
 
+Other third parties, such as Google and Baidu, will set cookies on our websites. They use these cookies to receive IP addresses, information about your browser configurations, and access information, but do not collect your personal identity information. In this way, they can learn how you interact with the website. You can visit the websites of the third parties to learn how they use cookies.
+
 You can manage or delete cookies based on your own preferences. For details, visit AboutCookies.org (https://www.aboutcookies.org/). You can clear all the cookies stored on your computer, and most web browsers provide the option of blocking cookies. However, by doing so, you have to change the user settings every time you visit our Website.
 
 
