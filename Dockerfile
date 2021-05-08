@@ -11,7 +11,7 @@ RUN mkdir -p /usr/local/src && \
     mv hugo /usr/local/bin/
 RUN cd /src/website/ && hugo -b / --minify
 
-FROM nginx:latest
+FROM nginx:1.20.0
 
 COPY --from=builder /src/website/public/ /usr/share/nginx/html/
 RUN chown nginx:nginx -R /usr/share/nginx/html
