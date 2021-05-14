@@ -190,3 +190,12 @@ other = "https://openlookeng.io/docs/docs/faq/faq.html"
 
 [HOME_VIDEO]
 other = "Featured Videos"
+
+[PRIVACY_TEXT]
+other = "This site uses cookies. By continuing to browse the site you are agreeing to our use of cookies."
+
+[PRIVACY_LINK_TEXT]
+other = "Read our privacy policy>"
+
+[PRIVACY_LINK]
+other = "https://openlookeng.io/privacypolicy.html"

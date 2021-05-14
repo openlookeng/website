@@ -180,3 +180,12 @@ other = "https://openlookeng.io/zh-cn/docs/docs/faq/faq.html"
 
 [HOME_VIDEO]
 other = "精选视频"
+
+[PRIVACY_TEXT]
+other = "本站点使用Cookies，继续浏览表示您同意我们使用Cookies。"
+
+[PRIVACY_LINK_TEXT]
+other = "Cookies和隐私政策"
+
+[PRIVACY_LINK]
+other = "https://openlookeng.io/zh-cn/privacypolicy.html"
