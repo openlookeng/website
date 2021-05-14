@@ -30,6 +30,42 @@
         $('.fontHuaweiSans div,  .fontHuaweiSans ul, .fontHuaweiSans li, .fontHuaweiSans a, .fontHuaweiSans .one-row').attr("style", "font-family:HuaweiSans!important");
         $('.fontRoboto a').attr("style", "font-family:roboto!important");
     }
+    //隐私政策是否显示
+    initPolicyDom();
+    function initPolicyDom() {
+        if(!getCookie("isAgree")) {
+            $("header .policy-tip").show();
+            let currentWidth = document.body.clientWidth;
+            //js只能获取到dom节点的内容高度，由于上下有padding值故+20，62和60是导航栏的高度
+            let domHeight = $("header .policy-tip").height() + 20;
+            if(currentWidth < 993) {
+                $("#all>header").css("height",domHeight + 62);
+            }else {
+                $("#all>header").css("height",domHeight + 60);
+            }
+            $("#cookies-colse").click(function(e) {
+                if(currentWidth < 993) {
+                    $("#all>header").css("height","62px");
+                }else {
+                    $("#all>header").css("height","60px");
+                }
+                setCookie("isAgree","Yes",30);
+                $("header .policy-tip").hide();
+            });
+        }else {
+            $("header .policy-tip").hide();
+        }
+    }
+    function setCookie(name,value,time) {
+        var date = new Date(); 
+        date.setTime(date.getTime() + time*24*60*60*1000);
+        document.cookie = name + "="+ escape (value) + ";expires=" + date.toGMTString();
+    }
+    function getCookie(name) {
+        var value = window.document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return value?value[2]:null;
+    }
+
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTWGJN7W5P"></script>

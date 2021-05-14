@@ -177,6 +177,9 @@
     .isH5 {
         display: block;
     }
+    header {
+        height: 62px;
+    }
 }
 
 a {
@@ -190,9 +193,6 @@ p.blog-12px .tag {
     border-radius: 4px;
     padding: 2px 15px;
     margin-left: 10px;
-}
-header {
-    height: 60px;
 }
 #navigation .nav-search-input {
     height: 60px;

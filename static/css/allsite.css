@@ -25,6 +25,27 @@ section h2,
     margin-bottom: 20px!important;
 }
 
+.policy-tip {
+    display: none;
+    background-color: #ccc;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+.policy-tip div {
+    position: relative;
+    display: inline-block;
+}
+.policy-tip div img{
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
 @media (max-width: 994px) {
     .container h1 {
         font-size: 30px!important;
@@ -44,5 +65,9 @@ section h2,
         font-size: 16px!important;
         height: auto!important;
         margin: 40px auto 20px!important;
+    }
+    .policy-tip {
+        font-size: 12px;
+        padding: 10px;
     }
 }
