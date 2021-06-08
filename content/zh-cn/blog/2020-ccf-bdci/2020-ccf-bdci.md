@@ -202,7 +202,7 @@ openLooKeng的内存数据源有存储数据量的限制，经过测试，比赛
 
 ### 参考
 ① openLooKeng官方文档，openLooKeng概念，
-https://openlookeng.io/zh-cn/docs/docs/overview/concepts.html/
+https://openlookeng.io/zh-cn/docs/docs/overview/concepts.html
 ② openLooKeng官方文档，内存连接器，
 https://openlookeng.io/zh-cn/docs/docs/connector/memory.html
 ③ R. Sethi, M. Traverso, D. Sundstrom, D. Phillips, W. Xie, Y. Sun, N. Yigitbasi, H. Jin, E. Hwang, N. Shingte, and C. Berner. Presto: SQL on everything. In IEEE 35th Int. Conf. on Data Eng. (ICDE), pages 1802--1813, 2019.
