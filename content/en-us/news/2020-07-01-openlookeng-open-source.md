@@ -6,7 +6,7 @@ author = "HUAWEI"
 description = "Huawei officially announced openLooKeng, the data virtualization engine, goes open source at https://openlookeng.io. openLooKeng marks a huge step forward to power data analytics experience with the ultimate simplicity, enabling users to harness big data with the ease of database usage."
 +++
 
-Source: <hhttps://www.huawei.com/en/news/2020/7/huawei-data-virtualization-engine-openlookeng>
+Source: <https://www.huawei.com/en/news/2020/7/huawei-data-virtualization-engine-openlookeng>
 
 
 <img src="2020-07-01-openlookeng-open-source.jpg">

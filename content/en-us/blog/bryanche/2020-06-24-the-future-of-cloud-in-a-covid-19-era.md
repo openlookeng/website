@@ -11,7 +11,7 @@ description = "The story of ARM began in 1993 with a joint venture of Apple with
 Source: <https://blog.huawei.com/2020/06/24/the-future-of-cloud-in-a-covid-19-era/>
 
 ### Three Years of Astonishing Cloud Growth
-Almost exactly three years ago in June 2017, Huawei launched its public cloud business, [HUAWEI CLOUD](www.huaweicloud.com), in China. At the time, China’s public cloud market had just exceeded US$1 billion in the 1H 2017.
+Almost exactly three years ago in June 2017, Huawei launched its public cloud business, [HUAWEI CLOUD](https://www.huaweicloud.com), in China. At the time, China’s public cloud market had just exceeded US$1 billion in the 1H 2017.
 
 The top vendors in the space were:
 
