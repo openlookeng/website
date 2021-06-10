@@ -1,11 +1,10 @@
 baseurl = "/"
 title = "openLooKeng"
 theme = "universal"
-
+enableRobotsTXT = true
 languageCode = "en-us"
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "en-us"
-
 uglyURLs = true
 buildFuture = true
 
