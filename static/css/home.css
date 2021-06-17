@@ -27,7 +27,7 @@
     margin-top: 0;
     font-style: 40px;
     color: #000;
-    font-family: HuaweiSans;
+    
 }
 
 .search-img {
@@ -51,7 +51,7 @@
 }
 
 .home-banner .banner-p1 {
-    font-family: HuaweiSans;
+    
     margin-bottom: 0!important;
     line-height: 44px;
     font-size: 40px;
@@ -59,7 +59,7 @@
 }
 
 .home-banner .banner-p2 {
-    font-family: Roboto-Regular, Roboto;
+    
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, .7);
@@ -71,17 +71,17 @@
 }
 
 .home-why .why-title {
-    font-family: HuaweiSansLight;
+    
 }
 
 h3.title {
-    font-family: HuaweiSans !important;
+    
 }
 
 .descr .descr-item {
     font-size: 16px;
     color: rgba(0, 0, 0, .7);
-    font-family: HuaweiSansLight;
+    
 }
 
 .home-banner .home-img a {
@@ -186,7 +186,7 @@ h3.title {
     padding-top: 40px;
     height: unset;
     font-size: 40px;
-    font-family: HuaweiSans;
+    
 }
 
 .unset {
@@ -198,7 +198,7 @@ h3.title {
 }
 
 .home-info-adapter {
-    font-family: HuaweiSans;
+    
     text-align: left!important;
 }
 
@@ -208,7 +208,7 @@ h3.title {
 
 .bar .container .col-md-6 ul li a {
     color: rgba(0, 0, 0, 1);
-    font-family: Roboto-Light, Roboto;
+    
     font-weight: 300;
 }
 
@@ -228,7 +228,7 @@ h3.title {
 }
 
 .bar .container .col-md-6 ul li > p {
-    font-family: Roboto-Regular, Roboto;
+    
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, .7);
@@ -245,7 +245,7 @@ h3.title {
 
 .bar .container .col-md-6 ul li a p {
     color: #000;
-    font-family: HuaweiSans;
+    
 }
 
 .home-links {
@@ -282,7 +282,7 @@ h3.title {
 }
 
 .bar .container .col-md-6 > a p {
-    font-family: Roboto-Regular, Roboto;
+    
     font-weight: 400;
     font-size: 14px;
 }
@@ -355,7 +355,7 @@ h3.title {
     }
 
     .home-info-adapter {
-        font-family: HuaweiSans;
+        
         text-align: center!important;
     }
 }
@@ -363,7 +363,7 @@ h3.title {
 .videos-wrapper .title {
     text-align: center;
     font-size: 40px;
-    font-family: HuaweiSans;
+    
     margin: 0 0 40px 0;
     color: #000;
 }
@@ -389,12 +389,12 @@ h3.title {
     color: #000;
     margin-bottom: 30px;
     font-size: 30px;
-    font-family: HuaweiSans;
+    
 }
 
 .videos-wrapper .video-right-item .item-left p {
     font-size: 14px;
-    font-family: Roboto-Regular, Roboto;
+    
     font-weight: 400;
     color: rgba(0, 0, 0, .7);
 }
@@ -426,14 +426,14 @@ h3.title {
     text-align: right;
     margin-bottom: 30px;
     font-size: 30px;
-    font-family: HuaweiSans;
+    
 }
 
 .videos-wrapper .video-left-item .item-right p {
     text-align: right;
     font-size: 14px;
     font-weight: 400;
-    font-family: Roboto-Regular, Roboto;
+    
     color: rgba(0, 0, 0, .7);
 }
 
@@ -550,7 +550,7 @@ h3.title {
 
 .home-blog,
 .home-news {
-    font-family: Roboto-Light, Roboto !important;
+    
     color: rgba(0, 0, 0, .7) !important;
     margin: 10px 0 11px 0;
 }

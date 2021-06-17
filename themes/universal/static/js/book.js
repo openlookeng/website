@@ -3,7 +3,6 @@
  * */
 
 (function () {
-
     $('.book-icon').on('click', function () {
         $('#TableOfContents').closest('aside').toggleClass('hidden');
         $('.mask').toggleClass('hidden');
@@ -281,7 +280,6 @@
             }
         });
     }
-    $('.book-menu a').attr('style', 'font-family:HuaweiSans');
     setTimeout(function () {
         $('.book-menu a.active').closest('.jstree-open').children('.jstree-anchor').css({
             'color': '#5a9b83'
@@ -290,6 +288,4 @@
     $('.book-menu a.active').parent('.jstree-open').css({
         'color': '#5a9b83'
     });
-    $('.markdown p').attr('style', 'font-family:roboto-regular');
-    $('#TableOfContents > ul > li > a').attr('style', 'font-family:HuaweiSans');
 })();

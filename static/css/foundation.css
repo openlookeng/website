@@ -10,7 +10,7 @@
     margin-top: 100px;
     color: #000;
     font-size: 40px;
-    font-family: HuaweiSans;
+    
     line-height: 44px;
 }
 
@@ -25,7 +25,7 @@ h2 {
 .foundation-content p {
     word-wrap: break-word;
     font-size: 14px;
-    font-family: Roboto-Regular, Roboto;
+    
     color: rgba(0, 0, 0, .7);
     margin: 30px 0;
 }
@@ -43,7 +43,7 @@ pre {
 pre code {
     word-wrap: break-word;
     word-break: break-all;
-    font-family: HuaweiSansLight;
+    
 }
 
 ul {
@@ -93,7 +93,7 @@ ul {
 
 .foundation-content .foundation-top h2 {
     font-size: 44px;
-    font-family: HuaweiSans;
+    
 }
 
 .foundation-item-active {
@@ -123,7 +123,7 @@ ul {
     height: 26px;
     line-height: 26px;
     margin-bottom: 20px;
-    font-family: HuaweiSans;
+    
     font-size: 16px;
     cursor: pointer;
 }
@@ -159,7 +159,7 @@ ul {
 
 .foundation-content .foundation-tab-pane .pmc-list .pmc-item .desc h4 {
     font-size: 16px;
-    font-family: HuaweiSans;
+    
     color: rgba(0, 0, 0, 1);
 }
 
@@ -185,13 +185,13 @@ ul {
 
 .foundation-content .foundation-tab-pane .pt-list .pt-item .card-title {
     font-size: 24px;
-    font-family: HuaweiSans;
+    
 }
 
 .foundation-content .foundation-tab-pane .pt-list .pt-item .cart-desc {
     color: rgba(0, 0, 0, .7);
     font-size: 14px;
-    font-family: HuaweiSansLight;
+    
 }
 
 .foundation-content .foundation-tab-pane .pt-list .pt-item .card-content {
@@ -286,7 +286,7 @@ ul {
 .inner > h2 {
     margin-bottom: 40px;
     font-size: 34px;
-    font-family: HuaweiSans;
+    
 }
 
 .inner a {
@@ -296,7 +296,7 @@ ul {
 .small-title {
     margin: 40px 0 20px 0;
     font-size: 16px;
-    font-family: HuaweiSans;
+    
     color: #000;
 }
 

@@ -21,15 +21,6 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(hm, s);
     })();
-    //中英文页面下使用不同字体
-    if ({{ .Site.LanguageCode }} === "zh-cn") {
-        $('h1,h2,h3,h4,h5,div,p,a,li,span').attr("style", "font-family:方正兰亭!important");
-    } else {
-        $('div,p,a,li,span').attr("style", "font-family:roboto!important");
-        $('h1,h2,h3,h4,h5').attr("style", "font-family:HuaweiSans!important");
-        $('.fontHuaweiSans div,  .fontHuaweiSans ul, .fontHuaweiSans li, .fontHuaweiSans a, .fontHuaweiSans .one-row').attr("style", "font-family:HuaweiSans!important");
-        $('.fontRoboto a').attr("style", "font-family:roboto!important");
-    }
     //隐私政策是否显示
     initPolicyDom();
     function initPolicyDom() {
