@@ -4,7 +4,7 @@
 }
 .maillist .maillist-info p {
     font-size: 14px;
-    font-family: Roboto;
+    
     font-weight: 400;
     margin: 40px 0 20px 0;
     color: rgba(0, 0, 0, .7);
@@ -42,7 +42,7 @@
  }
 .maillist .maillist-guidance p {
     font-size: 14px;
-    font-family: Roboto-Regular, Roboto;
+    
     font-weight: 400;
     margin: 40px 0 40px 0;
     color: rgba(0, 0, 0, .7);
@@ -127,7 +127,7 @@
 }
 .maillist .maillist-guidance span {
     font-size: 16px;
-    font-family: HuaweiSans;
+    
     font-weight: bold;
     line-height: 26px;
 }
@@ -200,7 +200,7 @@
 }
 .maillist .maillist-slack h3 {
     font-size: 24px;
-    font-family: HuaweiSans;
+    
     line-height: 34px;
     font-weight: normal;
     text-align: center;
@@ -208,7 +208,7 @@
 }
 .maillist .maillist-slack a {
     color: #5a9b83;
-    font-family: HuaweiSansLight;
+    
 }
 .maillist .maillist-slack ul {
     list-style-type: none;
@@ -228,21 +228,21 @@
     .maillist .maillist-title h2 {
         text-align: center;
         font-size: 40px;
-        font-family: HuaweiSans;
+        
         margin: 60px 0 21px 0;
         font-weight: normal;
     }
     .maillist .maillist-comm h3 {
         text-align: center;
         font-size: 34px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
         margin: 100px 0 40px;
     }
     .maillist .maillist-info h3 {
         text-align: center;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
         margin-bottom: 60px;
     }
@@ -254,7 +254,7 @@
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
         font-size: 14px;
-        font-family: Roboto-Regular, Roboto;
+        
         font-weight: 400;
     }
     .maillist .maillist-info table {
@@ -302,7 +302,7 @@
     .maillist .maillist-slack p {
         font-size: 14px;
         font-weight: normal;
-        font-family: Roboto-Regular, Roboto;
+        
     }
     .maillist .maillist-slack ul {
         list-style-type: none;
@@ -322,21 +322,21 @@
     .maillist .maillist-title h2 {
         text-align: center;
         font-size: 40px;
-        font-family: HuaweiSans;
+        
         margin: 60px 0 21px 0;
         font-weight: normal;
     }
     .maillist .maillist-comm h3 {
         text-align: center;
         font-size: 34px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
         margin: 100px 0 40px;
     }
     .maillist .maillist-info h3 {
         text-align: center;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
         margin-bottom: 60px;
     }
@@ -348,7 +348,7 @@
     .maillist .maillist-comm p,
     .maillist .maillist-info p {
         font-size: 14px;
-        font-family: Roboto;
+        
         font-weight: 400;
     }
     .maillist .maillist-info table {
@@ -389,7 +389,7 @@
     .maillist .maillist-slack p {
         font-size: 14px;
         font-weight: normal;
-        font-family: HuaweiSansLight;
+        
         /*padding: 0 25px;*/
     }
     .maillist .maillist-slack ul {
@@ -433,20 +433,20 @@
         text-align: center;
         font-size: 24px;
         font-weight: normal;
-        font-family: HuaweiSans;
+        
         margin-top: 60px;
     }
     .maillist .maillist-comm h3 {
         text-align: center;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
         margin: 40px 0 40px;
     }
     .maillist .maillist-info h3 {
         text-align: center;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
     }
     .maillist .maillist-title img {
@@ -512,7 +512,7 @@
     .maillist .maillist-slack p {
         font-size: 14px;
         font-weight: normal;
-        font-family: HuaweiSansLight;
+        
         padding: 0 30px;
     }
 }
@@ -527,19 +527,19 @@
         text-align: center;
         font-size: 24px;
         font-weight: normal;
-        font-family: HuaweiSans;
+        
     }
     .maillist .maillist-comm h3 {
         text-align: center;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
         margin: 40px 0 40px;
     }
     .maillist .maillist-info h3 {
         text-align: center;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         font-weight: normal;
     }
     .maillist .maillist-title img {
@@ -614,7 +614,7 @@
     .maillist .maillist-slack p {
         font-size: 14px;
         font-weight: normal;
-        font-family: HuaweiSansLight;
+        
         padding: 0 30px;
     }
 }

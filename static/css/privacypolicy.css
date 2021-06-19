@@ -1,7 +1,7 @@
 #content .policy-title {
     color: #000;
     font-size: 30px;
-    font-family: HuaweiSans;
+    
     line-height: 48px;
     margin: 120px 0 60px 0;
     text-align: left;
@@ -12,7 +12,7 @@
     margin: 30px 0 20px 0;
     font-size: 24px;
     color: #000;
-    font-family:HuaweiSans;
+    
     height: 26px;
     line-height: 26px;
 }
@@ -20,14 +20,14 @@
 #content p {
     color: rgba(0, 0, 0, .7);
     font-size: 14px;
-    font-family:Roboto-Regular,Roboto;
+    
 
 }
 
 #content ul {
     color: rgba(0, 0, 0, .7);
     font-size: 14px;
-    font-family:Roboto-Regular,Roboto;
+    
 
 }
 

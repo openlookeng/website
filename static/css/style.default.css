@@ -662,7 +662,6 @@ body.boxed .navbar-affixed-top.affix {
 /* buttons */
 .btn {
     font-weight: 700;
-    font-family: Roboto-Regular, Roboto;
     text-transform: uppercase;
     letter-spacing: .08em;
     padding: 6px 12px;
@@ -916,7 +915,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 #intro .item {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     height: 100%;
 }
 
@@ -1151,7 +1150,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 .panel.sidebar-menu ul.nav.category-menu li a {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .panel.sidebar-menu ul.nav ul {
@@ -1342,7 +1341,7 @@ fieldset[disabled] .btn-template-primary.active {
     margin: 30px 10px 10px -71px;
     color: #fff;
     background-color: #38a7bb;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .ribbon .theribbon:before,
@@ -2744,7 +2743,6 @@ fieldset[disabled] .btn-template-primary.active {
     font-weight: 300;
     font-size: 12px;
     font-weight: normal;
-    font-family: Roboto-Light, Roboto;
 }
 
 #blog-listing-medium .post .clearfix {
@@ -2762,7 +2760,6 @@ fieldset[disabled] .btn-template-primary.active {
 
 #blog-listing-medium .post .tags a {
     display: inline-block;
-    font-family: Roboto-Light, Roboto;
     font-size: 12px;
     line-height: 12px;
     border-radius: 4px;
@@ -2828,13 +2825,11 @@ fieldset[disabled] .btn-template-primary.active {
 @media (min-width: 995px) {
     #blog-listing-medium .post .date-comments {
         text-align: right;
-        font-family: Roboto-Light, Roboto;
     }
 }
 
 #blog-listing-medium .post .intro {
     text-align: justify;
-    font-family: Roboto-Regular, Roboto;
     color: rgba(0, 0, 0, .7);
     height: 52px;
     line-height: 26px;
@@ -2976,7 +2971,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 #blog-post .comment .reply {
-    font-family: "Helvetica", Roboto, Arial, sans-serif;
+    font-family: "Helvetica", Arial, sans-serif;
 }
 
 #blog-post .comment.last {
@@ -3159,7 +3154,7 @@ fieldset[disabled] .btn-template-primary.active {
     color: #555;
     text-align: center;
     text-decoration: none;
-    font-family: "Helvetica", Roboto, Arial, sans-serif;
+    font-family: "Helvetica", Arial, sans-serif;
 }
 
 #productMain .sizes a.active,
@@ -3445,7 +3440,7 @@ fieldset[disabled] .btn-template-primary.active {
 /* Original Boostrap template overwrite */
 /* breadcrumbs */
 .breadcrumb {
-    font-family: "Helvetica", Roboto, Arial, sans-serif;
+    font-family: "Helvetica", Arial, sans-serif;
     text-transform: uppercase;
     background-color: none;
     letter-spacing: .08em;
@@ -4242,7 +4237,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 
 /* scaffolding */
 body {
-    font-family: "Helvetica", Roboto, Arial, sans-serif;
+    font-family: "Helvetica", Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #555;
@@ -4333,7 +4328,7 @@ hr {
 
 /* labels */
 .label {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: normal;
     text-transform: uppercase;
     letter-spacing: .08em;
@@ -4368,7 +4363,7 @@ label {
     padding-top: 20px;
     text-transform: uppercase;
     letter-spacing: .08em;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .pager li {
@@ -4401,7 +4396,7 @@ label {
 /* pagination */
 .pagination {
     margin: 20px 0;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     border-radius: 0;
 }
 
@@ -4485,7 +4480,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 900;
     line-height: 1.1;
     color: #333333;
@@ -4503,7 +4498,6 @@ h3,
 
 p {
     margin: 0 0 10px;
-    font-family: Roboto Light;
 }
 
 .lead {
@@ -4924,7 +4918,6 @@ a.list-group-item.active > .badge,
 
 #content #blog-post #post-content {
     font-size: 14px;
-    font-family: Roboto;
     color: rgba(0, 0, 0, .7);
     line-height: 26px;
 }

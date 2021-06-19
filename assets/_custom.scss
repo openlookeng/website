@@ -38,7 +38,7 @@ body {
     color: rgba(0, 0, 0, .7);
     font-size: 16px;
     line-height: 16px;
-    font-family: HuaweiSans;
+    
 }
 
 .container-top h1 {
@@ -58,7 +58,7 @@ body {
     color: rgba(0, 0, 0, 1);
     font-size: 16px;
     font-weight: 400;
-    font-family: HuaweiSans;
+    
 }
 
 .docs-footer .doc-back {
@@ -131,21 +131,21 @@ li:not(.book-section-flat) ul {
 
 .unsel-menu-color {
     color: rgba(0, 0, 0, .7) !important;
-    font-family: Helvetica-Light, Helvetica;
+    
 }
 .book-menu > nav > div > ul > li > a > p > a {
     font-size: 16px;
 }
 .book-menu a {
     font-size: 14px;
-    font-family: HuaweiSans;
+    
 }
 
 .book-page .markdown h1 {
     margin-top: 60px;
     font-size: 30px;
     color: #000;
-    font-family: HuaweiSans;
+    
 }
 
 .book-page .markdown h2 {
@@ -153,7 +153,7 @@ li:not(.book-section-flat) ul {
     margin-bottom: 20px !important;
     font-size: 24px !important;
     color: #000;
-    font-family: HuaweiSans !important;
+    
 }
 
 .book-page .markdown h3 {
@@ -161,7 +161,7 @@ li:not(.book-section-flat) ul {
     margin-bottom: 20px !important;
     font-size: 16px !important;
     color: #000;
-    font-family: HuaweiSans !important;
+    
 }
 
 .book-page .markdown p,
@@ -169,7 +169,6 @@ li:not(.book-section-flat) ul {
 .book-page .markdown ol li {
     font-size: 14px;
     color: rgba(0, 0, 0, .7);
-    font-family: Roboto-regular;
 }
 
 .book-page .markdown a {

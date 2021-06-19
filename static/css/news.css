@@ -6,7 +6,7 @@
 
 .news-card .container p {
     font-size: 14px;
-    font-family: Roboto-Regular, Roboto;
+    
     margin-bottom: 20px;
     color: rgba(0, 0, 0, .7);
 }
@@ -25,7 +25,7 @@
 .news-card .container .post .author-category {
     height: 16px;
     font-size: 12px;
-    font-family: Roboto-Light, Roboto;
+    
     font-weight: 400;
     color: rgba(0, 0, 0, .7);
     line-height: 16px;
@@ -45,7 +45,7 @@
 }
 .news-card .container .post .date-comments a {
     color: #000;
-    font-family: Helvetica-Light;
+    
     font-size: 12px;
     opacity: .7;
 }
@@ -55,7 +55,7 @@
 .news-card .container .post .view-more a {
     color: #5a9b83;
     font-size: 14px;
-    font-family: Helvetica-Light;
+    
 }
 
 /* ---------------------------------news-sigle页面-------------------------------- */
@@ -63,7 +63,7 @@
 .news-single-title {
     color: #000;
     font-size: 34px;
-    font-family: HuaweiSans;
+    
     line-height: 48px;
     margin: 100px 0 20px;
     text-align: left!important;
@@ -71,7 +71,7 @@
 .news-detail .author-category {
     height: 16px;
     font-size: 12px;
-    font-family: HuaweiSansLight, HuaweiSans;
+    
     font-weight: 300;
     color: rgba(0, 0, 0, .7);
     line-height: 16px;
@@ -80,7 +80,7 @@
 .news-detail p {
     font-size: 14px;
     line-height: 26px;
-    font-family: Roboto-Regular, Roboto;
+    
     color: rgba(0, 0, 0, .7);
     margin: 20px 0;
 }
@@ -120,7 +120,7 @@
         font-size: 24px;
         line-height: 34px;
         font-weight: normal;
-        font-family: HuaweiSans;
+        
     }
 }
 
@@ -142,7 +142,7 @@
         font-size: 16px;
         line-height: 26px;
         font-weight: normal;
-        font-family: HuaweiSans;
+        
     }
     .news-card .container .post .row {
         margin: 15px;
@@ -156,7 +156,7 @@
     .news-single-title {
         color: #000;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         line-height: 34px;
         margin: 40px 0 20px 0;
     }

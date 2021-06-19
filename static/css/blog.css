@@ -36,7 +36,7 @@ a {
     display: flex;
     justify-content: space-between;
     font-size: 16px;
-    font-family:Roboto-Regular,Roboto;
+    
     font-weight:400;
     color:rgba(0,0,0,1);
 
@@ -66,7 +66,7 @@ a {
     height: 50px;
     width: 88%;
     font-size:18px;
-    font-family:HuaweiSans;
+    
     color:rgba(0,0,0,1);
     
 }
@@ -85,7 +85,7 @@ a {
     margin-bottom: 10px;
     display: inline-block;
     padding: 4px 15px 4px !important;
-    font-family: Roboto Light;
+    
     color:  #5a9b83;
     font-size: 12px;
     line-height: 12px;

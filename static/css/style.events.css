@@ -5,7 +5,7 @@
 .event-list p,
 .event-list span {
     font-size: 14px;
-    font-family: HuaweiSans;
+    
     line-height: 16px;
 }
 .event-list .event-content .event-leftline {
@@ -41,14 +41,14 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
 }
 .event-list .event-content .event-box p {
     font-size: 14px;
-    font-family: Roboto-Regular, Roboto;
+    
     line-height: 26px;
     color: rgba(0, 0, 0, .7);
 }
 .event-list .event-content .event-box span {
     width: 68px;
     font-size: 14px;
-    font-family: Roboto-Regular, Roboto;
+    
     line-height: 26px;
     display: inline-block;
     text-align: center;
@@ -64,7 +64,7 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     text-align: center;
     font-size: 16px;
     line-height: 24px;
-    font-family: FZLTHJW;
+    
     margin-bottom: 20px;
     cursor: pointer;
 }
@@ -234,7 +234,7 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     .event-list h3 {
         text-align: center;
         font-size: 34px;
-        font-family: HuaweiSans;
+        
         line-height: 48px;
         font-weight: normal;
         margin: 100px 0 60px;
@@ -244,7 +244,7 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     }
     .event-list .event-content .event-box h6 a {
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         line-height: 34px;
         font-weight: normal;
         color: #000;
@@ -271,7 +271,7 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     .event-list h3 {
         text-align: center;
         font-size: 24px;
-        font-family: HuaweiSans;
+        
         line-height: 34px;
         font-weight: normal;
         margin-top: 40px;
@@ -285,7 +285,7 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     }
     .event-list .event-content .event-box h6 a {
         font-size: 16px;
-        font-family: HuaweiSans;
+        
         line-height: 26px;
         font-weight: normal;
         color: #000;

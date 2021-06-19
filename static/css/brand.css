@@ -1,7 +1,7 @@
 #content .brand-title {
     color: #000;
     font-size: 30px;
-    font-family: HuaweiSans;
+    
     line-height: 48px;
     margin: 120px 0 60px 0;
     text-align: left;
@@ -37,7 +37,7 @@
     height: 30px;
     border-radius: 4px;
     border: 1.5px solid #5A9B83;
-    font-family: Roboto-Regular, Roboto;
+    
     font-weight: 400;
     color: #5A9B83;
     line-height: 16px;
@@ -72,7 +72,7 @@
 .buttondescription{
     margin-top: 15px;
     font-size: 16px;
-    font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
+    
     font-weight: normal;
     color: #000000;
     line-height: 26px;
