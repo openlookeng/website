@@ -3,6 +3,14 @@
     margin-bottom: 60px;
 }
 
+.swiper-container .banner_content .isPC.img {
+    width: 861px;
+}
+
+.swiper-slide .swiper-link .isPC.img {
+    height: 440px;
+}
+
 .bar.background-white {
     margin-top: 0;
     padding-bottom: 0;
@@ -68,14 +76,6 @@
 
 .home-banner .home-img {
     position: relative;
-}
-
-.home-why .why-title {
-    
-}
-
-h3.title {
-    
 }
 
 .descr .descr-item {

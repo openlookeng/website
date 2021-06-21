@@ -65,7 +65,7 @@ description = "本文讲述openLooKeng开源社区的体验设计故事。"
 为了高效、准确、有趣地传达openLooKeng的三大核心特性，体验团队在与研发团队反复讨论后，精心设计了三个不超过一分钟的小视频，将复杂的技术架构化成简单的动画分镜，生动形象地展示了openLooKeng的实用价值：
 
 
-<video class="video" muted poster="https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com:443/highlight1_en.mp4">
+<video class="video" muted poster="https://openlookeng-website-beijing.obs.cn-north-4.myhuaweicloud.com:443/highlight1_en.mp4">
 
 
 文字存在一定局限性，“一千个人眼里有一千个哈姆雷特”。而视频让内容具像化，更容易打破文化和语言隔阂，更广阔地传递信息。
