@@ -34,7 +34,7 @@ openLooKeng社区用开源的魅力吸引真正热爱技术并持续探索的用
 https://space.bilibili.com/627629884/channel/detail?cid=151660
 
 ### 资料下载
-<a href="https://openlookeng-website.obs.ap-southeast-1.myhuaweicloud.com/讲师PPT.zip" download>点击下载议题资料</a>
+<a href="https://openlookeng-website-beijing.obs.cn-north-4.myhuaweicloud.com/讲师PPT.zip" download>点击下载议题资料</a>
 ### 活动议程
 <img src="./agenda.png" style="width:100%;!important">
 
