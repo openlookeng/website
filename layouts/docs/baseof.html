@@ -63,6 +63,7 @@
     </div>
 	<!-- /#all -->
 	{{ partial "scripts.html" . }}
+	<script src='{{ "common/jqtree.js" | relURL }}' crossorigin="anonymous"></script>
 	<script src='{{ "js/book.js" | relURL }}?t={{ mul 1000 (time now).Unix }}'></script>
 </body>
 
