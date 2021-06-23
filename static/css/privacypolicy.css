@@ -9,19 +9,16 @@
 
 #content h3,
 #content strong {
-    margin: 30px 0 20px 0;
-    font-size: 24px;
-    color: #000;
-    
     height: 26px;
     line-height: 26px;
+    margin-top: 25px !important;
+    margin-bottom: 15px !important;
 }
 
 #content p {
     color: rgba(0, 0, 0, .7);
     font-size: 14px;
-    
-
+    line-height: 30px;
 }
 
 #content ul {
