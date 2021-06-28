@@ -66,7 +66,14 @@ paginate = 10
     name = "Security"
     url  = "/security.html"
     weight = 4
-    parent = 'community'    
+    parent = 'community'
+
+[[menu.main]]
+    identifier = "evangelist"
+    name = "Evangelist"
+    url  = "/evangelist.html"
+    weight = 5
+    parent = 'community'
 
 [[menu.main]]
     identifier = "newsroom"
@@ -176,7 +183,14 @@ paginate = 10
     name = "安全"
     url  = "/zh-cn/security.html"
     weight = 4
-    parent = 'community'   
+    parent = 'community'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "evangelist"
+    name = "步道"
+    url  = "/zh-cn/evangelist.html"
+    weight = 5
+    parent = 'community'
 
 [[languages.zh-cn.menu.main]]
     identifier = "newsroom"

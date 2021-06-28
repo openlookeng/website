@@ -1,0 +1,134 @@
+.event-cont h5 {
+    font-size: 24px;
+    margin: 30px 0 17px;
+}
+.event-cont {
+    padding-top: 0;
+}
+.event-cont p {
+    line-height: 24px;
+    margin: 0;
+}
+.red {
+    color: #F76260;
+    font-size: 14px;
+}
+label {
+    width: 115px;
+}
+.form-info {
+    margin: 20px 0;
+    display: flex;
+}
+.form-info input[type=file] {
+    display: inline;
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    width: 90px;
+    height: 26px;
+    right: 15px;
+}
+.form-info input {
+    width: 100%;
+    margin-left: 15px;
+    height: 26px;
+    opacity: 0.25;
+    border-radius: 1px;
+    border: 1px solid #000000;
+}
+.form-info textarea {
+    width: 100%;
+    height: 56px;
+    max-height: 56px;
+    opacity: 0.25;
+    margin-left: 15px;
+    border-radius: 1px;
+    border: 1px solid #000000;
+}
+.file-name {
+    display: inline-block;
+    width: 700px;
+    height: 26px;
+    border: 1px solid #000000;
+    text-align: left;
+    line-height: 26px;
+    padding-left: 10px;
+    color: #C7CAD0;
+    opacity: 0.25;
+}
+input #file-upload-button {
+    background: pink;
+}
+.file-click {
+    position: absolute;
+    right: 15px;
+    width: 90px;
+    height: 26px;
+    background: #fff;
+    border: 2px solid #5A9B83;
+    color: #5A9B83;
+}
+.file-click img {
+    margin-right: 6px;
+}
+.event-cont .form-required {
+    margin: 30px 0;
+}
+.form-btn {
+    margin: 22px 0;
+}
+.post .row {
+    margin-bottom: 100px;
+}
+.submit-btn {
+    width: 90px;
+    height: 30px;
+    background: #000000;
+    border-radius: 4px;
+    opacity: 0.24;
+    color: #fff;
+}
+.reset-btn {
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    border: 2px solid #5A9B83;
+    color: #5A9B83;
+    background: #fff;
+    margin-left: 20px;
+}
+.event-cont .form-error {
+    margin: -20px 0 0 115px;
+    color: #F76260;
+}
+.js-eva-content .dev-join {
+    display: none;
+}
+.js-eva-content .eva-join {
+    display: block;
+}
+.js-dev-content .dev-join {
+    display: block;
+}
+.js-dev-content .eva-join {
+    display: none;
+}
+html[lang=en-us] .tag-item.active:last-child::before {
+    height: 45px;
+}
+a:hover {
+    color: #5A9B83;
+}
+@media (max-width: 994px) {
+    .js-content h5 {
+        font-size: 16px;
+        margin: 30px 0 16px;
+    }
+    .js-content p {
+        line-height: 24px;
+    }
+    .js-content {
+        padding: 0 30px;
+    }
+}

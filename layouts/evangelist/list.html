@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+    {{ partial "head.html" . }}
+    <link rel="stylesheet" href="{{ "css/evangelist.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
+
+    <body>
+
+        <div id="all">
+
+        <header>
+
+            {{ partial "nav.html" . }}
+
+        </header>
+        <div class="nav-mask hide"></div>
+        <div id="content">
+            <div class="container">
+                <div class="row">
+
+                    {{ $paginator := .Paginate (where .Data.Pages "Type" "evangelist") }}
+                    <section class="post">
+                        <div class="row">
+                            <div class="col-md-12 maillist">
+                                <div class="maillist-title">
+                                    <h1 class="isPC event-title">{{ .Params.top_title }}</h1>
+                                    <h1 class="isH5 event-title">{{ .Params.mobile_title }}</h1>
+                                    <img class="maillist-pic top-banner isPC img" src="../img/banners/evangelistBanner.png" alt="">
+                                    <img class="maillist-pic top-banner isH5 img" src="../img/banners/evangelistBanner-mo.png" alt="">
+                                </div>
+                                <div class="event-list isPc">
+                                    <div class="event-tag col-md-2">
+                                        <p class="tag-item tag-coming active">{{ .Params.eva }}</p>
+                                        <p class="tag-item tag-back">{{ .Params.dev }}</p>
+                                    </div>
+                                    <div class="event-right  col-md-10">
+                                        <div class="event-item item-coming active">
+                                            <h4>{{ .Params.eva }}</h4>
+                                            <div class="event-cont js-eva-content">
+                                                <h5>{{.Params.requesttitle}}</h5>
+                                                <p>{{.Params.evaresone}}</p>
+                                                <p>{{.Params.evarestwo}}</p>
+                                                <p>{{.Params.evaresthree}}</p>
+                                                <p>{{.Params.evaresfour}}</p>
+                                                <p>{{.Params.evaresfive}}</p>
+
+                                                <h5>{{.Params.evatitle}}</h5>
+                                                <p>{{.Params.evarightone}}</p>
+                                                <p>{{.Params.evarighttwo}}</p>
+                                                <p>{{.Params.evarightthree}}</p>
+                                                <p>{{.Params.evarightfour}}</p>
+                                                <p>{{.Params.evarightfive}}</p>
+                                                <h5>{{.Params.jointitle}}</h5>
+                                                {{ .Content }}
+                                            </div>
+                                        </div>
+                                        <div class="event-item item-back">
+                                            <h4>{{ .Params.dev }}</h4>
+                                            <div class="event-cont js-dev-content">
+                                                <h5>{{.Params.requesttitle}}</h5>
+                                                <p>{{.Params.devresone}}</p>
+                                                <p>{{.Params.devrestwo}}</p>
+                                                <p>{{.Params.devresthree}}</p>
+                                                <p>{{.Params.devresfour}}</p>
+
+                                                <h5>{{.Params.devbenfitstitle}}</h5>
+                                                <p>{{.Params.devbenfitsone}}</p>
+                                                <p>{{.Params.devbenfitstwo}}</p>
+                                                <p>{{.Params.devbenfitsthree}}</p>
+                                                <p>{{.Params.devbenfitsfour}}</p>
+                                                <h5>{{.Params.jointitle}}</h5>
+                                                {{ .Content }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="event-list isH5">
+                                    <div class="event-tag">
+                                        <div class="tag-item tag-coming js-tag-item active">
+                                            <span class="tag-title">{{ .Params.eva }}</span>
+                                            <span class="js-arrow inner-arrow-down"></span>
+                                        </div>
+                                        <div class="js-content js-eva-content">
+                                            <h5>{{.Params.requesttitle}}</h5>
+                                            <p>{{.Params.evaresone}}</p>
+                                            <p>{{.Params.evarestwo}}</p>
+                                            <p>{{.Params.evaresthree}}</p>
+                                            <p>{{.Params.evaresfour}}</p>
+                                            <p>{{.Params.evaresfive}}</p>
+
+                                            <h5>{{.Params.evatitle}}</h5>
+                                            <p>{{.Params.evarightone}}</p>
+                                            <p>{{.Params.evarighttwo}}</p>
+                                            <p>{{.Params.evarightthree}}</p>
+                                            <p>{{.Params.evarightfour}}</p>
+                                            <p>{{.Params.evarightfive}}</p>
+                                            <h5>{{.Params.jointitle}}</h5>
+                                            {{ .Content }}
+                                        </div>
+                                    </div>
+                                    <div class="event-tag">
+                                        <div class="tag-item tag-back js-tag-item">
+                                            <span class="tag-title">{{ .Params.dev }}</span>
+                                            <span class="js-arrow inner-arrow-right"></span>
+                                        </div>
+                                        <div class="js-content hide js-dev-content">
+                                            <h5>{{.Params.requesttitle}}</h5>
+                                            <p>{{.Params.devresone}}</p>
+                                            <p>{{.Params.devrestwo}}</p>
+                                            <p>{{.Params.devresthree}}</p>
+                                            <p>{{.Params.devresfour}}</p>
+
+                                            <h5>{{.Params.devbenfitstitle}}</h5>
+                                            <p>{{.Params.devbenfitsone}}</p>
+                                            <p>{{.Params.devbenfitstwo}}</p>
+                                            <p>{{.Params.devbenfitsthree}}</p>
+                                            <p>{{.Params.devbenfitsfour}}</p>
+                                            <h5>{{.Params.jointitle}}</h5>
+                                            {{ .Content }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- *** COLUMN END *** -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+        <script src="{{ "js/evangelist.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
+    </body>
+</html>
