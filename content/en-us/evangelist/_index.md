@@ -1,6 +1,6 @@
 +++
-top_title ="社区成长激励"
-mobile_title = "社区成长激励"
+top_title ="Developer growth incentives"
+mobile_title = "Developer growth incentives"
 title = "Evangelist"
 eva = "Evangelists"
 dev = "Senior Developers"
