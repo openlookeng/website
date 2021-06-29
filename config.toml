@@ -187,7 +187,7 @@ paginate = 10
 
 [[languages.zh-cn.menu.main]]
     identifier = "evangelist"
-    name = "步道"
+    name = "布道"
     url  = "/zh-cn/evangelist.html"
     weight = 5
     parent = 'community'

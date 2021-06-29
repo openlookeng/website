@@ -114,11 +114,18 @@ input #file-upload-button {
 .js-dev-content .eva-join {
     display: none;
 }
-html[lang=en-us] .tag-item.active:last-child::before {
-    height: 45px;
-}
 a:hover {
     color: #5A9B83;
+}
+.event-item h4 {
+    margin: 0;
+}
+.event-tag .tag-item {
+    text-align: left;
+    width: unset;
+}
+.tag-item.active::before {
+    left: -15px;
 }
 @media (max-width: 994px) {
     .js-content h5 {
