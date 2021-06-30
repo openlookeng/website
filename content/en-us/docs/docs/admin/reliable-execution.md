@@ -19,26 +19,24 @@ Distributed snapshot is most useful for long running queries. It is disabled by 
 
 To be able to resume execution from a previously saved snapshot, there must be a sufficient number of workers available so that all previous tasks can be restored. To enable distributed snapshot for a query, the following is required:
 - at least 2 workers
-- at least 80% of previously available nodes still active for the resume to be successful. If not enough workers are available, the query reruns from the beginning.
+- at least 80% (rounded down) of previously available workers still active for the resume to be successful. If not enough workers are available, the query will not be able to
+  resume from any previous snapshot, so the query reruns from the beginning.
 
 ## Limitations
 
 - **Supported Statements**: only `INSERT` and `CREATE TABLE AS SELECT` types of statements are supported
    - This does *not* include statements like `INSERT INTO CUBE`
-- **Source tables**: can only read from tables in `Hive`, `TPCDS`, and `TPCH` catalogs
+- **Source tables**: can only read from tables in `Hive` catalog
 - **Target table**: can only write to tables in `Hive` catalogs, with `ORC` format
 - **Interaction with other features**: distributed snapshot does not yet work with the following features:
    - Reuse exchange, i.e. `optimizer.reuse-table-scan`
    - Reuse common table expression (CTE), i.e. `optimizer.cte-reuse-enabled`
-   - Spill, i.e. `experimental.spill-enabled`
 
 When a query that does not meet the above requirements is submitted with distributed snapshot enabled, the query will be executed as if the distributed snapshot feature is _not_ turned on.
 
 ## Detection
 
-Error recovery is triggered when communication between the coordinator and a remote task fails for an extended period of time, as controlled by the `query.remote-task.max-error-duration` configuration.
-
-Another relevant configuration is `exchange.max-error-duration`, which affects inter-task communication errors. It is recommended that this property is configured with a duration longer than `query.remote-task.max-error-duration`, to increase the chance of worker failure recovery.
+Error recovery is triggered when communication between the coordinator and a remote task fails for an extended period of time, as controlled by the [`query.remote-task.max-error-duration`](properties.html#queryremote-taskmax-error-duration) configuration.
 
 ## Storage Considerations
 

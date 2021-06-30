@@ -5,6 +5,7 @@
 
 * Mac OS X or Linux
 * Java 8 Update 161 or higher (8u161+), 64-bit. Both Oracle JDK and OpenJDK are supported.
+* AArch64 ([Bisheng JDK 11 or higher](https://www.hikunpeng.com/developer/devkit/compiler?data=JDK))
 * Maven 3.3.9+ (for building)
 * Python 2.4+ (for running with the launcher script)
 
@@ -40,6 +41,10 @@ openLooKeng Core comes with sample configuration that should work out-of-the-box
 * Use classpath of module: `presto-main`
 
 The working directory should be the `presto-main` subdirectory. In IntelliJ, using `$MODULE_DIR$` accomplishes this automatically.
+
+In the config.properties file, replace plugin.bundles with plugin.dir pointing to your plugin folder
+
+    plugin.dir=../hetu-server/target/hetu-server-{VERSION}/plugin
 
 Additionally, the Hive plugin must be configured with location of your Hive metastore Thrift service. Add the following to the list of VM options, replacing `localhost:9083` with the correct host and port (or use the below value if you do not have a Hive metastore):
 

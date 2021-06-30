@@ -279,6 +279,15 @@ Exchanges transfer data between openLooKeng nodes for different stages of a quer
 >
 > Increasing the value may improve network throughput if there is high latency. Decreasing the value may improve query performance for large clusters as it reduces skew due to the exchange client buffer holding responses for more tasks (rather than hold more data from fewer tasks).
 
+### `exchange.max-error-duration`
+
+> -   **Type:** `duration`
+> -   **Minimum value:** `1m`
+> -   **Default value:** `7m`
+>
+> The maximum amount of time coordinator waits for inter-task related errors to be resolved before it's considered a failure.
+
+
 ### `sink.max-buffer-size`
 
 > -   **Type:** `data size`
@@ -487,6 +496,8 @@ Exchanges transfer data between openLooKeng nodes for different stages of a quer
 >
 > Use Reuse Exchange to cache data in memory if the query contains tables or Common Table Expressions(CTE) which are present more than one time with the same projections and filters on them. Enabling this feature will reduce the time taken to execute the query by caching data in memory and avoiding reading from disk multiple times.
 > This can also be specified on a per-query basis using the `reuse_table_scan` session property.
+>
+> Note: when `cte_reuse_enabled` or `optimizer.cte-reuse-enabled` is enabled reuse exchange will be disabled.
 
 ### `optimizer.cte-reuse-enabled`
 
@@ -496,6 +507,25 @@ Exchanges transfer data between openLooKeng nodes for different stages of a quer
 > Enable this flag to execute Common Table Expressions (CTE) only once irrespective of number of times same CTE is being used in the main query.
 > This will help to improve query execution performance when same CTE is used more than once.
 > This can also be specified on a per-query basis using the `cte_reuse_enabled` session property.
+
+### `optimizer.sort-based-aggregation-enabled`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `false`
+>
+> Sort based aggregation is used when underlying source is in pre-sorted order, this is used instead of Hash aggregation which take more footprint to build hash tables.
+> Sort based aggregation used less memory foot print when compared to hash aggregation.
+> Conditions when Sort based aggregation in case of Hive
+> - 1) Grouping columns should be same or less than sorted columns and it should be in the same order.
+> - 2) Joins case probe side table should be sorted and join criteria should be same or less than sorted columns and it should be in the same order.
+> - 3) bucket_count is 1 bucketed_by columns should be same or less than Grouping columns and it should be in the same order.
+> - 4) bucket_count is more than 1 bucketed_by columns should be same as Grouping columns and it should be in the same order.
+> - 5) In case of partition table, Grouping columns should contain all partitions in same order following by the subset of sorted by columns.
+> - 6) When distinct is used, Grouping columns followed by a distinct column should be subset of sorted by columns.
+>
+> This can also be specified on a per-query basis using the `sort_based_aggregation_enabled` session property.
+>
+> **Note:** This is supported only for Hive connector.
 
 ## Regular Expression Function Properties
 
@@ -698,6 +728,28 @@ helps with cache affinity scheduling.
 >
 > **Note:** This should be configured in all workers.
 
+## Sort Base aggregation Properties
+
+### `sort.prcnt-drivers-for-partial-aggr`
+
+> -   **Type:** `int`
+> -   **Default value:** `5`
+>
+> In Sort based aggregation percentage of number of drivers that are used for unfinalized/partial values.
+> This can also be specified on a per-query basis using the `prcnt_drivers_for_partial_aggr` session property.
+>
+> **Note:** This should be configured on all nodes .
+
+
+## Query Manager
+
+### `query.remote-task.max-error-duration`
+
+> -   **Type:** `duration`
+> -   **Default value:** `5m`
+>
+> The maximum time coordinator waits for remote-task related error to be resolved before it's considered a failure.
+
 ## Distributed Snapshot
 
 ### `snapshot_enabled`
@@ -711,7 +763,7 @@ helps with cache affinity scheduling.
 
 > -   **Type:** `string`
 >
-> This property defines the file system profile used to stored snapshots. The corresponding profile must exist in `etc/filesystem`. For example, if this property is set as `hetu.experimental.snapshot.profile=snapshot-hdfs1`, a profile describing this filesystem `snapshot-hdfs1.properties` must be created in `etc/filesystem` with necessary information including authentication type, config, and keytabs (if applicable).
+> This property defines the [filesystem](../develop/filesystem.html) profile used to stored snapshots. The corresponding profile must exist in `etc/filesystem`. For example, if this property is set as `hetu.experimental.snapshot.profile=snapshot-hdfs1`, a profile describing this filesystem `snapshot-hdfs1.properties` must be created in `etc/filesystem` with necessary information including authentication type, config, and keytabs (if applicable). Please refer to the [filesystem](../develop/filesystem.html) section for details.
 >
 > This property is required if any query is executed with distributed snapshot turned on. It must be included in configuration files for all coordinators and all workers. The specified file system must be accessible by all workers, and they must be able to read from and write to the `/tmp/hetu/snapshot` folder in the specified file system.
 >
@@ -722,7 +774,7 @@ helps with cache affinity scheduling.
 > -   **Type:** `int`
 > -   **Default value:** `10`
 >
-> This property defines the maxinum number of error recovery attempts for a query. When the limit is reached, the query fails.
+> This property defines the maximum number of error recovery attempts for a query. When the limit is reached, the query fails.
 >
 > This can also be specified on a per-query basis using the `snapshot_max_retries` session property.
 
@@ -731,6 +783,6 @@ helps with cache affinity scheduling.
 > -   **Type:** `duration`
 > -   **Default value:** `10m` (10 minutes)
 >
-> This property defines the maxinum amount of time for the system to wait until all tasks are successfully restored. If any task is not ready within this timeout, then the recovery attempt is considered a failure, and the query will try to resume from an earlier snapshot if available.
+> This property defines the maximum amount of time for the system to wait until all tasks are successfully restored. If any task is not ready within this timeout, then the recovery attempt is considered a failure, and the query will try to resume from an earlier snapshot if available.
 >
 > This can also be specified on a per-query basis using the `snapshot_retry_timeout` session property.

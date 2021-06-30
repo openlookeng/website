@@ -19,26 +19,23 @@
 要从之前保存的快照恢复执行，必须有足够数量的可用工作节点，以便恢复所有任务。要对查询启用分布式快照，有以下要求：
 
 - 至少2个工作节点
-- 至少之前80%的可用节点仍处于活动状态，以便恢复成功。如果没有足够的工作节点可用，则查询将从头重新运行。
+- 至少之前80%的可用工作节点(向下舍入)仍处于活动状态，以便恢复成功。如果没有足够的工作节点可用, 查询将不能使用任何之前成功的快照进行恢复，查询将从头重新运行。
 
 ## 限制
 
 - **支持的语句**：仅支持`INSERT`和`CREATE TABLE AS SELECT`类型的语句
   - 不包括类似`INSERT INTO CUBE`的语句。
-- **源表**：只能从`Hive`、`TPCDS`和`TPCH`目录中的表读取。
+- **源表**：只能从`Hive`目录中的表读取。
 - **目标表**：只能写入`Hive`目录中的表，格式为`ORC`。
 - **与其他功能的交互**：分布式快照目前无法与以下功能一起使用：
   - 重用交换，即`optimizer.reuse-table-scan`
   - 重用公用表表达式（CTE），即`optimizer.cte-reuse-enabled`
-  - 溢出，即`experimental.spill-enabled`
 
 在启用分布式快照的情况下提交不满足上述要求的查询时，查询按未启用分布式快照功能的场景执行。
 
 ## 检测
 
-协调节点与远程任务之间的通信长时间失败时，将触发错误恢复，由`query.remote-task.max-error-duration`配置控制。
-
-另一个相关配置为`exchange.max-error-duration`，其影响任务间通信错误。建议将此属性配置为大于`query.remote-task.max-error-duration`的时长，以提高工作节点故障恢复的可能性。
+协调节点与远程任务之间的通信长时间失败时，将触发错误恢复，由[`query.remote-task.max-error-duration`](properties.html#queryremote-taskmax-error-duration)配置控制。
 
 ## 存储注意事项
 
@@ -60,4 +57,4 @@
 
 ## 配置
 
-与分布式快照功能相关的配置可参见[属性参考](properties.html#distributed-snapshot)。
+与分布式快照功能相关的配置可参见[属性参考](properties.html#分布式快照)。

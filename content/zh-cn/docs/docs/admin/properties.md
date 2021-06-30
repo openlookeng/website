@@ -259,6 +259,14 @@
 > 
 > 如果网络延迟较高，增大该值可以提高网络吞吐量。减小该值可以提高大型集群的查询性能，因为它减少了由于交换客户端缓冲区保存了较多任务（而不是保存较少任务中的较多数据）的响应而导致的倾斜。
 
+### `exchange.max-error-duration`
+
+> - **类型：** `duration`
+> - **最小值：** `1m`
+> - **默认值：** `7m`
+> 
+> 交换错误最大缓冲时间，超过该时限则查询失败。
+
 ### `sink.max-buffer-size`
 
 > - **类型：** `data size`
@@ -450,6 +458,8 @@
 > - **默认值**：`false`
 >
 > 如果查询包含的表或公用表表达式（CTE）出现多次且具有相同的投影和过滤器，则使用Reuse Exchange来将数据缓存在内存中。启用此功能将通过将数据缓存在内存中并避免多次从磁盘读取来减少执行查询所需的时间。也可以使用`reuse_table_scan`会话属性在每个查询基础上指定。
+>
+> 注意：当启用`cte_reuse_enabled`或`optimizer.cte-reuse-enabled`时，重用交换将被禁用。
 
 ### `optimizer.cte-reuse-enabled`
 
@@ -457,6 +467,25 @@
 > - **默认值：** `false`
 >
 > 启用此标志后，无论主查询中使用同一CTE多少次，都仅执行一次公用表表达式（CTE）。当多次使用同一个CTE时，这将有助于提高查询执行性能。也可以使用 cte_reuse_enabled 会话属性对每个查询指定。
+
+### `optimizer.sort-based-aggregation-enabled`
+
+> -   **类型：** `boolean`
+> -   **默认值：** `false`
+>
+> 当基础源处于预排序顺序时，使用基于排序的聚合，而不是哈希聚合，后者需要占用更多的空间来构建哈希表。
+> 与哈希聚合相比，基于排序的聚合占用的内存空间较少。
+> Hive中基于排序聚合的条件
+> - 1) 分组列数量应等于或小于排序列，且顺序应与排序列相同。
+> - 2) Join探针侧表应排序，Join条件数量应等于或小于已排序列，且顺序应与排序列相同。
+> - 3) 当bucket_count为1时，bucketed_by列数量应等于或小于分组列，且顺序应与分组列相同。
+> - 4) 当bucket_count大于1时，bucketed_by列数量和顺序应与分组列相同。
+> - 5) 针对分区表，分组列应包含所有分区，顺序与按列排序的子集顺序一致。
+> - 6) 使用 distinct 时，带有distinct列的分组列应该是排序列集合的子集。
+>
+> 也可以使用`sort_based_aggregation_enabled`会话属性在每个查询上指定。
+>
+> **注意：** 仅适用于Hive连接器。
 
 ## 正则表达式函数属性
 
@@ -650,6 +679,27 @@
 >
 > **说明：** 应在所有工作节点上配置该属性。
 
+## 排序基础聚合属性
+
+### `sort.prcnt-drivers-for-partial-aggr`
+
+> -   **类型：** `int`
+> -   **默认值：** `5`
+>
+> 在基于排序的聚合中，用于未完成/部分值的驱动程序数的百分比。
+> 也可以使用`prcnt_drivers_for_partial_aggr`会话属性在每个查询上指定。
+>
+> **注意：** 应在所有节点上配置该属性。
+
+## 查询管理
+
+### `query.remote-task.max-error-duration`
+
+> - 类型：`duration`
+> - **默认值**：`5m`
+> 
+> 远程任务错误最大缓冲时间，超过该时限则查询失败。
+
 ## 分布式快照
 
 ### `snapshot_enabled`
@@ -663,7 +713,7 @@
 
 > - 类型：`string`
 >
-> 此属性定义用于存储快照的文件系统配置文件。对应的配置文件必须存在于`etc/filesystem`中。例如，如果将该属性设置为`hetu.experimental.snapshot.profile=snapshot-hdfs1`，则必须在`etc/filesystem`中创建描述此文件系统的配置文件`snapshot-hdfs1.properties`，其中包含的必要信息包括身份验证类型、配置和密钥表（如适用）。
+> 此属性定义用于存储快照的[文件系统](../develop/filesystem.html)配置文件。对应的配置文件必须存在于`etc/filesystem`中。例如，如果将该属性设置为`hetu.experimental.snapshot.profile=snapshot-hdfs1`，则必须在`etc/filesystem`中创建描述此文件系统的配置文件`snapshot-hdfs1.properties`，其中包含的必要信息包括身份验证类型、配置和密钥表（如适用）。具体细节请参考[文件系统](../develop/filesystem.html)相关章节。
 >
 > 如在打开分布式快照的情况下执行任何查询时，需要配本属性。此属性必须包含在所有协调节点和工作节点的配置文件中。指定的文件系统必须可由所有工作节点访问，且这些工作节点必须能够读取和写入指定文件系统中的`/tmp/hetu/snapshot`文件夹。
 >
