@@ -107,15 +107,23 @@ Hive连接器安全需要的属性在[Hive配置属性](./hive.html#hive配置�
 | `hive.s3select-pushdown.max-connections`| [S3 Select下推](#s3-select下推)同时打开到S3的最大连接数。| 500|
 | `hive.orc.use-column-names`| 为了支持alter表drop列，建议在Hive属性中添加`hive.orc.use-column-names=true`，否则drop列可能无法正常工作。| false|
 | `hive.orc-predicate-pushdown-enabled`| 在读取ORC文件时启用算子下推（predicates pushdown）处理。| `false`|
+| `hive.orc.time-zone`                      | 为未声明时区的旧ORC文件设置默认时区。 | JVM默认值 |
+| `hive.parquet.time-zone`                  | 将时间戳值调整到特定的时区。对于Hive 3.1+，该值应设置为UTC。 | JVM默认值 |
+| `hive.rcfile.time-zone`                   | 将二进制编码的时间戳值调整到特定的时区。对于Hive 3.1+，该值应设置为UTC。| JVM默认值 |
 | `hive.vacuum-service-threads`| 清空服务中运行的线程数。| 2|
 | `hive.auto-vacuum-enabled`| 对Hive表启用自动清空功能。要在引擎侧启用自动清空，请在协调节点的config.properties中添加`auto-vacuum.enabled=true`。| `false`|
 | `hive.vacuum-delta-num-threshold`| 允许不压缩的增量目录的最大数量。最小值为2。| 10|
 | `hive.vacuum-delta-percent-threshold`| 允许不压缩的增量目录的最大百分比。值应在0.1到1.0之间。| 0.1|
 | `hive.vacuum-cleanup-recheck-interval`| 清空清理任务重新提交的间隔。最小值为5分钟| `5 Minutes`|
 | `hive.vacuum-collector-interval`| 清空回收器任务重新提交的间隔。| `5 Minutes`|
-| `hive.max-splits-to-group`    | 可分组的最大拆分数。如果值为1，则不分组。最小值为1。     | 1   |
+| `hive.max-splits-to-group`    | 可分组的最大拆分数。如果值为1，则不分组。最小值为1。小的拆分越多，创建的驱动越多，因此需要更多内存、调度、上下文切换，这会影响读取性能。将小拆分分组在一起可以减少拆分和创建驱动的数量，因此需要的资源较少，从而提高性能。 | 1   |
 | `hive.metastore-client-service-threads` | 元存储客户端与Hive元存储通信的并行线程数。 | 4 |
 | `hive.worker-metastore-cache-enabled` | 在工作节点上也开启对Hive元存储的缓存。 | `false` |
+| `hive.metastore-write-batch-size` | 每个请求中发送到元存储的分区数。 | 8 |
+| `hive.metastore-cache-ttl` | 表和分区元数据的元存储缓存淘汰时间。| `0s` |
+| `hive.metastore-refresh-interval` | 从Hive元存储刷新表和分区元数据的元存储缓存条目的时间。 | `1s` |
+| `hive.metastore-db-cache-ttl` | 数据库、角色、配置、表和视图列表对象的元存储缓存淘汰时间。 | `0s` |
+| `hive.metastore-db-refresh-interval` | 从Hive元存储中刷新数据库、表列表、视图列表、角色对象的元存储缓存条目的时间。| `1s` |
 
 ## Hive Thrift 元存储配置属性说明
 
@@ -650,6 +658,30 @@ DROP TABLE hive.web.request_logs
 DROP SCHEMA hive.web
 ```
 
+## 元存储缓存：
+
+Hive连接器维护一个元存储缓存，以便更快地提供对各种操作的元存储请求。可在`hive.properties`中配置缓存条目的加载、重新加载和保留时间。
+
+  ```properties
+  # Table & Partition Cache specific configurations
+  hive.metastore-cache-ttl=24h
+  hive.metastore-refresh-interval=23h
+
+  # DB, Table & View list, Roles, configurations related cache configuration
+  hive.metastore-db-cache-ttl=4m
+  hive.metastore-db-refresh-interval=3m
+  ```
+
+**说明：**如果用户直接对数据进行操作，并且Hive元存储被外部修改（例如，直接由Hive、Spark修改），则缓存可能包含较旧的数据。对于同一用户，应相应地配置缓存刷新和淘汰时间。
+
+为了减少不一致，Hive连接器还根据表和分区名称缓存（刷新频率更高）验证分区及其统计缓存条目`on read`，避免表刷新时间高于`5mins`。
+
+```sql
+REFRESH META CACHE
+```
+此外，用户可使用元数据缓存刷新命令重新加载元存储缓存。
+
+
 ## 性能调优说明：
 
 #### INSERT
@@ -669,7 +701,7 @@ DROP SCHEMA hive.web
 
   * **对于AArch64：**
 
-    - 使用[vacuum操作unify](../vacuum.html)合并每个分区中由多个文件写入创建的多个文件，这样在读取期间调度拆分会更快。
+    - 使用[vacuum操作unify](../sql/vacuum.html)合并每个分区中由多个文件写入创建的多个文件，这样在读取期间调度拆分会更快。
 
       ```sql
       VACUUM TABLE catalog_sales FULL UNIFY;
@@ -714,12 +746,22 @@ DROP SCHEMA hive.web
   ```properties
   SET SESSION hive.metastore-client-service-threads = 4
   #Default: 4
-  #Recommended: The number of running HMS service.
+  #Recommended: The number of running hive metastore service instances * 4.
   ```
 
   根据许多并行HMS操作可以调用的线程池的数量，这将减少获取分区的总时间。
 
   **说明**：另外，集群中可以添加多个Hive元存储服务，这些服务将以轮询的方式访问，从而保证更佳的Hive元存储负载。
+
+  ```properties
+  hive.metastore-write-batch-size = 64
+  #Default: 8
+  #Recommended: 64 or higher writes to batch together per request to hive metastore service.
+  ```
+
+  这减少了HMS与openLooKeng协调节点服务器之间的往返时间。
+
+  **说明**：该属性也可以使用Hive会话属性`hive.metastore_write_batch_size`进行配置。
 
 * ##### 直接删除整个分区
 

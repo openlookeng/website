@@ -115,15 +115,23 @@ Please see the [Hive Security Configuration](./hive-security.html) section for a
 | `hive.s3select-pushdown.max-connections`  | Maximum number of simultaneously open connections to S3 for [S3 Select Pushdown](#s3-select-pushdown). | 500      |
 | `hive.orc.use-column-names`               | To support alter table drop column, it is recommended to add `hive.orc.use-column-names=true` in hive properties, otherwise the drop column might not work properly. | false    |
 | `hive.orc-predicate-pushdown-enabled`     | Enables pushdown processing of predicates while reading ORC file. | `false` |
+| `hive.orc.time-zone`                      | Sets the default time zone for legacy ORC files that did not declare a time zone. | JVM default    |
+| `hive.parquet.time-zone`                  | Adjusts timestamp values to a specific time zone. For Hive 3.1+, this should be set to UTC. | JVM default    |
+| `hive.rcfile.time-zone`                   | Adjusts binary encoded timestamp values to a specific time zone. For Hive 3.1+, this should be set to UTC. | JVM default    |
 | `hive.vacuum-service-threads`             | Number of threads to run in the vacuum service.               | 2    |
 | `hive.auto-vacuum-enabled`                | Enable auto-vacuum on Hive tables. To enable auto-vacuum on engine side, add `auto-vacuum.enabled=true` in config.properties of coordinator node(s). | `false`  |
 | `hive.vacuum-delta-num-threshold`         | Maximum number of delta directories to allow without compacting it. Minimum value is 2.       | 10    |
 | `hive.vacuum-delta-percent-threshold`     | Maximum percent of delta directories to allow without compacting it. Value should be in range 0.1 to 1.0      | 0.1   |
 | `hive.vacuum-cleanup-recheck-interval`    | Interval after which vacuum cleanup task will be resubmitted. Minimum value is 5 minutes.    | `5 Minutes`    |
 | `hive.vacuum-collector-interval`    | Interval after which vacuum collector task will be resubmitted.     | `5 Minutes`    |
-| `hive.max-splits-to-group`    | Max number of splits can be grouped. If value is 1 it will not group. Minimum value is 1     | 1   |
+| `hive.max-splits-to-group`    | Max number of splits that can be grouped. If value is 1 it will not group. Minimum value is 1. More small splits, creates more drivers due to this more memory, scheduling, context switching is required which impact the read performance. Grouping of small splits together reduces the number of splits & driver creation, due this less resources are required which improves performance. | 1   |
 | `hive.metastore-client-service-threads` | Number of threads for metastore clients to operate in parallel to communicate with hive metastore. | 4 |
 | `hive.worker-metastore-cache-enabled` | Enable the caching of the hive metastore on the worker nodes also. | `false` |
+| `hive.metastore-write-batch-size` | Number of partitions sent to meta store in per request. | `8` |
+| `hive.metastore-cache-ttl` | Metastore Cache eviction time for table & partition metadata. | `0s` |
+| `hive.metastore-refresh-interval` | Time after which metastore cache entries for table and partition metadata are refreshed from Hive metastore. | `1s` |
+| `hive.metastore-db-cache-ttl` | Metastore Cache eviction time for DB, Roles, Configs, Table & Views list objects. | `0s` |
+| `hive.metastore-db-refresh-interval` | Time after which metastore cache entry is refreshed from Hive metastore for DB, Table List, View List, Roles objects. | `1s` |
 
 
 
@@ -708,6 +716,28 @@ Drop a schema:
 DROP SCHEMA hive.web
 ```
 
+## Metastore Cache:
+
+Hive connector maintains a metastore cache to service the metastore request faster to various operations. Loading, reloading and retention times of the cache entries can be configured in `hive.properties`.
+
+  ```properties
+  # Table & Partition Cache specific configurations
+  hive.metastore-cache-ttl=24h
+  hive.metastore-refresh-interval=23h
+
+  # DB, Table & View list, Roles, configurations related cache configuration
+  hive.metastore-db-cache-ttl=4m
+  hive.metastore-db-refresh-interval=3m
+  ```
+
+**Note:** In cases where user operates on the data directly and if hive metastore is modified externally (eg. directly by Hive, Spark), there is a possibility of cache having older data. For the same user should configure the cache refresh and eviction times accordingly.
+
+In order reduce the inconsistency, hive connector also validates the partition & its statistics cache entries `on read` against table and partition-names cache (which refreshes at higher frequency) in case the table refresh time is higher than `5mins`.
+
+```sql
+REFRESH META CACHE
+```
+Additionally, metadata cache refresh command can be used to reload the metastore cache by user.
 
 
 ## Performance tuning notes:
@@ -729,7 +759,7 @@ DROP SCHEMA hive.web
 
   * **For AARCH64:**
 
-    - Use [vacuum operation unify](../vacuum.html) to merge the multiple files created by many file writes in each partition such that scheduling splits becomes faster during read.
+    - Use [vacuum operation unify](../sql/vacuum.html) to merge the multiple files created by many file writes in each partition such that scheduling splits becomes faster during read.
 
       ```sql
       VACUUM TABLE catalog_sales FULL UNIFY;
@@ -778,14 +808,22 @@ DROP SCHEMA hive.web
   ``` properties
   hive.metastore-client-service-threads = 4
   #Default: 4
-  #Recommended: The number of running HMS service.
+  #Recommended: The number of running hive metastore service instances * 4.
   ```
 
   Based on the number of thread pool that many parallel HMS operation can be called, this shall reduce the overall time to get the partitions.
 
   **Note**: additionally, multiple Hive Metastore services can be added to the cluster, the same will be accessed in round-robin manner thereby ensuring better load over hive metastore.
 
+  ``` properties
+  hive.metastore-write-batch-size = 64
+  #Default: 8
+  #Recommended: 64 or higher writes to batch together per request to hive metastore service.
+  ```
+  This reduces the round trip time between the HMS and openlookeng coordinator server.
   
+  **Note**: this can also be configured using hive session property `hive.metastore_write_batch_size`. 
+
 
 * ##### Direct Delete for whole partition deletes
 
