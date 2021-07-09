@@ -52,6 +52,12 @@ small_title = "Committers"
     range = "Huawei R&D Senior Engineer"
     content = "Zheng Li, Ph.D. of Wuhan Optoelectronics National Laboratory of Huazhong University of Science and Technology, joined Huawei in June 2018 after graduation. He is currently focusing on performance optimization research of openLooKeng, deeply involved in the design and implementation of big data query analysis engine architecture and other related work."
 
+[[item]]
+    title = "Jingfang Zhang"
+    avatar = "img/foundation/JingfangZhang.png"
+    range = "Huawei Senior Engineer"
+    content = "Jingfang Zhang has nine years of software design and development experience and is dedicated to enterprise routers, storage, and big data. Currently, Jingfang Zhang focuses on the high-performance architecture design and implementation of openLooKeng."
+
 +++
 
 
