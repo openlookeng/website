@@ -52,6 +52,11 @@ small_title = "Committers"
     range = "Huawei R&D Senior Engineer"
     content = "李铮，华中科技大学武汉光电国家实验室2013级博士，2018年6月毕业加入华为，现任华为研发高级工程师。当前聚焦于openLooKeng的性能优化研究深入参与大数据查询分析引擎架构设计及实现等相关工作。"
 
+[[item]]
+    title = "张景芳"
+    avatar = "img/foundation/JingfangZhang.png"
+    range = "Huawei Senior Engineer"
+    content = "张景芳拥有9年的软件设计开发经验，致力于企业路由器、存储以及大数据领域研究，目前聚焦于openLooKeng的高性能架构设计及实现工作。"
 +++
 
 
