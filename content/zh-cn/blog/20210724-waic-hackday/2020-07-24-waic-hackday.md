@@ -118,7 +118,7 @@ select knn_classify(features(5.1,3.5,1.4,0.2), model) as category from (select l
 
 > **模型，以knn模型为例**
 
-knn算法很简单，在模型训练层面，需要把只需要把训练数据经过预处理之后保存起来即可，KnnModel模型的类图如下所示，其中我们建立了ParameterNode用于保存模型参数：
+knn算法很简单，在模型训练层面，需要把只需要训练的数据经过预处理之后保存起来即可，KnnModel模型的类图如下所示，其中我们建立了ParameterNode用于保存模型参数：
 
 <img src="/zh-cn/blog/20210724-waic-hackday/waic-08.jpg">
 
