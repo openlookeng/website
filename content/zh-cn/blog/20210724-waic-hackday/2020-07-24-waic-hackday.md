@@ -1,5 +1,5 @@
 +++
-title = "openLooKeng的AI能力实践 : 学生开发者在WAIC黑客马拉松"
+title = "openLooKeng 的AI能力实践 : 学生开发者在WAIC黑客马拉松"
 date = "2021-07-24"
 tags = ["大数据", "openLooKeng"]
 archives = "2021-07"
