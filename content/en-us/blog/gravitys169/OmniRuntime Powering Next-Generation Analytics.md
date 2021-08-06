@@ -32,7 +32,7 @@ In the following section we will provide a high level description of each compon
 
 
 
-## OmniJIT
+### OmniJIT
 
 OmniJit component is at the Omniruntime stack's core and contributes significantly to the overall performance improvement for analytics workload.
 
@@ -46,7 +46,7 @@ By using OmniJit, analytics engine developers will no longer need to wrestle wit
 
  
 
-## OmniOperator
+### OmniOperator
 
  OmniOperator represent the computational code that will process the data for a specific query, potentially written in SQL. A SQL query can be composed of a multitude of different operators and OmniJit is responsible for optimizing them on the fly. OmniJit optimizes the C++ operators to produce executables with minimum executed instruction count.
 
@@ -62,7 +62,7 @@ The resulting OmniOperators have less executed instruction count, lower resource
 
  
 
-## OmniVec
+### OmniVec
 
  OmniVector is the next component of OmniRuntime. OmniVector defines a standard columnar memory format. OmniVector is designed to be The portable language-independent column-based memory data format for OmniRuntime. OmniVector supports a rich data type system designed to address the needs of the various analytic data systems. This in-memory data format delivers high-performance and high scalability for data intensive applications.
 
@@ -71,6 +71,7 @@ At its core, OmniVector is implemented in C++ with high-level language binding f
 The following figure shows the overall architecture of OmniVec.
 
 <img src="/zh-cn/blog/gravitys169/omniruntime4.png">
+
 ​													Figure 4. OmniVec Binging and Native Architecture
 
  Scope based full life cycle management of OmniVector not only eliminates the possibility of memory leak, but also provides the high performance memory access. Each OmniVector goes through several steps in its life cycle. Each step is triggered by a OmniVector operation:
@@ -98,7 +99,7 @@ The following figure shows the overall architecture of OmniVec.
 
  
 
-## OmniJIT, OmniVector, And OmniOperator performance 
+### OmniJIT, OmniVector, And OmniOperator performance 
 
  We integrated OmniRuntime and OmniJit in popular Big Data systems such as openLooKeng, Spark, and Hive. We then benchmarked the integration using TPC-H to show that the designed framework significantly outperforms commercial analytics engines.
 
@@ -108,7 +109,7 @@ The following figure shows the overall architecture of OmniVec.
 
  
 
-## OmniCache
+### OmniCache
 
 The OmniCache is a relational cache within  OmniRuntime. The OmniCache not only caches data, but also maintains relation between data with schema information in the cache. OmniCache constructs virtual data sets, caches relational data derived from physical data sets or other virtual data sets, and uses SQL SELECT statements to define relational data for cache.
 
@@ -130,7 +131,7 @@ To maintain relational information, OmniCache exposes its status and schema info
 
 
 
-## OmniData
+### OmniData
 
 OmniData is OmniRuntime's fast data access and collaboration layer targetting data transfer reduction between the segregated data and compute layers, which commonly seen in morden data centers.
 
@@ -152,7 +153,7 @@ On top of its near data processing capabilities, OmniData also offer the followi
 
  
 
-## Summary
+### Summary
 
 OmniRuntime uses the combination of OmniJIT, OminVec, OmniOperator, OmniCache, and OmniData to provide a common data processing foundation for next-generation analytics platforms. OmniRuntime dramatically reduces the burden of creating custom optimization by offering a generic engine with contextualized optimization capabilities for different analysis engines.
 
