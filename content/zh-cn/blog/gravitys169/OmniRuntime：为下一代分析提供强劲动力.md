@@ -29,11 +29,11 @@ description = "介绍OmniRuntime是什么,组成模块和有益效果。"
 
 - **OmniData**：快速数据访问和协作层，提供数据层和计算层之间的双向通信和数据传输。
 
-在下一节中，我们将提供每个组件的高级说明。
+在下一节中，我们将提供每个组件的说明。
 
 
 
-## OmniJIT
+### OmniJIT
 
 OmniJit组件是Omniruntime的核心，对分析工作负载的整体性能提高做出了重大贡献。
 
@@ -47,7 +47,7 @@ OmniJit旨在为普通开发人员提供即时编译支持。它提供了一个�
 
  
 
-## OmniOperator
+### OmniOperator
 
 OmniOperator表示处理特定查询数据的计算逻辑代码。SQL查询可以由许多不同的算子组成，OmniJit负责动态优化它们。OmniJit优化了C++算子，以生成具有最小执行指令计数的可执行文件。
 
@@ -63,7 +63,7 @@ OmniOperator表示处理特定查询数据的计算逻辑代码。SQL查询可�
 
  
 
-## OmniVector
+### OmniVector
 
 OmniVector是OmniRuntime的另一个组件。OmniVector定义了标准的列式内存格式。OmniVector设计为可移植的、独立于列的内存数据格式。OmniVector支持丰富的数据类型系统，旨在满足各种分析数据系统的需求。这种内存数据格式为数据密集型应用程序提供高性能和高可扩展性。
 
@@ -102,7 +102,7 @@ OmniVector的核心代码是在C++中实现的，带有高级语言绑定，以�
 
  
 
-## OmniJIT、OmniVctor和OmniOperator性能数据
+### OmniJIT、OmniVctor和OmniOperator性能数据
 
  我们在openLooKeng、Spark和Hive等流行的大数据系统中集成了OmniRuntime和OmniJit。然后，我们使用TPC-H在openLooKeng上进行了基准测试，实验结果表明集成了Omniruntime框架的性能明显优于原始分析引擎。
 
@@ -112,7 +112,7 @@ OmniVector的核心代码是在C++中实现的，带有高级语言绑定，以�
 
  
 
-## OmniCache
+### OmniCache
 
 OmniCache是OmniRuntime中的关系型缓存。OmniCache不仅缓存数据，还维护数据与缓存中的数据之间的关系。OmniCache构造虚拟数据集，缓存从物理集数据或其他虚拟数据集派生的关系数据，并使用SQL SELECT语句定义用于缓存的关系数据。
 
@@ -136,7 +136,7 @@ Omnicache具备以下功能：
 
 
 
-## OmniData
+### OmniData
 
 OmniData是OmniRuntime的快速数据访问和协作层，旨在减少数据存储层和计算层之间的数据传输，这在现代存算分离的数据中心中非常有效。
 
@@ -158,7 +158,7 @@ OmniData通过将查询执行划分为几个与数据分布匹配的阶段来实
 
   
 
-## 总结
+### 总结
 
 OmniRuntime使用OmniJIT、OminVector、OmniOperator、OmniCache和OmniData的组合，为下一代分析平台提供通用的数据处理基础。OmniRuntime通过为不同分析引擎提供具有上下文优化功能的通用引擎，显著减轻了创建自定义优化的负担。
 
