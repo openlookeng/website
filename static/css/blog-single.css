@@ -27,3 +27,6 @@
 #blog-post .tag-mobile {
     display: inline-block;
 }
+#blog-post img {
+    max-width: 80%;
+}
