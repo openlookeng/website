@@ -158,6 +158,8 @@ openLooKeng小助手微信号：openLooKengoss
 
 ### <b>【相关链接】</b>
 
+* 如果您想进一步了解赛题，请点击[2021信创大赛,openLooKeng赛题解读](https://www.bilibili.com/video/BV12V411p79d)
+
 * 如果您想报名参赛，请点击[报名参赛](https://competition.huaweicloud.com/information/1000041535/circumstance)。
 
 * 如果您已经报名，想提交作品，请点击[提交作品](https://competition.huaweicloud.com/information/1000041535/submission)。

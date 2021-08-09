@@ -1,14 +1,15 @@
 +++
 author = "openLooKeng"
-time = "2021.07-2021.11" 
+time = "2021.07.15-2021.10.30" 
 title = "2021信创“大比武”·鲲鹏技术软件开发 —— openLooKeng赛道" 
 location = "线上" 
 tag = "开发者竞赛"
 img = "./events/2021-07-15/picture01-zh.jpg" 
 img_mobile = "./events/2021-07-15/xinchuang2021_Mozh.jpg" 
 link = "./events/2021-07-15/xinchuang2021.html"
-eventtype = ""
+eventtype = "upComing"
 description = ""
+weight = 91
 +++
 
 
@@ -157,7 +158,10 @@ openLooKeng小助手微信号：openLooKengoss
 
 <img src="/zh-cn//events/2021-07-15/openlookengoss.jpg">
 
+
 ### <b>【相关链接】</b>
+
+* 如果您想进一步了解赛题，请点击[2021信创大赛,openLooKeng赛题解读](https://www.bilibili.com/video/BV12V411p79d)。
 
 * 如果您想报名参赛，请点击[报名参赛](https://competition.huaweicloud.com/information/1000041535/circumstance)。
 
