@@ -5307,7 +5307,7 @@ header {
     font-size: 14px;
 }
 
-#copyright .container .pull-right > a:nth-child(3) {
+#copyright .container .pull-right > a:nth-child(4) {
     padding-left: 10px;
     font-size: 14px;
 }
@@ -5324,6 +5324,11 @@ header {
 #copyright .container .pull-right > a:nth-child(2) {
     border-right: 1px solid rgba(255, 255, 255, 1);
 }
+#copyright .container .pull-right > a:nth-child(3) {
+     border-right: 1px solid rgba(255, 255, 255, 1);
+    padding:0 10px;
+    font-size: 14px;
+ }
 
 .markdown > :first-child {
     text-align: left;
