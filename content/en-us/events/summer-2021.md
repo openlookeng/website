@@ -7,8 +7,9 @@ tag = "Developers Competition"
 img = "/img/events/summer-2021-en.png"
 img_mobile = "/img/events/summer-2021-en.png"
 link = "./events/summer-2021.html"
-eventtype = ""
+eventtype = "upComing"
 description = ""
+weight = 91
 +++
 
 
@@ -153,6 +154,8 @@ openLooKeng community is releasing three tasks in Summer 2021. Students can find
 
 
 ## Participation Guide to “Summer 2021”
+
+* If you want to learn more about the task，see [Summer 2021-openLooKeng](https://www.bilibili.com/video/BV1c44y167gh)
 
 * If you are a student, see [Student Guide](https://summer.iscas.ac.cn/help/en/student/).
 * If you are a community mentor, see [Mentor Guide](https://summer.iscas.ac.cn/help/en/mentor/).

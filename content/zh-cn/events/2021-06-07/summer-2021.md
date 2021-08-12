@@ -6,9 +6,10 @@ location = "线上"
 tag = "开发者竞赛"
 img = "/img/events/summer-2021-zh.png" 
 img_mobile = "/img/events/summer-2021-zh.png" 
-link = "./events/summer-2021.html"
-eventtype = ""
+link = "./events/2021-06-07/summer-2021.html"
+eventtype = "upComing"
 description = ""
+weight = 91
 +++
 
 
@@ -134,6 +135,8 @@ openLooKeng社区在暑期2021活动中发布3个任务，同学们可以通过�
 
     <https://gitee.com/openlookeng/hetu-core>
 
+如果您
+
 ---
 ## 活动日程
 
@@ -154,7 +157,8 @@ openLooKeng社区在暑期2021活动中发布3个任务，同学们可以通过�
 
 
 ## “暑期2021”活动参与指南
----
+--- 
+* 如果您想进一步了解赛题任务，请点击[暑期2021-openLooKeng项目任务讲解与答疑](https://www.bilibili.com/video/BV1c44y167gh)
 
 * 如果您是学生，请查看[学生指南](https://summer.iscas.ac.cn/help/student/)。
 * 如果您是导师，请查看[导师指南](https://summer.iscas.ac.cn/help/mentor/)。
