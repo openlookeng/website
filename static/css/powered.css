@@ -11,11 +11,9 @@
     margin: 60px 0 40px !important;
     text-align: left;
 }
-
 .powered-by-lookeng h3{
-    margin: 40px 0 25px !important
+    margin: 64px 0 48px !important
 }
-
 .powered-by-lookeng p{
     font-size: 16px;
 }
@@ -31,6 +29,7 @@
 .powered-by-lookeng ul {
     list-style: none;
     margin-bottom: 23px;
+    padding: 0;
 }
 
 .fixed-nav {
