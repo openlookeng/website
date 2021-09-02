@@ -1,0 +1,39 @@
++++
+id = "other"
+title = "其他"
+total = "5"
+weight = 6
+
+
+[[company]]
+industry = "其他行业"
+name = "华为CBG"
+chara = "即席查询业务"
+desc1 = "· 提升Hive即席分析查询性能"
+
+[[company]]
+industry = "其他行业"
+name = "华为流程IT"
+chara = "跨源分析"
+desc1 = "· 替换Presto集群，面向复杂的内部数据资产管理"
+
+[[company]]
+industry = "其他行业"
+name = "荣耀终端"
+chara = "即席分析"
+desc1 = "· 高性能数据查询"
+
+[[company]]
+industry = "其他行业"
+name = "华为云"
+chara = "集成开发"
+desc1 = "· 发布云数据产品"
+desc2 = "· 整合EI数据服务解决方案"
+
+[[company]]
+industry = "其他行业"
+name = "烟台奇迹"
+chara = "数据分析"
+desc1 = "· 利用高性能特性，提升Hive分析查询性能"
+
++++
