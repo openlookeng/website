@@ -1,19 +1,19 @@
 +++
 id = "inter"
-title = "互联网"
+title = "Internet"
 total = "2"
 weight = 5
 
 [[company]]
-industry = "互联网行业"
-name = "中移在线"
-chara = "即席分析"
-desc1 = "· 在线数据营销分析"
+industry = "Internet"
+name = "China Mobile Online"
+chara = "Ad hoc analysis"
+desc1 = "· Provided online data marketing analysis."
 
 [[company]]
-industry = "互联网行业"
-name = "汽车之家"
-chara = "跨源分析"
-desc1 = "· 实现kylin与mysql的融合计算"
+industry = "Internet"
+name = "Autohome"
+chara = "Cross-source analysis"
+desc1 = "· Implemented converged computing of Kylin and MySQL."
 
 +++

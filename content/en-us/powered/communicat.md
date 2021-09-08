@@ -1,18 +1,18 @@
 +++
 id = "communicat"
-title = "通信"
+title = "ICT"
 total = "2"
 weight = 4
 
 [[company]]
-industry = "通信行业"
-name = "中移动"
-chara = "移动集团1+N边缘计算项目标前比拼测试"
-desc1 = "· 使能跨域查询"
+industry = "ICT"
+name = "China Mobile"
+chara = "· Pre-bidding comparison test for 1+N edge computing of China Mobile."
+desc1 = "· Enabled cross-domain query."
 
 [[company]]
-industry = "通信行业"
-name = "联通"
-chara = "即系查询"
-desc1 = "· 对接hive、hudi的高性能查询"
+industry = "ICT"
+name = "China Unicom"
+chara = "Ad hoc query"
+desc1 = "· Interconnected with Hive and Hudi for high-performance query."
 +++

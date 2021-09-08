@@ -1,22 +1,27 @@
 +++
 id = "gov"
-title = "政府"
+title = "Government"
 total = "3"
 weight = 2
 
 
 
 [[company]]
-industry = "政府行业"
-name = "电科院"
-chara = "跨源查询"
-desc1 = "· 对接hive、Hbase进行查询"
-desc2 = "· 对接ranger进行权限管理"
+industry = "Government"
+name = "Electric Power Research Institute"
+chara = "Cross-source query"
+desc1 = "· Interconnected with Hive and HBase for data query."
+desc2 = "· Interconnected with Ranger for permission management."
 
 [[company]]
-industry = "政府行业"
-name = "xx纪检"
-chara = "跨源跨域查询"
-desc1 = "· 跨源跨域的数据查询分析"
+industry = "Government"
+name = "XX Discipline Inspection and Supervision"
+chara = "Cross-source and cross-domain query"
+desc1 = "· Enabled cross-source and cross-domain data query and analysis."
 
+[[company]]
+industry = "Government"
+name = "City Government Service and Big Data Administration"
+chara = "Integrated development"
+desc1 = "Released a data virtualization query engine."
 +++

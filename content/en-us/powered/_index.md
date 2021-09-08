@@ -3,26 +3,26 @@ title = "搭载openLookeng"
 
 
 [[industry]]
-ind = "ISV行业"
+ind = "ISV"
 id = "isv"
 
 [[industry]]
-ind = "政府行业"
+ind = "Government"
 id = "gov"
 
 [[industry]]
-ind = "金融行业"
+ind = "Finance"
 id = "finance"
 
 [[industry]]
-ind = "通信行业"
+ind = "ICT"
 id = "communicat"
 
 [[industry]]
-ind = "互联网行业"
+ind = "Internet"
 id = "inter"
 
 [[industry]]
-ind = "其他行业"
+ind = "Others"
 id = "other"
 +++

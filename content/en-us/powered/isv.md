@@ -5,47 +5,51 @@ total = "8"
 weight = 1
 
 
+[[company]]
+industry = "ISV"
+name = "Beijing Orient Ntl Comn Sc & Tch Co Ltd (BONC)"
+chara = "Integrated development"
+desc1 = "· Released proprietary big data solutions after integrating openLooKeng."
 
 [[company]]
-industry = "ISV行业"
-name = "北明软件"
-chara = "集成开发"
-desc1 = "· 优化Hive查询"
-desc2 = "· 应用虚拟化引擎，建设虚拟数据湖"
+industry = "ISV"
+name = "Beiming Software"
+chara = "Integrated development"
+desc1 = "· Integrated the cross-source and cross-domain features of openLooKeng into its proprietary big data solutions."
 
 [[company]]
-industry = "ISV行业"
-name = "信工所"
-chara = "跨源分析"
-desc1 = "· 发布自有大数据解决方案"
+industry = "ISV"
+name = "Institute of Information Engineering, CAS"
+chara = "Cross-source analysis"
+desc1 = "· Released proprietary big data solutions."
 
 [[company]]
-industry = "ISV行业"
-name = "亚信"
-chara = "集成开发"
-desc1 = "· 融入后发布自有大数据解决方案"
+industry = "ISV"
+name = "AsiaInfo"
+chara = "Integrated development"
+desc1 = "· Released proprietary big data solutions after integrating openLooKeng."
 
 [[company]]
-industry = "ISV行业"
-name = "中创"
-chara = "集成开发"
-desc1 = "· 融入自由大数据解决方案"
+industry = "ISV"
+name = "CVIC Software Engineering"
+chara = "Integrated development"
+desc1 = "· Integrated openLooKeng into its proprietary big data solutions."
 
 [[company]]
-industry = "ISV行业"
-name = "神马信息"
-chara = "集成开发"
-desc1 = "· 集成并入自有大数据方案"
+industry = "ISV"
+name = "Shenma Information"
+chara = "Integrated development"
+desc1 = "· Integrated openLooKeng into its proprietary big data solutions."
 
 [[company]]
-industry = "ISV行业"
+industry = "ISV"
 name = "Fusion Insight"
-chara = "跨源跨域查询"
-desc1 = "· 平台产品集成"
+chara = "Cross-source and cross-domain query"
+desc1 = "· Integrated openLooKeng into its platform products."
 
 [[company]]
-industry = "ISV行业"
-name = "览众科技"
-chara = "集成开发"
-desc1 = "· 集成在自有的数据资产管理平台产品—蜘蛛侠数据服务"
+industry = "ISV"
+name = "Legion Technology"
+chara = "Integrated development"
+desc1 = "· Integrated openLooKeng into its proprietary data asset management platform - UIAUTO."
 +++

@@ -10,13 +10,19 @@ weight = 2
 industry = "政府行业"
 name = "电科院"
 chara = "跨源查询"
-desc1 = "· 对接hive、Hbase进行查询"
-desc2 = "· 对接ranger进行权限管理"
+desc1 = "· 对接Hive、Hbase进行查询"
+desc2 = "· 对接Ranger进行权限管理"
 
 [[company]]
 industry = "政府行业"
 name = "xx纪检"
 chara = "跨源跨域查询"
 desc1 = "· 跨源跨域的数据查询分析"
+
+[[company]]
+industry = "政府行业"
+name = "某城市政务服务与大数据管理局"
+chara = "集成开发"
+desc1 = "· 数据虚拟化查询引擎"
 
 +++

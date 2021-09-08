@@ -1,39 +1,39 @@
 +++
 id = "other"
-title = "其他"
+title = "Others"
 total = "5"
 weight = 6
 
 
 [[company]]
-industry = "其他行业"
-name = "华为CBG"
-chara = "即席查询业务"
-desc1 = "· 提升Hive即席分析查询性能"
+industry = "Others"
+name = "Huawei CBG"
+chara = "Ad hoc query"
+desc1 = "· Improved the Hive ad hoc analysis and query performance."
 
 [[company]]
-industry = "其他行业"
-name = "华为流程IT"
-chara = "跨源分析"
-desc1 = "· 替换Presto集群，面向复杂的内部数据资产管理"
+industry = "Others"
+name = "Huawei BP&IT"
+chara = "Cross-source analysis"
+desc1 = "· Replaced the Presto cluster for complex internal data asset management."
 
 [[company]]
-industry = "其他行业"
-name = "荣耀终端"
-chara = "即席分析"
-desc1 = "· 高性能数据查询"
+industry = "Others"
+name = "Honor Device"
+chara = "Ad hoc analysis"
+desc1 = "· Supported high-performance data query."
 
 [[company]]
-industry = "其他行业"
-name = "华为云"
-chara = "集成开发"
-desc1 = "· 发布云数据产品"
-desc2 = "· 整合EI数据服务解决方案"
+industry = "Others"
+name = "HUAWEI CLOUD"
+chara = "Integrated development"
+desc1 = "· Released Data Lake Insight (DLI)."
+desc2 = "· Integrated EI big data services and solutions."
 
 [[company]]
-industry = "其他行业"
-name = "烟台奇迹"
-chara = "数据分析"
-desc1 = "· 利用高性能特性，提升Hive分析查询性能"
+industry = "Others"
+name = "Yantai Qiji"
+chara = "Data analysis"
+desc1 = "· Used the high-performance features of openLooKeng to improve Hive analysis and query performance."
 
 +++

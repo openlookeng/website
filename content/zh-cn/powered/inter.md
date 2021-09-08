@@ -14,6 +14,6 @@ desc1 = "· 在线数据营销分析"
 industry = "互联网行业"
 name = "汽车之家"
 chara = "跨源分析"
-desc1 = "· 实现kylin与mysql的融合计算"
+desc1 = "· 实现Kylin与MySQL的融合计算"
 
 +++
