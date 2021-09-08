@@ -26,13 +26,10 @@
                             <h2>{{ .Params.title }}</h2>
                             <div class="industry">
                                 <div class="industry-item">
-                                    {{ range .Params.industry}}
-                                    <h3 id={{ .id }}>{{ .ind }}</h3>
-                                    {{ $powerID := .id}}
-                                    {{ $power := (where $root.Data.Pages "Type" "powered") }}
-                                    {{ range $power}}
-                                    {{ if eq .Params.id $powerID}}
-                                    {{ range .Params.company}}
+                                    {{ range sort .Site.Data.powered "weight"}}
+                                    {{ if eq .lang $root.Site.LanguageCode}}
+                                    <h3 id={{ .id }}>{{ .industry }}</h3>
+                                    {{ range .company}}
                                     <div class="company-info">
                                         <p class="comp-name">{{ .name }} <span>{{ .chara}}</span></p>
                                         <ul class="comp-desc">
@@ -45,8 +42,9 @@
                                     </div>
                                     {{ end }}
                                     {{ end }}
-                                    {{ end}}
                                     {{ end }}
+
+
                                 </div>
                                 <div class="fixed-nav">
                                     <div class="js-to-top to-top">

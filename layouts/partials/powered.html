@@ -1,14 +1,16 @@
-{{ $posts := where .Site.RegularPages "Type" "==" "powered" }}
-
+{{ $posts := sort .Site.Data.powered "weight" }}
+{{ $root := .}}
 <section>
     <div class="container home-powered-links">
         <h1> {{i18n "MAIN_POWERED_LINKS"}}</h1>
         <div class="home-powered-imgs">
             {{ range $posts}}
-            <a href="/zh-cn/powered.html#{{ .Params.id }}">
-                <img loading="lazy" src="../img/partner/{{ .Params.id}}.png" alt="BEIMING SOFTWARE logo" /> <br>
-                <span>{{ .Params.title}} ({{ .Params.total }})</span>
+            {{ if eq .lang $root.Site.LanguageCode}}
+            <a href='./powered.html#{{ .id }}'>
+                <img loading="lazy" src="../img/partner/{{ .id}}.png" alt="powered by OpenLookeng logo" /> <br>
+                <span>{{ .title}} ({{ .total }})</span>
             </a>
+            {{ end }}
             {{ end }}
         </div>
     </div>
