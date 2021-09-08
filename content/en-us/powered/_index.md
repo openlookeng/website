@@ -1,5 +1,5 @@
 +++
-title = "搭载openLookeng"
+title = "Powered by openLooKeng"
 
 
 [[industry]]
