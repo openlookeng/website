@@ -23,5 +23,5 @@ desc1 = "· Enabled cross-source and cross-domain data query and analysis."
 industry = "Government"
 name = "City Government Service and Big Data Administration"
 chara = "Integrated development"
-desc1 = "Released a data virtualization query engine."
+desc1 = "· Released a data virtualization query engine."
 +++

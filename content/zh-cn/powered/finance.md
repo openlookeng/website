@@ -1,7 +1,7 @@
 +++
 id = "finance"
 title = "金融"
-total = "3"
+total = "2"
 weight = 3
 
 [[company]]

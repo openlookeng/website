@@ -1,7 +1,7 @@
 +++
 id = "finance"
 title = "Finance"
-total = "3"
+total = "2"
 weight = 3
 
 [[company]]
@@ -15,7 +15,7 @@ desc2 = "· Built a virtual data lake with the application virtualization engine
 industry = "Finance"
 name = "China Merchants Bank (CMB)"
 chara = "Offline data warehouse analytics and cross-data source association query"
-desc1 = "·  Improved the cross-source query capabilities."
+desc1 = "· Improved the cross-source query capabilities."
 desc2 = "· Provided high-performance Hive data query capabilities."
 
 +++
