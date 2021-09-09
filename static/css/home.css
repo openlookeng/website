@@ -265,16 +265,6 @@
     justify-content: space-around;
 }
 
-.home-powered-imgs a {
-    text-align: center;
-    color: #000;
-}
-
-
-.home-powered-imgs a:hover {
-    color: #5A9B83;
-}
-
 .home-why .summit img {
     width: 1140px;
     height: unset;
