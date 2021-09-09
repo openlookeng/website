@@ -1,17 +1,10 @@
-{{ $posts := sort .Site.Data.powered "weight" }}
-{{ $root := .}}
 <section>
-    <div class="container home-powered-links">
-        <h1> {{i18n "MAIN_POWERED_LINKS"}}</h1>
+<div class="container home-powered-links">
+        <h1>{{ i18n "MAIN_POWERED_LINKS"}}</h1>
         <div class="home-powered-imgs">
-            {{ range $posts}}
-            {{ if eq .lang $root.Site.LanguageCode}}
-            <a href='./powered.html#{{ .id }}'>
-                <img loading="lazy" src="../img/partner/{{ .id}}.png" alt="powered by OpenLookeng logo" /> <br>
-                <span>{{ .title}} ({{ .total }})</span>
-            </a>
-            {{ end }}
-            {{ end }}
+                <a class="power-box" target="_blank" href="{{ i18n "MAIN_POWERED_BEIMING"}}"> <img loading="lazy" src="../img/partner/beiming.png" alt="BEIMING SOFTWARE logo" /></a>
+            <a class="power-box" target="_blank" href="{{ i18n "MAIN_POWERED_HWAWEIYUN"}}"> <img loading="lazy" src="../img/partner/huaweicloud.png" alt="HuaweiCloud logo" /></a>
+            <a class="power-box" target="_blank" href="{{ i18n "MAIN_POWERED_LANZHONG"}}"> <img loading="lazy" src="../img/partner/lanzhong.png" alt="lanzhong logo" /></a>
         </div>
     </div>
 </section>
