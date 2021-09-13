@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ "css/powered.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
+
+<body>
+
+<div id="all">
+
+    <header>
+
+        {{ partial "nav.html" . }}
+
+    </header>
+    <div class="nav-mask hide"></div>
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                {{ $root := .}}
+                {{ $paginator := .Paginate (where .Data.Pages "Type" "powered") }}
+                <section class="post">
+                    <div class="row">
+                        <div class="powered-by-lookeng">
+                            <div class="empty-box"></div>
+                            <h2>{{ .Params.title }}</h2>
+                            <div class="industry isPc">
+                                <div class="industry-item">
+                                    {{ range sort .Site.Data.powered "weight"}}
+                                    {{ if eq .lang $root.Site.LanguageCode}}
+                                    <div class="industry-card">
+                                        <h3 id={{ .id }}>{{ .industry }}</h3>
+                                        <div class="info-card">
+                                            {{ range .company}}
+                                            <div class="company-info">
+                                                <p class="comp-name bold">{{ .name }}</p>
+                                                <p><span class="bold">{{ $root.Params.scenario}}</span>{{ .chara}}</p>
+                                                <p><span class="bold">{{ $root.Params.benefit}}</span></p>
+                                                <ul class="comp-desc">
+                                                    <li>{{ if .desc1 }}{{ .desc1 }}{{ end }}</li>
+                                                    <li>{{ if .desc2 }}{{ .desc2 }}{{ end }}</li>
+                                                    <li>{{ if .desc3 }}{{ .desc3 }}{{ end }}</li>
+                                                    <li>{{ if .desc4 }}{{ .desc4 }}{{ end }}</li>
+                                                    <li>{{ if .desc5 }}{{ .desc5 }}{{ end }}</li>
+                                                </ul>
+                                            </div>
+                                            {{ end }}
+                                        </div>
+                                    </div>
+                                    {{ end }}
+                                    {{ end }}
+                                </div>
+                                <div class="fixed-nav">
+                                    <div class="js-to-top to-top">
+                                        <img src="../img/partner/icon_top.png" alt="back to top">
+                                    </div>
+                                    <ul>
+                                        {{ range .Params.industry }}
+                                        {{ if eq .id "isv"}}
+                                        <li class="active">
+                                            <a href="{{ "#"}}{{ .id }}">{{ .ind }}</a>
+                                            <div class="icon-circle"></div>
+                                        </li>
+                                        {{ else }}
+                                        <li>
+                                            <a href="{{ "#"}}{{ .id }}">{{ .ind }}</a>
+                                            <div class="icon-circle"></div>
+                                        </li>
+                                        {{ end }}
+                                        {{ end}}
+                                    </ul>
+                                    <div class="icon-line"></div>
+                                </div>
+                            </div>
+                            <div class="industry isH5">
+                                <div class="industry-item">
+
+                                    <div class="industry-tag">
+                                        {{ range sort .Site.Data.powered "weight"}}
+                                        {{ if eq .lang $root.Site.LanguageCode}}
+                                        <div class="industry-card">
+                                            <div  class="tag-item js-tag-item {{if eq .id "isv"}} active {{ end }}">
+                                                <span class="tag-title" id={{ .id }}>{{ .industry }} </span>
+                                                <span class="js-arrow {{if eq .id "isv"}} inner-arrow-down {{ end }} {{if ne .id "isv"}} inner-arrow-right {{ end }}"></span>
+                                            </div>
+                                            <div class="info-card js-content {{if ne .id "isv"}} hide {{ end }}">
+                                                {{ range .company}}
+                                                <div class="company-info">
+                                                    <p class="comp-name bold">{{ .name }}</p>
+                                                    <p><span class="bold">{{ $root.Params.scenario}}</span>{{ .chara}}</p>
+                                                    <p><span class="bold">{{ $root.Params.benefit}}</span></p>
+                                                    <ul class="comp-desc">
+                                                        <li>{{ if .desc1 }}{{ .desc1 }}{{ end }}</li>
+                                                        <li>{{ if .desc2 }}{{ .desc2 }}{{ end }}</li>
+                                                        <li>{{ if .desc3 }}{{ .desc3 }}{{ end }}</li>
+                                                        <li>{{ if .desc4 }}{{ .desc4 }}{{ end }}</li>
+                                                        <li>{{ if .desc5 }}{{ .desc5 }}{{ end }}</li>
+                                                    </ul>
+                                                </div>
+                                                {{ end }}
+                                            </div>
+                                        </div>
+                                        {{ end }}
+                                        {{ end }}
+                                    </div>
+
+                                </div>
+                                <div class="fixed-nav">
+                                    <div class="js-to-top to-top">
+                                        <img src="../img/partner/icon_top.png" alt="back to top">
+                                    </div>
+                                    <ul>
+                                        {{ range .Params.industry }}
+                                        {{ if eq .id "isv"}}
+                                        <li class="active">
+                                            <a href="{{ "#"}}{{ .id }}">{{ .ind }}</a>
+                                            <div class="icon-circle"></div>
+                                        </li>
+                                        {{ else }}
+                                        <li>
+                                            <a href="{{ "#"}}{{ .id }}">{{ .ind }}</a>
+                                            <div class="icon-circle"></div>
+                                        </li>
+                                        {{ end }}
+                                        {{ end}}
+                                    </ul>
+                                    <div class="icon-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- *** COLUMN END *** -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#content -->
+
+    {{ partial "footer.html" . }}
+
+</div>
+<!-- /#all -->
+
+{{ partial "scripts.html" . }}
+
+<script src="{{ "js/powered.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
+</body>
+</html>
