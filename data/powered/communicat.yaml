@@ -17,6 +17,6 @@ company:
   - {
     industry: "通信行业",
     name: "联通",
-    chara: "即系查询",
+    chara: "即席查询",
     desc1: "· 对接Hive、Hudi的高性能查询"
   }

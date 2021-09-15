@@ -34,7 +34,7 @@
                                             {{ range .company}}
                                             <div class="company-info">
                                                 <p class="comp-name bold">{{ .name }}</p>
-                                                <p><span class="bold">{{ $root.Params.scenario}}</span>{{ .chara}}</p>
+                                                <p><span class="bold">{{ $root.Params.scenario}}</span> {{ .chara}}</p>
                                                 <p><span class="bold">{{ $root.Params.benefit}}</span></p>
                                                 <ul class="comp-desc">
                                                     <li>{{ if .desc1 }}{{ .desc1 }}{{ end }}</li>
@@ -87,7 +87,7 @@
                                                 {{ range .company}}
                                                 <div class="company-info">
                                                     <p class="comp-name bold">{{ .name }}</p>
-                                                    <p><span class="bold">{{ $root.Params.scenario}}</span>{{ .chara}}</p>
+                                                    <p><span class="bold">{{ $root.Params.scenario}}</span> {{ .chara}}</p>
                                                     <p><span class="bold">{{ $root.Params.benefit}}</span></p>
                                                     <ul class="comp-desc">
                                                         <li>{{ if .desc1 }}{{ .desc1 }}{{ end }}</li>
