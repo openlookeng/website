@@ -1,0 +1,22 @@
+id: "communicat"
+title: "ICT"
+total: "2"
+industry: "ICT"
+lang: "en-us"
+weight: 4
+
+
+
+company:
+  - {
+    industry: "ICT",
+    name: "China Mobile",
+    chara: "·Pre-bidding comparison test for 1+N edge computing of China Mobile.",
+    desc1: "· Enabled cross-domain query."
+  }
+  - {
+    industry: "ICT",
+    name: "China Unicom",
+    chara: "Ad hoc query",
+    desc1: "· Interconnected with Hive and Hudi for high-performance query."
+  }
