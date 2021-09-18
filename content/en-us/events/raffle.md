@@ -6,7 +6,7 @@ event_head = "Upcoming Events"
 location = "Online"
 tag = "Meetup"
 img = "/img/events/EventCover.png"
-img_mobile = '/img/events/events1.png'
+img_mobile = '/img/events/EventCover.png'
 link = "./events/raffle.html"
 weight = 98
 

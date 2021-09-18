@@ -1,7 +1,7 @@
 +++
 author = "openLooKeng"
 time = "2021.07-2021.11" 
-title = "2021信创“大比武”·鲲鹏技术软件开发 —— openLooKeng赛道" 
+title = "2021 Xinchuang Competition —— Kunpeng Basic Software Development(openLooKeng)" 
 location = "Online" 
 tag = "Developers Competition"
 img = "./events/2021-07-15/picture01-en.jpg" 

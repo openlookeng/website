@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.06" 
+time = "2021.06.26" 
 title = "openLooKeng Meetup" 
 location = "北京 / 待定" 
 tag = "聚会"
