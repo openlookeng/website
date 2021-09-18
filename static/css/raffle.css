@@ -2,6 +2,10 @@
     padding: 0 15px;
     margin-bottom: 100px;
 }
+.img-price img{
+    width: 100%;
+    height: 558px;
+}
 .raffle .banner {
     height: 440px;
     background: url("/img/events/BannerPC.png");
@@ -66,6 +70,9 @@
 #content .box-4 .click a{
     font-size: 24px;
 }
+#content .box-4 .click a{
+    line-height: 56px;
+}
 .btns .box-1{
     margin-right: 30px;
     background: url("/img/events/raffle-bg-1.png");
@@ -85,12 +92,15 @@
 }
 .btns .box-4 .click {
     width: 224px;
+    height: 56px;
+    line-height: 56px;
 }
 @media (max-width: 1000px) {
     .raffle .banner {
         margin-top: 40px;
         height: 370px;
         background: url("/img/events/BannerMO.png");
+        background-size: cover;
     }
     #content .raffle .row{
         margin-bottom: 65px;
