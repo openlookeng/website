@@ -1,6 +1,6 @@
 +++ 
 author = "openLooKeng"
-time = "2021.09" 
+time = "2021.09.11" 
 title = "HUAWEI CONNECT" 
 location = "Shanghai" 
 tag = "Conference"

@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.03" 
+time = "2021.04.24-2021.04.26" 
 title = "华为开发者大会HDC.Cloud " 
 location = "深圳" 
 tag = "会议"

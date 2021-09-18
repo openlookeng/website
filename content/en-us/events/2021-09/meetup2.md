@@ -1,6 +1,6 @@
 +++ 
 author = "openLooKeng"
-time = "2021.09" 
+time = "2021.09.16" 
 title = "OSCAR Cloud Computing Open Source Industries Conference" 
 location = "Beijing" 
 tag = "Conference"
