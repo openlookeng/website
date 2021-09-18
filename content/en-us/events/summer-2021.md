@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.02-2021.11"
+time = "2021.01.29-2021.05.21"
 title = "Summer 2021 of Open Source Promotion Plan（openLooKeng）"
 location = "Online"
 tag = "Developers Competition"

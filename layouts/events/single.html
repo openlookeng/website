@@ -8,6 +8,8 @@
                 {{ partial "nav.html" . }}
             </header>
             <div class="nav-mask hide"></div>
+
+            {{ if ne .Params.event "raffle"}}
             <div class="container blog-single-title">
                 <div class="row">
                     <div class="col-md-12">
@@ -22,10 +24,10 @@
                         <!-- *** LEFT COLUMN *** -->
                         <div class="col-md-9" id="blog-post">
                                 <p class="text-left blog-12px">
-                                    {{ .Params.author }} 
+                                    {{ .Params.author }}
                                     <span class="character fz12">|</span>
                                     {{ .Params.time }}
-                                   
+
                                 </p>
                             <div id="post-content">
                                 {{ .Content }}
@@ -58,6 +60,9 @@
                 <!-- /.container -->
             </div>
             <!-- /#content -->
+            {{ else }}
+            {{ partial "raffle.html" . }}
+            {{ end }}
 
             {{ partial "footer.html" . }}
 

@@ -1,0 +1,142 @@
+#content .raffle .row{
+    padding: 0 15px;
+    margin-bottom: 100px;
+}
+.raffle .banner {
+    height: 440px;
+    background: url("/img/events/BannerPC.png");
+}
+.raffle .intro-1 h2{
+    font-size: 40px!important;
+    text-align: center!important;
+    margin: 60px 0 40px!important;
+}
+.raffle p {
+    font-size: 24px;
+    text-align: center;
+}
+.raffle .intro-1 {
+    margin-bottom: 40px;
+}
+.raffle .intro-2 {
+    margin: 40px 0;
+}
+.btns {
+    display: flex;
+    flex-wrap: wrap;
+}
+.btns .button {
+    width: 360px;
+    height: 277px;
+}
+
+.btns .button .num{
+    text-align: left;
+    font-size: 50px;
+    font-weight: bold;
+    color: #5A9B83;
+    margin: 16px 16px 24px 16px;
+}
+
+.btns .box-4 .num{
+    margin: 16px 16px 5px 16px;
+}
+
+.btns .button .desc{
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.btns .button .click{
+    width: 160px;
+    height: 40px;
+    background: #5A9B83;
+    border-radius: 32px;
+    margin: 16px auto;
+}
+
+#content .raffle .click a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    color: #fff!important;
+    font-size: 16px;
+}
+#content .box-4 .click a{
+    font-size: 24px;
+}
+.btns .box-1{
+    margin-right: 30px;
+    background: url("/img/events/raffle-bg-1.png");
+}
+.btns .box-2{
+    margin-right: 30px;
+    background: url("/img/events/raffle-bg-2.png");
+}
+.btns .box-3{
+    background: url("/img/events/raffle-bg-3.png");
+}
+.btns .box-4{
+    width: 100%;
+    margin-top: 30px;
+    background: url("/img/events/raffle-bg-4.png");
+    background-size: cover;
+}
+.btns .box-4 .click {
+    width: 224px;
+}
+@media (max-width: 1000px) {
+    .raffle .banner {
+        margin-top: 40px;
+        height: 370px;
+        background: url("/img/events/BannerMO.png");
+    }
+    #content .raffle .row{
+        margin-bottom: 65px;
+    }
+    .raffle .intro-1 h2{
+        font-size: 24px!important;
+        margin: 40px 0 24px!important;
+    }
+    .raffle p {
+        font-size: 14px;
+        line-height: 26px;
+        margin: 0;
+    }
+    .img-price img{
+        width: 100%;
+        height: 184px;
+    }
+    .btns .button {
+        width: 100%;
+        height: 240px;
+        margin: 0 0 24px 0;
+    }
+    .btns .button .num{
+        font-size: 40px;
+        font-weight: bold;
+        color: #5A9B83;
+        margin: 12px 12px 48px 12px;
+    }
+    .btns .box-1{
+        background: url("/img/events/raffle-mo-1.png");
+    }
+    .btns .box-2{
+        background: url("/img/events/raffle-mo-2.png");
+    }
+    .btns .box-3{
+        background: url("/img/events/raffle-mo-3.png");
+    }
+    .btns .box-4{
+        height: 400px;
+        background: url("/img/events/raffle-mo-4.png");
+        background-size: cover;
+    }
+    .btns .box-4 .num{
+        margin: 12px 12px 70px 12px;
+    }
+    .btns .button .desc{
+        line-height: 32px;
+    }
+}

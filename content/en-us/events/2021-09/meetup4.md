@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.09-2021.12" 
+time = "2021.09.11-2021.09.16" 
 title = "CCF Big Data & Computing Intelligence Contest" 
 location = "Online" 
 tag = "Developers Competition"
