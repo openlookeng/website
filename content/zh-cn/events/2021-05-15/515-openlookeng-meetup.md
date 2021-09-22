@@ -35,9 +35,6 @@ openLooKeng社区用开源的魅力吸引热爱技术并持续探索的用户和
 视频回放：
 <https://www.bilibili.com/video/BV1UQ4y1o7ZY/>
 
-演讲资料下载：
-<a href="openLooKeng Looking back Looking forward.pdf" download="">openLooKeng Looking back Looking forward</a>
-
 ---
 
 **议题：openLooKeng ClickHouse Connector 在多数据中心下的应用探索**
