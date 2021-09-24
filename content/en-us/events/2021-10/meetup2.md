@@ -1,6 +1,6 @@
 +++ 
 author = "openLooKeng"
-time = "2021.10" 
+time = "2021.10.21" 
 title = "Apache Hadoop Meetup" 
 location = "TBD" 
 tag = "Meetup"
