@@ -95,6 +95,55 @@
     height: 56px;
     line-height: 56px;
 }
+.workshop .register{
+    margin: 40px auto 0;
+    text-align: center;
+    width: 320px;
+    height: 56px;
+    background: #5A9B83;
+    border-radius: 32px;
+}
+#content .workshop .register a {
+    display: block;
+    width: 100%;
+    height: 56px;
+    font-size: 24px;
+    line-height: 56px;
+    color: #fff!important;
+}
+.workshop .banner {
+    height: 440px;
+    background: url("/img/events/workshop-banner-pc.png");
+}
+.workshop .intro-box {
+    margin-top: 20px;
+    width: 1204px;
+    padding: 52px 64px 76px;
+}
+.workshop .box1 {
+    height: 424px;
+    background: url("/img/events/workshop-bg1.png");
+}
+.workshop .box2 {
+    height: 256px;
+    background: url("/img/events/workshop-bg2.png");
+}
+.workshop .box3 {
+    height: 424px;
+    background: url("/img/events/workshop-bg3.png");
+}
+.workshop .box4 {
+    height: 280px;
+    background: url("/img/events/workshop-bg4.png");
+}
+.workshop .intro-box h5 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+.workshop .margin-20 {
+    margin-top: 20px;
+}
 @media (max-width: 1000px) {
     .raffle .banner {
         margin-top: 40px;
@@ -148,5 +197,54 @@
     }
     .btns .button .desc{
         line-height: 32px;
+    }
+    .workshop .banner {
+        margin-top: 40px;
+        height: 390px;
+        background: url("/img/events/workshop-banner-mo.png");
+        background-size: cover;
+    }
+    .workshop .register {
+        width: 240px;
+        height: 40px;
+        background: #5A9B83;
+        border-radius: 32px;
+    }
+    #content .workshop .register a {
+        display: block;
+        height: 40px;
+        font-size: 16px;
+        line-height: 40px;
+    }
+    .workshop .intro {
+        margin: 0 -15px;
+    }
+    .workshop p {
+        line-height: 24px;
+    }
+    .workshop .intro-box h5 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+    .workshop .intro-box {
+        width: 100%;
+        padding: 44px 50px 68px;
+    }
+    .workshop .box1 {
+        height: 790px;
+        background: url("/img/events/workshop-bg-mo-1.png");
+    }
+    .workshop .box2 {
+        height: 280px;
+        background: url("/img/events/workshop-bg-mo-2.png");
+    }
+    .workshop .box3 {
+        height: 590px;
+        background: url("/img/events/workshop-bg-mo-3.png");
+    }
+    .workshop .box4 {
+        height: 275px;
+        background: url("/img/events/workshop-bg-mo-4.png");
     }
 }

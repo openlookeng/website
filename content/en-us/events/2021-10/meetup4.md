@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.10" 
+time = "2021.10.24" 
 title = "1024 Developers' Day" 
 location = "Changsha / Xi'an / Nanjing / …" 
 tag = "Conference"

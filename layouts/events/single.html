@@ -8,12 +8,15 @@
                 {{ partial "nav.html" . }}
             </header>
             <div class="nav-mask hide"></div>
-
-            {{ if ne .Params.event "raffle"}}
+            {{ if eq .Params.event "raffle" }}
+            {{ partial "raffle.html" . }}
+            {{ else if eq .Params.event "workshop"}}
+            {{ partial "workshop.html" . }}
+            {{ else }}
             <div class="container blog-single-title">
                 <div class="row">
                     <div class="col-md-12">
-                    <h2 class="news-single-title">{{ .Title }}</h2>
+                        <h2 class="news-single-title">{{ .Title }}</h2>
                     </div>
                 </div>
             </div>
@@ -23,12 +26,12 @@
                     <div class="row">
                         <!-- *** LEFT COLUMN *** -->
                         <div class="col-md-9" id="blog-post">
-                                <p class="text-left blog-12px">
-                                    {{ .Params.author }}
-                                    <span class="character fz12">|</span>
-                                    {{ .Params.time }}
+                            <p class="text-left blog-12px">
+                                {{ .Params.author }}
+                                <span class="character fz12">|</span>
+                                {{ .Params.time }}
 
-                                </p>
+                            </p>
                             <div id="post-content">
                                 {{ .Content }}
                             </div>
@@ -60,8 +63,6 @@
                 <!-- /.container -->
             </div>
             <!-- /#content -->
-            {{ else }}
-            {{ partial "raffle.html" . }}
             {{ end }}
 
             {{ partial "footer.html" . }}

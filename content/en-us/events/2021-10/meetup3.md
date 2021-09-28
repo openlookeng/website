@@ -1,6 +1,6 @@
 +++ 
 author = "openLooKeng"
-time = "2021.10" 
+time = "2021.10.26" 
 title = "China Open Source Hackathon" 
 location = "TBD" 
 tag = "Hackathon"
