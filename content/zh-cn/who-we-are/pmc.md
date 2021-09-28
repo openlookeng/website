@@ -71,7 +71,7 @@ small_title = "PMC 委员"
 ## PMC (项目管理委员会)  
 
 
-项目管理委员会（PMC）是负责openLooKeng项目的委员会。尽管项目的committers有能力更新代码，但只有PMC作为一个机构才有权对项目软件的正式版本进行决策。PMC还负责对该项目的新committer和PMC成员进行投票，并遵循本文档中概述的其他政策。PMC采用懒惰的共识方法做出决策：有赞成票而没有反对票即视为通过。
+项目管理委员会（PMC）是负责openLooKeng项目的委员会。尽管项目的committers有能力更新代码，但只有PMC作为一个机构才有权对项目软件的正式版本进行决策。PMC还负责对该项目的新committer和PMC成员进行投票，并遵循本文档中概述的其他政策。PMC采用 lazy consensus 方法做出决策：有赞成票而没有反对票即视为通过。
 
 
 PMC的职责如下：
@@ -90,4 +90,6 @@ PMC的职责如下：
 
 Mail List: dev@openlookeng.io
 
-双周会议: 11:00 am - 12:00 pm (Noon), Friday, Beijing Time. It happens on Slack.
+双周会议: 11:00 am - 12:00 pm (Noon), Friday, Beijing Time. It happens on Slack.  
+
+会议主题范围：社区规划、关键技术、方案设计、安全代码检视等和社区技术演进与发展相关的议题
