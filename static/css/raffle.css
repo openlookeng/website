@@ -42,15 +42,17 @@
     margin: 16px 16px 24px 16px;
 }
 
-.btns .box-4 .num{
-    margin: 16px 16px 5px 16px;
+.btns .box-4{
+    padding: 86px 0;
 }
 
 .btns .button .desc{
     font-size: 24px;
     margin-bottom: 16px;
 }
-
+.btns .button .note{
+    font-size: 14px;
+}
 .btns .button .click{
     width: 160px;
     height: 40px;
@@ -192,10 +194,13 @@
         background: url("/img/events/raffle-mo-4.png");
         background-size: cover;
     }
-    .btns .box-4 .num{
-        margin: 12px 12px 70px 12px;
+    .btns .box-4{
+        padding: 36px 5px;
     }
     .btns .button .desc{
+        line-height: 32px;
+    }
+    .btns .button .note{
         line-height: 32px;
     }
     .workshop .banner {
