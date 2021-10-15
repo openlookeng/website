@@ -62,6 +62,10 @@ headless: true
     - [HIndex语句]({{< relref "./docs/indexer/hindex-statements.md" >}})
     - [new-index]({{< relref "./docs/indexer/new-index.md" >}})
 
+- [Star Tree多维数据集](#)
+    - [概述] ({{< relref "./docs/preagg/overview.md" >}}>)
+    - [语句] ({{< relref "./docs/preagg/statements.md" >}})
+
 - [连接器]({{< relref "./docs/connector/_index.md" >}})
     - [CarbonData]({{< relref "./docs/connector/carbondata.md" >}})
     - [ClickHouse]({{< relref "./docs/connector/clickhouse.md" >}})
@@ -90,6 +94,7 @@ headless: true
     - [TPCDS]({{< relref "./docs/connector/tpcds.md" >}})
     - [TPCH]({{< relref "./docs/connector/tpch.md" >}})
     - [VDM]({{< relref "./docs/connector/vdm.md" >}})
+    - [Kylin]({{< relref "./docs/connector/kylin.md" >}})
 
 - [函数和运算符]("#")
     - [逻辑运算符]({{< relref "./docs/functions/logical.md" >}})
@@ -199,7 +204,7 @@ headless: true
     - [文件系统访问实用程序]({{< relref "./docs/develop/filesystem.md" >}})
     - [Hive ORC Cache]({{< relref "./docs/develop/hive-orc-cache.md" >}})
     - [外部函数注册和下推]({{< relref "./docs/develop/externalfunction-registration-pushdown.md" >}})
-    - [Star-tree多维数据集]({{< relref "./docs/develop/star-tree-cube.md" >}})
+
 - [openLooKeng REST接口说明]({{< relref "./docs/rest/_index.md" >}})
     - [节点资源]({{< relref "./docs/rest/node.md" >}})
     - [查询资源]({{< relref "./docs/rest/query.md" >}})
@@ -208,11 +213,12 @@ headless: true
     - [任务资源]({{< relref "./docs/rest/task.md" >}})
 
 - [发行说明]("#")
-    - [1.3.0]({{< relref "./docs/releasenotes/releasenotes-1.3.0.md" >}})
-    - [1.2.0]({{< relref "./docs/releasenotes/releasenotes-1.2.0.md" >}})
-    - [1.1.0]({{< relref "./docs/releasenotes/releasenotes-1.1.0.md" >}})
-    - [1.0.1]({{< relref "./docs/releasenotes/releasenotes-1.0.1.md" >}})
-    - [1.0.0]({{< relref "./docs/releasenotes/releasenotes-1.0.0.md" >}})
-    - [0.1.0]({{< relref "./docs/releasenotes/releasenotes-0.1.0.md" >}})
+    - [1.4.0 (2021年10月15日)]({{< relref "./docs/releasenotes/releasenotes-1.4.0.md" >}})
+    - [1.3.0 (2021年6月30日)]({{< relref "./docs/releasenotes/releasenotes-1.3.0.md" >}})
+    - [1.2.0 (2021年3月31日)]({{< relref "./docs/releasenotes/releasenotes-1.2.0.md" >}})
+    - [1.1.0 (2020年12月30日)]({{< relref "./docs/releasenotes/releasenotes-1.1.0.md" >}})
+    - [1.0.1 (2020年9月30日)]({{< relref "./docs/releasenotes/releasenotes-1.0.1.md" >}})
+    - [1.0.0 (2020年9月23日)]({{< relref "./docs/releasenotes/releasenotes-1.0.0.md" >}})
+    - [0.1.0 (2020年6月30日)]({{< relref "./docs/releasenotes/releasenotes-0.1.0.md" >}})
 
 - [FAQ]({{< relref "./docs/faq/faq.md" >}})
