@@ -95,7 +95,8 @@ headless: true
     - [TPCH]({{< relref "./docs/connector/tpch.md" >}})
     - [VDM]({{< relref "./docs/connector/vdm.md" >}})
     - [Kylin]({{< relref "./docs/connector/kylin.md" >}})
-
+    - [OmniData]({{< relref "./docs/connector/omnidata.md" >}})
+    
 - [函数和运算符]("#")
     - [逻辑运算符]({{< relref "./docs/functions/logical.md" >}})
     - [比较函数和运算符]({{< relref "./docs/functions/comparison.md" >}})
@@ -213,6 +214,7 @@ headless: true
     - [任务资源]({{< relref "./docs/rest/task.md" >}})
 
 - [发行说明]("#")
+    - [1.4.1 (2021年11月12日)]({{< relref "./docs/releasenotes/releasenotes-1.4.1.md" >}})
     - [1.4.0 (2021年10月15日)]({{< relref "./docs/releasenotes/releasenotes-1.4.0.md" >}})
     - [1.3.0 (2021年6月30日)]({{< relref "./docs/releasenotes/releasenotes-1.3.0.md" >}})
     - [1.2.0 (2021年3月31日)]({{< relref "./docs/releasenotes/releasenotes-1.2.0.md" >}})

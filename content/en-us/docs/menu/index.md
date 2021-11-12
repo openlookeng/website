@@ -96,7 +96,8 @@ headless: true
     - [TPCH]({{< relref "./docs/connector/tpch.md" >}})
     - [VDM]({{< relref "./docs/connector/vdm.md" >}})
     - [Kylin]({{< relref "./docs/connector/kylin.md" >}})
-
+    - [OmniData]({{< relref "./docs/connector/omnidata.md" >}})
+    
 - [Functions and Operators]("#")
     - [Logical Operators]({{< relref "./docs/functions/logical.md" >}})
     - [Comparison Functions and Operators]({{< relref "./docs/functions/comparison.md" >}})
@@ -214,6 +215,7 @@ headless: true
     - [Task Resource]({{< relref "./docs/rest/task.md" >}})
 
 - [Release Notes]("#")
+    - [1.4.1 (12 Nov 2021)]({{< relref "./docs/releasenotes/releasenotes-1.4.1.md" >}})
     - [1.4.0 (15 Oct 2021)]({{< relref "./docs/releasenotes/releasenotes-1.4.0.md" >}})
     - [1.3.0 (30 Jun 2021)]({{< relref "./docs/releasenotes/releasenotes-1.3.0.md" >}})
     - [1.2.0 (31 Mar 2021)]({{< relref "./docs/releasenotes/releasenotes-1.2.0.md" >}})
