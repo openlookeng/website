@@ -1,12 +1,11 @@
 +++ 
-title = "openLooKeng v1.4.1正式发布"
+title = "openLooKeng v1.4.1正式发布 - OmniData 实现算子近数据计算"
 date = "2021-11-12"
 categories = ["Announcement"]
 author = "openLooKeng"
 description = "11月12日，openLooKeng v1.4.1正式上线。除了对旧版本进行一些优化外，v1.4.1版本还引入了OmniData Connector。作为OmniRuntime的组件之一，OmniData 特性的引入，将进一步提升openLooKeng引擎性能。"
 +++
-
-### OmniData 实现算子近数据计算
+ 
 在刚过去不久的Apache Hadoop Meetup 2021上，openLooKeng社区PMC主席Ken Zhang 分享的 OmniData 受到不少朋友的关注。
 
 11月12日，openLooKeng v1.4.1正式上线。除了对旧版本进行一些优化外，v1.4.1版本还引入了OmniData Connector。
@@ -58,7 +57,7 @@ OmniData更多详情请参考：
 
 体验过程中有任何感受与建议，欢迎在openLooKeng代码仓上提Issue，或发邮件至<users@openlookeng.io>告知我们。您的声音或将成为openLooKeng引擎性能提升的关键。
 
-openLooKeng代码仓地址:< https://gitee.com/openlookeng>
+openLooKeng代码仓地址:<https://gitee.com/openlookeng>
 
 openLooKeng，让大数据更简单！ 
  

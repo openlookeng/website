@@ -1,25 +1,17 @@
 +++ 
 title = "openLooKeng安装指导"
 date = "2021-09-03"
+tags = ["openLooKeng", "安装"]
 categories = ["Announcement"]
 author = "openLooKeng"
 description = "如果您想自行配置安装openLooKeng，或者在安装过程中有一些困难，可以参考这篇博客。这是一篇来自社区小伙伴的分享，希望对您有帮助。"
 +++ 
-<style>
-table{ 
-    border:1px solid #eee;
-}
-td,th{
-    padding:10px;
-    border:1px solid #eee;
-}
 
-</style>
 
 
 **社区代码仓：<https://gitee.com/openlookeng>**
 
-<img src='./cover.jpg' alt='安装配置与向导' />
+<img src='/zh-cn/blog/20210903/cover.jpg' alt='安装配置与向导' />
 
 
 ## 1  软件安装
@@ -30,27 +22,27 @@ td,th{
 下载安装脚本：<https://gitee.com/openlookeng/tools.git>
 脚本installer目录下：
 
-<img src='./install01.png' alt='install01' />
+<img src='/zh-cn/blog/20210903/install01.png' alt='install01' />
 
 部署时只需配置config.txt文件
 
-<img src='./install02.png' alt='install02' />
+<img src='/zh-cn/blog/20210903/install02.png' alt='install02' />
 
 修改内容如下：
 
-<img src='./install03.png' alt='install03' />
+<img src='/zh-cn/blog/20210903/install03.png' alt='install03' />
 
 修改完config.txt后执行main.sh开始部署集群
 
-<img src='./install04.png' alt='install04' />
+<img src='/zh-cn/blog/20210903/install04.png' alt='install04' />
 
 main.sh执行后，openlookeng会部署在如下路径：
 
-<img src='./install05.png' alt='install05' />
+<img src='/zh-cn/blog/20210903/install05.png' alt='install05' />
 
 在安装路径里存在以下几个文件：
 
-<img src='./install06.png' alt='install06' />
+<img src='/zh-cn/blog/20210903/install06.png' alt='install06' />
 
 
 ## 2  客户端使用
@@ -102,15 +94,15 @@ main.sh执行后，openlookeng会部署在如下路径：
 ### 2.4  SQL migration tool使用
 1. 交互模式: `java -jar hetu-sql-migration-tool-316.jar`
 
-<img src='./install07.png' alt='install07' />
+<img src='/zh-cn/blog/20210903/install07.png' alt='install07' />
 
 2. 执行模式：`java -jar hetu-sql-migration-tool-316.jar --execute` " 待转换的`hive-sql`"
 
-<img src='./install08.png' alt='install08' />
+<img src='/zh-cn/blog/20210903/install08.png' alt='install08' />
 
 3. 文件模式：`java -jar hetu-sql-migration-tool-316.jar --file` 待转换的hive sql 文件 `--output` 转换后的文件目录
 
-<img src='./install09.png' alt='install09' />
+<img src='/zh-cn/blog/20210903/install09.png' alt='install09' />
 
 4. 将转换后的sql在Hetu上面执行。
  
@@ -135,7 +127,7 @@ openlookeng.admins=lk             --指定Web 管理节点admin用户
 1. FI集群上下载FI集群配置文件及用户凭证：
 配置文件：登录FI页面，在【集群】页面点击【更多】，选择【下载客户端】。弹框中选择【仅配置文件】，点击【确定】。下载完成后解压。
 用户凭证：登录FI页面，在【系统】页面选择用户，点击【更多】，点击【下载认证凭据】。弹框中点击【确定】。下载完成后解压文件。
-<img src='./install10.png' alt='install10' />
+<img src='/zh-cn/blog/20210903/install10.png' alt='install10' />
 
 2. 将步骤1获取到的HDFS文件`core-site.xml、hdfs-site.xml`和用户认证凭据`user.keytab、  krb5.conf `以及`hosts`传至`hetu`安装包解压目录中的`client_dependencies`下；
 
@@ -938,9 +930,9 @@ optimizer.sort-based-aggregation-enabled=true
 
 二. LK删除大表失败，实际上表已删除
 
-<img src='./install11.png' alt='install11' />
+<img src='/zh-cn/blog/20210903/install11.png' alt='install11' />
 
-<img src='./install12.png' alt='install12' />
+<img src='/zh-cn/blog/20210903/install12.png' alt='install12' />
 
 解决方法：
 `if table is large, during drop it tries to delete partitions and all, which might be taking more than 10s , if that time is expire, then timeout happens .. in the backend table is dropped but due to timeout failure propagated error becomes different "table not found". though its deleted in the same request`
@@ -959,3 +951,13 @@ optimizer.sort-based-aggregation-enabled=true
 
 
 
+<style>
+table{ 
+    border:1px solid #eee;
+}
+td,th{
+    padding:10px;
+    border:1px solid #eee;
+}
+
+</style>

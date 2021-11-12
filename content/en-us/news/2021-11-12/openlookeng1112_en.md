@@ -1,12 +1,11 @@
 +++ 
-title = "openLooKeng v1.4.1 Officially Released"
+title = "openLooKeng v1.4.1 Officially Released - OmniData Implements Near-data Computing for Operators"
 date = "2021-11-12"
 categories = ["Announcement"]
 author = "openLooKeng"
 description = "openLooKeng v1.4.1 will officially go live on November 12. In addition to enhancement for earlier versions, openLooKeng v1.4.1 introduces the OmniData connector."
 +++
-
-### OmniData Implements Near-data Computing for Operators
+ 
 On Apache Hadoop Meetup 2021, OmniData shared by Ken Zhang, PMC Chair of the openLooKeng community, attracted public attention. openLooKeng v1.4.1 will officially go live on November 12. In addition to enhancement for earlier versions, openLooKeng v1.4.1 introduces the OmniData connector.
 
 ### What Is OmniData
