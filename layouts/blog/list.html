@@ -91,6 +91,57 @@
                         </section>
                         {{ end }}
 
+                        <!-- <ul class="pager">
+                            {{ if .Paginator.HasPrev }}
+                            <li class="previous"><a href="{{ .Site.BaseURL }}{{ .Paginator.Prev.URL }}">&larr; {{ i18n "newer" }}</a></li>
+                            {{ else }}
+                            <li class="previous disabled"><a href="javaScript:;">&larr; {{ i18n "newer" }}</a></li>
+                            {{ end }}
+
+                            {{ if .Paginator.HasNext }}
+                            <li class="next"><a href="{{ .Site.BaseURL }}{{ .Paginator.Next.URL }}">{{ i18n "older" }} &rarr;</a></li>
+                            {{ else }}
+                            <li class="next disabled"><a href="javaScript:;">{{ i18n "older" }} &rarr;</a></li>
+                            {{ end }}
+                        </ul> -->
+
+                        <!-- 分页开始 -->
+                        
+                        {{ $pag := $.Paginator }}
+                        {{ if  gt $pag.TotalPages 1}}
+                        <ul class="pagination">
+                            {{ if $pag.HasPrev }}
+                                <li><a class='page-number' href="{{ $pag.Prev.URL }}">&larr; {{ i18n "newer" }}</a></li>
+                            {{ end }}
+                            
+                            {{ $ellipsed := false }}
+                            {{ $showldEllipse := false }}
+                            {{ range $pag.Pagers }}
+                                {{ $right := sub .TotalPages .PageNumber }}
+                                {{ $showNumber := or (le .PageNumber  3) (eq $right 0) }}
+                                {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
+
+                                {{ if $showNumber }}
+                                        {{ $ellipsed = false }}
+                                        {{ $showldEllipse = false }}
+                                    {{ else }} 
+                                        {{ $showldEllipse = not $ellipsed }}
+                                        {{ $ellipsed = true }}
+                                {{ end }}
+
+                                {{ if $showNumber }}
+                                <li class="{{ if eq . $pag }} active {{ end }}"><a class="page-number " href='{{ .URL }}'>{{ .PageNumber }}</a></li>
+                                    {{ else if $showldEllipse }}
+                                    <span class="space">&nbsp;&hellip;&nbsp;</span>
+                                {{end}} 
+                            {{end}} 
+                            {{ if $pag.HasNext }}
+                            <li><a class="page-number" href='{{ $pag.Next.URL }}'>{{ i18n "older" }} &rarr;</a></li>
+                            {{ end }} 
+                        </ul>
+                        {{ end }}
+                        <!-- 分页结束 -->
+
                     </div>
                     <!-- /.col-md-9 -->
 
