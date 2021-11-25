@@ -31,11 +31,11 @@
                                 <p class="view-more"><a href="{{ .Permalink }}" target="_blank">{{ i18n "MAIN_LIST_MORE" }} </a></p>
                             </div>
                         </section>
-                        {{ end }} 
-                        
+                        {{ end }}  
+                          
                         <!-- 分页开始 -->
                         {{ $pag := $.Paginator }}
-                        {{ if  gt $pag.TotalPages 1}}
+                        {{ if  gt $pag.TotalPages 1}} 
                         <ul class="pagination">
                             {{ if $pag.HasPrev }}
                                 <li><a class='page-number' href="{{ $pag.Prev.URL }}">&larr; {{ i18n "newer" }}</a></li>

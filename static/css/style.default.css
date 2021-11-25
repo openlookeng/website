@@ -33,8 +33,7 @@
 }
 
 .pull-left {
-    float: left !important;
-    margin: 10px 0;
+    float: left !important; 
 }
 
 .pull-left .logo {
@@ -3353,6 +3352,7 @@ fieldset[disabled] .btn-template-primary.active {
 
 #footer {
     height: 120px;
+    overflow: hidden;
 }
 
 #copyright {
@@ -5200,12 +5200,15 @@ p.blog-12px .tag a {
     display: flex;
     justify-content: space-between;
 }
-
-.home-links-imgs img {
-    width: 180px;
-    height: 60px;
+.home-links-imgs a{
+    display: block;
+    flex: 1;
+    border: 1px solid #DFE1E8;
+    border-right: 0;
 }
-
+.home-links-imgs a:last-child{
+    border-right: 1px solid #DFE1E8;
+} 
 /* ---------------------------首页/Landing Page，blog和news添加作者、日期和tag------------------------- */
 /* home-blog */
 .home-blog {

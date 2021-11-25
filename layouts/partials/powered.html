@@ -7,7 +7,7 @@
             {{ range $posts}}
             {{ if eq .lang $root.Site.LanguageCode}}
             <a href='./powered.html#{{ .id }}'>
-                <img loading="lazy" src="../img/partner/{{ .id}}.png" alt="powered by OpenLookeng logo" /> <br>
+                <img loading="lazy" src="../img/partner/{{ .id}}.png" alt="powered by OpenLookeng logo" />  
                 <span>{{ .title}} ({{ .total }})</span>
             </a>
             {{ end }}
