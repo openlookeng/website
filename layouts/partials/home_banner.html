@@ -1,40 +1,24 @@
-<section>
+<section  class='banner-container'>
     <div class="swiper-container banner_swiper home-banner">
         <div class="swiper-wrapper banner_swiper_wrapper">
             {{ range where $.Page.Site.Pages "Type" "banner" }}
-            {{ if .Params.number}}
-            <div class="swiper-slide banner_swiper_slide">
-                {{ if eq .Params.number "1" }}
-                <div class="banner_content">
-                    <h1 class="banner-p1 margin-auto">{{ .Title }}</h1>
-                    <p class="banner-p2 margin-auto">{{ .Params.info }}</p>
-                    <a class="getStart" href={{ i18n "HOME_GETSTARTLINK" }}>{{ i18n "HOME_GETSTART" }}</a>
-                    {{ if .Params.hrefUrl }}
-                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="top-banner isPC img" src="{{ .Params.bgUrl }}"></a>
-                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="top-banner isH5 img" src="{{ .Params.mobileUrl }}"></a>
-                    {{ else }}
-                    <img loading="lazy" class="top-banner isPC img" src="{{ .Params.bgUrl }}">
-                    <img loading="lazy" class="top-banner isH5 img" src="{{ .Params.mobileUrl }}">
-                    {{ end }}
-                </div>
-                {{ else }}
-                <div class="swiper-link swiper-newyear">
-                    {{ if .Params.hrefUrl }}
-                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="isPC img" src="{{ .Params.bgUrl }}"></a>
-                    <a href="{{.Params.hrefUrl }}" target="_blank"><img loading="lazy" class="isH5 img" src="{{ .Params.mobileUrl }}"></a>
-                    {{ else }}
-                    <img loading="lazy" class="isPC img" src="{{ .Params.bgUrl }}">
-                    <img loading="lazy" class="isH5 img" src="{{ .Params.mobileUrl }}">
-                    {{ end }}
-                </div>
-                {{ end }}
+            <!-- {{ if .Params.number}} -->
+            <div class="swiper-slide banner_swiper_slide"> 
+                <div class="swiper-link swiper-newyear">  
+                    <a class="banner-body-bg" href={{.Params.hrefUrl }}>
+                        <div class="left-img block" style="background-image: url({{ .Params.bgLeft }})"></div>                        
+                        <div class="center-img isPCshow" style="background-image: url({{ .Params.bgUrl }})"></div> 
+                        <img class="isH5show" src="{{ .Params.mobileUrl }}" alt="">
+                        <div class="right-img block" style="background-image: url({{ .Params.bgRight }})"></div>
+                    </a> 
+                </div> 
             </div>
-            {{ end }}
+            <!-- {{ end }} -->
             {{ end }}
         </div>
 
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next hide"></div>
+        <div class="swiper-button-prev hide"></div>
         <div class="swiper-pagination banner_swiper_pagination"></div>
     </div>
 </section>

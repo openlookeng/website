@@ -133,10 +133,10 @@
     }
 
     .home-links-imgs {
-        flex-direction: column;
+        /* flex-direction: column;
         align-items: center;
         margin-bottom: 40px;
-        justify-content: center;
+        justify-content: center; */
     }
 
     .bar .container .col-md-6 > a p {
