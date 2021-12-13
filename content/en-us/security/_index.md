@@ -95,5 +95,7 @@ The SC consists of vulnerability management experts in the community. The team i
 
 ### openLooKeng SA
 
-
+| Advisory  | Synopsis | Severity	  | Affected Product |  Affected Component	  | Release Date |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| [openLooKeng-SA-2021-1213](/security/2021-1213/sa-v2-en.html) | log4j security update | Critical |  openLooKeng Engine |  HetuCore;ESConnector;RangerPlugin | 2021/12/13 |
 

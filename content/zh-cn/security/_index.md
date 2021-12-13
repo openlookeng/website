@@ -1,6 +1,9 @@
 +++
 title = "安全"
 description = "openLooKeng是一个高性能的分布式数据虚拟化查询引擎，支持跨源跨域异构数据源的联合查询，适用于TB级或PB级的交互式查询等应用场景，需要满足各种场景下的安全性。 "
+
+hrefUrl = '/zh-cn/security/openlookeng-sa-2021-1213.html'
+
 +++
 openLooKeng是一个高性能的分布式数据虚拟化查询引擎，支持跨源跨域异构数据源的联合查询，适用于TB级或PB级的交互式查询等应用场景，需要满足各种场景下的安全性。作为高性能的大数据内存计算引擎，openLooKeng可以运行在不同的CPU平台上，用户提供标准的SQL查询语句，得到查询结果。数据作为为核心资产，对大数据系统持续开展安全防护，是非常必要的。
 
@@ -127,4 +130,8 @@ SC的使命：为openLooKeng用户提供最安全的产品和开发环境。
 
 
 ### openLooKeng安全公告（SA）
-暂无
+
+| 公告  | 概要 | 严重等级	  | 影响产品 |  影响组件	  | 发布时间 |
+| --------- | --------- | --------- | --------- | --------- | --------- |
+| [openLooKeng-SA-2021-1213](/zh-cn/security/2021-1213/sa-v2-zh.html) | log4j security update | Critical |  openLooKeng Engine |  HetuCore;ESConnector;RangerPlugin | 2021/12/13 |
+ 
