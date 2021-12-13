@@ -3,7 +3,7 @@ title = ""
 description = "Apache Log4j2是一个基于Java的日志记录工具。该工具重写了Log4j框架，并且引入了大量丰富的特性。 "
 +++
 
-## openLooKeng-SA-2021-1213 概述
+## 概述
 
 Apache Log4j2是一个基于Java的日志记录工具。该工具重写了Log4j框架，并且引入了大量丰富的特性。
 
