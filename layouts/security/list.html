@@ -2,7 +2,27 @@
 <html lang="{{ .Site.LanguageCode }}">
 {{ partial "head.html" . }}
 <link rel="stylesheet" href="{{ "css/security.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
-
+<style>
+    table {
+    width: 100%; /*表格宽度*/ 
+    border: 1px solid #ededef; /*表格外边框设置*/
+    margin: 15px auto; /*外边距*/
+    border-collapse: collapse; /*使用单一线条的边框*/
+    empty-cells: show; /*单元格无内容依旧绘制边框*/
+}
+table th,
+table td {
+  line-height: 24px;
+  border: 1px solid #ededef; /*内部边框样式*/
+  padding: 8px 10px; /*内边距*/
+}
+table th { 
+    background: #f7f9fa; /*背景色*/
+}
+table td{
+    color: #666;
+}
+</style>
 <body>
     <div id="all">
         <header>
@@ -18,6 +38,28 @@
                     <img class="top-banner isH5 img" src="../img/security/banner-mobile.png" alt="">
                 </div>
                 {{ .Content }}
+                <!-- <table>
+                    <thead>
+                        <tr>
+                            <th>公告</th>
+                            <th>概要</th>
+                            <th>严重等级</th>
+                            <th>影响产品</th>
+                            <th>影响组件</th>
+                            <th>发布时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href='{{ .Params.hrefUrl }}'>openLooKeng-SA-2021-1213</a></td>
+                            <td>log4j security update</td>
+                            <td>Critical</td>
+                            <td>openLooKeng Engine</td>
+                            <td>HetuCore;ESConnector;RangerPlugin</td>
+                            <td>2021/12/13</td>
+                        </tr>
+                    </tbody>
+                </table> -->
             </div>
             <!-- /.container -->
         </div>
