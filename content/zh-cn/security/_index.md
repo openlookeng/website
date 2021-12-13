@@ -133,5 +133,5 @@ SC的使命：为openLooKeng用户提供最安全的产品和开发环境。
 
 | 公告  | 概要 | 严重等级	  | 影响产品 |  影响组件	  | 发布时间 |
 | --------- | --------- | --------- | --------- | --------- | --------- |
-| [openLooKeng-SA-2021-1213](/zh-cn/security/2021-1213/sa-v2-zh.html) | log4j security update | Critical |  openLooKeng Engine |  HetuCore;ESConnector;RangerPlugin | 2021/12/13 |
+| [openLooKeng-SA-2021-1213](/zh-cn/security/2021-1213/sa-v2.html) | log4j security update | Critical |  openLooKeng Engine |  HetuCore;ESConnector;RangerPlugin | 2021/12/13 |
  

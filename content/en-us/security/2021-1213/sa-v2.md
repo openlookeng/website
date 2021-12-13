@@ -22,7 +22,7 @@ Apache log4j 2 is affected from versions 2.0 to 2.14. 1.
 
 ### openLooKeng Vulnerability Check
 
-**Troubleshooting 1 : The ES Connector depends on log4j during running. **
+**Troubleshooting 1 : The ES Connector depends on log4j during running.**
 
 <img src='./1.png' alt='' />
 <img src='./2.png' alt='' />
