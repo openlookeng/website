@@ -43,7 +43,7 @@ Also, sort out all JAR packages in the openLooKeng server lib library. You can s
 
 <img src='./6.jpeg' alt='' />
 
-****Troubleshooting 3 : openLooKeng repository ranger plugin.**
+**Troubleshooting 3 : openLooKeng repository ranger plugin.**
 
 Check the repository content and don't find dependency of the log4j.
 
@@ -72,7 +72,7 @@ Upgrade to the latest component log4j-2.15.0. The release date of 2.15.0 is 2021
 
 Update the code for the ES connector and Ranger plugin to remove the dependency of log4j.
 
-**Associated PRs are as follows:** : 
+**Associated PRs are as follows:** 
 
 <https://gitee.com/openlookeng/hetu-core/pulls/1312>
 
