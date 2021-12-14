@@ -11,7 +11,7 @@ RUN mkdir -p /usr/local/src && \
     mv hugo /usr/local/bin/
 RUN cd /src/website/ && hugo -b / --minify
 
-FROM nginx:1.20.0
+FROM swr.cn-north-4.myhuaweicloud.com/opensourceway/openeuler/nginx:1.16.1-20.03-lts-sp2
 
 COPY --from=builder /src/website/public/ /usr/share/nginx/html/
 RUN chown nginx:nginx -R /usr/share/nginx/html
