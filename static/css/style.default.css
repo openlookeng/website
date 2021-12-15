@@ -3241,6 +3241,9 @@ fieldset[disabled] .btn-template-primary.active {
     #product-social {
         text-align: center;
     }
+    #footer {
+        height: auto !important; 
+    }
 }
 
 #checkout .nav {
