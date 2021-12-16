@@ -1,7 +1,7 @@
 +++ 
 title = "openLooKeng安装指导"
 date = "2021-09-03"
-tags = ["openLooKeng", "安装"]
+tags = ["openLooKeng", "安装部署"]
 categories = ["Announcement"]
 author = "openLooKeng"
 description = "如果您想自行配置安装openLooKeng，或者在安装过程中有一些困难，可以参考这篇博客。这是一篇来自社区小伙伴的分享，希望对您有帮助。"
