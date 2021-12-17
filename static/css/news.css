@@ -24,12 +24,11 @@
 }
 .news-card .container .post .author-category {
     height: 16px;
-    font-size: 12px;
-    
+    font-size: 12px; 
     font-weight: 400;
     color: rgba(0, 0, 0, .7);
     line-height: 16px;
-    margin: 20px 0;
+    margin:10px 0;
 }
 .news-card .container .post .author-category .line {
     width: 1px;

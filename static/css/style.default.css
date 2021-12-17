@@ -3242,7 +3242,7 @@ fieldset[disabled] .btn-template-primary.active {
         text-align: center;
     }
     #footer {
-        height: auto !important; 
+        height: auto !important;  
     }
 }
 
@@ -5426,4 +5426,28 @@ header {
     #post-content > p > img {
         max-width: 100%;
     }
+}
+
+
+
+
+table {
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+} 
+
+table th,table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #ddd;
+    white-space: inherit;
+} 
+table tbody>tr:nth-child(2n)>td{
+    background-color: rgba(102,128,153,.05)
 }
