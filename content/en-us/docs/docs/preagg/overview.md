@@ -15,8 +15,8 @@ Few of the Cube properties are
  - Query latency is reduced by rewriting the logical plan to use Cube instead of the original table.
 
 ## Cube Optimizer Rule
-As part of logical plan optimization, Cube optimizer rule analyzes and optimizes the aggregation sub-tree of the logical plan with Cubes. 
-The rule looks for the aggregation sub-tree that typically looks like the following
+As part of logical plan optimization, Cube optimizer rule analyzes and optimizes the aggregation subtree of the logical plan with Cubes. 
+The rule looks for the aggregation subtree that typically looks like the following
 
 ```
 AggregationNode
@@ -27,17 +27,17 @@ AggregationNode
         |- TableScanNode
 ```
 
-The rule parses through the sub-tree and identifies the table name, aggregate functions, where clause, group by clause that is matched with Cube metadata 
+The rule parses through the subtree and identifies the table name, aggregate functions, where clause, group by clause that is matched with Cube metadata 
 to identify any Cube that can help optimize the query. In case of multiple match, recently created Cube is selected for optimization. If any match found, entire 
-aggregation sub-tree is rewritten using the Cube. This optimizer uses the TupleDomain construct to match if predicates provided in the Query can be supported by the 
-Cubes.  
+aggregation subtree is rewritten using the Cube. This optimizer uses the TupleDomain construct to match if predicates provided in the Query can be supported by the 
+Cubes.
 
 The following picture depicts the change in the logical plan after the optimization. 
 
 ![img](../images/cube-logical-plan-optimizer.png)
 
 ## Recommended Usage
-1. Cubes are most useful for iceberg queries that takes huge input and produces small input.
+1. Cubes are most useful for iceberg queries that takes huge input and produces small output.
 2. Query performance is best when size of the Cube is less that on the actual table on which Cube was built.
 3. Cubes need to be rebuilt if the source table is updated. 
 
@@ -47,7 +47,11 @@ operation on the update is considered as a change in the existing data even if o
 can't be differentiated, Cubes can't be used as it might result in incorrect result. We are working on a solution to overcome this limitation.
 
 ## Supported Connectors
-The following are supported Connectors for storing a Cube
+Star Tree Cube can be stored in following Connectors
+1. Hive
+2. Memory
+   
+Tables from following Connectors can be used as source to build a StarTree Cube.
 1. Hive
 2. Memory
 3. Clickhouse
@@ -219,3 +223,12 @@ SHOW CUBES;
 5. OpenLooKeng CLI has been modified to ease the process of creating Cubes for larger datasets. But still there are limitations with this implementation
    as the process involves merging multiple Cube predicates into one. Only Cube predicates defined on Integer, Long and Date types can be merged properly. Support for Char, 
    String types still need to be implemented.
+   
+##Performance Optimizations on Star Tree
+1. Star Tree Query re-write optimization for same group by columns: If the group by columns of the cube and query matches, the query is 
+re-written internally to select the pre-aggregated data. If the group by columns does not matches, the additional aggregations are 
+internally applied on the re-written query.
+2. Star Tree table scan optimization for Average aggregation function: If the group by columns of the cube and query matches, the select query 
+is re-written internally to select the startree cube's pre-aggregated Average column data. If the group by columns does not match, 
+the select query is re-written internally to select the startree cube's pre-aggregated Sum and Count column data, from which the 
+average is later calculated.

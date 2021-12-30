@@ -70,7 +70,7 @@ cube_name ON table_name WITH (
     INSERT INTO CUBE orders_cube WHERE orderstatus = 'PENDING';
 
 `FILTER`属性可用于在构建Cube时从源表中过滤掉数据。
-在对源表应用`orderdate BETWEEN 2512450 AND 2512460`谓词后，Cube建立在数据上。过滤谓词中使用的列不得属于Cube。
+cube是基于源表应用orderdate BETWEEN 2512450 AND 2512460谓词之后的数据上构建的。过滤谓词中使用的列不得属于Cube。
 
 ### 限制
 - 可以仅使用以下聚合函数创建Cubes。
@@ -117,8 +117,9 @@ INSERT OVERWRITE CUBE cube_name [WHERE condition]
 ```
 
 ### 描述
-类似于INSERT INTO CUBE语句，但使用此语句覆盖现有数据。
-谓词是可选的。
+类似于"INSERT INTO CUBE"语句，但使用此语句覆盖现有数据。谓词是可选的。分区的Cubes不支持`INSERT OVERWRITE CUBE`类语句。
+Cubes本质上存储为表，因此只有`INSERT OVERWRITE`替换匹配的分区并且不会覆盖整个表。所以这个操作在分区的Cube上被阻止。
+删除并重新创建多维数据集，如果 需要。
 
 ### 例子
 根据条件插入数据到`orders_cube`Cube：

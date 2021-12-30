@@ -104,14 +104,42 @@ memory.spill-path=/opt/hetu/data/spill
     CREATE TABLE memory.default.nation
     WITH (
         sorted_by=array['nationkey'],
-        index_columns=array['name', 'regionkey'],
+        partitioned_by=array['regionkey'],
+        index_columns=array['name'],
         spill_compression=true
     )
     AS SELECT * from tpch.tiny.nation;
 
 内存连接器会在后台自动排序数据并对`memory.default.nation`表创建索引。完成后针对对应列的查询会显著变快。
 
-目前，`sorted_by`仅支持对一列数据排序。
+目前，`sorted_by`和`partitioned_by`,仅支持对一列数据排序。
+
+## 使用JMX的内存和磁盘使用情况
+JMX可用于显示内存连接器表的内存和磁盘使用情况
+设置请参考[JMX Connector](./jmx.html)
+
+`jmx.current` 的 `io.prestosql.plugin.memory.data:name=MemoryTableManager` 表包含所有表的内存和磁盘使用大小的信息，以字节为单位
+
+    SELECT * FROM jmx.current."io.prestosql.plugin.memory.data:name=MemoryTableManager";
+
+```
+ currentbytes | alltablesdiskbyteusage | alltablesmemorybyteusage |   node   |                       object_name                       
+--------------+------------------------+--------------------------+----------+---------------------------------------------------------
+           23 |                   3456 |                       23 | example1 | io.prestosql.plugin.memory.data:name=MemoryTableManager 
+          253 |                   8713 |                      667 | example2 | io.prestosql.plugin.memory.data:name=MemoryTableManager 
+```
+
+并非所有表都在内存中，因为它们可能会溢出到磁盘中。`currentbytes`列将显示当前内存中的表占用的当前内存。
+
+每个节点的使用情况显示为单独的一行，可以使用聚合函数来显示整个集群的总使用情况。例如，要查看所有节点上的总磁盘或内存使用情况，请运行：
+
+    SELECT sum(alltablesdiskbyteusage) as totaldiskbyteusage, sum(alltablesmemorybyteusage) as totalmemorybyteusage FROM jmx.current."io.prestosql.plugin.memory.data:name=MemoryTableManager";
+
+```
+totaldiskbyteusage | totalmemorybyteusage
+-------------------+---------------------
+             12169 |                  690
+```
 
 ## 配置属性
 
@@ -123,6 +151,8 @@ memory.spill-path=/opt/hetu/data/spill
 | `memory.max-page-size                `  | 1MB           | No      | 每个Page的大小限制 |
 | `memory.logical-part-processing-delay`  | 5s            | No      | 表创建后建立索引和写入磁盘前的等待时间 |
 | `memory.thread-pool-size             `  | Half of threads available to the JVM | No      | 后台线程（排序，清理数据，写入磁盘等）使用的线程池大小 |
+| `memory.table-statistics-enabled`       | False         | No      | 启用后，用户可以运行分析来收集统计信息并利用该信息来加速查询。|
+
 
 路径配置白名单：["/tmp", "/opt/hetu", "/opt/openlookeng", "/etc/hetu", "/etc/openlookeng", 工作目录]
 
@@ -133,8 +163,10 @@ memory.spill-path=/opt/hetu/data/spill
 | 属性名称                  | 属性类型                   | 是否必要                          | 描述        |
 |--------------------------|---------------------------|----------------------------------|------------       |
 | sorted_by                | `array['col']`            | 最多一个列，列数据必须是可比较的     | 排序并对该列创建索引 |
+| partitioned_by           | `array['col']`            |最多一个列                        | 在给定的列上对表进行分区 |
 | index_columns            | `array['col1', 'col2']`   | None                             | 在该列上创建索引|
 | spill_compression        | `boolean`                 | None                             | 在磁盘上持久化数据时是否启用压缩 |
+
 
 ## 索引类型
 内存连接器支持使用索引来加速某些算子的执行速度。支持的索引类型如下：
@@ -144,6 +176,21 @@ memory.spill-path=/opt/hetu/data/spill
 | Bloom        | 两者都可                                 | `=` `IN`                             |                   
 | MinMax       | 仅`sorted_by`                           | `=` `>` `>=` `<` `<=` `IN` `BETWEEN` |
 | Sparse       | 仅`sorted_by`                           | `=` `>` `>=` `<` `<=` `IN` `BETWEEN` |
+
+使用统计信息
+-----------------
+如果开启了统计配置，可以参考下面的例子来使用。
+
+使用内存连接器创建一个表：
+
+    CREATE TABLE memory.default.nation AS
+    SELECT * from tpch.tiny.nation;
+
+运行ANALYZE以收集统计信息：
+
+    ANALYZE memory.default.nation;
+
+然后运行查询。请注意，目前我们不支持自动统计更新，因此如果表更新，您将需要再次运行 ANALYZE。
 
 ## 开发者信息
 
@@ -200,4 +247,5 @@ LogicalPart 中创建了布隆过滤器、稀疏索引和 MinMax 索引。
 - 如果没有 State Store 和带有全局缓存的 Hetu Metastore，在 `DROP TABLE` 之后，内存不会立即释放到 worker 上。它将在下一个“CREATE TABLE”操作时被释放。
 - 当前`sorted_by`只支持按一个列排序。
 - 如果一个CTAS (CREATE TABLE AS)查询失败或被取消，一个无效的表的记录会留在系统中。该表将需要被手动删除。
+- 我们支持 BOOLEAN、所有 INT 类型、CHAR、VARCHAR、DOUBLE、REAL、DECIMAL、DATE、TIME、UUID 类型作为分区键。
 

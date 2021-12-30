@@ -46,7 +46,7 @@ hive.config.resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.
 | hive.aggregator-offload-enabled | 允许下推aggregator算子到存储侧执行。如果被禁用，aggregator算子将不会被下推。 | true   |
 | hive.aggregator-offload-factor  | aggregator算子被下推时的数据聚合率阈值。只有当算子的聚合率小于该阈值，该算子才会被下推。 | 0.25   |
 
-更多的配置，请参阅[Hive配置属性](./hive.md#Hive配置属性)章节。
+更多的配置，请参阅[Hive配置属性](./hive.html#Hive配置属性)章节。
 
 ### 查询OmniData
 

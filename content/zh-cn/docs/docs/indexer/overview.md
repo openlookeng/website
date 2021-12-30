@@ -140,7 +140,7 @@ Hetu Filesystem 用于存储索引，在上面的例子Hetu Metastore中也使�
 
 *路径白名单：`["/tmp", "/opt/hetu", "/opt/openlookeng", "/etc/hetu", "/etc/openlookeng", current workspace]`*
 
-有关Heuristic Index的完整配置列表，请参阅 [Configuration Properties](#configuration-properties) below
+有关Heuristic Index的完整配置列表，请参阅 [Configuration Properties](#索引配置属性) below
 and [Properties](../admin/properties.html).
 
 可以通过设置`set session heuristicindex_filter_enabled=false;`在引擎运行时禁用启发式索引。
@@ -153,7 +153,7 @@ and [Properties](../admin/properties.html).
 
     SELECT * FROM table1 WHERE id="abcd1234";
    
-如果id比较独特，bloom索引可以大大较少读取的分段数量。
+如果id比较独特，bloom索引可以大大减少读取的分段数量。
 
 在本教程中我们将以这个语句为例。
 
@@ -183,7 +183,6 @@ and [Properties](../admin/properties.html).
 | hetu.heuristicindex.filter.cache.loading-delay      | 10s                 | 否    | 在异步加载索引到缓存前等待的时长|
 | hetu.heuristicindex.indexstore.uri                  | /opt/hetu/indices/  | 否    | 所有索引文件存储的目录|
 | hetu.heuristicindex.indexstore.filesystem.profile   | local-config-default| 否    | 用于存储索引文件的文件系统属性描述文件名称|
-| hetu.heuristicindex.filter.cache.preload-indices    |                     | 否    | 在服务器启动时预加载指定名称的索引(用逗号分隔), 当值为`ALL`时将预载入全部索引|
 | hetu.heuristicindex.filter.cache.autoload-default   | true                | 否    | Coordinator上自动加载索引的默认值。要更改特定索引的值，请通过在 create index 语句 WITH ("autoload" = true/false) 设置|
 
 **关于`hetu.heuristicindex.filter.cache.autoload-default`的更多细节：**
