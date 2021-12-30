@@ -64,6 +64,7 @@ headless: true
 
 - [Star Tree多维数据集](#)
     - [概述]({{< relref "./docs/preagg/overview.md" >}})
+    - [加入支持]({{< relref "./docs/preagg/join-queries.md" >}})
     - [语句]({{< relref "./docs/preagg/statements.md" >}})
 
 - [连接器]({{< relref "./docs/connector/_index.md" >}})
@@ -214,6 +215,7 @@ headless: true
     - [任务资源]({{< relref "./docs/rest/task.md" >}})
 
 - [发行说明]("#")
+    - [1.5.0 (2021年12月30日)]({{< relref "./docs/releasenotes/releasenotes-1.5.0.md" >}})
     - [1.4.1 (2021年11月12日)]({{< relref "./docs/releasenotes/releasenotes-1.4.1.md" >}})
     - [1.4.0 (2021年10月15日)]({{< relref "./docs/releasenotes/releasenotes-1.4.0.md" >}})
     - [1.3.0 (2021年6月30日)]({{< relref "./docs/releasenotes/releasenotes-1.3.0.md" >}})

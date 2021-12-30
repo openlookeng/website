@@ -52,7 +52,7 @@ The configuration files must exist on all openLooKeng nodes. If you are referenc
 | hive.aggregator-offload-enabled | Allows the aggregator operator to be pushed down to the storage side. If disabled, the aggregator operator will not be pushed down. | true    |
 | hive.aggregator-offload-factor  | Only when the aggregation rate of the aggregator operator is less than the threshold, it will be pushed down. | 0.25    |
 
-For more configuration, please refer to the [Hive Configuration Properties](./hive.md#Hive Configuration Properties) chapter.
+For more configuration, please refer to the [Hive Configuration Properties](./hive.html#Hive Configuration Properties) chapter.
 
 ### Querying OmniData
 
