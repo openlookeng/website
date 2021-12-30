@@ -14,15 +14,18 @@ openLooKeng has provided users with simpler data analytics experience with each 
 ### Star Tree Indexing
 In openLooKeng v1.5.0, the Star Tree indexing has been enhanced as follows:
 
-1. Support for optimizing join queries, such as star schema queries.
-2. Optimized the query plan by redirecting the aggregation operation to the Cube, which contains the pre-aggregation results. The performance improvement is obvious when the GROUP BY clause completely matches the Cube group.
-3. Bug fixes to further enhance the usability, and robustness of Cubes.
+1、 Support for optimizing join queries, such as star schema queries.
+
+2、 Optimized the query plan by redirecting the aggregation operation to the Cube, which contains the pre-aggregation results. The performance improvement is obvious when the GROUP BY clause completely matches the Cube group.
+
+3、 Bug fixes to further enhance the usability, and robustness of Cubes.
 
 
 ### Memory Connector
 
-1. Improved the performance of the memory connector by adding support for memory table partitioning to allow data skipping of entire partitions.
-2. Support for openLooKeng cost based optimizers by collecting statistics on the memory tables.
+1、Improved the performance of the memory connector by adding support for memory table partitioning to allow data skipping of entire partitions.
+
+2、 Support for openLooKeng cost based optimizers by collecting statistics on the memory tables.
 
 ### Task Recovery
 Several important bug fixes to address data inconsistency issues, and query hanging issues that occasionally occur during high concurrency, and during worker failures.
