@@ -64,7 +64,7 @@
         }
 
         // 获取数据
-        axios.get('/oauth2/userinfo').then(res => {
+        axios.get('/2021summary/oauth2/userinfo').then(res => {
             return getData(res.data.user)
         }).catch(err => { 
             console.log(err);
