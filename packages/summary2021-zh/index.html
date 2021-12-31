@@ -42,27 +42,7 @@
         safariHacks(); 
         let container = document.querySelector('#outer-container');
         let pcBox = $('#pcBox');
-
-        format('104069')
-        function format(string) {
-            string = string.toString();
-            let len = string.length;
-            let digit = Math.pow(10, len-1);
-            let num = Number(string); 
-            if (len > 4) {
-                if(len>5){
-                    digit = Math.pow(10, 4);
-                }
-                num = num / digit; 
-                num = num.toFixed(1) + 'W';
-
-            } else if (len > 3) {
-                num = num / digit;
-                num = num.toFixed(1) + 'K';
-            }
-            return num 
-        }
-
+ 
         // 获取数据
         axios.get('/oauth2/userinfo').then(res => {
             return getData(res.data.user)
@@ -70,8 +50,8 @@
             console.log(err);
         })
         function getData(user) {
-            let data = []
-            axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=4${user}`).then(res => {
+            let data = [] 
+            axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 
                 data = res.data.data[0]; 
                 let percentage = parseFloat(data.beat_percentage) * 100;
 
@@ -105,6 +85,7 @@
                 intaSwiper(data, percentage, isH5Contribution); 
             })
         } 
+        // getData()
 
         function timeChange(time) {
             if (time) {
@@ -260,7 +241,7 @@
                                             <div class="panel3-box"> 
                                                 <p class="fb fz14 fade fade-time-1">2021，您与社区交相辉映</p>
                                                 <p class="fb fz14 fade fade-time-2" style="margin:5px 0">这一年</p>
-                                                <p class="mb20 fade fade-time-3">您一共提交了
+                                                <p class="mb20 fade fade-time-3">
                                                     ${(function(){
                                                         let dom ='' 
                                                          if(data.pr_num != '' || data.pr_num != '0'){
@@ -276,8 +257,7 @@
                                                             dom = dom+ `点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个代码仓库<br>`
                                                         } 
                                                         return dom ;
-                                                    })()}
-                                                    
+                                                    })()} 
 
                                                     您在社区的海洋，贡献的每一个代码<br>
                                                     都饱含对开源生态的见解和期待</p>
@@ -577,7 +557,8 @@
                 }, {
                     content: `
                         <div class="page page-five"> 
-                            <div class="panel3-box">  
+                            <div class="panel3-box">   
+                                <p class=" mb12 ">Dear <span class='cOrange fz16'>${data.user_login}</span></p>
                             <p class="mb12"> 2021注定是不平凡的一年<br> 
                                 您在社区的贡献度超过了<span class="fb fz14 cOrange">${percentage} %</span>的开发者 </p> 
                             ${(function(){ 
