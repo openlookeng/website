@@ -781,6 +781,31 @@
 .video-gif {
     width: 640px;
 }
+
+
+.summaryTips{
+    position: fixed;
+    left:2%;
+    bottom:8% ;
+    z-index: 99;
+    width: 200px;
+}
+.summaryTips .closed{
+    position: absolute;
+    top:-5px;
+    right: -5px;
+    width:28px;
+    display: block;
+    height:28px; 
+    cursor: pointer; 
+}
+.summaryTips.visited{
+    display: none;
+}
+.summaryTips img{width: 100%;}
+ 
+ 
+
 @media (max-width: 994px) {
     .home_video .video-total-home {
         flex-wrap: wrap;

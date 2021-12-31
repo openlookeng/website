@@ -3354,8 +3354,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 
 #footer {
-    height: 120px;
-    overflow: hidden;
+    height: 120px; 
 }
 
 #copyright {
@@ -3364,6 +3363,7 @@ fieldset[disabled] .btn-template-primary.active {
     padding: 20px 0;
     font-size: 12px;
     line-height: 28px;
+    overflow: hidden;
 }
 
 #copyright p img {
@@ -5451,3 +5451,37 @@ table th,table td {
 table tbody>tr:nth-child(2n)>td{
     background-color: rgba(102,128,153,.05)
 }
+
+
+
+
+
+.summaryTips{
+    position: fixed;
+    left:2%;
+    bottom:8% ;
+    z-index: 99;
+    width: 200px;
+}
+.summaryTips .closed{
+    position: absolute;
+    top:-5px;
+    right: -5px;
+    width:28px;
+    display: block;
+    height:28px; 
+    cursor: pointer; 
+}
+.summaryTips.visited{
+    display: none;
+}
+.summaryTips img{width: 100%;}
+ 
+ 
+
+
+
+
+
+
+

@@ -52,6 +52,38 @@
         return value?value[2]:null;
     }
 
+   // 年度报告
+    const getCookie1 = function (name) {
+        var cookies = document.cookie;
+        var index = cookies.indexOf(name);
+        return index === -1 ? false : true;
+    }; 
+    var summaryLang = window.location.href.includes('/zh-cn/') ? 'zh' : 'en'; 
+    var isSummary ='';
+    var hasCookieSummary = getCookie1('isSummary=');
+    if (hasCookieSummary) { 
+        isSummary = 'visited' 
+    } else { 
+        isSummary = ' ' 
+    }
+     
+    var summaryDom = `<div class="summaryTips ${ isSummary }">
+            <i class="closed"></i>
+            <a href="https://openlookeng.io/${ summaryLang }/2021summary" target="_blank"><img src="/img/summary-${ summaryLang }.png"></a>
+    </div>`; 
+    $(summaryDom).appendTo($('#footer'))
+
+    const summaryTipsCloseCookie = function () {  
+        $('.summaryTips .closed').on('click', function (event) {
+            event.preventDefault(); 
+            setCookie('isSummary', 'read');
+            $('.summaryTips').addClass('visited');
+            isSummary = 'visited' 
+        }); 
+    }; 
+    summaryTipsCloseCookie();
+
+
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T76T52F3PE"></script>
