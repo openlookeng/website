@@ -403,3 +403,34 @@ img.codeImg{
 }
 
 
+.bgmMusic{
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    display: none;
+    z-index: 9999;
+    transition: all .3s;
+}
+.bgmMusic img{
+    width: 100%;
+}
+.bgmMusic.active{
+    animation: rotate360 3s infinite linear;
+}
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0) ;
+    } 
+    100% { 
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width:768px){
+    
+    .bgmMusic{
+        display: block;
+    }
+} 

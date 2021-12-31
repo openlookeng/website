@@ -20,6 +20,10 @@
     <a href="../summary2021-en/index.html" class="changeLanguages"></a>
     <div class="pc-box" id="pcBox"></div>
     <div class="mob-box swiper" id="outer-container"> </div>
+    <div class="bgmMusic">
+        <img src="./images/bg-music.svg">
+    </div>
+    <audio id="bgm" src="./images/bgm.mp3" autoplay="autoplay" preload loop></audio>
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -42,6 +46,43 @@
         safariHacks(); 
         let container = document.querySelector('#outer-container');
         let pcBox = $('#pcBox');
+
+        $(function(){
+            // 播放音乐 
+            var audio = document.getElementById('bgm');
+            
+            // audio.oncanplay=function(){ 
+                document.addEventListener('pointerup',function(){  
+                    $(".bgmMusic").addClass("active")
+                    audio.play();
+                },true) 
+                $(".bgmMusic").bind("click", function() {
+                    if(audio !== null) {   
+                        if(audio.paused) {
+                            audio.play(); 
+                            $(".bgmMusic").addClass("active")
+                        } else {
+                        
+                            audio.pause();  
+                            $(".bgmMusic").removeClass("active")
+                        }
+                    }
+                })     
+            // }
+
+            // let bgm = document.querySelector("#bgm");
+            // let bgmOpen = document.querySelector(".bgm-open");
+            // bgm.addEventListener('pause', function() {
+            //     bgmOpen.classList.remove('active');
+            // })
+            // bgmOpen.addEventListener("touchstart", function () {
+            //     console.log(bgm.paused);
+            //     bgm.paused ?  bgm.play() : bgm.pause()
+            //     bgmOpen.classList.add('active');
+            // })
+            
+
+        })
  
         // 获取数据
         axios.get('/2021summary/oauth2/userinfo').then(res => {

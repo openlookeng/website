@@ -8,7 +8,7 @@ WORKDIR /usr/share/nginx/html/
 
 RUN chown -R nginx:nginx /usr/share/nginx/html
 
-RUN sed -i "17i  \   \ server_token off;" /etc/nginx/nginx.conf
+RUN sed -i "17i  \   \ server_tokens off;" /etc/nginx/nginx.conf
 
 RUN sed -i '21i location /en/2021summary/ {\n alias /usr/share/nginx/html/; \n } ' /etc/nginx/conf.d/default.conf
 
