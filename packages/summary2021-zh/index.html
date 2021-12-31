@@ -51,7 +51,7 @@
             // 播放音乐  
             var audio = document.getElementById('bgm');
             let isVideo = true 
-            document.addEventListener('pointerup',function(){  
+            container.addEventListener('pointerup',function(){  
                 if(isVideo){
                     $(".bgmMusic").addClass("active")
                     audio.play();
@@ -84,7 +84,7 @@
             console.log(err);
             isDataContribution = true 
         })
-        
+
         function getData(user) {
             let data = [] 
             axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 

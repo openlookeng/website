@@ -52,7 +52,7 @@
             // 播放音乐  
             var audio = document.getElementById('bgm');
             let isVideo = true 
-            document.addEventListener('pointerup',function(){  
+            container.addEventListener('pointerup',function(){  
                 if(isVideo){
                     $(".bgmMusic").addClass("active")
                     audio.play();
