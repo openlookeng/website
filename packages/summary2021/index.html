@@ -41,7 +41,26 @@
         safariHacks(); 
         let container = document.querySelector('#outer-container');
         let pcBox = $('#pcBox');
-         
+
+        format('104069')
+        function format(string) {
+            string = string.toString();
+            let len = string.length;
+            let digit = Math.pow(10, len-1);
+            let num = Number(string); 
+            if (len > 4) {
+                if(len>5){
+                    digit = Math.pow(10, 4);
+                }
+                num = num / digit; 
+                num = num.toFixed(1) + 'W';
+
+            } else if (len > 3) {
+                num = num / digit;
+                num = num.toFixed(1) + 'K';
+            }
+            return num 
+        }
 
         // 获取数据
         axios.get('/oauth2/userinfo').then(res => {
