@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="./css/new.css">
 
 <body> 
-    <a href="../summary2021-zh/index.html" class="changeLanguages"></a>
+    <a href="../2021summary/" class="changeLanguages"></a>
     <div class="bgmMusic">
         <img src="./images/bg-music.svg">
     </div>
@@ -86,10 +86,16 @@
         })
         function getData(user) {
             let data = []
-            axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 
-                data = res.data.data[0]; 
-                let percentage = parseFloat(data.beat_percentage) * 100;
+            axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => {
 
+                if(res.data.data[0]){
+                    isDataContribution = false
+                    data = res.data.data[0];   
+                    let percentage = parseFloat(data.beat_percentage) * 100;
+                }else{
+                    isDataContribution = true
+                } 
+                
                 let pcDom = `
                     <div class="container box-one"><div class="front"></div><div class="back"></div></div>
                     <div class="container box-tow"><div class="front"></div><div class="back"></div></div>
@@ -101,6 +107,7 @@
                     <div class="container box-1"><div class="front"></div><div class="back"></div></div> 
                     <div class="container box-2"><div class="front"></div><div class="back"></div></div>
                 `; 
+ 
 
                 //isPcContribution \ isH5Contribution 判断有无贡献 
                 let isPcContribution = false,
@@ -282,16 +289,16 @@
                                                 <p class="mb12 fade fade-time-3">  
                                                     ${(function(){
                                                         let dom ='' 
-                                                        if(data.pr_num != '' || data.pr_num != '0'){
+                                                        if( data.pr_num != '0'){
                                                             dom = dom+ `you submitted <span class="fb fz14 cOrange">${data.pr_num }</span> PR(s),<br>`
                                                         }
-                                                        if(data.issue_num != '' || data.issue_num != '0'){
+                                                        if( data.issue_num != '0'){
                                                             dom = dom+ `raised <span class="fb fz14 cOrange">${data.issue_num }</span> issue(s),<br>`
                                                         } 
-                                                        if(data.code_lines != '' || data.code_lines != '0'){
+                                                        if( data.code_lines != '0'){
                                                             dom = dom+ `wrote  <span class="fb fz14 cOrange">${data.code_lines}</span> lines of code,<br>`
                                                         }
-                                                        if (data.star_num != '' || data.star_num != '0'){
+                                                        if ( data.star_num != '0'){
                                                             dom = dom+ `and contributed to <span class="fb fz14 cOrange">${data.star_num}</span> repo(s).<br>`
                                                         } 
                                                         return dom ;
@@ -579,16 +586,16 @@
                                  <p class="fade fade-time-3"> 
                                     ${(function(){
                                         let dom ='' 
-                                            if(data.pr_num != '' || data.pr_num != '0'){
+                                            if( data.pr_num != '0'){
                                             dom = dom+ `you submitted <span class="fb fz14 cOrange">${data.pr_num }</span> PR(s),<br>`
                                         }
-                                            if(data.issue_num != '' || data.issue_num != '0'){
+                                            if( data.issue_num != '0'){
                                             dom = dom+ `raised <span class="fb fz14 cOrange">${data.issue_num }</span> issue(s),<br>`
                                         } 
-                                        if(data.code_lines != '' || data.code_lines != '0'){
+                                        if( data.code_lines != '0'){
                                             dom = dom+ `wrote  <span class="fb fz14 cOrange">${data.code_lines}</span> lines of code,<br>`
                                         }
-                                            if (data.star_num != '' || data.star_num != '0'){
+                                        if (data.star_num != '0'){
                                             dom = dom+ `and contributed to <span class="fb fz14 cOrange">${data.star_num}</span> repo(s).<br>`
                                         } 
                                         return dom ;
