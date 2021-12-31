@@ -48,48 +48,43 @@
         let pcBox = $('#pcBox');
 
         $(function(){
-            // 播放音乐 
+            // 播放音乐  
             var audio = document.getElementById('bgm');
-            
-            // audio.oncanplay=function(){ 
-                document.addEventListener('pointerup',function(){  
+            let isVideo = true 
+            container.addEventListener('pointerup',function(){  
+                if(isVideo){
                     $(".bgmMusic").addClass("active")
                     audio.play();
-                },true) 
-                $(".bgmMusic").bind("click", function() {
-                    if(audio !== null) {   
-                        if(audio.paused) {
-                            audio.play(); 
-                            $(".bgmMusic").addClass("active")
-                        } else {
-                        
-                            audio.pause();  
-                            $(".bgmMusic").removeClass("active")
-                        }
-                    }
-                })     
-            // }
+                    isVideo = false
+                } 
+            },true) 
 
-            // let bgm = document.querySelector("#bgm");
-            // let bgmOpen = document.querySelector(".bgm-open");
-            // bgm.addEventListener('pause', function() {
-            //     bgmOpen.classList.remove('active');
-            // })
-            // bgmOpen.addEventListener("touchstart", function () {
-            //     console.log(bgm.paused);
-            //     bgm.paused ?  bgm.play() : bgm.pause()
-            //     bgmOpen.classList.add('active');
-            // })
-            
+            $(".bgmMusic").bind("click", function() {
+                if(audio !== null) {   
+                    if(audio.paused) {
+                        audio.play(); 
+                        $(".bgmMusic").addClass("active")
+                    } else {
+                    
+                        audio.pause();  
+                        $(".bgmMusic").removeClass("active")
+                    }
+                }
+            }) 
+
+              
 
         })
  
         // 获取数据
-        axios.get('/2021summary/oauth2/userinfo').then(res => {
+        var isDataContribution = false;
+        axios.get('/zh/2021summary/oauth2/userinfo').then(res => {
             return getData(res.data.user)
         }).catch(err => { 
             console.log(err);
+            isDataContribution = true 
         })
+
         function getData(user) {
             let data = [] 
             axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 
@@ -110,9 +105,9 @@
 
                 //isPcContribution \ isH5Contribution 判断有无贡献 
                 let isPcContribution = false,
-                    isH5Contribution = false;
-                    
-                if(data.first_time_of_enter == '' || data.user_login == ''){
+                    isH5Contribution = false;  
+
+                if(isDataContribution){
                     pcBox.addClass('no-contribution').empty().html(pcDomNoData) ;
                     isPcContribution = true;
                     isH5Contribution = true;
@@ -125,8 +120,7 @@
                 intaPc(data, percentage,isPcContribution);
                 intaSwiper(data, percentage, isH5Contribution); 
             })
-        } 
-        // getData()
+        }  
 
         function timeChange(time) {
             if (time) {
