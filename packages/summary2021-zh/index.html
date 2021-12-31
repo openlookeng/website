@@ -88,10 +88,11 @@
         function getData(user) {
             let data = [] 
             axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 
+                let percentage = 0;
                 if(res.data.data[0]){
                     isDataContribution = false
                     data = res.data.data[0];   
-                    let percentage = parseFloat(data.beat_percentage) * 100;
+                    percentage = parseFloat(data.beat_percentage) * 100;
                 }else{
                     isDataContribution = true
                 } 
@@ -312,7 +313,8 @@
                                                         </div>
                                                         <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
                                                         `    
-                                                    }else if(percentage>10 && percentage<30 ){
+                                                    }
+                                                     if(percentage>10 && percentage<30 ){
                                                         dom = dom+ `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
                                                         <div class="code-box">
@@ -320,7 +322,8 @@
                                                         </div>
                                                         <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
                                                         `    
-                                                    }else if(percentage>30 && percentage<50 ){
+                                                    }
+                                                     if(percentage>30 && percentage<50 ){
                                                         dom = dom+ `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
                                                         <div class="code-box">
@@ -328,7 +331,8 @@
                                                         </div>
                                                         <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
                                                         `    
-                                                    }else{
+                                                    }
+                                                    if(percentage =>50 ){
                                                         dom = dom+ `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
                                                         <div class="code-box">
