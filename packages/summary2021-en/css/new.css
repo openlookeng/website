@@ -19,9 +19,9 @@
 .people img:nth-of-type(1){ 
     bottom: 20px;
     z-index: 3;
-    left: 10%;
-    right: 10%; 
-    width: 80%;
+    left: 18%;
+    right: 17%;
+    width: 65%;
 }
 .people img:nth-of-type(2){ 
     bottom: 20px;
@@ -59,16 +59,16 @@
 
 .panel2-box{
     text-align: center;
-    background: url(../images/图2/浏览器.png) no-repeat top center/cover;
+    background: url(../images/item2/浏览器.png) no-repeat top center/cover;
     width: 280px;
-    height: 328px;
-    padding: 48px 0;
+    height: 350px;
+    padding: 40px 0;
     margin-bottom:30px;
 }
 .panel2-box p{
-    font-size: 14px;
+    font-size: 13px;
     color: #000;
-    line-height: 26px; 
+    line-height: 24px; 
 }
 .panel2-box p span{
     font-weight: bold;
@@ -125,27 +125,27 @@
     }
 }
 .panel3-box{
-    padding: 40px 0;
+    padding: 30px 20px;
 }
 .panel3-box p{
-    line-height: 24px;
+    line-height: 21px;
 }
 .panel3-box p span{
     margin: 0 3px;
 }
 .code-box{
-    background:  url(../images/图3/code.png) no-repeat center/contain;
+    background:  url(../images/item3/code.png) no-repeat center/contain;
     width: 220px;
     height: 240px; 
     padding: 55px 36px;
-    margin: 24px auto;
+    margin: 8px auto;
     animation: text-box 2s;
 }
 .code-box p{
     margin-bottom: 10px;
 }
 .panel3-box .fj{
-    background:  url(../images/图3/fj.png) no-repeat center/cover;
+    background:  url(../images/item3/fj.png) no-repeat center/cover;
     width: 41px;
     height: 33px;  
     position: absolute;
@@ -355,7 +355,7 @@ img.codeImg{
 .panel-mo5 .code-tile{
     width: 120px;  
     right:0px;
-    top: 42px; 
+    top: 20px; 
     position: absolute;
 }
 .panel-mo5 .code-tile img{
@@ -367,5 +367,39 @@ img.codeImg{
     font-size: 12px;
     color: #fff;
     margin-top: 3px;
-    white-space: nowrap;
+    line-height: 13px;
 }
+
+
+.page-six .text-box {
+    padding: 0 20px;
+}
+.no-contribution .one-text{
+    line-height: 18px;
+}
+.no-contribution .page-one .text-box{
+    padding-top: 20px;
+}
+.no-contribution .page-six .main p{
+    line-height: 18px;
+}
+.no-contribution .page-six .text-box {
+    padding: 0 45px;
+}
+.footer img {
+    width: 128px;
+}
+
+
+.changeLanguages{
+    position: fixed;
+    z-index: 99;
+    right: 10px;
+    top:10px;
+    width: 32px;
+    height: 32px;
+    display: block;
+    background: url(../images/zh.png) no-repeat center/cover;
+}
+
+

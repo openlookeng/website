@@ -17,9 +17,18 @@
 <link rel="stylesheet" href="./css/new.css">
 
 <body> 
+    <a href="../summary2021-en/index.html" class="changeLanguages"></a>
     <div class="pc-box" id="pcBox"></div>
     <div class="mob-box swiper" id="outer-container"> </div>
     <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement('script');
+            hm.src = 'https://hm.baidu.com/hm.js?d5f7e2406b6ef91d4494f0c6ea829f91';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
         // 适配safair
         function safariHacks() {
             let windowsVH = window.innerHeight / 100;
@@ -33,12 +42,16 @@
         safariHacks(); 
         let container = document.querySelector('#outer-container');
         let pcBox = $('#pcBox');
-         
-
+ 
         // 获取数据
-        function getData() {
-            let data = []
-            axios.get('https://omapi.osinfra.cn/query/newYear/2022?community=openeuler&user=zy_chao').then(res => {
+        axios.get('/2021summary/oauth2/userinfo').then(res => {
+            return getData(res.data.user)
+        }).catch(err => { 
+            console.log(err);
+        })
+        function getData(user) {
+            let data = [] 
+            axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 
                 data = res.data.data[0]; 
                 let percentage = parseFloat(data.beat_percentage) * 100;
 
@@ -71,8 +84,22 @@
                 intaPc(data, percentage,isPcContribution);
                 intaSwiper(data, percentage, isH5Contribution); 
             })
+        } 
+        // getData()
+
+        function timeChange(time) {
+            if (time) {
+                let EndTime = new Date(time);
+                let y = EndTime.getFullYear();
+                let m = EndTime.getMonth() + 1;
+                let d = EndTime.getDate();
+                let h = EndTime.getSeconds()
+                let all = `${y}年${m}月${d}日`
+                return all
+            } else {
+                return 'none'
+            } 
         }
-        getData()
 
         // pc端事件
         function intaPc(data, percentage,isPcContribution) {
@@ -80,8 +107,7 @@
             let back = document.querySelectorAll(".back"); 
             pcBox.find('.front').click(function(){ 
                 for (let i = 0; i < front.length; i++) {
-                    let list = [] 
-                    console.log(isPcContribution)
+                    let list = []  
                     if(isPcContribution){
                         list[0] =`<div class="contents">
                                         <div class="page page-one">
@@ -90,16 +116,16 @@
                                                     <p class="fz16">您的2021专属日历正在派件中</p>
                                                     <p class="fz16 mb10">请注意查收！</p>
                                                     <p class="fz14">Dear</p>
-                                                    <p class="cOrange fz16 mb10 ">Dear ${data.user_login}</p>
+                                                    <p class="cOrange fz16 mb10 "> ${data.user_login}</p>
                                                     <p class="one-text">“登山则情满于山，观海则意溢于海”</p>
                                                     <p class="one-text">2021年，乘风破浪，砥砺前行</p>
                                                     <p class="one-text">总结2021，才能更好地迎接2022</p>
                                                     <p class="one-text mb10">2021年进度条已加载100%</p>
                                                     <p class="one-text ">2020年6月30日，数据虚拟化引擎openLooKeng破土而出</p>
                                                     <p class="one-text">至今，openLooKeng社区用户数达到<span class='cOrange fz14'>100K+</span></p>
-                                                    <p class="one-text">累计收到<span class='cOrange fz14'>2000+</span>PR，</p>
-                                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>issue</p>
-                                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>Comments</p>
+                                                    <p class="one-text">累计收到<span class='cOrange fz14'>2K+</span>PR，</p>
+                                                    <p class="one-text"><span class='cOrange fz14'>1.5K+</span>issue</p>
+                                                    <p class="one-text"><span class='cOrange fz14'>27.9K+</span>Comments</p>
                                                     <p class="one-text">社区下载量突破<span class='cOrange fz14'>100K+</span>；</p>
                                                     <p class="one-text mb12">遍及全球<span class='cOrange fz14'>41</span>个国家，<span class='cOrange fz14'>210</span>个城市</p>
 
@@ -111,16 +137,16 @@
                                                 </div>
                                             </div>
                                             <div class="people">
-                                                <img src="./images/图1//俩人会谈.png" alt="">
-                                                <img src="./images/图1//地面（暗一点）.png" alt="">
-                                                <img src="./images/图1//地面.png" alt="">
+                                                <img src="./images/item1/img4.png" alt="">
+                                                <img src="./images/item1/img1.png" alt="">
+                                                <img src="./images/item1/img2.png" alt="">
                                             </div> 
                                         </div>
                                     </div>`
                         list[1] =`<div class="contents">
                                     <div class="page page-six">
                                         <div class="main">
-                                            <div class="six-logo"><img src="./images/图6/logo.png" alt=""></div>
+                                            <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                                             <div class="text-box">
                                                 <p class="">2021，期待您与社区更多的互动</p>
                                                 <p class="">万里星光，一如既往</p>
@@ -136,7 +162,7 @@
                                         </div>
                                         <div class="bg-six">
                                             <div class="footer">
-                                                <img src="./images/图6/女+猫.png" alt="">
+                                                <img src="./images/item6/女+猫.png" alt="">
                                             </div>
                                             <div class="border"> </div>
                                         </div> 
@@ -150,59 +176,62 @@
                                                     <p class="fz16">您的2021专属日历正在派件中</p>
                                                     <p class="fz16 mb20">请注意查收！</p>
                                                     <p class="fz14">Dear</p>
-                                                    <p class="cOrange fz16 mb20 ">Dear ${data.user_login}</p>
+                                                    <p class="cOrange fz16 mb20 "> ${data.user_login}</p>
                                                     <p class="one-text">“登山则情满于山，观海则意溢于海”</p>
                                                     <p class="one-text">2021年，乘风破浪，砥砺前行</p>
                                                     <p class="one-text">总结2021，才能更好地迎接2022</p>
                                                     <p class="one-text mb30">2021年进度条已加载100%</p>
                                                     <p class="fz14 fb">在2021社区日历里，</p>
                                                     <p class="fz14 fb mb12">藏着一些您与社区的有趣互动</p>
-                                                    <p class="one-text">故事开始于<span class='cOrange fb'>${data.first_time_of_enter}</span></p>
+                                                    <p class="one-text">故事开始于<span class='cOrange fb'>${timeChange(data.first_time_of_enter)}</span></p>
                                                     <p class="one-text">您与openLooKneg的第一次相遇</p>
                                                     <p class="one-text">乍见之欢，久处不厌</p>
                                                     <p class="one-text">因为您的加入，让很多的瞬间都值得被纪念</p>
                                                 </div>
                                             </div>
                                             <div class="people">
-                                                <img src="./images/图1//俩人会谈.png" alt="">
-                                                <img src="./images/图1//地面（暗一点）.png" alt="">
-                                                <img src="./images/图1//地面.png" alt="">
+                                                <img src="./images/item1/img4.png" alt="">
+                                                <img src="./images/item1/img1.png" alt="">
+                                                <img src="./images/item1/img2.png" alt="">
                                             </div> 
                                         </div>
                                     </div> `
                         list[1] = `<div class="contents">
                                         <div class="page page-three">
                                             <div class="panel2-top">
-                                                <img src="./images/图2//男.png" alt="">
-                                                <img src="./images/图2//蓝色圆+波浪线.png" alt="">
+                                                <img src="./images/item2/img10.png" alt="">
+                                                <img src="./images/item2/img7.png" alt="">
                                             </div>
                                             <h3 class="fz16 mb20">2021，您与社区互动频繁</h3>
                                             <div class="panel2-box">  
                                                 ${(function(){  
+                                                    let dom = '';
                                                     if(data.first_time_of_contact != ''){
-                                                        return  `
-                                                        <p class='fade fade-time-1'><span class="cGreen ">${data.first_time_of_contact}</span></p> 
+                                                        dom = dom+  `
+                                                        <p class='fade fade-time-1'><span class="cGreen ">${timeChange(data.first_time_of_contact)}</span></p> 
                                                         <p class='fade fade-time-2'>您与<span class="cRed">${data.first_user_login_of_contact}</span>产生了第一次链接</p>
                                                         `
-                                                    } else if(data.first_time_of_contact != ''){
-                                                        return `<p class='fade fade-time-3'><span class="cGreen">${data.first_time_of_comment_other}</span></p>
+                                                    } 
+                                                     if(data.first_time_of_comment_other != ''){
+                                                        dom = dom+ `<p class='fade fade-time-3'><span class="cGreen">${timeChange(data.first_time_of_comment_other)}</span></p>
                                                             <p class='fade fade-time-4'>您在<span class="cRed">${data.first_user_login_of_comment}</span>下进行了第一次评论</p>`
-                                                    } else if(data.user_login_with_most_contact != ''){
-                                                        return `<p class='fade fade-time-5'><span class="cGreen">这一年</span></p><p class='fade fade-time-6'>您与<span class="cRed">${data.user_login_with_most_contact}</span>的联系最频繁 </p> `
-                                                    }else if(data.first_user_login_of_be_comment != ''){
-                                                        return `<p class='fade fade-time-7'><span class="cGreen">${data.first_time_of_be_comment}</span></p>
+                                                    } 
+                                                     if(data.user_login_with_most_contact != ''){
+                                                        dom = dom+ `<p class='fade fade-time-5'><span class="cGreen">这一年</span></p><p class='fade fade-time-6'>您与<span class="cRed">${data.user_login_with_most_contact}</span>的联系最频繁 </p> `
+                                                    }
+                                                     if(data.first_user_login_of_be_comment != ''){
+                                                        dom = dom+ `<p class='fade fade-time-7'><span class="cGreen">${timeChange(data.first_time_of_be_comment)}</span></p>
                                                             <p class='fade fade-time-8'>这是很特别的一天</p>
                                                             <p class='fade fade-time-9'><span class="cRed">${data.first_user_login_of_be_comment}</span>第一个给了您温暖的评论</p>  `
-                                                    }else{
-                                                        return `<p>期待您与社区更多的互动 </p><p>万里星光，一如既往 </p>`
-                                                    }
+                                                    } 
+                                                    return dom;
   
                                                 })()}  
                                                 
                                             </div>
                                             <div class="panel2-bottom">
-                                                <img src="./images/图2/女.png" alt="">
-                                                <img src="./images/图2/虚线.png" alt="">
+                                                <img src="./images/item2/女.png" alt="">
+                                                <img src="./images/item2/虚线.png" alt="">
                                                 <p class="img3"><span></span></p>
                                             </div> 
                                         </div>
@@ -212,16 +241,31 @@
                                             <div class="panel3-box"> 
                                                 <p class="fb fz14 fade fade-time-1">2021，您与社区交相辉映</p>
                                                 <p class="fb fz14 fade fade-time-2" style="margin:5px 0">这一年</p>
-                                                <p class="mb20 fade fade-time-3">您一共提交了<span class="fb fz14 cOrange">${data.pr_num}</span>个pr<br>
-                                                    提出了<span class="fb fz14 cOrange">${data.issue_num}</span>个issue<br>
-                                                    贡献了<span class="fb fz14 cOrange">${data.code_lines}</span>行代码<br>
-                                                    点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个仓库<br>
+                                                <p class="mb20 fade fade-time-3">
+                                                    ${(function(){
+                                                        let dom ='' 
+                                                         if(data.pr_num != '' || data.pr_num != '0'){
+                                                            dom = dom+ `提交了<span class="fb fz14 cOrange">${data.pr_num }</span>个PR<br>`
+                                                        }
+                                                         if(data.issue_num != '' || data.issue_num != '0'){
+                                                            dom = dom+ `提出了<span class="fb fz14 cOrange">${data.issue_num }</span>个issue<br>`
+                                                        } 
+                                                        if(data.code_lines != '' || data.code_lines != '0'){
+                                                            dom = dom+ `贡献了<span class="fb fz14 cOrange">${data.code_lines}</span>行代码<br>`
+                                                        }
+                                                         if (data.star_num != '' || data.star_num != '0'){
+                                                            dom = dom+ `点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个代码仓库<br>`
+                                                        } 
+                                                        return dom ;
+                                                    })()} 
+
                                                     您在社区的海洋，贡献的每一个代码<br>
                                                     都饱含对开源生态的见解和期待</p>
                                                 <p class="mb12 fade fade-time-4"> 2021注定是不平凡的一年<br> 您在社区的贡献度超过了<span class="fb fz14 cOrange">${percentage} % </span>的开发者 </p>
                                                 ${(function(){  
+                                                    let dom = '';
                                                     if(percentage<10 ){
-                                                        return `
+                                                        dom = dom+ `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">新手型</span>选手身份出道</p>
                                                         <div class="code-box"> 
                                                             <img src="./images/新手型@2x.png" alt="">
@@ -229,7 +273,7 @@
                                                         <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
                                                         `    
                                                     }else if(percentage>10 && percentage<30 ){
-                                                        return `
+                                                        dom = dom+ `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/进击型@2x.png" alt="">
@@ -237,7 +281,7 @@
                                                         <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
                                                         `    
                                                     }else if(percentage>30 && percentage<50 ){
-                                                        return `
+                                                        dom = dom+ `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/思考型@2x.png" alt="">
@@ -245,7 +289,7 @@
                                                         <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
                                                         `    
                                                     }else{
-                                                        return `
+                                                        dom = dom+ `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/天赋型@2x.png" alt="">
@@ -253,8 +297,9 @@
                                                         <p class="fz14 fb cOrange ">会当凌绝顶，一览众山小</p>
                                                         `   
                                                     }
+                                                    return dom;
                                                 })()} 
-                                                <img class="fj" src="./images/图3/fj.png" alt="">
+                                                <img class="fj" src="./images/item3/fj.png" alt="">
                                             </div> 
 
                                         </div>
@@ -264,7 +309,7 @@
                         list[3] = `<div class="contents">
                                     <div class="page page-six">
                                         <div class="main">
-                                            <div class="six-logo"><img src="./images/图6/logo.png" alt=""></div>
+                                            <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                                             <div class="text-box ">
                                                 <p class="typing">2021，感谢您在社区留下的星光点点。</p>
                                                 <p class="typing delay-time1">2022，社区将继续与您并肩前行</p>
@@ -276,7 +321,7 @@
                                         </div>
                                         <div class="bg-six">
                                             <div class="footer">
-                                                <img src="./images/图6/女+猫.png" alt="">
+                                                <img src="./images/item6/女+猫.png" alt="">
                                             </div>
                                             <div class="border"> </div>
                                         </div> 
@@ -294,8 +339,7 @@
         // 移动端事件
         let swper = null;
         function intaSwiper(data, percentage,isH5Contribution) {
-            let list = [] 
-
+            let list = []  
             if(isH5Contribution){
                 $('#outer-container').addClass('no-h5-contribution')
                 list = [{
@@ -314,14 +358,14 @@
                                 <p class="one-text ">2020年6月30日，数据虚拟化引擎openLooKeng破土而出</p>
                             </div>
                             <div class="video-temp">  
-                                <img src="./images/图1/屏幕播放内容.png" alt="">
-                                <img src="./images/图1/蓝色圆+白色圈.png" alt="">
+                                <img src="./images/item1/img6.png" alt="">
+                                <img src="./images/item1/img3.png" alt="">
                             </div>
                         </div>
                         <div class="people">
-                            <img src="./images/图1/俩人会谈.png" alt="">
-                            <img src="./images/图1/地面（暗一点）.png" alt="">
-                            <img src="./images/图1/地面.png" alt="">
+                            <img src="./images/item1/img4.png" alt="">
+                            <img src="./images/item1/img1.png" alt="">
+                            <img src="./images/item1/img2.png" alt="">
                         </div> 
                     </div>
                     `
@@ -331,14 +375,14 @@
                         <div class="contents">
                             <div class="page page-three">
                                 <div class="panel2-top">
-                                    <img src="./images/图2//男.png" alt="">
-                                    <img src="./images/图2//蓝色圆+波浪线.png" alt="">
+                                    <img src="./images/item2/img10.png" alt="">
+                                    <img src="./images/item2/img7.png" alt="">
                                 </div> 
                                 <div class="panel2-box">  
                                     <p class="one-text">至今，openLooKeng社区用户数达到<span class='cOrange fz14'>100K+</span></p>
-                                    <p class="one-text">累计收到<span class='cOrange fz14'>2000+</span>PR，</p>
-                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>issue</p>
-                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>Comments</p>
+                                    <p class="one-text">累计收到<span class='cOrange fz14'>2K+</span>PR，</p>
+                                    <p class="one-text"><span class='cOrange fz14'>1.5K+</span>issue</p>
+                                    <p class="one-text"><span class='cOrange fz14'>27.9K+</span>Comments</p>
                                     <p class="one-text">社区下载量突破<span class='cOrange fz14'>100K+</span>；</p>
                                     <p class="one-text mb12">遍及全球<span class='cOrange fz14'>41</span>个国家，<span class='cOrange fz14'>210</span>个城市</p>
 
@@ -348,8 +392,8 @@
                                     <p class="one-text">共建大数据繁荣生态</p>  
                                 </div>
                                 <div class="panel2-bottom">
-                                    <img src="./images/图2/女.png" alt="">
-                                    <img src="./images/图2/虚线.png" alt="">
+                                    <img src="./images/item2/女.png" alt="">
+                                    <img src="./images/item2/虚线.png" alt="">
                                     <p class="img3"><span></span></p>
                                 </div> 
                             </div>
@@ -360,7 +404,7 @@
                     content: `
                     <div class="page page-six">
                         <div class="main">
-                            <div class="six-logo"><img src="./images/图6/logo.png" alt=""></div>
+                            <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                             <div class="text-box ">
                                 <p class="typing">2021，感谢您在社区留下的星光点点。</p>
                                 <p class="typing delay-time1">2022，社区将继续与您并肩前行</p>
@@ -372,7 +416,7 @@
                         </div>
                         <div class="bg-six">
                             <div class="footer">
-                                <img src="./images/图6/女+猫.png" alt="">
+                                <img src="./images/item6/女+猫.png" alt="">
                             </div>
                             <div class="border"> </div>
                         </div> 
@@ -397,14 +441,14 @@
                                 <p>向下滑动，即刻访问您的<span class="fz14 fb cOrange">【2021社区日历】</span></p>
                             </div>
                             <div class="video-temp">  
-                                <img src="./images/图1/屏幕播放内容.png" alt="">
-                                <img src="./images/图1/蓝色圆+白色圈.png" alt="">
+                                <img src="./images/item1/img6.png" alt="">
+                                <img src="./images/item1/img3.png" alt="">
                             </div>
                         </div>
                         <div class="people">
-                            <img src="./images/图1/俩人会谈.png" alt="">
-                            <img src="./images/图1/地面（暗一点）.png" alt="">
-                            <img src="./images/图1/地面.png" alt="">
+                            <img src="./images/item1/img4.png" alt="">
+                            <img src="./images/item1/img1.png" alt="">
+                            <img src="./images/item1/img2.png" alt="">
                         </div> 
                     </div>
                     `
@@ -414,17 +458,17 @@
                         <div class="text-box ani1">
                             <p class="fz16">在2021社区日历里，</p>
                             <p class="fz16 mb30">藏着一些您与社区的有趣互动</p> 
-                            <p>故事开始于<span class="fz14 cOrange">${data.first_time_of_enter} </span></p>
+                            <p>故事开始于<span class="fz14 cOrange">${timeChange(data.first_time_of_enter)} </span></p>
                             <p>您与openLooKneg的第一次相遇</p>
                             <p>乍见之欢，久处不厌</p>
                             <p>因为您的加入，让很多的瞬间都值得被纪念</p>
                         </div>
                         <div class="panel-mo2">
-                            <img src="./images/图2/男+绿色块.png" alt="">
-                            <img src="./images/图2/虚线1.png" alt="">
-                            <img src="./images/图2/女1.png" alt="">
-                            <img src="./images/图2/对半色圆饼+绿色箭头.png" alt="">
-                            <img src="./images/图2/纸飞机.png" alt="">
+                            <img src="./images/item2/男+绿色块.png" alt="">
+                            <img src="./images/item2/虚线1.png" alt="">
+                            <img src="./images/item2/女1.png" alt="">
+                            <img src="./images/item2/对半色圆饼+绿色箭头.png" alt="">
+                            <img src="./images/item2/纸飞机.png" alt="">
                         </div>
                     </div>
                     `
@@ -434,38 +478,41 @@
                         <div class="contents">
                             <div class="page page-three">
                                 <div class="panel2-top">
-                                    <img src="./images/图2//男.png" alt="">
-                                    <img src="./images/图2//蓝色圆+波浪线.png" alt="">
+                                    <img src="./images/item2/img10.png" alt="">
+                                    <img src="./images/item2/img7.png" alt="">
                                 </div>
                                 <h3 class="fz16 mb20">2021，您与社区互动频繁</h3>
                                 <div class="panel2-box">
                                     ${(function(){  
+                                        let dom = '';
                                         if(data.first_time_of_contact != ''){
-                                            return  ` <p class='fade fade-time-1'><span class="cGreen ">${data.first_time_of_contact}</span></p> 
+                                            dom=dom+  ` <p class='fade fade-time-1'><span class="cGreen ">${timeChange(data.first_time_of_contact)}</span></p> 
                                             <p class='fade fade-time-2'>您与<span class="cRed">${data.first_user_login_of_contact}</span>产生了第一次链接</p> `
 
-                                        } else if(data.first_time_of_contact != ''){
-                                            return `<p class='fade fade-time-3'><span class="cGreen">${data.first_time_of_comment_other}</span></p>
+                                        } 
+                                         if(data.first_time_of_comment_other != ''){
+                                            dom=dom+ `<p class='fade fade-time-3'><span class="cGreen">${timeChange(data.first_time_of_comment_other)}</span></p>
                                                 <p class='fade fade-time-4'>您在<span class="cRed">${data.first_user_login_of_comment}</span>下进行了第一次评论</p>`
 
-                                        } else if(data.user_login_with_most_contact != ''){
-                                            return `<p class='fade fade-time-5'><span class="cGreen">这一年</span></p><p class='mb20 fade fade-time-6'>您与<span class="cRed">${data.user_login_with_most_contact}</span>的联系最频繁 </p> `
+                                        } 
+                                         if(data.user_login_with_most_contact != ''){
+                                            dom=dom+ `<p class='fade fade-time-5'><span class="cGreen">这一年</span></p><p class='mb20 fade fade-time-6'>您与<span class="cRed">${data.user_login_with_most_contact}</span>的联系最频繁 </p> `
 
-                                        }else if(data.first_user_login_of_be_comment != ''){
-                                            return `<p class='fade fade-time-7'><span class="cGreen">${data.first_time_of_be_comment}</span></p>
+                                        }
+                                         if(data.first_user_login_of_be_comment != ''){
+                                            dom=dom+ `<p class='fade fade-time-7'><span class="cGreen">${data.first_time_of_be_comment}</span></p>
                                                 <p class='fade fade-time-8'>这是很特别的一天</p>
                                                 <p class='fade fade-time-9'><span class="cRed">${data.first_user_login_of_be_comment}</span>第一个给了您温暖的评论</p>  `
                                                 
-                                        }else{
-                                            return `<p>期待您与社区更多的互动 </p><p>万里星光，一如既往 </p>`
-                                        }
+                                        } 
+                                        return dom;
 
                                     })()}  
  
                                 </div>
                                 <div class="panel2-bottom">
-                                    <img src="./images/图2/女.png" alt="">
-                                    <img src="./images/图2/虚线.png" alt="">
+                                    <img src="./images/item2/女.png" alt="">
+                                    <img src="./images/item2/虚线.png" alt="">
                                     <p class="img3"><span></span></p>
                                 </div> 
                             </div>
@@ -475,57 +522,76 @@
                     content: `
                         <div class="page page-four">
                             <div class="panel-mo4">
-                                <img src="./images/图4/浏览器数据.png" alt="">
-                                <img src="./images/图4/一男一女.png" alt="">
-                                <img src="./images/图4/双人组合.png" alt="">
-                                <img src="./images/图4/男.png" alt="">
-                                <img src="./images/图4/纸飞机.png" alt="">
+                                <img src="./images/item4/img1.png" alt="">
+                                <img src="./images/item4/一男一女.png" alt="">
+                                <img src="./images/item4/双人组合.png" alt="">
+                                <img src="./images/item4/男.png" alt="">
+                                <img src="./images/item4/纸飞机.png" alt="">
                             </div>
                             <div class="text-box">
                                 <p class="fade fade-time-1">2021，您与社区交相辉映</p>
                                 <p class="fade fade-time-2">这一年</p> 
-                                <p class="fade fade-time-3">提交了<span class="yellow-color">${data.pr_num}</span>个pr，</p>
-                                <p class="fade fade-time-4">提交了<span class="yellow-color">${data.issue_nun || 0}</span>个issue，</p>
-                                <p class="fade fade-time-5">提交了<span class="yellow-color">${data.code_lines}</span>行代码</p>  
-                                <p class="fade fade-time-6">点亮了<span class="yellow-color">${data.star_num}</span>个仓库，</p>
-                                <p class="fade fade-time-7">您在社区的海洋，贡献的每一个代码</p>
-                                <p class="fade fade-time-8">都饱含对开源生态的见解和期待</p>
+                                 <p class="fade fade-time-3"> 
+                                    ${(function(){
+                                        let dom ='' 
+                                            if(data.pr_num != '' || data.pr_num != '0'){
+                                            dom = dom+ `提交了<span class="fb fz14 cOrange">${data.pr_num }</span>个PR<br>`
+                                        }
+                                            if(data.issue_num != '' || data.issue_num != '0'){
+                                            dom = dom+ `提出了<span class="fb fz14 cOrange">${data.issue_num }</span>个issue<br>`
+                                        } 
+                                        if(data.code_lines != '' || data.code_lines != '0'){
+                                            dom = dom+ `贡献了<span class="fb fz14 cOrange">${data.code_lines}</span>行代码<br>`
+                                        }
+                                            if (data.star_num != '' || data.star_num != '0'){
+                                            dom = dom+ `点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个代码仓库<br>`
+                                        } 
+                                        return dom ;
+                                    })()}
+                                </p>
+                                <p class="fade fade-time-4">您在社区的海洋，贡献的每一个代码</p>
+                                <p class="fade fade-time-5">都饱含对开源生态的见解和期待</p>
                             </div>
                         </div>   
                     `
                 }, {
                     content: `
                         <div class="page page-five"> 
-                            <div class="panel3-box">  
+                            <div class="panel3-box">   
+                                <p class=" mb12 ">Dear <span class='cOrange fz16'>${data.user_login}</span></p>
                             <p class="mb12"> 2021注定是不平凡的一年<br> 
                                 您在社区的贡献度超过了<span class="fb fz14 cOrange">${percentage} %</span>的开发者 </p> 
                             ${(function(){ 
+                                let dom ='';
                                     if(percentage<10 ){
-                                        return `
+                                        dom = dom+ `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">新手型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/新手型@2x.png" alt="">
                                             </div>
                                             <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
                                         `    
-                                    }else if(percentage>10 && percentage<30 ){
-                                        return `
+                                    }
+                                     if(percentage>10 && percentage<30 ){
+                                        dom = dom+ `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/进击型@2x.png" alt="">
                                             </div>
                                             <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
                                         `    
-                                    }else if(percentage>30 && percentage<50 ){
-                                        return `
+                                    }
+                                    if(percentage>30 && percentage<50 ){
+                                        dom = dom+ `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/思考型@2x.png" alt="">
                                             </div>
                                             <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
                                         `    
-                                    }else{
-                                        return `
+                                    }
+                                    if(percentage>50 ){
+                                        dom = dom+ `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/天赋型@2x.png" alt="">
@@ -533,12 +599,13 @@
                                             <p class="fz14 fb cOrange ">会当凌绝顶，一览众山小</p>
                                         `   
                                     }
+                                    return dom;
                                 })()}
                             </div> 
                             <div class="panel-mo5">
-                                <img src="./images/图5/男.png" alt="">
-                                <img src="./images/图5/share.png" alt="">
-                                <img src="./images/图5/logo.png" alt="">
+                                <img src="./images/item5/男.png" alt="">
+                                <img src="./images/item5/share.png" alt="">
+                                <img src="./images/item5/logo.png" alt="">
                                 <div class="code-tile"> 
                                     <img src="./images/code.png" class='codeImg' alt=""> 
                                     <p>查看您的社区年度报告</p>
@@ -550,7 +617,7 @@
                     content: `
                     <div class="page page-six">
                         <div class="main">
-                            <div class="six-logo"><img src="./images/图6/logo.png" alt=""></div>
+                            <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                             <div class="text-box ">
                                 <p class="typing">2021，感谢您在社区留下的星光点点。</p>
                                 <p class="typing delay-time1">2022，社区将继续与您并肩前行</p>
@@ -562,7 +629,7 @@
                         </div>
                         <div class="bg-six">
                             <div class="footer">
-                                <img src="./images/图6/女+猫.png" alt="">
+                                <img src="./images/item6/女+猫.png" alt="">
                             </div>
                             <div class="border"> </div>
                         </div> 

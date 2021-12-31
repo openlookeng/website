@@ -498,47 +498,42 @@ section .person {
 }
 
 .fade-time-1 {
-    animation-delay: 1s;
+    animation-delay: .3s;
 }
 
 .fade-time-2 {
-    animation-delay: 3s;
+    animation-delay: .6s;
 }
 
 .fade-time-3 {
-    animation-delay: 5s;
+    animation-delay: .9s;
 }
 
 .fade-time-4 {
-    animation-delay: 7s;
+    animation-delay: 1.2s;
 }
 
 .fade-time-5 {
-    animation-delay: 9s;
+    animation-delay: 1.5s;
 }
 
 .fade-time-6 {
-    animation-delay: 11s;
+    animation-delay: 1.8s;
 }
 
 .fade-time-7 {
-    animation-delay: 13s;
+    animation-delay: 2.1s;
 }
 
 .fade-time-8 {
-    animation-delay: 15s;
+    animation-delay: 2.4s;
 }
 
 .fade-time-9 {
-    animation-delay: 17s;
+    animation-delay: 2.7s;
 }
-
 .fade-time-10 {
-    animation-delay: 19s;
-}
-
-.fade-time-11 {
-    animation-delay: 21s;
+    animation-delay: 3s;
 }
 
 /* page4  */
