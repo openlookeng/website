@@ -1,0 +1,1160 @@
+html,
+body,
+#outer-container {
+    overflow: hidden;
+    width: 100%;
+    /* height: 100vh; */
+    height: 100vh;
+    /*給 Safari 以外的瀏覽器讀取*/
+    height: calc(var(--vh, 1vh) * 100);
+    text-align: center;
+    font-size: 12px; 
+    color: white;
+    position: relative;
+    line-height: 21px;
+}
+#stars{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.themeColor {
+    color: rgb(91,155,131) !important;
+}
+
+.lg-swiper,
+.lg-swiper-page {
+    margin: 0;
+    padding: 0;
+}
+
+.lg-swiper {
+    -webkit-user-select: none;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.lg-swiper .lg-swiper-page {
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+}
+
+.lg-swiper .lg-swiper-page.current {
+    z-index: 5;
+    display: block;
+    will-change: transform;
+}
+
+.lg-swiper .lg-swiper-page.active {
+    z-index: 4;
+    display: block;
+    will-change: transform;
+}
+
+.page {
+    position: relative;
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.page img {
+    width: 100%;
+}
+
+section {
+    position: relative;
+    width: 300px;
+    height: 227px;
+    /* 让子元素保留其3D位置 */
+    transform-style: preserve-3d;
+    transform: translateZ(200px);
+    animation: rotate 20s linear infinite;
+    z-index: 99;
+}
+
+section .rotate-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 旋转 */
+section .rotate-item img {
+    width: 50px;
+    height: 50px;
+}
+
+section .rotate-item:nth-child(1) {
+    transform: translateZ(150px) translateY(100px);
+}
+
+section .rotate-item:nth-child(2) {
+    transform: rotateY(60deg) translateZ(150px) translateY(70px);
+}
+
+section .rotate-item:nth-child(3) {
+    transform: rotateY(120deg) translateZ(150px) translateY(50px);
+}
+
+section .rotate-item:nth-child(4) {
+    transform: rotateY(180deg) translateZ(150px) translateY(100px);
+}
+
+section .rotate-item:nth-child(5) {
+    transform: rotateY(240deg) translateZ(150px) translateY(60px);
+}
+
+section .rotate-item:nth-child(6) {
+    transform: rotateY(300deg) translateZ(150px);
+}
+
+section .person {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(./images/图1/人.png);
+    background-size: 100% 100%;
+    height: 225px;
+    width: 300px;
+    z-index: 0;
+    transform: translateY(2px) translateZ(200px);
+    animation: rotateIndex 20s infinite linear;
+}
+
+.one-text {
+    padding-bottom: 5px;
+}
+
+.desk {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    background-color: white;
+    transform: translateY(3000px) translateZ(200px);
+    animation: desk 3s forwards;
+    z-index: 0;
+}
+
+.bg-screen {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    transform: translateX(-3000px) translateZ(-200px);
+    background-image: url(./images/图1/浏览器.png);
+    background-size: 100%;
+    animation: screen 3s forwards;
+    z-index: 0;
+}
+
+.euler-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.euler-title2 {
+    padding: 8px 0 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.page-one .text-box,
+.page-tow .text-box {
+    position: relative;
+    padding: 40px 15px 0; 
+    
+}
+.ani1{
+    transform: translateY(-100%);
+    animation: oneMove 3s forwards;
+    z-index: 1;
+}
+
+.video-temp{
+    position: relative;
+    margin: 8% auto 0;
+    width: 165px; 
+    animation: oneScale 3s forwards;
+    transform: scale(0);
+    perspective: 400px;
+}
+
+.video-temp img:nth-of-type(2){
+    width: 20px;
+    position: absolute;
+    bottom: -10px;
+    left:-10px;
+    z-index: 2;
+    animation: hexagon-s 10s infinite forwards;
+}
+
+.user-name {
+    font-size: 18px;
+    padding: 10px 0;
+    font-weight: 700;
+}
+
+.geometry img {
+    width: 100%;
+}
+
+.geometry .circular,
+.geometry .triangle,
+.geometry .hexagon-s {
+    position: absolute;
+}
+
+.geometry .circular {
+    top: -30px;
+    right: 30px;
+    width: 60px;
+}
+
+.geometry .circular::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.22);
+    -webkit-animation: halo 1.5s ease-in infinite alternate;
+    animation: halo 1.5s ease-in infinite alternate;
+    z-index: -1;
+}
+
+.geometry .triangle {
+    top: 70px;
+    left: 30px;
+    width: 40px;
+    animation: hexagon-s 10s infinite forwards;
+
+}
+
+.geometry .hexagon-s {
+    top: 200px;
+    right: 10px;
+    width: 30px;
+    animation: hexagon-s 10s infinite forwards;
+}
+
+.page-one .pic {
+    position: absolute;
+    /* position: relative; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    animation: oneScale 3s forwards;
+    transform: scale(0);
+    perspective: 400px;
+}
+
+.tow-text {
+    padding-bottom: 5px;
+}
+
+.page-tow .click-bob {
+    padding-top: 30px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.page-tow .pic {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(500px);
+    animation: cloud4 3s forwards;
+    /* height: fit-content; */
+}
+
+.page-tow .pic div {
+    position: absolute;
+}
+
+.cloud1 {
+    top: 15px;
+    left: -20px;
+    width: 100px;
+    animation: cloud1 10s infinite linear alternate;
+}
+
+.cloud2 {
+    top: 50px;
+    right: 20px;
+    width: 90px;
+    animation: cloud2 20s infinite linear alternate;
+}
+
+.cloud3 {
+    top: 220px;
+    left: 30px;
+    width: 100px;
+    animation: cloud3 3s;
+}
+
+.cloud3 img {
+    animation: cloud3Img 5s infinite linear alternate;
+}
+
+.cloud4 {
+    right: -25px;
+    bottom: 30px;
+    width: 200px;
+    animation: cloud4 3s forwards;
+}
+
+.cloud5 {
+    left: -20px;
+    bottom: -4px;
+    width: 200px;
+    animation: cloud4 3s forwards;
+}
+
+.green-ball {
+    top: 75px;
+    left: 50px;
+    width: 70px;
+    -webkit-animation: green-ball 3s infinite linear alternate forwards;
+    animation: green-ball 3s infinite linear alternate forwards;
+}
+
+.bule-ball {
+    top: 100px;
+    right: 40px;
+    width: 150px;
+    -webkit-animation: bule-ball 3s infinite linear alternate forwards;
+    animation: bule-ball 3s infinite linear alternate forwards;
+}
+
+.pink-ball {
+    top: 270px;
+    left: 60px;
+    width: 80px;
+    -webkit-animation: pink-ball 3s infinite linear alternate forwards;
+    animation: pink-ball 3s infinite linear alternate forwards;
+}
+
+.bird1 {
+    width: 50px;
+    right: 22px;
+    bottom: 120px;
+}
+
+.page-tow .pic .enter {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 5px rgb(163, 148, 148);
+    animation: flashLight 4s infinite linear both;
+}
+
+.page-three {
+    display: flex;
+    padding: 100px 25px 0;
+    align-items: center;
+    justify-content: start;
+}
+
+.page-three .text-box {
+    position: relative;
+    display: flex;
+    min-width: 300px;
+    padding-bottom: 30px;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.page-three .head {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 15px;
+    height: 35px;
+    border-bottom: 1px solid black;
+}
+
+.head div {
+    position: relative;
+    margin-right: 8px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: #002F9C;
+    -webkit-animation: halo1 1.5s ease-in infinite alternate;
+    animation: halo1 1.5s ease-in infinite alternate;
+}
+
+.head .yellow {
+    background-color: #FFB32A;
+    -webkit-animation: halo1 1.5s 1.5s ease-in infinite alternate;
+    animation: halo1 1.5s 1.5s ease-in infinite alternate;
+}
+
+.head .pink {
+    -webkit-animation: halo1 1.5s 3s ease-in infinite alternate;
+    animation: halo1 1.5s 3s ease-in infinite alternate;
+    background-color: #FF8884;
+}
+
+.page-three .body {
+    padding: 20px 0;
+    color: black;
+}
+
+.body p {
+    padding-bottom: 5px;
+}
+
+.body .themeColor {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.page-three .logo {
+    opacity: 0;
+    width: 100px;
+    animation: fade 2s 20s cubic-bezier(.26, .45, 1, .56) forwards;
+}
+
+.three-bg div {
+    position: absolute;
+}
+
+.three-bg .green-ball1 {
+    top: -35px;
+    left: 20px;
+    width: 35px;
+    animation: green-ball1 0.5s infinite alternate;
+}
+
+.mirror {
+    top: -50px;
+    left: 230px;
+    width: 80px;
+    animation: mirror 2s forwards;
+}
+
+.dash-line {
+    top: -105px;
+    left: 0;
+    width: 280px;
+    animation: dash-line 2s forwards ease-in;
+}
+
+.dash-line img {
+    /* animation: runRoude 1s 0.5s infinite linear; */
+}
+
+.three-bottom,
+.yellow-ball {
+    position: absolute;
+    bottom: 15px;
+    width: 300px;
+}
+
+.three-bottom {
+    animation: dash-line 2s forwards ease-in;
+}
+
+.yellow-ball {
+    width: 30px;
+    animation: yellow-ball 5s infinite;
+}
+
+.fade {
+    opacity: 0;
+    animation: fade 2s cubic-bezier(.26, .45, 1, .56) forwards;
+}
+
+.fade-time-1 {
+    animation-delay: .3s;
+}
+
+.fade-time-2 {
+    animation-delay: .6s;
+}
+
+.fade-time-3 {
+    animation-delay: .9s;
+}
+
+.fade-time-4 {
+    animation-delay: 1.2s;
+}
+
+.fade-time-5 {
+    animation-delay: 1.5s;
+}
+
+.fade-time-6 {
+    animation-delay: 1.8s;
+}
+
+.fade-time-7 {
+    animation-delay: 2.1s;
+}
+
+.fade-time-8 {
+    animation-delay: 2.4s;
+}
+
+.fade-time-9 {
+    animation-delay: 2.7s;
+}
+.fade-time-10 {
+    animation-delay: 3s;
+}
+
+/* page4  */
+
+.yellow-color {
+    padding: 0 2px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FCB42A;
+}
+
+.page-four {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+    /* max-width: 375px; */
+}
+
+.page-four .text-box {
+    z-index: 99;
+}
+
+/* .page-four .pic {
+        height: 100%;
+        max-width: 500px;
+    } */
+.page-four .pic div {
+    position: absolute;
+    /* z-index: 0; */
+}
+
+.keyboard {
+    top: -50px;
+    left: 10px;
+    width: 200px;
+    animation: dash-line 2s;
+}
+
+.earth {
+    top: 180px;
+    left: 20px;
+    width: 70px;
+    animation: earth 10s infinite linear;
+}
+
+.earth img,
+.earth2 img {
+    animation: dash-line 2s;
+}
+
+.earth2 {
+    top: 80px;
+    right: 40px;
+    width: 60px;
+    animation: earth2 10s infinite linear;
+}
+
+.curtains {
+    top: 100px;
+    left: 50%;
+    width: 100px;
+    transform: translateX(-50%);
+}
+
+.page-four p {
+    font-size: 14px;
+    padding-bottom: 8px;
+}
+
+.girl {
+    top: 130px;
+    right: 50%;
+    width: 50px;
+    z-index: 2;
+}
+
+.pink2 {
+    right: 0;
+    bottom: -25px;
+    width: 55px;
+    animation: pink2 4s infinite linear alternate;
+}
+
+.green2 {
+    left: -20px;
+    bottom: 40px;
+    width: 70px;
+    animation: dash-line 2s;
+}
+
+.yellow2 {
+    top: 200px;
+    right: 50px;
+    width: 80px;
+    animation: dash-line 2s;
+}
+
+.dash2 {
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    animation: dash-line 2s;
+}
+
+.dash3 {
+    top: 110px;
+    left: 50%;
+    width: 100px;
+    animation: dash-line 2s;
+}
+
+.page-four p:nth-child(1) {
+    font-weight: 700;
+    font-size: 15px;
+    padding-bottom: 15px;
+}
+
+.page-four p:nth-child(3) {
+    padding-bottom: 15px;
+}
+
+.page-four p:nth-last-child(2) {
+    padding-bottom: 15px;
+}
+
+.page-five {
+    /* position: relative; */
+    align-items: center;
+    justify-content: center;
+}
+
+.green-color {
+    padding: 0 3px;
+    font-weight: 700;
+    color: #00BB84;
+}
+ 
+
+.light {
+    width: 35px !important;
+}
+
+.page-six {
+    /* position: relative; */
+}
+
+.bg-five .lighting {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    animation: lighting 1.5s infinite alternate;
+}
+ 
+.bg-six div {
+    position: absolute;
+}
+
+.footer {
+    bottom: 50px;
+    z-index: 1;
+    animation: footer 2s;
+    text-align: center;
+    left: 0;
+    width: 100%;
+}
+.footer img{
+    width: 160px;
+}
+
+.border { 
+    background: #fff;
+    left: 20px;
+    right: 20px;
+    top: 20px;
+    bottom: 20px;
+    border: 10px solid var(--ui-orange);
+}
+.border::after{
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 10px solid var(--ui-color);
+    position: absolute;
+}
+.email {
+    left: 120px;
+    bottom: 250px;
+    width: 40px;
+    animation: file 1s infinite linear alternate;
+}
+
+.file {
+    right: 80px;
+    bottom: 200px;
+    width: 50px;
+    animation: file 2s infinite linear alternate-reverse;
+}
+
+.paper {
+    left: 80px;
+    bottom: 180px;
+    width: 60px;
+    animation: file 2s infinite linear alternate;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 45px;
+    height: 100%;
+    color: black;
+    font-size: 12px;
+    z-index: 99;
+}
+
+.main p {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.main p:nth-last-child(3) {
+    margin-bottom: 15px;
+}
+
+.main .text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.six-logo {
+    padding: 40px 0;
+    width: 148px;
+}
+
+.bold {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 圆 */
+.typing {
+    visibility: hidden;
+    width: 30ch;
+    animation: typing 4s forwards steps(30), blink 1s 4 alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 1px solid white;
+}
+
+--:root {
+    --time: 2s;
+}
+
+.delay-time1 {
+    animation-delay: 4s;
+}
+
+.delay-time2 {
+    animation-delay: 8s;
+  
+}
+
+.delay-time3 {
+    width: 10ch;
+    animation: typing 0.5s 12s steps(10) forwards, blink 1s infinite alternate;
+}
+
+@keyframes cloud3Img {
+    from {
+        transform: translateX(-30px);
+    }
+
+    to {
+        transform: translateX(30px);
+    }
+}
+
+/* 打字效果 */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        visibility: visible;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: black;
+    }
+}
+
+@keyframes hidden {
+    to {
+        border-color: white;
+    }
+}
+
+@keyframes halo {
+    0% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+
+    100% {
+        -webkit-transform: scale(0.81);
+        transform: scale(0.81);
+    }
+}
+
+@keyframes halo1 {
+    0% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+
+    100% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}
+
+/* 三角形 */
+@keyframes triangle {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 6边形 */
+@keyframes hexagon-s {
+    50% {
+        transform: translateY(-100%) rotate(360deg);
+    }
+
+    100% {}
+}
+
+/* page-one 图片动画 */
+@keyframes oneScale {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes oneMove {
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes textLight {
+    to {
+        transform: translate(50%, 50%);
+    }
+}
+
+/* 浏览器动画 */
+@keyframes screen {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50px, 10px) translateZ(-200px);
+    }
+}
+
+@keyframes fade {
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 桌子 */
+@keyframes desk {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes myScale {
+    35% {
+        transform: scale(0.8);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+    0% {
+        transform: rotateY(0);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* 中心人物不旋转 */
+@keyframes rotateIndex {
+    0% {
+        transform: rotateY(360deg) translateY(3px);
+    }
+
+    100% {
+        transform: rotateY(0) translateY(3px);
+    }
+}
+
+/* page-tow */
+@keyframes cloud1 {
+    to {
+        transform: translate(30px, 10px);
+
+    }
+}
+
+@keyframes cloud2 {
+    20% {
+        transform: translate(-20px, -10px);
+    }
+
+    50% {
+        transform: translate(-50px, -30px);
+    }
+
+    70% {
+        transform: translate(-70px, -10px);
+    }
+
+    100% {
+        transform: translate(-20px, -10px);
+    }
+}
+
+@keyframes cloud3 {
+    from {
+        transform: translateX(-100px);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes green-ball {
+    0% {
+        -webkit-transform: rotateZ(-10deg);
+        transform: rotateZ(-10deg);
+    }
+
+    100% {
+        -webkit-transform: rotateZ(0deg);
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes bule-ball {
+    0% {
+        -webkit-transform: translate(-10px, -10px) rotateZ(0deg);
+        transform: translate(-10px, -10px) rotateZ(0deg);
+    }
+
+    100% {
+        -webkit-transform: translate(0, 0) rotateZ(10deg);
+        transform: translate(0, 0) rotateZ(10deg);
+    }
+}
+
+@keyframes mirror {
+    0% {
+        transform: translate(200px, -50%) rotate(30deg);
+    }
+
+    70% {
+        transform: rotate(30deg);
+    }
+
+}
+
+@keyframes yellow-ball {
+    0% {
+        transform: translateX(100%) rotate(360deg);
+    }
+
+    50% {
+        transform: translateX(156px);
+    }
+
+    100% {
+        transform: translate(210px, 300px);
+    }
+}
+
+@keyframes cloud4 {
+    from {
+        transform: translateY(500px);
+
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pink-ball {
+    0% {
+        transform: rotateZ(-10deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes dash-line {
+    from {
+        transform: translate(-300px, -300px) rotate(360deg);
+    }
+
+}
+
+@keyframes dash-line2 {
+    from {
+        transform: translate(300px, -300px) rotate(999deg);
+    }
+
+}
+
+@keyframes green-ball1 {
+    to {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes pink2 {
+    to {
+        transform: translateX(-300px);
+    }
+}
+
+@keyframes earth {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes earth2 {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes identifier {}
+
+/* 闪光 */
+@keyframes flashLight {
+    50% {
+        box-shadow: 0 0 70px rgb(255, 255, 255);
+    }
+}
+
+/* 灯泡 */
+@keyframes lighting {
+    from {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes girl1 {
+    from {
+        transform: translateX(-300px);
+    }
+}
+
+@keyframes boy {
+    from {
+        transform: translateX(300px);
+    }
+}
+
+@keyframes text-box {
+    0% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes footer {
+    from {
+        transform: translateY(300px);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes file {
+    to {
+        transform: translate(5px, 10px);
+    }
+}
+
+
+

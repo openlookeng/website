@@ -134,7 +134,7 @@
     margin: 0 3px;
 }
 .code-box{
-    background:  url(../images/图3/code.png) no-repeat center/contain;
+    background:  url(../images/item3/code.png) no-repeat center/contain;
     width: 220px;
     height: 240px; 
     padding: 55px 36px;
@@ -145,7 +145,7 @@
     margin-bottom: 10px;
 }
 .panel3-box .fj{
-    background:  url(../images/图3/fj.png) no-repeat center/cover;
+    background:  url(../images/item3/fj.png) no-repeat center/cover;
     width: 41px;
     height: 33px;  
     position: absolute;
@@ -369,3 +369,14 @@ img.codeImg{
     margin-top: 3px;
     white-space: nowrap;
 }
+.changeLanguages{
+    position: fixed;
+    z-index: 99;
+    right: 10px;
+    top:10px;
+    width: 32px;
+    height: 32px;
+    display: block;
+    background: url(../images/en.png) no-repeat center/cover;
+}
+

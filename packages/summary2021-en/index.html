@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="./css/new.css">
 
 <body> 
+    <a href="../summary2021-zh/index.html" class="changeLanguages"></a>
     <div class="pc-box" id="pcBox"></div>
     <div class="mob-box swiper" id="outer-container"> </div>
     <script>
@@ -63,14 +64,14 @@
         }
 
         // 获取数据
-        axios.get('/oauth2/userinfo').then(res => {
-            return getData(res.data.user)
-        }).catch(err => { 
-            console.log(err);
-        })
+        // axios.get('/oauth2/userinfo').then(res => {
+        //     return getData(res.data.user)
+        // }).catch(err => { 
+        //     console.log(err);
+        // })
         function getData(user) {
             let data = []
-            axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=4${user}`).then(res => {
+            axios.get('https://omapi.osinfra.cn/query/newYear/2022?community=openeuler&user=georgecao').then(res => { 
                 data = res.data.data[0]; 
                 let percentage = parseFloat(data.beat_percentage) * 100;
 
@@ -89,7 +90,7 @@
                 //isPcContribution \ isH5Contribution 判断有无贡献 
                 let isPcContribution = false,
                     isH5Contribution = false;
-                    
+                     
                 if(data.first_time_of_enter == '' || data.user_login == ''){
                     pcBox.addClass('no-contribution').empty().html(pcDomNoData) ;
                     isPcContribution = true;
@@ -97,13 +98,14 @@
                 }else{
                     pcBox.removeClass('no-contribution').empty().html(pcDom);
                     isPcContribution = false;
-                    isH5Contribution = false; 
+                    isH5Contribution = false;
                 }
 
                 intaPc(data, percentage,isPcContribution);
                 intaSwiper(data, percentage, isH5Contribution); 
             })
         } 
+        getData('georgecao')
 
         function timeChange(time) {
             if (time) {
@@ -112,7 +114,7 @@
                 let m = EndTime.getMonth() + 1;
                 let d = EndTime.getDate();
                 let h = EndTime.getSeconds()
-                let all = `${y}年${m}月${d}日`
+                let all = `${y}/${m}/${d}`
                 return all
             } else {
                 return 'none'
@@ -126,31 +128,32 @@
             pcBox.find('.front').click(function(){ 
                 for (let i = 0; i < front.length; i++) {
                     let list = []  
+                    
                     if(isPcContribution){
                         list[0] =`<div class="contents">
                                         <div class="page page-one">
                                             <div class="text-box"> 
                                                 <div class="ani1">
-                                                    <p class="fz16">您的2021专属日历正在派件中</p>
-                                                    <p class="fz16 mb10">请注意查收！</p>
+                                                    <p class="fz16">2021 openLooKeng Un-Wrapped</p> 
                                                     <p class="fz14">Dear</p>
                                                     <p class="cOrange fz16 mb10 "> ${data.user_login}</p>
-                                                    <p class="one-text">“登山则情满于山，观海则意溢于海”</p>
-                                                    <p class="one-text">2021年，乘风破浪，砥砺前行</p>
-                                                    <p class="one-text">总结2021，才能更好地迎接2022</p>
-                                                    <p class="one-text mb10">2021年进度条已加载100%</p>
-                                                    <p class="one-text ">2020年6月30日，数据虚拟化引擎openLooKeng破土而出</p>
-                                                    <p class="one-text">至今，openLooKeng社区用户数达到<span class='cOrange fz14'>100K+</span></p>
-                                                    <p class="one-text">累计收到<span class='cOrange fz14'>2000+</span>PR，</p>
-                                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>issue</p>
-                                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>Comments</p>
-                                                    <p class="one-text">社区下载量突破<span class='cOrange fz14'>100K+</span>；</p>
-                                                    <p class="one-text mb12">遍及全球<span class='cOrange fz14'>41</span>个国家，<span class='cOrange fz14'>210</span>个城市</p>
+                                                    <p class="one-text">Do what you love, and love what you do.</p>
+                                                    <p class="one-text">As we usher in 2022,</p>
+                                                    <p class="one-text">let's look back at the special moments from the past year.</p>
+                                                    <p class="one-text mb10">On June 30, 2020,</p>
+                                                    <p class="one-text ">he data virtualization engine openLooKeng</p>
+                                                    <p class="one-text ">officially went open source.</p>
+                                                    <p class="one-text">Since then, the community has attracted<span class='cOrange fz14'>over 100,000</span>users</p>
+                                                    <p class="one-text">and <span class='cOrange fz14'>2,000 </span>pull requests,</p>
+                                                    <p class="one-text">received <span class='cOrange fz14'>1,500</span>issues,</p>
+                                                    <p class="one-text">housed <span class='cOrange fz14'>27,900 </span>comments.</p>
+                                                    <p class="one-text">openLooKeng has been downloaded</p>
+                                                    <p class="one-text">more than <span class='cOrange fz14'>100,000 </span>times by users </p>
+                                                    <p class="one-text mb12">from <span class='cOrange fz14'>210 </span>cities across <span class='cOrange fz14'>40</span> countries and regions</p>
 
-                                                    <p class="one-text">如今，社区呈现一派生机勃勃，绿荫环绕的景象</p>
-                                                    <p class="cOrange fz16">新的一年，期待您的加入</p>
-                                                    <p class="one-text">关注社区动态，打卡更多知识点</p>
-                                                    <p class="one-text">共建大数据繁荣生态</p>
+                                                    <p class="cOrange fz16">We hope to see you in the openLooKeng community in 2022. </p>
+                                                    <p class="one-text">Together, we can </p>
+                                                    <p class="one-text">build a prosperous big data ecosystem.</p> 
 
                                                 </div>
                                             </div>
@@ -166,16 +169,18 @@
                                         <div class="main">
                                             <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                                             <div class="text-box">
-                                                <p class="">2021，期待您与社区更多的互动</p>
-                                                <p class="">万里星光，一如既往</p>
-                                                <p class="">让更多人看见闪闪发光的您</p>
-                                                <p class="">靠近光，散发光，成为光！</p>
-                                                <p class="">新年快乐！</p>
-                                                <p class="bold" style="margin: 20px 0 0;">openLooKeng社区</p>
-                                                <p class="bold " style="margin:0 0 10px ;">呈上</p>
+                                                <p class="">For every contribution,  </p>
+                                                <p>comment,and click in 2021,</p>
+                                                <p class="">we say - Thank you.</p>
+                                                <p class="">Stay with us to build a better</p>
+                                                <p class="">openLooKeng in 2022.</p>
+                                                <p class="">Always by your side.</p>
+                                                <p class="">Happy New Year!</p>
+                                                <p class="bold" style="margin: 10px 0 0;">From,</p>
+                                                <p class="bold " style="margin:0 0 5px ;">The openLooKeng open source community</p>
 
                                                 <img src="./images/code.png" class='codeImg' alt=""> 
-                                                <p class="">查看您的社区年度报告</p>
+                                                <p class="">Check your 2021 openLooKeng Un-Wrapped</p>
                                             </div>
                                         </div>
                                         <div class="bg-six">
@@ -191,20 +196,18 @@
                                         <div class="page page-one">
                                             <div class="text-box"> 
                                                 <div class="ani1">
-                                                    <p class="fz16">您的2021专属日历正在派件中</p>
-                                                    <p class="fz16 mb20">请注意查收！</p>
+                                                    <p class="fz16">2021 openLooKeng Un-Wrapped</p> 
                                                     <p class="fz14">Dear</p>
-                                                    <p class="cOrange fz16 mb20 "> ${data.user_login}</p>
-                                                    <p class="one-text">“登山则情满于山，观海则意溢于海”</p>
-                                                    <p class="one-text">2021年，乘风破浪，砥砺前行</p>
-                                                    <p class="one-text">总结2021，才能更好地迎接2022</p>
-                                                    <p class="one-text mb30">2021年进度条已加载100%</p>
-                                                    <p class="fz14 fb">在2021社区日历里，</p>
-                                                    <p class="fz14 fb mb12">藏着一些您与社区的有趣互动</p>
-                                                    <p class="one-text">故事开始于<span class='cOrange fb'>${timeChange(data.first_time_of_enter)}</span></p>
-                                                    <p class="one-text">您与openLooKneg的第一次相遇</p>
-                                                    <p class="one-text">乍见之欢，久处不厌</p>
-                                                    <p class="one-text">因为您的加入，让很多的瞬间都值得被纪念</p>
+                                                    <p class="cOrange fz16 mb12 "> ${data.user_login}</p>
+                                                    <p class="one-text">Do what you love, and love what you do,</p>
+                                                    <p class="one-text">In 2021, we made progress against all odds.</p>
+                                                    <p class="one-text">As we usher in 2022,</p>
+                                                    <p class="one-text mb30">let's look back at the special moments from the past year.%</p>
+                                                    
+                                                    <p class="one-text">It all started on <span class='cOrange fb'>${timeChange(data.first_time_of_enter)}</span></p>
+                                                    <p class="one-text">when you first joined the openLooKeng community.</p>
+                                                    <p class="one-text">A quick browse turned into a long-lasting partnership.</p>
+                                                    <p class="one-text">Because of you, every moment is worth remembering.</p>
                                                 </div>
                                             </div>
                                             <div class="people">
@@ -220,31 +223,33 @@
                                                 <img src="./images/item2/img10.png" alt="">
                                                 <img src="./images/item2/img7.png" alt="">
                                             </div>
-                                            <h3 class="fz16 mb20">2021，您与社区互动频繁</h3>
-                                            <div class="panel2-box">  
+                                            <h3 class="fz16 mb20">Wonderful Friendship</h3>
+                                            <div class="panel2-box">   
                                                 ${(function(){  
                                                     let dom = '';
                                                     if(data.first_time_of_contact != ''){
-                                                        dom = dom+  `
-                                                        <p class='fade fade-time-1'><span class="cGreen ">${timeChange(data.first_time_of_contact)}</span></p> 
-                                                        <p class='fade fade-time-2'>您与<span class="cRed">${data.first_user_login_of_contact}</span>产生了第一次链接</p>
-                                                        `
+                                                        dom=dom+  ` <p class='fade fade-time-1'>On <span class="cGreen ">${timeChange(data.first_time_of_contact)}</span></p> 
+                                                        <p class='fade fade-time-2'>you first communicated with<span class="cRed">${data.first_user_login_of_contact}</span> </p> `
+
                                                     } 
-                                                     if(data.first_time_of_contact != ''){
-                                                        dom = dom+ `<p class='fade fade-time-3'><span class="cGreen">${timeChange(data.first_time_of_comment_other)}</span></p>
-                                                            <p class='fade fade-time-4'>您在<span class="cRed">${data.first_user_login_of_comment}</span>下进行了第一次评论</p>`
+                                                    if(data.first_time_of_comment_other != ''){
+                                                        dom=dom+ `<p class='fade fade-time-3'>On <span class="cGreen">${timeChange(data.first_time_of_comment_other)}</span></p>
+                                                            <p class='fade fade-time-4'>you commented under<span class="cRed">${data.first_user_login_of_comment}</span> post</p>`
+
                                                     } 
-                                                     if(data.user_login_with_most_contact != ''){
-                                                        dom = dom+ `<p class='fade fade-time-5'><span class="cGreen">这一年</span></p><p class='fade fade-time-6'>您与<span class="cRed">${data.user_login_with_most_contact}</span>的联系最频繁 </p> `
+                                                    if(data.user_login_with_most_contact != ''){
+                                                        dom=dom+ `<p class='fade fade-time-5'><span class="cGreen">This year,</span></p><p class='mb12 fade fade-time-6'>you had the most contact with <span class="cRed">${data.user_login_with_most_contact}</span> </p> `
+
                                                     }
-                                                     if(data.first_user_login_of_be_comment != ''){
-                                                        dom = dom+ `<p class='fade fade-time-7'><span class="cGreen">${data.first_time_of_be_comment}</span></p>
-                                                            <p class='fade fade-time-8'>这是很特别的一天</p>
-                                                            <p class='fade fade-time-9'><span class="cRed">${data.first_user_login_of_be_comment}</span>第一个给了您温暖的评论</p>  `
+                                                    if(data.first_user_login_of_be_comment != ''){
+                                                        dom=dom+ `<p class='fade fade-time-7'><span class="cGreen">${timeChange(data.first_time_of_be_comment)}</span></p>
+                                                            <p class='fade fade-time-8'>was a very special day,</p>
+                                                            <p class='fade fade-time-9'><span class="cRed">${data.first_user_login_of_be_comment}</span>raised the first issue to you.</p>  `
+                                                            
                                                     } 
                                                     return dom;
-  
-                                                })()}  
+
+                                                })()}
                                                 
                                             </div>
                                             <div class="panel2-bottom">
@@ -257,63 +262,66 @@
                         list[2] = `<div class="contents">
                                         <div class="page ">
                                             <div class="panel3-box"> 
-                                                <p class="fb fz14 fade fade-time-1">2021，您与社区交相辉映</p>
-                                                <p class="fb fz14 fade fade-time-2" style="margin:5px 0">这一年</p>
-                                                <p class="mb20 fade fade-time-3">您一共提交了
+                                                <p class="fb fz14 fade fade-time-1">Great Achievements</p>
+                                                <p class="fb fz14 fade fade-time-2" style="margin:5px 0">This year,</p>
+                                                <p class="mb12 fade fade-time-3">  
                                                     ${(function(){
                                                         let dom ='' 
-                                                         if(data.pr_num != '' || data.pr_num != '0'){
-                                                            dom = dom+ `提交了<span class="fb fz14 cOrange">${data.pr_num }</span>个PR<br>`
+                                                        if(data.pr_num != '' || data.pr_num != '0'){
+                                                            dom = dom+ `you submitted <span class="fb fz14 cOrange">${data.pr_num }</span> PR(s),<br>`
                                                         }
-                                                         if(data.issue_num != '' || data.issue_num != '0'){
-                                                            dom = dom+ `提出了<span class="fb fz14 cOrange">${data.issue_num }</span>个issue<br>`
+                                                        if(data.issue_num != '' || data.issue_num != '0'){
+                                                            dom = dom+ `raised <span class="fb fz14 cOrange">${data.issue_num }</span> issue(s),<br>`
                                                         } 
                                                         if(data.code_lines != '' || data.code_lines != '0'){
-                                                            dom = dom+ `贡献了<span class="fb fz14 cOrange">${data.code_lines}</span>行代码<br>`
+                                                            dom = dom+ `wrote  <span class="fb fz14 cOrange">${data.code_lines}</span> lines of code,<br>`
                                                         }
-                                                         if (data.star_num != '' || data.star_num != '0'){
-                                                            dom = dom+ `点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个代码仓库<br>`
+                                                        if (data.star_num != '' || data.star_num != '0'){
+                                                            dom = dom+ `and contributed to <span class="fb fz14 cOrange">${data.star_num}</span> repo(s).<br>`
                                                         } 
                                                         return dom ;
-                                                    })()}
-                                                    
+                                                    })()} 
+                                                </p>
+                                                <p class="fade fade-time-4">Every line of code matters to openLooKeng.</p>
+                                                <p class="fade fade-time-5">Your insights have helped openLooKeng grow into a vibrant ecosystem.</p> 
 
-                                                    您在社区的海洋，贡献的每一个代码<br>
-                                                    都饱含对开源生态的见解和期待</p>
-                                                <p class="mb12 fade fade-time-4"> 2021注定是不平凡的一年<br> 您在社区的贡献度超过了<span class="fb fz14 cOrange">${percentage} % </span>的开发者 </p>
+                                                <p class="mb12 fade fade-time-4"> Congratulations! <br> You beat <span class="fb fz14 cOrange">${percentage} % </span>developer's contributions this year! </p>
                                                 ${(function(){  
                                                     let dom = '';
                                                     if(percentage<10 ){
                                                         dom = dom+ `
-                                                        <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">新手型</span>选手身份出道</p>
-                                                        <div class="code-box"> 
-                                                            <img src="./images/新手型@2x.png" alt="">
-                                                        </div>
-                                                        <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
+                                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Beginner</span></p>
+                                                            <div class="code-box"> 
+                                                                <img src="./images/新手型@2x.png" alt="">
+                                                            </div>
+                                                            <p class="fz12 cOrange ">Welcome! You made a good start, but we know you can do better. Earn more points by exploring the openLooKeng issues, code, and more. </p>
                                                         `    
-                                                    }else if(percentage>10 && percentage<30 ){
+                                                    }
+                                                    if(percentage>10 && percentage<30 ){
                                                         dom = dom+ `
-                                                        <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
-                                                        <div class="code-box">
-                                                            <img src="./images/进击型@2x.png" alt="">
-                                                        </div>
-                                                        <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
+                                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Adviser</span></p>
+                                                            <div class="code-box"> 
+                                                                <img src="./images/进击型@2x.png" alt="">
+                                                            </div>
+                                                            <p class="fz12 cOrange ">Good work! Thanks for all the engagement over the past year, and everything you help to refine openLooKeng.</p>
                                                         `    
-                                                    }else if(percentage>30 && percentage<50 ){
+                                                    }
+                                                    if(percentage>30 && percentage<50 ){
                                                         dom = dom+ `
-                                                        <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
-                                                        <div class="code-box">
-                                                            <img src="./images/思考型@2x.png" alt="">
-                                                        </div>
-                                                        <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
+                                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Thinker</span></p>
+                                                            <div class="code-box"> 
+                                                                <img src="./images/思考型@2x.png" alt="">
+                                                            </div>
+                                                            <p class="fz12  cOrange ">You are getting pretty good at this! Your enthusiasm and passion for openLooKeng means you will soon be one of the community's expert programmers.</p>
                                                         `    
-                                                    }else{
+                                                    }
+                                                    if(percentage>50 ){
                                                         dom = dom+ `
-                                                        <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
-                                                        <div class="code-box">
-                                                            <img src="./images/天赋型@2x.png" alt="">
-                                                        </div>
-                                                        <p class="fz14 fb cOrange ">会当凌绝顶，一览众山小</p>
+                                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Guru</span></p>
+                                                            <div class="code-box"> 
+                                                                <img src="./images/天赋型@2x.png" alt="">
+                                                            </div>
+                                                            <p class="fz12  cOrange ">Your contributions to the openLooKeng community are the fuel we need to light our future. Long may it continue.</p>
                                                         `   
                                                     }
                                                     return dom;
@@ -330,12 +338,15 @@
                                         <div class="main">
                                             <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                                             <div class="text-box ">
-                                                <p class="typing">2021，感谢您在社区留下的星光点点。</p>
-                                                <p class="typing delay-time1">2022，社区将继续与您并肩前行</p>
-                                                <p class="typing delay-time2">万里星光，一如既往</p>
-                                                <p class="typing delay-time3 ">新年快乐！</p>
-                                                <p class="bold" style="margin: 40px 0 0;">openLooKeng社区</p>
-                                                <p class="bold">呈上</p>
+                                                <p class="">For every contribution, </p>
+                                                <p class="">comment, and click in 2021,</p>
+                                                <p class="">we say - Thank you.</p>
+                                                <p class="">Stay with us to build a better</p>
+                                                <p class=" ">openLooKeng in 2022.</p>
+                                                <p class=" ">Always by your side.</p>
+                                                <p class=" ">Happy New Year!</p>
+                                                <p class="bold" style="margin: 40px 0 0;">From,</p>
+                                                <p class="bold">The openLooKeng open source community</p>
                                             </div>
                                         </div>
                                         <div class="bg-six">
@@ -359,6 +370,7 @@
         let swper = null;
         function intaSwiper(data, percentage,isH5Contribution) {
             let list = []  
+            
             if(isH5Contribution){
                 $('#outer-container').addClass('no-h5-contribution')
                 list = [{
@@ -366,15 +378,14 @@
                     <div class="page page-one">
                         <div class="text-box"> 
                             <div class="ani1">
-                                <p class="fz16">您的2021专属日历正在派件中</p>
-                                <p class="fz16 mb12">请注意查收！</p>
+                                <p class="fz16">2021 openLooKeng Un-Wrapped</p> 
                                 <p class="fz14">Dear</p>
                                 <p class="cOrange fz16 mb12 ">${data.user_login}</p>
-                                <p class="one-text">“登山则情满于山，观海则意溢于海”</p>
-                                <p class="one-text">2021年，乘风破浪，砥砺前行</p>
-                                <p class="one-text">总结2021，才能更好地迎接2022</p>
-                                <p class="one-text ">2021年进度条已加载100%</p>
-                                <p class="one-text ">2020年6月30日，数据虚拟化引擎openLooKeng破土而出</p>
+                                <p class="one-text">Do what you love, and love what you do.</p>
+                                <p class="one-text">As we usher in 2022,</p>
+                                <p class="one-text">let's look back at the special moments from the past year.</p>
+                                <p class="one-text ">On June 30, 2020,</p>
+                                <p class="one-text ">he data virtualization engine openLooKeng</p>
                             </div>
                             <div class="video-temp">  
                                 <img src="./images/item1/img6.png" alt="">
@@ -398,17 +409,16 @@
                                     <img src="./images/item2/img7.png" alt="">
                                 </div> 
                                 <div class="panel2-box">  
-                                    <p class="one-text">至今，openLooKeng社区用户数达到<span class='cOrange fz14'>100K+</span></p>
-                                    <p class="one-text">累计收到<span class='cOrange fz14'>2000+</span>PR，</p>
-                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>issue</p>
-                                    <p class="one-text"><span class='cOrange fz14'>1500+</span>Comments</p>
-                                    <p class="one-text">社区下载量突破<span class='cOrange fz14'>100K+</span>；</p>
-                                    <p class="one-text mb12">遍及全球<span class='cOrange fz14'>41</span>个国家，<span class='cOrange fz14'>210</span>个城市</p>
+                                    <p class="one-text">Since then, the community has attracted <span class='cOrange fz14'>over 100,000</span> users</p>
+                                    <p class="one-text">and <span class='cOrange fz14'>2,000</span> pull requests, </p>
+                                    <p class="one-text">received <span class='cOrange fz14'>1,500</span> issue</p>
+                                    <p class="one-text">housed <span class='cOrange fz14'>27,900</span> comments.</p>
+                                    <p class="one-text">openLooKeng has been downloaded more than<span class='cOrange fz14'>100,000 times </span>by users </p>
+                                    <p class="one-text mb12">from <span class='cOrange fz14'>210</span> cities across <span class='cOrange fz14'>40</span>countries and regions</p>
 
-                                    <p class="one-text">如今，社区呈现一派生机勃勃，绿荫环绕的景象</p>
-                                    <p class="one-text"><span class="cOrange fz16">新的一年，期待您的加入</span></p>
-                                    <p class="one-text">关注社区动态，打卡更多知识点</p>
-                                    <p class="one-text">共建大数据繁荣生态</p>  
+                                    <p class="one-text">We hope to see you in the openLooKeng community in 2022. </p>
+                                    <p class="one-text"><span class="cOrange fz16">Together, we can </span></p>
+                                    <p class="one-text">build a prosperous big data ecosystem.</p> 
                                 </div>
                                 <div class="panel2-bottom">
                                     <img src="./images/item2/女.png" alt="">
@@ -425,12 +435,15 @@
                         <div class="main">
                             <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                             <div class="text-box ">
-                                <p class="typing">2021，感谢您在社区留下的星光点点。</p>
-                                <p class="typing delay-time1">2022，社区将继续与您并肩前行</p>
-                                <p class="typing delay-time2">万里星光，一如既往</p>
-                                <p class="typing delay-time3 ">新年快乐！</p>
-                                <p class="bold" style="margin: 40px 0 0;">openLooKeng社区</p>
-                                <p class="bold">呈上</p>
+                                <p class="">For every contribution, </p>
+                                <p class="">comment, and click in 2021,</p>
+                                <p class="">we say - Thank you.</p>
+                                <p class="">Stay with us to build a better</p>
+                                <p class=" ">openLooKeng in 2022.</p>
+                                <p class=" ">Always by your side.</p>
+                                <p class=" ">Happy New Year!</p>
+                                <p class="bold" style="margin: 40px 0 0;">From,</p>
+                                <p class="bold">The openLooKeng open source community</p>
                             </div>
                         </div>
                         <div class="bg-six">
@@ -449,15 +462,14 @@
                     <div class="page page-one">
                         <div class="text-box"> 
                             <div class="ani1">
-                                <p class="fz16">您的2021专属日历正在派件中</p>
-                                <p class="fz16 mb12">请注意查收！</p>
+                                <p class="fz16">2021 openLooKeng Un-Wrapped</p> 
                                 <p class="fz14">Dear</p>
                                 <p class="cOrange fz16 mb12 ">${data.user_login}</p>
-                                <p class="one-text">“登山则情满于山，观海则意溢于海”</p>
-                                <p class="one-text">2021年，乘风破浪，砥砺前行</p>
-                                <p class="one-text">总结2021，才能更好地迎接2022</p>
-                                <p class="one-text ">2021年进度条已加载100%</p>
-                                <p>向下滑动，即刻访问您的<span class="fz14 fb cOrange">【2021社区日历】</span></p>
+                                <p class="one-text">Do what you love, and love what you do,</p>
+                                <p class="one-text">In 2021, we made progress against all odds.</p>
+                                <p class="one-text">As we usher in 2022,</p>
+                                <p class="one-text ">let's look back at the special moments from the past year.</p>
+                                <p>Swipe down to access youer<span class="fz14 fb cOrange">【2021 Un-Wapped】</span></p>
                             </div>
                             <div class="video-temp">  
                                 <img src="./images/item1/img6.png" alt="">
@@ -475,12 +487,11 @@
                     content: `
                     <div class="page page-tow">
                         <div class="text-box ani1">
-                            <p class="fz16">在2021社区日历里，</p>
-                            <p class="fz16 mb30">藏着一些您与社区的有趣互动</p> 
-                            <p>故事开始于<span class="fz14 cOrange">${timeChange(data.first_time_of_enter)} </span></p>
-                            <p>您与openLooKneg的第一次相遇</p>
-                            <p>乍见之欢，久处不厌</p>
-                            <p>因为您的加入，让很多的瞬间都值得被纪念</p>
+                            <p class="fz16">First Encounter</p> 
+                            <p>It all started on<span class="fz14 cOrange">${timeChange(data.first_time_of_enter)} </span></p>
+                            <p>when you first joined the openLooKeng community.</p>
+                            <p>A quick browse turned into a long-lasting partnership.</p>
+                            <p>Because of you, every moment is worth remembering.</p>
                         </div>
                         <div class="panel-mo2">
                             <img src="./images/item2/男+绿色块.png" alt="">
@@ -500,28 +511,28 @@
                                     <img src="./images/item2/img10.png" alt="">
                                     <img src="./images/item2/img7.png" alt="">
                                 </div>
-                                <h3 class="fz16 mb20">2021，您与社区互动频繁</h3>
+                                <h3 class="fz16 mb20">Wonderful Friendship</h3>
                                 <div class="panel2-box">
                                     ${(function(){  
                                         let dom = '';
                                         if(data.first_time_of_contact != ''){
-                                            dom=dom+  ` <p class='fade fade-time-1'><span class="cGreen ">${timeChange(data.first_time_of_contact)}</span></p> 
-                                            <p class='fade fade-time-2'>您与<span class="cRed">${data.first_user_login_of_contact}</span>产生了第一次链接</p> `
+                                            dom=dom+  ` <p class='fade fade-time-1'>On <span class="cGreen ">${timeChange(data.first_time_of_contact)}</span></p> 
+                                            <p class='fade fade-time-2'>you first communicated with<span class="cRed">${data.first_user_login_of_contact}</span> </p> `
 
                                         } 
-                                         if(data.first_time_of_contact != ''){
-                                            dom=dom+ `<p class='fade fade-time-3'><span class="cGreen">${timeChange(data.first_time_of_comment_other)}</span></p>
-                                                <p class='fade fade-time-4'>您在<span class="cRed">${data.first_user_login_of_comment}</span>下进行了第一次评论</p>`
+                                         if(data.first_time_of_comment_other != ''){
+                                            dom=dom+ `<p class='fade fade-time-3'>On <span class="cGreen">${timeChange(data.first_time_of_comment_other)}</span></p>
+                                                <p class='fade fade-time-4'>you commented under<span class="cRed">${data.first_user_login_of_comment}</span> post</p>`
 
                                         } 
                                          if(data.user_login_with_most_contact != ''){
-                                            dom=dom+ `<p class='fade fade-time-5'><span class="cGreen">这一年</span></p><p class='mb20 fade fade-time-6'>您与<span class="cRed">${data.user_login_with_most_contact}</span>的联系最频繁 </p> `
+                                            dom=dom+ `<p class='fade fade-time-5'><span class="cGreen">This year,</span></p><p class='mb12 fade fade-time-6'>you had the most contact with <span class="cRed">${data.user_login_with_most_contact}</span> </p> `
 
                                         }
                                          if(data.first_user_login_of_be_comment != ''){
-                                            dom=dom+ `<p class='fade fade-time-7'><span class="cGreen">${data.first_time_of_be_comment}</span></p>
-                                                <p class='fade fade-time-8'>这是很特别的一天</p>
-                                                <p class='fade fade-time-9'><span class="cRed">${data.first_user_login_of_be_comment}</span>第一个给了您温暖的评论</p>  `
+                                            dom=dom+ `<p class='fade fade-time-7'><span class="cGreen">${timeChange(data.first_time_of_be_comment)}</span></p>
+                                                <p class='fade fade-time-8'>was a very special day,</p>
+                                                <p class='fade fade-time-9'><span class="cRed">${data.first_user_login_of_be_comment}</span>raised the first issue to you.</p>  `
                                                 
                                         } 
                                         return dom;
@@ -548,28 +559,28 @@
                                 <img src="./images/item4/纸飞机.png" alt="">
                             </div>
                             <div class="text-box">
-                                <p class="fade fade-time-1">2021，您与社区交相辉映</p>
-                                <p class="fade fade-time-2">这一年</p> 
+                                <p class="fade fade-time-1">Great Achievements</p>
+                                <p class="fade fade-time-2">This year,</p> 
                                  <p class="fade fade-time-3"> 
                                     ${(function(){
                                         let dom ='' 
                                             if(data.pr_num != '' || data.pr_num != '0'){
-                                            dom = dom+ `提交了<span class="fb fz14 cOrange">${data.pr_num }</span>个PR<br>`
+                                            dom = dom+ `you submitted <span class="fb fz14 cOrange">${data.pr_num }</span> PR(s),<br>`
                                         }
                                             if(data.issue_num != '' || data.issue_num != '0'){
-                                            dom = dom+ `提出了<span class="fb fz14 cOrange">${data.issue_num }</span>个issue<br>`
+                                            dom = dom+ `raised <span class="fb fz14 cOrange">${data.issue_num }</span> issue(s),<br>`
                                         } 
                                         if(data.code_lines != '' || data.code_lines != '0'){
-                                            dom = dom+ `贡献了<span class="fb fz14 cOrange">${data.code_lines}</span>行代码<br>`
+                                            dom = dom+ `wrote  <span class="fb fz14 cOrange">${data.code_lines}</span> lines of code,<br>`
                                         }
                                             if (data.star_num != '' || data.star_num != '0'){
-                                            dom = dom+ `点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个代码仓库<br>`
+                                            dom = dom+ `and contributed to <span class="fb fz14 cOrange">${data.star_num}</span> repo(s).<br>`
                                         } 
                                         return dom ;
                                     })()}
                                 </p>
-                                <p class="fade fade-time-4">您在社区的海洋，贡献的每一个代码</p>
-                                <p class="fade fade-time-5">都饱含对开源生态的见解和期待</p>
+                                <p class="fade fade-time-4">Every line of code matters to openLooKeng.</p>
+                                <p class="fade fade-time-5">Your insights have helped openLooKeng grow into a vibrant ecosystem.</p>
                             </div>
                         </div>   
                     `
@@ -577,44 +588,44 @@
                     content: `
                         <div class="page page-five"> 
                             <div class="panel3-box">  
-                            <p class="mb12"> 2021注定是不平凡的一年<br> 
-                                您在社区的贡献度超过了<span class="fb fz14 cOrange">${percentage} %</span>的开发者 </p> 
+                            <p class="mb12"> Congratulations!  <br> 
+                                You beat <span class="fb fz14 cOrange">${percentage} %</span>developer's contributions this year! </p> 
                             ${(function(){ 
                                 let dom ='';
                                     if(percentage<10 ){
                                         dom = dom+ `
-                                            <p class="fb fz14">2022，您将以<span class="fz16 cOrange">新手型</span>选手身份出道</p>
+                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Beginner</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/新手型@2x.png" alt="">
                                             </div>
-                                            <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
+                                            <p class="fz12 cOrange ">Welcome! You made a good start, but we know you can do better. Earn more points by exploring the openLooKeng issues, code, and more. </p>
                                         `    
                                     }
                                      if(percentage>10 && percentage<30 ){
                                         dom = dom+ `
-                                            <p class="fb fz14">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
+                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Adviser</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/进击型@2x.png" alt="">
                                             </div>
-                                            <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
+                                            <p class="fz12 cOrange ">Good work! Thanks for all the engagement over the past year, and everything you help to refine openLooKeng.</p>
                                         `    
                                     }
                                     if(percentage>30 && percentage<50 ){
                                         dom = dom+ `
-                                            <p class="fb fz14">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
+                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Thinker</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/思考型@2x.png" alt="">
                                             </div>
-                                            <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
+                                            <p class="fz12  cOrange ">You are getting pretty good at this! Your enthusiasm and passion for openLooKeng means you will soon be one of the community's expert programmers.</p>
                                         `    
                                     }
                                     if(percentage>50 ){
                                         dom = dom+ `
-                                            <p class="fb fz14">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
+                                            <p class="fb fz14">You are now a <span class="fz16 cOrange">Guru</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/天赋型@2x.png" alt="">
                                             </div>
-                                            <p class="fz14 fb cOrange ">会当凌绝顶，一览众山小</p>
+                                            <p class="fz12  cOrange ">Your contributions to the openLooKeng community are the fuel we need to light our future. Long may it continue.</p>
                                         `   
                                     }
                                     return dom;
@@ -626,7 +637,7 @@
                                 <img src="./images/item5/logo.png" alt="">
                                 <div class="code-tile"> 
                                     <img src="./images/code.png" class='codeImg' alt=""> 
-                                    <p>查看您的社区年度报告</p>
+                                    <p>Check your 2021 openLooKeng Un-Wrapped</p>
                                 </div>
                                 
                             </div> 
@@ -637,12 +648,15 @@
                         <div class="main">
                             <div class="six-logo"><img src="./images/item6/logo.png" alt=""></div>
                             <div class="text-box ">
-                                <p class="typing">2021，感谢您在社区留下的星光点点。</p>
-                                <p class="typing delay-time1">2022，社区将继续与您并肩前行</p>
-                                <p class="typing delay-time2">万里星光，一如既往</p>
-                                <p class="typing delay-time3 ">新年快乐！</p>
-                                <p class="bold" style="margin: 40px 0 0;">openLooKeng社区</p>
-                                <p class="bold">呈上</p>
+                                <p class=" ">For every contribution, comment, </p>
+                                <p class="">and click in 2021,</p>
+                                <p class="">we say – Thank you.</p>
+                                <p class=" ">Stay with us to build a better</p>
+                                <p>openLooKeng in 2022.</p>
+                                <p>Always by your side.</p>
+                                <p>Happy New Year!</p>
+                                <p class="bold" style="margin: 20px 0 0;">From,</p>
+                                <p class="bold">The openLooKeng open source community</p>
                             </div>
                         </div>
                         <div class="bg-six">
