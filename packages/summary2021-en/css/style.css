@@ -550,7 +550,7 @@ section .person {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-bottom: 40px;
+    padding-bottom: 25%;
     /* max-width: 375px; */
 }
 

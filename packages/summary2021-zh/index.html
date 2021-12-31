@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="./css/new.css">
 
 <body> 
-    <a href="../summary2021-en/index.html" class="changeLanguages"></a>
+    <a href="../2021summary/" class="changeLanguages"></a>
     <div class="pc-box" id="pcBox"></div>
     <div class="mob-box swiper" id="outer-container"> </div>
     <div class="bgmMusic">
@@ -51,7 +51,7 @@
             // 播放音乐  
             var audio = document.getElementById('bgm');
             let isVideo = true 
-            container.addEventListener('pointerup',function(){  
+            container.addEventListener('pointerup',function(){   
                 if(isVideo){
                     $(".bgmMusic").addClass("active")
                     audio.play();
@@ -88,8 +88,13 @@
         function getData(user) {
             let data = [] 
             axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 
-                data = res.data.data[0]; 
-                let percentage = parseFloat(data.beat_percentage) * 100;
+                if(res.data.data[0]){
+                    isDataContribution = false
+                    data = res.data.data[0];   
+                    let percentage = parseFloat(data.beat_percentage) * 100;
+                }else{
+                    isDataContribution = true
+                } 
 
                 let pcDom = `
                     <div class="container box-one"><div class="front"></div><div class="back"></div></div>
@@ -279,16 +284,16 @@
                                                 <p class="mb20 fade fade-time-3">
                                                     ${(function(){
                                                         let dom ='' 
-                                                         if(data.pr_num != '' || data.pr_num != '0'){
+                                                         if(data.pr_num != '0'){
                                                             dom = dom+ `提交了<span class="fb fz14 cOrange">${data.pr_num }</span>个PR<br>`
                                                         }
-                                                         if(data.issue_num != '' || data.issue_num != '0'){
+                                                         if( data.issue_num != '0'){
                                                             dom = dom+ `提出了<span class="fb fz14 cOrange">${data.issue_num }</span>个issue<br>`
                                                         } 
-                                                        if(data.code_lines != '' || data.code_lines != '0'){
+                                                        if( data.code_lines != '0'){
                                                             dom = dom+ `贡献了<span class="fb fz14 cOrange">${data.code_lines}</span>行代码<br>`
                                                         }
-                                                         if (data.star_num != '' || data.star_num != '0'){
+                                                         if ( data.star_num != '0'){
                                                             dom = dom+ `点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个代码仓库<br>`
                                                         } 
                                                         return dom ;
@@ -569,16 +574,16 @@
                                  <p class="fade fade-time-3"> 
                                     ${(function(){
                                         let dom ='' 
-                                            if(data.pr_num != '' || data.pr_num != '0'){
+                                            if( data.pr_num != '0'){
                                             dom = dom+ `提交了<span class="fb fz14 cOrange">${data.pr_num }</span>个PR<br>`
                                         }
-                                            if(data.issue_num != '' || data.issue_num != '0'){
+                                            if( data.issue_num != '0'){
                                             dom = dom+ `提出了<span class="fb fz14 cOrange">${data.issue_num }</span>个issue<br>`
                                         } 
-                                        if(data.code_lines != '' || data.code_lines != '0'){
+                                        if( data.code_lines != '0'){
                                             dom = dom+ `贡献了<span class="fb fz14 cOrange">${data.code_lines}</span>行代码<br>`
                                         }
-                                            if (data.star_num != '' || data.star_num != '0'){
+                                            if ( data.star_num != '0'){
                                             dom = dom+ `点亮了<span class="fb fz14 cOrange">${data.star_num}</span>个代码仓库<br>`
                                         } 
                                         return dom ;
