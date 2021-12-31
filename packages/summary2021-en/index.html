@@ -18,8 +18,13 @@
 
 <body> 
     <a href="../summary2021-zh/index.html" class="changeLanguages"></a>
+    <div class="bgmMusic">
+        <img src="./images/bg-music.svg">
+    </div>
+    <audio id="bgm" src="./images/bgm.mp3" autoplay="autoplay" preload loop></audio>
     <div class="pc-box" id="pcBox"></div>
     <div class="mob-box swiper" id="outer-container"> </div>
+    
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -43,25 +48,31 @@
         let container = document.querySelector('#outer-container');
         let pcBox = $('#pcBox');
 
-        format('104069')
-        function format(string) {
-            string = string.toString();
-            let len = string.length;
-            let digit = Math.pow(10, len-1);
-            let num = Number(string); 
-            if (len > 4) {
-                if(len>5){
-                    digit = Math.pow(10, 4);
-                }
-                num = num / digit; 
-                num = num.toFixed(1) + 'W';
+        $(function(){
+            // 播放音乐 
+            var audio = document.getElementById('bgm');
+            
+            // audio.oncanplay=function(){
+                document.addEventListener('pointerup',function(){  
+                    $(".bgmMusic").addClass("active")
+                    audio.play();
+                },true) 
+                $(".bgmMusic").bind("click", function() {
+                    if(audio !== null) {   
+                        if(audio.paused) {
+                            audio.play(); 
+                            $(".bgmMusic").addClass("active")
+                        } else {
+                        
+                            audio.pause();  
+                            $(".bgmMusic").removeClass("active")
+                        }
+                    }
+                })     
+            // }
+            
 
-            } else if (len > 3) {
-                num = num / digit;
-                num = num.toFixed(1) + 'K';
-            }
-            return num 
-        }
+        })
 
         // 获取数据
         axios.get('/2021summary/oauth2/userinfo').then(res => {
