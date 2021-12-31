@@ -44,9 +44,14 @@
          
 
         // 获取数据
-        function getData() {
+        axios.get('/oauth2/userinfo').then(res => {
+            return getData(res.data.user)
+        }).catch(err => { 
+            console.log(err);
+        })
+        function getData(user) {
             let data = []
-            axios.get('https://omapi.osinfra.cn/query/newYear/2022?community=openeuler&user=georgecao').then(res => {
+            axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=4${user}`).then(res => {
                 data = res.data.data[0]; 
                 let percentage = parseFloat(data.beat_percentage) * 100;
 
@@ -79,8 +84,7 @@
                 intaPc(data, percentage,isPcContribution);
                 intaSwiper(data, percentage, isH5Contribution); 
             })
-        }
-        getData()
+        } 
 
         function timeChange(time) {
             if (time) {
