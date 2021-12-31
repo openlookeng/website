@@ -310,8 +310,8 @@
                                                 <p class="mb12 fade fade-time-4"> Congratulations! <br> You beat <span class="fb fz14 cOrange">${percentage} % </span>developer's contributions this year! </p>
                                                 ${(function(){  
                                                     let dom = '';
-                                                    if(percentage<10 ){
-                                                        dom = dom+ `
+                                                    if(percentage<=10 ){
+                                                        dom =  `
                                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Beginner</span></p>
                                                             <div class="code-box"> 
                                                                 <img src="./images/新手型@2x.png" alt="">
@@ -319,8 +319,8 @@
                                                             <p class="fz12 cOrange ">Welcome! You made a good start, but we know you can do better. Earn more points by exploring the openLooKeng issues, code, and more. </p>
                                                         `    
                                                     }
-                                                    if(percentage>10 && percentage<30 ){
-                                                        dom = dom+ `
+                                                    if(percentage>10 && percentage<=30 ){
+                                                        dom =  `
                                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Adviser</span></p>
                                                             <div class="code-box"> 
                                                                 <img src="./images/进击型@2x.png" alt="">
@@ -328,8 +328,8 @@
                                                             <p class="fz12 cOrange ">Good work! Thanks for all the engagement over the past year, and everything you help to refine openLooKeng.</p>
                                                         `    
                                                     }
-                                                    if(percentage>30 && percentage<50 ){
-                                                        dom = dom+ `
+                                                    if(percentage>30 && percentage<=60 ){
+                                                        dom =  `
                                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Thinker</span></p>
                                                             <div class="code-box"> 
                                                                 <img src="./images/思考型@2x.png" alt="">
@@ -337,8 +337,8 @@
                                                             <p class="fz12  cOrange ">You are getting pretty good at this! Your enthusiasm and passion for openLooKeng means you will soon be one of the community's expert programmers.</p>
                                                         `    
                                                     }
-                                                    if(percentage =>50 ){
-                                                        dom = dom+ `
+                                                    if(percentage =>60 ){
+                                                        dom =  `
                                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Guru</span></p>
                                                             <div class="code-box"> 
                                                                 <img src="./images/天赋型@2x.png" alt="">
@@ -615,8 +615,8 @@
                                 You beat <span class="fb fz14 cOrange">${percentage} %</span>developer's contributions this year! </p> 
                             ${(function(){ 
                                 let dom ='';
-                                    if(percentage<10 ){
-                                        dom = dom+ `
+                                    if(percentage<=10 ){
+                                        dom =  `
                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Beginner</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/新手型@2x.png" alt="">
@@ -624,8 +624,8 @@
                                             <p class="fz12 cOrange ">Welcome! You made a good start, but we know you can do better. Earn more points by exploring the openLooKeng issues, code, and more. </p>
                                         `    
                                     }
-                                     if(percentage>10 && percentage<30 ){
-                                        dom = dom+ `
+                                     if(percentage>10 && percentage<=30 ){
+                                        dom =  `
                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Adviser</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/进击型@2x.png" alt="">
@@ -633,8 +633,8 @@
                                             <p class="fz12 cOrange ">Good work! Thanks for all the engagement over the past year, and everything you help to refine openLooKeng.</p>
                                         `    
                                     }
-                                    if(percentage>30 && percentage<50 ){
-                                        dom = dom+ `
+                                    if(percentage>30 && percentage<=60 ){
+                                        dom =  `
                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Thinker</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/思考型@2x.png" alt="">
@@ -642,8 +642,8 @@
                                             <p class="fz12  cOrange ">You are getting pretty good at this! Your enthusiasm and passion for openLooKeng means you will soon be one of the community's expert programmers.</p>
                                         `    
                                     }
-                                    if(percentage>50 ){
-                                        dom = dom+ `
+                                    if(percentage >60 ){
+                                        dom =  `
                                             <p class="fb fz14">You are now a <span class="fz16 cOrange">Guru</span></p>
                                             <div class="code-box"> 
                                                 <img src="./images/天赋型@2x.png" alt="">
