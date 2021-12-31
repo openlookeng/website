@@ -49,36 +49,40 @@
         let pcBox = $('#pcBox');
 
         $(function(){
-            // 播放音乐 
+            // 播放音乐  
             var audio = document.getElementById('bgm');
-            
-            // audio.oncanplay=function(){
-                document.addEventListener('pointerup',function(){  
+            let isVideo = true 
+            document.addEventListener('pointerup',function(){  
+                if(isVideo){
                     $(".bgmMusic").addClass("active")
                     audio.play();
-                },true) 
-                $(".bgmMusic").bind("click", function() {
-                    if(audio !== null) {   
-                        if(audio.paused) {
-                            audio.play(); 
-                            $(".bgmMusic").addClass("active")
-                        } else {
-                        
-                            audio.pause();  
-                            $(".bgmMusic").removeClass("active")
-                        }
+                    isVideo = false
+                }
+                
+            },true) 
+            $(".bgmMusic").bind("click", function() {
+                if(audio !== null) {   
+                    if(audio.paused) {
+                        audio.play(); 
+                        $(".bgmMusic").addClass("active")
+                    } else {
+                    
+                        audio.pause();  
+                        $(".bgmMusic").removeClass("active")
                     }
-                })     
-            // }
+                }
+            })    
             
 
         })
 
         // 获取数据
-        axios.get('/2021summary/oauth2/userinfo').then(res => {
+        var isDataContribution = false;
+        axios.get('/en/2021summary/oauth2/userinfo').then(res => {
             return getData(res.data.user)
         }).catch(err => { 
             console.log(err);
+            isDataContribution = true
         })
         function getData(user) {
             let data = []
@@ -102,7 +106,7 @@
                 let isPcContribution = false,
                     isH5Contribution = false;
                      
-                if(data.first_time_of_enter == '' || data.user_login == ''){
+                if(isDataContribution){
                     pcBox.addClass('no-contribution').empty().html(pcDomNoData) ;
                     isPcContribution = true;
                     isH5Contribution = true;
