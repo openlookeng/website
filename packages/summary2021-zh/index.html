@@ -305,8 +305,8 @@
                                                 <p class="mb12 fade fade-time-4"> 2021注定是不平凡的一年<br> 您在社区的贡献度超过了<span class="fb fz14 cOrange">${percentage} % </span>的开发者 </p>
                                                 ${(function(){  
                                                     let dom = '';
-                                                    if(percentage<10 ){
-                                                        dom = dom+ `
+                                                    if(percentage<=10 ){
+                                                        dom =  `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">新手型</span>选手身份出道</p>
                                                         <div class="code-box"> 
                                                             <img src="./images/新手型@2x.png" alt="">
@@ -314,8 +314,8 @@
                                                         <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
                                                         `    
                                                     }
-                                                     if(percentage>10 && percentage<30 ){
-                                                        dom = dom+ `
+                                                     if(percentage>10 && percentage<=30 ){
+                                                        dom =  `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/进击型@2x.png" alt="">
@@ -323,8 +323,8 @@
                                                         <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
                                                         `    
                                                     }
-                                                     if(percentage>30 && percentage<50 ){
-                                                        dom = dom+ `
+                                                     if(percentage>30 && percentage<60 ){
+                                                        dom =  `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/思考型@2x.png" alt="">
@@ -332,8 +332,8 @@
                                                         <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
                                                         `    
                                                     }
-                                                    if(percentage =>50 ){
-                                                        dom = dom+ `
+                                                    if(percentage =>60 ){
+                                                        dom =  `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/天赋型@2x.png" alt="">
@@ -608,7 +608,7 @@
                             ${(function(){ 
                                 let dom ='';
                                     if(percentage<10 ){
-                                        dom = dom+ `
+                                        dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">新手型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/新手型@2x.png" alt="">
@@ -617,7 +617,7 @@
                                         `    
                                     }
                                      if(percentage>10 && percentage<30 ){
-                                        dom = dom+ `
+                                        dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/进击型@2x.png" alt="">
@@ -626,7 +626,7 @@
                                         `    
                                     }
                                     if(percentage>30 && percentage<50 ){
-                                        dom = dom+ `
+                                        dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/思考型@2x.png" alt="">
@@ -635,7 +635,7 @@
                                         `    
                                     }
                                     if(percentage>50 ){
-                                        dom = dom+ `
+                                        dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
                                             <div class="code-box"> 
                                                 <img src="./images/天赋型@2x.png" alt="">
