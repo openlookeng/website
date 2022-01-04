@@ -84,7 +84,7 @@
             console.log(err);
             isDataContribution = true 
         })
-
+        // getData('ailoooong')
         function getData(user) {
             let data = [] 
             axios.get(`https://omapi.osinfra.cn/query/newYear/2022?community=openlookeng&user=${user}`).then(res => { 
@@ -96,6 +96,7 @@
                 }else{
                     isDataContribution = true
                 } 
+                
 
                 let pcDom = `
                     <div class="container box-one"><div class="front"></div><div class="back"></div></div>
@@ -112,7 +113,7 @@
                 //isPcContribution \ isH5Contribution 判断有无贡献 
                 let isPcContribution = false,
                     isH5Contribution = false;  
-
+                
                 if(isDataContribution){
                     pcBox.addClass('no-contribution').empty().html(pcDomNoData) ;
                     isPcContribution = true;
@@ -225,7 +226,7 @@
                                                     <p class="fz14 fb">在2021社区日历里，</p>
                                                     <p class="fz14 fb mb12">藏着一些您与社区的有趣互动</p>
                                                     <p class="one-text">故事开始于<span class='cOrange fb'>${timeChange(data.first_time_of_enter)}</span></p>
-                                                    <p class="one-text">您与openLooKneg的第一次相遇</p>
+                                                    <p class="one-text">您与openLooKeng的第一次相遇</p>
                                                     <p class="one-text">乍见之欢，久处不厌</p>
                                                     <p class="one-text">因为您的加入，让很多的瞬间都值得被纪念</p>
                                                 </div>
@@ -313,26 +314,23 @@
                                                         </div>
                                                         <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
                                                         `    
-                                                    }
-                                                     if(percentage>10 && percentage<=30 ){
-                                                        dom =  `
+                                                    }else if(percentage>10 && percentage<=30 ){
+                                                        dom =`
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/进击型@2x.png" alt="">
                                                         </div>
                                                         <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
                                                         `    
-                                                    }
-                                                     if(percentage>30 && percentage<60 ){
-                                                        dom =  `
+                                                    }else if(percentage>30 && percentage<=60 ){
+                                                        dom =`
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
                                                         <div class="code-box">
                                                             <img src="./images/思考型@2x.png" alt="">
                                                         </div>
                                                         <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
                                                         `    
-                                                    }
-                                                    if(percentage =>60 ){
+                                                    }else if(percentage >60 ){
                                                         dom =  `
                                                         <p class="fb fz14 fade fade-time-5">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
                                                         <div class="code-box">
@@ -503,7 +501,7 @@
                             <p class="fz16">在2021社区日历里，</p>
                             <p class="fz16 mb30">藏着一些您与社区的有趣互动</p> 
                             <p>故事开始于<span class="fz14 cOrange">${timeChange(data.first_time_of_enter)} </span></p>
-                            <p>您与openLooKneg的第一次相遇</p>
+                            <p>您与openLooKeng的第一次相遇</p>
                             <p>乍见之欢，久处不厌</p>
                             <p>因为您的加入，让很多的瞬间都值得被纪念</p>
                         </div>
@@ -607,7 +605,7 @@
                                 您在社区的贡献度超过了<span class="fb fz14 cOrange">${percentage} %</span>的开发者 </p> 
                             ${(function(){ 
                                 let dom ='';
-                                    if(percentage<10 ){
+                                    if(percentage<=10 ){
                                         dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">新手型</span>选手身份出道</p>
                                             <div class="code-box"> 
@@ -615,8 +613,7 @@
                                             </div>
                                             <p class="fz14 fb cOrange ">路漫漫其修远兮，吾将上下而求索则</p>
                                         `    
-                                    }
-                                     if(percentage>10 && percentage<30 ){
+                                    }else if(percentage>10 && percentage<30 ){
                                         dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">进击型</span>选手身份出道</p>
                                             <div class="code-box"> 
@@ -624,8 +621,7 @@
                                             </div>
                                             <p class="fz14 fb cOrange ">路见bug一声吼，该出手时就出手</p>
                                         `    
-                                    }
-                                    if(percentage>30 && percentage<50 ){
+                                    }else if(percentage>30 && percentage<=60 ){
                                         dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">思考型</span>选手身份出道</p>
                                             <div class="code-box"> 
@@ -633,8 +629,7 @@
                                             </div>
                                             <p class="fz14 fb cOrange ">古之成大事者，不唯有超世之才，亦有坚忍不拔之志</p>
                                         `    
-                                    }
-                                    if(percentage>50 ){
+                                    }else if(percentage>60 ){
                                         dom = `
                                             <p class="fb fz14">2022，您将以<span class="fz16 cOrange">天赋型</span>选手身份出道</p>
                                             <div class="code-box"> 
