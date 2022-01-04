@@ -4,6 +4,8 @@ const format = function (string) {
     let digit = Math.pow(10, len-1);
     let num = Number(string);
     if (len > 4) {
+        if(digit > 9999) digit = 10000
+        
         num = num / digit;
         num = num.toFixed(1) + 'W';
     } else if (len > 3) {
