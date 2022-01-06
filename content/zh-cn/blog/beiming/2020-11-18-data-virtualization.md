@@ -1,7 +1,7 @@
 +++
 title = "北明数据资产管理平台V4.0发布，提供基于openLooKeng引擎的数据交换共享服务"
 date = "2020-11-18"
-tags = ["大数据", "openLooKeng", "北明软件"]
+tags = ["openLooKeng", "北明软件"]
 archives = "2020-11"
 author = "北明软件"
 description = "北明数据资产管理平台V4.0日前发布，提供了基于openLooKeng引擎的数据交换共享服务，尤其适用于跨部门、跨地域、跨层级的数据交换共享应用。"
