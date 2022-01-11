@@ -1,6 +1,6 @@
 +++
 event = "raffle"
-time = "2021.09.18-2021.10"
+time = "2021.09.18-2021.10.11"
 title = "Raffle at OSI Days 2021"
 event_head = "Upcoming Events"
 location = "Online"

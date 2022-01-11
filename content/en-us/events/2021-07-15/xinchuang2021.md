@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.07-2021.11" 
+time = "2021.07.15-2021.11.29" 
 title = "2021 Xinchuang Competition —— Kunpeng Basic Software Development(openLooKeng)" 
 location = "Online" 
 tag = "Developers Competition"
