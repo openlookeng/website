@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.10" 
+time = "2021.10 " 
 title = "1024程序员节" 
 location = "长沙 / 西安 / 南京 / …" 
 tag = "会议"

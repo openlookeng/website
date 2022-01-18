@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.11" 
+time = "2021.11 " 
 title = "中国开源年会COSCon" 
 location = "待定" 
 tag = "会议"

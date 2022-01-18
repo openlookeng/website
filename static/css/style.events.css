@@ -223,6 +223,9 @@ html[lang=zh-cn] .event-list .event-content .event-leftline {
     margin-bottom: 60px;
 }
 
+.plan-competition .det-content .plan-item p{
+    padding: 0 10px;
+}
 
 @media screen and (min-width: 995px){
     .isPC.event-title {
