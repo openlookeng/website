@@ -1,7 +1,7 @@
 +++ 
 plan = "hackathon"
 weight = 1
-title = "黑客松"
+title = "Hackathon"
 
 
 [[hackathon]]

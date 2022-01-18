@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.10" 
+time = "2021.10  " 
 title = "中国开源黑客松" 
 location = "待定" 
 tag = "黑客松"

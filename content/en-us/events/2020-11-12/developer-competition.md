@@ -2,7 +2,7 @@
 author = "openLooKeng"
 time = "2020.11.05-2021.04.20" 
 title = "openLooKeng参加openEuler高校开发者大赛，50万奖金等你来赢" 
-location = "线上" 
+location = "Online" 
 tag = "Developers Competition"
 img = "./events/2020-11-12/banner.png" 
 img_mobile = './events/2020-11-12/banner.png'
@@ -90,7 +90,7 @@ openEuler 是一个开源的 Linux 发行版，通过开放的社区形式与全
 
 ##### <strong>决赛 2021年4月10日--2021年4月20日</strong>
 
-持续优化作品，线上演示，作品进行答辩
+持续优化作品，Online演示，作品进行答辩
 
 ### 奖池
 

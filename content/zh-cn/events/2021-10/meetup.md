@@ -1,6 +1,6 @@
 +++
 author = "openLooKeng"
-time = "2021.10" 
+time = "2021.10  " 
 title = "openEuler峰会" 
 location = "待定" 
 tag = "会议"
