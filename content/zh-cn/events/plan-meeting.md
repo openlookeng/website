@@ -33,7 +33,7 @@ title = "Conference"
     one_third_24 = 0
     a_half_40 = 1
 [[meeting]]
-    name = "OSCAR云计算开源产业大会"
+    name = "OSCAR"
     height = 24
     box_104 = 8
     margin_8 = 1
