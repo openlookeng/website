@@ -329,11 +329,11 @@ paginate = 10
 
 [params.copyright]
     enable = true
-    text = "<a href=\"/brand.html\" target='_blank'>Brand</a><a href=\"/privacypolicy.html\" target='_blank'>Privacy</a><a href=\"/legalnotice.html\" target='_blank'>Legal</a><a href=\"https://status.openlookeng.io\" target='_blank'>Service Status</a><br>Licensed under the <a href=\"http://www.apache.org/licenses/LICENSE-2.0\" target='_blank'>Apache License Version 2.0</a><br>Copyright © 2020 openLooKeng. All rights reserved"
+    text = "<a href=\"/brand.html\" target='_blank'>Brand</a><a href=\"/privacypolicy.html\" target='_blank'>Privacy</a><a href=\"/legalnotice.html\" target='_blank'>Legal</a><a href=\"https://status.openlookeng.io\" target='_blank'>Service Status</a><br>Licensed under the <a href=\"http://www.apache.org/licenses/LICENSE-2.0\" target='_blank'>Apache License Version 2.0</a><br>Copyright © 2022 openLooKeng. All rights reserved"
 
 [languages.zh-cn.params.copyright]
     enable = true
-    text = "<a href=\"/zh-cn/brand.html\" target='_blank'>品牌</a><a href=\"/zh-cn/privacypolicy.html\" target='_blank'>隐私政策</a><a href=\"/zh-cn/legalnotice.html\" target='_blank'>法律声明</a><a href=\"https://status.openlookeng.io\" target='_blank'>服务状态</a><br>遵循<a class='pull-apache' href=\"http://www.apache.org/licenses/LICENSE-2.0\" target='_blank'>Apache License Version 2.0</a>协议<br>版权所有 © 2020 openLooKeng 保留一切权利"
+    text = "<a href=\"/zh-cn/brand.html\" target='_blank'>品牌</a><a href=\"/zh-cn/privacypolicy.html\" target='_blank'>隐私政策</a><a href=\"/zh-cn/legalnotice.html\" target='_blank'>法律声明</a><a href=\"https://status.openlookeng.io\" target='_blank'>服务状态</a><br>遵循<a class='pull-apache' href=\"http://www.apache.org/licenses/LICENSE-2.0\" target='_blank'>Apache License Version 2.0</a>协议<br>版权所有 © 2022 openLooKeng 保留一切权利"
 
 [markup.goldmark.renderer]
 unsafe= true
