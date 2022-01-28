@@ -257,8 +257,7 @@
    .banner-body-bg .block{
         display:-webkit-inline-box!important;
         display: -ms-inline-flexbox!important;
-        display: inline-flex!important;
-        background-size: contain;
+        display: inline-flex!important; 
         -webkit-box-flex: 1;
         -ms-flex: 1;
         flex: 1
