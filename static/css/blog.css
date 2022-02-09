@@ -65,10 +65,26 @@ a {
     margin: 0 20px;
     height: 50px;
     width: 88%;
-    font-size:18px;
-    
-    color:rgba(0,0,0,1);
-    
+    font-size:18px; 
+    color:rgba(0,0,0,1); 
+}
+
+.panel.sidebar-menu .panel-body{
+    max-height: 360px;
+    overflow: auto;
+}
+.panel.sidebar-menu .panel-body::-webkit-scrollbar {
+    width: 6px;
+    height: 80px;
+}
+.panel.sidebar-menu .panel-body::-webkit-scrollbar-thumb {
+    background-color: #e4e6eb;
+    outline: none;
+    border-radius: 2px;
+}
+.panel.sidebar-menu .panel-body::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 2px;
 }
 
 .tag-filter .tag-filter-content {
