@@ -2616,6 +2616,12 @@ fieldset[disabled] .btn-template-primary.active {
     height: 300px;
 }
 
+/* docs fix */
+.markdown #map,
+.markdown h3{
+    height: auto !important;
+}
+
 #map.with-border {
     border-top: solid 1px #38a7bb;
     border-bottom: solid 1px #38a7bb;
