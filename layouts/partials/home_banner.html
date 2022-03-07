@@ -4,8 +4,12 @@
             {{ range where $.Page.Site.Pages "Type" "banner" }}
             <!-- {{ if .Params.number}} -->
             <div class="swiper-slide banner_swiper_slide"> 
-                <div class="swiper-link swiper-newyear">  
+                <div class="swiper-link swiper-newyear"> 
+                  {{ if eq .Params.targetTab "1" }}
+                    <a class="banner-body-bg" target="_blank"  href={{.Params.hrefUrl }}>
+                  {{ else }}    
                     <a class="banner-body-bg" href={{.Params.hrefUrl }}>
+                  {{ end }} 
                         <div class="left-img block" style="background-image: url({{ .Params.bgLeft }})"></div>                        
                         <div class="center-img isPCshow" style="background-image: url({{ .Params.bgUrl }})"></div> 
                         <img class="isH5show" src="{{ .Params.mobileUrl }}" alt="">
