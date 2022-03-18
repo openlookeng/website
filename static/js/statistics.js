@@ -12,7 +12,7 @@ $.ajax({
     crossDomain: true,
     datatype: 'json',
     success: function (res) {
-        if(res.msg === 'OK'){
+        if(res.code=== '200'){
             $('.contributors-num').text(formatNumber(res.data.communitymembers));
             $('.users-num').text(formatNumber(res.data.users));
             $('.platforms-num').text(formatNumber(res.data.contributors));
