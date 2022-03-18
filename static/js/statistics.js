@@ -1,20 +1,7 @@
-const format = function (string) {
-    string = string.toString();
-    let len = string.length;
-    let digit = Math.pow(10, len-1);
-    let num = Number(string);
-    if (len > 4) {
-        if(digit > 9999) digit = 10000
-        
-        num = num / digit;
-        num = num.toFixed(1) + 'W';
-    } else if (len > 3) {
-        num = num / digit;
-        num = num.toFixed(1) + 'K';
-    }
-    return num
+//格式化数字 K、W
+function formatNumber(num) {
+    return num >= 1e3 && num < 1e4 ? (num / 1e3).toFixed(1) + 'k' : num >= 1e4 ? (num / 1e4).toFixed(1) + 'w' : num
 }
-
 $.ajax({
     type: 'GET',
     headers: {
@@ -26,9 +13,9 @@ $.ajax({
     datatype: 'json',
     success: function (res) {
         if(res.msg === 'OK'){
-            $('.contributors-num').text(format(res.data.contributors));
-            $('.users-num').text(format(res.data.users));
-            $('.platforms-num').text(format(res.data.communitymembers));
+            $('.contributors-num').text(formatNumber(res.data.communitymembers));
+            $('.users-num').text(formatNumber(res.data.users));
+            $('.platforms-num').text(formatNumber(res.data.contributors));
         }
     }
 });
