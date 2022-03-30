@@ -50,6 +50,12 @@ other = "Users"
 [HOME_STATISTICS_MEETUP]
 other = "Community Members"
 
+[HOME_STATISTICS_BTN]
+other = "View details"
+
+[HOEM_STATISTICE_LINK]
+other = "https://datastat.openlookeng.io/en/overview"
+
 [HOME_SUMMIT]
 other = "openLooKeng First Meetup is Coming"
 

@@ -76,6 +76,13 @@ paginate = 10
     parent = 'community'
 
 [[menu.main]]
+    identifier = "datastat"
+    name = "Statistics"
+    url  = "https://datastat.openlookeng.io/en/overview"
+    weight = 6
+    parent = 'community'    
+
+[[menu.main]]
     identifier = "newsroom"
     name = "Newsroom"
     weight = 4
@@ -191,6 +198,13 @@ paginate = 10
     url  = "/zh-cn/evangelist.html"
     weight = 5
     parent = 'community'
+
+[[languages.zh-cn.menu.main]]
+    identifier = "datastat"
+    name = "统计"
+    url  = "https://datastat.openlookeng.io/zh/overview"
+    weight = 6
+    parent = 'community'    
 
 [[languages.zh-cn.menu.main]]
     identifier = "newsroom"
