@@ -161,6 +161,30 @@ This section describes the most important config properties that may be used to 
 >
 > This config property can be overridden by the `spill_window_operator` session property.
 
+
+### `experimental.spill-build-for-outer-join-enabled`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `false`
+>
+> Enables spill feature for right-outer and full-outer join operations.
+>
+>
+>
+> This config property can be overridden by the `spill_build_for_outer_join_enabled` session property.
+
+### `experimental.inner-join-spill-filter-enabled`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `false`
+>
+> Enables bloom filter based build-side spill matching for probe side spill decision.
+>
+>
+>
+> This config property can be overridden by the `inner_join_spill_filter_enabled` session property.
+
+
 ### `experimental.spill-reuse-tablescan`
 
 > -   **Type:** `boolean`
@@ -179,7 +203,7 @@ This section describes the most important config properties that may be used to 
 >
 > Directory where spilled content will be written. It can be a comma separated list to spill simultaneously to multiple directories, which helps to utilize multiple drives installed in the system.
 >
->
+> When `experimental.spiller-spill-to-hdfs` is to `true`, `experimental.spiller-spill-path` must contain only  a single directory.
 >
 > It is not recommended to spill to system drives. Most importantly, do not spill to the drive on which the JVM logs are written, as disk overutilization might cause JVM to pause for lengthy periods, causing queries to fail.
 
@@ -254,12 +278,21 @@ This section describes the most important config properties that may be used to 
 >
 > Sets number of pages prefetched while reading from spilled files.
 
+
+### `experimental.spill-use-kryo-serialization`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `false`
+>
+> Enables Kryo based serialization for spill to disk, instead of default java serializer.
+
+
 ### `experimental.revocable-memory-selection-threshold`
 
 > -   **Type:** `data size`
 > -   **Default value:** `512 MB`
 >
-> Sets memory selection threshold for revocable memory of operator to directly allocate revocable memory for remaining bytes ready to revoke. 
+> Sets memory selection threshold for revocable memory of operator to directly allocate revocable memory for remaining bytes ready to revoke.
 
 ### `experimental.prioritize-larger-spilts-memory-revoke`
 
@@ -267,6 +300,34 @@ This section describes the most important config properties that may be used to 
 > -   **Default value:** `true`
 >
 > Enables to prioritize splits with larger revocable memory.
+
+### `experimental.spill-non-blocking-orderby`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `false`
+>
+> Enables order by operator to use asynchronous mechanism to spill, i.e it can accumulate input even when a spill is in progress and initiate a secondary spill when the secondary data accumulate exceeds a threshold or when the primary spill is completed, the default value of the threshold is the minimum between 20MB and 5% of available free memory. This property must be used in conjunction with the `experimental.spill-enabled` property.
+>
+>
+>
+> This config property can be overridden by the `spill_non_blocking_orderby` session property.
+
+### `experimental.spiller-spill-to-hdfs`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `false`
+>
+> Enables spilling into HDFS. When this property is set to `true` the property `experimental.spiller-spill-profile` must be set and also `experimental.spiller-spill-path` must contain only a single path.
+
+### `experimental.spiller-spill-profile`
+
+> -   **Type:** `string`
+> -   **No default value.** Must be set when spilling to hdfs is enabled
+>
+>
+> This property defines the [filesystem](../develop/filesystem.html) profile used to spill. The corresponding profile must exist in `etc/filesystem`. For example, if this property is set as `experimental.spiller-spill-profile=spill-hdfs`, a profile describing this filesystem `spill-hdfs.properties` must be created in `etc/filesystem` with necessary information including authentication type, config, and keytabs (if applicable, refer [filesystem](../develop/filesystem.html) for details).
+>
+> This property is required when `experimental.spiller-spill-to-hdfs` is set to `true`. It must be included in configuration files for all coordinators and all workers. The specified file system must be accessible by all workers, and they must be able to read from and write to the path declared in `experimental.spiller-spill-path` folder in the specified file system.
 
 ## Exchange Properties
 
@@ -315,6 +376,20 @@ Exchanges transfer data between openLooKeng nodes for different stages of a quer
 >
 > The maximum amount of time coordinator waits for inter-task related errors to be resolved before it's considered a failure.
 
+### `exchange.is-timeout-failure-detection-enabled`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `true`
+>
+> The failure detection mechanism in use. Default is timeout based failure detection. Otherwise, i.e. when this property is set to false, maximum retry based failure detection mechanism is enabled.
+>
+
+### `exchange.max-retry-count`
+
+> -   **Type:** `integer`
+> -   **Default value:** `100`
+>
+> The maximum number of retry for failed task performed by the coordinator before consulting the failure detector module about the remote node status. If the remote node status is failed as per the failure detector module, it is considered as a permanent failure. This parameter is the minimum count which is required to decide, not necessarily the exact count. Based on the cluster size, load on the cluster the exact count may vary slightly. This property is used only when exchange.is-timeout-failure-detection-enabled is set to false. This value needs to be at least 100 to take effect.
 
 ### `sink.max-buffer-size`
 
@@ -707,7 +782,7 @@ helps with cache affinity scheduling.
 > Auto-Vacuum enables the system to automatically manage vacuum jobs by constantly monitoring the tables which needs vacuum in order to maintain optimal performance.
 > Engine gets the tables from data sources that are eligible for vacuum and trigger vacuum operation for those tables.
 
-### `auto-vacuum.enabled:`
+### `auto-vacuum.enabled`
 
 > -   **Type:** `boolean`
 > -   **Default value:** `false`
@@ -777,6 +852,9 @@ helps with cache affinity scheduling.
 > -   **Default value:** `5m`
 >
 > The maximum time coordinator waits for remote-task related error to be resolved before it's considered a failure.
+>
+> Note:
+> For snapshot recovery `query.remote-task.max-error-duration` should be greater than `exchange.max-error-duration`.
 
 ## Distributed Snapshot
 
@@ -814,6 +892,14 @@ helps with cache affinity scheduling.
 > This property defines the maximum amount of time for the system to wait until all tasks are successfully restored. If any task is not ready within this timeout, then the recovery attempt is considered a failure, and the query will try to resume from an earlier snapshot if available.
 >
 > This can also be specified on a per-query basis using the `snapshot_retry_timeout` session property.
+
+### `hetu.snapshot.useKryoSerialization`
+
+> -   **Type:** `boolean`
+> -   **Default value:** `false`
+>
+> Enables Kryo based serialization for snapshot, instead of default java serializer.
+
 
 ## HTTP Client Configurations
 

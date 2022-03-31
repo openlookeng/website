@@ -62,8 +62,6 @@ Tables from following Connectors can be used as source to build a StarTree Cube.
 
    2.1. Overcome the limitation of Creating Cube for larger dataset.
 
-   2.2. Update Cube if source table has been updated.
-
 ## Enabling and Disabling StarTree Cube
 To enable:
 ```sql 
@@ -121,6 +119,17 @@ SELECT nationkey, avg(nationkey), max(regionkey) FROM nation WHERE nationkey >= 
 
 Since the data inserted into the Cube was for `nationkey >= 5`, only queries matching this condition will utilize the Cube.
 Queries not matching the condition would continue to work but won't use the Cube.
+
+If the source table of a Cube gets updated, the corresponding Cube gets expired automatically. In order to overcome
+this issue, we have added support in openLooKeng CLI by introducing **RELOAD CUBE** command. The user will have the
+ability to manually reload a cube if the status of the Cube becomes INACTIVE or EXPIRED. The syntax to reload the
+Cube nation_cube is as follows,
+
+```sql 
+RELOAD CUBE nation_cube
+```
+Please note that this feature is only supported via the CLI. During this reload process if an unexpected error occurs, the user will get to see the original SQL statement
+to recreate the cube manually.
 
 ## Building Cube for Large Dataset
 One of the limitations with the current implementation is that Cube cannot be built for a larger dataset at once. This is due to the cluster memory limitation.
@@ -180,38 +189,55 @@ SHOW CUBES;
 ```
 
 **Note:**
-1. The system will try to rewrite all type of Predicates into a Range to see if they can be merged together. 
+1. The system will try to rewrite all type of Predicates into a Range to see if they can be merged together.
    All continuous predicates will be merged into a single range predicate and remaining predicates are untouched.
 
-   Only the following types are supported and can be merged together. 
-   `Integer, TinyInt, SmallInt, BigInt, Date`
-    
-   For other data types, it is difficult to identify if two predicates are continuous therefore they cannot be merged together. And because of this issue, there is 
-   possibility that particular Cube may not be used during query optimization even if the Cube has all the required data. For example,
+   Only the following types are supported and can be merged together.
+   `Integer, TinyInt, SmallInt, BigInt, Date, String`
+
+   For String data type, predicate merge logic functionally works only if the Strings are ending with a digit and all are of same length. 
+   For example,
 
 ```sql
    INSERT INTO CUBE store_sales_cube WHERE store_id BETWEEN 'A01' AND 'A10';
    INSERT INTO CUBE store_sales_cube WHERE store_id BETWEEN 'A11' AND 'A20';
 ```
-   Here these two predicates cannot be merged into store_id BETWEEN 'A01' AND 'A20'; So the Cube won't be used 
-   for queries that are spanning over two the predicates;
+After the insertion, the two predicates will be merged into `'A01' AND 'A20'`
 
 ```sql
-   SELECT ss_store_id, sum(ss_sales_price) WHERE ss_store_id BETWEEN 'A05' AND 'A15'; - Cube won't be used for optimizing this query. This is a limitation as of now.
+   SELECT ss_store_id, sum(ss_sales_price) WHERE ss_store_id BETWEEN 'A05' AND 'A15'; - Cube would be used for this query.
 ```
-   Because of the predicate rewrite some of the following queries can't be supported
+
+   Consider the following example where `store_id` values are not of same length.
+
+```sql
+   INSERT INTO CUBE store_sales_cube WHERE store_id = 'A1';
+   INSERT INTO CUBE store_sales_cube WHERE store_id = 'A2' 
+```   
+   store_id predicate will be rewritten as `store_id >= 'A1' and store < 'A3'` as per the varchar predicate merge logic;
+
+```sql   
+   INSERT INTO CUBE store_sales_cube WHERE store_id = 'A10' 
+```
+   The above query would fail because `A10` is subset of the range `store_id >= 'A1' and store < 'A3'`. So Users should be wary of this issue. 
+
+For other data types, it is difficult to identify if two predicates are continuous therefore they cannot be merged together. And because of this issue, there is
+possibility that particular Cube may not be used during query optimization even if the Cube has all the required data.
+
+2. Predicate rewrite has some limitations as well. Consider the following query
 
 ```sql   
    INSERT INTO CUBE store_sales_cube WHERE ss_sold_date_sk > 2451911; 
 ```
-   The predicate is rewritten as ss_sold_date_sk >= 2451912 to be prepare for merging continous predicates. 
-   Since the predicate is rewritten, they query using ss_sold_date_sk > 2451911 predicate will not match with Cube predicate so Cube won't be used to 
-   optimize the query. The same is applicable for predicates with <= operator. ie. ss_sold_date_sk <= 2451911 is rewritten as ss_sold_date_sk < 2451912
+The predicate is rewritten as ss_sold_date_sk >= 2451912 to support merging continuous predicates.
+Since the predicate is rewritten, they query using ss_sold_date_sk > 2451911 predicate will not match with Cube predicate so Cube won't be used to
+optimize the query. The same is applicable for predicates with <= operator. ie. ss_sold_date_sk <= 2451911 is rewritten as ss_sold_date_sk < 2451912
 
 ```sql   
    SELECT ss_sold_date_sk, .... FROM hive.tpcds_sf1.store_sales WHERE ss_sold_date_sk > 2451911
 ```   
-3. Only single column predicates can be merged. 
+3. Only single column predicates can be merged.
+
 
 ## Open issues and Limitations
 1. StarTree Cube is only effective when the group by cardinality is considerably fewer than the number of rows in source table.
@@ -223,7 +249,8 @@ SHOW CUBES;
 5. OpenLooKeng CLI has been modified to ease the process of creating Cubes for larger datasets. But still there are limitations with this implementation
    as the process involves merging multiple Cube predicates into one. Only Cube predicates defined on Integer, Long and Date types can be merged properly. Support for Char, 
    String types still need to be implemented.
-   
+6. Varchar predicates can be merged only if the values are of same length.  
+
 ## Performance Optimizations on Star Tree
 1. Star Tree Query re-write optimization for same group by columns: If the group by columns of the cube and query matches, the query is 
 re-written internally to select the pre-aggregated data. If the group by columns does not matches, the additional aggregations are 
