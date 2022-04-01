@@ -75,12 +75,7 @@ paginate = 10
     weight = 5
     parent = 'community'
 
-[[menu.main]]
-    identifier = "datastat"
-    name = "Statistics"
-    url  = "https://datastat.openlookeng.io/en/overview"
-    weight = 6
-    parent = 'community'    
+   
 
 [[menu.main]]
     identifier = "newsroom"
@@ -199,12 +194,7 @@ paginate = 10
     weight = 5
     parent = 'community'
 
-[[languages.zh-cn.menu.main]]
-    identifier = "datastat"
-    name = "统计"
-    url  = "https://datastat.openlookeng.io/zh/overview"
-    weight = 6
-    parent = 'community'    
+ 
 
 [[languages.zh-cn.menu.main]]
     identifier = "newsroom"
