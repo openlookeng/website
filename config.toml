@@ -75,6 +75,8 @@ paginate = 10
     weight = 5
     parent = 'community'
 
+   
+
 [[menu.main]]
     identifier = "newsroom"
     name = "Newsroom"
@@ -191,6 +193,8 @@ paginate = 10
     url  = "/zh-cn/evangelist.html"
     weight = 5
     parent = 'community'
+
+ 
 
 [[languages.zh-cn.menu.main]]
     identifier = "newsroom"

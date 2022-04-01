@@ -38,10 +38,18 @@ other = "openLooKeng社区活力"
 other = "贡献者"
 
 [HOME_STATISTICS_USERS]
-other = "用户"
+other = "社区用户"
 
 [HOME_STATISTICS_MEETUP]
-other = "社区会员"
+other = "社区成员"
+
+[HOME_STATISTICS_BTN]
+other = "查看详情"
+
+[HOEM_STATISTICE_LINK]
+other = "https://datastat.openlookeng.io/zh/overview"
+
+
 
 [MAIN_EMAIL_SUBSCRIBE_BUTTONTEXT]
 other = "订阅"

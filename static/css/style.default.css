@@ -5438,12 +5438,12 @@ header {
 
 
 table {
-    max-width: 100%;
-    background-color: transparent;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #ddd;
+    width: 100%;
+    background-color: #ddd;
+    border-collapse: inherit;
+    border-spacing:1px; 
     margin: 10px 0;
+    border: 0 none;
 } 
 
 table th,table td {
@@ -5451,12 +5451,14 @@ table th,table td {
     line-height: 20px;
     text-align: left;
     vertical-align: top;
-    border: 1px solid #ddd;
+    background-color: #fff;
     white-space: inherit;
+    border: 0 none;
+    min-width: 24px;
 } 
-table tbody>tr:nth-child(2n)>td{
+/* table tbody>tr:nth-child(2n)>td{
     background-color: rgba(102,128,153,.05)
-}
+} */
 
 
 
