@@ -78,7 +78,7 @@ paginate = 10
 [[menu.main]]
     identifier = "datastat"
     name = "Statistics"
-    url  = "https://datastat.openlookeng.io/zh/overview"
+    url  = "https://datastat.openlookeng.io/en/overview"
     weight = 6
     parent = 'community'
    
