@@ -42,16 +42,16 @@ other = "../../video/file_example_MP4_1280_10MG.mp4"
 other = "Thriving openLooKeng Community"
 
 [HOME_STATISTICS_CONTRIBUTION]
-other = "Contributors"
+other = "Contributor"
 
 [HOME_STATISTICS_USERS]
-other = "Users"
+other = "User"
 
 [HOME_STATISTICS_MEETUP]
-other = "Community Members"
+other = "Community Member"
 
 [HOME_STATISTICS_BTN]
-other = "View details"
+other = "View detail"
 
 [HOEM_STATISTICE_LINK]
 other = "https://datastat.openlookeng.io/en/overview"
