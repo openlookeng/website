@@ -145,7 +145,7 @@ other = "开发者大赛"
 other = "/zh-cn/video.html"
 
 [RELEASE_NOTES_URL]
-other = "/zh-cn/docs/docs/releasenotes/releasenotes-1.6.0.html"
+other = "/zh-cn/docs/docs/releasenotes/releasenotes-1.6.1.html"
 
 [DEPLOYING_OPENLOOKENG]
 other = "/zh-cn/docs/docs/installation/deployment.html"
